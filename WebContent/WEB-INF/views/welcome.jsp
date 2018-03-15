@@ -6,7 +6,7 @@
 		<br>
 		<br>
 		<div style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align:center;">
-			Bienvenido a mi pagina de FLASHCARDS
+			Bienvenido a mi pagina de FLASHCARDS!!!!
 		</div>
 	</body>
 </html>
