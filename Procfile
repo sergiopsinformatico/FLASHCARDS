@@ -1,1 +1,1 @@
-java $JAVA_OPTS -jar target/demo-0.0.1-SNAPSHOT.jar --server.port=$PORT $JAR_OPTS
+ web: java $JAVA_OPTS -jar target/boot-toy-project-1.0-SNAPSHOT.war
