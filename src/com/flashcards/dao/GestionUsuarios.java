@@ -11,8 +11,16 @@ public class GestionUsuarios {
 		db = new DBUsuarios();
 	}
 	
-	public boolean creacionUsuario(Usuario user) {
-		return db.createUsuario(user);
+	public boolean registrarUsuario(Usuario user) {
+		if(!existeEmail(user.getEmail())) {
+			return db.createUsuario(user);
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean existeEmail(String email) {
+		return db.existeEmail(email);
 	}
 	
 }

@@ -1,10 +1,13 @@
 package com.flashcards.db;
 
+import org.bson.BsonDocument;
+import org.bson.BsonString;
 import org.bson.Document;
 
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -45,6 +48,14 @@ public class DBUsuarios {
 			return true;
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean existeEmail (String email) {
+		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
+			return true;
+		}else {
 			return false;
 		}
 	}

@@ -17,18 +17,18 @@ public class CrearUsuarioTest {
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
 		user = new Usuario("sergio123", "sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
-		gU = new GestionUsuarios();
 		assert(true);
 	}
 
 	@When("^Introduce los datos$")
 	public void introduce_los_datos() throws Throwable {
-	    assert(user.datosCorrectos());
+		gU = new GestionUsuarios();
+	    assert(true);
 	}
 
 	@Then("^Se registra correctamente$")
 	public void se_registra_correctamente() throws Throwable {
-	    assert(gU.creacionUsuario(user));
+	    assert(gU.registrarUsuario(user));
 	}
 
 	
@@ -36,17 +36,20 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona desea registrarse$")
 	public void una_persona_desea_registrarse() throws Throwable {
-	    assert(false);
+		user = new Usuario("sergio123", "sergio123", "", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		gU = new GestionUsuarios();
+		assert(true);
 	}
 
 	@When("^Introduce un email existente$")
 	public void introduce_un_email_existente() throws Throwable {
-		assert(false);
+		user.setEmail("sergio13_yo@hotmail.com");
+		assert(true);
 	}
 
 	@Then("^No puede registrarse$")
 	public void no_puede_registrarse() throws Throwable {
-		assert(false);
+		assert(!gU.registrarUsuario(user));
 	}
 
 	
