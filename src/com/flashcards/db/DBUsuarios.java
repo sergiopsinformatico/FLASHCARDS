@@ -13,7 +13,8 @@ public class DBUsuarios {
 	MongoClientURI uri; 
     MongoClient client;
     MongoDatabase db;
-    MongoCollection<Document> songs;
+    MongoCollection<Document> coleccionUsuarios;
+    Document doc;
     
     public DBUsuarios() {
     	conexionDB();
@@ -24,14 +25,28 @@ public class DBUsuarios {
 			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        songs = db.getCollection("Usuarios");
+	        coleccionUsuarios = db.getCollection("Usuarios");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public void createUsuario(Usuario user) {
-		
+	public boolean createUsuario(Usuario user) {
+		try {
+			doc = new Document("usuario", user.getUsuario())
+				  .append("clave", user.getClave())
+				  .append("email", user.getEmail())
+				  .append("nombre", user.getNombre())
+				  .append("apellidos", user.getApellidos())
+				  .append("edad", user.getEdad())
+				  .append("ciudad", user.getCiudad())
+				  .append("pais", user.getPais());
+			coleccionUsuarios.insertOne(doc);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 	
 }
