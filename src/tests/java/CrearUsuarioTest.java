@@ -57,17 +57,20 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
-		assert(false);
+		user = new Usuario("", "sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		gU = new GestionUsuarios();
+		assert(true);
 	}
 
 	@When("^Introduce un nombre de usuario existente$")
 	public void introduce_un_nombre_de_usuario_existente() throws Throwable {
-		assert(false);
+		user.setUsuario("sergio123");
+		assert(true);
 	}
 
 	@Then("^La cuenta no se crea$")
 	public void la_cuenta_no_se_crea() throws Throwable {
-		assert(false);
+		assert(!gU.registrarUsuario(user));
 	}
 
 	

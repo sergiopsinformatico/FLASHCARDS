@@ -7,7 +7,6 @@ import org.bson.Document;
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -54,6 +53,14 @@ public class DBUsuarios {
 	
 	public boolean existeEmail (String email) {
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean existeUsername (String username) {
+		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			return true;
 		}else {
 			return false;
