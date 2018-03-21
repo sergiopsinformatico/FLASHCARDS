@@ -3,6 +3,7 @@ package com.flashcards.modelo;
 public class Usuario {
 	String usuario, clave, email, nombre, apellidos, ciudad, pais;
 	int edad;
+	boolean correcto=false;
 	
 	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais) {
 		setUsuario(usuario);
@@ -77,5 +78,10 @@ public class Usuario {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public boolean datosCorrectos() {
+		correcto = true;
+		return this.correcto;
 	}
 }
