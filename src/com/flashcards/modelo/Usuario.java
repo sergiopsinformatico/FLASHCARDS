@@ -2,8 +2,8 @@ package com.flashcards.modelo;
 
 public class Usuario {
 	String usuario, clave, email, nombre, apellidos, ciudad, pais;
-	int edad;
-	boolean correcto=false;
+	int edad, indice;
+	boolean mayuscula, minuscula, numero;
 	
 	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais) {
 		setUsuario(usuario);
@@ -80,8 +80,32 @@ public class Usuario {
 		this.pais = pais;
 	}
 	
-	public boolean datosCorrectos() {
-		correcto = true;
-		return this.correcto;
+	public boolean cumpleRequisitosClave() {
+		mayuscula = false;
+		minuscula = false;
+		numero = false;
+		for(indice=0; indice<getClave().length(); indice++) {
+			if ((getClave().charAt(indice)>='A')&&(getClave().charAt(indice)<='Z')) {
+				mayuscula=true;
+				indice=getClave().length();
+			}
+		}
+		for(indice=0; indice<getClave().length(); indice++) {
+			if ((getClave().charAt(indice)>='a')&&(getClave().charAt(indice)<='z')) {
+				minuscula=true;
+				indice=getClave().length();
+			}
+		}
+		for(indice=0; indice<getClave().length(); indice++) {
+			if ((getClave().charAt(indice)>='0')&&(getClave().charAt(indice)<='9')) {
+				numero=true;
+				indice=getClave().length();
+			}
+		}
+		if(mayuscula && minuscula && numero && getClave().length()>=4) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

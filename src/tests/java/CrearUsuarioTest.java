@@ -16,7 +16,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
 		assert(true);
 	}
 
@@ -36,7 +36,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona desea registrarse$")
 	public void una_persona_desea_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "sergio123", "", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		user = new Usuario("sergio123", "Sergio123", "", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -57,7 +57,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
-		user = new Usuario("", "sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		user = new Usuario("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -78,16 +78,19 @@ public class CrearUsuarioTest {
 	
 	@Given("^Un usuario quiere registrarse$")
 	public void un_usuario_quiere_registrarse() throws Throwable {
-		assert(false);
+		user = new Usuario("sergio123", "", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España");
+		gU = new GestionUsuarios();
+		assert(true);
 	}
 
 	@When("^La clave no cumple los requisitos$")
 	public void la_clave_no_cumple_los_requisitos() throws Throwable {
-		assert(false);
+		user.setClave("sergio123");
+		assert(true);
 	}
 
 	@Then("^No se crea la cuenta$")
 	public void no_se_crea_la_cuenta() throws Throwable {
-		assert(false);
+		assert(!gU.registrarUsuario(user));
 	}
 }

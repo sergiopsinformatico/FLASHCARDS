@@ -12,7 +12,7 @@ public class GestionUsuarios {
 	}
 	
 	public boolean registrarUsuario(Usuario user) {
-		if((!(existeEmail(user.getEmail()))) &&(!(existeUsername(user.getUsuario())))) {
+		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))&&(user.cumpleRequisitosClave())) {
 			return db.createUsuario(user);
 		}else {
 			return false;
