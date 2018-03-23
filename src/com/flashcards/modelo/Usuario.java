@@ -1,11 +1,11 @@
 package com.flashcards.modelo;
 
 public class Usuario {
-	String usuario, clave, email, nombre, apellidos, ciudad, pais;
+	String usuario, clave, email, nombre, apellidos, ciudad, pais, genero;
 	int edad, indice;
 	boolean mayuscula, minuscula, numero;
 	
-	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais) {
+	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais, String genero) {
 		setUsuario(usuario);
 		setClave(clave);
 		setEmail(email);
@@ -14,6 +14,7 @@ public class Usuario {
 		setEdad(edad);
 		setCiudad(ciudad);
 		setPais(pais);
+		setGenero(genero);
 	}
 
 	public String getUsuario() {
@@ -78,6 +79,14 @@ public class Usuario {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public String getGenero() {
+		return this.genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 	
 	public boolean cumpleRequisitosClave() {
