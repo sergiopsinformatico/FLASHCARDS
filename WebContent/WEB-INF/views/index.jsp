@@ -9,7 +9,7 @@
 				Bienvenido a la Aplicación de Flashcards.!!!!!<br> <br>
 			</h2>
 			<h3>
-				<a href="welcome.html">Acceder como Invitado</a>(Primera prueba de Java Spring)
+				Si aun no tienes cuenta, <a href="registro.html">REGISTRATE AQUÍ</a>
 			</h3>
 		</div>
 	</body>
