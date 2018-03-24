@@ -9,21 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorPrincipal {
-	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("registro");
-	}
 	
-	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
-	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/miPerfil", method = RequestMethod.POST)
+	public ModelAndView perfil(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
-			return new ModelAndView("welcome");
-		}else {
-			return new ModelAndView("index");
-		}
+		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		return new ModelAndView("miperfil", "usuario", user);
 	}
 }
