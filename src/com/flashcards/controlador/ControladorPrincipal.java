@@ -20,4 +20,12 @@ public class ControladorPrincipal {
 		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
 		return new ModelAndView("miperfil", "usuario", user);
 	}
+	
+	@RequestMapping(value = "/modificar", method = RequestMethod.POST)
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
+		GestionUsuarios gU = new GestionUsuarios();
+		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		return new ModelAndView("modificarPerfil", "usuario", user);
+	}
+	
 }
