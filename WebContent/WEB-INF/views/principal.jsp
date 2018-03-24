@@ -14,5 +14,11 @@
 		        <button type="submit">Ver Perfil</button>
 		    </div>
 		</form>
+		<form action="modificar.html" method="post">
+			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
+		    <div class="button">
+		        <button type="submit">Modificar Perfil</button>
+		    </div>
+		</form>
 	</body>
 </html>
