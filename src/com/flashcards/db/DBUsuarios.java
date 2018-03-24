@@ -102,4 +102,18 @@ public class DBUsuarios {
 		}
 		return user;
 	}
+	
+	public boolean modificarUsuario (Usuario user) {
+		try {
+			if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(user.getEmail()))).iterator().hasNext()) {
+				coleccionUsuarios.deleteOne(new BsonDocument().append("email", new BsonString(user.getEmail())));
+				return createUsuario(user);
+			}else {
+				return false;
+			}
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
 }
