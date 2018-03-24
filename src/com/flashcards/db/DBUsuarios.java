@@ -17,6 +17,7 @@ public class DBUsuarios {
     MongoDatabase db;
     MongoCollection<Document> coleccionUsuarios;
     Document doc;
+    Usuario user;
     
     public DBUsuarios() {
     	conexionDB();
@@ -42,7 +43,8 @@ public class DBUsuarios {
 				  .append("apellidos", user.getApellidos())
 				  .append("edad", user.getEdad())
 				  .append("ciudad", user.getCiudad())
-				  .append("pais", user.getPais());
+				  .append("pais", user.getPais())
+				  .append("genero", user.getGenero());
 			coleccionUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -67,4 +69,37 @@ public class DBUsuarios {
 		}
 	}
 	
+	public boolean loginByUsername (String username, String clave) {
+		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username)).append("clave", new BsonString(clave))).iterator().hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean loginByEmail (String email, String clave) {
+		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email)).append("clave", new BsonString(clave))).iterator().hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public Usuario usuarioByUsername (String username) {
+		user=null;
+		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
+			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"));
+		}
+		return user;
+	}
+	
+	public Usuario usuarioByEmail (String email) {
+		user=null;
+		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
+			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"));
+		}
+		return user;
+	}
 }
