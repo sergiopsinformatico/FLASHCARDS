@@ -1,6 +1,6 @@
 #Author: Sergio Perez Sanchez
 
-Feature: Crear Usuario
+Feature: Registrar Usuario
 
 Scenario: Registrar un usuario exitosamente
 Given Una persona quiere registrarse
