@@ -27,4 +27,24 @@ public class GestionUsuarios {
 		return db.existeUsername(username);
 	}
 	
+	public boolean login(String usuario, String clave) {
+		if(existeUsername(usuario)) {
+			return db.loginByUsername(usuario, clave);
+		}else if (existeEmail(usuario)) {
+			return db.loginByEmail(usuario, clave);
+		}else {
+			return false;
+		}
+	}
+	
+	public Usuario leerUsuario(String usuario) {
+		if(existeUsername(usuario)) {
+			return db.usuarioByUsername(usuario);
+		}else if (existeEmail(usuario)) {
+			return db.usuarioByEmail(usuario);
+		}else {
+			return null;
+		}
+	}
+	
 }
