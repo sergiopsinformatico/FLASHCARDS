@@ -47,4 +47,8 @@ public class GestionUsuarios {
 		}
 	}
 	
+	public boolean modificarUsuario(Usuario user) {
+		return db.modificarUsuario(user);
+	}
+	
 }
