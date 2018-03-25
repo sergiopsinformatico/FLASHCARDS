@@ -20,6 +20,14 @@
 		        <button type="submit">Modificar Perfil</button>
 		    </div>
 		</form>
+		<?php if (${usuario.isAdministrador()}){?>
+			<form action="gestionar.html" method="post">
+				<input id="admin" name="admin" type="hidden" value="${usuario}">
+			    <div class="button">
+			        <button type="submit">Gestionar Cuentas</button>
+			    </div>
+			</form>
+		<?php } ?>
 		<form action="eliminar.html" method="post">
 			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
 		    <div class="button">

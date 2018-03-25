@@ -12,14 +12,9 @@ import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Usuario;
 
 @Controller
-public class ControladorInicial {
-	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("registro");
-	}
-	
-	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
-	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
+public class ControladorAdmin {
+	@RequestMapping(value = "/gestionar", method = RequestMethod.POST)
+	public ModelAndView gestionar(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
 		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
 			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
