@@ -116,4 +116,21 @@ public class DBUsuarios {
 		}
 	}
 	
+	public boolean eliminarCuenta(String usuario) {
+		try {
+			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
+				coleccionUsuarios.deleteOne(new BsonDocument().append("usuario", new BsonString(usuario)));
+				if(!existeUsername(usuario)) {
+					return true;
+				}else {
+					return false;
+				}
+			}else {
+				return false;
+			}
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
 }
