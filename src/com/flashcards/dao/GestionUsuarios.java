@@ -51,4 +51,8 @@ public class GestionUsuarios {
 		return db.modificarUsuario(user);
 	}
 	
+	public boolean eliminaCuenta(String usuario) {
+		return db.eliminarCuenta(usuario);
+	}
+	
 }
