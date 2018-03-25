@@ -3,9 +3,9 @@ package com.flashcards.modelo;
 public class Usuario {
 	String usuario, clave, email, nombre, apellidos, ciudad, pais, genero;
 	int edad, indice;
-	boolean mayuscula, minuscula, numero;
+	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
 	
-	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais, String genero) {
+	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais, String genero, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsuario(usuario);
 		setClave(clave);
 		setEmail(email);
@@ -15,6 +15,9 @@ public class Usuario {
 		setCiudad(ciudad);
 		setPais(pais);
 		setGenero(genero);
+		setUsuario(isUsuario);
+		setModerador(isModerador);
+		setAdministrador(isAdministrador);
 	}
 
 	public String getUsuario() {
@@ -88,6 +91,31 @@ public class Usuario {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	
+	public boolean isUsuario() {
+		return this.isUsuario;
+	}
+
+	public void setUsuario(boolean isUsuario) {
+		this.isUsuario = isUsuario;
+	}
+
+	public boolean isModerador() {
+		return this.isModerador;
+	}
+
+	public void setModerador(boolean isModerador) {
+		this.isModerador = isModerador;
+	}
+
+	public boolean isAdministrador() {
+		return this.isAdministrador;
+	}
+
+	public void setAdministrador(boolean isAdministrador) {
+		this.isAdministrador = isAdministrador;
+	}
+
 	
 	public boolean cumpleRequisitosClave() {
 		mayuscula = false;
