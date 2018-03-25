@@ -20,5 +20,11 @@
 		        <button type="submit">Modificar Perfil</button>
 		    </div>
 		</form>
+		<form action="eliminar.html" method="post">
+			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
+		    <div class="button">
+		        <button type="submit">Eliminar Cuenta</button>
+		    </div>
+		</form>
 	</body>
 </html>
