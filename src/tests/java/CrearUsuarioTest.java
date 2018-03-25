@@ -15,7 +15,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre");
+		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		assert(true);
 	}
 
@@ -35,7 +35,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona desea registrarse$")
 	public void una_persona_desea_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "Sergio123", "", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre");
+		user = new Usuario("sergio123", "Sergio123", "", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -56,7 +56,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
-		user = new Usuario("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre");
+		user = new Usuario("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -77,7 +77,7 @@ public class CrearUsuarioTest {
 	
 	@Given("^Un usuario quiere registrarse$")
 	public void un_usuario_quiere_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre");
+		user = new Usuario("sergio123", "", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}

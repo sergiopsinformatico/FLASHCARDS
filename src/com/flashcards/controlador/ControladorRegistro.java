@@ -19,7 +19,7 @@ public class ControladorRegistro {
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"));
+		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
 		
 		GestionUsuarios gU = new GestionUsuarios();
 		

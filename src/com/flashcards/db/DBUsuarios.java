@@ -44,7 +44,10 @@ public class DBUsuarios {
 				  .append("edad", user.getEdad())
 				  .append("ciudad", user.getCiudad())
 				  .append("pais", user.getPais())
-				  .append("genero", user.getGenero());
+				  .append("genero", user.getGenero())
+				  .append("isUsuario", user.isUsuario())
+				  .append("isModerador", user.isModerador())
+				  .append("isAdministrador", user.isAdministrador());
 			coleccionUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -89,7 +92,7 @@ public class DBUsuarios {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"));
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
@@ -98,7 +101,7 @@ public class DBUsuarios {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"));
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
