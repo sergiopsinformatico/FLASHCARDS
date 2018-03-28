@@ -1,11 +1,14 @@
 package com.flashcards.db;
 
+import java.util.LinkedList;
+
 import org.bson.Document;
 
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 public class DBPeticiones {
@@ -43,18 +46,16 @@ public class DBPeticiones {
 		}
 	}
 	
-	public PeticionDeAmistad readPeticion(String envia, String recibe) {
+	public LinkedList<PeticionDeAmistad> readPeticion(String recibe) {
 		try {
-			PeticionDeAmistad pDA;
-			doc = new Document("envia", envia)
-				  .append("recibe", recibe);
-			if(coleccionPeticiones.find(doc).iterator().hasNext()) {
-				doc = coleccionPeticiones.find(doc).iterator().next();
-				pDA = new PeticionDeAmistad(doc.getString("envia"), doc.getString("recibe"), doc.getString("estado"));
-				return pDA;
-			}else {
-				return null;
+			LinkedList<PeticionDeAmistad> lista = new LinkedList<PeticionDeAmistad>();
+			doc = new Document("recibe", recibe);
+			MongoCursor<Document> elementos = coleccionPeticiones.find(doc).iterator();
+			while(elementos.hasNext()) {
+				doc = elementos.next();
+				lista.add(new PeticionDeAmistad(doc.getString("envia"), doc.getString("recibe"), doc.getString("estado")));
 			}
+			return lista;
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			return null;
