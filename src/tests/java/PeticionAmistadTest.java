@@ -1,7 +1,9 @@
 package tests.java;
 
+import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 
@@ -15,6 +17,8 @@ public class PeticionAmistadTest {
 	GestionPeticiones gP;
 	Usuario user1, user2;
 	GestionUsuarios gU;
+	GestionAmigos gA;
+	Amigos am;
 	
 	//CREAR PETICION DE AMISTAD
 	
@@ -55,8 +59,10 @@ public class PeticionAmistadTest {
 
 	@Then("^Acepta la peticion de amistad$")
 	public void acepta_la_peticion_de_amistad() throws Throwable {
-	    pA.acepta();
-	    assert(gP.actualizarPeticion(pA));
+		am = new Amigos(pA.getEnvia(), pA.getRecibe());
+		gA = new GestionAmigos();
+		gA.createAmigos(am);
+	    assert(gA.existeAmigos(am));
 	}
 	
 	//RECHAZA PETICION DE AMISTAD
@@ -76,9 +82,6 @@ public class PeticionAmistadTest {
 
 	@Then("^Rechaza la peticion de amistad$")
 	public void rechaza_la_peticion_de_amistad() throws Throwable {
-		pA.rechaza();
-		boolean comprueba = gP.actualizarPeticion(pA);
-		gP.eliminarPeticion(pA);
-	    assert(comprueba);
+		assert(gP.eliminarPeticion(pA));
 	}
 }
