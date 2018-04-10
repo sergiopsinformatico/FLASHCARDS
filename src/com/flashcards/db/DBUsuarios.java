@@ -1,5 +1,7 @@
 package com.flashcards.db;
 
+import java.util.LinkedList;
+
 import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
@@ -8,6 +10,7 @@ import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 public class DBUsuarios {
@@ -86,6 +89,18 @@ public class DBUsuarios {
 		}else {
 			return false;
 		}
+	}
+	
+	public LinkedList<Usuario> leerTodos (String username) {
+		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
+		while(lista.hasNext()) {
+			doc = lista.next();
+			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
+				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+			}
+		}
+		return usuarios;
 	}
 	
 	public Usuario usuarioByUsername (String username) {

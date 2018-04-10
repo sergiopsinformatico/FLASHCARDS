@@ -1,5 +1,7 @@
 package com.flashcards.dao;
 
+import java.util.LinkedList;
+
 import com.flashcards.db.DBUsuarios;
 import com.flashcards.modelo.Usuario;
 
@@ -45,6 +47,10 @@ public class GestionUsuarios {
 		}else {
 			return null;
 		}
+	}
+	
+	public LinkedList<Usuario> leerTodos(String usuario) {
+		return db.leerTodos(usuario);
 	}
 	
 	public boolean modificarUsuario(Usuario user) {
