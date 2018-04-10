@@ -1,0 +1,32 @@
+package com.flashcards.dao;
+
+import java.util.LinkedList;
+
+import com.flashcards.db.DBPeticiones;
+import com.flashcards.modelo.PeticionDeAmistad;
+
+public class GestionPeticiones {
+	
+	DBPeticiones dB;
+	
+	public GestionPeticiones() {
+		dB= new DBPeticiones();
+	}
+	
+	public boolean crearPeticiones(PeticionDeAmistad peticion) {
+		return dB.createPeticion(peticion);
+	}
+	
+	public LinkedList<PeticionDeAmistad> leerPeticion(String recibe) {
+		return dB.readPeticion(recibe);
+	}
+	
+	public boolean actualizarPeticion(PeticionDeAmistad peticion) {
+		return dB.updatePeticion(peticion);
+	}
+	
+	public boolean eliminarPeticion(PeticionDeAmistad peticion) {
+		return dB.deletePeticion(peticion);
+	}
+	
+}
