@@ -64,12 +64,12 @@ public class DBAmigos {
 		try {
 			BsonDocument busq = new BsonDocument().append("amigo1", new BsonString(am.getAmigo1())).append("amigo2", new BsonString(am.getAmigo2()));
 			MongoCursor<Document> listaAmigos = coleccionAmigos.find(busq).iterator();
-			while(listaAmigos.hasNext()) {
+			if(listaAmigos.hasNext()) {
 				coleccionAmigos.deleteOne(busq);
 			}
 			busq = new BsonDocument().append("amigo1", new BsonString(am.getAmigo2())).append("amigo2", new BsonString(am.getAmigo1()));
 			listaAmigos = coleccionAmigos.find(busq).iterator();
-			while(listaAmigos.hasNext()) {
+			if(listaAmigos.hasNext()) {
 				coleccionAmigos.deleteOne(busq);
 			}
 			return true;
