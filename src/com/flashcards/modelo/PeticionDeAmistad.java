@@ -39,12 +39,4 @@ public class PeticionDeAmistad {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
-	public void acepta() {
-		setEstado("Acepta");
-	}
-	
-	public void rechaza() {
-		setEstado("Rechaza");
-	}
 }
