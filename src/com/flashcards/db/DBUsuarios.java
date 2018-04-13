@@ -6,6 +6,10 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.dao.GestionAmigos;
+import com.flashcards.dao.GestionBloqueados;
+import com.flashcards.dao.GestionPeticiones;
+import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -93,11 +97,45 @@ public class DBUsuarios {
 	
 	public LinkedList<Usuario> leerTodos (String username) {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+		//Lectura de Todos
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
 				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+			}
+		}
+		//Eliminamos Amigos
+		GestionAmigos gA=new GestionAmigos();
+		LinkedList<String>personas = gA.getAmigos(username);
+		for(int i=0; i<personas.size(); i++) {
+			for(int j=0;j<usuarios.size(); j++) {
+				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+					usuarios.remove(j);
+					j=0;
+				}
+			}
+		}
+		//Eliminamos Bloqueados
+		GestionBloqueados gB = new GestionBloqueados();
+		personas = gB.leerBloqueados(username);
+		for(int i=0; i<personas.size(); i++) {
+			for(int j=0;j<usuarios.size(); j++) {
+				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+					usuarios.remove(j);
+					j=0;
+				}
+			}
+		}
+		//Eliminamos Los que han mandado peticion de Amistad
+		GestionPeticiones gP = new GestionPeticiones();
+		LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticion(username);
+		for(int i=0; i<peticiones.size();i++) {
+			for(int j=0; j<usuarios.size(); j++) {
+				if(peticiones.get(i).getEnvia().equals(usuarios.get(j).getUsuario())) {
+					usuarios.remove(j);
+					j=0;
+				}
 			}
 		}
 		return usuarios;

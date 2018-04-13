@@ -16,3 +16,8 @@ Scenario: Rechazar Petición de Amistad
 Given Un usuario ha recibido una peticion de amistad
 When No conoce al usuario
 Then Rechaza la peticion de amistad
+
+Scenario: Bloquear a un usuario
+Given Un usuario ve un usuario
+When Quiere bloquearle
+Then No aparece

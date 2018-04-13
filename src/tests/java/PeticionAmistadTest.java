@@ -1,7 +1,13 @@
 package tests.java;
 
+import java.util.LinkedList;
+
+import com.flashcards.dao.GestionAmigos;
+import com.flashcards.dao.GestionBloqueados;
 import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.modelo.Amigos;
+import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 
@@ -15,6 +21,12 @@ public class PeticionAmistadTest {
 	GestionPeticiones gP;
 	Usuario user1, user2;
 	GestionUsuarios gU;
+	GestionAmigos gA;
+	Amigos am;
+	Bloqueado bloqueado;
+	GestionBloqueados gB;
+	LinkedList<String>bloqueados;
+	LinkedList<Usuario>usuarios;
 	
 	//CREAR PETICION DE AMISTAD
 	
@@ -50,13 +62,17 @@ public class PeticionAmistadTest {
 	@When("^Conoce al usuario$")
 	public void conoce_al_usuario() throws Throwable {
 		pA = gP.leerPeticion(user2.getUsuario()).get(0);
-		assert(pA.getEnvia().equalsIgnoreCase("sergio123"));
+		assert(pA.getEnvia().equals("sergio123"));
 	}
 
 	@Then("^Acepta la peticion de amistad$")
 	public void acepta_la_peticion_de_amistad() throws Throwable {
-	    pA.acepta();
-	    assert(gP.actualizarPeticion(pA));
+		am = new Amigos(pA.getEnvia(), pA.getRecibe());
+		gA = new GestionAmigos();
+		gA.createAmigos(am);
+		boolean comp = gA.existeAmigos(am);
+		gA.deleteAmigos(am);
+	    assert(comp);
 	}
 	
 	//RECHAZA PETICION DE AMISTAD
@@ -76,9 +92,30 @@ public class PeticionAmistadTest {
 
 	@Then("^Rechaza la peticion de amistad$")
 	public void rechaza_la_peticion_de_amistad() throws Throwable {
-		pA.rechaza();
-		boolean comprueba = gP.actualizarPeticion(pA);
-		gP.eliminarPeticion(pA);
-	    assert(comprueba);
+		assert(gP.eliminarPeticion(pA));
+	}
+	
+	//BLOQUEAR A UN USUARIO
+	
+	@Given("^Un usuario ve un usuario$")
+	public void un_usuario_ve_un_usuario() throws Throwable {
+		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+	    gU = new GestionUsuarios();
+	    user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+	    assert(user1.getUsuario()!=user2.getUsuario());
+	}
+
+	@When("^Quiere bloquearle$")
+	public void quiere_bloquearle() throws Throwable {
+	    gB = new GestionBloqueados();
+	    bloqueado=new Bloqueado(user1.getUsuario(), user2.getUsuario());
+	    assert(gB.crearBloqueado(bloqueado));
+	}
+
+	@Then("^No aparece$")
+	public void no_aparece() throws Throwable {
+		bloqueados = gB.obtenerBloqueador(user1.getUsuario());
+		gB.borrarBloqueado(bloqueado);
+	    assert(bloqueados.get(0).equals(user2.getUsuario()));
 	}
 }

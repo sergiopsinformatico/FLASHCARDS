@@ -10,73 +10,298 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.dao.GestionAmigos;
+import com.flashcards.dao.GestionBloqueados;
 import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.modelo.Amigos;
+import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorPersonas {
+	//Pagina
+	ModelAndView gente;
+	//Gestores
+	GestionPeticiones gP;
+	GestionBloqueados gB;
+	GestionAmigos gA;
+	GestionUsuarios gU;
+	//Clases Modelo
+	PeticionDeAmistad pA;
+	Bloqueado bloqueado;
+	Amigos amigos;
+	LinkedList<PeticionDeAmistad>pendientes;
+	LinkedList<Usuario>pendientesUsuario, amigosUsuario, bloqueados;
+	LinkedList<String>amigosLeidos, bloqueadosLeidos;
+	
 	@RequestMapping(value = "/peticionAmistad", method = RequestMethod.POST)
-	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
-		PeticionDeAmistad pA = new PeticionDeAmistad(request.getParameter("usuario"),request.getParameter("peticion"));
-		GestionPeticiones gP = new GestionPeticiones();
+	public ModelAndView peticionAmistad(HttpServletRequest request, HttpServletResponse response) {
+		pA = new PeticionDeAmistad(request.getParameter("usuario"),request.getParameter("peticion"));
+		gP = new GestionPeticiones();
 		gP.crearPeticiones(pA);
-		ModelAndView gente = new ModelAndView("personas");
-		GestionUsuarios gU = new GestionUsuarios();
-		LinkedList<PeticionDeAmistad> lista = gP.leerPeticion(request.getParameter("usuario"));
-		LinkedList<String> pendientes = new LinkedList<String>();
-		for(int i=0; i<lista.size(); i++) {
-			pendientes.add(lista.get(i).getEnvia());
-		}
-		LinkedList<Usuario> usuarios = gU.leerTodos(request.getParameter("usuario"));
-		gente.addObject("usuarios", usuarios);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
-		gente.addObject("pendientes", pendientes);
-		return gente;
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;	
 	}
 
-
+	
+	@RequestMapping(value = "/bloquear", method = RequestMethod.POST)
+	public ModelAndView bloquear(HttpServletRequest request, HttpServletResponse response) {
+		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloquear"));
+		gB = new GestionBloqueados();
+		gB.crearBloqueado(bloqueado);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gP=new GestionPeticiones();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);		
+		return gente;	
+	}
+	
 	@RequestMapping(value = "/aceptar", method = RequestMethod.POST)
 	public ModelAndView aceptar(HttpServletRequest request, HttpServletResponse response) {
-		PeticionDeAmistad pA = new PeticionDeAmistad(request.getParameter("usuario"),request.getParameter("peticion"));
-		GestionPeticiones gP = new GestionPeticiones();
+		pA = new PeticionDeAmistad(request.getParameter("peticion"),request.getParameter("usuario"));
+		gP = new GestionPeticiones();
 		gP.eliminarPeticion(pA);
-		ModelAndView gente = new ModelAndView("personas");
-		/*ACEPTAR AMISTAD
-		gP.crearPeticiones(pA);
-		GestionUsuarios gU = new GestionUsuarios();
-		LinkedList<PeticionDeAmistad> lista = gP.leerPeticion(request.getParameter("usuario"));
-		LinkedList<String> pendientes = new LinkedList<String>();
-		for(int i=0; i<lista.size(); i++) {
-			pendientes.add(lista.get(i).getEnvia());
-		}
-		LinkedList<Usuario> usuarios = gU.leerTodos(request.getParameter("usuario"));
-		gente.addObject("usuarios", usuarios);
+		amigos = new Amigos(request.getParameter("peticion"),request.getParameter("usuario"));
+		gA = new GestionAmigos();
+		gA.createAmigos(amigos);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
-		gente.addObject("pendientes", pendientes);*/
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
 		return gente;
 	}
 	
 	
 	@RequestMapping(value = "/rechazar", method = RequestMethod.POST)
 	public ModelAndView rechazar(HttpServletRequest request, HttpServletResponse response) {
-		PeticionDeAmistad pA = new PeticionDeAmistad(request.getParameter("usuario"),request.getParameter("peticion"));
-		GestionPeticiones gP = new GestionPeticiones();
+		pA = new PeticionDeAmistad(request.getParameter("peticion"),request.getParameter("usuario"));
+		gP = new GestionPeticiones();
 		gP.eliminarPeticion(pA);
-		ModelAndView gente = new ModelAndView("personas");
-		/*RECHAZAR AMISTAD
-		gP.crearPeticiones(pA);
-		GestionUsuarios gU = new GestionUsuarios();
-		LinkedList<PeticionDeAmistad> lista = gP.leerPeticion(request.getParameter("usuario"));
-		LinkedList<String> pendientes = new LinkedList<String>();
-		for(int i=0; i<lista.size(); i++) {
-			pendientes.add(lista.get(i).getEnvia());
-		}
-		LinkedList<Usuario> usuarios = gU.leerTodos(request.getParameter("usuario"));
-		gente.addObject("usuarios", usuarios);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
-		gente.addObject("pendientes", pendientes);*/
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;
+	}
+	
+	@RequestMapping(value = "/bloquearPeticion", method = RequestMethod.POST)
+	public ModelAndView bloquearPeticion(HttpServletRequest request, HttpServletResponse response) {
+		pA = new PeticionDeAmistad(request.getParameter("peticion"),request.getParameter("usuario"));
+		gP = new GestionPeticiones();
+		gP.eliminarPeticion(pA);
+		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("peticion"));
+		gB = new GestionBloqueados();
+		gB.crearBloqueado(bloqueado);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;
+	}
+	
+	@RequestMapping(value = "/eliminarAmigo", method = RequestMethod.POST)
+	public ModelAndView eliminarAmigo(HttpServletRequest request, HttpServletResponse response) {
+		amigos = new Amigos(request.getParameter("eliminar"),request.getParameter("usuario"));
+		gA = new GestionAmigos();
+		gA.deleteAmigos(amigos);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		gP = new GestionPeticiones();
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;
+	}
+	
+	@RequestMapping(value = "/bloquearAmigo", method = RequestMethod.POST)
+	public ModelAndView bloquearAmigo(HttpServletRequest request, HttpServletResponse response) {
+		amigos = new Amigos(request.getParameter("bloquear"),request.getParameter("usuario"));
+		gA = new GestionAmigos();
+		gA.deleteAmigos(amigos);
+		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloquear"));
+		gB = new GestionBloqueados();
+		gB.crearBloqueado(bloqueado);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		gP = new GestionPeticiones();
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;
+	}
+	
+	@RequestMapping(value = "/desbloquear", method = RequestMethod.POST)
+	public ModelAndView desbloquear(HttpServletRequest request, HttpServletResponse response) {
+		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloqueado"));
+		gB = new GestionBloqueados();
+		gB.borrarBloqueado(bloqueado);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		gP = new GestionPeticiones();
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
 		return gente;
 	}
 }
