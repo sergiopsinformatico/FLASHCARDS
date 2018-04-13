@@ -16,7 +16,7 @@ public class GestionBloqueados {
 		return dB.createBloqueado(bloqueado);
 	}
 	
-	public LinkedList<String> obtenerBloqueador(String bloqueador) {
+	public LinkedList<String> leerBloqueados(String bloqueador) {
 		return dB.getUsuariosBloqueados(bloqueador);
 	}
 	
