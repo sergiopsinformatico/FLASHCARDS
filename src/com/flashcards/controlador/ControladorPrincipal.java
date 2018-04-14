@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.PeticionDeAmistad;
@@ -49,4 +50,12 @@ public class ControladorPrincipal {
 		return persona;
 	}
 	
+	@RequestMapping(value = "/clubes", method = RequestMethod.POST)
+	public ModelAndView clubes(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView clubes = new ModelAndView("clubes");
+		clubes.addObject("usuario", request.getParameter("usuario"));
+		GestionClubes gC = new GestionClubes();
+		clubes.addObject("clubes", gC.leerClubes());
+		return clubes;
+	}
 }

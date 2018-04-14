@@ -114,7 +114,7 @@ public class PeticionAmistadTest {
 
 	@Then("^No aparece$")
 	public void no_aparece() throws Throwable {
-		bloqueados = gB.obtenerBloqueador(user1.getUsuario());
+		bloqueados = gB.leerBloqueados(user1.getUsuario());
 		gB.borrarBloqueado(bloqueado);
 	    assert(bloqueados.get(0).equals(user2.getUsuario()));
 	}
