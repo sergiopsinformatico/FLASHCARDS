@@ -20,6 +20,12 @@
 		        <button type="submit">Gente</button>
 		    </div>
 		</form>
+		<form action="clubes.html" method="post">
+			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
+		    <div class="button">
+		        <button type="submit">Clubes</button>
+		    </div>
+		</form>
 		<form action="modificar.html" method="post">
 			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
 		    <div class="button">

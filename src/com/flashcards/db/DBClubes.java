@@ -71,6 +71,15 @@ public class DBClubes {
 		return club;
 	}
 	
+	public ArrayList<String> readAllClubes() {
+		ArrayList<String> clubes = new ArrayList<String>();
+		MongoCursor<Document> listas = coleccionClubes.find().iterator();
+		while(listas.hasNext()) {
+			clubes.add(listas.next().getString("nombre"));
+		}
+		return clubes;
+	}
+	
 	public boolean deleteClub(Club club) {
 		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(club.getNombre()))).iterator();
 		if(listas.hasNext()) {

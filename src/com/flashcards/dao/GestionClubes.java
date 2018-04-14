@@ -1,5 +1,7 @@
 package com.flashcards.dao;
 
+import java.util.ArrayList;
+
 import com.flashcards.db.DBClubes;
 import com.flashcards.modelo.Club;
 
@@ -28,5 +30,9 @@ public class GestionClubes {
 	
 	public boolean eliminarClub(String nombre) {
 		return dB.deleteClub(nombre);
+	}
+	
+	public ArrayList<String> leerClubes(){
+		return dB.readAllClubes();
 	}
 }
