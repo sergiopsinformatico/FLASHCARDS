@@ -20,13 +20,35 @@ public class ControladorRegistro {
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
+		ModelAndView vista;
 		
 		GestionUsuarios gU = new GestionUsuarios();
 		
-		if(gU.registrarUsuario(user)) {
-			return new ModelAndView("index");
+		if(gU.existeUsername(user.getUsuario())) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El nombre de usuario ya existe. Use otro.");
+			vista.addObject("usuario", user);
+			return vista;
 		}else {
-			return new ModelAndView("registro");
+			if(!user.hayMayuscula() || !user.hayMinuscula() || !user.hayNumero() || !user.longitudCorrecta()) {
+				vista = new ModelAndView("registro");
+				vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
+				vista.addObject("usuario", user);
+				return vista;
+			}else {
+				if(gU.existeEmail(user.getEmail())) {
+					vista = new ModelAndView("registro");
+					vista.addObject("mensaje", "El email con el que se desea registrarse, ya existe.");
+					vista.addObject("usuario", user);
+					return vista;
+				}
+				else {
+					gU.registrarUsuario(user);
+					vista = new ModelAndView("index");
+					vista.addObject("mensaje", "Registro Correcto");
+					return vista;
+				}
+			}
 		}
 	}
 	

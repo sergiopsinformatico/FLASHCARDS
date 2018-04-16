@@ -28,7 +28,11 @@ public class ControladorInicial {
 			vista.addObject("usuario", user);
 			return vista;
 		}else {
-			return new ModelAndView("index");
+			return new ModelAndView("index", "mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
+	}
+	@RequestMapping(value = "/principal", method = RequestMethod.POST)
+	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("index");
 	}
 }

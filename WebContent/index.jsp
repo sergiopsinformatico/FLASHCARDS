@@ -3,6 +3,11 @@
 		<title>FLASHCARDS</title>
 	</head>
 	<body>
+		<script>
+			if("${mensaje}" != ""){
+				alert("${mensaje}");
+			}
+		</script>
 		<br>
 		<div style="text-align:center">
 			<h2>
@@ -12,6 +17,7 @@
 				Si aun no tienes cuenta, <a href="registro.html">REGISTRATE AQUÍ</a>
 			</h3>
 			<br><br><br><br>
+			<h3> Si ya tienes cuenta, loguéate: </h3>
 			<form action="loguear.html" method="post" class="form-signin" name="form1">
 			    <div>
 			        Nombre de Usuario o Email: 

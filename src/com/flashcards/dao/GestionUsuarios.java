@@ -14,7 +14,8 @@ public class GestionUsuarios {
 	}
 	
 	public boolean registrarUsuario(Usuario user) {
-		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))&&(user.cumpleRequisitosClave())) {
+		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))
+				&&(user.hayMayuscula())&&(user.hayMinuscula())&&(user.hayNumero())&&(user.longitudCorrecta())) {
 			return db.createUsuario(user);
 		}else {
 			return false;

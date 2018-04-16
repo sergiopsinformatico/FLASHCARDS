@@ -46,5 +46,10 @@
 		        <button type="submit">Eliminar Cuenta</button>
 		    </div>
 		</form>
+		<form action="principal.html" method="post" class="form-signin" name="form2">
+			<div class="button">
+				<button type="submit">Cerrar Sesion</button>
+		    </div>
+		</form>
 	</body>
 </html>
