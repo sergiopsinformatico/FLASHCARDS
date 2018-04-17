@@ -22,11 +22,16 @@ public class ControladorModificarPerfil {
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), user2.isUsuario(), user2.isModerador(), user2.isAdministrador());
-		
+		ModelAndView vista;
 		if(gU.modificarUsuario(user)) {
-			return new ModelAndView("principal", "nUsuario", user.getUsuario());
+			vista = new ModelAndView("principal");
+			vista.addObject("nUsuario", user.getUsuario());
+			vista.addObject("administrador", user.isAdministrador());
+			vista.addObject("usuario", user);
+			return vista;
 		}else {
-			return new ModelAndView("index");
+			vista = new ModelAndView("index");
+			return vista;
 		}
 	}
 }

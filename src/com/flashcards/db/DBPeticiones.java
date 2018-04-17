@@ -62,6 +62,22 @@ public class DBPeticiones {
 		}
 	}
 	
+	public LinkedList<PeticionDeAmistad> readPeticionEnviada(String envia) {
+		try {
+			LinkedList<PeticionDeAmistad> lista = new LinkedList<PeticionDeAmistad>();
+			doc = new Document("envia", envia);
+			MongoCursor<Document> elementos = coleccionPeticiones.find(doc).iterator();
+			while(elementos.hasNext()) {
+				doc = elementos.next();
+				lista.add(new PeticionDeAmistad(doc.getString("envia"), doc.getString("recibe"), doc.getString("estado")));
+			}
+			return lista;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
 	public boolean updatePeticion(PeticionDeAmistad peticion) {
 		try {
 			return (deletePeticion(peticion) && createPeticion(peticion));

@@ -115,34 +115,42 @@ public class Usuario {
 	public void setAdministrador(boolean isAdministrador) {
 		this.isAdministrador = isAdministrador;
 	}
-
 	
-	public boolean cumpleRequisitosClave() {
+	public boolean hayMayuscula() {
 		mayuscula = false;
-		minuscula = false;
-		numero = false;
 		for(indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='A')&&(getClave().charAt(indice)<='Z')) {
 				mayuscula=true;
 				indice=getClave().length();
 			}
 		}
+		return mayuscula;
+	}
+	
+	public boolean hayMinuscula() {
+		minuscula = false;
 		for(indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='a')&&(getClave().charAt(indice)<='z')) {
 				minuscula=true;
 				indice=getClave().length();
 			}
 		}
+		return minuscula;
+	}
+	
+	public boolean hayNumero() {
+		numero = false;
 		for(indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='0')&&(getClave().charAt(indice)<='9')) {
 				numero=true;
 				indice=getClave().length();
 			}
 		}
-		if(mayuscula && minuscula && numero && getClave().length()>=4) {
-			return true;
-		}else {
-			return false;
-		}
+		return numero;
 	}
+	
+	public boolean longitudCorrecta() {
+		return (getClave().length()>=4);
+	}
+
 }

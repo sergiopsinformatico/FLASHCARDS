@@ -46,5 +46,11 @@
 		        <button type="submit">Modificar Perfil</button>
 		    </div>
 		</form>
+		<form action="principalLogueado.html" method="post" class="form-signin" name="form2">
+			<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+			<div class="button">
+				<button type="submit">Atras</button>
+		    </div>
+		</form>
 	</body>
 </html>

@@ -20,6 +20,10 @@ public class GestionBloqueados {
 		return dB.getUsuariosBloqueados(bloqueador);
 	}
 	
+	public LinkedList<String> leerBloqueadores(String bloqueado) {
+		return dB.getUsuariosBloqueadores(bloqueado);
+	}
+	
 	public boolean borrarBloqueado(Bloqueado bloqueado) {
 		return dB.deleteBloqueado(bloqueado);
 	}

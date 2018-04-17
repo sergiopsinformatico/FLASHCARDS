@@ -51,6 +51,8 @@ public class ControladorPersonas {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
 		gente.addObject("pendientes", pendientesUsuario);
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		gA = new GestionAmigos();
 		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
 		amigosUsuario = new LinkedList<Usuario>();
@@ -85,6 +87,8 @@ public class ControladorPersonas {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
 		gente.addObject("pendientes", pendientesUsuario);
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		gA = new GestionAmigos();
 		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
 		amigosUsuario = new LinkedList<Usuario>();
@@ -120,6 +124,8 @@ public class ControladorPersonas {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
 		gente.addObject("pendientes", pendientesUsuario);
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
 		amigosUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<amigosLeidos.size(); i++) {
@@ -144,6 +150,8 @@ public class ControladorPersonas {
 		gP.eliminarPeticion(pA);
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
 		pendientes = gP.leerPeticion(request.getParameter("usuario"));
@@ -152,6 +160,8 @@ public class ControladorPersonas {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
 		gente.addObject("pendientes", pendientesUsuario);
+		LinkedList<PeticionDeAmistad>enviados = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviados);
 		gA = new GestionAmigos();
 		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
 		amigosUsuario = new LinkedList<Usuario>();
@@ -178,6 +188,8 @@ public class ControladorPersonas {
 		gB = new GestionBloqueados();
 		gB.crearBloqueado(bloqueado);
 		gente = new ModelAndView("personas");
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
@@ -213,6 +225,8 @@ public class ControladorPersonas {
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
 		gP = new GestionPeticiones();
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		pendientes = gP.leerPeticion(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
@@ -249,6 +263,8 @@ public class ControladorPersonas {
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
 		gP = new GestionPeticiones();
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		pendientes = gP.leerPeticion(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
@@ -282,6 +298,8 @@ public class ControladorPersonas {
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
 		gP = new GestionPeticiones();
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
 		pendientes = gP.leerPeticion(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
@@ -304,4 +322,41 @@ public class ControladorPersonas {
 		gente.addObject("bloqueados", bloqueados);
 		return gente;
 	}
+	
+	@RequestMapping(value = "/eliminarPeticion", method = RequestMethod.POST)
+	public ModelAndView eliminarPeticion(HttpServletRequest request, HttpServletResponse response) {
+
+		PeticionDeAmistad pA = new PeticionDeAmistad(request.getParameter("envia"), request.getParameter("recibe"));
+		gP = new GestionPeticiones();
+		gP.eliminarPeticion(pA);
+		gente = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gente.addObject("usuario", request.getParameter("usuario"));
+		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		gP = new GestionPeticiones();
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		gente.addObject("enviadas", enviadas);
+		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientesUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<pendientes.size(); i++) {
+			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
+		}
+		gente.addObject("pendientes", pendientesUsuario);
+		gA = new GestionAmigos();
+		amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		amigosUsuario = new LinkedList<Usuario>();
+		for(int i=0; i<amigosLeidos.size(); i++) {
+			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
+		}
+		gente.addObject("amigos", amigosUsuario);
+		gB = new GestionBloqueados();
+		bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		bloqueados = new LinkedList<Usuario>();
+		for(int i=0; i<bloqueadosLeidos.size(); i++) {
+			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
+		}
+		gente.addObject("bloqueados", bloqueados);
+		return gente;
+	}
+	
 }
