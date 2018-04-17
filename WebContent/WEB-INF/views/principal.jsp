@@ -33,7 +33,7 @@
 		    </div>
 		</form>
         <form action="gestionar.html" method="post" id="form3">
-			<input id="admin" name="admin" type="hidden" value="${usuario}">
+			<input id="admin" name="admin" type="hidden" value="${nUsuario}">
 		    <div class="button">
 		        <button type="submit">Gestionar Cuentas</button>
 		    </div>
