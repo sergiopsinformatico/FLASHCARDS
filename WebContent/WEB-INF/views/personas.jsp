@@ -29,6 +29,27 @@
 				</c:forEach>
 			</table>
 		</c:if>
+		<h1>PETICIONES ENVIADAS</h1>
+		<br>
+		<c:if test="${not empty enviadas}">
+			<table>
+			    <c:forEach items="${enviadas}" var="peticion">
+			    	<tr>
+				    	<td>
+				    		${peticion.getRecibe()}
+				    	</td>
+				    	<td>
+					    	<form action="eliminarPeticion.html" method="POST">
+					    		<input id="envia" name="envia" type="hidden" value="${peticion.getEnvia()}">
+					    		<input id="recibe" name="recibe" type="hidden" value="${peticion.getRecibe()}">
+								<input id="usuario" name="usuario" type="hidden" value="${peticion.getEnvia()}">
+							    <input type="submit" name="action" value="Eliminar Petición" />
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
 		<h1>PETICIONES PENDIENTES</h1>
 		<br>
 		<c:if test="${not empty pendientes}">
@@ -101,7 +122,7 @@
 				    	</td>
 						<td>
 							<form action="desbloquear.html" method="POST">
-					    		<input id="bloqueado" name="bloqueado type="hidden" value="${bloqueado.getUsuario()}">
+								<input id="bloqueado" name="bloqueado" type="hidden" value="${bloqueado.getUsuario()}">
 								<input id="usuario" name="usuario" type="hidden" value="${usuario}">
 							    <input type="submit" name="action" value="Desbloquear" />
 							</form>
@@ -110,9 +131,11 @@
 				</c:forEach>
 			</table>
 		</c:if>
-		<form action="volverPaginaPerincipal.html" method="POST">
+		<form action="principalLogueado.html" method="post" class="form-signin" name="form2">
 			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
-		    <input type="submit" name="action" value="Pagina Principal" />
-		</form>
+			<div class="button">
+				<button type="submit">Atras</button>
+		    </div>
+		</form>	
 	</body>
 </html>

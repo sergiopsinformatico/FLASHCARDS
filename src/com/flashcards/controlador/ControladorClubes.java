@@ -1,5 +1,7 @@
 package com.flashcards.controlador;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +21,7 @@ public class ControladorClubes {
 		Club club = new Club(request.getParameter("nClub"), request.getParameter("usuario"));
 		gC.crearClub(club);
 		ModelAndView vistaClubes = new ModelAndView("clubes");
+		gC = new GestionClubes();
 		vistaClubes.addObject("usuario", request.getParameter("usuario"));
 		vistaClubes.addObject("clubes", gC.leerClubes());
 		return vistaClubes;
@@ -32,4 +35,43 @@ public class ControladorClubes {
 		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
 		return verClub;
 	}
+	
+	@RequestMapping(value = "/incluirMiembro", method = RequestMethod.POST)
+	public ModelAndView incluirMiembro(HttpServletRequest request, HttpServletResponse response) {
+		GestionClubes gC = new GestionClubes();
+		Club club = gC.leerClub(request.getParameter("club"));
+		club.insertarMiembro(request.getParameter("miembro"));
+		gC.actualizarClub(club);
+		
+		ModelAndView verClub = new ModelAndView("club");
+		verClub.addObject("usuario", request.getParameter(("usuario")));
+		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		return verClub;
+	}
+	
+	@RequestMapping(value = "/eliminarMiembro", method = RequestMethod.POST)
+	public ModelAndView eliminarMiembro(HttpServletRequest request, HttpServletResponse response) {
+		GestionClubes gC = new GestionClubes();
+		Club club = gC.leerClub(request.getParameter("club"));
+		club.eliminarMiembro(request.getParameter("miembro"));
+		gC.actualizarClub(club);
+		
+		ModelAndView verClub = new ModelAndView("club");
+		verClub.addObject("usuario", request.getParameter(("usuario")));
+		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		return verClub;
+	}
+	
+	@RequestMapping(value = "/eliminarClub", method = RequestMethod.POST)
+	public ModelAndView eliminarClub(HttpServletRequest request, HttpServletResponse response) {
+		GestionClubes gC = new GestionClubes();
+		gC.eliminarClub(request.getParameter("club"));
+		ModelAndView clubes = new ModelAndView("clubes");
+		clubes.addObject("usuario", request.getParameter("usuario"));
+		gC = new GestionClubes();
+		ArrayList<String> lista = gC.leerClubes();
+		clubes.addObject("clubes", lista);
+		return clubes;
+	}
+	
 }

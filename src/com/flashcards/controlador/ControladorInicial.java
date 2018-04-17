@@ -25,6 +25,7 @@ public class ControladorInicial {
 			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
 			ModelAndView vista = new ModelAndView("principal");
 			vista.addObject("nUsuario", request.getParameter("usuario"));
+			vista.addObject("administrador", user.isAdministrador());
 			vista.addObject("usuario", user);
 			return vista;
 		}else {

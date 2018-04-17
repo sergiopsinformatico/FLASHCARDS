@@ -1,5 +1,7 @@
 <html>
 	<head>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Clubes</title>
 	</head>
 	<body>
@@ -11,13 +13,12 @@
 		        <button type="submit">Crear Un Club</button>
 		    </div>
 		</form>
+		<br><br>
 		<c:if test="${not empty clubes}">
 			<table>
 			    <c:forEach items="${clubes}" var="club">
 			    	<tr>
-			    		<td>
-			    			${club}
-			    		</td>
+			    		<td> ${club} </td>
 			    		<td>
 			    			<form action="verClub.html" method="post">
 								<input id="club" name="club" type="hidden" value="${club}">
@@ -31,11 +32,11 @@
 			    </c:forEach>
 			</table>
 		</c:if>
-		
-		<form action="principal.html" method="post">
+		<br><br>
+		<form action="principalLogueado.html" method="post" class="form-signin" name="form2">
 			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
-		    <div class="button">
-		        <button type="submit">Volver a Pagina Principal</button>
+			<div class="button">
+				<button type="submit">Atras</button>
 		    </div>
 		</form>
 	</body>

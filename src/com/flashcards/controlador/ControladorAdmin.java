@@ -16,14 +16,10 @@ public class ControladorAdmin {
 	@RequestMapping(value = "/gestionar", method = RequestMethod.POST)
 	public ModelAndView gestionar(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
-			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
-			ModelAndView vista = new ModelAndView("principal");
-			vista.addObject("nUsuario", request.getParameter("usuario"));
-			vista.addObject("usuario", user);
-			return vista;
-		}else {
-			return new ModelAndView("index");
-		}
+		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		ModelAndView vista = new ModelAndView("principal");
+		vista.addObject("nUsuario", request.getParameter("usuario"));
+		vista.addObject("usuario", user);
+		return vista;
 	}
 }

@@ -127,12 +127,35 @@ public class DBUsuarios {
 				}
 			}
 		}
+		//Eliminamos los que nos han bloqueado
+		gB = new GestionBloqueados();
+		personas = gB.leerBloqueadores(username);
+		for(int i=0; i<personas.size(); i++) {
+			for(int j=0;j<usuarios.size(); j++) {
+				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+					usuarios.remove(j);
+					j=0;
+				}
+			}
+		}
 		//Eliminamos Los que han mandado peticion de Amistad
 		GestionPeticiones gP = new GestionPeticiones();
 		LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticion(username);
 		for(int i=0; i<peticiones.size();i++) {
 			for(int j=0; j<usuarios.size(); j++) {
 				if(peticiones.get(i).getEnvia().equals(usuarios.get(j).getUsuario())) {
+					usuarios.remove(j);
+					j=0;
+				}
+			}
+		}
+		
+		//Eliminamos a los que hemos enviado peticion de amistad
+		gP = new GestionPeticiones();
+		peticiones=gP.leerPeticionEnviada(username);
+		for(int i=0; i<peticiones.size();i++) {
+			for(int j=0; j<usuarios.size(); j++) {
+				if(peticiones.get(i).getRecibe().equals(usuarios.get(j).getUsuario())) {
 					usuarios.remove(j);
 					j=0;
 				}

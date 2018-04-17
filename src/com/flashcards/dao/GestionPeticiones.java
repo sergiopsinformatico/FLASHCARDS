@@ -21,6 +21,10 @@ public class GestionPeticiones {
 		return dB.readPeticion(recibe);
 	}
 	
+	public LinkedList<PeticionDeAmistad> leerPeticionEnviada(String envia) {
+		return dB.readPeticionEnviada(envia);
+	}
+	
 	public boolean actualizarPeticion(PeticionDeAmistad peticion) {
 		return dB.updatePeticion(peticion);
 	}
