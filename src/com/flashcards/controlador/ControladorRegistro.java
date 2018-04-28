@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.modelo.Email;
 import com.flashcards.modelo.Usuario;
 
 @Controller
@@ -21,7 +22,7 @@ public class ControladorRegistro {
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
 		ModelAndView vista;
-		
+		Email email;
 		GestionUsuarios gU = new GestionUsuarios();
 		
 		if(gU.existeUsername(user.getUsuario())) {
@@ -43,10 +44,25 @@ public class ControladorRegistro {
 					return vista;
 				}
 				else {
-					gU.registrarUsuario(user);
-					vista = new ModelAndView("index");
-					vista.addObject("mensaje", "Registro Correcto");
-					return vista;
+					if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
+						vista = new ModelAndView("registro");
+						vista.addObject("mensaje", "Los campos clave y repite clave no coinciden.");
+						vista.addObject("usuario", user);
+						return vista;
+					}else {
+						gU.registrarUsuario(user);
+						String asunto = "[Sistema Flashcards] Creación de la cuenta "+user.getEmail();
+						String mensaje = "Hola "+user.getNombre()+"!!"+
+								"\nSe ha creado correctamente una cuenta en Flashcards:"+
+								"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
+								"\nClave: "+user.getClave()+
+								"\nAtentamente, Equipo de Gestión de Sistema Flashcards.";
+						email = new Email(user.getEmail(), asunto, mensaje);
+						email.enviarMensaje();
+						vista = new ModelAndView("index");
+						vista.addObject("mensaje", "Registro Correcto");
+						return vista;
+					}
 				}
 			}
 		}
