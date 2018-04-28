@@ -43,10 +43,17 @@ public class ControladorRegistro {
 					return vista;
 				}
 				else {
-					gU.registrarUsuario(user);
-					vista = new ModelAndView("index");
-					vista.addObject("mensaje", "Registro Correcto");
-					return vista;
+					if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
+						vista = new ModelAndView("registro");
+						vista.addObject("mensaje", "Los campos clave y repite clave no coinciden.");
+						vista.addObject("usuario", user);
+						return vista;
+					}else {
+						gU.registrarUsuario(user);
+						vista = new ModelAndView("index");
+						vista.addObject("mensaje", "Registro Correcto");
+						return vista;
+					}
 				}
 			}
 		}
