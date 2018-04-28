@@ -38,12 +38,14 @@
 		        <button type="submit">Gestionar Cuentas</button>
 		    </div>
 		</form>
-		<form action="eliminar.html" method="post">
+
+		<form action="eliminar.html" method="post" onSubmit="return confirm('¿Desea Eliminar la Cuenta?');">
 			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-		    <div class="button">
+			<div class="button">
 		        <button type="submit">Eliminar Cuenta</button>
 		    </div>
 		</form>
+		
 		<form action="principal.html" method="post" class="form-signin" name="form2">
 			<div class="button">
 				<button type="submit">Cerrar Sesion</button>
