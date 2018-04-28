@@ -31,6 +31,11 @@
 			        <button type="submit">Iniciar Sesion</button>
 			    </div>
 			</form>
+			<br><br><br><br>
+			<h3>
+				¿No recuerdas tu clave o tu usuario de acceso? <a href="recovery.html">Recuperar Datos</a>
+			</h3>
+			
 		</div>
 	</body>
 </html>
