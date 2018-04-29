@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="resources/css/styles.css">
 		<title>FLASHCARDS</title>
 	</head>
 	<body>
