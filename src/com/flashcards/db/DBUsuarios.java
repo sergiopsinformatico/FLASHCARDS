@@ -95,7 +95,7 @@ public class DBUsuarios {
 		}
 	}
 	
-	public LinkedList<Usuario> leerTodos (String username) {
+	public LinkedList<Usuario> gente (String username) {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 		//Lectura de Todos
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
@@ -159,6 +159,18 @@ public class DBUsuarios {
 					usuarios.remove(j);
 					j=0;
 				}
+			}
+		}
+		return usuarios;
+	}
+	
+	public LinkedList<Usuario> todosUsuarios (String username) {
+		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
+		while(lista.hasNext()) {
+			doc = lista.next();
+			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
+				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombre"), doc.getString("apellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		return usuarios;

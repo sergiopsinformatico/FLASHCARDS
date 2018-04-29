@@ -18,7 +18,7 @@ public class ControladorAdmin {
 	@RequestMapping(value = "/gestionar", method = RequestMethod.POST)
 	public ModelAndView gestionar(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.leerTodos(request.getParameter("admin"));
+		LinkedList<Usuario>usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		ModelAndView vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));
@@ -30,7 +30,7 @@ public class ControladorAdmin {
 		GestionUsuarios gU = new GestionUsuarios();
 		gU.eliminaCuenta(request.getParameter("usuario"));
 		gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.leerTodos(request.getParameter("admin"));
+		LinkedList<Usuario>usuarios = gU.gente(request.getParameter("admin"));
 		ModelAndView vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));
@@ -62,7 +62,7 @@ public class ControladorAdmin {
 		}
 		gU.modificarUsuario(usuario);
 		gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.leerTodos(request.getParameter("admin"));
+		LinkedList<Usuario>usuarios = gU.gente(request.getParameter("admin"));
 		ModelAndView vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));

@@ -42,7 +42,7 @@ public class ControladorPrincipal {
 		GestionUsuarios gU=new GestionUsuarios();
 		GestionPeticiones gP=new GestionPeticiones();
 		gente.addObject("usuario", request.getParameter("usuario"));
-		gente.addObject("usuarios",gU.leerTodos(request.getParameter("usuario")));
+		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
 		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(request.getParameter("usuario"));
 		LinkedList<Usuario> pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
