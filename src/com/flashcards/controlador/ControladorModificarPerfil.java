@@ -17,13 +17,13 @@ public class ControladorModificarPerfil {
 	@RequestMapping(value = "/mPerfil", method = RequestMethod.POST)
 	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user2 = gU.leerUsuario(request.getParameter("email"));
+		Usuario user2 = gU.leerUsuario(request.getParameter("usuarioAntiguo"));
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), user2.isUsuario(), user2.isModerador(), user2.isAdministrador());
 		ModelAndView vista;
-		if(gU.modificarUsuario(user)) {
+		if(gU.eliminaCuenta(user2.getUsuario()) && gU.registrarUsuario(user)) {
 			vista = new ModelAndView("principal");
 			vista.addObject("nUsuario", user.getUsuario());
 			vista.addObject("administrador", user.isAdministrador());

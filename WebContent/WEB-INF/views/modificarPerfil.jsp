@@ -4,9 +4,10 @@
 	</head>
 	<body>
 		<form action="mPerfil.html" method="post" class="form-signin" name="form1">
+			<input id="usuarioAntiguo" name="usuarioAntiguo" type="hidden" value="${usuario.getEmail()}">
 			<div>
-		        Email: ${usuario.getEmail()}
-		        <input id="email" name="email" type="hidden" value="${usuario.getEmail()}">
+		        Email: 
+		        <input type="email" name="email" id="email" value = ${usuario.getEmail()} required />
 		    </div>
 		    <div>
 		        Nombre de Usuario: 
@@ -38,8 +39,8 @@
 		    </div>
 		    <div>
 		    	Genero:
-		    	<input type="radio" name="genero" id="genero" value="Hombre" required > Hombre<br>
-		    	<input type="radio" name="genero" id="genero" value="Mujer" required> Mujer<br>
+		    	<input type="radio" name="genero" id="genero_Hombre" value="Hombre" required > Hombre<br>
+		    	<input type="radio" name="genero" id="genero_Mujer" value="Mujer" required> Mujer<br>
 		    </div>
 		    		    
 		    <div class="button">
@@ -52,5 +53,17 @@
 				<button type="submit">Atras</button>
 		    </div>
 		</form>
+		<script language="JavaScript" type="text/javascript">
+			var genero = "${usuario.getGenero()}";
+			var hombre = "Hombre";
+			var result = genero.localeCompare(hombre);
+			if (result == 0){
+				document.getElementById("genero_Hombre").checked = true;
+				document.getElementById("genero_Mujer").checked = false;
+			}else{
+				document.getElementById("genero_Hombre").checked = false;
+				document.getElementById("genero_Mujer").checked = true;
+			}
+		</script>
 	</body>
 </html>
