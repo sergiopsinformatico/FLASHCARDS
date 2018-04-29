@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.auxiliares.Email;
 import com.flashcards.dao.GestionUsuarios;
-import com.flashcards.modelo.Email;
 import com.flashcards.modelo.Usuario;
 
 @Controller

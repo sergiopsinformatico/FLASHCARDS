@@ -1,4 +1,4 @@
-package com.flashcards.modelo;
+package com.flashcards.auxiliares;
 
 import java.util.Properties;
 
