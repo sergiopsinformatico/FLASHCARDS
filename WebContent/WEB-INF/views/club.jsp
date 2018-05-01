@@ -14,7 +14,22 @@
 		        <button type="submit">Añadir Miembro</button>
 		    </div>
 		</form>
-		<br>
+		<form action="invitarPersonaClub.html" method="post" id="form4">
+			<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
+			Invitación para: <input type="text" name="recibe">
+		    <div class="button">
+		        <button type="submit">Invitar Miembro</button>
+		    </div>
+		</form>
+		<form action="solicitarAccesoClub.html" method="post" id="form5">
+			<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
+		    <div class="button">
+		        <button type="submit">Solicitar Acceso</button>
+		    </div>
+		</form>
+		
 		<h3>Miembros:</h3>
 		<c:if test="${not empty club.getColeccionMiembros()}">
 			<table>
@@ -24,7 +39,7 @@
 							${miembro}
 						</td>
 						<td>
-							<form action="eliminarMiembro.html" method="post" id="form2">
+							<form action="eliminarMiembro.html" method="post" name="form2" id="form2">
 								<input id="club" name="club" type="hidden" value="${club.getNombre()}">
 								<input id="usuario" name="usuario" type="hidden" value="${usuario}">
 								<input id="miembro" name="miembro" type="hidden" value="${miembro}">
@@ -54,15 +69,25 @@
 		</form>
 		
 		<script language="JavaScript" type="text/javascript">
-
+			var pertenece = ${pertenece};
 			if(('${usuario}'.localeCompare('${club.getAdministrador()}')) == 0){
 				document.getElementById("form1").style.visibility="visible";
-				document.getElementById("form2").style.visibility="visible";
 				document.getElementById("form3").style.visibility="visible";
+				document.getElementById("form4").style.visibility="hidden";
+				document.getElementById("form5").style.visibility="hidden";	
+				document.getElementById("form2").style.visibility="visible";			
+			}else if ( pertenece == true){
+				document.getElementById("form1").style.visibility="hidden";
+				document.getElementById("form3").style.visibility="hidden";
+				document.getElementById("form4").style.visibility="visible";
+				document.getElementById("form5").style.visibility="hidden";
+				document.getElementById("form2").style.visibility="hidden";				
 			}else{
 				document.getElementById("form1").style.visibility="hidden";
-				document.getElementById("form2").style.visibility="hidden";
 				document.getElementById("form3").style.visibility="hidden";
+				document.getElementById("form4").style.visibility="hidden";
+				document.getElementById("form5").style.visibility="visible";
+				document.getElementById("form2").style.visibility="hidden";
 			}
 		</script>
 	</body>

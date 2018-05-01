@@ -108,4 +108,19 @@ public class DBClubes {
 		}
 		return borrado;
 	}
+	
+	public boolean pertenece(String usuario, String club) {
+		boolean pertenece = false;
+		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(club))).iterator();
+		if(listaPosibles.hasNext()) {
+			doc = listaPosibles.next();
+			miembros = (ArrayList<String>) doc.get("miembros");
+			for(int i=0; i<miembros.size(); i++) {
+				if(miembros.get(i).equals(usuario)) {
+					pertenece = true;
+				}
+			}
+		}
+		return pertenece;
+	}
 }
