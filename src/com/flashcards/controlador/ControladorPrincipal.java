@@ -22,44 +22,40 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorPrincipal {
 	
-	@RequestMapping(value = "/miPerfil", method = RequestMethod.POST)
-	public ModelAndView perfil(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
-		return new ModelAndView("miperfil", "usuario", user);
+	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
+	public ModelAndView miperfil(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("miperfil");
 	}
 	
-	@RequestMapping(value = "/modificar", method = RequestMethod.POST)
+	@RequestMapping(value = "/modificar", method = RequestMethod.GET)
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
-		return new ModelAndView("modificarPerfil", "usuario", user);
+		return new ModelAndView("modificarPerfil");
 	}
 	
-	@RequestMapping(value = "/gente", method = RequestMethod.POST)
+	@RequestMapping(value = "/gente", method = RequestMethod.GET)
 	public ModelAndView gente(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView gente = new ModelAndView("personas");
 		GestionUsuarios gU=new GestionUsuarios();
 		GestionPeticiones gP=new GestionPeticiones();
-		gente.addObject("usuario", request.getParameter("usuario"));
-		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		gente.addObject("usuario", gU.leerUsuario(request.getSession().getAttribute("usuario").toString()));
+		gente.addObject("usuarios",gU.gente(request.getSession().getAttribute("usuario").toString()));
+		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(request.getSession().getAttribute("usuario").toString());
 		LinkedList<Usuario> pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
 		gente.addObject("pendientes", pendientesUsuario);
-		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getSession().getAttribute("usuario").toString());
 		gente.addObject("enviadas", enviadas);
 		GestionAmigos gA = new GestionAmigos();
-		LinkedList<String> amigosLeidos=gA.getAmigos(request.getParameter("usuario"));
+		LinkedList<String> amigosLeidos=gA.getAmigos(request.getSession().getAttribute("usuario").toString());
 		LinkedList<Usuario> amigosUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<amigosLeidos.size(); i++) {
 			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
 		}
 		gente.addObject("amigos", amigosUsuario);
 		GestionBloqueados gB = new GestionBloqueados();
-		LinkedList<String>bloqueadosLeidos = gB.leerBloqueados(request.getParameter("usuario"));
+		LinkedList<String>bloqueadosLeidos = gB.leerBloqueados(request.getSession().getAttribute("usuario").toString());
 		LinkedList<Usuario> bloqueados = new LinkedList<Usuario>();
 		for(int i=0; i<bloqueadosLeidos.size(); i++) {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
@@ -68,7 +64,7 @@ public class ControladorPrincipal {
 		return gente;	
 	}
 	
-	@RequestMapping(value = "/clubes", method = RequestMethod.POST)
+	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView clubes = new ModelAndView("clubes");
 		clubes.addObject("usuario", request.getParameter("usuario"));
@@ -86,6 +82,13 @@ public class ControladorPrincipal {
 		vista.addObject("nUsuario", request.getParameter("usuario"));
 		vista.addObject("administrador", user.isAdministrador());
 		vista.addObject("usuario", user);
+		return vista;
+	}
+	
+	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
+	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
+		request.getSession().removeAttribute("usuario");
+		ModelAndView vista = new ModelAndView("index");
 		return vista;
 	}
 }

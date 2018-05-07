@@ -15,8 +15,18 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorRegistro {
 	
-	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("registro");
+	}
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.POST)
+	public ModelAndView registre(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("registro");
+	}
+	
+	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 

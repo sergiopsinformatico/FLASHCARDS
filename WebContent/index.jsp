@@ -2,15 +2,18 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-		
 		<title>FLASHCARDS</title>
 	</head>
 	<body>
-		<script>
+		<% 
+			if(session.getAttribute("usuario")!=null){
+				response.sendRedirect("/Flashcards/principal.html");
+			}
+		%>
+		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
 				alert("${mensaje}");
 			}
-			
 		</script>
 		<style>
 			body {
@@ -29,8 +32,6 @@
     			background-color: white;
 			}
 		</style>
-		
-
 		<div class="container">
 		  <div class="row">
 		    <div class="col-md-12">
@@ -46,7 +47,7 @@
 		    </div>
 		    <div class="col-md-4">
 		      
-		      <form action="loguear.html" method="post" class="border-login" name="form1">
+		      <form action="iniciarSesion.html" method="post" class="border-login" name="form1">
 		          <div class="row" align="center">
 		          	<div class="col-md-12">
 		          		<h4>Inicia Sesión con tu Cuenta</h4>

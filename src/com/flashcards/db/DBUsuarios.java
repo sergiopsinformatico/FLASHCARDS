@@ -70,7 +70,7 @@ public class DBUsuarios {
 			return false;
 		}
 	}
-	
+
 	public boolean existeUsername (String username) {
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			return true;

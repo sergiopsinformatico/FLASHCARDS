@@ -1,8 +1,50 @@
 <html>
 	<head>
 		<title>REGISTRO DE USUARIOS</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<% 
+			if(session.getAttribute("usuario")==null){
+				response.sendRedirect("/Flashcards");
+			}
+		%>
+		<script language="JavaScript" type="text/javascript">
+			if("${mensaje}" != ""){
+				alert("${mensaje}");
+			}
+		</script>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">WebSiteName</a>
+	    		</div>
+	    		<ul class="nav navbar-nav">
+	      			<li class="active"><a href="inicio.html">Inicio</a></li>
+	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
+	      			<li><a href="gente.html">Gente</a></li>
+	      			<li><a href="clubes.html">Clubes</a></li>
+	      			<li><a href="modificar.html">Modificar Perfil</a></li>
+	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+	    		</ul>
+	    		<ul class="nav navbar-nav navbar-right">
+	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</a></li>
+	      			<li><a href="cerrarSesion.html">Cerrar Sesión</a></li>
+	    		</ul>
+	  		</div>
+		</nav>
+		<script language="JavaScript" type="text/javascript">
+			var comp = ${usuario.isAdministrador()};
+			if (comp){
+				document.getElementById("btn-Gestion").style.visibility="visible";
+			}else{
+				document.getElementById("btn-Gestion").style.visibility="hidden";
+			}
+		</script>
 		<form action="mPerfil.html" method="post" class="form-signin" name="form1">
 			<input id="usuarioAntiguo" name="usuarioAntiguo" type="hidden" value="${usuario.getEmail()}">
 			<div>
@@ -16,6 +58,14 @@
 		    <div>
 		        Clave: 
 		        <input type="password" name="clave" id="clave" value = ${usuario.getClave()} required />
+		    </div>
+		    <div>
+		    	<ul> La clave debe cumplir los siguientes requisitos: <br>
+					<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
+					<li>Al menos debe contener una mayúscula (A - Z)</li> 
+					<li>Al menos debe contener una minúscula (a - z)</li> 
+					<li>Al menos debe contener un número (0 - 9)</li> 
+				</ul> 
 		    </div>
 		    <div>
 		        Nombre: 
@@ -45,12 +95,6 @@
 		    		    
 		    <div class="button">
 		        <button type="submit">Modificar Perfil</button>
-		    </div>
-		</form>
-		<form action="principalLogueado.html" method="post" class="form-signin" name="form2">
-			<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-			<div class="button">
-				<button type="submit">Atras</button>
 		    </div>
 		</form>
 		<script language="JavaScript" type="text/javascript">
