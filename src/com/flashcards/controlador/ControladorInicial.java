@@ -18,17 +18,20 @@ public class ControladorInicial {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		ModelAndView vista;
 		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
 			//COMPROBAR CUENTA ELIMINADA. SI NO.... PRUEBA DE LOGIN NORMAL
 			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
-			vista = new ModelAndView("principal");
+			ModelAndView vista = new ModelAndView("principal");
+			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", user);
+			return vista;
 		}else {
-			vista = new ModelAndView("index");
+			ModelAndView vista = new ModelAndView("index");
+			request.getSession().removeAttribute("usuario");
+			request.getSession().setAttribute("usuario", null);
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
+			return vista;
 		}
-		return vista;
 	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
@@ -72,13 +75,4 @@ public class ControladorInicial {
 		}
 		return recuperada;
 	}
-	
-	
-	
-
-	
-	
-	
-	
-
 }

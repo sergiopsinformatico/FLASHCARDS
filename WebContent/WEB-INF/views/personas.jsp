@@ -30,7 +30,7 @@
 	    		</ul>
 	    		<ul class="nav navbar-nav navbar-right">
 	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</a></li>
-	      			<li><a href="cerrarSesion.html">Cerrar Sesión</a></li>
+	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
 	    		</ul>
 	  		</div>
 		</nav>
