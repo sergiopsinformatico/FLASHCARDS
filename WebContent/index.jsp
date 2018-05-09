@@ -15,6 +15,7 @@
 				alert("${mensaje}");
 			}
 		</script>
+		<% session.removeAttribute("usuario"); %>
 		<style>
 			body {
 			    background-color: powderblue;

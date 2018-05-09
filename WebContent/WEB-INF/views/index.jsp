@@ -6,8 +6,8 @@
 	</head>
 	<body>
 		<% 
-			if((request.getParameter("usuario")!=null)){
-				response.sendRedirect("/principal.html");
+			if(session.getAttribute("usuario")!=null){
+				response.sendRedirect("/Flashcards/principal.html");
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">
@@ -15,7 +15,7 @@
 				alert("${mensaje}");
 			}
 		</script>
-		<% session.setAttribute("usuario", ""); %>
+		<% session.removeAttribute("usuario"); %>
 		<style>
 			body {
 			    background-color: powderblue;

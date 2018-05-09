@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.auxiliares.Email;
+import com.flashcards.dao.GestionEliminados;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Usuario;
 
@@ -18,20 +19,24 @@ public class ControladorInicial {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
+		ModelAndView vista;
 		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
-			//COMPROBAR CUENTA ELIMINADA. SI NO.... PRUEBA DE LOGIN NORMAL
 			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
-			ModelAndView vista = new ModelAndView("principal");
+			GestionEliminados gE = new GestionEliminados();
+			vista = new ModelAndView("principal");
 			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", user);
-			return vista;
+			if(gE.isUsuario(user.getEmail())) {
+				vista.addObject("mensaje", "La cuenta se va a eliminar el "+gE.leerFecha(user.getEmail())+"."+
+			    "\nSi accede ahora, su cuenta no será eliminada. ¿Desea acceder?");
+			}
 		}else {
-			ModelAndView vista = new ModelAndView("index");
+			vista = new ModelAndView("index");
 			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", null);
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
-			return vista;
 		}
+		return vista;
 	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)

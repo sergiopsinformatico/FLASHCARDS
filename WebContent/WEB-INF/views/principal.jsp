@@ -41,6 +41,15 @@
 			}else{
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
+			if("${mensaje}" != ""){
+				var confirma = confirm("${mensaje}");
+				if(confirma){
+					var gestor = new Packages.com.flashcards.dao.GestionEliminados();
+					var el = gestor.borrarEliminado("${usuario.getEmail()}");
+				}else{
+					window.location.href = "/Flashcards";
+				}
+			}
 		</script>
 	</body>
 </html>
