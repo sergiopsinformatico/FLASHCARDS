@@ -50,8 +50,12 @@ public class GestionUsuarios {
 		}
 	}
 	
-	public LinkedList<Usuario> leerTodos(String usuario) {
-		return db.leerTodos(usuario);
+	public LinkedList<Usuario> gente(String usuario) {
+		return db.gente(usuario);
+	}
+	
+	public LinkedList<Usuario> todosUsuarios(String usuario) {
+		return db.todosUsuarios(usuario);
 	}
 	
 	public boolean modificarUsuario(Usuario user) {

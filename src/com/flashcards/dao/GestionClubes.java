@@ -32,6 +32,10 @@ public class GestionClubes {
 		return dB.deleteClub(nombre);
 	}
 	
+	public boolean pertenece(String usuario, String club) {
+		return dB.pertenece(usuario, club);
+	}
+	
 	public ArrayList<String> leerClubes(){
 		return dB.readAllClubes();
 	}

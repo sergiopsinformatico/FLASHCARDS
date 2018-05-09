@@ -1,63 +1,54 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Flashcards</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<br>
-		<br>
-		<div style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align:center;">
-			Bienvenido a mi pagina de FLASHCARDS!!!!
-		</div>
-		<form action="miPerfil.html" method="post">
-			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-		    <div class="button">
-		        <button type="submit">Ver Perfil</button>
-		    </div>
-		</form>
-		<form action="gente.html" method="post">
-			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-		    <div class="button">
-		        <button type="submit">Gente</button>
-		    </div>
-		</form>
-		<form action="clubes.html" method="post">
-			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-		    <div class="button">
-		        <button type="submit">Clubes</button>
-		    </div>
-		</form>
-		<form action="modificar.html" method="post">
-			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-		    <div class="button">
-		        <button type="submit">Modificar Perfil</button>
-		    </div>
-		</form>
-        <form action="gestionar.html" method="post" id="form3">
-			<input id="admin" name="admin" type="hidden" value="${nUsuario}">
-		    <div class="button">
-		        <button type="submit">Gestionar Cuentas</button>
-		    </div>
-		</form>
-
-		<form action="eliminar.html" method="post" onSubmit="return confirm('¿Desea Eliminar la Cuenta?');">
-			<input id="usuario" name="usuario" type="hidden" value="${nUsuario}">
-			<div class="button">
-		        <button type="submit">Eliminar Cuenta</button>
-		    </div>
-		</form>
-		
-		<form action="principal.html" method="post" class="form-signin" name="form2">
-			<div class="button">
-				<button type="submit">Cerrar Sesion</button>
-		    </div>
-		</form>
-		
+		<% 
+			if(session.getAttribute("usuario")==null){
+				response.sendRedirect("/Flashcards");
+			}
+		%>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">WebSiteName</a>
+	    		</div>
+	    		<ul class="nav navbar-nav">
+	      			<li class="active"><a href="inicio.html">Inicio</a></li>
+	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
+	      			<li><a href="gente.html">Gente</a></li>
+	      			<li><a href="clubes.html">Clubes</a></li>
+	      			<li><a href="modificar.html">Modificar Perfil</a></li>
+	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+	    		</ul>
+	    		<ul class="nav navbar-nav navbar-right">
+	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</a></li>
+	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
+	    		</ul>
+	  		</div>
+		</nav>
+		Bienvenido ${usuario.getUsuario()} !!!
 		<script language="JavaScript" type="text/javascript">
-		var comp = ${usuario.isAdministrador()};
+			var comp = ${usuario.isAdministrador()};
 			if (comp){
-				document.getElementById("form3").style.visibility="visible";
+				document.getElementById("btn-Gestion").style.visibility="visible";
 			}else{
-				document.getElementById("form3").style.visibility="hidden";
+				document.getElementById("btn-Gestion").style.visibility="hidden";
+			}
+			if("${mensaje}" != ""){
+				var confirma = confirm("${mensaje}");
+				if(confirma){
+					var gestor = new Packages.com.flashcards.dao.GestionEliminados();
+					var el = gestor.borrarEliminado("${usuario.getEmail()}");
+				}else{
+					window.location.href = "/Flashcards";
+				}
 			}
 		</script>
 	</body>

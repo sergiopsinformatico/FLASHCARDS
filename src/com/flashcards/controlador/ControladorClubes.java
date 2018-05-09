@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.dao.GestionAcceso;
 import com.flashcards.dao.GestionClubes;
+import com.flashcards.dao.GestionInvitaciones;
 import com.flashcards.modelo.Club;
+import com.flashcards.modelo.Invitacion;
+import com.flashcards.modelo.SolicitudAcceso;
+import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorClubes {
@@ -31,8 +36,9 @@ public class ControladorClubes {
 	public ModelAndView verClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		ModelAndView verClub = new ModelAndView("club");
-		verClub.addObject("usuario", request.getParameter(("usuario")));
+		//verClub.addObject("usuario", request.getParameter(("usuario")));
 		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		verClub.addObject("pertenece", gC.pertenece(((Usuario)(request.getSession().getAttribute("usuario"))).getUsuario(), request.getParameter("club")));
 		return verClub;
 	}
 	
@@ -46,6 +52,35 @@ public class ControladorClubes {
 		ModelAndView verClub = new ModelAndView("club");
 		verClub.addObject("usuario", request.getParameter(("usuario")));
 		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
+		return verClub;
+	}
+	
+	@RequestMapping(value = "/invitarPersonaClub", method = RequestMethod.POST)
+	public ModelAndView invitarPersonaClub(HttpServletRequest request, HttpServletResponse response) {
+		Invitacion invitacion = new Invitacion(request.getParameter("usuario"), request.getParameter("recibe"), request.getParameter("club"));
+		GestionInvitaciones gI = new GestionInvitaciones();
+		gI.insertarInvitacion(invitacion);
+
+		GestionClubes gC = new GestionClubes();
+		ModelAndView verClub = new ModelAndView("club");
+		verClub.addObject("usuario", request.getParameter(("usuario")));
+		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
+		return verClub;
+	}
+	
+	@RequestMapping(value = "/solicitarAccesoClub", method = RequestMethod.POST)
+	public ModelAndView solicitarAccesoClub(HttpServletRequest request, HttpServletResponse response) {
+		GestionAcceso gA = new GestionAcceso();
+		SolicitudAcceso sA = new SolicitudAcceso(request.getParameter("usuario"), request.getParameter("club"));
+		gA.insertarAcceso(sA);
+		
+		GestionClubes gC = new GestionClubes();
+		ModelAndView verClub = new ModelAndView("club");
+		verClub.addObject("usuario", request.getParameter(("usuario")));
+		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
 		return verClub;
 	}
 	
@@ -59,6 +94,7 @@ public class ControladorClubes {
 		ModelAndView verClub = new ModelAndView("club");
 		verClub.addObject("usuario", request.getParameter(("usuario")));
 		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
+		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
 		return verClub;
 	}
 	

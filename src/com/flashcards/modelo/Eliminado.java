@@ -1,7 +1,4 @@
 package com.flashcards.modelo;
-
-import java.util.Calendar;
-
 import com.flashcards.auxiliares.Fecha;
 
 public class Eliminado {

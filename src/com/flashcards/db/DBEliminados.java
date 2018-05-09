@@ -54,6 +54,15 @@ public class DBEliminados {
 		}
 	}
 	
+	public boolean isUsuario (String email) {
+		eliminados = coleccionEliminados.find(new BsonDocument().append("email", new BsonString(email))).iterator();
+		if(eliminados.hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public boolean deleteEmail(String email) {
 		try {
 			eliminados = coleccionEliminados.find(new BsonDocument().append("email", new BsonString(email))).iterator();

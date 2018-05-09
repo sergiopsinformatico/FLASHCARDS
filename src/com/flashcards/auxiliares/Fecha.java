@@ -10,15 +10,15 @@ public class Fecha {
 	public String fechaHoy() {
 		dia = "";
 		fecha = Calendar.getInstance();
-		dia = fecha.DAY_OF_MONTH+"-"+fecha.MONTH+"-"+fecha.YEAR;
+		dia = Integer.toString(fecha.get(Calendar.DATE))+"/"+Integer.toString(fecha.get(Calendar.MONTH)+1)+"/"+Integer.toString(fecha.get(Calendar.YEAR));
 		return dia;
 	}
 	
 	public String fechaEliminarCuenta() {
 		dia = "";
 		fecha = Calendar.getInstance();
-		fecha.add(Calendar.DAY_OF_MONTH, 14);
-		dia = fecha.DAY_OF_MONTH+"-"+fecha.MONTH+"-"+fecha.YEAR;
+		fecha.add(Calendar.DAY_OF_YEAR, 14);
+		dia = Integer.toString(fecha.get(Calendar.DATE))+"/"+Integer.toString(fecha.get(Calendar.MONTH)+1)+"/"+Integer.toString(fecha.get(Calendar.YEAR));
 		return dia;
 	}
 }

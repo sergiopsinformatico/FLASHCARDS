@@ -19,6 +19,10 @@ public class GestionEliminados {
 		return dB.getDate(email);
 	}
 	
+	public boolean isUsuario (String email) {
+		return dB.isUsuario(email);
+	}
+	
 	public boolean borrarEliminado(String email) {
 		return dB.deleteEmail(email);
 	}

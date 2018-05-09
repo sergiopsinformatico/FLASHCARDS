@@ -17,21 +17,61 @@ public class ControladorModificarPerfil {
 	@RequestMapping(value = "/mPerfil", method = RequestMethod.POST)
 	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user2 = gU.leerUsuario(request.getParameter("email"));
-		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
+		Usuario antiguo = gU.leerUsuario(request.getParameter("usuarioAntiguo"));
+		Usuario nuevo = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"), user2.isUsuario(), user2.isModerador(), user2.isAdministrador());
-		ModelAndView vista;
-		if(gU.modificarUsuario(user)) {
-			vista = new ModelAndView("principal");
-			vista.addObject("nUsuario", user.getUsuario());
-			vista.addObject("administrador", user.isAdministrador());
-			vista.addObject("usuario", user);
-			return vista;
+		               request.getParameter("pais"), request.getParameter("genero"),
+		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
+		ModelAndView vista = new ModelAndView("");;
+		if(!nuevo.hayMayuscula() || !nuevo.hayMinuscula() || !nuevo.hayNumero() || !nuevo.longitudCorrecta()) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
 		}else {
-			vista = new ModelAndView("index");
-			return vista;
+			if((nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getUsuario().equals(antiguo.getUsuario()))) {
+				if(gU.existeUsername(nuevo.getUsuario())) {
+					vista = new ModelAndView("modificarPerfil");
+					vista.addObject("mensaje", "El usuario ya existe.");
+				}else {
+					gU.eliminaCuenta(antiguo.getUsuario());
+					gU.registrarUsuario(nuevo);
+					request.getSession().removeAttribute("usuario");
+					request.getSession().setAttribute("usuario", nuevo);
+					vista = new ModelAndView("miperfil");
+				}
+			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsuario().equals(antiguo.getUsuario()))) {
+				if(gU.existeEmail(nuevo.getEmail())) {
+					vista = new ModelAndView("modificarPerfil");
+					vista.addObject("mensaje", "El email ya existe.");
+				}else {
+					gU.eliminaCuenta(antiguo.getUsuario());
+					gU.registrarUsuario(nuevo);
+					request.getSession().removeAttribute("usuario");
+					request.getSession().setAttribute("usuario", nuevo);
+					vista = new ModelAndView("miperfil");
+				}
+			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getUsuario().equals(antiguo.getUsuario()))) {
+				if(gU.existeUsername(nuevo.getUsuario())) {
+					vista = new ModelAndView("modificarPerfil");
+					vista.addObject("mensaje", "El usuario ya existe.");
+				}else if(gU.existeEmail(nuevo.getEmail())) {
+					vista = new ModelAndView("modificarPerfil");
+					vista.addObject("mensaje", "El email ya existe.");
+				}else {
+					gU.eliminaCuenta(antiguo.getUsuario());
+					gU.registrarUsuario(nuevo);
+					request.getSession().removeAttribute("usuario");
+					request.getSession().setAttribute("usuario", nuevo);
+					vista = new ModelAndView("miperfil");
+				}
+			}else if((nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsuario().equals(antiguo.getUsuario()))) {
+				gU.eliminaCuenta(antiguo.getUsuario());
+				gU.registrarUsuario(nuevo);
+				request.getSession().removeAttribute("usuario");
+				request.getSession().setAttribute("usuario", nuevo);
+				vista = new ModelAndView("miperfil");
+			}
 		}
+		return vista;
 	}
 }
