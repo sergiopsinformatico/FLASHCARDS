@@ -19,6 +19,7 @@ public class ControladorInicial {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
+		gU.eliminarCuentas();
 		ModelAndView vista;
 		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
 			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
@@ -27,8 +28,7 @@ public class ControladorInicial {
 			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", user);
 			if(gE.isUsuario(user.getEmail())) {
-				vista.addObject("mensaje", "La cuenta se va a eliminar el "+gE.leerFecha(user.getEmail())+"."+
-			    "\nSi accede ahora, su cuenta no será eliminada. ¿Desea acceder?");
+				gE.borrarEliminado(user.getEmail());
 			}
 		}else {
 			vista = new ModelAndView("index");
@@ -42,6 +42,11 @@ public class ControladorInicial {
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("principal");
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("index");
 	}
 	
 	@RequestMapping(value = "/recovery", method = RequestMethod.POST)

@@ -11,6 +11,11 @@ public class Eliminado {
 		setFecha(f.fechaEliminarCuenta());
 	}
 	
+	public Eliminado(String email, String fecha) {
+		setEmail(email);
+		setFecha(fecha);
+	}
+	
 	public String getEmail() {
 		return this.email;
 	}

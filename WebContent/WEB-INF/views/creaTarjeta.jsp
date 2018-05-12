@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Mi Perfil</title>
+		<title>Crear Tarjeta</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,6 +13,12 @@
 				response.sendRedirect("/Flashcards");
 			}
 		%>
+		<style>
+			div.left {
+			    text-align: left;
+			}
+		
+		</style>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -20,7 +26,7 @@
 	    		</div>
 	    		<ul class="nav navbar-nav">
 	      			<li><a href="inicio.html">Inicio</a></li>
-	      			<li class="active"><a href="miPerfil.html">Mi Perfil</a></li>
+	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
 	      			<li><a href="gente.html">Gente</a></li>
 	      			<li><a href="clubes.html">Clubes</a></li>
 	      			<li><a href="modificar.html">Modificar Perfil</a></li>
@@ -41,15 +47,48 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
-		Username: ${usuario.getUsuario()}
-		<br>Email: ${usuario.getEmail()}
-		<br><br><br>
-		Nombre: ${usuario.getNombre()}
-		<br>Apellidos: ${usuario.getApellidos()}
-		<br>Edad: ${usuario.getEdad()}
-		<br>Ciudad: ${usuario.getCiudad()}
-		<br>Pais: ${usuario.getPais()}
-		<br>Genero: ${usuario.getGenero()}
-		<br><br><br>	
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Creador: ${usuario.getUsuario()}</h3>
+		  </div>
+		</div>
+		<br><br>
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Nombre de la Colección: </h3> <input type="text" name="nombre" id="nombre" required />
+		  </div>
+		</div>
+		<br><br>
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Compartir con: Todos los Usuarios (Publico) / Privado / Club / Usuario Determinado</h3>
+		  	<form action="">
+			  <input type="radio" name="compartir" value="publico"> Todos los Usuarios <br>
+			  <input type="radio" name="compartir" value="yo"> Solo Yo <br>
+			  <input type="radio" name="compartir" value="club"> Club: <input type="text" name="nClub" id="nClub" required /><br>
+			  <input type="radio" name="compartir" value="usuario"> Usuario: <input type="text" name="nUsuario" id="nUsuario" required />
+			</form>
+		  </div>
+		</div>
+		<br><br>
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Mostrar Tarjetas: Para Escribir Respuesta/Seleccionar Opciones/Mostrar Respuesta al dar un botón</h3>
+		  </div>
+		</div>
+		<br><br>
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Tarjeta:
+					Pregunta:
+					Respuesta:</h3>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 left">
+		  	<h3>Estado ==> Sin Evaluar</h3>
+		  </div>
+		</div>
+		
 	</body>
 </html>

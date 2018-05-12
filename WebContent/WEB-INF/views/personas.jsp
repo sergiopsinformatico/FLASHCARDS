@@ -29,7 +29,7 @@
 	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
 	    		</ul>
 	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</a></li>
+	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
 	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
 	    		</ul>
 	  		</div>
