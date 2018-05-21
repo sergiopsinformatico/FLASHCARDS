@@ -1,9 +1,12 @@
 package com.flashcards.db;
 
+import java.util.LinkedList;
+
 import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.Fecha;
 import com.flashcards.modelo.Eliminado;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -18,6 +21,9 @@ public class DBEliminados {
     MongoCollection<Document> coleccionEliminados;
     Document doc;
     MongoCursor<Document> eliminados;
+    Fecha fecha;
+    LinkedList<Eliminado> lista;
+    String result;
     
     public DBEliminados() {
     	conexionDB();
@@ -72,6 +78,24 @@ public class DBEliminados {
 			return true;
 		}catch(Exception ex) {
 			return false;
+		}
+	}
+	
+	public LinkedList<Eliminado> searchEliminados(String hoy) {
+		try {
+			lista = new LinkedList<Eliminado>();
+			fecha = new Fecha();
+			eliminados = coleccionEliminados.find().iterator();
+			while(eliminados.hasNext()) {
+				doc = eliminados.next();
+				result = fecha.compararFechas(hoy, doc.get("fecha").toString());
+				if(result!=null && Integer.parseInt(result)>=0) {
+					lista.add(new Eliminado(doc.get("email").toString(), doc.getString("fecha").toString()));
+				}
+			}
+			return lista;
+		}catch(Exception ex) {
+			return null;
 		}
 	}
 	

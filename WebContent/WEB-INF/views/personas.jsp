@@ -1,5 +1,69 @@
 <html>
 	<head>
+		<title>Real-time search in AngularJS made easy</title>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	</head>
+	
+	<body class="container" ng-app="SearchPeople" ng-controller="PeopleCtrl">
+		<h1>People</h1>
+		<div class="form-group col-md-2">
+			<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Hobbies</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="person in people | filter:expression">
+					<td>{{ person.name }}</td>
+					<td>{{ person.age }}</td>
+					<td>{{ person.hobbies.join(', ') }}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			angular.module('SearchPeople', []).controller('PeopleCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}];
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<html>
+	<head>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Gente</title>
@@ -29,7 +93,7 @@
 	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
 	    		</ul>
 	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</a></li>
+	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
 	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
 	    		</ul>
 	  		</div>
@@ -174,4 +238,4 @@
 			</table>
 		</c:if>
 	</body>
-</html>
+</html> -->

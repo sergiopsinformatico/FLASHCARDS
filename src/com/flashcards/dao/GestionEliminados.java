@@ -1,7 +1,10 @@
 package com.flashcards.dao;
 
+import java.util.LinkedList;
+
 import com.flashcards.db.DBEliminados;
 import com.flashcards.modelo.Eliminado;
+
 
 public class GestionEliminados {
 	
@@ -25,6 +28,10 @@ public class GestionEliminados {
 	
 	public boolean borrarEliminado(String email) {
 		return dB.deleteEmail(email);
+	}
+	
+	public LinkedList<Eliminado> buscarEliminados(String fechaHoy) {
+		return dB.searchEliminados(fechaHoy);
 	}
 	
 }

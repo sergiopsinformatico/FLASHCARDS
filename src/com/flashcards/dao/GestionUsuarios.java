@@ -2,12 +2,19 @@ package com.flashcards.dao;
 
 import java.util.LinkedList;
 
+import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
+import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.Usuario;
 
 public class GestionUsuarios {
 	
 	DBUsuarios db;
+	GestionEliminados gE;
+	Fecha fecha;
+	LinkedList<Eliminado> lista;
+	Eliminado el;
+	Usuario user;
 	
 	public GestionUsuarios() {
 		db = new DBUsuarios();
@@ -64,5 +71,18 @@ public class GestionUsuarios {
 	
 	public boolean eliminaCuenta(String usuario) {
 		return db.eliminarCuenta(usuario);
+	}
+	
+	public void eliminarCuentas() {
+		gE = new GestionEliminados();
+		fecha = new Fecha();
+		lista = gE.buscarEliminados(fecha.fechaHoy());
+		for(int i = 0; i<lista.size(); i++) {
+			el = lista.get(i);
+			user = this.leerUsuario(el.getEmail());
+			this.eliminaCuenta(user.getUsuario());
+			gE.borrarEliminado(user.getEmail());
+			//Eliminar todo lo demas
+		}
 	}
 }
