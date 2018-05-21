@@ -14,6 +14,8 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorRegistro {
+	//Variables
+	Email email = new Email();
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
@@ -32,7 +34,6 @@ public class ControladorRegistro {
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
 		ModelAndView vista;
-		Email email;
 		GestionUsuarios gU = new GestionUsuarios();
 		
 		if(gU.existeUsername(user.getUsuario())) {
@@ -61,14 +62,7 @@ public class ControladorRegistro {
 						return vista;
 					}else {
 						gU.registrarUsuario(user);
-						String asunto = "[Sistema Flashcards] Creación de la cuenta "+user.getEmail();
-						String mensaje = "Hola "+user.getNombre()+"!!"+
-								"\nSe ha creado correctamente una cuenta en Flashcards:"+
-								"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
-								"\nClave: "+user.getClave()+
-								"\nAtentamente, Equipo de Gestión de Sistema Flashcards.";
-						email = new Email(user.getEmail(), asunto, mensaje);
-						email.enviarMensaje();
+						email.crearCuenta(user);
 						vista = new ModelAndView("index");
 						vista.addObject("mensaje", "Registro Correcto");
 						return vista;

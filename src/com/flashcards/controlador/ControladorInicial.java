@@ -15,20 +15,24 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorInicial {
+	//Variables
+	GestionUsuarios gU = new GestionUsuarios();
+	Email email = new Email();
+	Usuario user;
+	ModelAndView vista;
 	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
 		gU.eliminarCuentas();
-		ModelAndView vista;
-		if(gU.login(request.getParameter("usuario"), request.getParameter("clave"))){
-			Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){
+			user = gU.leerUsuario(request.getParameter("inputUsuario"));
 			GestionEliminados gE = new GestionEliminados();
 			vista = new ModelAndView("principal");
 			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", user);
 			if(gE.isUsuario(user.getEmail())) {
 				gE.borrarEliminado(user.getEmail());
+				email.reactivacionCuenta(user);
 			}
 		}else {
 			vista = new ModelAndView("index");
@@ -61,28 +65,19 @@ public class ControladorInicial {
 	
 	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
 	public ModelAndView recuperar(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView recuperada;
-		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		user = gU.leerUsuario(request.getParameter("usuario"));
 		if(user!=null) {
-			String asunto = "[Sistema Flashcards] Recuperación de la cuenta "+user.getEmail();
-			String mensaje = "Hola "+user.getNombre()+"!!"+
-			"\nHa solicitado recuperación de sus datos de su cuenta en Flashcards:"+
-			"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
-			"\nClave: "+user.getClave()+
-			"\nAtentamente, Equipo de Gestión de Sistema Flashcards.";
-			Email email = new Email(user.getEmail(), asunto, mensaje);
-			if(email.enviarMensaje()) {
-				recuperada = new ModelAndView("index");
-				recuperada.addObject("mensaje", "Se ha enviado un email a "+user.getEmail()+" con los datos de acceso.");
+			if(email.recuperarClave(user)) {
+				vista = new ModelAndView("index");
+				vista.addObject("mensaje", "Se ha enviado un email a "+user.getEmail()+" con los datos de acceso.");
 			}else {
-				recuperada = new ModelAndView("recoveryPassword");
-				recuperada.addObject("mensaje", "Ha habido un problema al enviar el email. Por favor, vuelva a intentarlo.");
+				vista = new ModelAndView("recoveryPassword");
+				vista.addObject("mensaje", "Ha habido un problema al enviar el email. Por favor, vuelva a intentarlo.");
 			}
 		}else {
-			recuperada = new ModelAndView("recoveryPassword");
-			recuperada.addObject("mensaje", "El nombre de usuario o email introducido, no existe en el sistema.");
+			vista = new ModelAndView("recoveryPassword");
+			vista.addObject("mensaje", "El nombre de usuario o email introducido, no existe en el sistema.");
 		}
-		return recuperada;
+		return vista;
 	}
 }
