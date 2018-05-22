@@ -28,7 +28,7 @@ public class Email {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Creación de la cuenta "+user.getEmail());
 		//Mensaje
-		setMensaje("Hola "+user.getNombre()+"!!"+
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nSe ha creado correctamente una cuenta en Flashcards:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
 		"\nClave: "+user.getClave()+
@@ -42,7 +42,7 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getUsuario()+") - 14 dias");
 		//Mensaje
-		setMensaje("Estimado "+user.getNombre()+","+
+		setMensaje("Estimado "+user.getNombreApellidos()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+fecha+"."+
 		 "\nSi accede antes al sistema con su cuenta, su cuenta no será eliminada."+
         "\nUn saludo. Equipo de Flashcards.");
@@ -55,7 +55,7 @@ public class Email {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Recuperación de la clave de "+user.getEmail());
 		//Mensaje
-		setMensaje("Hola "+user.getNombre()+"!!"+
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nHa solicitado recuperación de sus datos de su cuenta en Flashcards:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
 		"\nClave: "+user.getClave()+
@@ -69,7 +69,7 @@ public class Email {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Reactivacion de la cuenta de "+user.getEmail());
 		//Mensaje
-		setMensaje("Hola "+user.getNombre()+"!!"+
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no será borrada:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
 		"\nClave: "+user.getClave()+

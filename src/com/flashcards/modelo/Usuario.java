@@ -1,16 +1,15 @@
 package com.flashcards.modelo;
 
 public class Usuario {
-	String usuario, clave, email, nombre, apellidos, ciudad, pais, genero;
+	String usuario, clave, email, nombreApellidos, ciudad, pais, genero;
 	int edad, indice;
 	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
 	
-	public Usuario(String usuario, String clave, String email, String nombre, String apellidos, int edad, String ciudad, String pais, String genero, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
+	public Usuario(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsuario(usuario);
 		setClave(clave);
 		setEmail(email);
-		setNombre(nombre);
-		setApellidos(apellidos);
+		setNombreApellidos(nombreApellidos);
 		setEdad(edad);
 		setCiudad(ciudad);
 		setPais(pais);
@@ -44,20 +43,12 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public String getNombreApellidos() {
+		return this.nombreApellidos;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellidos() {
-		return this.apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setNombreApellidos(String nombreApellidos) {
+		this.nombreApellidos = nombreApellidos;
 	}
 
 	public int getEdad() {

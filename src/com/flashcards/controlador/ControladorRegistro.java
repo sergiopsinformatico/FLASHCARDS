@@ -30,7 +30,7 @@ public class ControladorRegistro {
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
-		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
+		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
 		ModelAndView vista;
@@ -39,18 +39,21 @@ public class ControladorRegistro {
 		if(gU.existeUsername(user.getUsuario())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "El nombre de usuario ya existe. Use otro.");
+			user.setUsuario("");
 			vista.addObject("usuario", user);
 			return vista;
 		}else {
 			if(!user.hayMayuscula() || !user.hayMinuscula() || !user.hayNumero() || !user.longitudCorrecta()) {
 				vista = new ModelAndView("registro");
 				vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
+				user.setClave("");
 				vista.addObject("usuario", user);
 				return vista;
 			}else {
 				if(gU.existeEmail(user.getEmail())) {
 					vista = new ModelAndView("registro");
 					vista.addObject("mensaje", "El email con el que se desea registrarse, ya existe.");
+					user.setEmail("");
 					vista.addObject("usuario", user);
 					return vista;
 				}
@@ -58,6 +61,7 @@ public class ControladorRegistro {
 					if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
 						vista = new ModelAndView("registro");
 						vista.addObject("mensaje", "Los campos clave y repite clave no coinciden.");
+						user.setClave("");
 						vista.addObject("usuario", user);
 						return vista;
 					}else {

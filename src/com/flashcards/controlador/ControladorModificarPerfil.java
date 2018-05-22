@@ -19,7 +19,7 @@ public class ControladorModificarPerfil {
 		GestionUsuarios gU = new GestionUsuarios();
 		Usuario antiguo = gU.leerUsuario(request.getParameter("usuarioAntiguo"));
 		Usuario nuevo = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
-		               request.getParameter("email"), request.getParameter("nombre"), request.getParameter("apellidos"),
+		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"),
 		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
