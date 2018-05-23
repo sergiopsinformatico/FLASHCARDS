@@ -1,5 +1,7 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,13 +25,6 @@ public class ControladorInicial {
 	
 									//CONTROLADORES DE INICIAR SESIÓN
 	
-	//Principal
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("principal");
-		return vista;
-	}
-	
 	//INICIAR SESIÓN
 	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
@@ -40,11 +35,14 @@ public class ControladorInicial {
 			GestionEliminados gE = new GestionEliminados();
 			vista = new ModelAndView("principal");
 			vista.addObject("usuario", user);
-			/*request.getSession().removeAttribute("usuario");
-			request.getSession().setAttribute("usuario", user);*/
 			if(gE.isUsuario(user.getEmail())) {
 				gE.borrarEliminado(user.getEmail());
 				email.reactivacionCuenta(user);
+			}
+			try {
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsuario());
+			} catch (IOException e) {
+				return vista;
 			}
 		}else {
 			vista = new ModelAndView("index");
