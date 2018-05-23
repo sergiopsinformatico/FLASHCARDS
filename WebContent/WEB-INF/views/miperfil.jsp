@@ -44,8 +44,7 @@
 		Username: ${usuario.getUsuario()}
 		<br>Email: ${usuario.getEmail()}
 		<br><br><br>
-		Nombre: ${usuario.getNombre()}
-		<br>Apellidos: ${usuario.getApellidos()}
+		Nombre y Apellidos: ${usuario.getNombreApellidos()}
 		<br>Edad: ${usuario.getEdad()}
 		<br>Ciudad: ${usuario.getCiudad()}
 		<br>Pais: ${usuario.getPais()}
