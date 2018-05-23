@@ -153,7 +153,7 @@
 	<body>
 		<% 
 			if(session.getAttribute("usuario")!=null){
-				response.sendRedirect("/Flashcards/principal.html");
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html");
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">

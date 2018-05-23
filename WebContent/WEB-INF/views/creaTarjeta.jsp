@@ -18,6 +18,11 @@
 </head>
 
 <body>
+		<% 
+			if(session.getAttribute("usuario")==null){
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
+			}
+		%>
 	<script language="JavaScript" type="text/javascript">
 		if("${mensaje}" != ""){
 			alert("${mensaje}");

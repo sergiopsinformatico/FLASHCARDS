@@ -14,9 +14,11 @@
 	<body>
 		<% 
 			if(session.getAttribute("usuario")==null){
-				response.sendRedirect("/Flashcards");
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 		%>
+		
+		<% request.setAttribute("usuario", session.getAttribute("usuario"));%>
 		
 		<style>
 			div.center {

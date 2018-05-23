@@ -10,7 +10,7 @@
 	<body>
 		<% 
 			if(session.getAttribute("usuario")==null){
-				response.sendRedirect("/Flashcards");
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 		%>
 		<nav class="navbar navbar-default">

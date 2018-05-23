@@ -26,11 +26,13 @@ public class ControladorPrincipal {
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
+		request.getSession().setAttribute("sesion", request.getAttribute("sesion"));
 		return new ModelAndView("principal");
 	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicioPost(HttpServletRequest request, HttpServletResponse response) {
+		request.getSession().setAttribute("sesion", request.getAttribute("sesion"));
 		return new ModelAndView("principal");
 	}
 	
