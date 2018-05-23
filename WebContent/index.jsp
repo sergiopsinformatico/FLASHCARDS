@@ -148,7 +148,8 @@
 	</head>
 	<body>
 		<% 
-			if(session.getAttribute("usuario")!=null){
+			/*if(session.getAttribute("usuario")!=null){*/
+			if(request.getAttribute("usuario")!=null){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html");
 			}
 		%>

@@ -23,6 +23,13 @@ public class ControladorInicial {
 	
 									//CONTROLADORES DE INICIAR SESIÓN
 	
+	//Principal
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
+		vista = new ModelAndView("principal");
+		return vista;
+	}
+	
 	//INICIAR SESIÓN
 	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
@@ -32,8 +39,9 @@ public class ControladorInicial {
 			user = gU.leerUsuario(request.getParameter("inputUsuario"));
 			GestionEliminados gE = new GestionEliminados();
 			vista = new ModelAndView("principal");
-			request.getSession().removeAttribute("usuario");
-			request.getSession().setAttribute("usuario", user);
+			vista.addObject("usuario", user);
+			/*request.getSession().removeAttribute("usuario");
+			request.getSession().setAttribute("usuario", user);*/
 			if(gE.isUsuario(user.getEmail())) {
 				gE.borrarEliminado(user.getEmail());
 				email.reactivacionCuenta(user);
@@ -44,6 +52,13 @@ public class ControladorInicial {
 			request.getSession().setAttribute("usuario", null);
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
+		return vista;
+	}
+	
+	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
+	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
+		vista = new ModelAndView("principal");
+		
 		return vista;
 	}
 	

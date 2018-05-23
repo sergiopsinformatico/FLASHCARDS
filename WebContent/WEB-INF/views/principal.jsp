@@ -13,11 +13,11 @@
 	</head>
 	<body>
 		<% 
-			if(session.getAttribute("usuario")==null){
+			if(request.getAttribute("usuario")==null){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 		%>
-		<input type="hidden" name="logueado" id="logueado" value="${usuario.getUsuario()}">
+		
 		
 		
 		<style>
@@ -30,18 +30,42 @@
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="inicio.html">Inicio</a></li>
-					<li class="nav-item"><a class="nav-link" href="flashcards.html">Flashcards</a></li>
-					<li class="nav-item"><a class="nav-link" href="gente.html">Gente</a></li>
-					<li class="nav-item"><a class="nav-link" href="clubes.html">Clubes</a></li>
-					<li class="nav-item"><a class="nav-link" href="modificar.html">Modificar Perfil</a></li>
-					<li class="nav-item"><a class="nav-link" href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+					<li class="nav-item active">
+						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+							Inicio
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+							Flashcards
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+							Gente
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+							Clubes
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="modificar.html?usuario=${usuario.getUsuario()}">
+							Modificar Perfil
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+							Gestionar Cuentas
+						</a>
+					</li>
 	    		</ul>
 	    		<ul class="navbar-nav ml-auto">
 	    			<li class="nav-item dropdown">
                     	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
 	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-	                        <a class="dropdown-item" href="miPerfil.html">Mi Perfil</a>
+	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html">Configuración</a>
 	                        <div class="dropdown-divider"></div>
 	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>

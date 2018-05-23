@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionAmigos;
@@ -24,37 +25,26 @@ public class ControladorPrincipal {
 	
 	Usuario user;
 	GestionUsuarios gU = new GestionUsuarios();
+	ModelAndView vista;
 	
 	//Inicio (Logueado)
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
-	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		user = gU.leerUsuario(request.getParameter("logueado"));
-		request.getSession().setAttribute("sesion", user);
-		return new ModelAndView("principal");
+	public ModelAndView inicio(@RequestParam("usuario") String usuario) {
+		user = gU.leerUsuario(usuario);
+		vista = new ModelAndView("principal");
+		vista.addObject("usuario", user);
+		return vista;
 	}
 	
-	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
-	public ModelAndView inicioPost(HttpServletRequest request, HttpServletResponse response) {
-		user = gU.leerUsuario(request.getParameter("logueado"));
-		request.getSession().setAttribute("sesion", user);
-		return new ModelAndView("principal");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-	
+	//Mi Perfil
 	
 	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
-	public ModelAndView miperfil(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("miperfil");
+	public ModelAndView miperfil(@RequestParam("usuario") String usuario) {
+		user = gU.leerUsuario(usuario);
+		vista = new ModelAndView("miperfil");
+		vista.addObject("usuario", user);
+		return vista;
 	}
 	
 	@RequestMapping(value = "/modificar", method = RequestMethod.GET)

@@ -155,9 +155,10 @@
 	</head>
 	<body>
 		<% 
-			if(session.getAttribute("usuario")!=null){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html");
-			}
+		/*if(session.getAttribute("usuario")!=null){*/
+		if(request.getAttribute("usuario")!=null){
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html");
+		}
 		%>
 		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
