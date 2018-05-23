@@ -22,17 +22,22 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorPrincipal {
 	
+	Usuario user;
+	GestionUsuarios gU = new GestionUsuarios();
+	
 	//Inicio (Logueado)
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		request.getSession().setAttribute("sesion", request.getParameter("logueado"));
+		user = gU.leerUsuario(request.getParameter("logueado"));
+		request.getSession().setAttribute("sesion", user);
 		return new ModelAndView("principal");
 	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicioPost(HttpServletRequest request, HttpServletResponse response) {
-		request.getSession().setAttribute("sesion", request.getParameter("logueado"));
+		user = gU.leerUsuario(request.getParameter("logueado"));
+		request.getSession().setAttribute("sesion", user);
 		return new ModelAndView("principal");
 	}
 	

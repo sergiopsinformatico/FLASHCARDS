@@ -17,7 +17,7 @@
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 		%>
-		<input type="hidden" name="logueado" id="logueado" value="${usuario}">
+		<input type="hidden" name="logueado" id="logueado" value="${usuario.getUsuario()}">
 		
 		
 		<style>
