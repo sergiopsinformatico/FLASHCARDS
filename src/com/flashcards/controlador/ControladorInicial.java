@@ -21,6 +21,10 @@ public class ControladorInicial {
 	Usuario user;
 	ModelAndView vista;
 	
+									//CONTROLADORES DE INICIAR SESIÓN
+	
+	//INICIAR SESIÓN
+	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		gU.eliminarCuentas();
@@ -43,25 +47,37 @@ public class ControladorInicial {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
-	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("principal");
-	}
+	//ACCEDER A LOGIN CON GET
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("index");
 	}
 	
+	//ACCEDER A LOGIN CON POST
+	
+		@RequestMapping(value = "/login", method = RequestMethod.POST)
+		public ModelAndView loginPost(HttpServletRequest request, HttpServletResponse response) {
+			return new ModelAndView("index");
+		}
+	
+									//CONTROLADORES DE RECUPERACIÓN DE CREDENCIALES
+	
+	//POST DE ACCEDER A LA RECUPERACION DE LAS CREDENCIALES
+	
 	@RequestMapping(value = "/recovery", method = RequestMethod.POST)
 	public ModelAndView recoveryPass(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("recoveryPassword");
 	}
 	
+	//GET DE ACCEDER A LA RECUPERAIÓN DE LAS CREDENCIALES
+	
 	@RequestMapping(value = "/recovery", method = RequestMethod.GET)
 	public ModelAndView recovery(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("recoveryPassword");
 	}
+	
+	// DEVUELVE LAS CREDENCIALES DEL USUARIO
 	
 	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
 	public ModelAndView recuperar(HttpServletRequest request, HttpServletResponse response) {
@@ -79,5 +95,72 @@ public class ControladorInicial {
 			vista.addObject("mensaje", "El nombre de usuario o email introducido, no existe en el sistema.");
 		}
 		return vista;
+	}
+	
+										//CONTROLADORES DE REGISTRO DE USUARIOS
+	
+	//ACCEDER AL REGISTRO
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("registro");
+	}
+	
+	//ACCEDER AL REGISTRO
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.POST)
+	public ModelAndView registre(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("registro");
+	}
+	
+	//CREAR USUARIO: POST
+	
+	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
+		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
+		               request.getParameter("email"), request.getParameter("nombreApellidos"),
+		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
+		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
+		ModelAndView vista;
+		GestionUsuarios gU = new GestionUsuarios();
+		
+		if(gU.existeUsername(user.getUsuario())) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El nombre de usuario ya existe. Use otro.");
+			user.setUsuario("");
+			vista.addObject("usuario", user);
+			return vista;
+		}else {
+			if(!user.hayMayuscula() || !user.hayMinuscula() || !user.hayNumero() || !user.longitudCorrecta()) {
+				vista = new ModelAndView("registro");
+				vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
+				user.setClave("");
+				vista.addObject("usuario", user);
+				return vista;
+			}else {
+				if(gU.existeEmail(user.getEmail())) {
+					vista = new ModelAndView("registro");
+					vista.addObject("mensaje", "El email con el que se desea registrarse, ya existe.");
+					user.setEmail("");
+					vista.addObject("usuario", user);
+					return vista;
+				}
+				else {
+					if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
+						vista = new ModelAndView("registro");
+						vista.addObject("mensaje", "Los campos clave y repite clave no coinciden.");
+						user.setClave("");
+						vista.addObject("usuario", user);
+						return vista;
+					}else {
+						gU.registrarUsuario(user);
+						email.crearCuenta(user);
+						vista = new ModelAndView("index");
+						vista.addObject("mensaje", "Registro Correcto");
+						return vista;
+					}
+				}
+			}
+		}
 	}
 }

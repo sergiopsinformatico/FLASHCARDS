@@ -22,6 +22,29 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorPrincipal {
 	
+	//Inicio (Logueado)
+	
+	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
+	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("principal");
+	}
+	
+	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
+	public ModelAndView inicioPost(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("principal");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
 	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
 	public ModelAndView miperfil(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("miperfil");
