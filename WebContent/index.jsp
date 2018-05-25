@@ -147,10 +147,11 @@
 		</style>
 	</head>
 	<body>
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			/*if(session.getAttribute("usuario")!=null){*/
-			if(request.getAttribute("usuario")!=null){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html");
+		Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			if(user!=null && (!user.getUsuario().equals(""))){
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((Usuario)(session.getAttribute("usuario"))).getUsuario());
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">
@@ -158,7 +159,6 @@
 				alert("${mensaje}");
 			}
 		</script>
-		<% session.removeAttribute("usuario"); %>
 		<div class="row">
 			<br><br>
 		</div>

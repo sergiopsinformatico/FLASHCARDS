@@ -12,14 +12,15 @@
 		
 	</head>
 	<body>
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			if(request.getAttribute("usuario")==null){
+			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			if(user==null || user.getUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
+			session.setAttribute("usuario", user);
 		%>
-		
-		
-		
+				
 		<style>
 			div.center {
 			    text-align: center;

@@ -24,6 +24,16 @@ public class ControladorInicial {
 	ModelAndView vista;
 	
 									//CONTROLADORES DE INICIAR SESIÓN
+	/*
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView principalOne(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("");
+	}
+	
+	@RequestMapping(value = "*", method = RequestMethod.GET)
+	public ModelAndView principalTwo(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("");
+	}*/
 	
 	//INICIAR SESIÓN
 	
@@ -35,6 +45,7 @@ public class ControladorInicial {
 			GestionEliminados gE = new GestionEliminados();
 			vista = new ModelAndView("principal");
 			vista.addObject("usuario", user);
+			request.getSession().setAttribute("usuario", user);
 			if(gE.isUsuario(user.getEmail())) {
 				gE.borrarEliminado(user.getEmail());
 				email.reactivacionCuenta(user);
