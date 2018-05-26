@@ -2,10 +2,12 @@
 	<head>
 		<title>Mi Perfil</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
 	</head>
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
@@ -95,8 +97,6 @@
 		<br>Pais: ${usuario.getPais()}
 		<br>Genero: ${usuario.getGenero()}
 		<br><br><br><br><br><br>
-		<form action="modificarMiPerfil.html?usuario=${usuario.getUsuario()}" method="get">
-		  <input type="submit" value="Modificar Mi Perfil">
-		</form>
+		<button><a href="modificarMiPerfil.html?usuario=${usuario.getUsuario()}">Modificar Mi Perfil</a></button>
 	</body>
 </html>
