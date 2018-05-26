@@ -101,21 +101,10 @@
 		
 		<div class="container">
 			<div class="row">
+				<br><br><br><br>
+			</div>
+			<div class="row">
 				<div class="col-md-6">
-					<script>
-					    function option(that) {
-					        if (that.value == "club") {
-					            document.getElementById("club").style.display = "block";
-					            document.getElementById("user").style.display = "none";
-					        } else if(that.value == "usuario"){
-					        	document.getElementById("club").style.display = "none";
-					            document.getElementById("user").style.display = "block";
-					        }else{
-					        	document.getElementById("club").style.display = "none";
-					            document.getElementById("user").style.display = "none";
-					        }
-					    }
-					</script>
 					<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
 						<br>
 						<div class="row">
@@ -158,6 +147,20 @@
 							<div class="col-md-3" align="center"></div>
 						</div>
 					</form>
+					<script>
+					    function option(that) {
+					        if (that.value == "club") {
+					            document.getElementById("nClub").style.display = "block";
+					            document.getElementById("nUsuario").style.display = "none";
+					        } else if(that.value == "usuario"){
+					        	document.getElementById("nClub").style.display = "none";
+					            document.getElementById("nUsuario").style.display = "block";
+					        }else{
+					        	document.getElementById("nClub").style.display = "none";
+					            document.getElementById("nUsuario").style.display = "none";
+					        }
+					    }
+					</script>
 					<script language="JavaScript" type="text/javascript">
 						document.form1.nombre.value = "${flashcard.getNombreColeccion()}";
 					    document.form1.shareWith.value = "${flashcard.getCompartido()}";
