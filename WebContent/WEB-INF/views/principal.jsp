@@ -25,6 +25,10 @@
 			div.center {
 			    text-align: center;
 			}
+			
+			ul{
+			 margin:0;
+			}
 		
 		</style>
 		
