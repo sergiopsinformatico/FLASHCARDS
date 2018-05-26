@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Flashcards</title>
+		<title>Principal - Flashcards</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -130,45 +130,8 @@
 				});
 		</script>
 			<div class="col-md-9 center">
-				<div class="row">
-				  <div class="col-md-12 center">
-				  	<form action="crearColeccion.html" method="post" class="border-login" id="form1">
-					  	<button type="submit" class="btn btn-info">
-					  		<h3>Crear Colección de Tarjetas</h3>
-					  	</button>
-					</form>
-				  </div>
-				</div>
-				<br><br><br><br>
-				<div class="row">
-				  <div class="col-md-12 center">
-				  	<form action="verColecciones.html" method="post" class="border-login" id="form2">
-					  	<button type="submit" class="btn btn-success">
-					  		<h3>Mis Colecciones de Tarjetas</h3>
-					  	</button>
-					</form>
-				  </div>
-				</div>
-				<br><br><br><br>
-				<div class="row">
-				  <div class="col-md-12 center">
-				  	<form action="evaluarColecciones.html" method="post" class="border-login" id="form3">
-					  	<button type="submit" class="btn btn-warning">
-					  		<h3>Evaluar Colecciones de Tarjetas</h3>
-					  	</button>
-				  	</form>
-				  </div>
-				</div>
+				
 			</div>
 		</div>
-		
-		<script language="JavaScript" type="text/javascript">
-			var comp2 = ${usuario.isModerador()};
-			if (comp2){
-				document.getElementById("form3").style.visibility="visible";
-			}else{
-				document.getElementById("form3").style.visibility="hidden";
-			}
-		</script>
 	</body>
 </html>
