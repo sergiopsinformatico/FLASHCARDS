@@ -200,6 +200,7 @@
 		    <div class="container">
 		        <div class="card card-container">
 					<form action="mPerfil.html" class="form-horizontal" method="post" id="form1" name="form1">
+						<input type="hidden" name="usuarioAntiguo" id="usuarioAntiguo" value = "${usuario.getUsuario()}">
 						<div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
