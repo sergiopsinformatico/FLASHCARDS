@@ -83,23 +83,30 @@
 			}
 		</script>
 		<div class="row">
+			<br><br><br><br>
+		</div>
+		<div class="row">
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
-				<form action="crearColeccion.html" method="post" class="border-login" id="form1">
-				  	<button type="submit" class="btn btn-info">
-				  		Crear Colección de Flashcards
-				  	</button>
-				</form>
+				<div class="col-md-12">
+					<form action="crearColeccion.html" method="post" class="border-login" id="form1">
+					  	<button type="submit" class="btn btn-info">
+					  		Crear Colección de Flashcards
+					  	</button>
+					</form>
+				</div>
 			</div>
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
-				<form action="verColecciones.html" method="post" class="border-login" id="form2">
-				  	<button type="submit" class="btn btn-success">
-				  		Mis Colecciones de Flashcards
-				  	</button>
-				</form>
+				<div class="col-md-12">
+					<form action="verColecciones.html" method="post" class="border-login" id="form2">
+					  	<button type="submit" class="btn btn-success">
+					  		Mis Colecciones de Flashcards
+					  	</button>
+					</form>
+				</div>
 			</div>
 			<div class="col-md-2">
 			</div>
@@ -108,11 +115,13 @@
 			<div class="col-md-4">
 			</div>
 			<div class="col-md-4">
-				<form action="evaluarColecciones.html" method="post" class="border-login" id="form3">
-				  	<button type="submit" class="btn btn-warning">
-				  		Evaluar Colecciones de Tarjetas
-				  	</button>
-			  	</form>
+				<div class="col-md-12">
+					<form action="evaluarColecciones.html" method="post" class="border-login" id="form3">
+					  	<button type="submit" class="btn btn-warning">
+					  		Evaluar Colecciones de Tarjetas
+					  	</button>
+				  	</form>
+			  	</div>
 			</div>
 			<div class="col-md-4">
 			</div>
