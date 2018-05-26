@@ -48,7 +48,7 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/modificar", method = RequestMethod.GET)
+	@RequestMapping(value = "/modificarMiPerfil", method = RequestMethod.GET)
 	public ModelAndView modificar(@RequestParam("usuario") String usuario) {
 		user = gU.leerUsuario(usuario);
 		vista = new ModelAndView("modificarPerfil");

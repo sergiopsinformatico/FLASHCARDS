@@ -57,7 +57,6 @@ public class ControladorInicial {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("principal");
-		
 		return vista;
 	}
 	

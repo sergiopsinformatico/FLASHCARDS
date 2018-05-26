@@ -50,8 +50,8 @@
 		<br>Pais: ${usuario.getPais()}
 		<br>Genero: ${usuario.getGenero()}
 		<br><br><br><br><br><br>
-		<form href="modificar.html?usuario=${usuario.getUsuario()}">
-		    <input type="submit" value="Modificar Perfil" />
+		<form action="modificarMiPerfil.html?usuario=${usuario.getUsuario()}" method="get">
+		  <input type="submit" value="Modificar Mi Perfil">
 		</form>
 	</body>
 </html>
