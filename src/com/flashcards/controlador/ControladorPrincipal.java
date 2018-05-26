@@ -38,7 +38,7 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Mi Perfil
+	//Ver Mi Perfil
 	
 	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
 	public ModelAndView miperfil(@RequestParam("usuario") String usuario) {
@@ -48,10 +48,22 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
+	//Modificar Mi Perfil
+	
 	@RequestMapping(value = "/modificarMiPerfil", method = RequestMethod.POST)
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
 		user = gU.leerUsuario(request.getParameter("usuario"));
 		vista = new ModelAndView("modificarPerfil");
+		vista.addObject("usuario", user);
+		return vista;
+	}
+	
+	//Flashcards
+	
+	@RequestMapping(value = "/flashcards", method = RequestMethod.GET)
+	public ModelAndView flashcards(@RequestParam("usuario") String usuario) {
+		user = gU.leerUsuario(usuario);
+		vista = new ModelAndView("flashcards");
 		vista.addObject("usuario", user);
 		return vista;
 	}
