@@ -1,5 +1,6 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -111,7 +112,12 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
 		request.getSession().removeAttribute("usuario");
-		ModelAndView vista = new ModelAndView("index");
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		vista = new ModelAndView("index");
 		return vista;
 	}
 }
