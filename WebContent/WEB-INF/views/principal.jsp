@@ -26,10 +26,12 @@
 			    text-align: center;
 			}
 			
-			ul{
-			 margin:0;
+			.navbar-nav > li > a, .navbar-brand {
+			    padding-top:4px !important; 
+			    padding-bottom:0 !important;
+			    height: 28px;
 			}
-		
+			.navbar {min-height:28px !important;}		
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
