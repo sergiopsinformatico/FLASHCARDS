@@ -68,12 +68,8 @@
 				</ul> 
 		    </div>
 		    <div>
-		        Nombre: 
-		        <input type="text" name="nombre" id="nombre" value = ${usuario.getNombre()} required />
-		    </div>
-		    <div>
-		        Apellidos: 
-		        <input type="text" name="apellidos" id="apellidos" value = ${usuario.getApellidos()} required />
+		        Nombre y Apellidos: 
+		        <input type="text" name="nombreApellidos" id="nombreApellidos" value = ${usuario.getNombreApellidos()} required />
 		    </div>
 		    <div>
 		        Edad: 
