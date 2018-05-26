@@ -57,11 +57,11 @@
 							Clubes
 						</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="modificar.html?usuario=${usuario.getUsuario()}">
 							Modificar Perfil
 						</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
 							Gestionar Cuentas
