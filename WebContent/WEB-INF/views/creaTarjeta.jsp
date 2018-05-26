@@ -122,7 +122,7 @@
 						<br>
 						<div class="row">
 							<div class="col-md-12 left">
-								Descripción: <textarea rows="4" cols="50" id="descripcion" name="descripcion" form="form1">
+								Descripción: <textarea rows="4" cols="50" id="descripcion" name="descripcion" form="form1">Descripcion...</textarea>
 							</div>
 						</div>
 						<br>
