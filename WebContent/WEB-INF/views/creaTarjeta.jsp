@@ -121,6 +121,12 @@
 						</div>
 						<br>
 						<div class="row">
+							<div class="col-md-12 left">
+								Descripción: <textarea rows="4" cols="50" id="descripcion" name="descripcion" form="form1">
+							</div>
+						</div>
+						<br>
+						<div class="row">
 						  <div class="col-md-12 left">
 						  	Compartir con:
 						  	<br> 
@@ -130,6 +136,7 @@
 							    <option value="club">Club</option>
 							    <option value="usuario">Usuario</option>
 							  </select>
+							  <br>
 								<div id="nClub" style="display: none;">
 									<label for="nClub">Nombre del Club</label> <input type="text" id="nClub" name="nClub" /><br />
 								</div>
