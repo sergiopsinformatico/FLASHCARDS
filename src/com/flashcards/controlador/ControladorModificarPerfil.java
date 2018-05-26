@@ -1,5 +1,7 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,6 +40,11 @@ public class ControladorModificarPerfil {
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("miperfil");
+					try {
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsuario().equals(antiguo.getUsuario()))) {
 				if(gU.existeEmail(nuevo.getEmail())) {
@@ -49,6 +56,11 @@ public class ControladorModificarPerfil {
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("miperfil");
+					try {
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getUsuario().equals(antiguo.getUsuario()))) {
 				if(gU.existeUsername(nuevo.getUsuario())) {
@@ -63,6 +75,11 @@ public class ControladorModificarPerfil {
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("miperfil");
+					try {
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}else if((nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsuario().equals(antiguo.getUsuario()))) {
 				gU.eliminaCuenta(antiguo.getUsuario());
@@ -70,6 +87,11 @@ public class ControladorModificarPerfil {
 				request.getSession().removeAttribute("usuario");
 				request.getSession().setAttribute("usuario", nuevo);
 				vista = new ModelAndView("miperfil");
+				try {
+					response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		return vista;

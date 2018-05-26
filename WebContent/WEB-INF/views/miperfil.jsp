@@ -97,6 +97,9 @@
 		<br>Pais: ${usuario.getPais()}
 		<br>Genero: ${usuario.getGenero()}
 		<br><br><br><br><br><br>
-		<button><a href="modificarMiPerfil.html?usuario=${usuario.getUsuario()}">Modificar Mi Perfil</a></button>
+		<form action="modificarMiPerfil.html" method="post">
+		  <input type="hidden" id="usuario" name="usuario" value="${usuario.getUsuario()}">
+		  <input type="submit" value="Modificar Mi Perfil">
+		</form>
 	</body>
 </html>
