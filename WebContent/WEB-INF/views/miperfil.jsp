@@ -8,27 +8,72 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			if(request.getAttribute("usuario")==null){
+			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			if(user==null || user.getUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
+			session.setAttribute("usuario", user);
 		%>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Flashcards</a>
-	    		</div>
-	    		<ul class="nav navbar-nav">
-	      			<li><a href="inicio.html">Inicio</a></li>
-	      			<li class="active"><a href="miPerfil.html">Mi Perfil</a></li>
-	      			<li><a href="gente.html">Gente</a></li>
-	      			<li><a href="clubes.html">Clubes</a></li>
-	      			<li><a href="modificar.html">Modificar Perfil</a></li>
-	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+		
+		<style>
+			div.center {
+			    text-align: center;
+			}
+			
+			.navbar-nav > li > a, .navbar-brand {
+			    padding-top:4px !important; 
+			    padding-bottom:0 !important;
+			    height: 28px;
+			}
+			.navbar {min-height:28px !important;}		
+		</style>
+		
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			    <ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+							Inicio
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+							Flashcards
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+							Gente
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+							Clubes
+						</a>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="modificar.html?usuario=${usuario.getUsuario()}">
+							Modificar Perfil
+						</a>
+					</li> -->
+					<li class="nav-item">
+						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+							Gestionar Cuentas
+						</a>
+					</li>
 	    		</ul>
-	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
-	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
+	    		<ul class="navbar-nav ml-auto">
+	    			<li class="nav-item dropdown">
+                    	<a href="#" class="nav-link dropdown-toggle active" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
+	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	                    </div>
+	                </li>
 	    		</ul>
 	  		</div>
 		</nav>
