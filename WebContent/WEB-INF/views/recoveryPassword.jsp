@@ -209,7 +209,7 @@
 		                Login
 		            </a><br>
 		            <a href="registro.html" class="register centro">
-		                Registro
+		                Si aún no tienes cuenta, regístrate
 		            </a>
 		        </div>
 		    </div> 
