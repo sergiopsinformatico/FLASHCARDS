@@ -24,16 +24,6 @@ public class ControladorInicial {
 	ModelAndView vista;
 	
 									//CONTROLADORES DE INICIAR SESIÓN
-	/*
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView principalOne(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("");
-	}
-	
-	@RequestMapping(value = "*", method = RequestMethod.GET)
-	public ModelAndView principalTwo(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("");
-	}*/
 	
 	//INICIAR SESIÓN
 	

@@ -48,8 +48,11 @@ public class ControladorPrincipal {
 	}
 	
 	@RequestMapping(value = "/modificar", method = RequestMethod.GET)
-	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("modificarPerfil");
+	public ModelAndView modificar(@RequestParam("usuario") String usuario) {
+		user = gU.leerUsuario(usuario);
+		vista = new ModelAndView("modificarPerfil");
+		vista.addObject("usuario", user);
+		return vista;
 	}
 	
 	@RequestMapping(value = "/gente", method = RequestMethod.GET)

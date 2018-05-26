@@ -67,9 +67,9 @@
                     	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
 	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	                        <a class="dropdown-item" href="configuracion.html">Configuración</a>
+	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 	                        <div class="dropdown-divider"></div>
-	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	                        <a class="dropdown-item" href="cerrarSesion.html?usuario=${usuario.getUsuario()}" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	                    </div>
 	                </li>
 	    		</ul>
