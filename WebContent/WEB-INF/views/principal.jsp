@@ -35,7 +35,7 @@
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<div class="navbar-inner" id="collapsibleNavbar">
+			<div class="navbar-inner collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
