@@ -262,7 +262,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos" value = ${usuario.getNombreApellidos()} required />
+											<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos" value = \"" .  ${usuario.getNombreApellidos()} . "\" required />
 										</div>
 									</div>
 								</div>
@@ -282,7 +282,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="ciudad" id="ciudad" value = ${usuario.getCiudad()} required />
+											<input type="text" class="form-control" name="ciudad" id="ciudad" value = \"" .  ${usuario.getCiudad()} . "\" required />
 										</div>
 									</div>
 								</div>
@@ -292,7 +292,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="pais" id="pais" value = ${usuario.getPais()} required />
+											<input type="text" class="form-control" name="pais" id="pais" value = \"" .  ${usuario.getPais()} . "\" required />
 										</div>
 									</div>
 								</div>
