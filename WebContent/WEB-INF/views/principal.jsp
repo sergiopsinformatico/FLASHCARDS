@@ -31,11 +31,11 @@
 			    padding-bottom:0 !important;
 			    height: 28px;
 			}
-			.navbar {min-height:28px !important;}		
+			.navbar-inner {min-height:28px;}		
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<div class="navbar-inner collapse navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
@@ -57,11 +57,6 @@
 							Clubes
 						</a>
 					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="modificar.html?usuario=${usuario.getUsuario()}">
-							Modificar Perfil
-						</a>
-					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
 							Gestionar Cuentas
