@@ -1,37 +1,78 @@
-<?php
-// Date in the past
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header("Cache-Control: no-cache");
-header("Pragma: no-cache");
-?>
+<!DOCTYPE html>
 <html>
 	<head>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Administrador - Flashcards</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+		
 	</head>
 	<body>
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			if(session.getAttribute("usuario")==null){
+			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			if(user==null || user.getUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
+			session.setAttribute("usuario", user);
 		%>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">WebSiteName</a>
-	    		</div>
-	    		<ul class="nav navbar-nav">
-	      			<li class="active"><a href="inicio.html">Inicio</a></li>
-	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
-	      			<li><a href="gente.html">Gente</a></li>
-	      			<li><a href="clubes.html">Clubes</a></li>
-	      			<li><a href="modificar.html">Modificar Perfil</a></li>
-	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+				
+		<style>
+			div.center {
+			    text-align: center;
+			}
+			
+			.navbar-nav > li > a, .navbar-brand {
+			    padding-top:4px !important; 
+			    padding-bottom:0 !important;
+			    height: 28px;
+			}
+			.navbar-inner {min-height:28px;}		
+		</style>
+		
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="navbar-inner navbar-collapse" id="collapsibleNavbar">
+			    <ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+							Inicio
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+							Flashcards
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+							Gente
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+							Clubes
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+							Gestionar Cuentas
+						</a>
+					</li>
 	    		</ul>
-	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
-	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
+	    		<ul class="navbar-nav ml-auto">
+	    			<li class="nav-item dropdown">
+                    	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
+	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	                    </div>
+	                </li>
 	    		</ul>
 	  		</div>
 		</nav>
@@ -75,11 +116,5 @@ header("Pragma: no-cache");
 			</table>
 		</c:if>
 		<br><br>
-		<form action="principalLogueado.html" method="post" class="form-signin" name="form2">
-			<input id="usuario" name="usuario" type="hidden" value="${admin}">
-			<div class="button">
-				<button type="submit">Volver a la Pagina Principal</button>
-		    </div>
-		</form>
 	</body>
 </html>
