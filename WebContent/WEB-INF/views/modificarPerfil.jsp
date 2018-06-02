@@ -208,7 +208,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value = ${usuario.getUsuario()} required/>
+											<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value = "${usuarioM.getUsuario()}" required/>
 										</div>
 									</div>
 								</div>
@@ -218,7 +218,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-											<input type="email" class="form-control" name="email" id="email"  value = ${usuario.getEmail()} required/>
+											<input type="email" class="form-control" name="email" id="email"  value = "${usuarioM.getEmail()}" required/>
 										</div>
 									</div>
 								</div>
@@ -228,7 +228,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-											<input type="password" class="form-control" name="clave" id="clave" value = ${usuario.getClave()} required/>
+											<input type="password" class="form-control" name="clave" id="clave" value = "${usuarioM.getClave()}" required/>
 										</div>
 									</div>
 								</div>
@@ -238,7 +238,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-											<input type="password" class="form-control" name="repiteClave" id="repiteClave"  value = ${usuario.getClave()} required/>
+											<input type="password" class="form-control" name="repiteClave" id="repiteClave"  value = "${usuarioM.getClave()}" required/>
 										</div>
 									</div>
 								</div>
@@ -262,7 +262,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos" value = "' . ${usuario.getNombreApellidos()} . '" required />
+											<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos" value = "${usuarioM.getNombreApellidos()}" required />
 										</div>
 									</div>
 								</div>
@@ -272,7 +272,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="number" class="form-control" name="edad" id="edad"  min="1" max="200" value = ${usuario.getEdad()} required />
+											<input type="number" class="form-control" name="edad" id="edad"  min="1" max="200" value = ${usuarioM.getEdad()} required />
 										</div>
 									</div>
 								</div>
@@ -282,7 +282,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="ciudad" id="ciudad" value = "' . ${usuario.getCiudad()} . '" required />
+											<input type="text" class="form-control" name="ciudad" id="ciudad" value =  "${usuarioM.getCiudad()}" required />
 										</div>
 									</div>
 								</div>
@@ -292,7 +292,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="pais" id="pais" value = "' . ${usuario.getPais()} . '" required />
+											<input type="text" class="form-control" name="pais" id="pais" value = "${usuarioM.getPais()}" required />
 										</div>
 									</div>
 								</div>
@@ -324,7 +324,7 @@
 						</div>
 					</form>
 					<script language="JavaScript" type="text/javascript">
-						var genero = "${usuario.getGenero()}";
+						var genero = "${usuarioM.getGenero()}";
 						var hombre = "Hombre";
 						var result = genero.localeCompare(hombre);
 						if (result == 0){

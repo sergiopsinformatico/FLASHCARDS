@@ -136,7 +136,20 @@ public class ControladorInicial {
 		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
 		ModelAndView vista;
 		GestionUsuarios gU = new GestionUsuarios();
-		
+		if(user.getUsuario().contains(" ")) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El nombre de usuario contiene espacios.");
+			user.setUsuario("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(user.getEmail().contains(" ")) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El email contiene espacios.");
+			user.setEmail("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
 		if(gU.existeUsername(user.getUsuario())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "El nombre de usuario ya existe. Use otro.");

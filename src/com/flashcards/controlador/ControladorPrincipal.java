@@ -65,6 +65,7 @@ public class ControladorPrincipal {
 		user = gU.leerUsuario(request.getParameter("usuario"));
 		vista = new ModelAndView("modificarPerfil");
 		vista.addObject("usuario", user);
+		vista.addObject("usuarioM", user);
 		return vista;
 	}
 	
