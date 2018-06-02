@@ -1,6 +1,8 @@
 package com.flashcards.controlador;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +23,18 @@ public class ControladorAdmin {
 	LinkedList<Usuario>usuarios;
 	ModelAndView vista;
 	Usuario user;
+	List users;
 	
 	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
 	public ModelAndView gestionar(@RequestParam("usuario") String usuario) {
 		usuarios = gU.todosUsuarios(usuario);
+		users = new ArrayList();
+		for(int i=0; i<usuarios.size(); i++) {
+			users.add(usuarios.get(i));
+		}
 		vista = new ModelAndView("administrador");
-		vista.addObject("usuarios", usuarios);
+		//vista.addObject("usuarios", usuarios);
+		vista.addObject("usuarios", users);
 		vista.addObject("admin", usuario);
 		return vista;
 	}

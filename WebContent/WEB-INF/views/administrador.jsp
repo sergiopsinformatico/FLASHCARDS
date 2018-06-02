@@ -85,11 +85,17 @@
 			}
 		</script>
 		<h1>USUARIOS</h1>
-		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-		<c:if test= ${fn:length(usuarios) eq 0}>
+		<!-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> -->
+		
+		<%@ page import="java.util.*" %>
+		<%@ page isELIgnored="false" %>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		
+		<c:if test= "${fn:length(usuarios) eq 0}">
 			No hay usuarios
 		</c:if>
-		<c:if test= ${fn:length(usuarios) gt 0}>
+		<c:if test= "${fn:length(usuarios) gt 0}">
 			<table>
 			    <c:forEach items="${usuarios}" var="user">
 			    	<tr>
