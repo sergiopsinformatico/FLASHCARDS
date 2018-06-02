@@ -93,23 +93,32 @@
 		<div class="row">
 			<div class="col-md-3 center">
 				<h2>Notificaciones</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 center">
 				<div class="container" ng-app="Notifications" ng-controller="NotificationCtrl">
-					<table class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>Notificación</th>
-								<th>Fecha</th>
-								<th>Eliminar</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="notificacion in notificaciones | filter:expression">
-								<td>{{ notificacion.notificacion }}</td>
-								<td>{{ notificacion.fecha }}</td>
-								<td><button type="button" class="btn btn-info" ng-click="Delete($index)"><span class="glyphicon glyphicon-search"></span>Eliminar Notificacion</button></td>
-							</tr>
-						</tbody>
-					</table>
+					<div *ngIf="notificaciones.length == 0"> 
+				        <h4> No hay ninguna notificación pendiente. </h4>
+				    </div>
+				    <div *ngIf="notificaciones.length > 0">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Notificación</th>
+									<th>Fecha</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="notificacion in notificaciones | filter:expression">
+									<td>{{ notificacion.notificacion }}</td>
+									<td>{{ notificacion.fecha }}</td>
+									<td><button type="button" class="btn btn-info" ng-click="Delete($index)"><span class="glyphicon glyphicon-search"></span>Eliminar Notificacion</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<script>
