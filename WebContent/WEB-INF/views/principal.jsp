@@ -98,10 +98,10 @@
 		<div class="row">
 			<div class="col-md-3 center">
 				<div class="container" ng-app="Notifications" ng-controller="NotificationCtrl">
-					<div *ngIf="notificaciones.length == 0"> 
+					<div ng-if="notificaciones.length == 0"> 
 				        No hay ninguna notificación pendiente.
 				    </div>
-				    <div *ngIf="notificaciones.length > 0">
+				    <div ng-if="notificaciones.length > 0">
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
