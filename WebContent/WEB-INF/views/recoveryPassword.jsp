@@ -205,7 +205,7 @@
 					        <button type="submit">Recuperar Datos</button>
 					    </div>
 					</form>
-					<a href="inicio.html" class="login centro">
+					<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
 		                Login
 		            </a><br>
 		            <a href="registro.html" class="register centro">

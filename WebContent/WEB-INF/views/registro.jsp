@@ -308,7 +308,7 @@
 									<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
 								</div>
 								
-								<a href="inicio.html" class="login centro">
+								<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
 					                Login
 					            </a><br>
 					            <a href="recovery.html" class="forgot-password">
