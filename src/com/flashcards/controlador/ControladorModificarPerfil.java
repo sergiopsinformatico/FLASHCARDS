@@ -25,8 +25,11 @@ public class ControladorModificarPerfil {
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"),
 		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
-		ModelAndView vista = new ModelAndView("");;
-		if(!nuevo.hayMayuscula() || !nuevo.hayMinuscula() || !nuevo.hayNumero() || !nuevo.longitudCorrecta()) {
+		ModelAndView vista = new ModelAndView("");
+		if(nuevo.getUsuario().contains(" ")||nuevo.getEmail().contains(" ")) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", "El nombre de usuario o email, no puede contener espacios.");
+		}else if(!nuevo.hayMayuscula() || !nuevo.hayMinuscula() || !nuevo.hayNumero() || !nuevo.longitudCorrecta()) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
 		}else {
