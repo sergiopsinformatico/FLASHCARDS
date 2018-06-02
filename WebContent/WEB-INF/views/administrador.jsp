@@ -85,10 +85,11 @@
 			}
 		</script>
 		<h1>USUARIOS</h1>
-		<c:if test="${empty usuarios}">
+		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+		<c:if test="${fn:length(usuarios) eq 0}">
 			No hay usuarios
 		</c:if>
-		<c:if test="${not empty usuarios}">
+		<c:if test="${fn:length(usuarios) gt 0}">
 			<table>
 			    <c:forEach items="${usuarios}" var="user">
 			    	<tr>
