@@ -85,11 +85,14 @@
 			}
 		</script>
 		<h1>USUARIOS</h1>
+		<c:if test="${empty usuarios}">
+			No hay usuarios
+		</c:if>
 		<c:if test="${not empty usuarios}">
 			<table>
 			    <c:forEach items="${usuarios}" var="user">
 			    	<tr>
-			    		<td> ${user.getNombre()} ${user.getApellidos()} </td>
+			    		<td> ${user.getNombreApellidos()} </td>
 			    		<td>
 					    	<form action="adminEliminaCuenta.html" method="POST">
 					    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
