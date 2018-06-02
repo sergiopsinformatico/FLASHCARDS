@@ -48,6 +48,16 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
+	//Ver Mi Perfil
+	
+		@RequestMapping(value = "/configuracion", method = RequestMethod.GET)
+		public ModelAndView configurcion(@RequestParam("usuario") String usuario) {
+			user = gU.leerUsuario(usuario);
+			vista = new ModelAndView("configuracion");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+	
 	//Modificar Mi Perfil
 	
 	@RequestMapping(value = "/modificarMiPerfil", method = RequestMethod.POST)
