@@ -84,47 +84,65 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
-		<h1>USUARIOS</h1>
-		<!-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> -->
+		<div class="row">
+			<br><br><h1>USUARIOS</h1><br><br>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			
+			</div>
+			<div class="col-md-8">
+				<%@ page import="java.util.*" %>
+				<%@ page isELIgnored="false" %>
+				<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+				<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+				<c:if test= "${fn:length(usuarios) eq 0}">
+					No hay usuarios
+				</c:if>
+				<c:if test= "${fn:length(usuarios) gt 0}">
+					<table>
+					    <c:forEach items="${usuarios}" var="user">
+					    	<tr>
+					    		<td> ${user.getNombreApellidos()} </td>
+					    		<td>
+							    	<form action="adminEliminaCuenta.html" method="POST">
+							    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
+										<input id="admin" name="admin" type="hidden" value="${admin}">
+									    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
+									</form>
+								</td>
+								<td>
+							    	<form action="cambiaRol.html" method="POST">
+									    <input type="submit" name="action" onclick="show()" value="Cambiar Rol" />
+									    <script>
+										    function show(){
+										    	document.getElementById("cambia").style.visibility=visible;
+											}
+									    </script>
+									</form>
+								</td>
+								<td>
+								<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
+									<input type="radio" name="rol" value="usuario"> Usuario <br>
+									<input type="radio" name="rol" value="moderador"> Moderador <br>
+									<input type="radio" name="rol" value="administrador"> Administrador
+									<input type="submit" name="action" value="Guardar Cambio Rol" />
+								</form>
+								<script>
+									document.getElementById("cambia").style.visibility=hidden;
+								</script>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:if>
+			</div>
+			<div class="col-md-2">
+			
+			</div>
+		</div>
 		
-		<%@ page import="java.util.*" %>
-		<%@ page isELIgnored="false" %>
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		
-		<c:if test= "${fn:length(usuarios) eq 0}">
-			No hay usuarios
-		</c:if>
-		<c:if test= "${fn:length(usuarios) gt 0}">
-			<table>
-			    <c:forEach items="${usuarios}" var="user">
-			    	<tr>
-			    		<td> ${user.getNombreApellidos()} </td>
-			    		<td>
-					    	<form action="adminEliminaCuenta.html" method="POST">
-					    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
-								<input id="admin" name="admin" type="hidden" value="${admin}">
-							    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
-							</form>
-						</td>
-						<td> </td>
-						<td>
-							<form action="adminCambiaRol.html" method="POST">
-					    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
-								<input id="admin" name="admin" type="hidden" value="${admin}">						
-								<select name="rol" id="rol" >
-									<option id="usuario" value="usuario">Usuario</option>
-									<option id="moderador" value="moderador">Moderador</option>
-									<option id="administrador" value="administrador">Administrador</option>
-								</select>
-								<br>
-							    <input type="submit" name="action" value="Guardar Cambio Rol" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
 		<br><br>
 	</body>
 </html>

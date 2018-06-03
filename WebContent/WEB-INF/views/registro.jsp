@@ -328,14 +328,19 @@
 						document.form1.pais.value = "${usuario.getPais()}";
 						var genero = "${usuario.getGenero()}";
 						var hombre = "Hombre";
-						var result = genero.localeCompare(hombre);
-						if(genero!=null || genero.localeCompare("")!=0){
-							if (result == 0){
-								document.getElementById("genero_Hombre").checked = true;
-								document.getElementById("genero_Mujer").checked = false;
-							}else{
+						var mujer = "Mujer";
+						var resultH = genero.localeCompare(hombre);
+						var resultM = genero.localeCompare(mujer);
+						if(resultH eq 0){
+							document.getElementById("genero_Hombre").checked = true;
+							document.getElementById("genero_Mujer").checked = false;
+						}else{
+							if(resultM eq 0){
 								document.getElementById("genero_Hombre").checked = false;
 								document.getElementById("genero_Mujer").checked = true;
+							}else{
+								document.getElementById("genero_Hombre").checked = false;
+								document.getElementById("genero_Mujer").checked = false;
 							}
 						}
 					</script>
