@@ -120,19 +120,22 @@
 								</td>
 								<td>
 									<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-										<input type="radio" name="rol" id="${user.getUsuario()}"+"usuarioCheck" value="usuario"> Usuario <br>
-										<input type="radio" name="rol" id="${user.getUsuario()}"+"moderadorCheck" value="moderador"> Moderador <br>
-										<input type="radio" name="rol" id="${user.getUsuario()}"+"administradorCheck" value="administrador"> Administrador
+										<input type="radio" name="rol" id="${user.getUsuario()}usuarioCheck" value="usuario"> Usuario <br>
+										<input type="radio" name="rol" id="${user.getUsuario()}moderadorCheck" value="moderador"> Moderador <br>
+										<input type="radio" name="rol" id="${user.getUsuario()}administradorCheck" value="administrador"> Administrador
+										<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
+										<input id="admin" name="admin" type="hidden" value="${admin}">
 										<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 									</form>
 									<script>
+										var nUsuario = "${user.getUsuario()}";
 										if(${user.isUsuario()} eq true){
-											document.getElementById("${user.getUsuario()}"+"usuarioCheck").checked=true;
+											document.getElementById(nUsuario.concat("usuarioCheck")).checked=true;
 										}else{
 											if(${user.isModerador()} eq true){
-												document.getElementById("${user.getUsuario()}"+"moderadorCheck").checked=true;
+												document.getElementById(nUsuario.concat("moderadorCheck")).checked=true;
 											}else{
-												document.getElementById("${user.getUsuario()}"+"administradorCheck").checked=true;
+												document.getElementById(nUsuario.concat("administradorCheck")).checked=true;
 											}
 										}
 									</script>
