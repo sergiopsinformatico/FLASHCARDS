@@ -85,7 +85,13 @@
 			}
 		</script>
 		<div class="row">
-			<br><br><h1>USUARIOS</h1><br><br>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<br><h1>USUARIOS</h1><br>
+			</div>
+			<div class="col-md-2">
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2">
@@ -110,27 +116,24 @@
 										<input id="admin" name="admin" type="hidden" value="${admin}">
 									    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 									</form>
+									<br>
+								    <input type="submit" name="action" onclick="show()" value="Cambiar Rol" />
+								    <script>
+									    function show(){
+									    	document.getElementById("cambia").style.visibility=visible;
+										}
+								    </script>
 								</td>
 								<td>
-							    	<form action="cambiaRol.html" method="POST">
-									    <input type="submit" name="action" onclick="show()" value="Cambiar Rol" />
-									    <script>
-										    function show(){
-										    	document.getElementById("cambia").style.visibility=visible;
-											}
-									    </script>
+									<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
+										<input type="radio" name="rol" value="usuario"> Usuario <br>
+										<input type="radio" name="rol" value="moderador"> Moderador <br>
+										<input type="radio" name="rol" value="administrador"> Administrador
+										<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 									</form>
-								</td>
-								<td>
-								<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-									<input type="radio" name="rol" value="usuario"> Usuario <br>
-									<input type="radio" name="rol" value="moderador"> Moderador <br>
-									<input type="radio" name="rol" value="administrador"> Administrador
-									<input type="submit" name="action" value="Guardar Cambio Rol" />
-								</form>
-								<script>
-									document.getElementById("cambia").style.visibility=hidden;
-								</script>
+									<script>
+										document.getElementById("cambia").style.visibility=hidden;
+									</script>
 								</td>
 							</tr>
 						</c:forEach>
