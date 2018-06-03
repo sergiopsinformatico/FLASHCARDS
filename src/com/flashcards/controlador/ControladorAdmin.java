@@ -43,6 +43,11 @@ public class ControladorAdmin {
 	public ModelAndView adminEliminaCuenta(HttpServletRequest request, HttpServletResponse response) {
 		gU = new GestionUsuarios();
 		gU.eliminaCuenta(request.getParameter("usuario"));
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gestionar.html?usuario="+request.getParameter("admin"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		usuarios = gU.gente(request.getParameter("admin"));
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
