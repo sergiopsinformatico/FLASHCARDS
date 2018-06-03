@@ -1,5 +1,6 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +34,6 @@ public class ControladorAdmin {
 			users.add(usuarios.get(i));
 		}
 		vista = new ModelAndView("administrador");
-		//vista.addObject("usuarios", usuarios);
 		vista.addObject("usuarios", users);
 		vista.addObject("admin", usuario);
 		return vista;
@@ -74,8 +74,13 @@ public class ControladorAdmin {
 				break;
 		}
 		gU.modificarUsuario(user);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gestionar.html?usuario="+request.getParameter("admin"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		gU = new GestionUsuarios();
-		usuarios = gU.gente(request.getParameter("admin"));
+		usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));

@@ -15,7 +15,7 @@
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
-			if(user==null || user.getUsuario().equals("")){
+			if(user==null || user.getUsuario().equals("") || !user.isAdministrador()){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 			session.setAttribute("usuario", user);
