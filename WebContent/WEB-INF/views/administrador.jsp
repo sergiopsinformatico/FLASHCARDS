@@ -118,6 +118,7 @@
 									    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 									</form>
 								</td>
+								<td></td>
 								<td>
 									<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
 										<input type="radio" name="rol" id="${user.getUsuario()}usuarioCheck" value="usuario"> Usuario <br>
@@ -129,13 +130,16 @@
 									</form>
 									<script>
 										var nUsuario = "${user.getUsuario()}";
+										var usuarioCheck = "usuarioCheck";
+										var moderadorCheck = "moderadorCheck";
+										var administradorCheck = "administradorCheck";
 										if(${user.isUsuario()} eq true){
-											document.getElementById(nUsuario.concat("usuarioCheck")).checked=true;
+											document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 										}else{
 											if(${user.isModerador()} eq true){
-												document.getElementById(nUsuario.concat("moderadorCheck")).checked=true;
+												document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
 											}else{
-												document.getElementById(nUsuario.concat("administradorCheck")).checked=true;
+												document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
 											}
 										}
 									</script>
