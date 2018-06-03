@@ -133,10 +133,12 @@
 										var usuarioCheck = "usuarioCheck";
 										var moderadorCheck = "moderadorCheck";
 										var administradorCheck = "administradorCheck";
-										if(${user.isUsuario()} eq true){
+										var isUsuario = ${user.isUsuario()};
+										var isModerador = ${user.isModerador()};
+										if(isUsuario){
 											document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 										}else{
-											if(${user.isModerador()} eq true){
+											if(isModerador){
 												document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
 											}else{
 												document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
