@@ -110,29 +110,31 @@
 					    <c:forEach items="${usuarios}" var="user">
 					    	<tr>
 					    		<td> ${user.getNombreApellidos()} </td>
+					    		<td></td>
 					    		<td>
 							    	<form action="adminEliminaCuenta.html" method="POST">
 							    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
 										<input id="admin" name="admin" type="hidden" value="${admin}">
 									    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 									</form>
-									<br>
-								    <input type="submit" name="action" onclick="show()" value="Cambiar Rol" />
-								    <script>
-									    function show(){
-									    	document.getElementById("cambia").style.visibility=visible;
-										}
-								    </script>
 								</td>
 								<td>
 									<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-										<input type="radio" name="rol" value="usuario"> Usuario <br>
-										<input type="radio" name="rol" value="moderador"> Moderador <br>
-										<input type="radio" name="rol" value="administrador"> Administrador
+										<input type="radio" name="rol" id="usuarioCheck" value="usuario"> Usuario <br>
+										<input type="radio" name="rol" id="moderadorCheck" value="moderador"> Moderador <br>
+										<input type="radio" name="rol" id="administradorCheck" value="administrador"> Administrador
 										<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 									</form>
 									<script>
-										document.getElementById("cambia").style.visibility=hidden;
+										if(${user.isUsuario()}){
+											document.getElementById("usuarioCheck").checked=true;
+										}else{
+											if(${user.isModerador()}){
+												document.getElementById("moderadorCheck").checked=true;
+											}else{
+												document.getElementById("administradorCheck").checked=true;
+											}
+										}
 									</script>
 								</td>
 							</tr>
