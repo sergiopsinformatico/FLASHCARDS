@@ -10,8 +10,8 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
 		<style>
 			.fixed-panel {
-			  min-height: 1050;
-			  max-height: 1050;
+			  min-height: 1150;
+			  max-height: 1150;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -286,7 +286,7 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-				}).controller('FriendsCtrl', function($scope) {
+				}];}).controller('FriendsCtrl', function($scope) {
 					$scope.people = [{
 						name: 'Jalel',
 						age: '31',
@@ -351,7 +351,7 @@
 						name: 'Rich',
 						age: '28',
 						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}).controller('PDAEnviadasCtrl', function($scope) {
+					}];}).controller('PDAEnviadasCtrl', function($scope) {
 						$scope.people = [{
 							name: 'Jalel',
 							age: '31',
@@ -416,7 +416,7 @@
 							name: 'Rich',
 							age: '28',
 							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}).controller('PDARecibidasCtrl', function($scope) {
+						}];}).controller('PDARecibidasCtrl', function($scope) {
 							$scope.people = [{
 								name: 'Jalel',
 								age: '31',
@@ -481,7 +481,7 @@
 								name: 'Rich',
 								age: '28',
 								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}).controller('BloqueadosCtrl', function($scope) {
+							}];}).controller('BloqueadosCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -546,7 +546,7 @@
 									name: 'Rich',
 									age: '28',
 									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								});
+								}];});
 					</script>	
 	</body>
 </html>
