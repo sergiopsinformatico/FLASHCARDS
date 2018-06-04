@@ -217,9 +217,6 @@
 			<div class="col-md-1">
 			</div>
 		</div>
-		
-		
-		
 		<script>
 			angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
 				$scope.people = [{
@@ -286,267 +283,271 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-				}];}).controller('FriendsCtrl', function($scope) {
-					$scope.people = [{
-						name: 'Jalel',
-						age: '31',
-						hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-					}, {
-						name: 'Meriem',
-						age: '23',
-						hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-					}, {
-						name: 'Alice',
-						age: '25',
-						hobbies: ['Board games', 'Cooking', 'Fashion']
-					}, {
-						name: 'Rich',
-						age: '28',
-						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}, {
-						name: 'Jalel',
-						age: '31',
-						hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-					}, {
-						name: 'Meriem',
-						age: '23',
-						hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-					}, {
-						name: 'Alice',
-						age: '25',
-						hobbies: ['Board games', 'Cooking', 'Fashion']
-					}, {
-						name: 'Rich',
-						age: '28',
-						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}, {
-						name: 'Jalel',
-						age: '31',
-						hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-					}, {
-						name: 'Meriem',
-						age: '23',
-						hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-					}, {
-						name: 'Alice',
-						age: '25',
-						hobbies: ['Board games', 'Cooking', 'Fashion']
-					}, {
-						name: 'Rich',
-						age: '28',
-						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}, {
-						name: 'Jalel',
-						age: '31',
-						hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-					}, {
-						name: 'Meriem',
-						age: '23',
-						hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-					}, {
-						name: 'Alice',
-						age: '25',
-						hobbies: ['Board games', 'Cooking', 'Fashion']
-					}, {
-						name: 'Rich',
-						age: '28',
-						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}];}).controller('PDAEnviadasCtrl', function($scope) {
-						$scope.people = [{
-							name: 'Jalel',
-							age: '31',
-							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-						}, {
-							name: 'Meriem',
-							age: '23',
-							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-						}, {
-							name: 'Alice',
-							age: '25',
-							hobbies: ['Board games', 'Cooking', 'Fashion']
-						}, {
-							name: 'Rich',
-							age: '28',
-							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}, {
-							name: 'Jalel',
-							age: '31',
-							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-						}, {
-							name: 'Meriem',
-							age: '23',
-							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-						}, {
-							name: 'Alice',
-							age: '25',
-							hobbies: ['Board games', 'Cooking', 'Fashion']
-						}, {
-							name: 'Rich',
-							age: '28',
-							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}, {
-							name: 'Jalel',
-							age: '31',
-							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-						}, {
-							name: 'Meriem',
-							age: '23',
-							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-						}, {
-							name: 'Alice',
-							age: '25',
-							hobbies: ['Board games', 'Cooking', 'Fashion']
-						}, {
-							name: 'Rich',
-							age: '28',
-							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}, {
-							name: 'Jalel',
-							age: '31',
-							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-						}, {
-							name: 'Meriem',
-							age: '23',
-							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-						}, {
-							name: 'Alice',
-							age: '25',
-							hobbies: ['Board games', 'Cooking', 'Fashion']
-						}, {
-							name: 'Rich',
-							age: '28',
-							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}];}).controller('PDARecibidasCtrl', function($scope) {
-							$scope.people = [{
-								name: 'Jalel',
-								age: '31',
-								hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-							}, {
-								name: 'Meriem',
-								age: '23',
-								hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-							}, {
-								name: 'Alice',
-								age: '25',
-								hobbies: ['Board games', 'Cooking', 'Fashion']
-							}, {
-								name: 'Rich',
-								age: '28',
-								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}, {
-								name: 'Jalel',
-								age: '31',
-								hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-							}, {
-								name: 'Meriem',
-								age: '23',
-								hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-							}, {
-								name: 'Alice',
-								age: '25',
-								hobbies: ['Board games', 'Cooking', 'Fashion']
-							}, {
-								name: 'Rich',
-								age: '28',
-								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}, {
-								name: 'Jalel',
-								age: '31',
-								hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-							}, {
-								name: 'Meriem',
-								age: '23',
-								hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-							}, {
-								name: 'Alice',
-								age: '25',
-								hobbies: ['Board games', 'Cooking', 'Fashion']
-							}, {
-								name: 'Rich',
-								age: '28',
-								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}, {
-								name: 'Jalel',
-								age: '31',
-								hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-							}, {
-								name: 'Meriem',
-								age: '23',
-								hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-							}, {
-								name: 'Alice',
-								age: '25',
-								hobbies: ['Board games', 'Cooking', 'Fashion']
-							}, {
-								name: 'Rich',
-								age: '28',
-								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}];}).controller('BloqueadosCtrl', function($scope) {
-								$scope.people = [{
-									name: 'Jalel',
-									age: '31',
-									hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-								}, {
-									name: 'Meriem',
-									age: '23',
-									hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-								}, {
-									name: 'Alice',
-									age: '27',
-									hobbies: ['Board games', 'Cooking', 'Fashion']
-								}, {
-									name: 'Rich',
-									age: '28',
-									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								}, {
-									name: 'Jalel',
-									age: '31',
-									hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-								}, {
-									name: 'Meriem',
-									age: '23',
-									hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-								}, {
-									name: 'Alice',
-									age: '25',
-									hobbies: ['Board games', 'Cooking', 'Fashion']
-								}, {
-									name: 'Rich',
-									age: '28',
-									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								}, {
-									name: 'Jalel',
-									age: '31',
-									hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-								}, {
-									name: 'Meriem',
-									age: '23',
-									hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-								}, {
-									name: 'Alice',
-									age: '25',
-									hobbies: ['Board games', 'Cooking', 'Fashion']
-								}, {
-									name: 'Rich',
-									age: '28',
-									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								}, {
-									name: 'Jalel',
-									age: '31',
-									hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-								}, {
-									name: 'Meriem',
-									age: '23',
-									hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-								}, {
-									name: 'Alice',
-									age: '25',
-									hobbies: ['Board games', 'Cooking', 'Fashion']
-								}, {
-									name: 'Rich',
-									age: '28',
-									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								}];});
+			}];});
+			angular.module('PeopleApp', []).controller('FriendsCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+			}];});
+			angular.module('PeopleApp', []).controller('PDAEnviadasCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+			}];});
+			angular.module('PeopleApp', []).controller('PDARecibidasCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+			}];});
+			angular.module('PeopleApp', []).controller('BloqueadosCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '27',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+			}];});
 					</script>	
 	</body>
 </html>
