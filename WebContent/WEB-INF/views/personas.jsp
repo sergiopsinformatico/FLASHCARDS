@@ -99,14 +99,16 @@
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-11">
-			<br><h1><b>Gente</b></h1><br>
+				<br><h1><b>Gente</b></h1><br>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-1">
 			</div>
-			<div class="col-md-4"  ng-app="PeopleApp" ng-controller="PeopleCtrl">
-				<b>Todos los Usuarios</b><br>
+			<div class="col-md-4" ng-app="PeopleApp" ng-controller="PeopleCtrl">
+				<div class="row">
+					<b>Todos los Usuarios</b>
+				</div>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -121,7 +123,6 @@
 								</tr>
 							</tbody>
 						</table>
-						
 					</div>
 				</div>
 			</div>
@@ -129,103 +130,87 @@
 			</div>
 			<div class="col-md-5">
 				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
-				<b>Amigos</b><br>
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					<div class="row">
+						<b>Amigos</b>
 					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+						</div>
+						<div class="panel-body fixed-panel-small">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="person in people | filter:expression">
+										<td>{{ person.name }}</td>
+										<td>{{ person.age }}</td>
+										<td>{{ person.hobbies.join(', ') }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
-					<b>Peticiones de Amistad Enviadas</b><br>
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					<div class="row">
+						<b>Peticiones de Amistad Enviadas</b>
 					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+						</div>
+						<div class="panel-body fixed-panel-small">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="person in people | filter:expression">
+										<td>{{ person.name }}</td>
+										<td>{{ person.age }}</td>
+										<td>{{ person.hobbies.join(', ') }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
-					<b>Peticiones de Amistad Recibidas</b><br>
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					<div class="row">
+						<b>Peticiones de Amistad Recibidas</b>
 					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+						</div>
+						<div class="panel-body fixed-panel-small">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="person in people | filter:expression">
+										<td>{{ person.name }}</td>
+										<td>{{ person.age }}</td>
+										<td>{{ person.hobbies.join(', ') }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
-					<b>Bloqueados</b><br>
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					<div class="row">
+						<b>Bloqueados</b>
 					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+						</div>
+						<div class="panel-body fixed-panel-small">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="person in people | filter:expression">
+										<td>{{ person.name }}</td>
+										<td>{{ person.age }}</td>
+										<td>{{ person.hobbies.join(', ') }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
