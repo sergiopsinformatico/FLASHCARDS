@@ -26,6 +26,7 @@ public class ControladorPrincipal {
 	
 	Usuario user;
 	GestionUsuarios gU = new GestionUsuarios();
+	GestionPeticiones gP = new GestionPeticiones();
 	ModelAndView vista;
 	
 	//Inicio (Logueado)
@@ -80,35 +81,35 @@ public class ControladorPrincipal {
 	}
 	
 	@RequestMapping(value = "/gente", method = RequestMethod.GET)
-	public ModelAndView gente(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView gente = new ModelAndView("personas");
-		GestionUsuarios gU=new GestionUsuarios();
-		GestionPeticiones gP=new GestionPeticiones();
-		gente.addObject("usuario", gU.leerUsuario(request.getSession().getAttribute("usuario").toString()));
-		gente.addObject("usuarios",gU.gente(request.getSession().getAttribute("usuario").toString()));
-		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(request.getSession().getAttribute("usuario").toString());
+	public ModelAndView gente(@RequestParam("usuario") String usuario) {
+		vista = new ModelAndView("personas");
+		gU=new GestionUsuarios();
+		gP=new GestionPeticiones();
+		vista.addObject("usuario", gU.leerUsuario(usuario));
+		vista.addObject("usuarios",gU.gente(usuario));
+		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(usuario);
 		LinkedList<Usuario> pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
 		}
-		gente.addObject("pendientes", pendientesUsuario);
-		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getSession().getAttribute("usuario").toString());
-		gente.addObject("enviadas", enviadas);
+		vista.addObject("pendientes", pendientesUsuario);
+		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(usuario);
+		vista.addObject("enviadas", enviadas);
 		GestionAmigos gA = new GestionAmigos();
-		LinkedList<String> amigosLeidos=gA.getAmigos(request.getSession().getAttribute("usuario").toString());
+		LinkedList<String> amigosLeidos=gA.getAmigos(usuario);
 		LinkedList<Usuario> amigosUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<amigosLeidos.size(); i++) {
 			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
 		}
-		gente.addObject("amigos", amigosUsuario);
+		vista.addObject("amigos", amigosUsuario);
 		GestionBloqueados gB = new GestionBloqueados();
-		LinkedList<String>bloqueadosLeidos = gB.leerBloqueados(request.getSession().getAttribute("usuario").toString());
+		LinkedList<String>bloqueadosLeidos = gB.leerBloqueados(usuario);
 		LinkedList<Usuario> bloqueados = new LinkedList<Usuario>();
 		for(int i=0; i<bloqueadosLeidos.size(); i++) {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
-		gente.addObject("bloqueados", bloqueados);		
-		return gente;	
+		vista.addObject("bloqueados", bloqueados);		
+		return vista;	
 	}
 	
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)

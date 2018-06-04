@@ -3,51 +3,96 @@
 		<title>Real-time search in AngularJS made easy</title>
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<style>
+		.fixed-panel {
+		  min-height: 10;
+		  max-height: 10;
+		  overflow-y: scroll;
+		}
+		</style>
 	</head>
 	
 	<body class="container" ng-app="SearchPeople" ng-controller="PeopleCtrl">
 		<h1>People</h1>
-		<div class="form-group col-md-2">
-			<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+		<!-- <div class="form-group col-md-2">
+			
+		</div> -->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+			</div>
+			<div class="panel-body fixed-panel">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Hobbies</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in people | filter:expression">
+							<td>{{ person.name }}</td>
+							<td>{{ person.age }}</td>
+							<td>{{ person.hobbies.join(', ') }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<script>
+					angular.module('SearchPeople', []).controller('PeopleCtrl', function($scope) {
+						$scope.people = [{
+							name: 'Jalel',
+							age: '31',
+							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+						}, {
+							name: 'Meriem',
+							age: '23',
+							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+						}, {
+							name: 'Alice',
+							age: '25',
+							hobbies: ['Board games', 'Cooking', 'Fashion']
+						}, {
+							name: 'Rich',
+							age: '28',
+							hobbies: ['Sport', 'Basketball', 'Ice skating']
+						}, {
+							name: 'Jalel',
+							age: '31',
+							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+						}, {
+							name: 'Meriem',
+							age: '23',
+							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+						}, {
+							name: 'Alice',
+							age: '25',
+							hobbies: ['Board games', 'Cooking', 'Fashion']
+						}, {
+							name: 'Rich',
+							age: '28',
+							hobbies: ['Sport', 'Basketball', 'Ice skating']
+						}, {
+							name: 'Jalel',
+							age: '31',
+							hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+						}, {
+							name: 'Meriem',
+							age: '23',
+							hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+						}, {
+							name: 'Alice',
+							age: '25',
+							hobbies: ['Board games', 'Cooking', 'Fashion']
+						}, {
+							name: 'Rich',
+							age: '28',
+							hobbies: ['Sport', 'Basketball', 'Ice skating']
+						}];
+					});
+				</script>
+			</div>
 		</div>
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Age</th>
-					<th>Hobbies</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="person in people | filter:expression">
-					<td>{{ person.name }}</td>
-					<td>{{ person.age }}</td>
-					<td>{{ person.hobbies.join(', ') }}</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<script>
-			angular.module('SearchPeople', []).controller('PeopleCtrl', function($scope) {
-				$scope.people = [{
-					name: 'Jalel',
-					age: '31',
-					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-				}, {
-					name: 'Meriem',
-					age: '23',
-					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-				}, {
-					name: 'Alice',
-					age: '25',
-					hobbies: ['Board games', 'Cooking', 'Fashion']
-				}, {
-					name: 'Rich',
-					age: '28',
-					hobbies: ['Sport', 'Basketball', 'Ice skating']
-				}];
-			});
-		</script>
 	</body>
 </html>
 
