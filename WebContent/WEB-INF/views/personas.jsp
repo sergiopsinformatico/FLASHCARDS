@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="col-md-1">
 			</div>
-			<div class="col-md-4" ng-app="PeopleApp" ng-controller="PeopleCtrl">
+			<div class="col-md-4" ng-controller="peopleCtrl">
 				<div class="row">
 					<b>Todos los Usuarios</b>
 				</div>
@@ -132,7 +132,7 @@
 				<div class="row">
 					<b>Amigos</b>
 				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
+				<div class="row" ng-controller="friendsCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -153,7 +153,7 @@
 				<div class="row">
 					<b>Peticiones de Amistad Enviadas</b>
 				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
+				<div class="row" ng-controller="pdaEnviadasCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -174,7 +174,7 @@
 				<div class="row">
 					<b>Peticiones de Amistad Recibidas</b>
 				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
+				<div class="row" ng-controller="pdaRecibidasCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -195,7 +195,7 @@
 				<div class="row">
 					<b>Bloqueados</b>
 				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
+				<div class="row" ng-controller="bloqueadosCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -218,7 +218,7 @@
 			</div>
 		</div>
 		<script>
-			angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
+			function peopleCtrl($scope) {
 				$scope.people = [{
 					name: 'Jalel',
 					age: '31',
@@ -283,8 +283,10 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-			}];});
-			angular.module('PeopleApp', []).controller('FriendsCtrl', function($scope) {
+				}];
+			}
+			
+			function friendsCtrl($scope) {
 				$scope.people = [{
 					name: 'Jalel',
 					age: '31',
@@ -349,8 +351,10 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-			}];});
-			angular.module('PeopleApp', []).controller('PDAEnviadasCtrl', function($scope) {
+				}];
+			}
+			
+			function pdaEnviadasCtrl($scope) {
 				$scope.people = [{
 					name: 'Jalel',
 					age: '31',
@@ -415,8 +419,10 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-			}];});
-			angular.module('PeopleApp', []).controller('PDARecibidasCtrl', function($scope) {
+				}];
+			}
+			
+			function pdaRecibidasCtrl($scope) {
 				$scope.people = [{
 					name: 'Jalel',
 					age: '31',
@@ -481,8 +487,10 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-			}];});
-			angular.module('PeopleApp', []).controller('BloqueadosCtrl', function($scope) {
+				}];
+			}
+			
+			function bloqueadosCtrl($scope) {
 				$scope.people = [{
 					name: 'Jalel',
 					age: '31',
@@ -547,8 +555,9 @@
 					name: 'Rich',
 					age: '28',
 					hobbies: ['Sport', 'Basketball', 'Ice skating']
-			}];});
-					</script>	
+				}];
+			}
+		</script>	
 	</body>
 </html>
 
