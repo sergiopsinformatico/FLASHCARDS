@@ -161,7 +161,7 @@
 			<table>
 			    <c:forEach items="${usuarios}" var="user">
 			    	<tr>
-			    		<td> ${user.getNombre()} ${user.getApellidos()} </td>
+			    		<td> ${user.getNombreApellidos()} </td>
 			    		<td>
 					    	<form action="peticionAmistad.html" method="POST">
 					    		<input id="peticion" name="peticion" type="hidden" value="${user.getUsuario()}">
