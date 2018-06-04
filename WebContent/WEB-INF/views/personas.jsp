@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="col-md-1">
 			</div>
-			<div class="col-md-5"  ng-app="SearchPeople" ng-controller="PeopleCtrl">
+			<div class="col-md-4"  ng-app="PeopleApp" ng-controller="PeopleCtrl">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -128,7 +128,7 @@
 							</tbody>
 						</table>
 						<script>
-							angular.module('SearchPeople', []).controller('PeopleCtrl', function($scope) {
+							angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -1651,8 +1651,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<div class="row" ng-app="SearchFriends" ng-controller="FriendsCtrl">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-4">
+				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
 				Amigos
 				<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -1676,7 +1678,7 @@
 							</tbody>
 						</table>
 						<script>
-							angular.module('SearchFriends', []).controller('FriendsCtrl', function($scope) {
+							angular.module('PeopleApp', []).controller('FriendsCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -3198,7 +3200,7 @@
 						</script>
 					</div>
 				</div>
-				<div class="row" ng-app="SearchPDAEnviadas" ng-controller="PDAEnviadasCtrl">
+				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
 					PdA Enviadas
 					<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -3222,7 +3224,7 @@
 							</tbody>
 						</table>
 						<script>
-							angular.module('SearchPDAEnviadas', []).controller('PDAEnviadasCtrl', function($scope) {
+							angular.module('PeopleApp', []).controller('PDAEnviadasCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -4744,7 +4746,7 @@
 						</script>
 					</div>
 				</div>
-				<div class="row" ng-app="SearchPDARecibidas" ng-controller="PDARecibidasCtrl">
+				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
 					PdA Recibidas
 					<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -4768,7 +4770,7 @@
 							</tbody>
 						</table>
 						<script>
-							angular.module('SearchPDARecibidas', []).controller('PDARecibidasCtrl', function($scope) {
+							angular.module('PeopleApp', []).controller('PDARecibidasCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -6290,7 +6292,7 @@
 						</script>
 					</div>
 				</div>
-				<div class="row" ng-app="SearchBloqueados" ng-controller="BloqueadosCtrl">
+				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
 					Bloqueados
 					<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -6314,7 +6316,7 @@
 							</tbody>
 						</table>
 						<script>
-							angular.module('SearchBloqueados', []).controller('BloqueadosCtrl', function($scope) {
+							angular.module('PeopleApp', []).controller('BloqueadosCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
