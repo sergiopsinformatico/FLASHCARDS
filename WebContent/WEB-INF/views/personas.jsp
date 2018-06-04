@@ -509,7 +509,7 @@
 										hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
 									}, {
 										name: 'Alice',
-										age: '25',
+										age: '27',
 										hobbies: ['Board games', 'Cooking', 'Fashion']
 									}, {
 										name: 'Rich',
