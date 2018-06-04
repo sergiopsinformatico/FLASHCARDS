@@ -5,8 +5,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 		<style>
 		.fixed-panel {
-		  min-height: 10;
-		  max-height: 10;
+		  min-height: 100;
+		  max-height: 100;
 		  overflow-y: scroll;
 		}
 		</style>
