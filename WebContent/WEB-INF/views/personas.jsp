@@ -129,10 +129,10 @@
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-5">
+				<div class="row">
+					<b>Amigos</b>
+				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
-					<div class="row">
-						<b>Amigos</b>
-					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -149,11 +149,11 @@
 							</table>
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<b>Peticiones de Amistad Enviadas</b>
 				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
-					<div class="row">
-						<b>Peticiones de Amistad Enviadas</b>
-					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -170,11 +170,11 @@
 							</table>
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<b>Peticiones de Amistad Recibidas</b>
 				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
-					<div class="row">
-						<b>Peticiones de Amistad Recibidas</b>
-					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -192,10 +192,10 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<b>Bloqueados</b>
+				</div>
 				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
-					<div class="row">
-						<b>Bloqueados</b>
-					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -217,6 +217,9 @@
 			<div class="col-md-1">
 			</div>
 		</div>
+		
+		
+		
 		<script>
 			angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
 				$scope.people = [{
@@ -544,7 +547,7 @@
 									age: '28',
 									hobbies: ['Sport', 'Basketball', 'Ice skating']
 								});
-					</script>
+					</script>	
 	</body>
 </html>
 
