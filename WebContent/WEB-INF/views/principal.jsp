@@ -76,9 +76,6 @@
 	    		</ul>
 	  		</div>
 		</nav>
-		<!-- 
-   			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
-		 -->
 		<script language="JavaScript" type="text/javascript">
 			var comp = ${usuario.isAdministrador()};
 			if (comp){

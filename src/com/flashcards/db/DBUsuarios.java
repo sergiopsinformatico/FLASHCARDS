@@ -163,7 +163,7 @@ public class DBUsuarios {
 		return usuarios;
 	}
 	
-	public LinkedList<Usuario> todosUsuarios (String username) {
+	public LinkedList<Usuario> todosUsuariosAdministrador (String username) {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
