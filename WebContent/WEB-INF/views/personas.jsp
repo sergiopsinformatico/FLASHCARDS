@@ -10,8 +10,8 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
 		<style>
 			.fixed-panel {
-			  min-height: 1000;
-			  max-height: 1000;
+			  min-height: 1050;
+			  max-height: 1050;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -95,150 +95,73 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
-		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-11">
-			<br><h1>Gente</h1><br>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-4"  ng-app="PeopleApp" ng-controller="PeopleCtrl">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-					</div>
-					<div class="panel-body fixed-panel">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-4">
-				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
-				Amigos
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
-					PdA Enviadas
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
-					PdA Recibidas
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
-					Bloqueados
-					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-					</div>
-					<div class="panel-body fixed-panel-small">
-						<table class="table table-bordered table-striped">
-							<!-- <thead>
-								<tr>
-									<th>Name</th>
-									<th>Age</th>
-									<th>Hobbies</th>
-								</tr>
-							</thead> -->
-							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
-									<td>{{ person.age }}</td>
-									<td>{{ person.hobbies.join(', ') }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-1">
-			</div>
-			<script>
-				angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
+		<script>
+			angular.module('PeopleApp', []).controller('PeopleCtrl', function($scope) {
+				$scope.people = [{
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}, {
+					name: 'Jalel',
+					age: '31',
+					hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
+				}, {
+					name: 'Meriem',
+					age: '23',
+					hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
+				}, {
+					name: 'Alice',
+					age: '25',
+					hobbies: ['Board games', 'Cooking', 'Fashion']
+				}, {
+					name: 'Rich',
+					age: '28',
+					hobbies: ['Sport', 'Basketball', 'Ice skating']
+				}).controller('FriendsCtrl', function($scope) {
 					$scope.people = [{
 						name: 'Jalel',
 						age: '31',
@@ -303,7 +226,7 @@
 						name: 'Rich',
 						age: '28',
 						hobbies: ['Sport', 'Basketball', 'Ice skating']
-					}).controller('FriendsCtrl', function($scope) {
+					}).controller('PDAEnviadasCtrl', function($scope) {
 						$scope.people = [{
 							name: 'Jalel',
 							age: '31',
@@ -368,7 +291,7 @@
 							name: 'Rich',
 							age: '28',
 							hobbies: ['Sport', 'Basketball', 'Ice skating']
-						}).controller('PDAEnviadasCtrl', function($scope) {
+						}).controller('PDARecibidasCtrl', function($scope) {
 							$scope.people = [{
 								name: 'Jalel',
 								age: '31',
@@ -433,7 +356,7 @@
 								name: 'Rich',
 								age: '28',
 								hobbies: ['Sport', 'Basketball', 'Ice skating']
-							}).controller('PDARecibidasCtrl', function($scope) {
+							}).controller('BloqueadosCtrl', function($scope) {
 								$scope.people = [{
 									name: 'Jalel',
 									age: '31',
@@ -444,7 +367,7 @@
 									hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
 								}, {
 									name: 'Alice',
-									age: '25',
+									age: '27',
 									hobbies: ['Board games', 'Cooking', 'Fashion']
 								}, {
 									name: 'Rich',
@@ -498,73 +421,151 @@
 									name: 'Rich',
 									age: '28',
 									hobbies: ['Sport', 'Basketball', 'Ice skating']
-								}).controller('BloqueadosCtrl', function($scope) {
-									$scope.people = [{
-										name: 'Jalel',
-										age: '31',
-										hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-									}, {
-										name: 'Meriem',
-										age: '23',
-										hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-									}, {
-										name: 'Alice',
-										age: '27',
-										hobbies: ['Board games', 'Cooking', 'Fashion']
-									}, {
-										name: 'Rich',
-										age: '28',
-										hobbies: ['Sport', 'Basketball', 'Ice skating']
-									}, {
-										name: 'Jalel',
-										age: '31',
-										hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-									}, {
-										name: 'Meriem',
-										age: '23',
-										hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-									}, {
-										name: 'Alice',
-										age: '25',
-										hobbies: ['Board games', 'Cooking', 'Fashion']
-									}, {
-										name: 'Rich',
-										age: '28',
-										hobbies: ['Sport', 'Basketball', 'Ice skating']
-									}, {
-										name: 'Jalel',
-										age: '31',
-										hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-									}, {
-										name: 'Meriem',
-										age: '23',
-										hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-									}, {
-										name: 'Alice',
-										age: '25',
-										hobbies: ['Board games', 'Cooking', 'Fashion']
-									}, {
-										name: 'Rich',
-										age: '28',
-										hobbies: ['Sport', 'Basketball', 'Ice skating']
-									}, {
-										name: 'Jalel',
-										age: '31',
-										hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']
-									}, {
-										name: 'Meriem',
-										age: '23',
-										hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']
-									}, {
-										name: 'Alice',
-										age: '25',
-										hobbies: ['Board games', 'Cooking', 'Fashion']
-									}, {
-										name: 'Rich',
-										age: '28',
-										hobbies: ['Sport', 'Basketball', 'Ice skating']
-									});
-						</script>
+								});
+					</script>
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-11">
+			<br><h1><b>Gente</b></h1><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4"  ng-app="PeopleApp" ng-controller="PeopleCtrl">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body fixed-panel">
+						<table class="table table-bordered table-striped">
+							<!-- <thead>
+								<tr>
+									<th>Name</th>
+									<th>Age</th>
+									<th>Hobbies</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr ng-repeat="person in people | filter:expression">
+									<td>{{ person.name }}</td>
+									<td>{{ person.age }}</td>
+									<td>{{ person.hobbies.join(', ') }}</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-5">
+				<div class="row" ng-app="PeopleApp" ng-controller="FriendsCtrl">
+				<b>Amigos</b>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body fixed-panel-small">
+						<table class="table table-bordered table-striped">
+							<!-- <thead>
+								<tr>
+									<th>Name</th>
+									<th>Age</th>
+									<th>Hobbies</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr ng-repeat="person in people | filter:expression">
+									<td>{{ person.name }}</td>
+									<td>{{ person.age }}</td>
+									<td>{{ person.hobbies.join(', ') }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row" ng-app="PeopleApp" ng-controller="PDAEnviadasCtrl">
+					<b>Peticiones de Amistad Enviadas</b>
+					<div class="panel panel-primary">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body fixed-panel-small">
+						<table class="table table-bordered table-striped">
+							<!-- <thead>
+								<tr>
+									<th>Name</th>
+									<th>Age</th>
+									<th>Hobbies</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr ng-repeat="person in people | filter:expression">
+									<td>{{ person.name }}</td>
+									<td>{{ person.age }}</td>
+									<td>{{ person.hobbies.join(', ') }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row" ng-app="PeopleApp" ng-controller="PDARecibidasCtrl">
+					<b>Peticiones de Amistad Recibidas</b>
+					<div class="panel panel-primary">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body fixed-panel-small">
+						<table class="table table-bordered table-striped">
+							<!-- <thead>
+								<tr>
+									<th>Name</th>
+									<th>Age</th>
+									<th>Hobbies</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr ng-repeat="person in people | filter:expression">
+									<td>{{ person.name }}</td>
+									<td>{{ person.age }}</td>
+									<td>{{ person.hobbies.join(', ') }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row" ng-app="PeopleApp" ng-controller="BloqueadosCtrl">
+					<b>Bloqueados</b>
+					<div class="panel panel-primary">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body fixed-panel-small">
+						<table class="table table-bordered table-striped">
+							<!-- <thead>
+								<tr>
+									<th>Name</th>
+									<th>Age</th>
+									<th>Hobbies</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr ng-repeat="person in people | filter:expression">
+									<td>{{ person.name }}</td>
+									<td>{{ person.age }}</td>
+									<td>{{ person.hobbies.join(', ') }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+			</div>
+			
 		</div>
 	</body>
 </html>
