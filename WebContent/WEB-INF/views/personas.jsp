@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Personas - Flashcards</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -9,8 +10,8 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
 		<style>
 			.fixed-panel {
-			  min-height: 10000;
-			  max-height: 10000;
+			  min-height: 1000;
+			  max-height: 1000;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -27,7 +28,7 @@
 		</style>
 	</head>
 	
-	<body class="container" ng-app="SearchPeople" ng-controller="PeopleCtrl">
+	<body ng-app="SearchPeople" ng-controller="PeopleCtrl">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
