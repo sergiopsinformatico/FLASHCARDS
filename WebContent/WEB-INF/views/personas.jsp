@@ -10,10 +10,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<style>
 			.fixed-panel {
-			  min-height: 1400;
-			  max-height: 1400;
-			  min-width: 100%;
-			  max-width: 100%;
+			  min-height: 1600;
+			  max-height: 1600;
+			  min-width: 100px;
+			  max-width: 100px;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -112,6 +112,7 @@
 				<div class="row">
 					<b>Todos los Usuarios</b><br>
 				</div>
+				<div class="row"><br></div>
 				<div class="panel panel-primary" ng-controller="peopleCtrl">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -135,7 +136,7 @@
 				<div class="row">
 					<b>Amigos</b>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="friendsCtrl">
 						<div class="panel-heading">
@@ -154,11 +155,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<b>Peticiones de Amistad Enviadas</b><br>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
 						<div class="panel-heading">
@@ -177,11 +178,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<b>Peticiones de Amistad Recibidas</b><br>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
 						<div class="panel-heading">
@@ -200,11 +201,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<b>Bloqueados</b><br>
 				</div>
-				<div class="row"></div>
+				<div class="row"><br></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
 						<div class="panel-heading">
