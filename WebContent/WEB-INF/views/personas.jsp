@@ -234,8 +234,8 @@
 				var flash = "https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=";
 				var usuario = "${usuario.getUsuario()}";
 				$http.get(flash.concat(usuario)).then(function(response) {
-				      $scope.people = response.data;
-				  });
+					$scope.people = response.data;
+				});
 			};
 			
 			var friendsControlador = function($scope){

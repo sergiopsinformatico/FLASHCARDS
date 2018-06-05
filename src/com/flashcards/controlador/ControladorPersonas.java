@@ -39,7 +39,7 @@ public class ControladorPersonas {
 	
 	@RequestMapping(value = "/getPeople", method = RequestMethod.GET)
 	public String getPeople(@RequestParam("usuario") String usuario) {
-		return "[{nombre: 'Carlos'},{nombre: 'Carlos'},{nombre: 'Carlos'}]";
+		return "hola";
 	}
 	
 	@RequestMapping(value = "/peticionAmistad", method = RequestMethod.POST)
