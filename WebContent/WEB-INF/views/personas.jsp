@@ -12,8 +12,8 @@
 			.fixed-panel {
 			  min-height: 1600;
 			  max-height: 1600;
-			  min-width: 100px;
-			  max-width: 100px;
+			  min-width: 600;
+			  max-width: 600;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -21,8 +21,8 @@
 			.fixed-panel-small {
 			  min-height: 300;
 			  max-height: 300;
-			  min-width: 100%;
-			  max-width: 100%;
+			  min-width: 600;
+			  max-width: 600;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
