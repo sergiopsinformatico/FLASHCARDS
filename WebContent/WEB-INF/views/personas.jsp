@@ -35,8 +35,7 @@
 			.navbar-inner {min-height:28px;}
 		</style>
 	</head>
-	
-	<body>
+	<body ng-app="myApp">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -109,7 +108,7 @@
 				<div class="row">
 					<b>Todos los Usuarios</b><br>
 				</div>
-				<div class="panel panel-primary" ng-app="myApp" ng-controller="peopleCtrl">
+				<div class="panel panel-primary" ng-controller="peopleCtrl">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 					</div>
@@ -133,7 +132,7 @@
 					<b>Amigos</b><br>
 				</div>
 				<div class="row">
-					<div class="panel panel-primary" ng-app="myApp" ng-controller="friendsCtrl">
+					<div class="panel panel-primary" ng-controller="friendsCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -154,7 +153,7 @@
 					<b>Peticiones de Amistad Enviadas</b><br>
 				</div>
 				<div class="row">
-					<div class="panel panel-primary" ng-app="myApp" ng-controller="pdaEnviadasCtrl">
+					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -175,7 +174,7 @@
 					<b>Peticiones de Amistad Recibidas</b><br>
 				</div>
 				<div class="row">
-					<div class="panel panel-primary" ng-app="myApp" ng-controller="pdaRecibidasCtrl">
+					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -196,7 +195,7 @@
 					<b>Bloqueados</b><br>
 				</div>
 				<div class="row">
-					<div class="panel panel-primary" ng-app="myApp" ng-controller="bloqueadosCtrl">
+					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -274,11 +273,11 @@
 					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 				];
-				app.controller("peopleCtrl", controlador);
-				app.controller("friendsCtrl", controlador);
-				app.controller("pdaEnviadasCtrl", controlador);
-				app.controller("pdaRecibidasCtrl", controlador);
-				app.controller("bloqueadosCtrl", controlador);
+				app.controller('peopleCtrl', controlador);
+				app.controller('friendsCtrl', controlador);
+				app.controller('pdaEnviadasCtrl', controlador);
+				app.controller('pdaRecibidasCtrl', controlador);
+				app.controller('bloqueadosCtrl', controlador);
 			};
 		</script>
 	</body>
