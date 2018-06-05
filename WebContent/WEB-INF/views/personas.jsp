@@ -10,8 +10,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<style>
 			.fixed-panel {
-			  min-height: 1150;
-			  max-height: 1150;
+			  min-height: 1400;
+			  max-height: 1400;
+			  min-width: 100%;
+			  max-width: 100%;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -19,6 +21,8 @@
 			.fixed-panel-small {
 			  min-height: 300;
 			  max-height: 300;
+			  min-width: 100%;
+			  max-width: 100%;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -129,8 +133,9 @@
 			</div>
 			<div class="col-md-5">
 				<div class="row">
-					<b>Amigos</b><br>
+					<b>Amigos</b>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="friendsCtrl">
 						<div class="panel-heading">
@@ -149,9 +154,11 @@
 						</div>
 					</div>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<b>Peticiones de Amistad Enviadas</b><br>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
 						<div class="panel-heading">
@@ -170,9 +177,11 @@
 						</div>
 					</div>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<b>Peticiones de Amistad Recibidas</b><br>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
 						<div class="panel-heading">
@@ -191,9 +200,11 @@
 						</div>
 					</div>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<b>Bloqueados</b><br>
 				</div>
+				<div class="row"></div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
 						<div class="panel-heading">
