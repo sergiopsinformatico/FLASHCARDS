@@ -228,6 +228,9 @@
 			<div class="col-md-1">
 			</div>
 		</div>
+		<div class="row">
+			<br>
+		</div>
 		<script>
 			
 			var peopleControlador = function($scope){
