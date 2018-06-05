@@ -105,11 +105,11 @@
 		<div class="row">
 			<div class="col-md-1">
 			</div>
-			<div class="col-md-4" ng-app="peopleApp" ng-controller="peopleCtrl">
+			<div class="col-md-4">
 				<div class="row">
 					<b>Todos los Usuarios</b><br>
 				</div>
-				<div class="panel panel-primary">
+				<div class="panel panel-primary" ng-app="peopleApp" ng-controller="peopleCtrl">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 					</div>
@@ -132,8 +132,8 @@
 				<div class="row">
 					<b>Amigos</b><br>
 				</div>
-				<div class="row" ng-app="friendsApp" ng-controller="friendsCtrl">
-					<div class="panel panel-primary">
+				<div class="row">
+					<div class="panel panel-primary" ng-app="friendsApp" ng-controller="friendsCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -153,8 +153,8 @@
 				<div class="row">
 					<b>Peticiones de Amistad Enviadas</b><br>
 				</div>
-				<div class="row" ng-app="pdaEnviaApp" ng-controller="pdaEnviadasCtrl">
-					<div class="panel panel-primary">
+				<div class="row">
+					<div class="panel panel-primary" ng-app="pdaEnviaApp" ng-controller="pdaEnviadasCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -174,8 +174,8 @@
 				<div class="row">
 					<b>Peticiones de Amistad Recibidas</b><br>
 				</div>
-				<div class="row" ng-app="pdaRecibeApp" ng-controller="pdaRecibidasCtrl">
-					<div class="panel panel-primary">
+				<div class="row">
+					<div class="panel panel-primary" ng-app="pdaRecibeApp" ng-controller="pdaRecibidasCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
@@ -195,8 +195,8 @@
 				<div class="row">
 					<b>Bloqueados</b><br>
 				</div>
-				<div class="row" ng-app="bloqueadoApp" ng-controller="bloqueadosCtrl">
-					<div class="panel panel-primary">
+				<div class="row">
+					<div class="panel panel-primary" ng-app="bloqueadoApp" ng-controller="bloqueadosCtrl">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 						</div>
