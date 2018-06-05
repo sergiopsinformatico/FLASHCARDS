@@ -230,7 +230,7 @@
 		<script>
 			
 			var peopleControlador = function($scope, $http){
-				$http.get('http://localhost:8080/Flashcards/getPeople.html?usuario=1256').then(function(response) {
+				$http.get('https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=1256').then(function(response) {
 				      $scope.people = response.data;
 				  });
 			};
