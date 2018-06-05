@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionAmigos;
@@ -35,6 +36,11 @@ public class ControladorPersonas {
 	LinkedList<PeticionDeAmistad>pendientes;
 	LinkedList<Usuario>pendientesUsuario, amigosUsuario, bloqueados;
 	LinkedList<String>amigosLeidos, bloqueadosLeidos;
+	
+	@RequestMapping(value = "/getPeople", method = RequestMethod.POST)
+	public String getPeople(@RequestParam("usuario") String usuario) {
+		return "[{nombre: 'Carlos'},{nombre: 'Carlos'},{nombre: 'Carlos'}]";
+	}
 	
 	@RequestMapping(value = "/peticionAmistad", method = RequestMethod.POST)
 	public ModelAndView peticionAmistad(HttpServletRequest request, HttpServletResponse response) {

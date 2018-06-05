@@ -84,6 +84,14 @@ public class ControladorPrincipal {
 	public ModelAndView gente(@RequestParam("usuario") String usuario) {
 		vista = new ModelAndView("personas");
 		gU=new GestionUsuarios();
+		vista.addObject("usuario", gU.leerUsuario(usuario));
+		return vista;
+	}
+	/*
+	@RequestMapping(value = "/gente", method = RequestMethod.GET)
+	public ModelAndView gente(@RequestParam("usuario") String usuario) {
+		vista = new ModelAndView("personas");
+		gU=new GestionUsuarios();
 		gP=new GestionPeticiones();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
 		vista.addObject("usuarios",gU.gente(usuario));
@@ -110,7 +118,7 @@ public class ControladorPrincipal {
 		}
 		vista.addObject("bloqueados", bloqueados);		
 		return vista;	
-	}
+	}*/
 	
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(HttpServletRequest request, HttpServletResponse response) {
