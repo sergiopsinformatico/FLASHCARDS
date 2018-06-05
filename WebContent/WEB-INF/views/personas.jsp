@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="col-md-1">
 			</div>
-			<div class="col-md-4" ng-app="genteApp" ng-controller="peopleCtrl">
+			<div class="col-md-4" ng-app="peopleApp" ng-controller="peopleCtrl">
 				<div class="row">
 					<b>Todos los Usuarios</b><br>
 				</div>
@@ -132,7 +132,7 @@
 				<div class="row">
 					<b>Amigos</b><br>
 				</div>
-				<div class="row" ng-app="genteApp" ng-controller="friendsCtrl">
+				<div class="row" ng-app="friendsApp" ng-controller="friendsCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -153,7 +153,7 @@
 				<div class="row">
 					<b>Peticiones de Amistad Enviadas</b><br>
 				</div>
-				<div class="row" ng-app="genteApp" ng-controller="pdaEnviadasCtrl">
+				<div class="row" ng-app="pdaEnviaApp" ng-controller="pdaEnviadasCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -174,7 +174,7 @@
 				<div class="row">
 					<b>Peticiones de Amistad Recibidas</b><br>
 				</div>
-				<div class="row" ng-app="genteApp" ng-controller="pdaRecibidasCtrl">
+				<div class="row" ng-app="pdaRecibeApp" ng-controller="pdaRecibidasCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -195,7 +195,7 @@
 				<div class="row">
 					<b>Bloqueados</b><br>
 				</div>
-				<div class="row" ng-app="genteApp" ng-controller="bloqueadosCtrl">
+				<div class="row" ng-app="bloqueadoApp" ng-controller="bloqueadosCtrl">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
@@ -218,7 +218,7 @@
 			</div>
 		</div>
 		<script>
-		angular.module('genteApp', []).controller('peopleCtrl', function($scope) {
+		angular.module('peopleApp', []).controller('peopleCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -274,7 +274,7 @@
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
 		});
-		angular.module('genteApp', []).controller('friendsCtrl', function($scope) {
+		angular.module('friendsApp', []).controller('friendsCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -330,7 +330,7 @@
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
 		});
-		angular.module('genteApp', []).controller('pdaEnviadasCtrl', function($scope) {
+		angular.module('pdaEnviaApp', []).controller('pdaEnviadasCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -386,7 +386,7 @@
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
 		});
-		angular.module('genteApp', []).controller('pdaRecibidasCtrl', function($scope) {
+		angular.module('pdaRecibeApp', []).controller('pdaRecibidasCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -442,7 +442,7 @@
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
 		});
-		angular.module('genteApp', []).controller('bloqueadosCtrl', function($scope) {
+		angular.module('bloqueadoApp', []).controller('bloqueadosCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
