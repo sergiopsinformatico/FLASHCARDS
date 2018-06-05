@@ -38,7 +38,7 @@ public class ControladorPersonas {
 	LinkedList<String>amigosLeidos, bloqueadosLeidos;
 	
 	@RequestMapping(value = "/people", method = RequestMethod.GET)
-	public String people(@RequestParam("usuario") String usuario) {
+	public String people() {
 		return "hola";
 	}
 	
