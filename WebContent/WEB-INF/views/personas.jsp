@@ -231,8 +231,10 @@
 		<script>
 			
 			var peopleControlador = function($scope, $http){
-				$http.get('https://sistemaflashcards.herokuapp.com/people.html?usuario=5425').then(function(response) {
+				$http.get('https://sistemaflashcards.herokuapp.com/people.html?usuario=5425').then(function (response) {
 					$scope.people = response.data;
+				}, function error(response) {
+					$scope.people = "Error with status: " +  response.statusText;
 				});
 			};
 			
