@@ -229,8 +229,10 @@
 		</div>
 		<script>
 			
-			var peopleControlador = function($scope){
-				$scope.people = $http.get('https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=');
+			var peopleControlador = function($scope, $http){
+				$http.get('https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=1256').then(function(response) {
+				      $scope.people = response.data;
+				  });
 			};
 			
 			var friendsControlador = function($scope){
