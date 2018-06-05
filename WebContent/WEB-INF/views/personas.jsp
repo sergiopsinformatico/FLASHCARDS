@@ -232,7 +232,7 @@
 			
 			var peopleControlador = function($scope, $http){
 				$http.get('https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=1256').then(function(response) {
-				      $scope.people = response.data;
+				      $scope.people = response;
 				  });
 			};
 			
