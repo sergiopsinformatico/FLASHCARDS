@@ -231,8 +231,10 @@
 		<script>
 			
 			var peopleControlador = function($scope, $http){
-				$http.get('https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=1256').then(function(response) {
-				      $scope.people = response;
+				var flash = "https://sistemaflashcards.herokuapp.com/getPeople.html?usuario=";
+				var usuario = "${usuario.getUsuario()}";
+				$http.get(flash.concat(usuario)).then(function(response) {
+				      $scope.people = response.data;
 				  });
 			};
 			
