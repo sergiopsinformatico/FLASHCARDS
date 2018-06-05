@@ -273,7 +273,8 @@
 				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
-		}).controller('friendsCtrl', function($scope) {
+		});
+		angular.module('genteApp', []).controller('friendsCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -328,7 +329,8 @@
 				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
-		}).controller('pdaEnviadasCtrl', function($scope) {
+		});
+		angular.module('genteApp', []).controller('pdaEnviadasCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -383,7 +385,8 @@
 				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
-		}).controller('pdaRecibidasCtrl', function($scope) {
+		});
+		angular.module('genteApp', []).controller('pdaRecibidasCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -438,7 +441,8 @@
 				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 			];
-		}).controller('bloqueadosCtrl', function($scope) {
+		});
+		angular.module('genteApp', []).controller('bloqueadosCtrl', function($scope) {
 			$scope.people = [
 				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
