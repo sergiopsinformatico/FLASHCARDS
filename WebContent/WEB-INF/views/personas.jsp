@@ -12,8 +12,8 @@
 			.fixed-panel {
 			  min-height: 1600;
 			  max-height: 1600;
-			  min-width: 600;
-			  max-width: 600;
+			  min-width: 475;
+			  max-width: 475;
 			  overflow: -moz-scrollbars-vertical; 
 			  overflow-y: scroll;
 			}
@@ -99,12 +99,14 @@
 			}
 		</script>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-1"></div>
+			<div class="col-md-11">
 				<br><h1><b>Gente</b></h1><br>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
 				<div class="row">
 					<b>Todos los Usuarios</b><br>
 				</div>
