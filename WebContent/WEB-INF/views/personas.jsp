@@ -118,9 +118,10 @@
 					<div class="panel-body fixed-panel">
 						<table class="table table-bordered table-striped">
 							<tbody>
-								<tr ng-repeat="person in people | filter:expression">
+							<!-- <tr ng-repeat="person in people | filter:expression">
 									<td>{{ person.nombre }}</td>
-								</tr>
+								</tr> -->
+								<tr><td>{{people}}</td></tr>
 							</tbody>
 						</table>
 					</div>
