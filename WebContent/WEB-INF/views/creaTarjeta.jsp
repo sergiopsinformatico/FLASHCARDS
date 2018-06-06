@@ -181,11 +181,13 @@
 					        <form>
 					            <div class="field">
 					                <label for="enunciado">Enunciado: </label>
-					                <input id="enunciado" type="text" placeholder="Enunciado" ng-model="newEnunciado">
+					                <textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Enunciado" form="form2" ng-model="newEnunciado"></textarea>
+					                <!-- <input id="enunciado" type="text" placeholder="Enunciado" > -->
 					            </div>
 					             <div class="field">
 					                <label for="respuesta">Respuesta: </label>
-					                <input id="respuesta" type="text" placeholder="Respuesta" ng-model="newRespuesta">
+					                <textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Respuesta" form="form3" ng-model="newRespuesta"></textarea>
+					                <!-- <input id="respuesta" type="text" placeholder="Respuesta" > -->
 					            </div>
 					            <div class="action">
 					                <button ng-click="Add()">Insertar</button>
