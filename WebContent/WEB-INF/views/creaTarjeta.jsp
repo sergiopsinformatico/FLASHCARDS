@@ -99,6 +99,8 @@
 		
 		<div class="row">
 			<br>
+			<h1>CREACIÓN DE UNA COLECCIÓN DE FLASHCARDS</h1>
+			<br>
 		</div>
 		<div class="row">
 			<div class="col-md-1">
@@ -151,7 +153,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group" style="display: none;">
+									<div class="form-group" style="display: none;" id="club">
 										<label for="nClub" class="cols-sm-2 control-label">Nombre del Club</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
@@ -160,7 +162,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group" style="display: none;">
+									<div class="form-group" style="display: none;" id="usuario">
 										<label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
@@ -169,7 +171,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group" style="display: none;">
+									<div class="form-group">
 										<!-- <label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>-->
 										<div class="cols-sm-10">
 											<div class="input-group">
@@ -182,14 +184,14 @@
 									<script>
 									    function option(that) {
 									        if (that.value == "club") {
-									            document.getElementById("nClub").style.display = "block";
-									            document.getElementById("nUsuario").style.display = "none";
+									            document.getElementById("club").style.display = "block";
+									            document.getElementById("usuario").style.display = "none";
 									        } else if(that.value == "usuario"){
-									        	document.getElementById("nClub").style.display = "none";
-									            document.getElementById("nUsuario").style.display = "block";
+									        	document.getElementById("club").style.display = "none";
+									            document.getElementById("usuario").style.display = "block";
 									        }else{
-									        	document.getElementById("nClub").style.display = "none";
-									            document.getElementById("nUsuario").style.display = "none";
+									        	document.getElementById("club").style.display = "none";
+									            document.getElementById("usuario").style.display = "none";
 									        }
 									    }
 									</script>
