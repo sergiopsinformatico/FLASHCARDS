@@ -138,29 +138,34 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="creador" class="cols-sm-2 control-label">Creador</label>
+										<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario() disabled} />
+												<select name="shareWith" id="shareWith" onchange="option(this);" required>
+												    <option value="publico">Todo el Mundo</option>
+												    <option value="privado">Solo yo</option>
+												    <option value="club">Club</option>
+												    <option value="usuario">Usuario</option>
+												  </select>
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="creador" class="cols-sm-2 control-label">Creador</label>
+									<div class="form-group" style="display: none;">
+										<label for="nClub" class="cols-sm-2 control-label">Nombre del Club</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario() disabled} />
+												<input type="text" class="form-control" name="nClub" id="nClub" placeholder="Nombre del Club" />
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="creador" class="cols-sm-2 control-label">Creador</label>
+									<div class="form-group" style="display: none;">
+										<label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario() disabled} />
+												<input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" />
 											</div>
 										</div>
 									</div>
