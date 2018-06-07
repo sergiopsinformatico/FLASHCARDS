@@ -169,6 +169,30 @@
 											</div>
 										</div>
 									</div>
+									<div class="form-group" style="display: none;">
+										<!-- <label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>-->
+										<div class="cols-sm-10">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+												<button type="submit" class="btn btn-primary">Guardar Coleccion</button>
+												<!-- <input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" />-->
+											</div>
+										</div>
+									</div>
+									<script>
+									    function option(that) {
+									        if (that.value == "club") {
+									            document.getElementById("nClub").style.display = "block";
+									            document.getElementById("nUsuario").style.display = "none";
+									        } else if(that.value == "usuario"){
+									        	document.getElementById("nClub").style.display = "none";
+									            document.getElementById("nUsuario").style.display = "block";
+									        }else{
+									        	document.getElementById("nClub").style.display = "none";
+									            document.getElementById("nUsuario").style.display = "none";
+									        }
+									    }
+									</script>
 								</div>
 								<div class="col-md-2"></div>
 								<div class="col-md-4">
