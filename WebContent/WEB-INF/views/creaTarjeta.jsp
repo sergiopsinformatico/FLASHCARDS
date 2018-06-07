@@ -21,6 +21,14 @@
 			textarea {
 			   resize: none;
 			}
+			.fixed-panel-small {
+			  min-height: 300;
+			  max-height: 300;
+			  min-width: 600;
+			  max-width: 600;
+			  overflow: -moz-scrollbars-vertical; 
+			  overflow-y: scroll;
+			}
 	    </style>
 	   	<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -138,6 +146,11 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+												<style>
+													textarea {
+													   resize: none;
+													}
+												</style>
 												<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
 											</div>
 										</div>
@@ -161,7 +174,23 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<input type="text" class="form-control" name="nClub" id="nClub" placeholder="Nombre del Club" />
+												<!-- <input type="text" class="form-control" name="nClub" id="nClub" placeholder="Nombre del Club" /> -->
+												<div class="panel panel-primary" ng-controller="clubCtrl">
+													<div class="panel-heading">
+														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+													</div>
+													<div class="panel-body fixed-panel-small">
+														<table class="table table-bordered table-striped">
+															<tbody>
+																<tr ng-repeat="person in people | filter:expression">
+																	<td>{{ person.name }}</td>
+																	<td>{{ person.age }}</td>
+																	<td>{{ person.hobbies.join(', ') }}</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -170,7 +199,23 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" />
+												<!-- <input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" /> -->
+												<div class="panel panel-primary" ng-controller="usuarioCtrl">
+													<div class="panel-heading">
+														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+													</div>
+													<div class="panel-body fixed-panel-small">
+														<table class="table table-bordered table-striped">
+															<tbody>
+																<tr ng-repeat="person in people | filter:expression">
+																	<td>{{ person.name }}</td>
+																	<td>{{ person.age }}</td>
+																	<td>{{ person.hobbies.join(', ') }}</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -226,9 +271,9 @@
 									    </div>
 									    
 									    <div class="list_data">
-									        <h5>Lista de Tarjetas</h5><br>
+									        <br><h5>Lista de Tarjetas</h5><br>
 									        <div ng-if="records.length == 0"> 
-										        Aún, no hay creada ninguna tarjeta. Como mínimo, debe de haber una.
+										        Aún, no hay creada ninguna tarjeta. Como mínimo, la colección debe estar formada por una tarjeta.
 										    </div>
 										    <div ng-if="records.length > 0">
 										        <table>
@@ -286,7 +331,7 @@
 		                $scope.history.shift();
 	
 		            var eliminar = $scope.records[index];
-		            $http.post('http://localhost:8080/Flashcards/eliminarTarjeta.html', 
+		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	enunciado: eliminar.enunciado,
 			            	respuesta: eliminar.respuesta
@@ -310,7 +355,7 @@
 		                respuesta: $scope.newRespuesta
 		            });
 		            
-		            $http.post('http://localhost:8080/Flashcards/tarjeta.html', 
+		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
 			            	enunciado: $scope.newEnunciado,
 			            	respuesta: $scope.newRespuesta
@@ -321,7 +366,7 @@
 		        // Undo action (delete)
 		        $scope.Undo = function () {
 		            var elemento = $scope.history[ $scope.history.length - 1 ];
-		            $http.post('http://localhost:8080/Flashcards/tarjeta.html', 
+		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
 			            	enunciado: elemento.enunciado,
 			            	respuesta: elemento.respuesta
@@ -330,6 +375,121 @@
 		            $scope.history.pop();
 		        }
 			}
+			
+			function usuarioCtrl($scope){
+				$scope.people = [
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
+				];
+			};
+			
+			function clubCtrl($scope){
+				$scope.people = [
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
+					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
+					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
+					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
+					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
+				];
+			};
+			
 		</script>
 	</body>
 </html>
