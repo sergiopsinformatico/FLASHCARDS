@@ -21,14 +21,6 @@
 			textarea {
 			   resize: none;
 			}
-			.fixed-panel-small {
-			  min-height: 300;
-			  max-height: 300;
-			  min-width: 600;
-			  max-width: 600;
-			  overflow: -moz-scrollbars-vertical; 
-			  overflow-y: scroll;
-			}
 	    </style>
 	   	<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -180,8 +172,8 @@
 													</div>
 													<style>
 														.fixed-panel-small {
-														  min-height: 100;
-														  max-height: 100;
+														  min-height: 300;
+														  max-height: 300;
 														  min-width: 600;
 														  max-width: 600;
 														  overflow: -moz-scrollbars-vertical; 
@@ -214,8 +206,8 @@
 													</div>
 													<style>
 														.fixed-panel-small {
-														  min-height: 100;
-														  max-height: 100;
+														  min-height: 300;
+														  max-height: 300;
 														  min-width: 600;
 														  max-width: 600;
 														  overflow: -moz-scrollbars-vertical; 
