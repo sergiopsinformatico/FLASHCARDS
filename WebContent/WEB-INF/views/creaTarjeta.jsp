@@ -174,11 +174,20 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<!-- <input type="text" class="form-control" name="nClub" id="nClub" placeholder="Nombre del Club" /> -->
 												<div class="panel panel-primary" ng-controller="clubCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
+													<style>
+														.fixed-panel-small {
+														  min-height: 300;
+														  max-height: 300;
+														  min-width: 600;
+														  max-width: 600;
+														  overflow: -moz-scrollbars-vertical; 
+														  overflow-y: scroll;
+														}
+													</style>
 													<div class="panel-body fixed-panel-small">
 														<table class="table table-bordered table-striped">
 															<tbody>
@@ -199,11 +208,20 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<!-- <input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" /> -->
 												<div class="panel panel-primary" ng-controller="usuarioCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
+													<style>
+														.fixed-panel-small {
+														  min-height: 300;
+														  max-height: 300;
+														  min-width: 600;
+														  max-width: 600;
+														  overflow: -moz-scrollbars-vertical; 
+														  overflow-y: scroll;
+														}
+													</style>
 													<div class="panel-body fixed-panel-small">
 														<table class="table table-bordered table-striped">
 															<tbody>
@@ -253,6 +271,7 @@
 								<div class="col-md-4">
 									<div ng-controller="RecordCtrl">				  
 									    <div class="add_data">
+									    	<br>
 									        <h5>Insertar Nueva Tarjeta</h5>
 									        <form>
 									            <div class="field">
