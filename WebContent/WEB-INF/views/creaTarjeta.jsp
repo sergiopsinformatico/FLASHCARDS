@@ -179,9 +179,9 @@
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
 													<style>
-														.fixed-panel-small {
-														  min-height: 300;
-														  max-height: 300;
+														div.fixed-panel-small {
+														  min-height: 100;
+														  max-height: 100;
 														  min-width: 600;
 														  max-width: 600;
 														  overflow: -moz-scrollbars-vertical; 
@@ -213,9 +213,9 @@
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
 													<style>
-														.fixed-panel-small {
-														  min-height: 300;
-														  max-height: 300;
+														div.fixed-panel-small {
+														  min-height: 100;
+														  max-height: 100;
 														  min-width: 600;
 														  max-width: 600;
 														  overflow: -moz-scrollbars-vertical; 
