@@ -167,7 +167,7 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
+												<div class="panel panel-primary" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
@@ -191,7 +191,7 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
+												<div class="panel panel-primary" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
