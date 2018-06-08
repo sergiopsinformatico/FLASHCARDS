@@ -167,21 +167,11 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" ng-controller="clubCtrl">
+												<div class="panel panel-primary" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<!-- <style>
-														.fixed-panel-small {
-														  min-height: 300;
-														  
-														  min-width: 600;
-														  max-width: 600;
-														   
-														  overflow-y: scroll;
-														}
-													</style>-->
-													<div class="panel-body" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+													<div class="panel-body">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
@@ -201,20 +191,10 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" ng-controller="usuarioCtrl">
+												<div class="panel panel-primary" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<!-- <style>
-														..fixed-panel-small {
-														  min-height: 300;
-														  max-height: 300;
-														  min-width: 600;
-														  max-width: 600;
-														  overflow: -moz-scrollbars-vertical; 
-														  overflow-y: scroll;
-														}
-													</style>-->
 													<div class="panel-body" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
