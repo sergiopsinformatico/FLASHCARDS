@@ -171,7 +171,7 @@
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
 													<style>
-														div.fixed-panel-small {
+														fixed-panel-small {
 														  min-height: 300;
 														  max-height: 300;
 														  min-width: 600;
@@ -205,7 +205,7 @@
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
 													<style>
-														div.fixed-panel-small {
+														fixed-panel-small {
 														  min-height: 300;
 														  max-height: 300;
 														  min-width: 600;
