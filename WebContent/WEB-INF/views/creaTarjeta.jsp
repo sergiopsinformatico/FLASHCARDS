@@ -171,17 +171,17 @@
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<style>
+													<!-- <style>
 														.fixed-panel-small {
 														  min-height: 300;
-														  max-height: 300;
+														  
 														  min-width: 600;
 														  max-width: 600;
-														  overflow: -moz-scrollbars-vertical; 
+														   
 														  overflow-y: scroll;
 														}
-													</style>
-													<div class="panel-body fixed-panel-small">
+													</style>-->
+													<div class="panel-body" style="max-height: 300;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
@@ -205,7 +205,7 @@
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<style>
+													<!-- <style>
 														..fixed-panel-small {
 														  min-height: 300;
 														  max-height: 300;
@@ -214,8 +214,8 @@
 														  overflow: -moz-scrollbars-vertical; 
 														  overflow-y: scroll;
 														}
-													</style>
-													<div class="panel-body fixed-panel-small">
+													</style>-->
+													<div class="panel-body" style="max-height: 300;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
