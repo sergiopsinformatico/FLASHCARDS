@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 	<head>
 	    <title>Crear Tarjeta - Flashcard</title>
 	    <style>
@@ -31,7 +31,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 
-	<body>
+	<body ng-app="myAppCard">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -261,7 +261,7 @@
 								</div>
 								<div class="col-md-2"></div>
 								<div class="col-md-4">
-									<div ng-controller="RecordCtrl">				  
+									<div ng-controller="recordCtrl">				  
 									    <div class="add_data">
 									    	<br>
 									        <h5>Insertar Nueva Tarjeta</h5>
@@ -314,7 +314,7 @@
 		</div>
 		<script>
 			
-			function RecordCtrl ($scope, $http) {
+			var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
 	
@@ -384,7 +384,7 @@
 		        }
 			}
 			
-			function usuarioCtrl($scope){
+			var usuarioControlador = function ($scope){
 				$scope.people = [
 					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -441,7 +441,7 @@
 				];
 			};
 			
-			function clubCtrl($scope){
+			var clubControlador = function ($scope){
 				$scope.people = [
 					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
@@ -497,6 +497,11 @@
 					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 				];
 			};
+			
+			var app = angular.module('myAppCard', []);
+			app.controller('clubCtrl', clubControlador);
+			app.controller('usuarioCtrl', usuarioControlador);
+			app.controller('recordCtrl', recordControlador);
 		</script>
 	</body>
 </html>
