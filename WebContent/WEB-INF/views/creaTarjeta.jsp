@@ -102,9 +102,9 @@
 				<br><br>
 			</div>
 			<div class="col-md-11">
-			<br><h1>CREACIÓN DE UNA COLECCIÓN DE FLASHCARDS</h1><br>
+				<br><h1>CREACIÓN DE UNA COLECCIÓN DE FLASHCARDS</h1><br>
 			</div>
-		</div>
+		</div> 
 		<div class="row">
 			<div class="col-md-1">
 			</div>
@@ -115,6 +115,7 @@
 							<div class="row">
 								<div class="col-md-1"></div>
 								<div class="col-md-4">
+									<br>
 									<div class="form-group">
 										<label for="creador" class="cols-sm-2 control-label">Creador</label>
 										<div class="cols-sm-10">
@@ -230,12 +231,10 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<!-- <label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>-->
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 												<button type="submit" class="btn btn-primary">Guardar Coleccion</button>
-												<!-- <input type="text" class="form-control" name="nUsuario" id="nUsuario" placeholder="Nombre del Usuario" />-->
 											</div>
 										</div>
 									</div>
@@ -255,6 +254,7 @@
 									</script>
 									<script language="JavaScript" type="text/javascript">
 										document.form1.nombre.value = "${flashcard.getNombreColeccion()}";
+										document.form1.descripcion.value = "${flashcard.getDescripcion()}";
 									    document.form1.shareWith.value = "${flashcard.getCompartido()}";
 									    option(document.form1.shareWith);
 									</script>
@@ -280,9 +280,8 @@
 									            </div>
 									        </form>
 									    </div>
-									    
 									    <div class="list_data">
-									        <br><h5>Lista de Tarjetas</h5><br>
+									    	<br><h5>Lista de Tarjetas</h5><br>
 									        <div ng-if="records.length == 0"> 
 										        Aún, no hay creada ninguna tarjeta. Como mínimo, la colección debe estar formada por una tarjeta.
 										    </div>
@@ -307,14 +306,12 @@
 								<div class="col-md-1"></div>
 							</div>
 						</form>
-			        </div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-1">
 			</div>
 		</div>
-		
-		
 		<script>
 			
 			function RecordCtrl ($scope, $http) {
@@ -500,7 +497,6 @@
 					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
 				];
 			};
-			
 		</script>
 	</body>
 </html>
