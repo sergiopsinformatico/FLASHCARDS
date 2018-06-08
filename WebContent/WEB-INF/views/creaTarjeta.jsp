@@ -162,12 +162,13 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group" style="display: none;" id="club">
+									<br>Nombre del Club<br>
+									<!--  <div class="form-group" style="display: none;" id="club">
 										<label for="nClub" class="cols-sm-2 control-label">Nombre del Club</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
-												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
+												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+												<div class="panel panel-primary" id="club" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
@@ -183,15 +184,16 @@
 														</table>
 													</div>
 												</div>
-											</div>
+											<!-- </div>
 										</div>
-									</div>
-									<div class="form-group" style="display: none;" id="usuario">
+									</div>-->
+									<br>Nombre del Usuario<br>
+									<!-- <div class="form-group" style="display: none;" id="usuario">
 										<label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
-												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<div class="panel panel-primary" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
+												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+												<div class="panel panel-primary" id="usuario" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
 													<div class="panel-heading">
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
@@ -207,9 +209,9 @@
 														</table>
 													</div>
 												</div>
-											</div>
+											<!-- </div>
 										</div>
-									</div>
+									</div>-->
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group">
