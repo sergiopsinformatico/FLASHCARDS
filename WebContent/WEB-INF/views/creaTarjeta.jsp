@@ -181,13 +181,13 @@
 														  overflow-y: scroll;
 														}
 													</style>-->
-													<div class="panel-body" style="max-height: 300;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+													<div class="panel-body" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
 																	<td>{{ person.name }}</td>
-																	<td>{{ person.age }}</td>
-																	<td>{{ person.hobbies.join(', ') }}</td>
+																	<!-- <td>{{ person.age }}</td>
+																	<td>{{ person.hobbies.join(', ') }}</td>-->
 																</tr>
 															</tbody>
 														</table>
@@ -215,13 +215,13 @@
 														  overflow-y: scroll;
 														}
 													</style>-->
-													<div class="panel-body" style="max-height: 300;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+													<div class="panel-body" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
 																	<td>{{ person.name }}</td>
-																	<td>{{ person.age }}</td>
-																	<td>{{ person.hobbies.join(', ') }}</td>
+																	<!-- <td>{{ person.age }}</td>
+																	<td>{{ person.hobbies.join(', ') }}</td>-->
 																</tr>
 															</tbody>
 														</table>
