@@ -162,17 +162,18 @@
 											</div>
 										</div>
 									</div>
-									<br>Nombre del Club<br>
+									
 									<!--  <div class="form-group" style="display: none;" id="club">
 										<label for="nClub" class="cols-sm-2 control-label">Nombre del Club</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-												<div class="panel panel-primary" id="club" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="clubCtrl">
+												<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
 													<div class="panel-heading">
+														<br>Nombre del Club<br>
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<div class="panel-body">
+													<div class="panel-body" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
@@ -187,17 +188,18 @@
 											<!-- </div>
 										</div>
 									</div>-->
-									<br>Nombre del Usuario<br>
+									
 									<!-- <div class="form-group" style="display: none;" id="usuario">
 										<label for="nUsuario" class="cols-sm-2 control-label">Nombre del Usuario</label>
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-												<div class="panel panel-primary" id="usuario" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" ng-controller="usuarioCtrl">
+												<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
 													<div class="panel-heading">
+														<br>Nombre del Usuario<br>
 														<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 													</div>
-													<div class="panel-body" style="max-height: 100;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+													<div class="panel-body" style="max-height: 10;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
 														<table class="table table-bordered table-striped">
 															<tbody>
 																<tr ng-repeat="person in people | filter:expression">
