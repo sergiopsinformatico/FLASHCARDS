@@ -18,6 +18,8 @@ public class DBClubes {
     MongoCollection<Document> coleccionClubes;
     Document doc;
     ArrayList<String>miembros;
+    ArrayList<String> clubes;
+    int indice;
     
     public DBClubes() {
     	conexionDB();
@@ -72,10 +74,25 @@ public class DBClubes {
 	}
 	
 	public ArrayList<String> readAllClubes() {
-		ArrayList<String> clubes = new ArrayList<String>();
+		clubes = new ArrayList<String>();
 		MongoCursor<Document> listas = coleccionClubes.find().iterator();
 		while(listas.hasNext()) {
 			clubes.add(listas.next().getString("nombre"));
+		}
+		return clubes;
+	}
+	
+	public ArrayList<String> readClubesUsuario(String usuario) {
+		clubes = new ArrayList<String>();
+		MongoCursor<Document> listas = coleccionClubes.find().iterator();
+		while(listas.hasNext()) {
+			miembros = (ArrayList<String>)listas.next().get("miembros");
+			for(indice=0; indice<miembros.size(); indice++) {
+				if(miembros.get(indice).equals(usuario)) {
+					clubes.add(listas.next().get("nombre").toString());
+					indice = miembros.size();
+				}
+			}
 		}
 		return clubes;
 	}

@@ -163,35 +163,53 @@
 										</div>
 									</div>
 									<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
-										<div class="panel-heading">
-											<br>Nombre del Club<br>
-											<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-										</div>
-										<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-											<table class="table table-bordered table-striped">
-												<tbody>
-													<tr ng-repeat="person in people | filter:expression">
-														<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} required /></td>
-														<td>{{ person.name }}</td>
-													</tr>
-												</tbody>
-											</table>
+										<div ng-if="clubes.length == 0"> 
+									        No pertenece a ningún club.
+									        <script language="JavaScript" type="text/javascript">
+												document.form1.shareWith.value = "publico";
+											    option(document.form1.shareWith);
+											</script>
+									    </div>
+									    <div ng-if="clubes.length > 0">
+											<div class="panel-heading">
+												<br>Nombre del Club<br>
+												<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+											</div>
+											<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+												<table class="table table-bordered table-striped">
+													<tbody>
+														<tr ng-repeat="club in clubes | filter:expression">
+															<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} /></td>
+															<td>{{ club.name }}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>									
 									<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
-										<div class="panel-heading">
-											<br>Nombre del Usuario<br>
-											<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-										</div>
-										<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
-											<table class="table table-bordered table-striped">
-												<tbody>
-													<tr ng-repeat="person in people | filter:expression">
-														<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} required /></td>
-														<td>{{ person.name }}</td>
-													</tr>
-												</tbody>
-											</table>
+										<div ng-if="people.length == 0"> 
+									        No tiene aún amigos.
+									        <script language="JavaScript" type="text/javascript">
+												document.form1.shareWith.value = "publico";
+											    option(document.form1.shareWith);
+											</script>
+									    </div>
+										<div ng-if="people.length > 0">
+											<div class="panel-heading">
+												<br>Nombre del Usuario<br>
+												<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+											</div>
+											<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+												<table class="table table-bordered table-striped">
+													<tbody>
+														<tr ng-repeat="person in people | filter:expression">
+															<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} /></td>
+															<td>{{ person.name }}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -349,7 +367,18 @@
 			}
 			
 			var usuarioControlador = function ($scope){
-				$scope.people = [
+				$scope.people = [];
+				var cadena = "${amigos}";
+		        var array = cadena.split("AM**//--AM**//--");
+		        var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	$scope.people.push({
+			        		name: array[i]
+			        	});
+			        }
+		        }
+				/*$scope.people = [
 					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
 					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
@@ -402,11 +431,22 @@
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
 					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-				];
+				];*/
 			};
 			
 			var clubControlador = function ($scope){
-				$scope.people = [
+				$scope.clubes = [];
+				var cadena = "${clubes}";
+		        var array = cadena.split("CL**//--CL**//--");
+		        var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	$scope.clubes.push({
+			        		name: array[i]
+			        	});
+			        }
+		        }
+				/*$scope.people = [
 					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
 					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
@@ -459,7 +499,7 @@
 					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
 					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
 					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-				];
+				];*/
 			};
 			
 			var app = angular.module('myAppCard', []);

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
@@ -23,6 +25,7 @@ public class ControladorTarjetas {
 	LinkedList<Tarjeta> tarjetas = new LinkedList<Tarjeta>();
 	GestionClubes gC = new GestionClubes();
 	GestionUsuarios gU = new GestionUsuarios();
+	GestionAmigos gA = new GestionAmigos();
 	JSONObject parser;
 	ModelAndView vista;
 	Tarjeta t;
@@ -35,8 +38,10 @@ public class ControladorTarjetas {
 	}
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.POST)
-	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView crearColeccion(@RequestParam("usuario") String usuario) {
 		vista = new ModelAndView("creaTarjeta");
+		vista.addObject("clubes", gC.leerClubesUsuarioJSON(usuario));
+		vista.addObject("amigos", gA.getAmigosJSON(usuario));
 		return vista;
 	}
 	

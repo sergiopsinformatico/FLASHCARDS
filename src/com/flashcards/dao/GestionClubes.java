@@ -1,12 +1,14 @@
 package com.flashcards.dao;
 
 import java.util.ArrayList;
-
 import com.flashcards.db.DBClubes;
 import com.flashcards.modelo.Club;
 
 public class GestionClubes {
 	DBClubes dB;
+	ArrayList<String> clubes;
+	String aux;
+	int indice;
 	
 	public GestionClubes() {
 		dB = new DBClubes();
@@ -38,5 +40,18 @@ public class GestionClubes {
 	
 	public ArrayList<String> leerClubes(){
 		return dB.readAllClubes();
+	}
+	
+	public String leerClubesUsuarioJSON(String usuario){
+		aux = "";
+		clubes = dB.readClubesUsuario(usuario);
+		for(indice=0; indice<clubes.size(); indice++) {
+			if(indice==0) {
+				aux = clubes.get(indice);
+			}else {
+				aux = aux + "CL**//--CL**//--" + clubes.get(indice);
+			}
+		}
+		return aux;
 	}
 }
