@@ -171,9 +171,8 @@
 											<table class="table table-bordered table-striped">
 												<tbody>
 													<tr ng-repeat="person in people | filter:expression">
+														<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} required /></td>
 														<td>{{ person.name }}</td>
-														<!-- <td>{{ person.age }}</td>
-														<td>{{ person.hobbies.join(', ') }}</td>-->
 													</tr>
 												</tbody>
 											</table>
@@ -188,9 +187,8 @@
 											<table class="table table-bordered table-striped">
 												<tbody>
 													<tr ng-repeat="person in people | filter:expression">
+														<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} required /></td>
 														<td>{{ person.name }}</td>
-														<!-- <td>{{ person.age }}</td>
-														<td>{{ person.hobbies.join(', ') }}</td>-->
 													</tr>
 												</tbody>
 											</table>
@@ -200,7 +198,7 @@
 										<div class="cols-sm-10">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-												<button type="submit" class="btn btn-primary">Guardar Coleccion</button>
+												<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
 											</div>
 										</div>
 									</div>
