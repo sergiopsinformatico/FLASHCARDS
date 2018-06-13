@@ -37,7 +37,7 @@ public class ControladorTarjetas {
 		return parser.getString(tag);
 	}
 	
-	@RequestMapping(value = "/crearColeccion", method = RequestMethod.POST)
+	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
 	public ModelAndView crearColeccion(@RequestParam("usuario") String usuario) {
 		vista = new ModelAndView("creaTarjeta");
 		vista.addObject("clubes", gC.leerClubesUsuarioJSON(usuario));
