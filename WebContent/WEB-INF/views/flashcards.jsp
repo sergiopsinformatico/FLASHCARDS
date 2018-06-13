@@ -90,14 +90,9 @@
 			</div>
 			<div class="col-md-3">
 				<div class="col-md-12" style="width:100%">
-					<form action="https://sistemaflashcards.herokuapp.com/crearColeccion.html?usuario=${usuario.getUsuario()}" class="border-login" id="form1">
-					    <input type="submit" value="Crear Colección de Flashcards" />
+					<form action="crearColeccion.html?usuario=${usuario.getUsuario()}">
+						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Crear Coleccion Flashcards</button>
 					</form>
-					<!-- <form action="crearColeccion.html" method="post" class="border-login" id="form1">
-					  	<button type="submit" class="btn btn-info">
-					  		
-					  	</button>
-					</form>-->
 				</div>
 			</div>
 			<div class="col-md-2">
