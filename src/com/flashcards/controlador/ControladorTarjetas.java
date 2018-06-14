@@ -78,21 +78,23 @@ public class ControladorTarjetas {
 		flash.setColeccion(tarjetas);
 		flash.setNombreColeccion(request.getParameter("nombre"));
 		flash.setDescripcion(request.getParameter("descripcion"));
-		
-		switch(request.getParameter("shareWith")) {
+		flash.setEvaluado(false);
+		flash.setEvaluador("");
+		flash.setCompartido(request.getParameter("shareWith"));
+		switch(flash.getCompartido()) {
 			case "publico":
 				do {
 					identificador = "publico/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setCompartido("todos");
+				flash.setNombreCompartido("todos");
 				break;
 			case "privado":
 				do {
 					identificador = "privado/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setCompartido("yo");
+				flash.setNombreCompartido("yo");
 				break;
 			case "club":
 				do {
@@ -113,7 +115,7 @@ public class ControladorTarjetas {
 					vista.addObject("mensaje", "No ha seleccionado el nombre del club");
 					return vista;
 				}else {
-					flash.setCompartido(request.getParameter("selectClub"));
+					flash.setNombreCompartido(request.getParameter("selectClub"));
 				}
 				
 				break;
@@ -136,7 +138,7 @@ public class ControladorTarjetas {
 					vista.addObject("mensaje", "No ha seleccionado a un usuario");
 					return vista;
 				}else {
-					flash.setCompartido(request.getParameter("selectUsuario"));
+					flash.setNombreCompartido(request.getParameter("selectUsuario"));
 				}
 				break;
 		}
@@ -151,7 +153,7 @@ public class ControladorTarjetas {
 			vista.addObject("name", flash.getNombreColeccion());
 			vista.addObject("description", flash.getDescripcion());
 			vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
-			vista.addObject("shareOptionWith", flash.getCompartido());
+			vista.addObject("shareOptionWith", flash.getNombreCompartido());
 			vista.addObject("mensaje", "La colección debe estar formada por al menos una tarjeta");
 			return vista;
 		}else {

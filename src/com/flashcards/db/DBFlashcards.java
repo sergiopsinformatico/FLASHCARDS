@@ -1,10 +1,13 @@
 package com.flashcards.db;
 
+import java.util.LinkedList;
+
 import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
 import com.flashcards.modelo.Flashcard;
+import com.flashcards.modelo.Tarjeta;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -21,6 +24,9 @@ public class DBFlashcards {
     int indice;
     boolean existe;
     MongoCursor<Document> listaPosibles;
+    LinkedList<Tarjeta>cards;
+    String cardsJSON;
+    Tarjeta t;
     
 	public DBFlashcards() {
 		conexionDB();
@@ -38,16 +44,30 @@ public class DBFlashcards {
 	}
 	
 	public boolean insertFlashcard(Flashcard flash) {
-		boolean insert = false;
 		try {
 			doc = new Document();
 			doc.append("identificador", flash.getIdentificador());
+			doc.append("coleccion", flash.getNombreColeccion());
+			doc.append("descripcion", flash.getDescripcion());
+			doc.append("compartido", flash.getCompartido());
+			doc.append("compartidoCon", flash.getNombreCompartido());
+			doc.append("evaluado", flash.isEvaluado());
+			doc.append("evaluador", flash.getEvaluador());
+			cards = flash.getColeccion();
+			for(indice=0; indice<cards.size(); indice++) {
+				t = cards.get(indice);
+				if(indice==0) {
+					cardsJSON = t.getEnunciado()+"///****resp****///"+t.getRespuesta();
+				}else {
+					cardsJSON = cardsJSON + "///****nuevaCARD****///"+t.getEnunciado()+"///****resp****///"+t.getRespuesta();
+				}
+			}
+			doc.append("cards", cardsJSON);
 			coleccionFlashcards.insertOne(doc);
-			insert = true;
+			return true;
 		}catch(Exception ex) {
-			insert = false;
+			return false;
 		}
-		return insert;
 	}
 	
 	public boolean existIdentificador(String identificador) {
