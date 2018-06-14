@@ -290,7 +290,6 @@
 			</div>
 		</div>
 		<script>
-			document.form1.creador.value = "${crea}";
 			document.form1.nombre.value = "${name}";
 			document.form1.descripcion.value = "${description}";
 			document.form1.shareWith.value = "${shareOption}";
