@@ -95,7 +95,6 @@
 				<form action="eliminar.html?usuario=${usuario.getUsuario()}">
 					<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</button>
 				</form>
-		   		<!-- <a href="" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a> -->
 				Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.
 			</div>
 			<div class="col-md-2 center">

@@ -90,7 +90,7 @@
 			</div>
 			<div class="col-md-3">
 				<div class="col-md-12" style="width:100%">
-					<form action="crearColeccion.html?usuario=${usuario.getUsuario()}">
+					<form action="crearColeccion.html">
 						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Crear Coleccion Flashcards</button>
 					</form>
 				</div>

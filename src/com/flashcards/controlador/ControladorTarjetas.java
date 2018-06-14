@@ -18,6 +18,7 @@ import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.Tarjeta;
+import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorTarjetas {
@@ -31,6 +32,7 @@ public class ControladorTarjetas {
 	Tarjeta t;
 	int i;
 	Flashcard flash;
+	Usuario user;
 	
 	public String readJSON(String json, String tag) {
 		parser = new JSONObject(json);
@@ -38,10 +40,11 @@ public class ControladorTarjetas {
 	}
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
-	public ModelAndView crearColeccion(@RequestParam("usuario") String usuario) {
+	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("creaTarjeta");
-		vista.addObject("clubes", gC.leerClubesUsuarioJSON(usuario));
-		vista.addObject("amigos", gA.getAmigosJSON(usuario));
+		user = (Usuario)request.getSession().getAttribute("usuario");
+		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
+		vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
 		return vista;
 	}
 	

@@ -167,7 +167,6 @@
 									        No pertenece a ningún club.
 									        <script language="JavaScript" type="text/javascript">
 												document.form1.shareWith.value = "publico";
-											    option(document.form1.shareWith);
 											</script>
 									    </div>
 									    <div ng-if="clubes.length > 0">
@@ -192,7 +191,6 @@
 									        No tiene aún amigos.
 									        <script language="JavaScript" type="text/javascript">
 												document.form1.shareWith.value = "publico";
-											    option(document.form1.shareWith);
 											</script>
 									    </div>
 										<div ng-if="people.length > 0">
