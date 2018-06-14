@@ -50,6 +50,7 @@ public class ControladorTarjetas {
 		user = (Usuario)request.getSession().getAttribute("usuario");
 		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 		vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
+		vista.addObject("usuario", user);
 		return vista;
 	}
 	
@@ -100,6 +101,7 @@ public class ControladorTarjetas {
 				if(request.getParameter("selectClub").equals("")) {
 					vista = new ModelAndView("creaTarjeta");
 					user = (Usuario)request.getSession().getAttribute("usuario");
+					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
 					vista.addObject("crea", flash.getCreador());
@@ -122,6 +124,7 @@ public class ControladorTarjetas {
 				if(request.getParameter("selectUsuario").equals("")) {
 					vista = new ModelAndView("creaTarjeta");
 					user = (Usuario)request.getSession().getAttribute("usuario");
+					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
 					vista.addObject("crea", flash.getCreador());
