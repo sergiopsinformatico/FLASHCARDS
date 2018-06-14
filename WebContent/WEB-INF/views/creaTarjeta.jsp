@@ -165,8 +165,9 @@
 									<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
 										<div ng-if="clubes.length == 0"> 
 									        No pertenece a ningún club.
+									        <br>
 									        <script language="JavaScript" type="text/javascript">
-												document.form1.shareWith.value = "publico";
+												change();
 											</script>
 									    </div>
 									    <div ng-if="clubes.length > 0">
@@ -189,8 +190,9 @@
 									<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
 										<div ng-if="people.length == 0"> 
 									        No tiene aún amigos.
+									        <br>
 									        <script language="JavaScript" type="text/javascript">
-												document.form1.shareWith.value = "publico";
+												change();
 											</script>
 									    </div>
 										<div ng-if="people.length > 0">
@@ -293,7 +295,10 @@
 			</div>
 		</div>
 		<script>
-			
+			function change(){
+				document.form1.shareWith.value = "publico";
+			}
+		
 			var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
