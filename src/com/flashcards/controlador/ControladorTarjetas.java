@@ -73,7 +73,8 @@ public class ControladorTarjetas {
 	@RequestMapping(value = "/guardarFlashcard", method = RequestMethod.POST)
 	public ModelAndView guardarFlashcard(HttpServletRequest request, HttpServletResponse response) {
 		flash = new Flashcard();
-		flash.setCreador(request.getParameter("creador"));
+		user = (Usuario)request.getSession().getAttribute("usuario");
+		flash.setCreador(user.getUsuario());
 		flash.setColeccion(tarjetas);
 		flash.setNombreColeccion(request.getParameter("nombre"));
 		flash.setDescripcion(request.getParameter("descripcion"));
