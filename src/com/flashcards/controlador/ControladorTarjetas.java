@@ -98,7 +98,7 @@ public class ControladorTarjetas {
 					identificador = "club/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				if(request.getParameter("selectClub").equals("")) {
+				if(request.getParameter("selectClub")==null || request.getParameter("selectClub").equals("")) {
 					vista = new ModelAndView("creaTarjeta");
 					user = (Usuario)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
@@ -121,7 +121,7 @@ public class ControladorTarjetas {
 					identificador = "usuario/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				if(request.getParameter("selectUsuario").equals("")) {
+				if(request.getParameter("selectUsuario")==null || request.getParameter("selectUsuario").equals("")) {
 					vista = new ModelAndView("creaTarjeta");
 					user = (Usuario)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
