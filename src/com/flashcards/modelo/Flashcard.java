@@ -4,17 +4,9 @@ import java.util.LinkedList;
 
 public class Flashcard {
 	LinkedList<Tarjeta> coleccion;
-	String identificador, creador, nombreColeccion, compartido, nombreCompartido, evaluador, coleccionJSON, auxJSON;
+	String identificador, creador, nombreColeccion, compartido, nombreCompartido, evaluador, coleccionJSON, auxJSON, descripcion;
 	Tarjeta t;
 	boolean evaluado;
-	
-	public Flashcard(LinkedList<Tarjeta> coleccion, String creador, String nombreColeccion, String compartido) {
-		setColeccion(coleccion);
-		setCreador(creador);
-		setNombreColeccion(nombreColeccion);
-		setCompartido(compartido);
-		setEvaluado(false);
-	}
 	
 	public LinkedList<Tarjeta> getColeccion() {
 		return this.coleccion;
@@ -87,5 +79,13 @@ public class Flashcard {
 			}
 		}
 		setColeccionJSON(auxJSON);
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 }

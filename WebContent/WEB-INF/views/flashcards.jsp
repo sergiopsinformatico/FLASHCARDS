@@ -18,6 +18,11 @@
 			}
 			session.setAttribute("usuario", user);
 		%>
+		<script language="JavaScript" type="text/javascript">
+			if("${mensaje}" != ""){
+				alert("${mensaje}");
+			}
+		</script>
 		
 		<style>
 			div.center {
@@ -41,7 +46,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+						<a class="nav-link active" href="flashcards.html?usuario=${usuario.getUsuario()}">
 							Flashcards
 						</a>
 					</li>
@@ -63,7 +68,7 @@
 	    		</ul>
 	    		<ul class="navbar-nav ml-auto">
 	    			<li class="nav-item dropdown">
-                    	<a href="#" class="nav-link dropdown-toggle active" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
+                    	<a href="#" class="nav-link dropdown-toggle " id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
 	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>

@@ -1,6 +1,7 @@
 package com.flashcards.controlador;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionClubes;
+import com.flashcards.dao.GestionFlashcards;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.Tarjeta;
@@ -27,12 +29,15 @@ public class ControladorTarjetas {
 	GestionClubes gC = new GestionClubes();
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionAmigos gA = new GestionAmigos();
+	GestionFlashcards gF = new GestionFlashcards();
 	JSONObject parser;
 	ModelAndView vista;
 	Tarjeta t;
 	int i;
 	Flashcard flash;
 	Usuario user;
+	String identificador;
+	Random r = new Random();
 	
 	public String readJSON(String json, String tag) {
 		parser = new JSONObject(json);
@@ -66,8 +71,95 @@ public class ControladorTarjetas {
 
 	@RequestMapping(value = "/guardarFlashcard", method = RequestMethod.POST)
 	public ModelAndView guardarFlashcard(HttpServletRequest request, HttpServletResponse response) {
-		flash = new Flashcard(tarjetas, request.getParameter("creador"), request.getParameter("nombre"), request.getParameter("shareWith"));
-		if(flash.getColeccion().size()==0) {
+		flash = new Flashcard();
+		flash.setCreador(request.getParameter("creador"));
+		flash.setColeccion(tarjetas);
+		flash.setNombreColeccion(request.getParameter("nombre"));
+		flash.setDescripcion(request.getParameter("descripcion"));
+		
+		switch(request.getParameter("shareWith")) {
+			case "publico":
+				do {
+					identificador = "publico/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+				}while(gF.existeIdentificador(identificador));
+				flash.setIdentificador(identificador);
+				flash.setCompartido("todos");
+				break;
+			case "privado":
+				do {
+					identificador = "privado/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+				}while(gF.existeIdentificador(identificador));
+				flash.setIdentificador(identificador);
+				flash.setCompartido("yo");
+				break;
+			case "club":
+				do {
+					identificador = "club/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+				}while(gF.existeIdentificador(identificador));
+				flash.setIdentificador(identificador);
+				if(request.getParameter("selectClub").equals("")) {
+					vista = new ModelAndView("creaTarjeta");
+					user = (Usuario)request.getSession().getAttribute("usuario");
+					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
+					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
+					vista.addObject("crea", flash.getCreador());
+					vista.addObject("name", flash.getNombreColeccion());
+					vista.addObject("description", flash.getDescripcion());
+					vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+					vista.addObject("cards", flash.getColeccionJSON());
+					vista.addObject("mensaje", "No ha seleccionado el nombre del club");
+					return vista;
+				}else {
+					flash.setCompartido(request.getParameter("selectClub"));
+				}
+				
+				break;
+			case "usuario":
+				do {
+					identificador = "usuario/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+				}while(gF.existeIdentificador(identificador));
+				flash.setIdentificador(identificador);
+				if(request.getParameter("selectUsuario").equals("")) {
+					vista = new ModelAndView("creaTarjeta");
+					user = (Usuario)request.getSession().getAttribute("usuario");
+					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
+					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
+					vista.addObject("crea", flash.getCreador());
+					vista.addObject("name", flash.getNombreColeccion());
+					vista.addObject("description", flash.getDescripcion());
+					vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+					vista.addObject("cards", flash.getColeccionJSON());
+					vista.addObject("mensaje", "No ha seleccionado a un usuario");
+					return vista;
+				}else {
+					flash.setCompartido(request.getParameter("selectUsuario"));
+				}
+				break;
+		}
+		
+		if(tarjetas.size()==0) {
+			vista = new ModelAndView("creaTarjeta");
+			user = (Usuario)request.getSession().getAttribute("usuario");
+			vista.addObject("usuario",user);
+			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
+			vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
+			vista.addObject("crea", flash.getCreador());
+			vista.addObject("name", flash.getNombreColeccion());
+			vista.addObject("description", flash.getDescripcion());
+			vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+			vista.addObject("shareOptionWith", flash.getCompartido());
+			vista.addObject("mensaje", "La colección debe estar formada por al menos una tarjeta");
+			return vista;
+		}else {
+			gF.insertarFlashcard(flash);
+			vista = new ModelAndView("flashcards");
+			user = (Usuario)request.getSession().getAttribute("usuario");
+			vista.addObject("mensaje", "Coleccion Creada Correctamente");
+			vista.addObject("usuario",user);
+			return vista;
+		}
+		
+		/*if(flash.getColeccion().size()==0) {
 			vista = new ModelAndView("creaTarjeta");
 			vista.addObject("flashcard", flash);
 			vista.addObject("mensaje", "La colección debe contener al menos 1 tarjeta.");
@@ -115,7 +207,7 @@ public class ControladorTarjetas {
 					return vista;
 				}
 			}
-		}
+		}*/
 	}
 	
 }

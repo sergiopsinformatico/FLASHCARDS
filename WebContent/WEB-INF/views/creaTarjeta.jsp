@@ -204,7 +204,7 @@
 												<table class="table table-bordered table-striped">
 													<tbody>
 														<tr ng-repeat="person in people | filter:expression">
-															<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} /></td>
+															<td><input type="radio" class="form-control" name="selectUsuario" value={{ person.name }} /></td>
 															<td>{{ person.name }}</td>
 														</tr>
 													</tbody>
@@ -234,12 +234,7 @@
 									        }
 									    }
 									</script>
-									<script language="JavaScript" type="text/javascript">
-										document.form1.nombre.value = "${flashcard.getNombreColeccion()}";
-										document.form1.descripcion.value = "${flashcard.getDescripcion()}";
-									    document.form1.shareWith.value = "${flashcard.getCompartido()}";
-									    option(document.form1.shareWith);
-									</script>
+									<!-- Aqui estaba el javascript de los errorres -->
 								</div>
 								<div class="col-md-2"></div>
 								<div class="col-md-4">
@@ -295,6 +290,30 @@
 			</div>
 		</div>
 		<script>
+			document.form1.creador.value = "${crea}";
+			document.form1.nombre.value = "${name}";
+			document.form1.descripcion.value = "${description}";
+			document.form1.shareWith.value = "${shareOption}";
+		    option(document.form1.shareWith);
+		    var optionWith = "${shareOptionWith}";
+		    var optionGeneric = "${shareOption}";
+		    var vacio = optionWith.localeCompare("");
+		    if(vacio != 0){
+		    	var club = "club";
+		    	var usuario = "usuario";
+		    	var isClub = optionGeneric.localeCompare(club);
+		    	var isUsuario = optionGeneric.localeCompare(usuario);
+		    	if(isClub == 0){
+		    		document.getElementById("selectClub").value = optionWith;
+		    	}else{
+		    		if(isUsuario == 0){
+		    			document.getElementById("selectUsuario").value = optionWith;
+		    		}
+		    	}		    		
+		    }
+		    
+		</script>
+		<script>
 			function change(){
 				document.form1.shareWith.value = "publico";
 			}
@@ -305,7 +324,7 @@
 	
 		        $scope.records = [];
 		        
-		        var cadena = "${flashcard.getColeccionJSON()}";
+		        var cadena = "${cards}";
 		        var array = cadena.split("FC**//--FC**//--");
 		        var i;
 		        if(cadena != ""){
