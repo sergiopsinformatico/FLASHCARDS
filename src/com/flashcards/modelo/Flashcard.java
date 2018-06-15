@@ -73,9 +73,9 @@ public class Flashcard {
 		for(int i=0; i<getColeccion().size(); i++) {
 			t = getColeccion().get(i);
 			if(i==0) {
-				auxJSON = t.getEnunciado()+"FC**//--FC**//--"+t.getRespuesta();
+				auxJSON = t.getEnunciado()+"///****resp****///"+t.getRespuesta();
 			}else {
-				auxJSON = auxJSON+"FC**//--FC**//--"+t.getEnunciado()+"FC**//--FC**//--"+t.getRespuesta();
+				auxJSON = auxJSON+"///****nuevaCARD****///"+t.getEnunciado()+"///****resp****///"+t.getRespuesta();
 			}
 		}
 		setColeccionJSON(auxJSON);

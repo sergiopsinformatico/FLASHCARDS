@@ -324,15 +324,15 @@
 		        $scope.records = [];
 		        
 		        var cadena = "${cards}";
-		        var array = cadena.split("FC**//--FC**//--");
+		        var array = cadena.split("///****nuevaCARD****///");
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
+			        	var elemento = array[i].split("///****resp****///");
 			        	$scope.records.push({
-			        		enunciado: array[i],
-			        		respuesta: array[i+1]
+			        		enunciado: elemento[0],
+			        		respuesta: elemento[1]
 			        	});
-			        	i = i + 2;
 			        }
 		        }
 		        
