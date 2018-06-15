@@ -47,6 +47,7 @@ public class ControladorTarjetas {
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
 	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("creaTarjeta");
+		tarjetas = new LinkedList<Tarjeta>();
 		user = (Usuario)request.getSession().getAttribute("usuario");
 		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 		vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
