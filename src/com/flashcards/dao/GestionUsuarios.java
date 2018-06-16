@@ -73,6 +73,10 @@ public class GestionUsuarios {
 		return db.eliminarCuenta(usuario);
 	}
 	
+	public String getNyA(String usuario) {
+		return db.getNyA(usuario);
+	}
+	
 	public void eliminarCuentas() {
 		gE = new GestionEliminados();
 		fecha = new Fecha();

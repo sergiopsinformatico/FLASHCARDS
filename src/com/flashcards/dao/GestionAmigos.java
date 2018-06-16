@@ -10,6 +10,7 @@ public class GestionAmigos {
 	LinkedList<String> amigos;
 	int indice;
 	String aux;
+	GestionUsuarios gU = new GestionUsuarios();
 	
 	public GestionAmigos() {
 		dB = new DBAmigos();
@@ -28,9 +29,9 @@ public class GestionAmigos {
 		amigos = getAmigos(username);
 		for(indice=0; indice<amigos.size(); indice++) {
 			if(indice==0) {
-				aux = amigos.get(indice);
+				aux = gU.getNyA(amigos.get(indice))+" ("+amigos.get(indice)+")";
 			}else {
-				aux = aux + "AM**//--AM**//--" + amigos.get(indice);
+				aux = aux + "///****nuevoAmigo****///" + gU.getNyA(amigos.get(indice))+" ("+amigos.get(indice)+")";
 			}
 		}
 		return aux;

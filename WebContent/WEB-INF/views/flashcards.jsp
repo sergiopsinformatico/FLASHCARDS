@@ -103,13 +103,13 @@
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
-				<div class="col-md-12" style="width:100%">
+				<!-- <div class="col-md-12" style="width:100%">
 					<form action="verColecciones.html" method="post" class="border-login" id="form2">
 					  	<button type="submit" class="btn btn-success">
 					  		Mis Colecciones de Flashcards
 					  	</button>
 					</form>
-				</div>
+				</div>-->
 			</div>
 			<div class="col-md-2">
 			</div>

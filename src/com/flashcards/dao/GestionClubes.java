@@ -49,7 +49,7 @@ public class GestionClubes {
 			if(indice==0) {
 				aux = clubes.get(indice);
 			}else {
-				aux = aux + "CL**//--CL**//--" + clubes.get(indice);
+				aux = aux + "///****nuevoCLUB****///" + clubes.get(indice);
 			}
 		}
 		return aux;

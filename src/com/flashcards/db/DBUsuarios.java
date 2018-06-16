@@ -222,4 +222,16 @@ public class DBUsuarios {
 			return false;
 		}
 	}
+	
+	public String getNyA(String usuario) {
+		try {
+			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
+				return coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().next().getString("nombreApellidos");
+			}else {
+				return "";
+			}
+		}catch(Exception ex) {
+			return "";
+		}
+	}
 }
