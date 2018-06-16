@@ -132,20 +132,20 @@
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>
 										<script>
-											var nUsuario = {{ usuario.usuario }};
-											var rol = {{ usuario.rol }};
+											var nUsuario = "{{ usuario.usuario }}";
+											var rol = "{{ usuario.rol }}";
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
 											
-											var isUsuario = rol.localeCompare(checkUsuario);
-											var isModerador = rol.localeCompare(checkModerador);
-											if(isUsuario==0){
+											//var isUsuario = rol.localeCompare(checkUsuario);
+											//var isModerador = rol.localeCompare(checkModerador);
+											if(rol==checkUsuario){
 												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 											}else{
-												if(isModerador==0){
+												if(rol==checkModerador){
 													document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
 												}else{
 													document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
