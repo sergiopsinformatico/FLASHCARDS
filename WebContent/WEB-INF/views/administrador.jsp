@@ -126,6 +126,7 @@
 											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
 											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
 											<input id="admin" name="admin" type="hidden" value="${admin}">
+											<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>										
 									</td>
