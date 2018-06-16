@@ -139,10 +139,10 @@
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
-											if("{{ usuario.rol }}".localeCompare("usuario") == 0){
+											if(nUsuario.localeCompare("usuario") == 0){
 												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 											}else{
-												if("{{ usuario.rol }}".localeCompare("moderador") == 0){
+												if(nUsuario.localeCompare("moderador") == 0){
 													document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
 												}else{
 													document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
