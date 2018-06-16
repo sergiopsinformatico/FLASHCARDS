@@ -114,8 +114,9 @@
 									<td>{{ usuario.nombre }} ({{ usuario.usuario }})</td>
 									<td>       </td>
 									<td>
-								    	<form action="adminEliminaCuenta.html" method="POST">
+								    	<form action="adminEliminaCuenta.html" id="eliminaForm" method="POST">
 								    		<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+								    		<input id="rol" name="rol" type="hidden" value="{{ usuario.rol }}">
 											<input id="admin" name="admin" type="hidden" value="${admin}">
 										    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 										</form>
@@ -131,13 +132,13 @@
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>
 										<script>
-											var nUsuario = {{ usuario.usuario }};
+											var nUsuario = document.getElementById("eliminaForm").usuario.value;
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
-											var rol = {{ usuario.rol }};
+											var rol = document.getElementById("eliminaForm").rol.value;
 											var isUsuario = rol.localeCompare(checkUsuario);
 											var isModerador = rol.localeCompare(checkModerador);
 											if(isUsuario==0){
