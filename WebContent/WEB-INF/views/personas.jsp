@@ -230,7 +230,7 @@
 		<script>
 			
 			var peopleControlador = function($scope, $http){
-				
+				$scope.people = [];
 				var cadena = "${people}";
 				var array = gente.split("///****nuevaP****///");
 				var i;
