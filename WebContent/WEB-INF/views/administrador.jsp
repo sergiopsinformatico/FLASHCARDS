@@ -126,14 +126,14 @@
 											<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
 											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
 											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
-											<input id="usuarioUsuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+											<input id="usuarioUsuario" name="usuarioUsuario" type="hidden" value="{{ usuario.usuario }}">
 											<input id="rolUsuario" name="rolUsuario" type="hidden" value="{{ usuario.rol }}">
 											<input id="admin" name="admin" type="hidden" value="${admin}">
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>
 										<script>
-											var nUsuario = document.getElementById("usuarioUsuario").value;
-											var rol = document.getElementById("rolUsuario").value;
+											var nUsuario = {{ usuario.usuario }};
+											var rol = {{ usuario.rol }};
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
