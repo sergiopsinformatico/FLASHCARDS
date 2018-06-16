@@ -27,10 +27,16 @@ public class ControladorPrincipal {
 	Usuario user;
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionPeticiones gP = new GestionPeticiones();
+	GestionAmigos gA = new GestionAmigos();
+	GestionBloqueados gB = new GestionBloqueados();
 	ModelAndView vista;
 	LinkedList<Usuario> usuarios;
-	String jsonPeople;
+	LinkedList<String> users;
+	LinkedList<PeticionDeAmistad>peticiones;
+	String jsonPeople, jsonAmigos, jsonPdAEn, jsonPdARe, jsonBlo;
+	String usuario;
 	int indice;
+	PeticionDeAmistad pA;
 	
 	//Inicio (Logueado)
 	
@@ -88,8 +94,58 @@ public class ControladorPrincipal {
 		vista = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
+		
 		jsonPeople = gU.gente(usuario);
 		vista.addObject("people", jsonPeople);
+		
+		jsonAmigos = "";
+		users = gA.getAmigos(usuario);
+		for(indice = 0; indice<users.size(); indice++) {
+			usuario = users.get(indice);
+			if(indice==0) {
+				jsonAmigos = gU.getNyA(usuario)+"///-///"+usuario;
+			}else {
+				jsonAmigos = jsonAmigos+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
+			}
+		}
+		vista.addObject("friends", jsonAmigos);
+		
+		jsonPdAEn = "";
+		peticiones = gP.leerPeticionEnviada(usuario);
+		for(indice = 0; indice<peticiones.size(); indice++) {
+			pA = peticiones.get(indice);
+			if(indice==0) {
+				jsonPdAEn = gU.getNyA(pA.getRecibe())+"///-///"+pA.getRecibe();
+			}else {
+				jsonPdAEn = jsonPdAEn+"///****nuevaP****///"+gU.getNyA(pA.getRecibe())+"///-///"+pA.getRecibe();
+			}
+		}
+		vista.addObject("pDAe", jsonPdAEn);
+		
+		jsonPdARe = "";
+		peticiones = gP.leerPeticionRecibida(usuario);
+		for(indice = 0; indice<peticiones.size(); indice++) {
+			pA = peticiones.get(indice);
+			if(indice==0) {
+				jsonPdARe = gU.getNyA(pA.getEnvia())+"///-///"+pA.getEnvia();
+			}else {
+				jsonPdARe = jsonPdARe+"///****nuevaP****///"+gU.getNyA(pA.getEnvia())+"///-///"+pA.getEnvia();
+			}
+		}
+		vista.addObject("pDAr", jsonPdARe);
+		
+		jsonBlo = "";
+		users = gB.leerBloqueados(usuario);
+		for(indice = 0; indice<users.size(); indice++) {
+			usuario= users.get(indice);
+			if(indice==0) {
+				jsonBlo = gU.getNyA(usuario)+"///-///"+usuario;
+			}else {
+				jsonBlo = jsonBlo+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
+			}
+		}
+		vista.addObject("bloq", jsonBlo);
+		
 		return vista;
 	}
 	/*

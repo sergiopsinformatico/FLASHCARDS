@@ -119,7 +119,20 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr ng-repeat="person in people | filter:expression">
-									<td>{{ person.name }}</td>
+									<td>{{ person.name }} ( {{ person.usuario }} )</td>
+									<td>
+								    	<form action="peticionAmistad.html" method="POST">
+								    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+											<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+										    <input type="submit" name="action" value="Añadir Amigo" />
+										</form>
+										<br><br>
+										<form action="bloquear.html" method="POST">
+								    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+											<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+										    <input type="submit" name="action" value="Bloquear Usuario" />
+										</form>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -142,9 +155,20 @@
 							<table class="table table-bordered table-striped">
 								<tbody>
 									<tr ng-repeat="person in people | filter:expression">
-										<td>{{ person.name }}</td>
-										<td>{{ person.age }}</td>
-										<td>{{ person.hobbies.join(', ') }}</td>
+										<td>{{ person.name }} ( {{ person.usuario }} )</td>
+										<td>
+									    	<form action="eliminarAmigo.html" method="POST">
+									    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Eliminar Amigo" />
+											</form>
+											<br><br>
+											<form action="bloquearAmigo.html" method="POST">
+									    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Bloquear Amigo" />
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -165,9 +189,15 @@
 							<table class="table table-bordered table-striped">
 								<tbody>
 									<tr ng-repeat="person in people | filter:expression">
-										<td>{{ person.name }}</td>
-										<td>{{ person.age }}</td>
-										<td>{{ person.hobbies.join(', ') }}</td>
+										<td>{{ person.name }} ( {{ person.usuario }} )</td>
+										<td>
+									    	<form action="eliminarPeticion.html" method="POST">
+									    		<input id="envia" name="envia" type="hidden" value="${usuario.getUsuario()}">
+									    		<input id="recibe" name="recibe" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Eliminar Petición" />
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -188,9 +218,26 @@
 							<table class="table table-bordered table-striped">
 								<tbody>
 									<tr ng-repeat="person in people | filter:expression">
-										<td>{{ person.name }}</td>
-										<td>{{ person.age }}</td>
-										<td>{{ person.hobbies.join(', ') }}</td>
+										<td>{{ person.name }} ( {{ person.usuario }} )</td>
+										<td>
+									    	<form action="aceptar.html" method="POST">
+									    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Aceptar Petición" />
+											</form>
+										<br><br>
+											<form action="rechazar.html" method="POST">
+									    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Rechazar Petición" />
+											</form>
+										<br><br>
+											<form action="bloquearPeticion.html" method="POST">
+									    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Bloquear Usuario" />
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -211,9 +258,14 @@
 							<table class="table table-bordered table-striped">
 								<tbody>
 									<tr ng-repeat="person in people | filter:expression">
-										<td>{{ person.name }}</td>
-										<td>{{ person.age }}</td>
-										<td>{{ person.hobbies.join(', ') }}</td>
+										<td>{{ person.name }} ( {{ person.usuario }} )</td>
+										<td>
+											<form action="desbloquear.html" method="POST">
+												<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+											    <input type="submit" name="action" value="Desbloquear" />
+											</form>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -236,8 +288,10 @@
 				var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("///-///");
 			        	$scope.people.push({
-			        		name: array[i]
+			        		name: user[0],
+			        		usuario: user[1]
 			        	});
 			        }
 		        }
@@ -245,231 +299,67 @@
 			};
 			
 			var friendsControlador = function($scope){
-				/*$scope.people = [
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-					{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-					{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-					{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-					{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-				];*/
+				$scope.people = [];
+				var cadena = "${friends}";
+				var array = cadena.split("///****nuevaP****///");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("///-///");
+			        	$scope.people.push({
+			        		name: user[0],
+			        		usuario: user[1]
+			        	});
+			        }
+		        }
 			};
 			
 			var enviadasControlador = function($scope){
-				/*$scope.people = [
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-			];*/
+				$scope.people = [];
+				var cadena = "${pDAe}";
+				var array = cadena.split("///****nuevaP****///");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("///-///");
+			        	$scope.people.push({
+			        		name: user[0],
+			        		usuario: user[1]
+			        	});
+			        }
+		        }
 			};
 			
 			var recibidasControlador = function($scope){
-				/*$scope.people = [
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-			];*/
+				$scope.people = [];
+				var cadena = "${pDAr}";
+				var array = cadena.split("///****nuevaP****///");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("///-///");
+			        	$scope.people.push({
+			        		name: user[0],
+			        		usuario: user[1]
+			        	});
+			        }
+		        }
 			};
 			
 			var bloqueadosControlador = function($scope){
-				/*$scope.people = [
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']},
-				{name: 'Jalel', age: '31', hobbies: ['Crossfit', 'Video Games', 'Sport', 'Cryptography', 'Astronomy']},
-				{name: 'Meriem', age: '23', hobbies: ['Sport', 'Hiking', 'Drawing', 'Cycling']},
-				{name: 'Alice', age: '25', hobbies: ['Board games', 'Cooking', 'Fashion']},
-				{name: 'Rich', age: '28', hobbies: ['Sport', 'Basketball', 'Ice skating']}
-			];*/
+				$scope.people = [];
+				var cadena = "${bloq}";
+				var array = cadena.split("///****nuevaP****///");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("///-///");
+			        	$scope.people.push({
+			        		name: user[0],
+			        		usuario: user[1]
+			        	});
+			        }
+		        }
 			};
 			
 			var app = angular.module('myApp', []);
@@ -483,192 +373,3 @@
 		</script>
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<html>
-	<head>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Gente</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<% 
-			if(session.getAttribute("usuario")==null){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
-			}
-		%>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">WebSiteName</a>
-	    		</div>
-	    		<ul class="nav navbar-nav">
-	      			<li><a href="inicio.html">Inicio</a></li>
-	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
-	      			<li class="active"><a href="gente.html">Gente</a></li>
-	      			<li><a href="clubes.html">Clubes</a></li>
-	      			<li><a href="modificar.html">Modificar Perfil</a></li>
-	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
-	    		</ul>
-	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
-	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
-	    		</ul>
-	  		</div>
-		</nav>
-		
-		<script language="JavaScript" type="text/javascript">
-			var comp = ${usuario.isAdministrador()};
-			if (comp){
-				document.getElementById("btn-Gestion").style.visibility="visible";
-			}else{
-				document.getElementById("btn-Gestion").style.visibility="hidden";
-			}
-		</script> 
-		
-		<input type="text" placeholder="Busca a...">
-		
-		
-		<h1>PERSONAS</h1>
-		<c:if test="${not empty usuarios}">
-			<table>
-			    <c:forEach items="${usuarios}" var="user">
-			    	<tr>
-			    		<td> ${user.getNombreApellidos()} </td>
-			    		<td>
-					    	<form action="peticionAmistad.html" method="POST">
-					    		<input id="peticion" name="peticion" type="hidden" value="${user.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Añadir Amigo" />
-							</form>
-						</td>
-						<td>
-							<form action="bloquear.html" method="POST">
-					    		<input id="bloquear" name="bloquear" type="hidden" value="${user.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Bloquear Usuario" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-		<h1>PETICIONES ENVIADAS</h1>
-		<br>
-		<c:if test="${not empty enviadas}">
-			<table>
-			    <c:forEach items="${enviadas}" var="peticion">
-			    	<tr>
-				    	<td>
-				    		${peticion.getRecibe()}
-				    	</td>
-				    	<td>
-					    	<form action="eliminarPeticion.html" method="POST">
-					    		<input id="envia" name="envia" type="hidden" value="${peticion.getEnvia()}">
-					    		<input id="recibe" name="recibe" type="hidden" value="${peticion.getRecibe()}">
-								<input id="usuario" name="usuario" type="hidden" value="${peticion.getEnvia()}">
-							    <input type="submit" name="action" value="Eliminar Petición" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-		<h1>PETICIONES PENDIENTES</h1>
-		<br>
-		<c:if test="${not empty pendientes}">
-			<table>
-			    <c:forEach items="${pendientes}" var="pend">
-			    	<tr>
-				    	<td>
-				    		${pend.getNombre()} ${pend.getApellidos()}
-				    	</td>
-				    	<td>
-					    	<form action="aceptar.html" method="POST">
-					    		<input id="peticion" name="peticion" type="hidden" value="${pend.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Aceptar Petición" />
-							</form>
-						</td>
-						<td>
-							<form action="rechazar.html" method="POST">
-					    		<input id="peticion" name="peticion" type="hidden" value="${pend.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Rechazar Petición" />
-							</form>
-						</td>
-						<td>
-							<form action="bloquearPeticion.html" method="POST">
-					    		<input id="bloquear" name="bloquear" type="hidden" value="${pend.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Bloquear Usuario" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-		<h1>AMIGOS</h1>
-		<br>
-		<c:if test="${not empty amigos}">
-			<table>
-			    <c:forEach items="${amigos}" var="amigo">
-			    	<tr>
-				    	<td>
-				    		${amigo.getNombre()} ${amigo.getApellidos()}
-				    	</td>
-				    	<td>
-					    	<form action="eliminarAmigo.html" method="POST">
-					    		<input id="eliminar" name="eliminar" type="hidden" value="${amigo.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Eliminar Amigo" />
-							</form>
-						</td>
-						<td>
-							<form action="bloquearAmigo.html" method="POST">
-					    		<input id="bloquear" name="bloquear" type="hidden" value="${amigo.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Bloquear Amigo" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-		<h1>BLOQUEADOS</h1>
-		<br>
-		<c:if test="${not empty bloqueados}">
-			<table>
-			    <c:forEach items="${bloqueados}" var="bloqueado">
-			    	<tr>
-				    	<td>
-				    		${bloqueado.getNombre()} ${bloqueado.getApellidos()}
-				    	</td>
-						<td>
-							<form action="desbloquear.html" method="POST">
-								<input id="bloqueado" name="bloqueado" type="hidden" value="${bloqueado.getUsuario()}">
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							    <input type="submit" name="action" value="Desbloquear" />
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-	</body>
-</html> -->

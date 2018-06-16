@@ -66,9 +66,9 @@ public class GestionUsuarios {
 		for(indice = 0; indice<usuarios.size(); indice++) {
 			user = usuarios.get(indice);
 			if(indice==0) {
-				json = user.getNombreApellidos()+" ("+user.getUsuario()+")";
+				json = user.getNombreApellidos()+"///-///"+user.getUsuario();
 			}else {
-				json = json + "///****nuevaP****///" + user.getNombreApellidos()+" ("+user.getUsuario()+")";
+				json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario();
 			}
 		}
 		return json;
