@@ -56,12 +56,12 @@ public class PeticionAmistadTest {
 	public void un_usuario_recibe_una_peticion_de_amistad() throws Throwable {
 		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gP = new GestionPeticiones();
-		assert(gP.leerPeticion(user2.getUsuario()).size()==1);
+		assert(gP.leerPeticionRecibida(user2.getUsuario()).size()==1);
 	}
 
 	@When("^Conoce al usuario$")
 	public void conoce_al_usuario() throws Throwable {
-		pA = gP.leerPeticion(user2.getUsuario()).get(0);
+		pA = gP.leerPeticionRecibida(user2.getUsuario()).get(0);
 		assert(pA.getEnvia().equals("sergio123"));
 	}
 
@@ -81,12 +81,12 @@ public class PeticionAmistadTest {
 	public void un_usuario_ha_recibido_una_peticion_de_amistad() throws Throwable {
 		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gP = new GestionPeticiones();
-		assert(gP.leerPeticion(user2.getUsuario()).size()==1);
+		assert(gP.leerPeticionRecibida(user2.getUsuario()).size()==1);
 	}
 
 	@When("^No conoce al usuario$")
 	public void no_conoce_al_usuario() throws Throwable {
-		pA = gP.leerPeticion(user2.getUsuario()).get(0);
+		pA = gP.leerPeticionRecibida(user2.getUsuario()).get(0);
 		assert(pA.getEnvia().equalsIgnoreCase("sergio123"));
 	}
 

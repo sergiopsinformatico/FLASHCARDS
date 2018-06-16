@@ -28,6 +28,9 @@ public class ControladorPrincipal {
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionPeticiones gP = new GestionPeticiones();
 	ModelAndView vista;
+	LinkedList<Usuario> usuarios;
+	String jsonPeople;
+	int indice;
 	
 	//Inicio (Logueado)
 	
@@ -85,6 +88,8 @@ public class ControladorPrincipal {
 		vista = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
+		jsonPeople = gU.gente(usuario);
+		vista.addObject("people", jsonPeople);
 		return vista;
 	}
 	/*

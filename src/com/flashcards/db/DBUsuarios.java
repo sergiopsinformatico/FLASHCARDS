@@ -139,7 +139,7 @@ public class DBUsuarios {
 		}
 		//Eliminamos Los que han mandado peticion de Amistad
 		GestionPeticiones gP = new GestionPeticiones();
-		LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticion(username);
+		LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticionRecibida(username);
 		for(int i=0; i<peticiones.size();i++) {
 			for(int j=0; j<usuarios.size(); j++) {
 				if(peticiones.get(i).getEnvia().equals(usuarios.get(j).getUsuario())) {

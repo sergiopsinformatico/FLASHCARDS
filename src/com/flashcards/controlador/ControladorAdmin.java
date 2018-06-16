@@ -57,9 +57,22 @@ public class ControladorAdmin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		usuarios = gU.gente(request.getParameter("admin"));
+		users = "";
+		usuarios = gU.todosUsuariosAdministrador(request.getParameter("admin"));
+		for(int i=0; i<usuarios.size(); i++) {
+			
+			if(usuarios.get(i).isUsuario())rol="usuario";
+			if(usuarios.get(i).isModerador())rol="moderador";
+			if(usuarios.get(i).isAdministrador())rol="administrador";
+			
+			if(i==0) {
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}else {
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}
+		}
 		vista = new ModelAndView("administrador");
-		vista.addObject("usuarios", usuarios);
+		vista.addObject("usuarios", users);
 		vista.addObject("admin", request.getParameter("admin"));
 		return vista;
 	}

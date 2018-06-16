@@ -15,6 +15,9 @@ public class GestionUsuarios {
 	LinkedList<Eliminado> lista;
 	Eliminado el;
 	Usuario user;
+	LinkedList<Usuario> usuarios;
+	String json;
+	int indice;
 	
 	public GestionUsuarios() {
 		db = new DBUsuarios();
@@ -57,8 +60,18 @@ public class GestionUsuarios {
 		}
 	}
 	
-	public LinkedList<Usuario> gente(String usuario) {
-		return db.gente(usuario);
+	public String gente(String usuario) {
+		usuarios = db.gente(usuario);
+		json = "";
+		for(indice = 0; indice<usuarios.size(); indice++) {
+			user = usuarios.get(indice);
+			if(indice==0) {
+				json = user.getNombreApellidos()+" ("+user.getUsuario()+")";
+			}else {
+				json = json + "///****nuevaP****///" + user.getNombreApellidos()+" ("+user.getUsuario()+")";
+			}
+		}
+		return json;
 	}
 	
 	public LinkedList<Usuario> todosUsuariosAdministrador(String usuario) {

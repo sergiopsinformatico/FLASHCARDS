@@ -51,7 +51,7 @@ public class ControladorPersonas {
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -87,7 +87,7 @@ public class ControladorPersonas {
 		gP=new GestionPeticiones();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -124,7 +124,7 @@ public class ControladorPersonas {
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -160,7 +160,7 @@ public class ControladorPersonas {
 		gente.addObject("enviadas", enviadas);
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -199,7 +199,7 @@ public class ControladorPersonas {
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -233,7 +233,7 @@ public class ControladorPersonas {
 		gP = new GestionPeticiones();
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -271,7 +271,7 @@ public class ControladorPersonas {
 		gP = new GestionPeticiones();
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -306,7 +306,7 @@ public class ControladorPersonas {
 		gP = new GestionPeticiones();
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
@@ -342,7 +342,7 @@ public class ControladorPersonas {
 		gP = new GestionPeticiones();
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
-		pendientes = gP.leerPeticion(request.getParameter("usuario"));
+		pendientes = gP.leerPeticionRecibida(request.getParameter("usuario"));
 		pendientesUsuario = new LinkedList<Usuario>();
 		for(int i=0; i<pendientes.size(); i++) {
 			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));

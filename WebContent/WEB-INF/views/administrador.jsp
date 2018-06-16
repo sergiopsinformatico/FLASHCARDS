@@ -104,7 +104,6 @@
 			    </div>
 			    <div ng-if="usuarios.length > 0">
 					<div class="panel-heading">
-						<br>Usuarios del Sistema<br>
 						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 					</div>
 					<div class="panel-body" style="max-width: 100%;max-height: 800px;min-width: 100%;min-height: 800px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
