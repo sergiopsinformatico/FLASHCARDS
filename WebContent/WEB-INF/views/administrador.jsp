@@ -113,7 +113,6 @@
 								<tr ng-repeat="usuario in usuarios | filter:expression">
 									<td>{{ usuario.nombre }} ({{ usuario.usuario }}) <br>
 									Rol del Usuario: {{ usuario.rol }}</td>
-									<td>       </td>
 									<td>
 								    	<form action="adminEliminaCuenta.html" id="eliminaForm" method="POST">
 								    		<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
@@ -121,22 +120,14 @@
 										    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 										</form>
 									</td>
-									<td>       </td>
 									<td>
-										<%@ page import="java.util.*" %>
-										<%@ page isELIgnored="false" %>
-										<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-										<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-										<c:if test= "{{usuario.rol}} eq usuario}">
-											<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-												<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
-												<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
-												<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
-												<input id="admin" name="admin" type="hidden" value="${admin}">
-												<br><input type="submit" name="action" value="Guardar Cambio Rol" />
-											</form>
-										</c:if>
-										
+										<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
+											<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
+											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
+											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
+											<input id="admin" name="admin" type="hidden" value="${admin}">
+											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
+										</form>										
 									</td>
 								</tr>
 							</tbody>
