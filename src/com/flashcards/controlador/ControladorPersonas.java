@@ -289,7 +289,8 @@ public class ControladorPersonas {
 	}
 	
 	@RequestMapping(value = "/bloquearAmigo", method = RequestMethod.POST)
-	public voidigos(request.getParameter("bloquear"),request.getParameter("usuario"));
+	public void bloquearAmigo(HttpServletRequest request, HttpServletResponse response) {
+		amigos = new Amigos(request.getParameter("bloquear"),request.getParameter("usuario"));
 		gA = new GestionAmigos();
 		gA.deleteAmigos(amigos);
 		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloquear"));
@@ -299,8 +300,8 @@ public class ControladorPersonas {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
 		} catch (IOException e) {
 			
-		}/*
-		gente = new ModelAndView("personas");
+		}
+		/*gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
@@ -339,8 +340,8 @@ public class ControladorPersonas {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
 		} catch (IOException e) {
 			
-		}/*
-		gente = new ModelAndView("personas");
+		}
+		/*gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
@@ -379,8 +380,8 @@ public class ControladorPersonas {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
 		} catch (IOException e) {
 			
-		}/*
-		gente = new ModelAndView("personas");
+		}
+		/*gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
 		gente.addObject("usuarios",gU.gente(request.getParameter("usuario")));
