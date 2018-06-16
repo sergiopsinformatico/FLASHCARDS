@@ -97,7 +97,70 @@
 			<div class="col-md-2">
 			
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" ng-app="myAdminApp" ng-controller="adminCtrl">
+				<div ng-if="usuarios.length == 0"> 
+			        Actualmente, el sistema no cuenta con más usuarios.
+			        <br>
+			    </div>
+			    <div ng-if="usuarios.length > 0">
+					<div class="panel-heading">
+						<br>Usuarios del Sistema<br>
+						<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+					</div>
+					<div class="panel-body" style="max-width: 100%;max-height: 800px;min-width: 100%;min-height: 800px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+						<table class="table table-bordered table-striped">
+							<tbody>
+								<tr ng-repeat="usuario in usuarios | filter:expression">
+									<td>{{ usuario.nombre }} ({{ usuario.usuario }})</td>
+									<td>       </td>
+									<td>
+								    	<form action="adminEliminaCuenta.html" method="POST">
+								    		<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+											<input id="admin" name="admin" type="hidden" value="${admin}">
+										    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
+										</form>
+									</td>
+									<td>       </td>
+									<td>
+										<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
+											<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
+											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
+											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
+											<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+											<input id="admin" name="admin" type="hidden" value="${admin}">
+											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
+										</form>
+										<script>
+											var nUsuario = "{{ usuario.usuario }}";
+											var usuarioCheck = "usuarioCheck";
+											var moderadorCheck = "moderadorCheck";
+											var administradorCheck = "administradorCheck";
+											var rol = "{{ usuario.rol }}";
+											var isUsuario = rol.localeCompare("usuario");
+											var isModerador = rol.localeCompare("moderador");
+											if(isUsuario==0){
+												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
+											}else{
+												if(isModerador==0){
+													document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
+												}else{
+													document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
+												}
+											}
+										</script>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				<!-- 
 				<%@ page import="java.util.*" %>
 				<%@ page isELIgnored="false" %>
 				<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -149,14 +212,32 @@
 							</tr>
 						</c:forEach>
 					</table>
-				</c:if>
+				</c:if>-->
 			</div>
+			<script>
+				var adminControlador = function ($scope, $http) {	
+			        $scope.usuarios = [];
+			        
+			        var cadena = "${usuarios}";
+			        var array = cadena.split("///****nuevoUsuario****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var elemento = array[i].split("///****elem****///");
+				        	$scope.usuarios.push({
+				        		nombre: elemento[0],
+				        		usuario: elemento[1],
+				        		rol: elemento[2]
+				        	});
+				        }
+			        }
+				}
+				var app = angular.module('myAdminApp', []);
+				app.controller('adminCtrl', adminControlador);
+			</script>
 			<div class="col-md-2">
-			
 			</div>
 		</div>
-		
-		
 		<br><br>
 	</body>
 </html>

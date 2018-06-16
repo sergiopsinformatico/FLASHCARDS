@@ -24,14 +24,23 @@ public class ControladorAdmin {
 	LinkedList<Usuario>usuarios;
 	ModelAndView vista;
 	Usuario user;
-	List users;
+	String users, rol;
 	
 	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
 	public ModelAndView gestionar(@RequestParam("usuario") String usuario) {
+		users = "";
 		usuarios = gU.todosUsuariosAdministrador(usuario);
-		users = new ArrayList();
 		for(int i=0; i<usuarios.size(); i++) {
-			users.add(usuarios.get(i));
+			
+			if(usuarios.get(i).isUsuario())rol="usuario";
+			if(usuarios.get(i).isModerador())rol="moderador";
+			if(usuarios.get(i).isAdministrador())rol="administrador";
+			
+			if(i==0) {
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}else {
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}
 		}
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", users);
