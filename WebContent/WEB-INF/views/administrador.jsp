@@ -135,9 +135,11 @@
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
+											var checkUsuario = "usuario";
+											var checkModerador = "moderador";
 											var rol = "{{ usuario.rol }}";
-											var isUsuario = rol.localeCompare("usuario");
-											var isModerador = rol.localeCompare("moderador");
+											var isUsuario = rol.localeCompare(checkUsuario);
+											var isModerador = rol.localeCompare(checkModerador);
 											if(isUsuario==0){
 												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 											}else{
