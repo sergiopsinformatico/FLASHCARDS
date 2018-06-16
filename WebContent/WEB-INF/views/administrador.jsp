@@ -154,65 +154,6 @@
 						</table>
 					</div>
 				</div>
-				
-				
-				
-				
-				
-				
-				<!-- 
-				<%@ page import="java.util.*" %>
-				<%@ page isELIgnored="false" %>
-				<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-				<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-				<c:if test= "${fn:length(usuarios) eq 0}">
-					No hay usuarios
-				</c:if>
-				<c:if test= "${fn:length(usuarios) gt 0}">
-					<table>
-					    <c:forEach items="${usuarios}" var="user">
-					    	<tr>
-					    		<td> ${user.getNombreApellidos()} </td>
-					    		<td></td>
-					    		<td>
-							    	<form action="adminEliminaCuenta.html" method="POST">
-							    		<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
-										<input id="admin" name="admin" type="hidden" value="${admin}">
-									    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
-									</form>
-								</td>
-								<td></td>
-								<td>
-									<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-										<input type="radio" name="rol" id="${user.getUsuario()}usuarioCheck" value="usuario"> Usuario <br>
-										<input type="radio" name="rol" id="${user.getUsuario()}moderadorCheck" value="moderador"> Moderador <br>
-										<input type="radio" name="rol" id="${user.getUsuario()}administradorCheck" value="administrador"> Administrador
-										<input id="usuario" name="usuario" type="hidden" value="${user.getUsuario()}">
-										<input id="admin" name="admin" type="hidden" value="${admin}">
-										<br><input type="submit" name="action" value="Guardar Cambio Rol" />
-									</form>
-									<script>
-										var nUsuario = "${user.getUsuario()}";
-										var usuarioCheck = "usuarioCheck";
-										var moderadorCheck = "moderadorCheck";
-										var administradorCheck = "administradorCheck";
-										var isUsuario = ${user.isUsuario()};
-										var isModerador = ${user.isModerador()};
-										if(isUsuario){
-											document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
-										}else{
-											if(isModerador){
-												document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
-											}else{
-												document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
-											}
-										}
-									</script>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</c:if>-->
 			</div>
 			<script>
 				var adminControlador = function ($scope, $http) {	
