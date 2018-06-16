@@ -116,7 +116,6 @@
 									<td>
 								    	<form action="adminEliminaCuenta.html" id="eliminaForm" method="POST">
 								    		<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
-								    		<input id="rol" name="rol" type="hidden" value="{{ usuario.rol }}">
 											<input id="admin" name="admin" type="hidden" value="${admin}">
 										    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 										</form>
@@ -127,18 +126,20 @@
 											<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
 											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
 											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
-											<input id="usuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+											<input id="usuarioUsuario" name="usuario" type="hidden" value="{{ usuario.usuario }}">
+											<input id="rolUsuario" name="rolUsuario" type="hidden" value="{{ usuario.rol }}">
 											<input id="admin" name="admin" type="hidden" value="${admin}">
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>
 										<script>
-											var nUsuario = document.getElementById("eliminaForm").usuario.value;
+											var nUsuario = document.getElementById("usuarioUsuario").value;
+											var rol = document.getElementById("rolUsuario").value;
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
-											var rol = document.getElementById("eliminaForm").rol.value;
+											
 											var isUsuario = rol.localeCompare(checkUsuario);
 											var isModerador = rol.localeCompare(checkModerador);
 											if(isUsuario==0){
