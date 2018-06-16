@@ -1,5 +1,6 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,6 +83,11 @@ public class ControladorPersonas {
 		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloquear"));
 		gB = new GestionBloqueados();
 		gB.crearBloqueado(bloqueado);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gP=new GestionPeticiones();
@@ -120,6 +126,11 @@ public class ControladorPersonas {
 		amigos = new Amigos(request.getParameter("peticion"),request.getParameter("usuario"));
 		gA = new GestionAmigos();
 		gA.createAmigos(amigos);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
@@ -154,6 +165,11 @@ public class ControladorPersonas {
 		pA = new PeticionDeAmistad(request.getParameter("peticion"),request.getParameter("usuario"));
 		gP = new GestionPeticiones();
 		gP.eliminarPeticion(pA);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
@@ -193,6 +209,11 @@ public class ControladorPersonas {
 		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("peticion"));
 		gB = new GestionBloqueados();
 		gB.crearBloqueado(bloqueado);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
@@ -226,6 +247,11 @@ public class ControladorPersonas {
 		amigos = new Amigos(request.getParameter("eliminar"),request.getParameter("usuario"));
 		gA = new GestionAmigos();
 		gA.deleteAmigos(amigos);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
@@ -264,6 +290,11 @@ public class ControladorPersonas {
 		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloquear"));
 		gB = new GestionBloqueados();
 		gB.crearBloqueado(bloqueado);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
@@ -299,6 +330,11 @@ public class ControladorPersonas {
 		bloqueado = new Bloqueado(request.getParameter("usuario"),request.getParameter("bloqueado"));
 		gB = new GestionBloqueados();
 		gB.borrarBloqueado(bloqueado);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
@@ -331,10 +367,14 @@ public class ControladorPersonas {
 	
 	@RequestMapping(value = "/eliminarPeticion", method = RequestMethod.POST)
 	public ModelAndView eliminarPeticion(HttpServletRequest request, HttpServletResponse response) {
-
 		PeticionDeAmistad pA = new PeticionDeAmistad(request.getParameter("envia"), request.getParameter("recibe"));
 		gP = new GestionPeticiones();
 		gP.eliminarPeticion(pA);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 		gente = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		gente.addObject("usuario", request.getParameter("usuario"));
