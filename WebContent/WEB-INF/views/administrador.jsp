@@ -131,13 +131,13 @@
 											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 										</form>
 										<script>
-											var nUsuario = "{{ usuario.usuario }}";
+											var nUsuario = {{ usuario.usuario }};
 											var usuarioCheck = "usuarioCheck";
 											var moderadorCheck = "moderadorCheck";
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
-											var rol = "{{ usuario.rol }}";
+											var rol = {{ usuario.rol }};
 											var isUsuario = rol.localeCompare(checkUsuario);
 											var isModerador = rol.localeCompare(checkModerador);
 											if(isUsuario==0){
