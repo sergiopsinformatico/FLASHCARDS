@@ -111,7 +111,8 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr ng-repeat="usuario in usuarios | filter:expression">
-									<td>{{ usuario.nombre }} ({{ usuario.usuario }}) {{ usuario.rol }}</td>
+									<td>{{ usuario.nombre }} ({{ usuario.usuario }}) <br>
+									Rol del Usuario: {{ usuario.rol }}</td>
 									<td>       </td>
 									<td>
 								    	<form action="adminEliminaCuenta.html" id="eliminaForm" method="POST">
@@ -122,33 +123,20 @@
 									</td>
 									<td>       </td>
 									<td>
-										<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
-											<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
-											<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
-											<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
-											<input id="usuarioUsuario" name="usuarioUsuario" type="hidden" value="{{ usuario.usuario }}">
-											<input id="rolUsuario" name="rolUsuario" type="hidden" value="{{ usuario.rol }}">
-											<input id="admin" name="admin" type="hidden" value="${admin}">
-											<br><input type="submit" name="action" value="Guardar Cambio Rol" />
-										</form>
-										<script>
-											var nUsuario = "{{ usuario.usuario }}";
-											var rol = "{{ usuario.rol }}";
-											var usuarioCheck = "usuarioCheck";
-											var moderadorCheck = "moderadorCheck";
-											var administradorCheck = "administradorCheck";
-											var checkUsuario = "usuario";
-											var checkModerador = "moderador";
-											if(nUsuario.localeCompare("usuario") == 0){
-												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
-											}else{
-												if(nUsuario.localeCompare("moderador") == 0){
-													document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
-												}else{
-													document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
-												}
-											}
-										</script>
+										<%@ page import="java.util.*" %>
+										<%@ page isELIgnored="false" %>
+										<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+										<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+										<c:if test= "{{usuario.rol}} eq usuario}">
+											<form action="adminCambiaRol.html" method="POST" id="cambia" name="cambia">
+												<input type="radio" name="rol" id="{{ usuario.usuario }}usuarioCheck" value="usuario"> Usuario <br>
+												<input type="radio" name="rol" id="{{ usuario.usuario }}moderadorCheck" value="moderador"> Moderador <br>
+												<input type="radio" name="rol" id="{{ usuario.usuario }}administradorCheck" value="administrador"> Administrador
+												<input id="admin" name="admin" type="hidden" value="${admin}">
+												<br><input type="submit" name="action" value="Guardar Cambio Rol" />
+											</form>
+										</c:if>
+										
 									</td>
 								</tr>
 							</tbody>
