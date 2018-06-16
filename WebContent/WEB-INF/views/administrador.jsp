@@ -111,7 +111,7 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr ng-repeat="usuario in usuarios | filter:expression">
-									<td>{{ usuario.nombre }} ({{ usuario.usuario }})</td>
+									<td>{{ usuario.nombre }} ({{ usuario.usuario }}) {{ usuario.rol }}</td>
 									<td>       </td>
 									<td>
 								    	<form action="adminEliminaCuenta.html" id="eliminaForm" method="POST">
@@ -139,10 +139,10 @@
 											var administradorCheck = "administradorCheck";
 											var checkUsuario = "usuario";
 											var checkModerador = "moderador";
-											if(rol.localeCompare(checkUsuario) == 0){
+											if("{{ usuario.rol }}".localeCompare("usuario") == 0){
 												document.getElementById(nUsuario.concat(usuarioCheck)).checked=true;
 											}else{
-												if(rol.localeCompare(checkModerador) == 0){
+												if("{{ usuario.rol }}".localeCompare("moderador") == 0){
 													document.getElementById(nUsuario.concat(moderadorCheck)).checked=true;
 												}else{
 													document.getElementById(nUsuario.concat(administradorCheck)).checked=true;
