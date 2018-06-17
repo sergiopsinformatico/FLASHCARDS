@@ -4,38 +4,77 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Clubes</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
-	
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			if(session.getAttribute("usuario")==null){
+			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			if(user==null || user.getUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
+			session.setAttribute("usuario", user);
 		%>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">WebSiteName</a>
-	    		</div>
-	    		<ul class="nav navbar-nav">
-	      			<li><a href="inicio.html">Inicio</a></li>
-	      			<li><a href="miPerfil.html">Mi Perfil</a></li>
-	      			<li><a href="gente.html">Gente</a></li>
-	      			<li class="active"><a href="clubes.html">Clubes</a></li>
-	      			<li><a href="modificar.html">Modificar Perfil</a></li>
-	      			<li><a href="gestionar.html" id="btn-Gestion">Gestionar Cuentas</a></li>
+		<style>
+			div.center {
+			    text-align: center;
+			}
+			
+			.navbar-nav > li > a, .navbar-brand {
+			    padding-top:4px !important; 
+			    padding-bottom:0 !important;
+			    height: 28px;
+			}
+			.navbar-inner {min-height:28px;}		
+		</style>
+		
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="navbar-inner navbar-collapse" id="collapsibleNavbar">
+			    <ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+							Inicio
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+							Flashcards
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+							Gente
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+							Clubes
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+							Gestionar Cuentas
+						</a>
+					</li>
 	    		</ul>
-	    		<ul class="nav navbar-nav navbar-right">
-	    			<li><a href="eliminar.html" onclick="return confirm('¿Desea Eliminar la Cuenta?'+'\nNota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con la informacion.');">Eliminar Cuenta</a></li>
-	      			<li><a href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a></li>
+	    		<ul class="navbar-nav ml-auto">
+	    			<li class="nav-item dropdown">
+                    	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
+	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	                    </div>
+	                </li>
 	    		</ul>
 	  		</div>
 		</nav>
-		
 		<script language="JavaScript" type="text/javascript">
 			var comp = ${usuario.isAdministrador()};
 			if (comp){
@@ -43,12 +82,83 @@
 			}else{
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
-		</script> 
-	
-		<h1>CLUBES</h1>
+		</script>
+		
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-11">
+				<br>
+					<h1>CLUBES</h1>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div class="container">
+			        <div class="card card-container">
+						<form action="crearClub.html" method="post">
+							Nombre del Club<input type="text" name="nClub">
+							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+						    <div class="button">
+						        <button type="submit">Crear Un Club</button>
+						    </div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8" ng-app="clubsApp" ng-controller="clubsCtrl">
+				<div ng-if="clubes.length == 0"> 
+			        No existen clubes.
+			        <br>
+			    </div>
+				<div ng-if="clubes.length > 0">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="expression" placeholder="Buscar un club..." />
+					</div>
+					<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+						<table class="table table-bordered table-striped">
+							<tbody>
+								<tr ng-repeat="club in clubes | filter:expression">
+									<td><input type="radio" class="form-control" name="selectUsuario" value={{ person.name }} /></td>
+									<td>{{ club.club }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<script>
+			var clubesControlador = function ($scope, $http) {
+		        $scope.clubes = [];
+		        var cadena = "${clubes}";
+		        var array = cadena.split("///****nuevoCLUB****///");
+		        var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	$scope.clubes.push({
+			        		club: array[i]
+			        	});
+			        }
+		        }
+			}
+			var app = angular.module('clubsApp', []);
+			app.controller('clubsCtrl', clubesControlador);
+		</script>
+	</body>
+</html>
+
+
+<!-- 
 		<form action="crearClub.html" method="post">
 			Nombre del Club<input type="text" name="nClub">
-			<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
 		    <div class="button">
 		        <button type="submit">Crear Un Club</button>
 		    </div>
@@ -62,7 +172,7 @@
 			    		<td>
 			    			<form action="verClub.html" method="post">
 								<input id="club" name="club" type="hidden" value="${club}">
-								<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+								 <input id="usuario" name="usuario" type="hidden" value="${usuario}"> 
 							    <div class="button">
 							        <button type="submit">Ver Club</button>
 							    </div>
@@ -71,7 +181,5 @@
 			    	</tr>
 			    </c:forEach>
 			</table>
-		</c:if>
-		<br><br>
-	</body>
-</html>
+		</c:if> 
+-->

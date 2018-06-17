@@ -148,46 +148,23 @@ public class ControladorPrincipal {
 		
 		return vista;
 	}
-	/*
-	@RequestMapping(value = "/gente", method = RequestMethod.GET)
-	public ModelAndView gente(@RequestParam("usuario") String usuario) {
-		vista = new ModelAndView("personas");
-		gU=new GestionUsuarios();
-		gP=new GestionPeticiones();
-		vista.addObject("usuario", gU.leerUsuario(usuario));
-		vista.addObject("usuarios",gU.gente(usuario));
-		LinkedList<PeticionDeAmistad> pendientes = gP.leerPeticion(usuario);
-		LinkedList<Usuario> pendientesUsuario = new LinkedList<Usuario>();
-		for(int i=0; i<pendientes.size(); i++) {
-			pendientesUsuario.add(gU.leerUsuario(pendientes.get(i).getEnvia()));
-		}
-		vista.addObject("pendientes", pendientesUsuario);
-		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(usuario);
-		vista.addObject("enviadas", enviadas);
-		GestionAmigos gA = new GestionAmigos();
-		LinkedList<String> amigosLeidos=gA.getAmigos(usuario);
-		LinkedList<Usuario> amigosUsuario = new LinkedList<Usuario>();
-		for(int i=0; i<amigosLeidos.size(); i++) {
-			amigosUsuario.add(gU.leerUsuario(amigosLeidos.get(i)));
-		}
-		vista.addObject("amigos", amigosUsuario);
-		GestionBloqueados gB = new GestionBloqueados();
-		LinkedList<String>bloqueadosLeidos = gB.leerBloqueados(usuario);
-		LinkedList<Usuario> bloqueados = new LinkedList<Usuario>();
-		for(int i=0; i<bloqueadosLeidos.size(); i++) {
-			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
-		}
-		vista.addObject("bloqueados", bloqueados);		
-		return vista;	
-	}*/
 	
+	//Clubes
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
-	public ModelAndView clubes(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView clubes(@RequestParam("usuario") String usuario) {
 		ModelAndView clubes = new ModelAndView("clubes");
-		clubes.addObject("usuario", request.getParameter("usuario"));
+		clubes.addObject("usuario", usuario);
 		GestionClubes gC = new GestionClubes();
 		ArrayList<String> lista = gC.leerClubes();
-		clubes.addObject("clubes", lista);
+		String listaClubes="";
+		for(int indice=0; indice<lista.size(); indice++) {
+			if(indice==0) {
+				listaClubes=lista.get(indice);
+			}else {
+				listaClubes = listaClubes + "///****nuevoCLUB****///" + lista.get(indice);
+			}
+		}
+		clubes.addObject("clubes", listaClubes);
 		return clubes;
 	}
 	
