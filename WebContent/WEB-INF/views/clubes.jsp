@@ -121,14 +121,14 @@
 						<form action="crearClub.html" method="post">
 							<h6>¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
 							Nombre del Club<br>
-							<input type="text" name="nClub" required><br><br>
+							<input type="text" name="nClub" placeholder="Nombre del club..." required><br><br>
 							<style>
 								textarea {
 								   resize: none;
 								}
 							</style>
 							Descripción del Club<br>
-							<textarea rows="4" cols="50" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..."></textarea>
+							<textarea rows="4" cols="50" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
 							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 							<br><br><br><br>
 						    <div class="button">

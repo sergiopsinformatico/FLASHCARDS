@@ -86,10 +86,11 @@ public class DBClubes {
 		clubes = new ArrayList<String>();
 		MongoCursor<Document> listas = coleccionClubes.find().iterator();
 		while(listas.hasNext()) {
-			miembros = (ArrayList<String>)listas.next().get("miembros");
+			doc = listas.next();
+			miembros = (ArrayList<String>)doc.get("miembros");
 			for(indice=0; indice<miembros.size(); indice++) {
 				if(miembros.get(indice).equals(usuario)) {
-					clubes.add(listas.next().get("nombre").toString());
+					clubes.add(doc.getString("nombre"));
 					indice = miembros.size();
 				}
 			}
