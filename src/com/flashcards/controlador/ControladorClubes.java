@@ -24,7 +24,7 @@ public class ControladorClubes {
 	@RequestMapping(value = "/crearClub", method = RequestMethod.POST)
 	public void crearClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
-		Club club = new Club(request.getParameter("nClub"), request.getParameter("usuario"));
+		Club club = new Club(request.getParameter("nClub"), request.getParameter("usuario"), request.getParameter("descripcionClub"));
 		gC.crearClub(club);
 		try {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));

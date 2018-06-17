@@ -93,25 +93,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-						<form action="crearClub.html" method="post">
-							Nombre del Club<input type="text" name="nClub">
-							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-						    <div class="button">
-						        <button type="submit">Crear Un Club</button>
-						    </div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8" ng-app="clubsApp" ng-controller="clubsCtrl">
+			<div class="col-md-1"></div>
+			<div class="col-md-5" ng-app="clubsApp" ng-controller="clubsCtrl">
 				<div ng-if="clubes.length == 0"> 
 			        No existen clubes.
 			        <br>
@@ -131,7 +114,31 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<div class="container">
+			        <div class="card card-container">
+						<form action="crearClub.html" method="post">
+							<h6>¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
+							Nombre del Club<br>
+							<input type="text" name="nClub" required><br><br>
+							<style>
+								textarea {
+								   resize: none;
+								}
+							</style>
+							Descripción del Club<br>
+							<textarea rows="4" cols="50" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..."></textarea>
+							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+							<br><br><br><br>
+						    <div class="button">
+						        <button type="submit">Crear Un Club</button>
+						    </div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<script>
 			var clubesControlador = function ($scope, $http) {

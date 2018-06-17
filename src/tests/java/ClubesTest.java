@@ -21,7 +21,7 @@ public class ClubesTest {
 	public void un_usuario_crea_un_club() throws Throwable {
 		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    gU = new GestionUsuarios();
-	    club = new Club("Prueba", user1.getUsuario());
+	    club = new Club("Prueba", user1.getUsuario(), "Club de Prueba");
 	    assert(gU.existeUsername(user1.getUsuario()));
 	}
 	
