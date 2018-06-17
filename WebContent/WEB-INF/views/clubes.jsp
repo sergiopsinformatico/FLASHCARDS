@@ -124,7 +124,6 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr ng-repeat="club in clubes | filter:expression">
-									<td><input type="radio" class="form-control" name="selectUsuario" value={{ person.name }} /></td>
 									<td>{{ club.club }}</td>
 								</tr>
 							</tbody>

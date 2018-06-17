@@ -1,5 +1,6 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,15 +22,15 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorClubes {
 	@RequestMapping(value = "/crearClub", method = RequestMethod.POST)
-	public ModelAndView crearClub(HttpServletRequest request, HttpServletResponse response) {
+	public void crearClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		Club club = new Club(request.getParameter("nClub"), request.getParameter("usuario"));
 		gC.crearClub(club);
-		ModelAndView vistaClubes = new ModelAndView("clubes");
-		gC = new GestionClubes();
-		vistaClubes.addObject("usuario", request.getParameter("usuario"));
-		vistaClubes.addObject("clubes", gC.leerClubes());
-		return vistaClubes;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@RequestMapping(value = "/verClub", method = RequestMethod.POST)
