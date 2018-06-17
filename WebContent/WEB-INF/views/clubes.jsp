@@ -107,7 +107,8 @@
 						<table class="table table-bordered table-striped">
 							<tbody>
 								<tr ng-repeat="club in clubes | filter:expression">
-									<td>{{ club.club }}</td>
+									<td>
+									<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.club }}">{{ club.club }}</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -119,6 +120,7 @@
 				<div class="container">
 			        <div class="card card-container">
 						<form action="crearClub.html" method="post">
+							<br>
 							<h6>¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
 							Nombre del Club<br>
 							<input type="text" name="nClub" placeholder="Nombre del club..." required><br><br>

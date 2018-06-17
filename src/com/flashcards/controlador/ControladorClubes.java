@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionAcceso;
 import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionInvitaciones;
+import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Invitacion;
 import com.flashcards.modelo.SolicitudAcceso;
@@ -21,6 +23,8 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorClubes {
+	GestionUsuarios gU = new GestionUsuarios();
+	
 	@RequestMapping(value = "/crearClub", method = RequestMethod.POST)
 	public void crearClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
@@ -34,81 +38,74 @@ public class ControladorClubes {
 	}
 	
 	@RequestMapping(value = "/verClub", method = RequestMethod.POST)
-	public ModelAndView verClub(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView verClub(@RequestParam("usuario") String usuario, @RequestParam("club") String club) {
 		GestionClubes gC = new GestionClubes();
-		ModelAndView verClub = new ModelAndView("club");
-		//verClub.addObject("usuario", request.getParameter(("usuario")));
-		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
-		verClub.addObject("pertenece", gC.pertenece(((Usuario)(request.getSession().getAttribute("usuario"))).getUsuario(), request.getParameter("club")));
+		ModelAndView verClub = new ModelAndView(club);
+		verClub.addObject("usuario", gU.leerUsuario(usuario));
+		verClub.addObject("club", gC.leerClub(club));
+		verClub.addObject("pertenece", gC.pertenece(usuario, club));
 		return verClub;
 	}
 	
 	@RequestMapping(value = "/incluirMiembro", method = RequestMethod.POST)
-	public ModelAndView incluirMiembro(HttpServletRequest request, HttpServletResponse response) {
+	public void incluirMiembro(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		Club club = gC.leerClub(request.getParameter("club"));
 		club.insertarMiembro(request.getParameter("miembro"));
 		gC.actualizarClub(club);
-		
-		ModelAndView verClub = new ModelAndView("club");
-		verClub.addObject("usuario", request.getParameter(("usuario")));
-		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
-		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
-		return verClub;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("club"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@RequestMapping(value = "/invitarPersonaClub", method = RequestMethod.POST)
-	public ModelAndView invitarPersonaClub(HttpServletRequest request, HttpServletResponse response) {
+	public void invitarPersonaClub(HttpServletRequest request, HttpServletResponse response) {
 		Invitacion invitacion = new Invitacion(request.getParameter("usuario"), request.getParameter("recibe"), request.getParameter("club"));
 		GestionInvitaciones gI = new GestionInvitaciones();
 		gI.insertarInvitacion(invitacion);
-
-		GestionClubes gC = new GestionClubes();
-		ModelAndView verClub = new ModelAndView("club");
-		verClub.addObject("usuario", request.getParameter(("usuario")));
-		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
-		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
-		return verClub;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("club"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@RequestMapping(value = "/solicitarAccesoClub", method = RequestMethod.POST)
-	public ModelAndView solicitarAccesoClub(HttpServletRequest request, HttpServletResponse response) {
+	public void solicitarAccesoClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionAcceso gA = new GestionAcceso();
 		SolicitudAcceso sA = new SolicitudAcceso(request.getParameter("usuario"), request.getParameter("club"));
 		gA.insertarAcceso(sA);
-		
-		GestionClubes gC = new GestionClubes();
-		ModelAndView verClub = new ModelAndView("club");
-		verClub.addObject("usuario", request.getParameter(("usuario")));
-		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
-		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
-		return verClub;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@RequestMapping(value = "/eliminarMiembro", method = RequestMethod.POST)
-	public ModelAndView eliminarMiembro(HttpServletRequest request, HttpServletResponse response) {
+	public void eliminarMiembro(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		Club club = gC.leerClub(request.getParameter("club"));
 		club.eliminarMiembro(request.getParameter("miembro"));
 		gC.actualizarClub(club);
-		
-		ModelAndView verClub = new ModelAndView("club");
-		verClub.addObject("usuario", request.getParameter(("usuario")));
-		verClub.addObject("club", gC.leerClub(request.getParameter(("club"))));
-		verClub.addObject("pertenece", gC.pertenece(request.getParameter(("usuario")), request.getParameter(("club"))));
-		return verClub;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("club"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@RequestMapping(value = "/eliminarClub", method = RequestMethod.POST)
-	public ModelAndView eliminarClub(HttpServletRequest request, HttpServletResponse response) {
+	public void eliminarClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		gC.eliminarClub(request.getParameter("club"));
-		ModelAndView clubes = new ModelAndView("clubes");
-		clubes.addObject("usuario", request.getParameter("usuario"));
-		gC = new GestionClubes();
-		ArrayList<String> lista = gC.leerClubes();
-		clubes.addObject("clubes", lista);
-		return clubes;
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 }
