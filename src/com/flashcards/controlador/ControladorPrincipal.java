@@ -153,7 +153,7 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(@RequestParam("usuario") String usuario) {
 		ModelAndView clubes = new ModelAndView("clubes");
-		clubes.addObject("usuario", usuario);
+		clubes.addObject("usuario", gU.leerUsuario(usuario));
 		GestionClubes gC = new GestionClubes();
 		ArrayList<String> lista = gC.leerClubes();
 		String listaClubes="";
