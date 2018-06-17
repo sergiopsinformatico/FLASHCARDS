@@ -179,7 +179,7 @@
 													<table class="table table-bordered table-striped">
 														<tbody>
 															<tr ng-repeat="club in clubes | filter:expression">
-																<td><input type="radio" class="form-control" name="selectClub" value={{ person.name }} /></td>
+																<td><input type="radio" class="form-control" name="selectClub" value="{{ club.name }}" /></td>
 																<td>{{ club.name }}</td>
 															</tr>
 														</tbody>
@@ -204,7 +204,7 @@
 													<table class="table table-bordered table-striped">
 														<tbody>
 															<tr ng-repeat="person in people | filter:expression">
-																<td><input type="radio" class="form-control" name="selectUsuario" value={{ person.name }} /></td>
+																<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.name }}" /></td>
 																<td>{{ person.name }}</td>
 															</tr>
 														</tbody>
