@@ -204,8 +204,8 @@
 													<table class="table table-bordered table-striped">
 														<tbody>
 															<tr ng-repeat="person in people | filter:expression">
-																<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.name }}" /></td>
-																<td>{{ person.name }}</td>
+																<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.usuario }}" /></td>
+																<td>{{ person.name }} ({{ person.usuario }})</td>
 															</tr>
 														</tbody>
 													</table>
@@ -394,8 +394,10 @@
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
+			        	var person = array[i].split("///****user****///");
 			        	$scope.people.push({
-			        		name: array[i]
+			        		name: person[0],
+			        		usuario: person[1]
 			        	});
 			        }
 		        }

@@ -29,9 +29,9 @@ public class GestionAmigos {
 		amigos = getAmigos(username);
 		for(indice=0; indice<amigos.size(); indice++) {
 			if(indice==0) {
-				aux = gU.getNyA(amigos.get(indice))+" ("+amigos.get(indice)+")";
+				aux = gU.getNyA(amigos.get(indice))+"///****user****///"+amigos.get(indice);
 			}else {
-				aux = aux + "///****nuevoAmigo****///" + gU.getNyA(amigos.get(indice))+" ("+amigos.get(indice)+")";
+				aux = aux + "///****nuevoAmigo****///" + gU.getNyA(amigos.get(indice))+"///****user****///"+amigos.get(indice);
 			}
 		}
 		return aux;
