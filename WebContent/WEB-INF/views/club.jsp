@@ -135,7 +135,7 @@
 										<tr ng-repeat="miembro in miembros | filter:expression">
 											<td>{{ miembro.name }} ({{ miembro.usuario }})</td>
 											<td>
-												<form action="eliminarMiembro.html" method="post" name="form2" id="form2{{ miembro.usuario }}">
+												<form action="eliminarMiembro.html" method="post" name="form2{{ miembro.usuario }}" id="form2{{ miembro.usuario }}">
 													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 													<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 													<input id="miembro" name="miembro" type="hidden" value="{{ miembro.usuario }}">
@@ -148,8 +148,7 @@
 													var miembro = "{{ miembro.usuario }}";
 													var administrador = "${club.getAdministrador()}";
 													var usuario = "${usuario.getUsuario()}";
-													document.getElementById(form.concat(miembro)).style.visibility="hidden";
-													if(usuario.localeCompare(administrador) == 0 && miembro.localeCompare(administrador) != 0){
+													if((usuario.localeCompare(administrador) == 0) && (miembro.localeCompare(administrador) != 0)){
 														document.getElementById(form.concat(miembro)).style.visibility="visible";			
 													}else{
 														document.getElementById(form.concat(miembro)).style.visibility="hidden";
