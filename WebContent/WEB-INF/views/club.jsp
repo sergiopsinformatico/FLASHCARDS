@@ -148,6 +148,7 @@
 													var miembro = "{{ miembro.usuario }}";
 													var administrador = "${club.getAdministrador()}";
 													var usuario = "${usuario.getUsuario()}";
+													document.getElementById(form.concat(miembro)).style.visibility="hidden";
 													if(usuario.localeCompare(administrador) == 0 && miembro.localeCompare(administrador) != 0){
 														document.getElementById(form.concat(miembro)).style.visibility="visible";			
 													}else{
