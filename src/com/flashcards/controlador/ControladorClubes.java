@@ -50,7 +50,7 @@ public class ControladorClubes {
 		club =  gC.leerClubConIdentificador(identificador);
 		verClub.addObject("usuario", gU.leerUsuario(usuario));
 		verClub.addObject("club", club);
-		verClub.addObject("miembros", gC.leerMiembrosClubJSON(club.getIdentificador()));
+		verClub.addObject("miembros", club.getColeccionMiembrosJSON());
 		verClub.addObject("pertenece", gC.perteneceWithIdentificador(usuario, identificador));
 		return verClub;
 	}

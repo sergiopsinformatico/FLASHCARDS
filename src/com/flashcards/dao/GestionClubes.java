@@ -27,6 +27,19 @@ public class GestionClubes {
 		return dB.readClubByIdentificador(identificador);
 	}
 	
+	public String leerClubesUsuarioJSON(String usuario){
+		aux = "";
+		clubes = dB.readClubesUsuario(usuario);
+		for(indice=0; indice<clubes.size(); indice++) {
+			if(indice==0) {
+				aux = clubes.get(indice);
+			}else {
+				aux = aux + "///****nuevoCLUB****///" + clubes.get(indice);
+			}
+		}
+		return aux;
+	}
+	
 	public boolean actualizarClub(Club club) {
 		return dB.updateClub(club);
 	}
@@ -41,19 +54,6 @@ public class GestionClubes {
 	
 	public ArrayList<String> leerClubes(){
 		return dB.readAllClubes();
-	}
-	
-	public String leerClubesUsuarioJSON(String usuario){
-		aux = "";
-		clubes = dB.readClubesUsuario(usuario);
-		for(indice=0; indice<clubes.size(); indice++) {
-			if(indice==0) {
-				aux = clubes.get(indice);
-			}else {
-				aux = aux + "///****nuevoCLUB****///" + clubes.get(indice);
-			}
-		}
-		return aux;
 	}
 	
 	public String leerMiembrosClubJSON(String identificador){

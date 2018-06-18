@@ -2,11 +2,14 @@ package com.flashcards.modelo;
 
 import java.util.ArrayList;
 
+import com.flashcards.dao.GestionUsuarios;
+
 public class Club {
 	
-	String nombre, administrador, descripcion, identificador;
-	ArrayList<String> miembros;
+	String nombre, administrador, descripcion, identificador, aux;
+	ArrayList<String> miembros, auxMiembros;
 	int indice;
+	GestionUsuarios gU;
 	
 	public Club(String identificador, String nombre, String administrador, String descripcion) {
 		miembros = new ArrayList<String>();
@@ -31,6 +34,21 @@ public class Club {
 	
 	public ArrayList<String> getColeccionMiembros(){
 		return this.miembros;
+	}
+	
+	public String getColeccionMiembrosJSON(){
+		aux = "";
+		auxMiembros = getColeccionMiembros();
+		gU = new GestionUsuarios();
+		
+		for(indice=0; indice<auxMiembros.size(); indice++) {
+			if(indice==0) {
+				aux = gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+			}else {
+				aux = aux + "///****nMiembro****///" + gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+			}
+		}
+		return aux;
 	}
 	
 	public void setColeccionMiembros(ArrayList<String> miembros) {
