@@ -18,24 +18,24 @@ public class GestionClubes {
 		return dB.insertClub(club);
 	}
 	
-	public boolean existeClub(String nombre) {
-		return dB.existClub(nombre);
+	public boolean existeClubIdentificador(String identificador) {
+		return dB.existIdentificador(identificador);
 	}
 	
-	public Club leerClub(String nombre) {
-		return dB.readClub(nombre);
+	public Club leerClubConIdentificador(String identificador) {
+		return dB.readClubByIdentificador(identificador);
 	}
 	
 	public boolean actualizarClub(Club club) {
 		return dB.updateClub(club);
 	}
 	
-	public boolean eliminarClub(String nombre) {
-		return dB.deleteClub(nombre);
+	public boolean eliminarClub(String identificador) {
+		return dB.deleteClub(identificador);
 	}
 	
-	public boolean pertenece(String usuario, String club) {
-		return dB.pertenece(usuario, club);
+	public boolean perteneceWithIdentificador(String usuario, String identificador) {
+		return dB.perteneceIdentificador(usuario, identificador);
 	}
 	
 	public ArrayList<String> leerClubes(){

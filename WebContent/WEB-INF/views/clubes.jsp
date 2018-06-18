@@ -108,7 +108,7 @@
 							<tbody>
 								<tr ng-repeat="club in clubes | filter:expression">
 									<td>
-									<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.club }}">{{ club.club }}</a></td>
+									<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}">{{ club.club }}</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -150,8 +150,10 @@
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
+			        	var club = array[i].split("////id////");
 			        	$scope.clubes.push({
-			        		club: array[i]
+			        		club: club[0],
+			        		id: club[1]
 			        	});
 			        }
 		        }

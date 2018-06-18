@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class Club {
 	
-	String nombre, administrador, descripcion;
+	String nombre, administrador, descripcion, identificador;
 	ArrayList<String> miembros;
 	
-	public Club(String nombre, String administrador, String descripcion) {
+	public Club(String identificador, String nombre, String administrador, String descripcion) {
 		miembros = new ArrayList<String>();
+		setIdentificador(identificador);
 		setNombre(nombre);
 		setAdministrador(administrador);
 		setDescripcion(descripcion);
@@ -86,6 +87,13 @@ public class Club {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public String getIdentificador() {
+		return identificador;
+	}
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
 }

@@ -21,7 +21,7 @@ public class ClubesTest {
 	public void un_usuario_crea_un_club() throws Throwable {
 		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    gU = new GestionUsuarios();
-	    club = new Club("Prueba", user1.getUsuario(), "Club de Prueba");
+	    club = new Club("id", "Prueba", user1.getUsuario(), "Club de Prueba");
 	    assert(gU.existeUsername(user1.getUsuario()));
 	}
 	
@@ -34,7 +34,7 @@ public class ClubesTest {
 
 	@Then("^El club se crea$")
 	public void el_club_se_crea() throws Throwable {
-	    assert(gC.existeClub(club.getNombre()));
+	    assert(gC.existeClubIdentificador(club.getIdentificador()));
 	}
 	
 	//Insertar Miembro en un Club
@@ -50,14 +50,14 @@ public class ClubesTest {
 	public void el_administrador_lo_inserta() throws Throwable {
 		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gC = new GestionClubes();
-		club = gC.leerClub("Prueba");
+		club = gC.leerClubConIdentificador("id");
 		assert(club.getAdministrador().equals(user1.getUsuario()) && club.insertarMiembro(user2.getUsuario()));
 	}
 
 	@Then("^Forma parte del club$")
 	public void forma_parte_del_club() throws Throwable {
 	    gC.actualizarClub(club);
-	    club = gC.leerClub("Prueba");
+	    club = gC.leerClubConIdentificador("id");
 		assert(club.existeMiembro(user2.getUsuario()));
 	}
 
@@ -67,7 +67,7 @@ public class ClubesTest {
 		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@email.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gU = new GestionUsuarios();
 		gC = new GestionClubes();
-		club = gC.leerClub("Prueba");
+		club = gC.leerClubConIdentificador("id");
 		assert(gU.existeUsername(user2.getUsuario()) && club.existeMiembro(user2.getUsuario()));
 	}
 
@@ -83,7 +83,7 @@ public class ClubesTest {
 
 	@Then("^No forma parte del club$")
 	public void no_forma_parte_del_club() throws Throwable {
-		club = gC.leerClub("Prueba");
+		club = gC.leerClubConIdentificador("id");
 		assert(!club.existeMiembro(user2.getUsuario()));
 	}
 
@@ -92,7 +92,7 @@ public class ClubesTest {
 	public void el_administrador_del_club_cambia() throws Throwable {
 		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gC = new GestionClubes();
-		club = gC.leerClub("Prueba");
+		club = gC.leerClubConIdentificador("id");
 		assert(club.getAdministrador().equals(user1.getUsuario()));
 	}
 
@@ -106,7 +106,7 @@ public class ClubesTest {
 
 	@Then("^Ya no es administrador$")
 	public void ya_no_es_administrador() throws Throwable {
-		club = gC.leerClub("Prueba");
+		club = gC.leerClubConIdentificador("id");
 		assert(club.getAdministrador().equals(user2.getUsuario()));
 	}
 
@@ -115,8 +115,8 @@ public class ClubesTest {
 	public void un_club_se_va_a_eliminar() throws Throwable {
 		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@email.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gC = new GestionClubes();
-		club = gC.leerClub("Prueba");
-		assert(gC.existeClub(club.getNombre()));
+		club = gC.leerClubConIdentificador("id");
+		assert(gC.existeClubIdentificador(club.getIdentificador()));
 	}
 
 	@When("^El club se borra$")
@@ -132,6 +132,6 @@ public class ClubesTest {
 	public void el_club_deja_de_existir() throws Throwable {
 		gU = new GestionUsuarios();
 		gU.eliminaCuenta(user2.getUsuario());
-	    assert(!gC.existeClub(club.getNombre()));
+	    assert(!gC.existeClubIdentificador(club.getIdentificador()));
 	}
 }

@@ -99,7 +99,7 @@
 					<h6>Administrador del Grupo:</h6> ${club.getAdministrador()}
 					<form action="eliminarClub.html" method="post" id="form3">
 						<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
-						<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					    <div class="button">
 					        <button type="submit">Eliminar Club</button>
 					    </div>
@@ -116,7 +116,7 @@
 									</td>
 									<td>
 										<form action="eliminarMiembro.html" method="post" name="form2" id="form2${miembro}">
-											<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+											<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 											<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 											<input id="miembro" name="miembro" type="hidden" value="${miembro}">
 										    <div class="button">
@@ -126,8 +126,10 @@
 										<script language="JavaScript" type="text/javascript">
 											var form = "form2";
 											var user = "${miembro}";
-											if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
+											if((("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0) && (user.localeCompare("${club.getAdministrador()}") != 0)){
 												document.getElementById(form.concat(user)).style.visibility="visible";			
+											}else{
+												document.getElementById(form.concat(user)).style.visibility="hidden";
 											}
 										</script>
 											
@@ -141,7 +143,7 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
 				<form action="incluirMiembro.html" method="post" id="form1">
-					<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 					Nombre del Miembro: <input type="text" name="miembro">
 				    <div class="button">
@@ -149,7 +151,7 @@
 				    </div>
 				</form>
 				<form action="invitarPersonaClub.html" method="post" id="form4">
-					<input id="club" name="club" type="hidden" value="${club.getNombre()}">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 					Invitación para: <input type="text" name="recibe">
 				    <div class="button">
@@ -157,8 +159,8 @@
 				    </div>
 				</form>
 				<form action="solicitarAccesoClub.html" method="post" id="form5">
-					<input id="club" name="club" type="hidden" value="${club.getNombre()}">
-					<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 				    <div class="button">
 				        <button type="submit">Solicitar Acceso</button>
 				    </div>
