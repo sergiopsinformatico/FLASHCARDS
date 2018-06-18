@@ -6,9 +6,10 @@ import com.flashcards.modelo.Club;
 
 public class GestionClubes {
 	DBClubes dB;
-	ArrayList<String> clubes;
+	ArrayList<String> clubes, miembros;
 	String aux;
 	int indice;
+	GestionUsuarios gU = new GestionUsuarios();
 	
 	public GestionClubes() {
 		dB = new DBClubes();
@@ -50,6 +51,20 @@ public class GestionClubes {
 				aux = clubes.get(indice);
 			}else {
 				aux = aux + "///****nuevoCLUB****///" + clubes.get(indice);
+			}
+		}
+		return aux;
+	}
+	
+	public String leerMiembrosClubJSON(String identificador){
+		aux = "";
+		miembros = dB.readMiembros(identificador);
+		gU = new GestionUsuarios();
+		for(indice=0; indice<miembros.size(); indice++) {
+			if(indice==0) {
+				aux = gU.getNyA(miembros.get(indice)+"///****user****///"+miembros.get(indice));
+			}else {
+				aux = aux + "///****nMiembro****///" + gU.getNyA(miembros.get(indice)+"///****user****///"+miembros.get(indice));
 			}
 		}
 		return aux;

@@ -11,7 +11,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
-	<body>
+	<body ng-app="myClubApp">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -88,7 +88,7 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-11">
-				<h1>CLUB: ${club.getNombre()}</h1>
+				<br><h1>CLUB: ${club.getNombre()}</h1><br>
 			</div>
 		</div>
 		
@@ -96,7 +96,9 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-5">
 				<div class="row">
-					<h6>Administrador del Grupo:</h6> ${club.getAdministrador()}
+					<h6>Administrador del Grupo:</h6> 
+					<br>${club.getAdministrador()}
+					<br>
 					<form action="eliminarClub.html" method="post" id="form3">
 						<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
@@ -104,9 +106,56 @@
 					        <button type="submit">Eliminar Club</button>
 					    </div>
 					</form>
+					<br>
+					<h6>Descripción del Grupo:</h6> 
+					<br>${club.getDescripcion()}
 				</div>
 				<div class="row">
 					<h6>Miembros:</h6>
+					<br>
+					<div ng-controller="membersCtrl">
+						<div ng-if="miembros.length == 0">
+							No tiene miembros en este club.
+						</div>
+						<div ng-if="miembros.length > 0">
+							<div class="panel-heading">
+								<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+							</div>
+							<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+								<table class="table table-bordered table-striped">
+									<tbody>
+										<tr ng-repeat="miembro in miembros | filter:expression">
+											<td><input type="radio" class="form-control" name="selectClub" value="{{ club.name }}" /></td>
+											<td>{{ miembro.name }}</td>
+											<td>
+												<form action="eliminarMiembro.html" method="post" name="form2" id="form2{{ miembro.usuario }}">
+													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+													<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+													<input id="miembro" name="miembro" type="hidden" value="{{ miembro.usuario }}">
+												    <div class="button">
+												        <button type="submit">Eliminar Miembro</button>
+												    </div>
+												</form>
+												<script language="JavaScript" type="text/javascript">
+													var form = "form2";
+													var user = "{{ miembro.usuario }}";
+													if((("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0) && (user.localeCompare("${club.getAdministrador()}") != 0)){
+														document.getElementById(form.concat(user)).style.visibility="visible";			
+													}else{
+														document.getElementById(form.concat(user)).style.visibility="hidden";
+													}
+												</script>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				<!-- 	
 					<c:if test="${not empty club.getColeccionMiembros()}">
 						<table>
 							<c:forEach items="${club.getColeccionMiembros()}" var="miembro">
@@ -117,7 +166,7 @@
 									<td>
 										<form action="eliminarMiembro.html" method="post" name="form2" id="form2${miembro}">
 											<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-											<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+											<input id="usuario" name="usuario" type="hidden" value="${usuario}"> 
 											<input id="miembro" name="miembro" type="hidden" value="${miembro}">
 										    <div class="button">
 										        <button type="submit">Eliminar Miembro</button>
@@ -137,7 +186,10 @@
 								</tr>
 							</c:forEach>
 						</table>
-					</c:if>
+					</c:if> -->
+					
+					
+					
 				</div>
 			</div>
 			<div class="col-md-1"></div>
@@ -186,5 +238,27 @@
 				}
 			</script>
 		</div>
+		<script>
+			
+		var miembrosControlador = function ($scope){
+			$scope.clubes = [];
+			var cadena = "${miembros}";
+	        var array = cadena.split("///****nMiembro****///");
+	        var i;
+	        if(cadena != ""){
+		        for (i = 0; i < array.length; i++) { 
+		        	var miembro = array[i].split("///****user****///");
+		        	$scope.clubes.push({
+		        		name: miembro[0],
+		        		usuario:miembro[1]
+		        	});
+		        }
+	        }
+		};
+		
+		var app = angular.module('myClubApp', []);
+		app.controller('membersCtrl', miembrosControlador);
+			
+		</script>
 	</body>
 </html>

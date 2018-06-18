@@ -103,6 +103,12 @@ public class DBClubes {
 		return clubes;
 	}
 	
+	public ArrayList<String> readMiembros(String identificador) {
+		doc = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator().next();
+		miembros = (ArrayList<String>)doc.get("miembros");
+		return miembros;
+	}
+	
 	public boolean deleteClub(String identificador) {
 		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		if(listas.hasNext()) {

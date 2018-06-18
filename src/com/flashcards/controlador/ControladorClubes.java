@@ -47,8 +47,10 @@ public class ControladorClubes {
 	public ModelAndView verClub(@RequestParam("usuario") String usuario, @RequestParam("club") String identificador) {
 		GestionClubes gC = new GestionClubes();
 		ModelAndView verClub = new ModelAndView("club");
+		club =  gC.leerClubConIdentificador(identificador);
 		verClub.addObject("usuario", gU.leerUsuario(usuario));
-		verClub.addObject("club", gC.leerClubConIdentificador(identificador));
+		verClub.addObject("club", club);
+		verClub.addObject("miembros", gC.leerMiembrosClubJSON(club.getIdentificador()));
 		verClub.addObject("pertenece", gC.perteneceWithIdentificador(usuario, identificador));
 		return verClub;
 	}

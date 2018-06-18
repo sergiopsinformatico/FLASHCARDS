@@ -6,6 +6,7 @@ public class Club {
 	
 	String nombre, administrador, descripcion, identificador;
 	ArrayList<String> miembros;
+	int indice;
 	
 	public Club(String identificador, String nombre, String administrador, String descripcion) {
 		miembros = new ArrayList<String>();
