@@ -102,6 +102,7 @@
 					${club.getAdministrador()}
 				</div>
 				<div class="row">
+					<br>
 					<form action="eliminarClub.html" method="post" id="form3">
 						<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
@@ -111,13 +112,13 @@
 					</form>
 				</div>
 				<div class="row">
-					<h6>Descripción del Grupo:</h6> 
+					<br><h6>Descripción del Grupo:</h6> 
 				</div>
 				<div class="row">
-					<br>${club.getDescripcion()}
+					${club.getDescripcion()}
 				</div>
 				<div class="row">
-					<h6>Miembros:</h6>
+					<br><h6>Miembros:</h6>
 				</div>
 				<div class="row">
 					<div ng-controller="membersCtrl">
