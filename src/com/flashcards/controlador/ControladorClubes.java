@@ -51,6 +51,7 @@ public class ControladorClubes {
 		verClub.addObject("usuario", gU.leerUsuario(usuario));
 		verClub.addObject("club", club);
 		verClub.addObject("miembros", club.getColeccionMiembrosJSON());
+		verClub.addObject("administrador", gU.getNyA(club.getAdministrador())+" ("+club.getAdministrador()+")");
 		verClub.addObject("pertenece", gC.perteneceWithIdentificador(usuario, identificador));
 		return verClub;
 	}

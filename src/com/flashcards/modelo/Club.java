@@ -42,10 +42,12 @@ public class Club {
 		gU = new GestionUsuarios();
 		
 		for(indice=0; indice<auxMiembros.size(); indice++) {
-			if(indice==0) {
-				aux = gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
-			}else {
-				aux = aux + "///****nMiembro****///" + gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+			if(!(auxMiembros.get(indice).equals(getAdministrador()))) {
+				if(indice==0) {
+					aux = gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+				}else {
+					aux = aux + "///****nMiembro****///" + gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+				}
 			}
 		}
 		return aux;

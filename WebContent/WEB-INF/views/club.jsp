@@ -99,7 +99,7 @@
 					<h6>Administrador del Grupo:</h6> 
 				</div>
 				<div class="row">
-					${club.getAdministrador()}
+					${administrador}
 				</div>
 				<div class="row">
 					<br>
@@ -135,7 +135,7 @@
 				<div class="row">
 					<div ng-controller="membersCtrl">
 						<div ng-if="miembros.length == 0">
-							No tiene miembros en este club.
+							El unico miembro de este club es el administrador: ${administrador}
 						</div>
 						<div ng-if="miembros.length > 0">
 							<div class="panel-heading">
