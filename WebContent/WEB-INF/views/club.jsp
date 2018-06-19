@@ -118,7 +118,7 @@
 					${club.getDescripcion()}
 				</div>
 				<div class="row">
-					<br><h6>Miembros:</h6>
+					<br><br><h6>Miembros:</h6>
 				</div>
 				<div class="row">
 					<div ng-controller="membersCtrl">
@@ -134,6 +134,8 @@
 									<tbody>
 										<tr ng-repeat="miembro in miembros | filter:expression">
 											<td>{{ miembro.name }} ({{ miembro.usuario }})</td>
+											<td>${usuario.getUsuario()} == ${club.getAdministrador()}</td>
+											<td>{{ miembro.usuario }} != ${club.getAdministrador()}</td>
 											<td>
 												<form action="eliminarMiembro.html" method="post" name="form2{{ miembro.usuario }}" id="form2{{ miembro.usuario }}">
 													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
