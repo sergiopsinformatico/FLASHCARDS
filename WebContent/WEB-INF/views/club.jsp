@@ -120,6 +120,18 @@
 				<div class="row">
 					<br><br><h6>Miembros:</h6>
 				</div>
+				<script>
+					function visibilidad(){
+						var form = "form2";
+						var miembro = "{{ miembro.usuario }}";
+						var administrador = "${club.getAdministrador()}";
+						var usuario = "${usuario.getUsuario()}";
+						document.getElementById(form.concat(miembro)).style.visibility="hidden";
+						if( usuario == administrador && miembro != administrador){
+							document.getElementById(form.concat(miembro)).style.visibility="visible";	
+						}
+					}
+				</script>
 				<div class="row">
 					<div ng-controller="membersCtrl">
 						<div ng-if="miembros.length == 0">
@@ -145,22 +157,7 @@
 												        <button type="submit">Eliminar Miembro</button>
 												    </div>
 												</form>
-												<script language="JavaScript" type="text/javascript">
-													var form = "form2";
-													var miembro = "{{ miembro.usuario }}";
-													var administrador = "${club.getAdministrador()}";
-													var usuario = "${usuario.getUsuario()}";
-													document.getElementById(form.concat(miembro)).style.visibility="hidden";
-													if( usuario == administrador){
-														if( miembro == administrador){
-															document.getElementById(form.concat(miembro)).style.visibility="hidden";
-														}else{
-															document.getElementById(form.concat(miembro)).style.visibility="visible";
-														}	
-													}else{
-														document.getElementById(form.concat(miembro)).style.visibility="hidden";
-													}
-												</script>
+												<script> visibilidad(); </script>
 											</td>
 										</tr>
 									</tbody>
