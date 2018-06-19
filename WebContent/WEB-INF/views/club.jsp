@@ -142,7 +142,7 @@
 													<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 													<input id="miembro" name="miembro" type="hidden" value="{{ miembro.usuario }}">
 												    <div class="button">
-												        <button type="submit">Eliminar Miembro form2{{ miembro.usuario }}</button>
+												        <button type="submit">Eliminar Miembro</button>
 												    </div>
 												</form>
 												<script language="JavaScript" type="text/javascript">
@@ -152,8 +152,8 @@
 													var usuario = "${usuario.getUsuario()}";
 													var isUsuarioAdmin = usuario.localeCompare(administrador);
 													var isMiembroAdmin = miembro.localeCompare(administrador);
-													if( isUsuarioAdmin == 0){
-														if( isMiembroAdmin != 0){
+													if( usuario == administrador){
+														if( miembro != administrador){
 															document.getElementById(form.concat(miembro)).style.visibility="visible";
 														}else{
 															document.getElementById(form.concat(miembro)).style.visibility="hidden";
