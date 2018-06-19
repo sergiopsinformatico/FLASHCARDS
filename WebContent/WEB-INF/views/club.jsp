@@ -150,13 +150,12 @@
 													var miembro = "{{ miembro.usuario }}";
 													var administrador = "${club.getAdministrador()}";
 													var usuario = "${usuario.getUsuario()}";
-													var isUsuarioAdmin = usuario.localeCompare(administrador);
-													var isMiembroAdmin = miembro.localeCompare(administrador);
+													document.getElementById(form.concat(miembro)).style.visibility="hidden";
 													if( usuario == administrador){
-														if( miembro != administrador){
-															document.getElementById(form.concat(miembro)).style.visibility="visible";
-														}else{
+														if( miembro == administrador){
 															document.getElementById(form.concat(miembro)).style.visibility="hidden";
+														}else{
+															document.getElementById(form.concat(miembro)).style.visibility="visible";
 														}	
 													}else{
 														document.getElementById(form.concat(miembro)).style.visibility="hidden";
