@@ -142,7 +142,7 @@
 													<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 													<input id="miembro" name="miembro" type="hidden" value="{{ miembro.usuario }}">
 												    <div class="button">
-												        <button type="submit">Eliminar Miembro</button>
+												        <button type="submit">Eliminar Miembro form2{{ miembro.usuario }}</button>
 												    </div>
 												</form>
 												<script language="JavaScript" type="text/javascript">
