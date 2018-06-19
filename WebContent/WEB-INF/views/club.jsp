@@ -150,8 +150,10 @@
 													var miembro = "{{ miembro.usuario }}";
 													var administrador = "${club.getAdministrador()}";
 													var usuario = "${usuario.getUsuario()}";
-													if(usuario.localeCompare(administrador) == 0){
-														if(miembro.localeCompare(administrador) != 0){
+													var isUsuarioAdmin = usuario.localeCompare(administrador);
+													var isMiembroAdmin = miembro.localeCompare(administrador);
+													if( isUsuarioAdmin == 0){
+														if( isMiembroAdmin != 0){
 															document.getElementById(form.concat(miembro)).style.visibility="visible";
 														}else{
 															document.getElementById(form.concat(miembro)).style.visibility="hidden";
