@@ -7,6 +7,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
 import com.mongodb.MongoClient;
@@ -22,8 +23,10 @@ public class DBAcceso {
     MongoDatabase db;
     MongoCollection<Document> coleccionSolicitudes;
     Document doc;
-    LinkedList<String> solicitudes;
+    String solicitudes;
     MongoCursor<Document> listas;
+    int cont;
+    GestionUsuarios gU;
 	
 	public DBAcceso() {
 		conexionDB();
@@ -44,7 +47,7 @@ public class DBAcceso {
 		try {
 			doc = new Document();
 			doc.append("solicita", sA.getSolicita());
-			doc.append("club", sA.getClub());
+			doc.append("identificador", sA.getIdentificador());
 			coleccionSolicitudes.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -52,25 +55,44 @@ public class DBAcceso {
 		}
 	}
 	
-	public LinkedList<String> leerSolicitudes(String club){
-		solicitudes = new LinkedList<String>();
-		listas = coleccionSolicitudes.find(new BsonDocument().append("club", new BsonString(club))).iterator();
+	public String leerSolicitudes(String identificador){
+		solicitudes = "";
+		cont = 0;
+		gU = new GestionUsuarios();
+		listas = coleccionSolicitudes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		while(listas.hasNext()) {
 			doc = listas.next();
-			solicitudes.add(doc.get("solicita").toString());
+			if(cont==0) {
+				solicitudes = gU.getNyA(doc.getString("solicita"))+"///****user****///"+doc.getString("solicita");
+				cont++;
+			}else {
+				solicitudes = solicitudes+"///****nMiembro****///"+gU.getNyA(doc.getString("solicita"))+"///****user****///"+doc.getString("solicita");
+			}
 		}
 		return solicitudes;
 	}
 	
+	public boolean existeSolicitud(SolicitudAcceso sA) {
+		try {
+			listas = coleccionSolicitudes.find(new BsonDocument().append("identificador", new BsonString(sA.getIdentificador())).append("solicita", new BsonString(sA.getSolicita()))).iterator();
+			if(listas.hasNext()) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
 	public boolean eliminarSolicitud(SolicitudAcceso sA) {
 		try {
-			listas = coleccionSolicitudes.find(new BsonDocument().append("club", new BsonString(sA.getClub())).append("solicita", new BsonString(sA.getSolicita()))).iterator();
+			listas = coleccionSolicitudes.find(new BsonDocument().append("identificador", new BsonString(sA.getIdentificador())).append("solicita", new BsonString(sA.getSolicita()))).iterator();
 			if(listas.hasNext()) {
 				coleccionSolicitudes.deleteOne(listas.next());
 			}
 			return true;
 		}catch(Exception ex) {
-			ex.printStackTrace();
 			return false;
 		}
 	}

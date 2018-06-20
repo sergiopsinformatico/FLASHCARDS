@@ -8,7 +8,7 @@ public class Club {
 	
 	String nombre, administrador, descripcion, identificador, aux;
 	ArrayList<String> miembros, auxMiembros;
-	int indice;
+	int indice, cont;
 	GestionUsuarios gU;
 	
 	public Club(String identificador, String nombre, String administrador, String descripcion) {
@@ -43,8 +43,9 @@ public class Club {
 		
 		for(indice=0; indice<auxMiembros.size(); indice++) {
 			if(!(auxMiembros.get(indice).equals(getAdministrador()))) {
-				if(indice==0) {
+				if(cont==0) {
 					aux = gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
+					cont++;
 				}else {
 					aux = aux + "///****nMiembro****///" + gU.getNyA(auxMiembros.get(indice))+"///****user****///"+auxMiembros.get(indice);
 				}

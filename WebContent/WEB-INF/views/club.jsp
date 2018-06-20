@@ -103,8 +103,8 @@
 				</div>
 				<div class="row">
 					<br>
-					<form action="eliminarClub.html" method="post" id="form3">
-						<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
+					<form action="eliminarClub.html" method="post" id="formDeleteClub">
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}"> 
 						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					    <div class="button">
 					        <button type="submit">Eliminar Club</button>
@@ -170,7 +170,8 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
-				<div ng-controller="newMemberCtrl" id="form1">
+				<div ng-controller="newMemberCtrl" id="formNuevos">
+					<h6>Nuevos Usuarios que pueden formar parte de este Club</h6>
 					<div ng-if="nuevos.length == 0">
 						Todos los usuarios forman parte de este grupo. 
 					</div>
@@ -187,21 +188,11 @@
 											<form action="incluirMiembro.html" method="post">
 												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="text" id="miembro" name="miembro" value="{{ nuevo.usuario }}">
+												<input type="hidden" id="miembro" name="miembro" value="{{ nuevo.usuario }}">
 											    <div class="button">
 											        <button type="submit">Añadir Miembro</button>
 											    </div>
 											</form>
-											<script>
-												var form = "form2";
-												var miembro = "{{ miembro.usuario }}";
-												var administrador = "${club.getAdministrador()}";
-												var usuario = "${usuario.getUsuario()}";
-												document.getElementById(form.concat(miembro)).style.visibility="hidden";
-												if( usuario == administrador ){
-													document.getElementById(form.concat(miembro)).style.visibility="visible";	
-												}
-											</script>
 										</td>
 									</tr>
 								</tbody>
@@ -209,15 +200,107 @@
 						</div>
 					</div>
 				</div>
-				<form action="invitarPersonaClub.html" method="post" id="form4">
+				<div ng-controller="solicitudesCtrl" id="formSolicitudes">
+					<h6>Solicitudes de Acceso al Club Pendientes</h6>
+					<div ng-if="solicitudes.length == 0">
+						No hay solicitudes pendientes. 
+					</div>
+					<div ng-if="solicitudes.length > 0">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+						</div>
+						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="solicitud in solicitudes | filter:expression">
+										<td>{{ solicitud.name }} ({{ solicitud.usuario }})</td>
+										<td>
+											<form action="aceptarSolicitud.html" method="post">
+												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
+											    <div class="button">
+											        <button type="submit">Aceptar Solicitud de Acceso</button>
+											    </div>
+											</form>
+										</td>
+										<td>
+											<form action="denegarSolicitud.html" method="post">
+												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
+											    <div class="button">
+											        <button type="submit">Denegar Solicitud de Acceso</button>
+											    </div>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div ng-controller="adminCtrl" id="formAdmin">
+					<h6>Cambio de Administrador del Club</h6>
+					<div ng-if="admins.length == 0">
+						Si el club no tiene más miembros, no puede cambiarse el administrador. 
+					</div>
+					<div ng-if="admins.length > 0">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo administrador..." />
+						</div>
+						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="admin in admins | filter:expression">
+										<td>{{ admin.name }} ({{ admin.usuario }})</td>
+										<td>
+											<form action="nuevoAdministrador.html" method="post">
+												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+												<input type="hidden" id="miembro" name="miembro" value="{{ admin.usuario }}">
+											    <div class="button">
+											        <button type="submit">Convertir en Nuevo Administrador del Club</button>
+											    </div>
+											</form>
+										</td>
+										<td>
+											<form action="denegarSolicitud.html" method="post">
+												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
+											    <div class="button">
+											        <button type="submit">Denegar Solicitud de Acceso</button>
+											    </div>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="formSolicitadoAcceso">
+					<h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
+				</div>
+				<!-- <form action="invitarPersonaClub.html" method="post" id="form4">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 					Invitación para: <input type="text" name="recibe">
 				    <div class="button">
 				        <button type="submit">Invitar Miembro</button>
 				    </div>
+				</form>-->
+				
+				<form action="dejarClub.html" method="post" id="formDejarClub">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+				    <div class="button">
+				        <button type="submit">Abandonar Club</button>
+				    </div>
 				</form>
-				<form action="solicitarAccesoClub.html" method="post" id="form5">
+				
+				<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 				    <div class="button">
@@ -227,21 +310,46 @@
 			</div>
 			<div class="col-md-1"></div>
 			<script language="JavaScript" type="text/javascript">
-				if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
-					document.getElementById("form1").style.visibility="visible";
-					document.getElementById("form3").style.visibility="visible";
-					document.getElementById("form4").style.visibility="hidden";
-					document.getElementById("form5").style.visibility="hidden";	
+				if ( ${esAdministrador} == true){
+					document.getElementById("formNuevos").style.visibility="hidden";
+					document.getElementById("formDeleteClub").style.visibility="hidden";
+					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
+					document.getElementById("formDejarClub").style.visibility="hidden";
+					document.getElementById("formSolicitudes").style.visibility="hidden";
+					document.getElementById("formAdmin").style.visibility="visible";
+					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
+				}else if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
+					document.getElementById("formNuevos").style.visibility="visible";
+					document.getElementById("formDeleteClub").style.visibility="visible";
+					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
+					document.getElementById("formDejarClub").style.visibility="hidden";
+					document.getElementById("formSolicitudes").style.visibility="visible";
+					document.getElementById("formAdmin").style.visibility="visible";
+					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
 				}else if ( ${pertenece} == true){
-					document.getElementById("form1").style.visibility="hidden";
-					document.getElementById("form3").style.visibility="hidden";
-					document.getElementById("form4").style.visibility="visible";
-					document.getElementById("form5").style.visibility="hidden";
-				}else{
-					document.getElementById("form1").style.visibility="hidden";
-					document.getElementById("form3").style.visibility="hidden";
-					document.getElementById("form4").style.visibility="hidden";
-					document.getElementById("form5").style.visibility="visible";
+					document.getElementById("formNuevos").style.visibility="visible";
+					document.getElementById("formDeleteClub").style.visibility="hidden";
+					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
+					document.getElementById("formDejarClub").style.visibility="visible";
+					document.getElementById("formSolicitudes").style.visibility="hidden";
+					document.getElementById("formAdmin").style.visibility="hidden";
+					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
+				}else if( ${solicitado} == true){
+					document.getElementById("formNuevos").style.visibility="hidden";
+					document.getElementById("formDeleteClub").style.visibility="hidden";
+					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
+					document.getElementById("formDejarClub").style.visibility="hidden";
+					document.getElementById("formSolicitudes").style.visibility="hidden";
+					document.getElementById("formAdmin").style.visibility="hidden";
+					document.getElementById("formSolicitadoAcceso").style.visibility="visible";
+				}else
+					document.getElementById("formNuevos").style.visibility="hidden";
+					document.getElementById("formDeleteClub").style.visibility="hidden";
+					document.getElementById("formSolicitarAcceso").style.visibility="visible";
+					document.getElementById("formDejarClub").style.visibility="hidden";
+					document.getElementById("formSolicitudes").style.visibility="hidden";
+					document.getElementById("formAdmin").style.visibility="hidden";
+					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
 				}
 			</script>
 		</div>
@@ -279,10 +387,43 @@
 	        }
 		};
 		
+		var administradorControlador = function ($scope){
+			$scope.admins = [];
+			var cadena = "${miembros}";
+	        var array = cadena.split("///****nMiembro****///");
+	        var i;
+	        if(cadena != ""){
+		        for (i = 0; i < array.length; i++) { 
+		        	var miembro = array[i].split("///****user****///");
+		        	$scope.admins.push({
+		        		name: miembro[0],
+		        		usuario:miembro[1]
+		        	});
+		        }
+	        }
+		};
+		
+		var solicAccControlador = function ($scope){
+			$scope.solicitudes = [];
+			var cadena = "${solicitudesAcceso}";
+	        var array = cadena.split("///****nMiembro****///");
+	        var i;
+	        if(cadena != ""){
+		        for (i = 0; i < array.length; i++) { 
+		        	var miembro = array[i].split("///****user****///");
+		        	$scope.solicitudes.push({
+		        		name: miembro[0],
+		        		usuario:miembro[1]
+		        	});
+		        }
+	        }
+		};
+		
 		var app = angular.module('myClubApp', []);
 		app.controller('membersCtrl', miembrosControlador);
 		app.controller('newMemberCtrl', nuevosControlador);
-		
+		app.controller('adminCtrl', administradorControlador);
+		app.controller('solicitudesCtrl', solicAccControlador);
 		</script>
 	</body>
 </html>
