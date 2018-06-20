@@ -201,6 +201,7 @@
 					</div>
 				</div>
 				<div ng-controller="solicitudesCtrl" id="formSolicitudes">
+					<br>
 					<h6>Solicitudes de Acceso al Club Pendientes</h6>
 					<div ng-if="solicitudes.length == 0">
 						No hay solicitudes pendientes. 
@@ -241,6 +242,7 @@
 					</div>
 				</div>
 				<div ng-controller="adminCtrl" id="formAdmin">
+					<br>
 					<h6>Cambio de Administrador del Club</h6>
 					<div ng-if="admins.length == 0">
 						Si el club no tiene más miembros, no puede cambiarse el administrador. 
@@ -281,7 +283,7 @@
 					</div>
 				</div>
 				<div id="formSolicitadoAcceso">
-					<h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
+					<br><h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
 				</div>
 				<!-- <form action="invitarPersonaClub.html" method="post" id="form4">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
@@ -291,7 +293,7 @@
 				        <button type="submit">Invitar Miembro</button>
 				    </div>
 				</form>-->
-				
+				<br>
 				<form action="dejarClub.html" method="post" id="formDejarClub">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -299,7 +301,7 @@
 				        <button type="submit">Abandonar Club</button>
 				    </div>
 				</form>
-				
+				<br>
 				<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -309,7 +311,7 @@
 				</form>
 			</div>
 			<div class="col-md-1"></div>
-			<script language="JavaScript" type="text/javascript">
+			<script>
 				if ( ${esAdministrador} == true){
 					document.getElementById("formNuevos").style.visibility="hidden";
 					document.getElementById("formDeleteClub").style.visibility="hidden";
@@ -342,7 +344,7 @@
 					document.getElementById("formSolicitudes").style.visibility="hidden";
 					document.getElementById("formAdmin").style.visibility="hidden";
 					document.getElementById("formSolicitadoAcceso").style.visibility="visible";
-				}else
+				}else{
 					document.getElementById("formNuevos").style.visibility="hidden";
 					document.getElementById("formDeleteClub").style.visibility="hidden";
 					document.getElementById("formSolicitarAcceso").style.visibility="visible";
