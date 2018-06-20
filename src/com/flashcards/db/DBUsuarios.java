@@ -1,5 +1,6 @@
 package com.flashcards.db;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.bson.BsonDocument;
@@ -8,7 +9,9 @@ import org.bson.Document;
 
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionBloqueados;
+import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionPeticiones;
+import com.flashcards.modelo.Club;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
@@ -25,6 +28,10 @@ public class DBUsuarios {
     MongoCollection<Document> coleccionUsuarios;
     Document doc;
     Usuario user;
+    ArrayList<String> lista;
+    MongoCursor<Document> usuarios;
+    int indice, cont;
+    String miembros;
     
     public DBUsuarios() {
     	conexionDB();
@@ -233,5 +240,28 @@ public class DBUsuarios {
 		}catch(Exception ex) {
 			return "";
 		}
+	}
+	
+	public String getNewMiembros(Club club) {
+		miembros="";
+		cont = 0;
+		usuarios = coleccionUsuarios.find().iterator();
+		lista = club.getColeccionMiembros();
+		while(usuarios.hasNext()) {
+			doc = usuarios.next();
+			for(indice=0; indice<lista.size(); indice++) {
+				if(doc.getString("usuario").equals(lista.get(indice))) {
+					indice = lista.size();
+				}else if(indice == (lista.size()-1)) {
+					if(cont==0) {
+						miembros = getNyA(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
+						cont++;
+					}else {
+						miembros = miembros + "///****nMiembro****///" + getNyA(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
+					}
+				}
+			}
+		}
+		return miembros;
 	}
 }

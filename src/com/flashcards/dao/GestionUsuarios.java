@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
+import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.Usuario;
 
@@ -88,6 +89,10 @@ public class GestionUsuarios {
 	
 	public String getNyA(String usuario) {
 		return db.getNyA(usuario);
+	}
+	
+	public String getNuevosMiembros(Club club) {
+		return db.getNewMiembros(club);
 	}
 	
 	public void eliminarCuentas() {

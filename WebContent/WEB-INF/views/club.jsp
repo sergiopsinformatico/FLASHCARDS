@@ -112,26 +112,20 @@
 					</form>
 				</div>
 				<div class="row">
-					<br><h6>Descripción del Grupo:</h6> 
+					<br><br>
+				</div>
+				<div class="row">
+					<h6>Descripción del Grupo:</h6> 
 				</div>
 				<div class="row">
 					${club.getDescripcion()}
 				</div>
 				<div class="row">
-					<br><br><h6>Miembros:</h6>
+					<br><br>
 				</div>
-				<script>
-					function visibilidad(){
-						var form = "form2";
-						var miembro = "{{ miembro.usuario }}";
-						var administrador = "${club.getAdministrador()}";
-						var usuario = "${usuario.getUsuario()}";
-						document.getElementById(form.concat(miembro)).style.visibility="hidden";
-						if( usuario == administrador && miembro != administrador){
-							document.getElementById(form.concat(miembro)).style.visibility="visible";	
-						}
-					}
-				</script>
+				<div class="row">
+					<h6>Miembros:</h6>
+				</div>
 				<div class="row">
 					<div ng-controller="membersCtrl">
 						<div ng-if="miembros.length == 0">
@@ -146,8 +140,6 @@
 									<tbody>
 										<tr ng-repeat="miembro in miembros | filter:expression">
 											<td>{{ miembro.name }} ({{ miembro.usuario }})</td>
-											<td>${usuario.getUsuario()} == ${club.getAdministrador()}</td>
-											<td>{{ miembro.usuario }} != ${club.getAdministrador()}</td>
 											<td>
 												<form action="eliminarMiembro.html" method="post" name="form2{{ miembro.usuario }}" id="form2{{ miembro.usuario }}">
 													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
@@ -157,7 +149,16 @@
 												        <button type="submit">Eliminar Miembro</button>
 												    </div>
 												</form>
-												<script> visibilidad(); </script>
+												<script>
+													var form = "form2";
+													var miembro = "{{ miembro.usuario }}";
+													var administrador = "${club.getAdministrador()}";
+													var usuario = "${usuario.getUsuario()}";
+													document.getElementById(form.concat(miembro)).style.visibility="hidden";
+													if( usuario == administrador ){
+														document.getElementById(form.concat(miembro)).style.visibility="visible";	
+													}
+												</script>
 											</td>
 										</tr>
 									</tbody>
@@ -169,14 +170,45 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
-				<form action="incluirMiembro.html" method="post" id="form1">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-					Nombre del Miembro: <input type="text" name="miembro">
-				    <div class="button">
-				        <button type="submit">Añadir Miembro</button>
-				    </div>
-				</form>
+				<div ng-controller="newMemberCtrl" id="form1">
+					<div ng-if="nuevos.length == 0">
+						Todos los usuarios forman parte de este grupo. 
+					</div>
+					<div ng-if="nuevos.length > 0">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+						</div>
+						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="nuevo in nuevos | filter:expression">
+										<td>{{ nuevo.name }} ({{ nuevo.usuario }})</td>
+										<td>
+											<form action="incluirMiembro.html" method="post">
+												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+												<input type="text" id="miembro" name="miembro" value="{{ nuevo.usuario }}">
+											    <div class="button">
+											        <button type="submit">Añadir Miembro</button>
+											    </div>
+											</form>
+											<script>
+												var form = "form2";
+												var miembro = "{{ miembro.usuario }}";
+												var administrador = "${club.getAdministrador()}";
+												var usuario = "${usuario.getUsuario()}";
+												document.getElementById(form.concat(miembro)).style.visibility="hidden";
+												if( usuario == administrador ){
+													document.getElementById(form.concat(miembro)).style.visibility="visible";	
+												}
+											</script>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 				<form action="invitarPersonaClub.html" method="post" id="form4">
 					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -231,9 +263,26 @@
 	        }
 		};
 		
+		var nuevosControlador = function ($scope){
+			$scope.nuevos = [];
+			var cadena = "${nuevosMiembros}";
+	        var array = cadena.split("///****nMiembro****///");
+	        var i;
+	        if(cadena != ""){
+		        for (i = 0; i < array.length; i++) { 
+		        	var miembro = array[i].split("///****user****///");
+		        	$scope.nuevos.push({
+		        		name: miembro[0],
+		        		usuario:miembro[1]
+		        	});
+		        }
+	        }
+		};
+		
 		var app = angular.module('myClubApp', []);
 		app.controller('membersCtrl', miembrosControlador);
-			
+		app.controller('newMemberCtrl', nuevosControlador);
+		
 		</script>
 	</body>
 </html>
