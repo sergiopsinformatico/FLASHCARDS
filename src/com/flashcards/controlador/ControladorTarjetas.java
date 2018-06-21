@@ -72,7 +72,7 @@ public class ControladorTarjetas {
 	}
 	
 	@RequestMapping(value = "/verFlashcard", method = RequestMethod.GET)
-	public void verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("id") String id, @RequestParam("card") int card) {
+	public ModelAndView verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("id") String id, @RequestParam("card") int card) {
 		gU = new GestionUsuarios();
 		gF = new GestionFlashcards();
 		vista = new ModelAndView("verFlashcard");
@@ -90,6 +90,7 @@ public class ControladorTarjetas {
 		}else {
 			vista.addObject("urlLeft", "");
 		}
+		return vista;
 	}
 
 	@RequestMapping(value = "/guardarFlashcard", method = RequestMethod.POST)
