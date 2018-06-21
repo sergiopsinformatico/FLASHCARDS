@@ -227,7 +227,7 @@
 				</div>
 				<div class="row">
 					<div ng-controller="solicitudesCtrl" id="formSolicitudes">
-¡						<h6>Solicitudes de Acceso al Club Pendientes</h6>
+						<h6>Solicitudes de Acceso al Club Pendientes</h6>
 						<div ng-if="solicitudes.length == 0">
 							No hay solicitudes pendientes. 
 						</div>
