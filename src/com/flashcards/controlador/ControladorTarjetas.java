@@ -70,6 +70,27 @@ public class ControladorTarjetas {
 			}
 		}
 	}
+	
+	@RequestMapping(value = "/verFlashcard", method = RequestMethod.GET)
+	public void verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("id") String id, @RequestParam("card") int card) {
+		gU = new GestionUsuarios();
+		gF = new GestionFlashcards();
+		vista = new ModelAndView("verFlashcard");
+		flash = gF.leerFlashcard(id);
+		tarjetas = flash.getColeccion();
+		vista.addObject("front", tarjetas.get(card).getEnunciado());
+		vista.addObject("back", tarjetas.get(card).getRespuesta());
+		if(card<(tarjetas.size()-1)) {
+			vista.addObject("urlRight", "https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario="+usuario+"&id="+id+"&card="+(card+1));
+		}else {
+			vista.addObject("urlRight", "");
+		}
+		if(card>0) {
+			vista.addObject("urlLeft", "https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario="+usuario+"&id="+id+"&card="+(card-1));
+		}else {
+			vista.addObject("urlLeft", "");
+		}
+	}
 
 	@RequestMapping(value = "/guardarFlashcard", method = RequestMethod.POST)
 	public ModelAndView guardarFlashcard(HttpServletRequest request, HttpServletResponse response) {
@@ -85,21 +106,21 @@ public class ControladorTarjetas {
 		switch(flash.getCompartido()) {
 			case "publico":
 				do {
-					identificador = "publico/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+					identificador = "publico-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				flash.setNombreCompartido("todos");
 				break;
 			case "privado":
 				do {
-					identificador = "privado/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+					identificador = "privado-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				flash.setNombreCompartido("yo");
 				break;
 			case "club":
 				do {
-					identificador = "club/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+					identificador = "club-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectClub")==null || request.getParameter("selectClub").equals("")) {

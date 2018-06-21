@@ -27,6 +27,8 @@ public class DBFlashcards {
     LinkedList<Tarjeta>cards;
     String cardsJSON;
     Tarjeta t;
+    Flashcard flash;
+    String[] lista;
     
 	public DBFlashcards() {
 		conexionDB();
@@ -76,6 +78,32 @@ public class DBFlashcards {
 			return true;
 		}else {
 			return false;
+		}
+	}
+	
+	public Flashcard readFlashcard(String id) {
+		listaPosibles = coleccionFlashcards.find(new BsonDocument().append("identificador", new BsonString(id))).iterator();
+		if(listaPosibles.hasNext()) {
+			doc = listaPosibles.next();
+			flash = new Flashcard();
+			flash.setIdentificador(doc.getString("identificador"));
+			flash.setNombreColeccion(doc.getString("coleccion"));
+			flash.setDescripcion(doc.getString("descripcion"));
+			flash.setCompartido(doc.getString("compartido"));
+			flash.setNombreCompartido(doc.getString("compartidoCon"));
+			flash.setEvaluado(doc.getBoolean("evaluado"));
+			flash.setEvaluador(doc.getString("evaluador"));
+			cards = new LinkedList<Tarjeta>();
+			cardsJSON=doc.getString("cards");
+			lista = cardsJSON.split("///****nuevaCARD****///");
+			for(indice=0; indice<lista.length; indice++) {
+				cardsJSON = lista[indice];
+				cards.add(new Tarjeta(cardsJSON.split("///****resp****///")[0],cardsJSON.split("///****resp****///")[1]));
+			}
+			flash.setColeccion(cards);
+			return flash;
+		}else {
+			return null;
 		}
 	}
 }

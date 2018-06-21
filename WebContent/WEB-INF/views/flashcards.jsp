@@ -103,6 +103,9 @@
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
+				<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&id=privado-sergio12345982385492353&card=0">Ejemplo de Flashcards</a>
+				
+				
 				<!-- <div class="col-md-12" style="width:100%">
 					<form action="verColecciones.html" method="post" class="border-login" id="form2">
 					  	<button type="submit" class="btn btn-success">

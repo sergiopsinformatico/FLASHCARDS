@@ -10,6 +10,10 @@ public class GestionFlashcards {
 		dB = new DBFlashcards();
 	}
 	
+	public Flashcard leerFlashcard(String id) {
+		return dB.readFlashcard(id);
+	}
+	
 	public boolean insertarFlashcard(Flashcard flash) {
 		return dB.insertFlashcard(flash);
 	}
