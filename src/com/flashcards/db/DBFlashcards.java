@@ -59,9 +59,9 @@ public class DBFlashcards {
 			for(indice=0; indice<cards.size(); indice++) {
 				t = cards.get(indice);
 				if(indice==0) {
-					cardsJSON = t.getEnunciado()+"****resp****"+t.getRespuesta();
+					cardsJSON = t.getEnunciado()+"----resp----"+t.getRespuesta();
 				}else {
-					cardsJSON = cardsJSON + "****nuevaCARD****"+t.getEnunciado()+"****resp****"+t.getRespuesta();
+					cardsJSON = cardsJSON + "----nuevaCARD----"+t.getEnunciado()+"----resp----"+t.getRespuesta();
 				}
 			}
 			doc.append("cards", cardsJSON);
@@ -95,10 +95,10 @@ public class DBFlashcards {
 			flash.setEvaluador(doc.getString("evaluador"));
 			cards = new LinkedList<Tarjeta>();
 			cardsJSON=doc.getString("cards");
-			lista = cardsJSON.split("****nuevaCARD****");
+			lista = cardsJSON.split("----nuevaCARD----");
 			for(indice=0; indice<lista.length; indice++) {
 				cardsJSON = lista[indice];
-				cards.add(new Tarjeta(cardsJSON.split("****resp****")[0],cardsJSON.split("****resp****")[1]));
+				cards.add(new Tarjeta(cardsJSON.split("----resp----")[0],cardsJSON.split("----resp----")[1]));
 			}
 			flash.setColeccion(cards);
 			return flash;
