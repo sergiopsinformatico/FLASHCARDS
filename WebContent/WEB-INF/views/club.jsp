@@ -170,6 +170,33 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
+				<div id="formSolicitadoAcceso">
+					<br><h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
+				</div>
+				<!-- <form action="invitarPersonaClub.html" method="post" id="form4">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+					Invitación para: <input type="text" name="recibe">
+				    <div class="button">
+				        <button type="submit">Invitar Miembro</button>
+				    </div>
+				</form>-->
+				<br>
+				<form action="dejarClub.html" method="post" id="formDejarClub">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+				    <div class="button">
+				        <button type="submit">Abandonar Club</button>
+				    </div>
+				</form>
+				<br>
+				<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
+					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+				    <div class="button">
+				        <button type="submit">Solicitar Acceso</button>
+				    </div>
+				</form>
 				<div ng-controller="newMemberCtrl" id="formNuevos">
 					<h6>Nuevos Usuarios que pueden formar parte de este Club</h6>
 					<div ng-if="nuevos.length == 0">
@@ -272,33 +299,6 @@
 						</div>
 					</div>
 				</div>
-				<div id="formSolicitadoAcceso">
-					<br><h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
-				</div>
-				<!-- <form action="invitarPersonaClub.html" method="post" id="form4">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-					Invitación para: <input type="text" name="recibe">
-				    <div class="button">
-				        <button type="submit">Invitar Miembro</button>
-				    </div>
-				</form>-->
-				<br>
-				<form action="dejarClub.html" method="post" id="formDejarClub">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-				    <div class="button">
-				        <button type="submit">Abandonar Club</button>
-				    </div>
-				</form>
-				<br>
-				<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-				    <div class="button">
-				        <button type="submit">Solicitar Acceso</button>
-				    </div>
-				</form>
 			</div>
 			<div class="col-md-1"></div>
 			<script>

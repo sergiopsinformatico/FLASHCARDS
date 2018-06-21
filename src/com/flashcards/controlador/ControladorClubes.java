@@ -151,7 +151,7 @@ public class ControladorClubes {
 		sA = new SolicitudAcceso(request.getParameter("usuario"), request.getParameter("identificador"));
 		gA.insertarAcceso(sA);
 		try {
-			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("identificador"));
 		} catch (IOException e) {}
 	}
 	
