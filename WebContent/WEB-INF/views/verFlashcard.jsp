@@ -5,10 +5,10 @@
 		<title>Ver Flashcard</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
@@ -35,8 +35,10 @@
 			body { font-family: sans-serif; }
 			
 			.scene {
-			  width: 200px;
-			  height: 260px;
+			  /*width: 200px;*/
+			  width: 100%;
+			  /*height: 260px;*/
+			  height: 100%;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -131,14 +133,14 @@
 		<div class="row">
 		
 			<div class="col-md-2">
-			Url Left: ${urlLeft}
-			Front: ${front}
-			Back: ${back}
-			Url Right: ${urlRight}
+			<br>Url Left: ${urlLeft}
+			<br>Front: ${front}
+			<br>Back: ${back}
+			<br>Url Right: ${urlRight}
 			</div>
 			
 			<div class="col-md-2" id="flechaLeft">
-				<!-- <span class="glyphicon glyphicon-chevron-left">Anterior</span> -->
+				<span class="glyphicon glyphicon-chevron-left"></span><br>
 				<a href="${urlLeft}">Anterior</a>
 			</div>
 			
@@ -152,7 +154,7 @@
 			</div>
 			
 			<div class="col-md-2" id="flechaRight">
-				<!-- <span class="glyphicon glyphicon-chevron-right">Siguiente</span> -->
+				<span class="glyphicon glyphicon-chevron-right"></span><br>
 				<a href="${urlRight}">Siguiente</a>
 			</div>
 			
