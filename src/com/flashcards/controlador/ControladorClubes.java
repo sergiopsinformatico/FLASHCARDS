@@ -123,10 +123,10 @@ public class ControladorClubes {
 	public void dejarClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		Club club = gC.leerClubConIdentificador(request.getParameter("identificador"));
-		club.eliminarMiembro(request.getParameter("miembro"));
+		club.eliminarMiembro(request.getParameter("usuario"));
 		gC.actualizarClub(club);
 		try {
-			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("identificador"));
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/clubes.html?usuario="+request.getParameter("usuario"));
 		} catch (IOException e) {
 			
 		}

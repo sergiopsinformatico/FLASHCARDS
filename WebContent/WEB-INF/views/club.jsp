@@ -266,16 +266,6 @@
 											    </div>
 											</form>
 										</td>
-										<td>
-											<form action="denegarSolicitud.html" method="post">
-												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
-											    <div class="button">
-											        <button type="submit">Denegar Solicitud de Acceso</button>
-											    </div>
-											</form>
-										</td>
 									</tr>
 								</tbody>
 							</table>
