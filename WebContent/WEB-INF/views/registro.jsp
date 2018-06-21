@@ -318,14 +318,24 @@
 						</div>
 					</form>
 					<script language="JavaScript" type="text/javascript">
-						document.form1.nombreUsuario.value = "${usuario.getUsuario()}";
+						/*document.form1.nombreUsuario.value = "${usuario.getUsuario()}";
 						document.form1.clave.value = "${usuario.getClave()}";
 						document.form1.repiteClave.value = "${usuario.getClave()}";
 						document.form1.email.value = "${usuario.getEmail()}";
 						document.form1.nombreApellidos.value = "${usuario.getNombreApellidos()}";
 						document.form1.edad.value = "${usuario.getEdad()}";
 						document.form1.ciudad.value = "${usuario.getCiudad()}";
-						document.form1.pais.value = "${usuario.getPais()}";
+						document.form1.pais.value = "${usuario.getPais()}";*/
+						
+						document.getElementById("nombreUsuario").value = "${usuario.getUsuario()}";
+						document.getElementById("clave").value = "${usuario.getClave()}";
+						document.getElementById("repiteClave").value = "${usuario.getClave()}";
+						document.getElementById("email").value = "${usuario.getEmail()}";
+						document.getElementById("nombreApellidos").value = "${usuario.getNombreApellidos()}";
+						document.getElementById("edad").value = "${usuario.getEdad()}";
+						document.getElementById("ciudad").value = "${usuario.getCiudad()}";
+						document.getElementById("pais").value = "${usuario.getPais()}";
+						
 						var genero = "${usuario.getGenero()}";
 						var hombre = "Hombre";
 						var mujer = "Mujer";
