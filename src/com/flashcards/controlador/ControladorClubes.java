@@ -132,19 +132,6 @@ public class ControladorClubes {
 		}
 	}
 	
-	/*NO SE USARIA EN PRINCIPIO
-	@RequestMapping(value = "/invitarPersonaClub", method = RequestMethod.POST)
-	public void invitarPersonaClub(HttpServletRequest request, HttpServletResponse response) {
-		Invitacion invitacion = new Invitacion(request.getParameter("usuario"), request.getParameter("recibe"), request.getParameter("identificador"));
-		GestionInvitaciones gI = new GestionInvitaciones();
-		gI.insertarInvitacion(invitacion);
-		try {
-			response.sendRedirect("https://sistemaflashcards.herokuapp.com/verClub.html?usuario="+request.getParameter("usuario")+"&club="+request.getParameter("identificador"));
-		} catch (IOException e) {
-			
-		}
-	}*/
-	
 	@RequestMapping(value = "/solicitarAccesoClub", method = RequestMethod.POST)
 	public void solicitarAccesoClub(HttpServletRequest request, HttpServletResponse response) {
 		gA = new GestionAcceso();

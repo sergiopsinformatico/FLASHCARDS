@@ -87,6 +87,7 @@
 		<div class="row">
 			<br><br>
 		</div>
+		<!-- 
 		<div class="row">
 			<div class="col-md-3 center">
 				<h2>Notificaciones</h2>
@@ -117,7 +118,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<script>
 				angular.module('Notifications', []).controller('NotificationCtrl', function($scope) {
 					$scope.notificaciones = [{

@@ -7,12 +7,14 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.dao.GestionAcceso;
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionBloqueados;
 import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.PeticionDeAmistad;
+import com.flashcards.modelo.SolicitudAcceso;
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -32,6 +34,7 @@ public class DBUsuarios {
     MongoCursor<Document> usuarios;
     int indice, cont;
     String miembros;
+    GestionAcceso gA;
     
     public DBUsuarios() {
     	conexionDB();
@@ -243,6 +246,7 @@ public class DBUsuarios {
 	}
 	
 	public String getNewMiembros(Club club) {
+		gA = new GestionAcceso();
 		miembros="";
 		cont = 0;
 		usuarios = coleccionUsuarios.find().iterator();
@@ -252,7 +256,7 @@ public class DBUsuarios {
 			for(indice=0; indice<lista.size(); indice++) {
 				if(doc.getString("usuario").equals(lista.get(indice))) {
 					indice = lista.size();
-				}else if(indice == (lista.size()-1)) {
+				}else if((indice == (lista.size()-1)) && (!(gA.existeSolicitud(new SolicitudAcceso(doc.getString("usuario"),club.getIdentificador()))))) {
 					if(cont==0) {
 						miembros = getNyA(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
 						cont++;

@@ -170,132 +170,132 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
-				<div id="formSolicitadoAcceso">
-					<br><h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
-				</div>
-				<!-- <form action="invitarPersonaClub.html" method="post" id="form4">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-					Invitación para: <input type="text" name="recibe">
-				    <div class="button">
-				        <button type="submit">Invitar Miembro</button>
-				    </div>
-				</form>-->
-				<br>
-				<form action="dejarClub.html" method="post" id="formDejarClub">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-				    <div class="button">
-				        <button type="submit">Abandonar Club</button>
-				    </div>
-				</form>
-				<br>
-				<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
-					<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-					<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-				    <div class="button">
-				        <button type="submit">Solicitar Acceso</button>
-				    </div>
-				</form>
-				<div ng-controller="newMemberCtrl" id="formNuevos">
-					<h6>Nuevos Usuarios que pueden formar parte de este Club</h6>
-					<div ng-if="nuevos.length == 0">
-						Todos los usuarios forman parte de este grupo. 
+				<div class="row">
+					<div id="formSolicitadoAcceso">
+						<br><h6>Ya ha solicitado acceso a este club. Debe esperar a que la acepten o la rechazen.</h6>
 					</div>
-					<div ng-if="nuevos.length > 0">
-						<div class="panel-heading">
-							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+				</div>
+				<div class="row">
+					<form action="dejarClub.html" method="post" id="formDejarClub">
+						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+					    <div class="button">
+					        <button type="submit">Abandonar Club</button>
+					    </div>
+					</form>
+				</div>
+				<div class="row">
+					<form action="solicitarAccesoClub.html" method="post" id="formSolicitarAcceso">
+						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+					    <div class="button">
+					        <button type="submit">Solicitar Acceso</button>
+					    </div>
+					</form>
+				</div>
+				<div class="row">
+					<div ng-controller="newMemberCtrl" id="formNuevos">
+						<h6>Nuevos Usuarios que pueden formar parte de este Club</h6>
+						<div ng-if="nuevos.length == 0">
+							Todos los usuarios forman parte de este grupo. 
 						</div>
-						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-							<table class="table table-bordered table-striped">
-								<tbody>
-									<tr ng-repeat="nuevo in nuevos | filter:expression">
-										<td>{{ nuevo.name }} ({{ nuevo.usuario }})</td>
-										<td>
-											<form action="incluirMiembro.html" method="post">
-												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="hidden" id="miembro" name="miembro" value="{{ nuevo.usuario }}">
-											    <div class="button">
-											        <button type="submit">Añadir Miembro</button>
-											    </div>
-											</form>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<div ng-if="nuevos.length > 0">
+							<div class="panel-heading">
+								<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+							</div>
+							<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+								<table class="table table-bordered table-striped">
+									<tbody>
+										<tr ng-repeat="nuevo in nuevos | filter:expression">
+											<td>{{ nuevo.name }} ({{ nuevo.usuario }})</td>
+											<td>
+												<form action="incluirMiembro.html" method="post">
+													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+													<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													<input type="hidden" id="miembro" name="miembro" value="{{ nuevo.usuario }}">
+												    <div class="button">
+												        <button type="submit">Añadir Miembro</button>
+												    </div>
+												</form>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div ng-controller="solicitudesCtrl" id="formSolicitudes">
-					<br>
-					<h6>Solicitudes de Acceso al Club Pendientes</h6>
-					<div ng-if="solicitudes.length == 0">
-						No hay solicitudes pendientes. 
-					</div>
-					<div ng-if="solicitudes.length > 0">
-						<div class="panel-heading">
-							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+				<div class="row">
+					<div ng-controller="solicitudesCtrl" id="formSolicitudes">
+¡						<h6>Solicitudes de Acceso al Club Pendientes</h6>
+						<div ng-if="solicitudes.length == 0">
+							No hay solicitudes pendientes. 
 						</div>
-						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-							<table class="table table-bordered table-striped">
-								<tbody>
-									<tr ng-repeat="solicitud in solicitudes | filter:expression">
-										<td>{{ solicitud.name }} ({{ solicitud.usuario }})</td>
-										<td>
-											<form action="aceptarSolicitud.html" method="post">
-												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
-											    <div class="button">
-											        <button type="submit">Aceptar Solicitud de Acceso</button>
-											    </div>
-											</form>
-										</td>
-										<td>
-											<form action="denegarSolicitud.html" method="post">
-												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
-											    <div class="button">
-											        <button type="submit">Denegar Solicitud de Acceso</button>
-											    </div>
-											</form>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<div ng-if="solicitudes.length > 0">
+							<div class="panel-heading">
+								<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo miembro..." />
+							</div>
+							<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+								<table class="table table-bordered table-striped">
+									<tbody>
+										<tr ng-repeat="solicitud in solicitudes | filter:expression">
+											<td>{{ solicitud.name }} ({{ solicitud.usuario }})</td>
+											<td>
+												<form action="aceptarSolicitud.html" method="post">
+													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+													<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
+												    <div class="button">
+												        <button type="submit">Aceptar Solicitud de Acceso</button>
+												    </div>
+												</form>
+											</td>
+											<td>
+												<form action="denegarSolicitud.html" method="post">
+													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+													<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													<input type="hidden" id="miembro" name="miembro" value="{{ solicitud.usuario }}">
+												    <div class="button">
+												        <button type="submit">Denegar Solicitud de Acceso</button>
+												    </div>
+												</form>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div ng-controller="adminCtrl" id="formAdmin">
-					<br>
-					<h6>Cambio de Administrador del Club</h6>
-					<div ng-if="admins.length == 0">
-						Si el club no tiene más miembros, no puede cambiarse el administrador. 
-					</div>
-					<div ng-if="admins.length > 0">
-						<div class="panel-heading">
-							<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo administrador..." />
+				<div class="row">
+					<div ng-controller="adminCtrl" id="formAdmin">
+						<h6>Cambio de Administrador del Club</h6>
+						<div ng-if="admins.length == 0">
+							Si el club no tiene más miembros, no puede cambiarse el administrador. 
 						</div>
-						<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-							<table class="table table-bordered table-striped">
-								<tbody>
-									<tr ng-repeat="admin in admins | filter:expression">
-										<td>{{ admin.name }} ({{ admin.usuario }})</td>
-										<td>
-											<form action="nuevoAdministrador.html" method="post">
-												<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-												<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-												<input type="hidden" id="miembro" name="miembro" value="{{ admin.usuario }}">
-											    <div class="button">
-											        <button type="submit">Convertir en Nuevo Administrador del Club</button>
-											    </div>
-											</form>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<div ng-if="admins.length > 0">
+							<div class="panel-heading">
+								<input class="form-control" ng-model="expression" placeholder="Buscar un nuevo administrador..." />
+							</div>
+							<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+								<table class="table table-bordered table-striped">
+									<tbody>
+										<tr ng-repeat="admin in admins | filter:expression">
+											<td>{{ admin.name }} ({{ admin.usuario }})</td>
+											<td>
+												<form action="nuevoAdministrador.html" method="post">
+													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+													<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													<input type="hidden" id="miembro" name="miembro" value="{{ admin.usuario }}">
+												    <div class="button">
+												        <button type="submit">Nuevo Administrador del Club</button>
+												    </div>
+												</form>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
