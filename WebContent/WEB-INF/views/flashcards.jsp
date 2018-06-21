@@ -119,11 +119,13 @@
 			</div>
 			<div class="col-md-4">
 				<div class="col-md-12">
+				<!-- 
 					<form action="evaluarColecciones.html" method="post" class="border-login" id="form3">
 					  	<button type="submit" class="btn btn-warning">
 					  		Evaluar Colecciones de Tarjetas
 					  	</button>
 				  	</form>
+				  -->
 			  	</div>
 			</div>
 			<div class="col-md-4">
