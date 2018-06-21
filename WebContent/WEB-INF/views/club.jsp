@@ -302,20 +302,20 @@
 			</div>
 			<div class="col-md-1"></div>
 			<script>
-				if ( ${esAdministrador} == true){
-					document.getElementById("formNuevos").style.visibility="hidden";
-					document.getElementById("formDeleteClub").style.visibility="hidden";
-					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
-					document.getElementById("formDejarClub").style.visibility="hidden";
-					document.getElementById("formSolicitudes").style.visibility="hidden";
-					document.getElementById("formAdmin").style.visibility="visible";
-					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
-				}else if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
+				if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
 					document.getElementById("formNuevos").style.visibility="visible";
 					document.getElementById("formDeleteClub").style.visibility="visible";
 					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
 					document.getElementById("formDejarClub").style.visibility="hidden";
 					document.getElementById("formSolicitudes").style.visibility="visible";
+					document.getElementById("formAdmin").style.visibility="visible";
+					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
+				} else if ( ${esAdministrador} == true){
+					document.getElementById("formNuevos").style.visibility="hidden";
+					document.getElementById("formDeleteClub").style.visibility="hidden";
+					document.getElementById("formSolicitarAcceso").style.visibility="hidden";
+					document.getElementById("formDejarClub").style.visibility="hidden";
+					document.getElementById("formSolicitudes").style.visibility="hidden";
 					document.getElementById("formAdmin").style.visibility="visible";
 					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
 				}else if ( ${pertenece} == true){
