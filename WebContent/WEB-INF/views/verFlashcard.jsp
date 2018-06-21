@@ -36,7 +36,7 @@
 			
 			.scene {
 			  width: 100%;
-			  height: 400px;
+			  height: 500px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -56,7 +56,9 @@
 			}
 			
 			.card__face {
-			  /*position: absolute;*/
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
 			  width: 100%;
 			  height: 100%;
 			  line-height: 260px;
@@ -130,14 +132,14 @@
 		
 		<div class="row">
 		
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
 			
 			<div class="col-md-2" id="flechaLeft">
 				<span class="glyphicon glyphicon-chevron-left"></span><br>
 				<a href="${urlLeft}">Anterior</a>
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="scene scene--card">
 				  <div class="card">
 				    <div class="card__face card__face--front"><h6>${front}</h6></div>
@@ -151,7 +153,7 @@
 				<a href="${urlRight}">Siguiente</a>
 			</div>
 			
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
 		
 		</div>			
 		<script>
