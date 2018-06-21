@@ -57,8 +57,6 @@
 			
 			.card__face {
 			  position: absolute;
-			  top: 50%;
-			  left: 50%;
 			  width: 100%;
 			  height: 100%;
 			  line-height: 260px;
