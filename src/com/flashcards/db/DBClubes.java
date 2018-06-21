@@ -95,7 +95,7 @@ public class DBClubes {
 			miembros = (ArrayList<String>)doc.get("miembros");
 			for(indice=0; indice<miembros.size(); indice++) {
 				if(miembros.get(indice).equals(usuario)) {
-					clubes.add(doc.getString("nombre")+"////id////"+doc.getString("identificador"));
+					clubes.add(doc.getString("nombre")+"///****id****///"+doc.getString("identificador"));
 					indice = miembros.size();
 				}
 			}

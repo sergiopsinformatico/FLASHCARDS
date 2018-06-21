@@ -179,7 +179,7 @@
 													<table class="table table-bordered table-striped">
 														<tbody>
 															<tr ng-repeat="club in clubes | filter:expression">
-																<td><input type="radio" class="form-control" name="selectClub" value="{{ club.name }}" /></td>
+																<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
 																<td>{{ club.name }}</td>
 															</tr>
 														</tbody>
@@ -410,8 +410,10 @@
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
+			        	var club = array[i].split("///****id****///");
 			        	$scope.clubes.push({
-			        		name: array[i]
+			        		name: club[0],
+			        		identificador: club[1]
 			        	});
 			        }
 		        }
