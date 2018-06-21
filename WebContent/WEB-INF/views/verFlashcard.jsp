@@ -5,7 +5,7 @@
 		<title>Ver Flashcard</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap-glyphicons.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -132,12 +132,7 @@
 		
 		<div class="row">
 		
-			<div class="col-md-2">
-			<br>Url Left: ${urlLeft}
-			<br>Front: ${front}
-			<br>Back: ${back}
-			<br>Url Right: ${urlRight}
-			</div>
+			<div class="col-md-2"></div>
 			
 			<div class="col-md-2" id="flechaLeft">
 				<span class="glyphicon glyphicon-chevron-left"></span><br>
@@ -147,8 +142,8 @@
 			<div class="col-md-4">
 				<div class="scene scene--card">
 				  <div class="card">
-				    <div class="card__face card__face--front">${front}</div>
-				    <div class="card__face card__face--back">${back}</div>
+				    <div class="card__face card__face--front"><h6>${front}</h6></div>
+				    <div class="card__face card__face--back"><h6>${back}</h6></div>
 				  </div>
 				</div>
 			</div>
