@@ -35,10 +35,8 @@
 			body { font-family: sans-serif; }
 			
 			.scene {
-			  /*width: 200px;*/
 			  width: 100%;
-			  /*height: 260px;*/
-			  height: 100%;
+			  height: 400px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -58,14 +56,14 @@
 			}
 			
 			.card__face {
-			  position: absolute;
+			  /*position: absolute;*/
 			  width: 100%;
 			  height: 100%;
 			  line-height: 260px;
 			  color: white;
 			  text-align: center;
 			  font-weight: bold;
-			  font-size: 40px;
+			  font-size: 60px;
 			  backface-visibility: hidden;
 			}
 			
