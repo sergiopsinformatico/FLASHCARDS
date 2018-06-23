@@ -71,7 +71,7 @@
 			  width: 100%;
 			  height: 100%;
 			  color: white;
-			  /*line-height: 350px;*/
+			  line-height: 350px;
 			  text-align: center;
 			  font-weight: bold;
 			  font-size: 12pxvw;
@@ -161,12 +161,28 @@
 					</div>
 					<div class="col-md-6">
 						<div class="row">
+							<h6>Anverso de la Tarjeta</h6>
+						</div>
+						<div class="row">
 							<textarea rows="2" cols="50" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
+						</div>
+						<div class="row">
+							<h6>Reverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
 							<textarea rows="4" cols="50" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<div class="action">
+			                <button ng-click="Add()">Insertar</button>
+			                <button ng-click="Reset()">Limpiar Campos</button>
+			            </div>
+					</div>
+					<div class="col-md-4"></div>
 				</div>
 			</div>
 			<div class="col-md-1"></div>
