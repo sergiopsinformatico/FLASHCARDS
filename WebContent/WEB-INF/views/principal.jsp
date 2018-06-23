@@ -11,6 +11,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 	</head>
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
@@ -126,7 +127,7 @@
 				  <h5>${usuario.getNombreApellidos()}</h5>
 				  <p class="title">${rol}</p>
 				  <div style="margin: 24px 0;">
-				    <h6><a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a></h6> 
+				    <h6><a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil y Logros<i class="fa fa-dribbble"></i></a></h6> 
 				 </div>
 				</div>
 			</div>
