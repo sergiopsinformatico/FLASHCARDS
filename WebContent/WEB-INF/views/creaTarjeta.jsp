@@ -71,6 +71,7 @@
 			  width: 100%;
 			  height: 100%;
 			  color: white;
+			  line-height: 350px;
 			  text-align: center;
 			  font-weight: bold;
 			  font-size: 12px;
@@ -150,10 +151,10 @@
 						<div class="scene scene--card">
 						  <div class="card">
 						    <div class="card__face card__face--front">
-								newAnverso
+								{{ newAnverso }}
 							</div>
 						    <div class="card__face card__face--back">
-								newReverso
+								{{ newReverso }}
 							</div>
 						  </div>
 						</div>
