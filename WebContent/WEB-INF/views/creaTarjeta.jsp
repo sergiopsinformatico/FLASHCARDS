@@ -160,16 +160,22 @@
 					</div>
 					<div class="col-md-6">
 						<div class="row">
+							<br><br><br><br>
+						</div>
+						<div class="row">
 							<h6>Anverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
-							<textarea maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
+							<textarea rows="6" cols="50" maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
+						</div>
+						<div class="row">
+							<br><br>
 						</div>
 						<div class="row">
 							<h6>Reverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
-							<textarea maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
+							<textarea rows="6" cols="50" maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
 						</div>
 						<div class="row">
 							<div class="action">
