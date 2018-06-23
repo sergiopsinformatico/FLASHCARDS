@@ -1,13 +1,15 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Mi Perfil - Flashcards</title>
+		<title>Configuracion - Flashcards</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+		
 	</head>
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
@@ -18,7 +20,7 @@
 			}
 			session.setAttribute("usuario", user);
 		%>
-		
+				
 		<style>
 			div.center {
 			    text-align: center;
@@ -29,11 +31,11 @@
 			    padding-bottom:0 !important;
 			    height: 28px;
 			}
-			.navbar {min-height:28px !important;}		
+			.navbar-inner {min-height:28px;}		
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<div class="navbar-inner navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
@@ -55,11 +57,6 @@
 							Clubes
 						</a>
 					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="modificar.html?usuario=${usuario.getUsuario()}">
-							Modificar Perfil
-						</a>
-					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
 							Gestionar Cuentas
@@ -79,7 +76,6 @@
 	    		</ul>
 	  		</div>
 		</nav>
-		
 		<script language="JavaScript" type="text/javascript">
 			var comp = ${usuario.isAdministrador()};
 			if (comp){
@@ -88,18 +84,28 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
-		Username: ${usuario.getUsuario()}
-		<br>Email: ${usuario.getEmail()}
-		<br><br><br>
-		Nombre y Apellidos: ${usuario.getNombreApellidos()}
-		<br>Edad: ${usuario.getEdad()}
-		<br>Ciudad: ${usuario.getCiudad()}
-		<br>Pais: ${usuario.getPais()}
-		<br>Genero: ${usuario.getGenero()}
-		<br><br><br><br><br><br>
-		<form action="modificarMiPerfil.html" method="post">
-		  <input type="hidden" id="usuario" name="usuario" value="${usuario.getUsuario()}">
-		  <input type="submit" value="Modificar Mi Perfil">
-		</form>
+		<div class="row">
+			<br><br>
+		</div>
+		<div class="row">
+			<div class="col-md-2 center">
+			
+			</div>
+			<div class="col-md-3 center">
+				<form action="eliminar.html?usuario=${usuario.getUsuario()}">
+					<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="return confirm('¿Desea Eliminar la Cuenta?');">Eliminar Cuenta</button>
+				</form>
+				Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.
+			</div>
+			<div class="col-md-2 center">
+			
+			</div>
+			<div class="col-md-3 center">
+			
+			</div>
+			<div class="col-md-2 center">
+			
+			</div>
+		</div>
 	</body>
 </html>

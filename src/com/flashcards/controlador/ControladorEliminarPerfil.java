@@ -16,6 +16,9 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorEliminarPerfil {
+	//Variables
+	Email em = new Email();
+	
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
@@ -24,13 +27,7 @@ public class ControladorEliminarPerfil {
 		GestionEliminados gE = new GestionEliminados();
 		gE.insertarEliminado(pB);
 		request.getSession().removeAttribute("usuario");
-		Email em = new Email(user.getEmail(), 
-				             "[Flashcards] Cuenta Eliminada ("+user.getUsuario()+") - 14 dias", 
-							 "Estimado "+user.getUsuario()+","+
-				             "\nSu cuenta va a proceder a eliminarse por completo el "+pB.getFecha()+"."+
-							 "\nSi accede antes al sistema con su cuenta, su cuenta no será eliminada."+
-				             "\nUn saludo. Equipo de Flashcards.");
-		em.enviarMensaje();
+		em.eliminarCuenta(user,  pB.getFecha());
 		return new ModelAndView("index");
 	}
 }

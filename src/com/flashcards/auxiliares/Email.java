@@ -9,6 +9,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.flashcards.modelo.Usuario;
+
 public class Email {
 	String envia, recibe, asunto, mensaje;
 	boolean enviado;
@@ -18,11 +20,63 @@ public class Email {
 	private MimeMessage message;
 	private Transport t;
 	
-	public Email(String recibe, String asunto, String mensaje) {
+	public Email() {
 		setEnvia("sistemaflashcards@gmail.com");
-		setRecibe(recibe);
-		setAsunto(asunto);
-		setMensaje(mensaje);
+	}
+	
+	public boolean crearCuenta(Usuario user) {
+		//Asunto
+		setAsunto("[Sistema Flashcards] Creación de la cuenta "+user.getEmail());
+		//Mensaje
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
+		"\nSe ha creado correctamente una cuenta en Flashcards:"+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
+		"\nClave: "+user.getClave()+
+		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		//Email de quien recibe el mensaje
+		setRecibe(user.getEmail());
+		return enviarMensaje();
+	}
+	
+	public boolean eliminarCuenta(Usuario user, String fecha) {
+		//Asunto
+		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getUsuario()+") - 14 dias");
+		//Mensaje
+		setMensaje("Estimado "+user.getNombreApellidos()+","+
+        "\nSu cuenta va a proceder a eliminarse por completo el "+fecha+"."+
+		 "\nSi accede antes al sistema con su cuenta, su cuenta no será eliminada."+
+        "\nUn saludo. Equipo de Flashcards.");
+		//Email de quien recibe el mensaje
+		setRecibe(user.getEmail());
+		return enviarMensaje();
+	}
+	
+	public boolean recuperarClave(Usuario user) {
+		//Asunto
+		setAsunto("[Sistema Flashcards] Recuperación de la clave de "+user.getEmail());
+		//Mensaje
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
+		"\nHa solicitado recuperación de sus datos de su cuenta en Flashcards:"+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
+		"\nClave: "+user.getClave()+
+		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		//Email de quien recibe el mensaje
+		setRecibe(user.getEmail());
+		return enviarMensaje();
+	}
+	
+	public boolean reactivacionCuenta(Usuario user) {
+		//Asunto
+		setAsunto("[Sistema Flashcards] Reactivacion de la cuenta de "+user.getEmail());
+		//Mensaje
+		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
+		"\nSu cuenta en Flashcards, se ha reactivado y no será borrada:"+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsuario()+
+		"\nClave: "+user.getClave()+
+		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		//Email de quien recibe el mensaje
+		setRecibe(user.getEmail());
+		return enviarMensaje();
 	}
 	
 	public boolean enviarMensaje() {

@@ -46,7 +46,7 @@ public class DBPeticiones {
 		}
 	}
 	
-	public LinkedList<PeticionDeAmistad> readPeticion(String recibe) {
+	public LinkedList<PeticionDeAmistad> readPeticionRecibida(String recibe) {
 		try {
 			LinkedList<PeticionDeAmistad> lista = new LinkedList<PeticionDeAmistad>();
 			doc = new Document("recibe", recibe);

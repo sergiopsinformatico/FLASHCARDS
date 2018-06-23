@@ -18,6 +18,8 @@ public class DBClubes {
     MongoCollection<Document> coleccionClubes;
     Document doc;
     ArrayList<String>miembros;
+    ArrayList<String> clubes;
+    int indice;
     
     public DBClubes() {
     	conexionDB();
@@ -38,7 +40,9 @@ public class DBClubes {
 		boolean insert = false;
 		try {
 			doc = new Document();
+			doc.append("identificador", club.getIdentificador());
 			doc.append("nombre", club.getNombre());
+			doc.append("descripcion", club.getDescripcion());
 			doc.append("administrador", club.getAdministrador());
 			doc.append("miembros", club.getColeccionMiembros());
 			coleccionClubes.insertOne(doc);
@@ -49,22 +53,24 @@ public class DBClubes {
 		return insert;
 	}
 	
-	public boolean existClub(String nombre) {
-		boolean existe = false;
-		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(nombre))).iterator();
+	public boolean existIdentificador(String identificador) {
+		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		if(listaPosibles.hasNext()) {
-			existe = true;
+			return true;
+		}else {
+			return false;
 		}
-		return existe;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public Club readClub(String nombre) {
+
+	public Club readClubByIdentificador(String identificador) {
 		Club club = null;
-		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(nombre))).iterator();
+		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		if(listas.hasNext()) {
 			doc = listas.next();
 			club = new Club (doc.getString("nombre"));
+			club.setIdentificador(doc.getString("identificador"));
+			club.setDescripcion(doc.getString("descripcion"));
 			club.setAdministrador(doc.getString("administrador"));
 			club.setColeccionMiembros((ArrayList<String>) doc.get("miembros"));
 		}
@@ -72,18 +78,41 @@ public class DBClubes {
 	}
 	
 	public ArrayList<String> readAllClubes() {
-		ArrayList<String> clubes = new ArrayList<String>();
+		clubes = new ArrayList<String>();
 		MongoCursor<Document> listas = coleccionClubes.find().iterator();
 		while(listas.hasNext()) {
-			clubes.add(listas.next().getString("nombre"));
+			doc = listas.next();
+			clubes.add(doc.getString("nombre")+"////id////"+doc.getString("identificador"));
 		}
 		return clubes;
 	}
 	
-	public boolean deleteClub(Club club) {
-		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(club.getNombre()))).iterator();
+	public ArrayList<String> readClubesUsuario(String usuario) {
+		clubes = new ArrayList<String>();
+		MongoCursor<Document> listas = coleccionClubes.find().iterator();
+		while(listas.hasNext()) {
+			doc = listas.next();
+			miembros = (ArrayList<String>)doc.get("miembros");
+			for(indice=0; indice<miembros.size(); indice++) {
+				if(miembros.get(indice).equals(usuario)) {
+					clubes.add(doc.getString("nombre")+"///****id****///"+doc.getString("identificador"));
+					indice = miembros.size();
+				}
+			}
+		}
+		return clubes;
+	}
+	
+	public ArrayList<String> readMiembros(String identificador) {
+		doc = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator().next();
+		miembros = (ArrayList<String>)doc.get("miembros");
+		return miembros;
+	}
+	
+	public boolean deleteClub(String identificador) {
+		MongoCursor<Document> listas = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		if(listas.hasNext()) {
-			coleccionClubes.deleteOne(new BsonDocument().append("nombre", new BsonString(club.getNombre())));
+			coleccionClubes.deleteOne(new BsonDocument().append("identificador", new BsonString(identificador)));
 			return true;
 		}
 		return false;
@@ -91,7 +120,7 @@ public class DBClubes {
 	
 	public boolean updateClub(Club club) {
 		try {
-			deleteClub(club);
+			deleteClub(club.getIdentificador());
 			insertClub(club);
 			return true;
 		}catch(Exception ex) {
@@ -99,28 +128,17 @@ public class DBClubes {
 		}
 	}
 	
-	public boolean deleteClub(String nombre) {
-		boolean borrado = false;
-		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(nombre))).iterator();
-		if(listaPosibles.hasNext()) {
-			coleccionClubes.deleteOne(new BsonDocument().append("nombre", new BsonString(nombre)));
-			borrado = true;
-		}
-		return borrado;
-	}
-	
-	public boolean pertenece(String usuario, String club) {
-		boolean pertenece = false;
-		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("nombre", new BsonString(club))).iterator();
+	public boolean perteneceIdentificador(String usuario, String identificador) {
+		MongoCursor<Document> listaPosibles = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		if(listaPosibles.hasNext()) {
 			doc = listaPosibles.next();
 			miembros = (ArrayList<String>) doc.get("miembros");
 			for(int i=0; i<miembros.size(); i++) {
 				if(miembros.get(i).equals(usuario)) {
-					pertenece = true;
+					return true;
 				}
 			}
 		}
-		return pertenece;
+		return false;
 	}
 }

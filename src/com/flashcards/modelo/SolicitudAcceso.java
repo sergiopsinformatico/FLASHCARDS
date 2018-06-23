@@ -1,11 +1,11 @@
 package com.flashcards.modelo;
 
 public class SolicitudAcceso {
-	String solicita, club;
+	String solicita, identificador;
 	
-	public SolicitudAcceso(String solicita, String club) {
+	public SolicitudAcceso(String solicita, String identificador) {
 		setSolicita(solicita);
-		setClub(club);
+		setIdentificador(identificador);
 	}
 
 	public String getSolicita() {
@@ -16,11 +16,11 @@ public class SolicitudAcceso {
 		this.solicita = solicita;
 	}
 
-	public String getClub() {
-		return this.club;
+	public String getIdentificador() {
+		return this.identificador;
 	}
 
-	public void setClub(String club) {
-		this.club = club;
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 }

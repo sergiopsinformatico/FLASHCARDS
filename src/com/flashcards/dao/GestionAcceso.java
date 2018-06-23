@@ -16,8 +16,12 @@ public class GestionAcceso {
 		return dB.insertarSolicitud(sA);
 	}
 	
-	public LinkedList<String> leerSolicitudes(String club){
-		return dB.leerSolicitudes(club);
+	public String leerSolicitudes(String identificador){
+		return dB.leerSolicitudes(identificador);
+	}
+	
+	public boolean existeSolicitud(SolicitudAcceso sA) {
+		return dB.existeSolicitud(sA);
 	}
 	
 	public boolean eliminarSolicitud(SolicitudAcceso sA) {

@@ -2,7 +2,7 @@
 	<head>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Clubes</title>
+		<title>Ver Flashcard</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -30,7 +30,51 @@
 			    padding-bottom:0 !important;
 			    height: 28px;
 			}
-			.navbar-inner {min-height:28px;}		
+			.navbar-inner {min-height:28px;}	
+			
+			body { font-family: sans-serif; }
+			
+			.scene {
+			  width: 100%;
+			  height: 500px;
+			  border: 1px solid #CCC;
+			  margin: 40px 0;
+			  perspective: 600px;
+			}
+			
+			.card {
+			  width: 100%;
+			  height: 100%;
+			  transition: transform 1s;
+			  transform-style: preserve-3d;
+			  cursor: pointer;
+			  position: relative;
+			}
+			
+			.card.is-flipped {
+			  transform: rotateY(180deg);
+			}
+			
+			.card__face {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  line-height: 260px;
+			  color: white;
+			  text-align: center;
+			  font-weight: bold;
+			  font-size: 60px;
+			  backface-visibility: hidden;
+			}
+			
+			.card__face--front {
+			  background: red;
+			}
+			
+			.card__face--back {
+			  background: blue;
+			  transform: rotateY(180deg);
+			}	
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -41,7 +85,7 @@
 							Inicio
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
 							Flashcards
 						</a>
@@ -51,7 +95,7 @@
 							Gente
 						</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
 							Clubes
 						</a>
@@ -85,111 +129,52 @@
 		</script>
 		
 		<div class="row">
+		
 			<div class="col-md-1"></div>
-			<div class="col-md-11">
-				<br>
-					<h1>CLUBES</h1>
-				<br>
+			
+			<div class="col-md-2" id="flechaLeft">
+				<span class="glyphicon glyphicon-chevron-left"></span><br>
+				<a href="${urlLeft}">Anterior</a>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-5" ng-app="clubsApp" ng-controller="clubsCtrl">
-				<div ng-if="clubes.length == 0"> 
-			        No existen clubes.
-			        <br>
-			    </div>
-				<div ng-if="clubes.length > 0">
-					<div class="panel-heading">
-						<input class="form-control" ng-model="expression" placeholder="Buscar un club..." />
-					</div>
-					<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
-						<table class="table table-bordered table-striped">
-							<tbody>
-								<tr ng-repeat="club in clubes | filter:expression">
-									<td>
-									<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}">{{ club.club }}</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+			
+			<div class="col-md-6">
+				<div class="scene scene--card">
+				  <div class="card">
+				    <div class="card__face card__face--front"><h6>${front}</h6></div>
+				    <div class="card__face card__face--back"><h6>${back}</h6></div>
+				  </div>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-						<form action="crearClub.html" method="post">
-							<br>
-							<h6>¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
-							Nombre del Club<br>
-							<input type="text" name="nClub" placeholder="Nombre del club..." required><br><br>
-							<style>
-								textarea {
-								   resize: none;
-								}
-							</style>
-							Descripción del Club<br>
-							<textarea rows="4" cols="50" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
-							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							<br><br><br><br>
-						    <div class="button">
-						        <button type="submit">Crear Un Club</button>
-						    </div>
-						</form>
-					</div>
-				</div>
+			
+			<div class="col-md-2" id="flechaRight">
+				<span class="glyphicon glyphicon-chevron-right"></span><br>
+				<a href="${urlRight}">Siguiente</a>
 			</div>
+			
 			<div class="col-md-1"></div>
-		</div>
+		
+		</div>			
 		<script>
-			var clubesControlador = function ($scope, $http) {
-		        $scope.clubes = [];
-		        var cadena = "${clubes}";
-		        var array = cadena.split("///****nuevoCLUB****///");
-		        var i;
-		        if(cadena != ""){
-			        for (i = 0; i < array.length; i++) { 
-			        	var club = array[i].split("////id////");
-			        	$scope.clubes.push({
-			        		club: club[0],
-			        		id: club[1]
-			        	});
-			        }
-		        }
+			var izq = "${urlLeft}";
+			var dec = "${urlRight}";
+			if((izq == "") && (dec == "")){
+				document.getElementById("flechaLeft").style.visibility="hidden";
+				document.getElementById("flechaRight").style.visibility="hidden";
+			}else if((izq != "") && (dec == "")){
+				document.getElementById("flechaLeft").style.visibility="visible";
+				document.getElementById("flechaRight").style.visibility="hidden";
+			}else if((izq == "") && (dec != "")){
+				document.getElementById("flechaLeft").style.visibility="hidden";
+				document.getElementById("flechaRight").style.visibility="visible";
+			}else{
+				document.getElementById("flechaLeft").style.visibility="visible";
+				document.getElementById("flechaRight").style.visibility="visible";
 			}
-			var app = angular.module('clubsApp', []);
-			app.controller('clubsCtrl', clubesControlador);
+			
+			var card = document.querySelector('.card');
+			card.addEventListener( 'click', function() {
+			  card.classList.toggle('is-flipped');
+			});
 		</script>
 	</body>
 </html>
-
-
-<!-- 
-		<form action="crearClub.html" method="post">
-			Nombre del Club<input type="text" name="nClub">
-			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
-		    <div class="button">
-		        <button type="submit">Crear Un Club</button>
-		    </div>
-		</form>
-		<br><br>
-		<c:if test="${not empty clubes}">
-			<table>
-			    <c:forEach items="${clubes}" var="club">
-			    	<tr>
-			    		<td> ${club} </td>
-			    		<td>
-			    			<form action="verClub.html" method="post">
-								<input id="club" name="club" type="hidden" value="${club}">
-								 <input id="usuario" name="usuario" type="hidden" value="${usuario}"> 
-							    <div class="button">
-							        <button type="submit">Ver Club</button>
-							    </div>
-							</form>
-			    		</td>
-			    	</tr>
-			    </c:forEach>
-			</table>
-		</c:if> 
--->

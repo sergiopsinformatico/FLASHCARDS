@@ -7,6 +7,10 @@ import com.flashcards.modelo.Amigos;
 
 public class GestionAmigos {
 	DBAmigos dB;
+	LinkedList<String> amigos;
+	int indice;
+	String aux;
+	GestionUsuarios gU = new GestionUsuarios();
 	
 	public GestionAmigos() {
 		dB = new DBAmigos();
@@ -18,6 +22,19 @@ public class GestionAmigos {
 	
 	public LinkedList<String> getAmigos (String username) {
 		return dB.getAmigos(username);
+	}
+	
+	public String getAmigosJSON (String username) {
+		aux="";
+		amigos = getAmigos(username);
+		for(indice=0; indice<amigos.size(); indice++) {
+			if(indice==0) {
+				aux = gU.getNyA(amigos.get(indice))+"///****user****///"+amigos.get(indice);
+			}else {
+				aux = aux + "///****nuevoAmigo****///" + gU.getNyA(amigos.get(indice))+"///****user****///"+amigos.get(indice);
+			}
+		}
+		return aux;
 	}
 	
 	public boolean deleteAmigos(Amigos am) {

@@ -32,14 +32,14 @@ public class PeticionAmistadTest {
 	
 	@Given("^Un usuario quiere tener amigos$")
 	public void un_usuario_quiere_tener_amigos() throws Throwable {
-	    user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+	    user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    gU = new GestionUsuarios();
 	    assert(gU.existeUsername(user1.getUsuario()));
 	}
 
 	@When("^Localiza a otro usuario$")
 	public void localiza_a_otro_usuario() throws Throwable {
-		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    assert(user1.getUsuario()!=user2.getUsuario());
 	}
 
@@ -54,14 +54,14 @@ public class PeticionAmistadTest {
 	
 	@Given("^Un usuario recibe una peticion de amistad$")
 	public void un_usuario_recibe_una_peticion_de_amistad() throws Throwable {
-		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gP = new GestionPeticiones();
-		assert(gP.leerPeticion(user2.getUsuario()).size()==1);
+		assert(gP.leerPeticionRecibida(user2.getUsuario()).size()==1);
 	}
 
 	@When("^Conoce al usuario$")
 	public void conoce_al_usuario() throws Throwable {
-		pA = gP.leerPeticion(user2.getUsuario()).get(0);
+		pA = gP.leerPeticionRecibida(user2.getUsuario()).get(0);
 		assert(pA.getEnvia().equals("sergio123"));
 	}
 
@@ -79,14 +79,14 @@ public class PeticionAmistadTest {
 
 	@Given("^Un usuario ha recibido una peticion de amistad$")
 	public void un_usuario_ha_recibido_una_peticion_de_amistad() throws Throwable {
-		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gP = new GestionPeticiones();
-		assert(gP.leerPeticion(user2.getUsuario()).size()==1);
+		assert(gP.leerPeticionRecibida(user2.getUsuario()).size()==1);
 	}
 
 	@When("^No conoce al usuario$")
 	public void no_conoce_al_usuario() throws Throwable {
-		pA = gP.leerPeticion(user2.getUsuario()).get(0);
+		pA = gP.leerPeticionRecibida(user2.getUsuario()).get(0);
 		assert(pA.getEnvia().equalsIgnoreCase("sergio123"));
 	}
 
@@ -99,9 +99,9 @@ public class PeticionAmistadTest {
 	
 	@Given("^Un usuario ve un usuario$")
 	public void un_usuario_ve_un_usuario() throws Throwable {
-		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user1=new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    gU = new GestionUsuarios();
-	    user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+	    user2=new Usuario("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 	    assert(user1.getUsuario()!=user2.getUsuario());
 	}
 

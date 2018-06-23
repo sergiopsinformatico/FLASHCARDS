@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
+import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.Usuario;
 
@@ -15,6 +16,9 @@ public class GestionUsuarios {
 	LinkedList<Eliminado> lista;
 	Eliminado el;
 	Usuario user;
+	LinkedList<Usuario> usuarios;
+	String json;
+	int indice;
 	
 	public GestionUsuarios() {
 		db = new DBUsuarios();
@@ -57,12 +61,22 @@ public class GestionUsuarios {
 		}
 	}
 	
-	public LinkedList<Usuario> gente(String usuario) {
-		return db.gente(usuario);
+	public String gente(String usuario) {
+		usuarios = db.gente(usuario);
+		json = "";
+		for(indice = 0; indice<usuarios.size(); indice++) {
+			user = usuarios.get(indice);
+			if(indice==0) {
+				json = user.getNombreApellidos()+"///-///"+user.getUsuario();
+			}else {
+				json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario();
+			}
+		}
+		return json;
 	}
 	
-	public LinkedList<Usuario> todosUsuarios(String usuario) {
-		return db.todosUsuarios(usuario);
+	public LinkedList<Usuario> todosUsuariosAdministrador(String usuario) {
+		return db.todosUsuariosAdministrador(usuario);
 	}
 	
 	public boolean modificarUsuario(Usuario user) {
@@ -71,6 +85,14 @@ public class GestionUsuarios {
 	
 	public boolean eliminaCuenta(String usuario) {
 		return db.eliminarCuenta(usuario);
+	}
+	
+	public String getNyA(String usuario) {
+		return db.getNyA(usuario);
+	}
+	
+	public String getNuevosMiembros(Club club) {
+		return db.getNewMiembros(club);
 	}
 	
 	public void eliminarCuentas() {

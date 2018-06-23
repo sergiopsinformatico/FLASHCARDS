@@ -20,7 +20,7 @@ public class ModificarUsuarioTest {
 
 	@When("^Modifica sus datos$")
 	public void modifica_sus_datos() throws Throwable {
-		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		user.setEdad(25);
 		assert(true);
 	}

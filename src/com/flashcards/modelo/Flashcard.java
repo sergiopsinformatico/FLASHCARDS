@@ -4,17 +4,9 @@ import java.util.LinkedList;
 
 public class Flashcard {
 	LinkedList<Tarjeta> coleccion;
-	String identificador, creador, nombreColeccion, compartido, nombreCompartido, evaluador, coleccionJSON, auxJSON;
+	String identificador, creador, nombreColeccion, compartido, nombreCompartido, evaluador, coleccionJSON, auxJSON, descripcion;
 	Tarjeta t;
 	boolean evaluado;
-	
-	public Flashcard(LinkedList<Tarjeta> coleccion, String creador, String nombreColeccion, String compartido) {
-		setColeccion(coleccion);
-		setCreador(creador);
-		setNombreColeccion(nombreColeccion);
-		setCompartido(compartido);
-		setEvaluado(false);
-	}
 	
 	public LinkedList<Tarjeta> getColeccion() {
 		return this.coleccion;
@@ -81,11 +73,19 @@ public class Flashcard {
 		for(int i=0; i<getColeccion().size(); i++) {
 			t = getColeccion().get(i);
 			if(i==0) {
-				auxJSON = t.getEnunciado()+"FC**//--FC**//--"+t.getRespuesta();
+				auxJSON = t.getEnunciado()+"///****resp****///"+t.getRespuesta();
 			}else {
-				auxJSON = auxJSON+"FC**//--FC**//--"+t.getEnunciado()+"FC**//--FC**//--"+t.getRespuesta();
+				auxJSON = auxJSON+"///****nuevaCARD****///"+t.getEnunciado()+"///****resp****///"+t.getRespuesta();
 			}
 		}
 		setColeccionJSON(auxJSON);
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 }

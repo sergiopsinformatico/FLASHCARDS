@@ -17,14 +17,14 @@ public class AdministradorTest {
 	@Given("^El administrador logueado$")
 	public void el_administrador_logueado() throws Throwable {
 	    gU = new GestionUsuarios();
-	    user = new Usuario("pepeAdmin", "Admin1234", "email@email.com", "Pepe", "Admin", 25, "Ciudad Real", "España", "Hombre", false, false, true);
+	    user = new Usuario("pepeAdmin", "Admin1234", "email@email.com", "Pepe Admin", 25, "Ciudad Real", "España", "Hombre", false, false, true);
 	    gU.registrarUsuario(user);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
 	}
 
 	@When("^Cambia de rol a un usuario$")
 	public void cambia_de_rol_a_un_usuario() throws Throwable {
-		user = new Usuario("Saergio123", "Sergio123", "sergio123_yo@hotmail.com", "Sergio", "Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("Saergio123", "Sergio123", "sergio123_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
 		gU.registrarUsuario(user);
 		user.setAdministrador(true);
 		user.setModerador(true);
@@ -43,7 +43,7 @@ public class AdministradorTest {
 	@Given("^El administrador conectado$")
 	public void el_administrador_conectado() throws Throwable {
 		gU = new GestionUsuarios();
-	    user = new Usuario("pepeAdmin", "Admin1234", "email@email.com", "Pepe", "Admin", 25, "Ciudad Real", "España", "Hombre", false, false, true);
+	    user = new Usuario("pepeAdmin", "Admin1234", "email@email.com", "Pepe Admin", 25, "Ciudad Real", "España", "Hombre", false, false, true);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
 	}
 

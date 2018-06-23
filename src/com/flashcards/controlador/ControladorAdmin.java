@@ -1,6 +1,9 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionUsuarios;
@@ -15,55 +19,96 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorAdmin {
-	@RequestMapping(value = "/gestionar", method = RequestMethod.POST)
-	public ModelAndView gestionar(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.todosUsuarios(request.getParameter("admin"));
-		ModelAndView vista = new ModelAndView("administrador");
-		vista.addObject("usuarios", usuarios);
-		vista.addObject("admin", request.getParameter("admin"));
+	
+	GestionUsuarios gU = new GestionUsuarios();
+	LinkedList<Usuario>usuarios;
+	ModelAndView vista;
+	Usuario user;
+	String users, rol;
+	
+	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
+	public ModelAndView gestionar(@RequestParam("usuario") String usuario) {
+		users = "";
+		usuarios = gU.todosUsuariosAdministrador(usuario);
+		for(int i=0; i<usuarios.size(); i++) {
+			
+			if(usuarios.get(i).isUsuario())rol="usuario";
+			if(usuarios.get(i).isModerador())rol="moderador";
+			if(usuarios.get(i).isAdministrador())rol="administrador";
+			
+			if(i==0) {
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}else {
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}
+		}
+		vista = new ModelAndView("administrador");
+		vista.addObject("usuarios", users);
+		vista.addObject("admin", usuario);
 		return vista;
 	}
 	
 	@RequestMapping(value = "/adminEliminaCuenta", method = RequestMethod.POST)
 	public ModelAndView adminEliminaCuenta(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
-		gU.eliminaCuenta(request.getParameter("usuario"));
 		gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.gente(request.getParameter("admin"));
-		ModelAndView vista = new ModelAndView("administrador");
-		vista.addObject("usuarios", usuarios);
+		gU.eliminaCuenta(request.getParameter("usuario"));
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gestionar.html?usuario="+request.getParameter("admin"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		users = "";
+		usuarios = gU.todosUsuariosAdministrador(request.getParameter("admin"));
+		for(int i=0; i<usuarios.size(); i++) {
+			
+			if(usuarios.get(i).isUsuario())rol="usuario";
+			if(usuarios.get(i).isModerador())rol="moderador";
+			if(usuarios.get(i).isAdministrador())rol="administrador";
+			
+			if(i==0) {
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}else {
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+			}
+		}
+		vista = new ModelAndView("administrador");
+		vista.addObject("usuarios", users);
 		vista.addObject("admin", request.getParameter("admin"));
 		return vista;
 	}
 	
 	@RequestMapping(value = "/adminCambiaRol", method = RequestMethod.POST)
 	public ModelAndView adminCambiaRol(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
-		Usuario usuario = gU.leerUsuario(request.getParameter("usuario"));
+		gU = new GestionUsuarios();
+		user = gU.leerUsuario(request.getParameter("usuario"));
 		switch(request.getParameter("rol")) {
 			case "usuario":
-				usuario.setUsuario(true);
-				usuario.setModerador(false);
-				usuario.setAdministrador(false);
+				user.setUsuario(true);
+				user.setModerador(false);
+				user.setAdministrador(false);
 				break;
 			case "moderador":
-				usuario.setUsuario(false);
-				usuario.setModerador(true);
-				usuario.setAdministrador(false);
+				user.setUsuario(false);
+				user.setModerador(true);
+				user.setAdministrador(false);
 				break;
 			case "administrador":
-				usuario.setUsuario(false);
-				usuario.setModerador(false);
-				usuario.setAdministrador(true);
+				user.setUsuario(false);
+				user.setModerador(false);
+				user.setAdministrador(true);
 				break;
 			default:
 				break;
 		}
-		gU.modificarUsuario(usuario);
+		gU.modificarUsuario(user);
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gestionar.html?usuario="+request.getParameter("admin"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		gU = new GestionUsuarios();
-		LinkedList<Usuario>usuarios = gU.gente(request.getParameter("admin"));
-		ModelAndView vista = new ModelAndView("administrador");
+		usuarios = gU.todosUsuariosAdministrador(request.getParameter("admin"));
+		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));
 		return vista;
