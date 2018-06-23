@@ -142,9 +142,9 @@
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-2"></div>
-			<div class="col-md-4" ng-controller="showCtrl">
+			<div class="col-md-5"></div>
+			<div class="col-md-1"></div>
+			<div class="col-md-5" ng-controller="showCtrl">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="scene scene--card">
@@ -162,14 +162,12 @@
 					</div>
 					<div class="col-md-6">
 						<div class="row">
-							<br><br><br><br>
 							<h6>Anverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
 							<textarea maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
 						</div>
 						<div class="row">
-							<br><br>
 							<h6>Reverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
@@ -196,7 +194,6 @@
 					<div class="col-md-4"></div>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
 		</div>
 		
 		<script>
