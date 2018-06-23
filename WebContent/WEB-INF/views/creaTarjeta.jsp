@@ -150,9 +150,11 @@
 						<div class="scene scene--card">
 						  <div class="card text-center">
 						    <div class="card__face card__face--front align-items-center justify-content-center">
+						    	<br>
 						    	<p class="card-text">{{ newAnverso }}</p>
 							</div>
 						    <div class="card__face card__face--back align-items-center justify-content-center">
+						    	<br>
 						    	<p class="card-text">{{ newReverso }}</p>
 							</div>
 						  </div>
@@ -160,26 +162,36 @@
 					</div>
 					<div class="col-md-6">
 						<div class="row">
+							<br><br><br><br>
 							<h6>Anverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
-							<textarea rows="2" cols="50" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
+							<textarea maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
 						</div>
 						<div class="row">
+							<br><br>
 							<h6>Reverso de la Tarjeta</h6>
 						</div>
 						<div class="row">
-							<textarea rows="4" cols="50" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
+							<textarea maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
+						</div>
+						<div class="row">
+							<div class="action">
+								<div class="col-md-4">
+									<button ng-click="Add()">Insertar</button>
+								</div>
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<button ng-click="Reset()">Limpiar Campos</button>
+								</div>				                
+				            </div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
-						<div class="action">
-			                <button ng-click="Add()">Insertar</button>
-			                <button ng-click="Reset()">Limpiar Campos</button>
-			            </div>
+						
 					</div>
 					<div class="col-md-4"></div>
 				</div>
