@@ -47,7 +47,7 @@
 			
 			.title {
 			  color: grey;
-			  font-size: 18px;
+			  font-size: 10px;
 			}
 			
 			button {
@@ -125,9 +125,9 @@
 			<div class="col-md-3">
 				<div class="card">
 					<img src="/resources/img/cards.jpg" alt="Perfil" style="width:100%">
-					<h5>Crear Flashcards</h5>
+					<h4>Crear Flashcards</h4>
 					<br>
-						Crea tu propia colección de Flashcards y compártela con quién quieras (club, un amigo, con todos o sólo para tí)
+						<p class="title">Crea tu propia colección de Flashcards y compártela con quién quieras (club, un amigo, con todos o sólo para tí)</p>
 					<br>
 					<div style="margin: 24px 0;">
 						<h6><a href="crearColeccion.html">Pincha Aquí</a></h6> 
