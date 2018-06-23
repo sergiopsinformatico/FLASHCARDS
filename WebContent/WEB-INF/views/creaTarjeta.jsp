@@ -145,39 +145,27 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
-				<div class="scene scene--card">
-				  <div class="card">
-				    <div class="card__face card__face--front">
-						<div class="row">
-							<br><br>
-						</div>
-						<div class="row">
-							<div class="col-md-3"></div>
-							<div class="col-md-6">
-								<textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Anverso..." form="form2" ng-model="newEnunciado"></textarea>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="scene scene--card">
+						  <div class="card">
+						    <div class="card__face card__face--front">
+								newEnunciado
 							</div>
-							<div class="col-md-3"></div>
-						</div>
-						<div class="row">
-							<br><br>
+						    <div class="card__face card__face--back">
+								newRespuesta
+							</div>
+						  </div>
 						</div>
 					</div>
-				    <div class="card__face card__face--back">
-				    	<div class="row">
-							<br><br>
+					<div class="col-md-6">
+						<div class="row">
+							<textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Anverso..." form="form2" ng-model="newEnunciado"></textarea>
 						</div>
 						<div class="row">
-							<div class="col-md-3"></div>
-							<div class="col-md-6">
-								<textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Reverso..." form="form3" ng-model="newRespuesta"></textarea>
-							</div>
-							<div class="col-md-3"></div>
-						</div>
-						<div class="row">
-							<br><br>
+							<textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Reverso..." form="form3" ng-model="newRespuesta"></textarea>
 						</div>
 					</div>
-				  </div>
 				</div>
 			</div>
 			<div class="col-md-1"></div>
