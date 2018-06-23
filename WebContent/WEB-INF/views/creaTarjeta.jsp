@@ -2,26 +2,6 @@
 <html>
 	<head>
 	    <title>Crear Tarjeta - Flashcard</title>
-	    <style>
-		    .list_data { margin-bottom: 2rem }
-		    table, th, td { border: 1px solid #AAA }
-		    th { cursor: pointer }
-		    div.left {
-			    text-align: left;
-			}
-			.navbar-nav > li > a, .navbar-brand {
-			    padding-top:4px !important; 
-			    padding-bottom:0 !important;
-			    height: 28px;
-			}
-			.navbar {min-height:28px !important;}
-			div.center {
-			    text-align: center;
-			}
-			textarea {
-			   resize: none;
-			}
-	    </style>
 	   	<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -45,6 +25,62 @@
 				alert("${mensaje}");
 			}
 		</script>
+		<style>
+		    .list_data { margin-bottom: 2rem }
+		    table, th, td { border: 1px solid #AAA }
+		    th { cursor: pointer }
+		    div.left {
+			    text-align: left;
+			}
+			.navbar-nav > li > a, .navbar-brand {
+			    padding-top:4px !important; 
+			    padding-bottom:0 !important;
+			    height: 28px;
+			}
+			.navbar {min-height:28px !important;}
+			div.center {
+			    text-align: center;
+			}
+			textarea {
+			   resize: none;
+			}
+			.card {
+			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			  max-width: 150px;
+			  max-weight: 200px
+			  margin: auto;
+			  text-align: center;
+			  font-family: arial;
+			  transition: transform 1s;
+			  transform-style: preserve-3d;
+			  cursor: pointer;
+			  position: relative;
+			}
+			.card.is-flipped {
+			  transform: rotateY(180deg);
+			}
+			
+			.card__face {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  line-height: 260px;
+			  color: white;
+			  text-align: center;
+			  font-weight: bold;
+			  font-size: 60px;
+			  backface-visibility: hidden;
+			}
+			
+			.card__face--front {
+			  background: red;
+			}
+			
+			.card__face--back {
+			  background: blue;
+			  transform: rotateY(180deg);
+			}
+	    </style>
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
@@ -96,7 +132,38 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
+		<div class="row">
+			<br>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-4"></div>
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div class="scene scene--card">
+				  <div class="card">
+				    <div class="card__face card__face--front">
+				    	<br><br>
+				    	<h6>Anverso</h6>
+				    	<br><br>
+				    </div>
+				    <div class="card__face card__face--back">
+				    	<br><br>
+				    	<h6>Reverso</h6>
+				    	<br><br>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
 		
+		
+		
+		
+		
+		
+		<!-- 
 		<div class="row">
 			<div class="col-md-1">
 				<br><br>
@@ -234,7 +301,6 @@
 										        }
 										    }
 										</script>
-										<!-- Aqui estaba el javascript de los errorres -->
 									</form>
 								</div>
 								<div class="col-md-2"></div>
@@ -424,5 +490,6 @@
 			app.controller('usuarioCtrl', usuarioControlador);
 			app.controller('recordCtrl', recordControlador);
 		</script>
+		-->
 	</body>
 </html>
