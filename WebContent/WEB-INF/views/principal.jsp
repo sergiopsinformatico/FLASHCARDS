@@ -62,12 +62,6 @@
 			button:hover, a:hover {
 			  opacity: 0.7;
 			}
-			
-			a {
-			  text-decoration: none;
-			  font-size: 22px;
-			  color: black;
-			}
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -128,10 +122,17 @@
 				<h2 style="text-align:center">Mi Profile Card</h2>
 				<div class="card">
 				  <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Perfil" style="width:100%">
-				  <h1>${usuario.getNombreApellidos()}</h1>
+				  <h5>${usuario.getNombreApellidos()}</h5>
 				  <p class="title">${rol}</p>
+				  <style>
+				  	a {
+					  text-decoration: none;
+					  font-size: 22px;
+					  color: black;
+					}
+				  </style>
 				  <div style="margin: 24px 0;">
-				    <a href="#">Perfil<i class="fa fa-dribbble"></i></a> 
+				    <a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a> 
 				 </div>
 				</div>
 			</div>
