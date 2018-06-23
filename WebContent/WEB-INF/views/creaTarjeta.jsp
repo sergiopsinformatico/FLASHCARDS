@@ -150,10 +150,10 @@
 					<div class="col-md-6">
 						<div class="scene scene--card">
 						  <div class="card">
-						    <div class="card__face card__face--front align-items-center d-flex justify-content-center">
+						    <div class="card__face card__face--front align-items-center justify-content-center">
 								{{ newAnverso }}
 							</div>
-						    <div class="card__face card__face--back align-items-center d-flex justify-content-center">
+						    <div class="card__face card__face--back align-items-center justify-content-center">
 								{{ newReverso }}
 							</div>
 						  </div>
