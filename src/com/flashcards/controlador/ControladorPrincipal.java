@@ -16,9 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionBloqueados;
 import com.flashcards.dao.GestionClubes;
+import com.flashcards.dao.GestionFlashcards;
 import com.flashcards.dao.GestionPeticiones;
+import com.flashcards.dao.GestionSolicitudModerador;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.PeticionDeAmistad;
+import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.Usuario;
 
 @Controller
@@ -29,6 +32,8 @@ public class ControladorPrincipal {
 	GestionPeticiones gP = new GestionPeticiones();
 	GestionAmigos gA = new GestionAmigos();
 	GestionBloqueados gB = new GestionBloqueados();
+	GestionSolicitudModerador gSM;
+	GestionFlashcards gF;
 	ModelAndView vista;
 	LinkedList<Usuario> usuarios;
 	LinkedList<String> users;
@@ -84,8 +89,13 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/flashcards", method = RequestMethod.GET)
 	public ModelAndView flashcards(@RequestParam("usuario") String usuario) {
 		user = gU.leerUsuario(usuario);
+		gSM = new GestionSolicitudModerador();
+		gF = new GestionFlashcards();
 		vista = new ModelAndView("flashcards");
 		vista.addObject("usuario", user);
+		vista.addObject("solicitado", gSM.existeSolicitud(new SolicitudModerador(user.getUsuario())));
+		vista.addObject("listaFlashcards", gF.listaJSONFlashcards(user.getUsuario()));
+		vista.addObject("evaluarFlashcards", gF.evaluaJSONFlashcards(user.getUsuario()));
 		return vista;
 	}
 	

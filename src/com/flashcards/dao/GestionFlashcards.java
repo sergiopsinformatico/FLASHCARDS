@@ -21,4 +21,12 @@ public class GestionFlashcards {
 	public boolean existeIdentificador(String identificador) {
 		return dB.existIdentificador(identificador);
 	}
+	
+	public String listaJSONFlashcards(String usuario) {
+		return dB.listJSON(usuario);
+	}
+	
+	public String evaluaJSONFlashcards(String usuario) {
+		return dB.evaluarJSON(usuario);
+	}
 }

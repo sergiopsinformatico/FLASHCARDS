@@ -31,7 +31,43 @@
 			    padding-bottom:0 !important;
 			    height: 28px;
 			}
-			.navbar-inner {min-height:28px;}		
+			.navbar-inner {min-height:28px;}	
+			
+			.card {
+			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			  max-width: 300px;
+			  margin: auto;
+			  text-align: center;
+			  font-family: arial;
+			}
+			
+			.title {
+			  color: grey;
+			  font-size: 18px;
+			}
+			
+			button {
+			  border: none;
+			  outline: 0;
+			  display: inline-block;
+			  padding: 8px;
+			  color: white;
+			  background-color: #000;
+			  text-align: center;
+			  cursor: pointer;
+			  width: 100%;
+			  font-size: 18px;
+			}
+			
+			a {
+			  text-decoration: none;
+			  font-size: 22px;
+			  color: black;
+			}
+			
+			button:hover, a:hover {
+			  opacity: 0.7;
+			}
 		</style>
 		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -87,6 +123,31 @@
 		<div class="row">
 			<br><br>
 		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h2 style="text-align:center">User Profile Card</h2>
+				<div class="card">
+				  <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+				  <h1>${usuario.getUsuario()}</h1>
+				  <?php if(${usuario.isUsuario()} == true) : ?>
+				  		<p class="title">Usuario</p>
+				  <?php elseif(${usuario.isModerador()} == true) : ?>
+				  		<p class="title">Moderador</p>
+				  <?php else : ?>
+				  		<p class="title">Administrador</p>
+				  <?php endif; ?>
+				  <div style="margin: 24px 0;">
+				    <a href="#">Perfil<i class="fa fa-dribbble"></i></a> 
+				 </div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
 		<!-- 
 		<div class="row">
 			<div class="col-md-3 center">
@@ -130,10 +191,6 @@
 			            $scope.notificaciones.splice(index, 1);
 			        };
 				});
-		</script>
-			<div class="col-md-9 center">
-				
-			</div>
-		</div>
+			</script>
 	</body>
 </html>

@@ -6,6 +6,9 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.dao.GestionAmigos;
+import com.flashcards.dao.GestionClubes;
+import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.Tarjeta;
 import com.mongodb.MongoClient;
@@ -29,6 +32,9 @@ public class DBFlashcards {
     Tarjeta t;
     Flashcard flash;
     String[] lista;
+    String listJSON;
+    GestionClubes gC;
+    GestionAmigos gA;
     
 	public DBFlashcards() {
 		conexionDB();
@@ -49,6 +55,7 @@ public class DBFlashcards {
 		try {
 			doc = new Document();
 			doc.append("identificador", flash.getIdentificador());
+			doc.append("creador", flash.getCreador());
 			doc.append("coleccion", flash.getNombreColeccion());
 			doc.append("descripcion", flash.getDescripcion());
 			doc.append("compartido", flash.getCompartido());
@@ -79,6 +86,78 @@ public class DBFlashcards {
 		}else {
 			return false;
 		}
+	}
+	
+	public String listJSON(String usuario) {
+		listJSON = "";
+		indice = 0;
+		listaPosibles = coleccionFlashcards.find().iterator();
+		while(listaPosibles.hasNext()) {
+			doc = listaPosibles.next();
+			if(doc.getBoolean("evaluado")) {
+				switch(doc.getString("compartido")) {
+					case "publico":
+						if(indice==0) {
+							listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
+							indice++;
+						}else {
+							listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+						}
+						break;
+					case "privado":
+						if(doc.getString("compartidoCon").equals(usuario)) {
+							if(indice==0) {
+								listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
+								indice++;
+							}else {
+								listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+							}
+						}
+						break;
+					case "club":
+						gC = new GestionClubes();
+						if(gC.perteneceWithIdentificador(usuario, doc.getString("compartidoCon"))) {
+							if(indice==0) {
+								listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
+								indice++;
+							}else {
+								listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+							}
+						}
+						break;
+					case "usuario":
+						gA = new GestionAmigos();
+						if(gA.existeAmigos(new Amigos(usuario,doc.getString("compartidoCon")))) {
+							if(indice==0) {
+								listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
+								indice++;
+							}else {
+								listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+							}
+						}
+						break;
+				}
+			}
+		}
+		return listJSON;
+	}
+	
+	public String evaluarJSON(String usuario) {
+		listJSON = "";
+		indice = 0;
+		listaPosibles = coleccionFlashcards.find().iterator();
+		while(listaPosibles.hasNext()) {
+			doc = listaPosibles.next();
+			if((!doc.getBoolean("evaluado")) && (!(doc.getString("creador").equals(usuario)))) {
+				if(indice==0) {
+					listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
+					indice++;
+				}else {
+					listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+				}
+			}
+		}
+		return listJSON;
 	}
 	
 	public Flashcard readFlashcard(String id) {

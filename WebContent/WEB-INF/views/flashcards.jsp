@@ -2,12 +2,12 @@
 	<head>
 		<title>Menu Flashcards - Flashcards</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
@@ -94,25 +94,66 @@
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
-				<div class="col-md-12" style="width:100%">
-					<form action="crearColeccion.html">
-						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Crear Coleccion Flashcards</button>
-					</form>
+				<div class="row">
+					<div class="col-md-12" style="width:100%">
+						<form action="crearColeccion.html">
+							<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Crear Coleccion Flashcards</button>
+						</form>
+					</div>
+				</div>
+				<div class="row" ng-app="myFlashApp" ng-controller="flashCtrl">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Buscar Colecciones Disponibles..." />
+						</div>
+						<div class="panel-body fixed-panel">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="flash in flashes | filter:expression">
+										<td>
+											<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&id={{ flash.id }}&card=0">{{ flash.name }}</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-3">
-				<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&id=privado-sergio12345982385492353&card=0">Ejemplo de Flashcards</a>
-				
-				
-				<!-- <div class="col-md-12" style="width:100%">
-					<form action="verColecciones.html" method="post" class="border-login" id="form2">
-					  	<button type="submit" class="btn btn-success">
-					  		Mis Colecciones de Flashcards
-					  	</button>
-					</form>
-				</div>-->
+				<div class="row">
+					<div class="col-md-12" style="width:100%">
+						<form action="serModerador.html" method="post" class="border-login" id="form2">
+							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+						  	<button type="submit" class="btn btn-success">
+						  		Solicitar Ser Moderador
+						  	</button>
+						</form>
+						<div id="form3">
+							<h6>Debe esperar a la contestación de solicitud para ser moderador.</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-app="myFlashApp" ng-controller="evaluaCtrl" id="form5">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<input class="form-control" ng-model="expression" placeholder="Colecciones para Evaluar..." />
+						</div>
+						<div class="panel-body fixed-panel">
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr ng-repeat="evalua in evaluar | filter:expression">
+										<td>
+											<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&id={{ flash.id }}&card=0">{{ flash.name }}</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-2">
 			</div>
@@ -121,26 +162,66 @@
 			<div class="col-md-4">
 			</div>
 			<div class="col-md-4">
-				<div class="col-md-12">
-				<!-- 
-					<form action="evaluarColecciones.html" method="post" class="border-login" id="form3">
-					  	<button type="submit" class="btn btn-warning">
-					  		Evaluar Colecciones de Tarjetas
-					  	</button>
-				  	</form>
-				  -->
-			  	</div>
+				
 			</div>
 			<div class="col-md-4">
 			</div>
 		</div>
 		<script language="JavaScript" type="text/javascript">
+			var comp = ${solicitado};
 			var comp2 = ${usuario.isModerador()};
-			if (comp2){
+			
+			if(comp){
+				document.getElementById("form2").style.visibility="hidden";
 				document.getElementById("form3").style.visibility="visible";
-			}else{
+				document.getElementById("form5").style.visibility="hidden";
+			}else if (comp2){
+				document.getElementById("form2").style.visibility="hidden";
 				document.getElementById("form3").style.visibility="hidden";
+				document.getElementById("form5").style.visibility="visible";
+			}else{
+				document.getElementById("form2").style.visibility="visible";
+				document.getElementById("form3").style.visibility="hidden";
+				document.getElementById("form5").style.visibility="hidden";
 			}
+		</script>
+		
+		<script>
+			var flashesControlador = function($scope){
+				$scope.flashes = [];
+				var cadena = "${listaFlashcards}";
+				var array = cadena.split("****////nCol////****");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("****////identificador////****");
+			        	$scope.flashes.push({
+			        		name: user[0],
+			        		id: user[1]
+			        	});
+			        }
+		        }
+			};
+			
+			var evaluaControlador = function($scope){
+				$scope.evaluar = [];
+				var cadena = "${evaluarFlashcards}";
+				var array = cadena.split("****////nCol////****");
+				var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var user = array[i].split("****////identificador////****");
+			        	$scope.evaluar.push({
+			        		name: user[0],
+			        		id: user[1]
+			        	});
+			        }
+		        }
+			};
+			
+			var app = angular.module('myFlashApp', []);
+			app.controller('flashCtrl', flashesControlador);
+			app.controller('evaluaCtrl', evaluaControlador);
 		</script>
 	</body>
 </html>

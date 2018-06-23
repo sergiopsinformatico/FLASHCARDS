@@ -1,5 +1,6 @@
 package com.flashcards.controlador;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -17,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionFlashcards;
+import com.flashcards.dao.GestionSolicitudModerador;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
+import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.Tarjeta;
 import com.flashcards.modelo.Usuario;
 
@@ -30,6 +33,7 @@ public class ControladorTarjetas {
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionAmigos gA = new GestionAmigos();
 	GestionFlashcards gF = new GestionFlashcards();
+	GestionSolicitudModerador gSM;
 	JSONObject parser;
 	ModelAndView vista;
 	Tarjeta t;
@@ -68,6 +72,17 @@ public class ControladorTarjetas {
 				tarjetas.remove(i);
 				i=0;
 			}
+		}
+	}
+	
+	@RequestMapping(value = "/serModerador", method = RequestMethod.POST)
+	public void serModerador(HttpServletRequest request, HttpServletResponse response) {
+		gSM = new GestionSolicitudModerador();
+		gSM.insertarSolicitud(new SolicitudModerador(request.getParameter("usuario")));
+		try {
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/flashcards.html?usuario="+request.getParameter("usuario"));
+		} catch (IOException e) {
+			
 		}
 	}
 	
@@ -117,7 +132,7 @@ public class ControladorTarjetas {
 					identificador = "privado-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setNombreCompartido("yo");
+				flash.setNombreCompartido("flash.getCreador()");
 				break;
 			case "club":
 				do {
