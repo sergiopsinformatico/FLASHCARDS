@@ -73,7 +73,7 @@
 			  color: white;
 			  text-align: center;
 			  font-weight: bold;
-			  font-size: 60px;
+			  font-size: 12px;
 			  backface-visibility: hidden;
 			}
 			
@@ -150,10 +150,10 @@
 						<div class="scene scene--card">
 						  <div class="card">
 						    <div class="card__face card__face--front">
-								newEnunciado
+								newAnverso
 							</div>
 						    <div class="card__face card__face--back">
-								newRespuesta
+								newReverso
 							</div>
 						  </div>
 						</div>
