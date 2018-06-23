@@ -46,8 +46,8 @@
 			   resize: none;
 			}
 			.scene {
-			  width: 200px;
-			  height: 350px;
+			  width: 300px;
+			  height: 450px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -144,7 +144,7 @@
 			<div class="col-md-6"></div>
 			<div class="col-md-6" ng-controller="showCtrl">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<div class="scene scene--card">
 						  <div class="card text-center">
 						    <div class="card__face card__face--front align-items-center justify-content-center">
@@ -158,10 +158,8 @@
 						  </div>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<br><br><br><br>
-						</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-5">
 						<div class="row">
 							<h6>Anverso de la Tarjeta</h6>
 						</div>
@@ -179,15 +177,16 @@
 						</div>
 						<div class="row">
 							<div class="action">
-								<div class="row">
+								<div class="col-md-6">
 									<button ng-click="Add()">Insertar</button>
 								</div>
-								<div class="row">
+								<div class="col-md-6">
 									<button ng-click="Reset()">Limpiar Campos</button>
-								</div>				                
-				            </div>
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div>
