@@ -5,7 +5,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -62,6 +61,12 @@
 					
 			button:hover, a:hover {
 			  opacity: 0.7;
+			}
+			
+			a {
+			  text-decoration: none;
+			  font-size: 22px;
+			  color: black;
 			}
 		</style>
 		
@@ -122,28 +127,9 @@
 			<div class="col-md-4">
 				<h2 style="text-align:center">Mi Profile Card</h2>
 				<div class="card">
-				  <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+				  <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Perfil" style="width:100%">
 				  <h1>${usuario.getNombreApellidos()}</h1>
-				  
-				  <?php if (${usuario.isUsuario()} == true){ ?>
-					<p class="title">Usuario</p>
-				  <?php }; ?>
-					
-				  <?php if (usuario.isModerador()} == true){ ?>
-					<p class="title">Moderador</p>
-				  <?php }; ?>
-					
-				  <?php if (usuario.isAdministrador()} == true){ ?>
-					<p class="title">Administrador</p>
-				  <?php }; ?>
-				  
-				  <style>
-				  	a {
-					  text-decoration: none;
-					  font-size: 22px;
-					  color: black;
-					}
-				  </style>
+				  <p class="title">${rol}</p>
 				  <div style="margin: 24px 0;">
 				    <a href="#">Perfil<i class="fa fa-dribbble"></i></a> 
 				 </div>

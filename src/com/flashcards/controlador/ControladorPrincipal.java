@@ -50,6 +50,13 @@ public class ControladorPrincipal {
 		user = gU.leerUsuario(usuario);
 		vista = new ModelAndView("principal");
 		vista.addObject("usuario", user);
+		if(user.isUsuario()) {
+			vista.addObject("rol", "Usuario");
+		}else if(user.isModerador()) {
+			vista.addObject("rol", "Moderador");
+		}else {
+			vista.addObject("rol", "Administrador");
+		}
 		return vista;
 	}
 	
