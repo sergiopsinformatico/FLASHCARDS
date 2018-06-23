@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Principal - Flashcards</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
@@ -59,7 +60,7 @@
 			  font-size: 18px;
 			}
 					
-			button:hover, a:hover {
+			button:hover{
 			  opacity: 0.7;
 			}
 		</style>
@@ -124,15 +125,8 @@
 				  <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Perfil" style="width:100%">
 				  <h5>${usuario.getNombreApellidos()}</h5>
 				  <p class="title">${rol}</p>
-				  <style>
-				  	a {
-					  text-decoration: none;
-					  font-size: 22px;
-					  color: black;
-					}
-				  </style>
 				  <div style="margin: 24px 0;">
-				    <a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a> 
+				    <h6><a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a></h6> 
 				 </div>
 				</div>
 			</div>
