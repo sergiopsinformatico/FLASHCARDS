@@ -74,7 +74,7 @@
 			  line-height: 350px;
 			  text-align: center;
 			  font-weight: bold;
-			  font-size: 12px;
+			  font-size: 12pxvw;
 			  backface-visibility: hidden;
 			}
 			
