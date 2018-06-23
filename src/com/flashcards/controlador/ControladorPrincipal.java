@@ -100,9 +100,9 @@ public class ControladorPrincipal {
 		gF = new GestionFlashcards();
 		vista = new ModelAndView("flashcards");
 		vista.addObject("usuario", user);
-		vista.addObject("solicitado", gSM.existeSolicitud(new SolicitudModerador(user.getUsuario())));
+		/*vista.addObject("solicitado", gSM.existeSolicitud(new SolicitudModerador(user.getUsuario())));
 		vista.addObject("listaFlashcards", gF.listaJSONFlashcards(user.getUsuario()));
-		vista.addObject("evaluarFlashcards", gF.evaluaJSONFlashcards(user.getUsuario()));
+		vista.addObject("evaluarFlashcards", gF.evaluaJSONFlashcards(user.getUsuario()));*/
 		return vista;
 	}
 	

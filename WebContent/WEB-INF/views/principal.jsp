@@ -169,7 +169,7 @@
 						</table>
 					</div>
 				</div>
-			</div>-->
+			</div>
 			<script>
 				angular.module('Notifications', []).controller('NotificationCtrl', function($scope) {
 					$scope.notificaciones = [{
@@ -181,6 +181,6 @@
 			            $scope.notificaciones.splice(index, 1);
 			        };
 				});
-			</script>
+			</script>-->
 	</body>
 </html>
