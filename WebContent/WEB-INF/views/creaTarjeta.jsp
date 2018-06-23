@@ -46,8 +46,8 @@
 			   resize: none;
 			}
 			.scene {
-			  width: 150px;
-			  height: 250px;
+			  width: 200px;
+			  height: 350px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -70,7 +70,6 @@
 			  position: absolute;
 			  width: 100%;
 			  height: 100%;
-			  line-height: 260px;
 			  color: white;
 			  text-align: center;
 			  font-weight: bold;
@@ -149,10 +148,34 @@
 				<div class="scene scene--card">
 				  <div class="card">
 				    <div class="card__face card__face--front">
-						<textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Anverso..." form="form2" ng-model="newEnunciado"></textarea>
+						<div class="row">
+							<br><br>
+						</div>
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Anverso..." form="form2" ng-model="newEnunciado"></textarea>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+						<div class="row">
+							<br><br>
+						</div>
 					</div>
 				    <div class="card__face card__face--back">
-						<textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Reverso..." form="form3" ng-model="newRespuesta"></textarea>
+				    	<div class="row">
+							<br><br>
+						</div>
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Reverso..." form="form3" ng-model="newRespuesta"></textarea>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+						<div class="row">
+							<br><br>
+						</div>
 					</div>
 				  </div>
 				</div>
