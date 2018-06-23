@@ -176,13 +176,12 @@
 							<textarea rows="6" cols="50" maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
 						</div>
 						<div class="row">
-							<div class="action">
-								<div class="col-md-6">
-									<button ng-click="Add()">Insertar</button>
-								</div>
-								<div class="col-md-6">
-									<button ng-click="Reset()">Limpiar Campos</button>
-								</div>
+							<div class="action col-md-5">
+								<button ng-click="Add()">Insertar</button>
+							</div>
+							<div class="col-md-2"></div>
+							<div class="action col-md-5">
+								<button ng-click="Reset()">Limpiar Campos</button>
 							</div>
 						</div>
 					</div>
