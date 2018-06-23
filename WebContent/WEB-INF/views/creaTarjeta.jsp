@@ -71,7 +71,7 @@
 			  width: 100%;
 			  height: 100%;
 			  color: white;
-			  line-height: 350px;
+			  /*line-height: 350px;*/
 			  text-align: center;
 			  font-weight: bold;
 			  font-size: 12pxvw;
@@ -150,10 +150,10 @@
 					<div class="col-md-6">
 						<div class="scene scene--card">
 						  <div class="card">
-						    <div class="card__face card__face--front">
+						    <div class="card__face card__face--front align-items-center">
 								{{ newAnverso }}
 							</div>
-						    <div class="card__face card__face--back">
+						    <div class="card__face card__face--back align-items-center">
 								{{ newReverso }}
 							</div>
 						  </div>
