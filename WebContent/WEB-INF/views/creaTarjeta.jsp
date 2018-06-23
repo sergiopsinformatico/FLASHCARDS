@@ -44,26 +44,31 @@
 			textarea {
 			   resize: none;
 			}
+			.scene {
+			  width: 100%;
+			  height: 500px;
+			  border: 1px solid #CCC;
+			  margin: 40px 0;
+			  perspective: 600px;
+			}
+			
 			.card {
-			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-			  width: 150px;
-			  height: 200px;
-			  margin: auto;
-			  text-align: center;
-			  font-family: arial;
+			  width: 100%;
+			  height: 100%;
 			  transition: transform 1s;
 			  transform-style: preserve-3d;
 			  cursor: pointer;
 			  position: relative;
 			}
+			
 			.card.is-flipped {
 			  transform: rotateY(180deg);
 			}
 			
 			.card__face {
 			  position: absolute;
-			  width: 150px;
-			  height: 200px;
+			  width: 100%;
+			  height: 100%;
 			  line-height: 260px;
 			  color: white;
 			  text-align: center;
@@ -142,16 +147,8 @@
 			<div class="col-md-4">
 				<div class="scene scene--card">
 				  <div class="card">
-				    <div class="card__face card__face--front">
-				    	<br><br>
-				    	<h6>Anverso</h6>
-				    	<br><br>
-				    </div>
-				    <div class="card__face card__face--back">
-				    	<br><br>
-				    	<h6>Reverso</h6>
-				    	<br><br>
-				    </div>
+				    <div class="card__face card__face--front"><h6>${front}</h6></div>
+				    <div class="card__face card__face--back"><h6>${back}</h6></div>
 				  </div>
 				</div>
 			</div>
