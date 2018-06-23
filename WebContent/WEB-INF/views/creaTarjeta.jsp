@@ -46,8 +46,8 @@
 			   resize: none;
 			}
 			.scene {
-			  width: 100%;
-			  height: 500px;
+			  width: 150px;
+			  height: 250px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
 			  perspective: 600px;
@@ -148,8 +148,12 @@
 			<div class="col-md-4">
 				<div class="scene scene--card">
 				  <div class="card">
-				    <div class="card__face card__face--front"><h6>${front}</h6></div>
-				    <div class="card__face card__face--back"><h6>${back}</h6></div>
+				    <div class="card__face card__face--front">
+						<textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Anverso..." form="form2" ng-model="newEnunciado"></textarea>
+					</div>
+				    <div class="card__face card__face--back">
+						<textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Reverso..." form="form3" ng-model="newRespuesta"></textarea>
+					</div>
 				  </div>
 				</div>
 			</div>
