@@ -1,8 +1,9 @@
-<!DOCTYPE html>
 <html>
 	<head>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <title>Crear Tarjeta - Flashcard</title>
-	   	<meta charset="utf-8">
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -155,7 +156,12 @@
 			<div class="col-md-1"></div>
 		</div>
 		
-		
+		<script>
+			var card = document.querySelector('.card');
+			card.addEventListener( 'click', function() {
+				  card.classList.toggle('is-flipped');
+				});
+		</script>
 		
 		
 		
