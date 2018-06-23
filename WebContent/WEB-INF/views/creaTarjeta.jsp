@@ -141,10 +141,8 @@
 			<br>
 		</div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-5"></div>
-			<div class="col-md-1"></div>
-			<div class="col-md-5" ng-controller="showCtrl">
+			<div class="col-md-6"></div>
+			<div class="col-md-6" ng-controller="showCtrl">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="scene scene--card">
@@ -175,23 +173,15 @@
 						</div>
 						<div class="row">
 							<div class="action">
-								<div class="col-md-4">
+								<div class="row">
 									<button ng-click="Add()">Insertar</button>
 								</div>
-								<div class="col-md-4"></div>
-								<div class="col-md-4">
+								<div class="row">
 									<button ng-click="Reset()">Limpiar Campos</button>
 								</div>				                
 				            </div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="col-md-4">
-						
-					</div>
-					<div class="col-md-4"></div>
 				</div>
 			</div>
 		</div>
