@@ -160,7 +160,9 @@
 					document.form1.shareWith.value = "publico";
 				}
 			</script>
-			<div class="col-md-6">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-5">
 				<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
 					<div class="row">
 						<div class="col-md-6">
@@ -235,7 +237,7 @@
 										<br>Nombre del Club<br>
 										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 									</div>
-									<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+									<div class="panel-body" style="max-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 										<table class="table table-bordered table-striped">
 											<tbody>
 												<tr ng-repeat="club in clubes | filter:expression">
@@ -260,7 +262,7 @@
 										<br>Nombre del Usuario<br>
 										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 									</div>
-									<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+									<div class="panel-body" style="max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
 										<table class="table table-bordered table-striped">
 											<tbody>
 												<tr ng-repeat="person in people | filter:expression">
