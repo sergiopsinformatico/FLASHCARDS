@@ -282,7 +282,6 @@
 				<div class="row">
 					<div class="col-md-5">
 						<h6>Vista Previa de la Tarjeta</h6>
-						<br>
 						<div class="scene scene--card">
 						  <div class="card text-center">
 						    <div class="card__face card__face--front align-items-center justify-content-center">
