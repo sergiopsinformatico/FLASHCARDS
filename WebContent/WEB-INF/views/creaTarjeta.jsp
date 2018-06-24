@@ -149,96 +149,80 @@
 			<br>
 		</div>
 		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-3">
+			<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
 				<div class="row">
-					<div class="md-form form-sm">
-	                    <i class="fa fa-envelope prefix"></i>
-	                    <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control form-control-sm" disabled>
-	                    <label for="creador">Creador</label>
-	                </div>
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-3">
+						<div class="row">
+							<div class="md-form">
+						        <i class="fa fa-user prefix grey-text"></i>
+						        <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control" disabled>
+						        <label for="creador">Creador de la Colección</label>
+						    </div>
+						</div>
+						<div class="row">
+							<div class="md-form">
+						        <i class="fa fa-user prefix grey-text"></i>
+						        <input type="text" id="nombre" class="form-control">
+						        <label for="nombre">Nombre de la Colección</label>
+						    </div>
+						</div>
+						<div class="row">
+							<div class="text-center mt-4">
+						        <button class="btn btn-outline-secondary" type="submit">Guardar Coleccion<i class="fa fa-paper-plane-o ml-2"></i></button>
+						    </div>
+						</div>
+					</div>
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-3">
+					</div>
 				</div>
-				<div class="row">
-					<div class="md-form form-sm">
-	                    <i class="fa fa-envelope prefix"></i>
-	                    <input type="text" id="nombre" class="form-control form-control-sm">
-	                    <label for="nombre">Nombre de la Colección</label>
-	                </div>
-				</div>
-				<div class="row">
-					<div class="text-center mt-4 mb-2">
-	                    <button class="btn btn-primary">Guardar Colección
-	                        <i class="fa fa-send ml-2"></i>
-	                    </button>
-	                </div>
-				</div>
-			</div>
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-3">
-			</div>
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-3">
-			</div>
+			</form>
 		</div>
 		
-			<!-- <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			    <div class="modal-dialog cascading-modal" role="document">
-			
-			        	CONTENT
-			        <div class="modal-content">
-			
-			            	HEADER
-			            <div class="modal-header primary-color white-text">
-			                <h4 class="title">
-			                    <i class="fa fa-pencil"></i> Contact form</h4>
-			                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-			                    <span aria-hidden="true">×</span>
-			                </button>
-			            </div>
-			            	BODY
-			            <div class="modal-body">
-			
-			                	INPUT NAME
-			                <div class="md-form form-sm">
-			                    <i class="fa fa-envelope prefix"></i>
-			                    <input type="text" id="materialFormNameModalEx1" class="form-control form-control-sm">
-			                    <label for="materialFormNameModalEx1">Your name</label>
-			                </div>
-			
-			                	INPUT EMAIL
-			                <div class="md-form form-sm">
-			                    <i class="fa fa-lock prefix"></i>
-			                    <input type="password" id="materialFormEmailModalEx1" class="form-control form-control-sm">
-			                    <label for="materialFormEmailModalEx1">Your email</label>
-			                </div>
-			
-			                	INPUT
-			                <div class="md-form form-sm">
-			                    <i class="fa fa-tag prefix"></i>
-			                    <input type="text" id="materialFormSubjectModalEx1" class="form-control form-control-sm">
-			                    <label for="materialFormSubjectModalEx1">Subject</label>
-			                </div>
-			
-								TEXTAREA
-			                <div class="md-form form-sm">
-			                    <i class="fa fa-pencil prefix"></i>
-			                    <textarea type="text" id="materialFormMessageModalEx1" class="md-textarea form-control"></textarea>
-			                    <label for="materialFormMessageModalEx1">Your message</label>
-			                </div>
-			
-			                <div class="text-center mt-4 mb-2">
-			                    <button class="btn btn-primary">Send
-			                        <i class="fa fa-send ml-2"></i>
-			                    </button>
-			                </div>
-			
-			            </div>
-			        </div>
-			    </div>
-			</div> -->
+			<!-- Material form contact
+<form>
+    <p class="h4 text-center mb-4">Wite to us</p>
+
+    Material input text
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="materialFormContactNameEx" class="form-control">
+        <label for="materialFormContactNameEx">Your name</label>
+    </div>
+
+    Material input email
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="email" id="materialFormContactEmailEx" class="form-control">
+        <label for="materialFormContactEmailEx">Your email</label>
+    </div>
+
+    Material input subject
+    <div class="md-form">
+        <i class="fa fa-tag prefix grey-text"></i>
+        <input type="text" id="materialFormContactSubjectEx" class="form-control">
+        <label for="materialFormContactSubjectEx">Subject</label>
+    </div>
+
+    Material textarea message
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea type="text" id="materialFormContactMessageEx" class="form-control md-textarea" rows="3"></textarea>
+        <label for="materialFormContactMessageEx">Your message</label>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-outline-secondary" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+    </div>
+</form>
+ -->
 		
 		
 		
@@ -400,6 +384,9 @@
 			</form>
 		</div>
 		-->
+		<div class="row">
+			<br><br>
+		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-6" ng-controller="showCtrl">
