@@ -66,9 +66,9 @@ public class DBFlashcards {
 			for(indice=0; indice<cards.size(); indice++) {
 				t = cards.get(indice);
 				if(indice==0) {
-					cardsJSON = t.getEnunciado()+"----resp----"+t.getRespuesta();
+					cardsJSON = t.getAnverso()+"----resp----"+t.getReverso();
 				}else {
-					cardsJSON = cardsJSON + "----nuevaCARD----"+t.getEnunciado()+"----resp----"+t.getRespuesta();
+					cardsJSON = cardsJSON + "----nuevaCARD----"+t.getAnverso()+"----resp----"+t.getReverso();
 				}
 			}
 			doc.append("cards", cardsJSON);

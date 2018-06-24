@@ -73,9 +73,9 @@ public class Flashcard {
 		for(int i=0; i<getColeccion().size(); i++) {
 			t = getColeccion().get(i);
 			if(i==0) {
-				auxJSON = t.getEnunciado()+"///****resp****///"+t.getRespuesta();
+				auxJSON = t.getAnverso()+"///****resp****///"+t.getReverso();
 			}else {
-				auxJSON = auxJSON+"///****nuevaCARD****///"+t.getEnunciado()+"///****resp****///"+t.getRespuesta();
+				auxJSON = auxJSON+"///****nuevaCARD****///"+t.getAnverso()+"///****resp****///"+t.getReverso();
 			}
 		}
 		setColeccionJSON(auxJSON);

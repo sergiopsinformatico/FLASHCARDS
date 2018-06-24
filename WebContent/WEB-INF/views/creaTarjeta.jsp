@@ -280,13 +280,32 @@
 					</form>
 				</div>
 				<div class="row" ng-controller="showCtrl">
-					Aqui va a venir el preview de tarjetas
+					<div class="list_data">
+				    	<br><h5>Lista de Tarjetas</h5><br>
+				        <div ng-if="records.length == 0"> 
+					        Aún, no hay creada ninguna tarjeta. Como mínimo, la colección debe estar formada por una tarjeta.
+					    </div>
+					    <div ng-if="records.length > 0">
+					        <table>
+					            <tr>
+					                <th ng-click="type = 'enunciado'; reverse = !reverse">Enunciado</th>
+					                <th ng-click="type = 'respuesta'; reverse = !reverse">Respuesta</th>
+					                <th>Eliminar</th>
+					            </tr>
+					            <tr ng-repeat="record in records">
+					                <td>{{record.enunciado}}</td>
+					                <td>{{record.respuesta}}</td>
+					                <td><button ng-click="Delete($index)">Eliminar Tarjeta</button></td>
+					            </tr>
+					        </table>
+					    </div>
+				        <button ng-show="history.length > 0" ng-click="Undo()">Deshacer Tarjeta Eliminada</button>
+				    </div>
 				</div>
 			</div>
 			<div class="col-md-6" ng-controller="showCtrl">
 				<div class="row">
 					<div class="col-md-5">
-						<h6>Vista Previa de la Tarjeta</h6>
 						<div class="scene scene--card">
 						  <div class="card text-center">
 						    <div class="card__face card__face--front align-items-center justify-content-center">
@@ -299,6 +318,7 @@
 							</div>
 						  </div>
 						</div>
+						<h6>Vista Previa de la Tarjeta</h6>
 					</div>
 					<div class="col-md-1"></div>
 					<div class="col-md-5">

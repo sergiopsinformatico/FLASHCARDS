@@ -61,14 +61,14 @@ public class ControladorTarjetas {
 	
 	@RequestMapping(value = "/tarjeta", method = RequestMethod.POST)
 	public void insertarTarjeta(@RequestBody String json) {
-		tarjetas.add(new Tarjeta(readJSON(json, "enunciado"), readJSON(json, "respuesta")));
+		tarjetas.add(new Tarjeta(readJSON(json, "anverso"), readJSON(json, "reverso")));
 	}
 	
 	@RequestMapping(value = "/eliminarTarjeta", method = RequestMethod.POST)
 	public void eliminaTarjeta(@RequestBody String json) {
 		for(i=0; i<tarjetas.size(); i++) {
 			t = tarjetas.get(i);
-			if(t.getEnunciado().equals(readJSON(json, "enunciado")) && t.getRespuesta().equals(readJSON(json, "respuesta"))) {
+			if(t.getAnverso().equals(readJSON(json, "enunciado")) && t.getReverso().equals(readJSON(json, "respuesta"))) {
 				tarjetas.remove(i);
 				i=0;
 			}
@@ -93,8 +93,8 @@ public class ControladorTarjetas {
 		vista = new ModelAndView("verFlashcard");
 		flash = gF.leerFlashcard(id);
 		tarjetas = flash.getColeccion();
-		vista.addObject("front", tarjetas.get(card).getEnunciado());
-		vista.addObject("back", tarjetas.get(card).getRespuesta());
+		vista.addObject("front", tarjetas.get(card).getAnverso());
+		vista.addObject("back", tarjetas.get(card).getReverso());
 		if(card<(tarjetas.size()-1)) {
 			vista.addObject("urlRight", "https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario="+usuario+"&id="+id+"&card="+(card+1));
 		}else {

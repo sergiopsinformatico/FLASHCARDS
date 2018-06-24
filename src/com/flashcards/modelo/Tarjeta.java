@@ -1,26 +1,26 @@
 package com.flashcards.modelo;
 
 public class Tarjeta {
-	String enunciado, respuesta;
+	String anverso, reverso;
 
-	public Tarjeta(String enunciado, String respuesta) {
-		setEnunciado(enunciado);
-		setRespuesta(respuesta);
+	public Tarjeta(String anverso, String reverso) {
+		setAnverso(anverso);
+		setReverso(reverso);
 	}
 	
-	public String getEnunciado() {
-		return this.enunciado;
+	public String getAnverso() {
+		return this.anverso;
 	}
 
-	public void setEnunciado(String enunciado) {
-		this.enunciado = enunciado;
+	public void setAnverso(String anverso) {
+		this.anverso = anverso;
 	}
 
-	public String getRespuesta() {
-		return this.respuesta;
+	public String getReverso() {
+		return this.reverso;
 	}
 
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
+	public void setReverso(String reverso) {
+		this.reverso = reverso;
 	}
 }
