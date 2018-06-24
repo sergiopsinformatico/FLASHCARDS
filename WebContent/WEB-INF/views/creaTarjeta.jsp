@@ -166,8 +166,8 @@
 					<div class="col-md-3">
 						<div class="row">
 							<div class="form-group" style="min-width: 100%;">
-								<label for="creador" class="cols-sm-2 control-label">Creador</label>
-								<div class="cols-sm-10">
+								<label for="creador" class="cols-md-2 control-label">Creador</label>
+								<div class="cols-md-10">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 										<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario()} disabled/>
@@ -177,8 +177,8 @@
 						</div>
 						<div class="row">
 							<div class="form-group" style="min-width: 100%;">
-								<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
-								<div class="cols-sm-10">
+								<label for="nombre" class="cols-md-2 control-label">Nombre de la Colección</label>
+								<div class="cols-md-10">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 										<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
@@ -188,7 +188,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group" style="min-width: 100%;">
-								<div class="cols-sm-10">
+								<div class="cols-md-12">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 										<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
@@ -200,8 +200,8 @@
 					<div class="col-md-4">
 						<div class="row">
 							<div class="form-group" style="min-width: 100%;">
-								<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
-								<div class="cols-sm-10">
+								<label for="descripcion" class="cols-md-2 control-label">Descripción</label>
+								<div class="cols-md-10">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 										<style>
@@ -218,8 +218,8 @@
 					<div class="col-md-4">
 						<div class="row">
 							<div class="form-group" style="min-width: 100%;">
-								<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
-								<div class="cols-sm-10">
+								<label for="shareWith" class="cols-md-2 control-label">Compartir con:</label>
+								<div class="cols-md-10">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 										<select name="shareWith" id="shareWith" onchange="option(this);" required>
@@ -244,7 +244,7 @@
 										<br>Nombre del Club<br>
 										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 									</div>
-									<div class="panel-body" style="max-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+									<div class="panel-body" style="min-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
 										<table class="table table-bordered table-striped">
 											<tbody>
 												<tr ng-repeat="club in clubes | filter:expression">
@@ -269,7 +269,7 @@
 										<br>Nombre del Usuario<br>
 										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
 									</div>
-									<div class="panel-body" style="max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+									<div class="panel-body" style="min-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
 										<table class="table table-bordered table-striped">
 											<tbody>
 												<tr ng-repeat="person in people | filter:expression">
