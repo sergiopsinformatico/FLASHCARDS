@@ -165,7 +165,7 @@
 					<div class="col-md-1"></div>
 					<div class="col-md-3">
 						<div class="row">
-							<div class="form-group">
+							<div class="form-group" style="min-width: 100%;">
 								<label for="creador" class="cols-sm-2 control-label">Creador</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
@@ -176,7 +176,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group">
+							<div class="form-group" style="min-width: 100%;">
 								<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
@@ -187,7 +187,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group">
+							<div class="form-group" style="min-width: 100%;">
 								<div class="cols-sm-10">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -199,7 +199,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="row">
-							<div class="form-group">
+							<div class="form-group" style="min-width: 100%;">
 								<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
@@ -217,7 +217,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="row">
-							<div class="form-group">
+							<div class="form-group" style="min-width: 100%;">
 								<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
@@ -231,7 +231,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
+							<div class="panel panel-primary" style="min-width: 100%;" id="club" ng-controller="clubCtrl">
 								<div ng-if="clubes.length == 0"> 
 							        No pertenece a ningún club.
 							        <br>
@@ -256,7 +256,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
+							<div class="panel panel-primary" style="min-width: 100%;" id="usuario" ng-controller="usuarioCtrl">
 								<div ng-if="people.length == 0"> 
 							        No tiene aún amigos.
 							        <br>
@@ -287,6 +287,7 @@
 			</form>
 		</div>
 		<div class="row">
+			<div class="col-md-1"></div>
 			<div class="col-md-6" ng-controller="showCtrl">
 				<div class="row">
 					<div class="col-md-5">
