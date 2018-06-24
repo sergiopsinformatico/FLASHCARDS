@@ -389,13 +389,15 @@
 			
 				var controller = function ($scope, $http) {
 					
+					 $scope.records=[];
+					
 					$scope.newAnverso = "Anverso";
 				    $scope.newReverso = "Reverso";
 					
 			       		
 			        $scope.Reset = function () {
-			            $scope.newAnverso = '';
-			            $scope.newReverso = '';
+			        	$scope.newAnverso = '';
+			        	$scope.newReverso = '';
 			        }
 		
 			        $scope.Add = function () {
