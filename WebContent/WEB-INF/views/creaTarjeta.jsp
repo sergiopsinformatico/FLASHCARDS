@@ -288,13 +288,13 @@
 					    <div ng-if="records.length > 0">
 					        <table>
 					            <tr>
-					                <th ng-click="type = 'enunciado'; reverse = !reverse">Enunciado</th>
-					                <th ng-click="type = 'respuesta'; reverse = !reverse">Respuesta</th>
+					                <th ng-click="type = 'anverso'; reverse = !reverse">Anverso de la Tarjeta</th>
+					                <th ng-click="type = 'reverso'; reverse = !reverse">Reverso de la Tarjeta</th>
 					                <th>Eliminar</th>
 					            </tr>
 					            <tr ng-repeat="record in records">
-					                <td>{{record.enunciado}}</td>
-					                <td>{{record.respuesta}}</td>
+					                <td>{{record.anverso}}</td>
+					                <td>{{record.reverso}}</td>
 					                <td><button ng-click="Delete($index)">Eliminar Tarjeta</button></td>
 					            </tr>
 					        </table>
