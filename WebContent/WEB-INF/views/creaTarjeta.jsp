@@ -137,33 +137,33 @@
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
 		</script>
+		
 		<div class="row">
 			<br>
 		</div>
 		<div class="row">
+			<script>
+			    function option(that) {
+			        if (that.value == "club") {
+			            document.getElementById("club").style.display = "block";
+			            document.getElementById("usuario").style.display = "none";
+			        } else if(that.value == "usuario"){
+			        	document.getElementById("club").style.display = "none";
+			            document.getElementById("usuario").style.display = "block";
+			        }else{
+			        	document.getElementById("club").style.display = "none";
+			            document.getElementById("usuario").style.display = "none";
+			        }
+			    }
+			    
+			    function change(){
+					document.form1.shareWith.value = "publico";
+				}
+			</script>
 			<div class="col-md-6">
-				<div class="row">
-					<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
+				<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
+					<div class="row">
 						<div class="col-md-6">
-							<script>
-							    function option(that) {
-							        if (that.value == "club") {
-							            document.getElementById("club").style.display = "block";
-							            document.getElementById("usuario").style.display = "none";
-							        } else if(that.value == "usuario"){
-							        	document.getElementById("club").style.display = "none";
-							            document.getElementById("usuario").style.display = "block";
-							        }else{
-							        	document.getElementById("club").style.display = "none";
-							            document.getElementById("usuario").style.display = "none";
-							        }
-							    }
-							    
-							    function change(){
-									document.form1.shareWith.value = "publico";
-								}
-							</script>
-							
 							<div class="form-group">
 								<label for="creador" class="cols-sm-2 control-label">Creador</label>
 								<div class="cols-sm-10">
@@ -173,7 +173,41 @@
 									</div>
 								</div>
 							</div>
+							<div class="form-group">
+								<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
+									</div>
+								</div>
+							</div>
 							
+							<div class="form-group">
+								<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<style>
+											textarea {
+											   resize: none;
+											}
+										</style>
+										<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
 							<div class="form-group">
 								<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
 								<div class="cols-sm-10">
@@ -212,7 +246,7 @@
 										</table>
 									</div>
 								</div>
-							</div>									
+							</div>
 							<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
 								<div ng-if="people.length == 0"> 
 							        No tiene aún amigos.
@@ -239,45 +273,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							
-							<div class="form-group">
-								<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<style>
-											textarea {
-											   resize: none;
-											}
-										</style>
-										<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 			<div class="col-md-6" ng-controller="showCtrl">
 				<div class="row">
@@ -332,155 +329,150 @@
 					<div class="col-md-1"></div>
 				</div>
 			</div>
-		</div>
-		<script>
-			document.form1.nombre.value = "${name}";
-			document.form1.descripcion.value = "${description}";
-			document.form1.shareWith.value = "${shareOption}";
-		    option(document.form1.shareWith);
-		    var optionWith = "${shareOptionWith}";
-		    var optionGeneric = "${shareOption}";
-		    var vacio = optionWith.localeCompare("");
-		    if(vacio != 0){
-		    	var club = "club";
-		    	var usuario = "usuario";
-		    	var isClub = optionGeneric.localeCompare(club);
-		    	var isUsuario = optionGeneric.localeCompare(usuario);
-		    	if(isClub == 0){
-		    		document.getElementById("selectClub").value = optionWith;
-		    	}else{
-		    		if(isUsuario == 0){
-		    			document.getElementById("selectUsuario").value = optionWith;
-		    		}
-		    	}		    		
-		    }
-		    
-		</script>
-		<script>
+			<script>
+				document.form1.nombre.value = "${name}";
+				document.form1.descripcion.value = "${description}";
+				document.form1.shareWith.value = "${shareOption}";
+			    option(document.form1.shareWith);
+			    var optionWith = "${shareOptionWith}";
+			    var optionGeneric = "${shareOption}";
+			    var vacio = optionWith.localeCompare("");
+			    if(vacio != 0){
+			    	var club = "club";
+			    	var usuario = "usuario";
+			    	var isClub = optionGeneric.localeCompare(club);
+			    	var isUsuario = optionGeneric.localeCompare(usuario);
+			    	if(isClub == 0){
+			    		document.getElementById("selectClub").value = optionWith;
+			    	}else{
+			    		if(isUsuario == 0){
+			    			document.getElementById("selectUsuario").value = optionWith;
+			    		}
+			    	}		    		
+			    }
+			    
+			</script>
+			<script>
 			var card = document.querySelector('.card');
 			card.addEventListener( 'click', function() {
 				  card.classList.toggle('is-flipped');
 				});
-		</script>
-		<script>
-			var app = angular.module('myAppCard', []);
+			</script>
+			<script>
+				var app = angular.module('myAppCard', []);
 			
-			var controllerN = function($scope) {
-			    $scope.newAnverso = "Anverso";
-			    $scope.newReverso = "Reverso";
-			};
+				var controller = function ($scope, $http) {
+					
+					$scope.newAnverso = "Anverso";
+				    $scope.newReverso = "Reverso";
+					
+			        $scope.history = [];
 		
-			var controller = function ($scope, $http) {
-				
-				$scope.newAnverso = "Anverso";
-			    $scope.newReverso = "Reverso";
-				
-		        $scope.history = [];
-	
-		        $scope.records = [];
-		        
-		        var cadena = "${cards}";
-		        var array = cadena.split("///****nuevaCARD****///");
-		        var i;
-		        if(cadena != ""){
-			        for (i = 0; i < array.length; i++) { 
-			        	var elemento = array[i].split("///****resp****///");
-			        	$scope.records.push({
-			        		anverso: elemento[0],
-			        		reverso: elemento[1]
-			        	});
+			        $scope.records = [];
+			        
+			        var cadena = "${cards}";
+			        var array = cadena.split("///****nuevaCARD****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var elemento = array[i].split("///****resp****///");
+				        	$scope.records.push({
+				        		anverso: elemento[0],
+				        		reverso: elemento[1]
+				        	});
+				        }
 			        }
-		        }
-		        
-		        $scope.Delete = function (index) {
-		            // Remove first / oldest element from history if it reaches maximum capacity of 10 records
-		            if ($scope.history.length === 10)
-		                $scope.history.shift();
-	
-		            var eliminar = $scope.records[index];
-		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
-			            {
-			            	anverso: eliminar.anverso,
-			            	reverso: eliminar.reverso
+			        
+			        $scope.Delete = function (index) {
+			            // Remove first / oldest element from history if it reaches maximum capacity of 10 records
+			            if ($scope.history.length === 10)
+			                $scope.history.shift();
+		
+			            var eliminar = $scope.records[index];
+			            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
+				            {
+				            	anverso: eliminar.anverso,
+				            	reverso: eliminar.reverso
+				            });
+			            $scope.history.push(eliminar);
+			            $scope.records.splice(index, 1);
+			        };
+		
+			        $scope.Reset = function () {
+			            $scope.newAnverso = '';
+			            $scope.newReverso = '';
+			        }
+			        $scope.Reset();
+		
+			        $scope.Add = function () {
+			            if (!$scope.newAnverso || !$scope.newReverso)
+			                return;
+			            
+			            $scope.records.push({
+			                anverso: $scope.newAnverso,
+			                reverso: $scope.newReverso
 			            });
-		            $scope.history.push(eliminar);
-		            $scope.records.splice(index, 1);
-		        };
-	
-		        $scope.Reset = function () {
-		            $scope.newAnverso = '';
-		            $scope.newReverso = '';
-		        }
-		        $scope.Reset();
-	
-		        $scope.Add = function () {
-		            if (!$scope.newAnverso || !$scope.newReverso)
-		                return;
-		            
-		            $scope.records.push({
-		                anverso: $scope.newAnverso,
-		                reverso: $scope.newReverso
-		            });
-		            
-		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-			            {
-			            	anverso: $scope.newAnverso,
-			            	reverso: $scope.newReverso
-			            });          
-		  	            $scope.Reset();
-		            
-		        }
-		        // Undo action (delete)
-		        $scope.Undo = function () {
-		            var elemento = $scope.history[ $scope.history.length - 1 ];
-		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-			            {
-			            	anverso: elemento.anverso,
-			            	reverso: elemento.reverso
-			            });  
-		            $scope.records.push(elemento);
-		            $scope.history.pop();
-		        }
-			}
-			
-			var usuarioControlador = function ($scope){
-				$scope.people = [];
-				var cadena = "${amigos}";
-		        var array = cadena.split("///****nuevoAmigo****///");
-		        var i;
-		        if(cadena != ""){
-			        for (i = 0; i < array.length; i++) { 
-			        	var person = array[i].split("///****user****///");
-			        	$scope.people.push({
-			        		name: person[0],
-			        		usuario: person[1]
-			        	});
+			            
+			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
+				            {
+				            	anverso: $scope.newAnverso,
+				            	reverso: $scope.newReverso
+				            });          
+			  	            $scope.Reset();
+			            
 			        }
-		        }
-			};
-			
-			var clubControlador = function ($scope){
-				$scope.clubes = [];
-				var cadena = "${clubes}";
-		        var array = cadena.split("///****nuevoCLUB****///");
-		        var i;
-		        if(cadena != ""){
-			        for (i = 0; i < array.length; i++) { 
-			        	var club = array[i].split("///****id****///");
-			        	$scope.clubes.push({
-			        		name: club[0],
-			        		identificador: club[1]
-			        	});
+			        // Undo action (delete)
+			        $scope.Undo = function () {
+			            var elemento = $scope.history[ $scope.history.length - 1 ];
+			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
+				            {
+				            	anverso: elemento.anverso,
+				            	reverso: elemento.reverso
+				            });  
+			            $scope.records.push(elemento);
+			            $scope.history.pop();
 			        }
-		        }
-			};
-			
-			app.controller('showCtrl', controller);
-			app.controller('clubCtrl', clubControlador);
-			app.controller('usuarioCtrl', usuarioControlador);
-		</script>
-		
-		
+				};
+				
+				var usuarioControlador = function ($scope){
+					$scope.people = [];
+					var cadena = "${amigos}";
+			        var array = cadena.split("///****nuevoAmigo****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var person = array[i].split("///****user****///");
+				        	$scope.people.push({
+				        		name: person[0],
+				        		usuario: person[1]
+				        	});
+				        }
+			        }
+				};
+				
+				var clubControlador = function ($scope){
+					$scope.clubes = [];
+					var cadena = "${clubes}";
+			        var array = cadena.split("///****nuevoCLUB****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var club = array[i].split("///****id****///");
+				        	$scope.clubes.push({
+				        		name: club[0],
+				        		identificador: club[1]
+				        	});
+				        }
+			        }
+				};
+				
+				app.controller('showCtrl', controller);
+				app.controller('clubCtrl', clubControlador);
+				app.controller('usuarioCtrl', usuarioControlador);
+			</script>
+		</div>
+	</body>
+</html>
 		
 		<!-- 
 		<div class="row">
@@ -810,5 +802,3 @@
 			app.controller('recordCtrl', recordControlador);
 		</script>
 		-->
-	</body>
-</html>
