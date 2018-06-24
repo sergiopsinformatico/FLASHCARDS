@@ -155,15 +155,15 @@
 				<div class="row">
 					<div class="md-form form-sm">
 	                    <i class="fa fa-envelope prefix"></i>
-	                    <label for="creador">Creador</label>
 	                    <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control form-control-sm" disabled>
+	                    <label for="creador">Creador</label>
 	                </div>
 				</div>
 				<div class="row">
 					<div class="md-form form-sm">
 	                    <i class="fa fa-envelope prefix"></i>
-	                    <label for="nombre">Nombre de la Colección</label>
 	                    <input type="text" id="nombre" class="form-control form-control-sm">
+	                    <label for="nombre">Nombre de la Colección</label>
 	                </div>
 				</div>
 				<div class="row">
