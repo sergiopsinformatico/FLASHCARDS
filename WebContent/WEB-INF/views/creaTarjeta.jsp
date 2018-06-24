@@ -150,38 +150,36 @@
 		</div>
 		<div class="row">
 			<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
-				<div class="row">
-					<div class="col-md-1">
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="md-form">
+					        <i class="fa fa-user prefix grey-text"></i>
+					        <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control" disabled>
+					        <label for="creador">Creador de la Colección</label>
+					    </div>
 					</div>
-					<div class="col-md-3">
-						<div class="row">
-							<div class="md-form">
-						        <i class="fa fa-user prefix grey-text"></i>
-						        <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control" disabled>
-						        <label for="creador">Creador de la Colección</label>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="md-form">
-						        <i class="fa fa-user prefix grey-text"></i>
-						        <input type="text" id="nombre" class="form-control">
-						        <label for="nombre">Nombre de la Colección</label>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="text-center mt-4">
-						        <button class="btn btn-outline-secondary" type="submit">Guardar Coleccion<i class="fa fa-paper-plane-o ml-2"></i></button>
-						    </div>
-						</div>
+					<div class="row">
+						<div class="md-form">
+					        <i class="fa fa-user prefix grey-text"></i>
+					        <input type="text" id="nombre" class="form-control">
+					        <label for="nombre">Nombre de la Colección</label>
+					    </div>
 					</div>
-					<div class="col-md-1">
+					<div class="row">
+						<div class="text-center mt-4">
+					        <button class="btn btn-outline-secondary" type="submit">Guardar Coleccion<i class="fa fa-paper-plane-o ml-2"></i></button>
+					    </div>
 					</div>
-					<div class="col-md-3">
-					</div>
-					<div class="col-md-1">
-					</div>
-					<div class="col-md-3">
-					</div>
+				</div>
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-3">
 				</div>
 			</form>
 		</div>
