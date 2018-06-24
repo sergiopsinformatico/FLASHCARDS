@@ -3,9 +3,16 @@
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <title>Crear Tarjeta - Flashcard</title>
-		<meta charset="utf-8">
+		<!-- <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="resources/css/mdb.min.css" rel="stylesheet">
+	    <link href="resources/css/style.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -148,15 +155,15 @@
 				<div class="row">
 					<div class="md-form form-sm">
 	                    <i class="fa fa-envelope prefix"></i>
-	                    <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control form-control-sm" disabled>
 	                    <label for="creador">Creador</label>
+	                    <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control form-control-sm" disabled>
 	                </div>
 				</div>
 				<div class="row">
 					<div class="md-form form-sm">
 	                    <i class="fa fa-envelope prefix"></i>
-	                    <input type="text" id="nombre" class="form-control form-control-sm">
 	                    <label for="nombre">Nombre de la Colección</label>
+	                    <input type="text" id="nombre" class="form-control form-control-sm">
 	                </div>
 				</div>
 				<div class="row">
