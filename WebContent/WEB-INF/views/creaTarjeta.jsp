@@ -161,7 +161,7 @@
 						document.form1.shareWith.value = "publico";
 					}
 				</script>
-				<div class="row">
+				<div class="row" style="min-width: 100%;">
 					<div class="col-md-1"></div>
 					<div class="col-md-3">
 						<div class="row">
