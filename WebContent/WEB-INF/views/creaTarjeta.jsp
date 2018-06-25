@@ -146,24 +146,28 @@
 			<br>
 		</div>
 		<div class="row">
-			<div class="col-1">
-				uno
-			</div>
-			<div class="col-3">
-				tres
-			</div>
-			<div class="col-1">
-				uno
-			</div>
-			<div class="col-3">
-				tres
-			</div>
-			<div class="col-1">
-				uno
-			</div>
-			<div class="col-3">
-				tres
-			</div>
+			<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
+				<div class="row">
+					<div class="col-1">
+						uno
+					</div>
+					<div class="col-3">
+						tres
+					</div>
+					<div class="col-1">
+						uno
+					</div>
+					<div class="col-3">
+						tres
+					</div>
+					<div class="col-1">
+						uno
+					</div>
+					<div class="col-3">
+						tres
+					</div>
+				</div>
+			</form>
 		</div>
 		
 			<!-- Material form contact
@@ -219,7 +223,7 @@
 		
 		<!-- 
 		<div class="row">
-			<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
+			<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
 				<script>
 				    function option(that) {
 				        if (that.value == "club") {
