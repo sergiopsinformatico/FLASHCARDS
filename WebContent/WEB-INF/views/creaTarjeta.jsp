@@ -183,6 +183,20 @@
 						</div>
 						<div class="col-sm-1"></div>
 						<div class="col-sm-3">
+							<script>
+							    function option(that) {
+							        if (that.value == "club") {
+							            document.getElementById("club").style.display = "block";
+							            document.getElementById("usuario").style.display = "none";
+							        } else if(that.value == "usuario"){
+							        	document.getElementById("club").style.display = "none";
+							            document.getElementById("usuario").style.display = "block";
+							        }else{
+							        	document.getElementById("club").style.display = "none";
+							            document.getElementById("usuario").style.display = "none";
+							        }
+							    }
+							</script>
 							<div class="form-group">
 								<label for="shareWith">Compartir con</label>
 								<select class="form-control" name="shareWith" id="shareWith" onchange="option(this);" required>
@@ -600,201 +614,6 @@
 				app.controller('usuarioCtrl', usuarioControlador);
 			</script>
 		</div>-->
-	</body>
-</html>
-		
-		<!-- 
-		<div class="row">
-			<div class="col-md-1">
-				<br><br>
-			</div>
-			<div class="col-md-11">
-				<br><h1>CREACIÓN DE UNA COLECCIÓN DE FLASHCARDS</h1><br>
-			</div>
-		</div> 
-		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-10">
-				<div class="container">
-			        <div class="card card-container">
-							<div class="row">
-								<div class="col-md-1"></div>
-								<div class="col-md-4">
-									<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
-										<br>
-										<div class="form-group">
-											<label for="creador" class="cols-sm-2 control-label">Creador</label>
-											<div class="cols-sm-10">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario()} disabled/>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
-											<div class="cols-sm-10">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
-											<div class="cols-sm-10">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<style>
-														textarea {
-														   resize: none;
-														}
-													</style>
-													<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
-											<div class="cols-sm-10">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<select name="shareWith" id="shareWith" onchange="option(this);" required>
-													    <option value="publico">Todo el Mundo</option>
-													    <option value="privado">Solo yo</option>
-													    <option value="club">Club</option>
-													    <option value="usuario">Usuario</option>
-													  </select>
-												</div>
-											</div>
-										</div>
-										<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
-											<div ng-if="clubes.length == 0"> 
-										        No pertenece a ningún club.
-										        <br>
-										        <script language="JavaScript" type="text/javascript">
-													change();
-												</script>
-										    </div>
-										    <div ng-if="clubes.length > 0">
-												<div class="panel-heading">
-													<br>Nombre del Club<br>
-													<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-												</div>
-												<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-													<table class="table table-bordered table-striped">
-														<tbody>
-															<tr ng-repeat="club in clubes | filter:expression">
-																<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
-																<td>{{ club.name }}</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>									
-										<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
-											<div ng-if="people.length == 0"> 
-										        No tiene aún amigos.
-										        <br>
-										        <script language="JavaScript" type="text/javascript">
-													change();
-												</script>
-										    </div>
-											<div ng-if="people.length > 0">
-												<div class="panel-heading">
-													<br>Nombre del Usuario<br>
-													<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-												</div>
-												<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
-													<table class="table table-bordered table-striped">
-														<tbody>
-															<tr ng-repeat="person in people | filter:expression">
-																<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.usuario }}" /></td>
-																<td>{{ person.name }} ({{ person.usuario }})</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="cols-sm-10">
-												<div class="input-group">
-													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
-												</div>
-											</div>
-										</div>
-										<script>
-										    function option(that) {
-										        if (that.value == "club") {
-										            document.getElementById("club").style.display = "block";
-										            document.getElementById("usuario").style.display = "none";
-										        } else if(that.value == "usuario"){
-										        	document.getElementById("club").style.display = "none";
-										            document.getElementById("usuario").style.display = "block";
-										        }else{
-										        	document.getElementById("club").style.display = "none";
-										            document.getElementById("usuario").style.display = "none";
-										        }
-										    }
-										</script>
-									</form>
-								</div>
-								<div class="col-md-2"></div>
-								<div class="col-md-4">
-									<div ng-controller="recordCtrl">				  
-									    <div class="add_data">
-									    	<br>
-									        <h5>Insertar Nueva Tarjeta</h5>
-									        <form>
-									            <div class="field">
-									                <label for="enunciado">Enunciado: </label><br>
-									                <textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Enunciado" form="form2" ng-model="newEnunciado"></textarea>
-									            </div>
-									             <div class="field">
-									                <label for="respuesta">Respuesta: </label><br>
-									                <textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Respuesta" form="form3" ng-model="newRespuesta"></textarea>
-									            </div>
-									            <div class="action">
-									                <button ng-click="Add()">Insertar</button>
-									                <button ng-click="Reset()">Limpiar Campos</button>
-									            </div>
-									        </form>
-									    </div>
-									    <div class="list_data">
-									    	<br><h5>Lista de Tarjetas</h5><br>
-									        <div ng-if="records.length == 0"> 
-										        Aún, no hay creada ninguna tarjeta. Como mínimo, la colección debe estar formada por una tarjeta.
-										    </div>
-										    <div ng-if="records.length > 0">
-										        <table>
-										            <tr>
-										                <th ng-click="type = 'enunciado'; reverse = !reverse">Enunciado</th>
-										                <th ng-click="type = 'respuesta'; reverse = !reverse">Respuesta</th>
-										                <th>Eliminar</th>
-										            </tr>
-										            <tr ng-repeat="record in records">
-										                <td>{{record.enunciado}}</td>
-										                <td>{{record.respuesta}}</td>
-										                <td><button ng-click="Delete($index)">Eliminar Tarjeta</button></td>
-										            </tr>
-										        </table>
-										    </div>
-									        <button ng-show="history.length > 0" ng-click="Undo()">Deshacer Tarjeta Eliminada</button>
-									    </div>
-									</div>
-								</div>
-								<div class="col-md-1"></div>
-							</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-1">
-			</div>
-		</div>
 		<script>
 			document.form1.nombre.value = "${name}";
 			document.form1.descripcion.value = "${description}";
@@ -930,4 +749,187 @@
 			app.controller('usuarioCtrl', usuarioControlador);
 			app.controller('recordCtrl', recordControlador);
 		</script>
+	</body>
+</html>
+		
+		<!-- 
+		<div class="row">
+			<div class="col-md-1">
+				<br><br>
+			</div>
+			<div class="col-md-11">
+				<br><h1>CREACIÓN DE UNA COLECCIÓN DE FLASHCARDS</h1><br>
+			</div>
+		</div> 
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-10">
+				<div class="container">
+			        <div class="card card-container">
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-4">
+									<form action="guardarFlashcard.html" method="post" class="border-login" name="form1" id="form1">
+										<br>
+										<div class="form-group">
+											<label for="creador" class="cols-sm-2 control-label">Creador</label>
+											<div class="cols-sm-10">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+													<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario()} disabled/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="nombre" class="cols-sm-2 control-label">Nombre de la Colección</label>
+											<div class="cols-sm-10">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+													<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="descripcion" class="cols-sm-2 control-label">Descripción</label>
+											<div class="cols-sm-10">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+													<style>
+														textarea {
+														   resize: none;
+														}
+													</style>
+													<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="shareWith" class="cols-sm-2 control-label">Compartir con:</label>
+											<div class="cols-sm-10">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+													<select name="shareWith" id="shareWith" onchange="option(this);" required>
+													    <option value="publico">Todo el Mundo</option>
+													    <option value="privado">Solo yo</option>
+													    <option value="club">Club</option>
+													    <option value="usuario">Usuario</option>
+													  </select>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-primary" id="club" ng-controller="clubCtrl">
+											<div ng-if="clubes.length == 0"> 
+										        No pertenece a ningún club.
+										        <br>
+										        <script language="JavaScript" type="text/javascript">
+													change();
+												</script>
+										    </div>
+										    <div ng-if="clubes.length > 0">
+												<div class="panel-heading">
+													<br>Nombre del Club<br>
+													<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+												</div>
+												<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+													<table class="table table-bordered table-striped">
+														<tbody>
+															<tr ng-repeat="club in clubes | filter:expression">
+																<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
+																<td>{{ club.name }}</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>									
+										<div class="panel panel-primary" id="usuario" ng-controller="usuarioCtrl">
+											<div ng-if="people.length == 0"> 
+										        No tiene aún amigos.
+										        <br>
+										        <script language="JavaScript" type="text/javascript">
+													change();
+												</script>
+										    </div>
+											<div ng-if="people.length > 0">
+												<div class="panel-heading">
+													<br>Nombre del Usuario<br>
+													<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+												</div>
+												<div class="panel-body" style="max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+													<table class="table table-bordered table-striped">
+														<tbody>
+															<tr ng-repeat="person in people | filter:expression">
+																<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.usuario }}" /></td>
+																<td>{{ person.name }} ({{ person.usuario }})</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="cols-sm-10">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+													<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
+												</div>
+											</div>
+										</div>
+										
+									</form>
+								</div>
+								<div class="col-md-2"></div>
+								<div class="col-md-4">
+									<div ng-controller="recordCtrl">				  
+									    <div class="add_data">
+									    	<br>
+									        <h5>Insertar Nueva Tarjeta</h5>
+									        <form>
+									            <div class="field">
+									                <label for="enunciado">Enunciado: </label><br>
+									                <textarea rows="2" cols="50" id="enunciado" name="enunciado" placeholder="Enunciado" form="form2" ng-model="newEnunciado"></textarea>
+									            </div>
+									             <div class="field">
+									                <label for="respuesta">Respuesta: </label><br>
+									                <textarea rows="4" cols="50" id="respuesta" name="respuesta" placeholder="Respuesta" form="form3" ng-model="newRespuesta"></textarea>
+									            </div>
+									            <div class="action">
+									                <button ng-click="Add()">Insertar</button>
+									                <button ng-click="Reset()">Limpiar Campos</button>
+									            </div>
+									        </form>
+									    </div>
+									    <div class="list_data">
+									    	<br><h5>Lista de Tarjetas</h5><br>
+									        <div ng-if="records.length == 0"> 
+										        Aún, no hay creada ninguna tarjeta. Como mínimo, la colección debe estar formada por una tarjeta.
+										    </div>
+										    <div ng-if="records.length > 0">
+										        <table>
+										            <tr>
+										                <th ng-click="type = 'enunciado'; reverse = !reverse">Enunciado</th>
+										                <th ng-click="type = 'respuesta'; reverse = !reverse">Respuesta</th>
+										                <th>Eliminar</th>
+										            </tr>
+										            <tr ng-repeat="record in records">
+										                <td>{{record.enunciado}}</td>
+										                <td>{{record.respuesta}}</td>
+										                <td><button ng-click="Delete($index)">Eliminar Tarjeta</button></td>
+										            </tr>
+										        </table>
+										    </div>
+									        <button ng-show="history.length > 0" ng-click="Undo()">Deshacer Tarjeta Eliminada</button>
+									    </div>
+									</div>
+								</div>
+								<div class="col-md-1"></div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+			</div>
+		</div>
+		
 		-->
