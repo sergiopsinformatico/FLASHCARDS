@@ -168,10 +168,12 @@
 							    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
 								<small id="creadorHelp" class="form-text text-muted">El creador de la colección será el usuario registrado</small>
 							</div>
+							<br>
 							<div class="form-group">
 							    <label for="nombre">Nombre de la Colección</label>
 							    <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre" required>
 							</div>
+							<br><br>
 							<button type="submit" class="btn btn-primary">Guardar Colección</button>
 						</div>
 						<div class="col-sm-1"></div>
@@ -209,6 +211,7 @@
 							<script language="JavaScript" type="text/javascript">
 								change();
 							</script>
+							<br><br>
 							<div class="form-group" style="min-width: 100%;" id="club" ng-controller="clubCtrl">
 								<div ng-if="clubes.length == 0"> 
 							        No pertenece a ningún club.
@@ -221,67 +224,26 @@
 										<option ng-repeat="club in clubes | filter:expression" value="{{ club.identificador }}">{{ club.name }}</option>
 									</select>
 								</div>
-								<!-- <div ng-if="clubes.length > 0">
-									<div class="panel-heading">
-										<br>Nombre del Club<br>
-										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-									</div>
-									<div class="panel-body" style="min-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-										<table class="table table-bordered table-striped">
-											<tbody>
-												<tr ng-repeat="club in clubes | filter:expression">
-													<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
-													<td>{{ club.name }}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>-->
 							</div>
+							<div class="form-group" style="min-width: 100%;" id="usuario" ng-controller="usuarioCtrl">
+								<div ng-if="people.length == 0"> 
+							        No tiene aún amigos.
+							        <br>
+							    </div>
+							     <div ng-if="people.length > 0">
+									<label for="selectUsuario">Nombre del Usuario</label>
+									<input class="form-control" style="min-width: 100%;" ng-model="expression" placeholder="Buscar usuario..." />
+									<select multiple class="form-control" style="min-width: 100%;" name="selectUsuario" id="selectUsuario">
+										<option ng-repeat="person in people | filter:expression" value="{{ person.usuario }}">{{ person.name }} ({{ person.usuario }})</option>
+									</select>
+								</div>
+							</div>							
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
 				</form>
 			</div>
 		</div>
-		
-			<!-- Material form contact
-<form>
-    <p class="h4 text-center mb-4">Wite to us</p>
-
-    Material input text
-    <div class="md-form">
-        <i class="fa fa-user prefix grey-text"></i>
-        <input type="text" id="materialFormContactNameEx" class="form-control">
-        <label for="materialFormContactNameEx">Your name</label>
-    </div>
-
-    Material input email
-    <div class="md-form">
-        <i class="fa fa-envelope prefix grey-text"></i>
-        <input type="email" id="materialFormContactEmailEx" class="form-control">
-        <label for="materialFormContactEmailEx">Your email</label>
-    </div>
-
-    Material input subject
-    <div class="md-form">
-        <i class="fa fa-tag prefix grey-text"></i>
-        <input type="text" id="materialFormContactSubjectEx" class="form-control">
-        <label for="materialFormContactSubjectEx">Subject</label>
-    </div>
-
-    Material textarea message
-    <div class="md-form">
-        <i class="fa fa-pencil prefix grey-text"></i>
-        <textarea type="text" id="materialFormContactMessageEx" class="form-control md-textarea" rows="3"></textarea>
-        <label for="materialFormContactMessageEx">Your message</label>
-    </div>
-
-    <div class="text-center mt-4">
-        <button class="btn btn-outline-secondary" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
-    </div>
-</form>
- -->
 		
 		
 		
