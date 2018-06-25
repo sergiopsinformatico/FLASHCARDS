@@ -3,9 +3,6 @@
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <title>Crear Tarjeta - Flashcard</title>
-		<!-- <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -154,23 +151,23 @@
 				</div>
 				<div class="col-md-3">
 					<div class="row">
-						<div class="md-form">
+						<!-- <div class="md-form"> -->
 					        <i class="fa fa-user prefix grey-text"></i>
 					        <input type="text" id="creador" value="${usuario.getUsuario()}" class="form-control" disabled>
 					        <label for="creador">Creador de la Colección</label>
-					    </div>
+					    <!-- </div> -->
 					</div>
 					<div class="row">
-						<div class="md-form">
+						<!-- <div class="md-form"> -->
 					        <i class="fa fa-user prefix grey-text"></i>
 					        <input type="text" id="nombre" class="form-control">
 					        <label for="nombre">Nombre de la Colección</label>
-					    </div>
+					    <!-- </div> -->
 					</div>
 					<div class="row">
-						<div class="text-center mt-4">
+						<!-- <div class="text-center mt-4">-->
 					        <button class="btn btn-outline-secondary" type="submit">Guardar Coleccion<i class="fa fa-paper-plane-o ml-2"></i></button>
-					    </div>
+					    <!-- </div> -->
 					</div>
 				</div>
 				<div class="col-md-1">
