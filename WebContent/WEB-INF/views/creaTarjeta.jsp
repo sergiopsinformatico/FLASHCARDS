@@ -213,15 +213,12 @@
 								<div ng-if="clubes.length == 0"> 
 							        No pertenece a ningún club.
 							        <br>
-							        <script language="JavaScript" type="text/javascript">
-										change();
-									</script>
 							    </div>
 							     <div ng-if="clubes.length > 0">
 									<label for="selectClub">Nombre del Club</label>
 									<input class="form-control" style="min-width: 100%;" ng-model="expression" placeholder="Buscar club..." />
-									<select multiple class="form-control" style="min-width: 100%;" name="selectClub" id="selectClub" ng-repeat="club in clubes | filter:expression">
-										<option value="{{ club.identificador }}">{{ club.name }}</option>
+									<select multiple class="form-control" style="min-width: 100%;" name="selectClub" id="selectClub">
+										<option ng-repeat="club in clubes | filter:expression" value="{{ club.identificador }}">{{ club.name }}</option>
 									</select>
 								</div>
 								<!-- <div ng-if="clubes.length > 0">
@@ -618,6 +615,11 @@
 			</script>
 		</div>-->
 		<script>
+			function change(){
+				document.form1.shareWith.value = "publico";
+				option(document.form1.shareWith);
+			}
+			change();
 			document.form1.nombre.value = "${name}";
 			document.form1.descripcion.value = "${description}";
 			document.form1.shareWith.value = "${shareOption}";
@@ -641,10 +643,6 @@
 		    
 		</script>
 		<script>
-			function change(){
-				document.form1.shareWith.value = "publico";
-				option(document.form1.shareWith);
-			}
 		
 			var recordControlador = function ($scope, $http) {
 	
