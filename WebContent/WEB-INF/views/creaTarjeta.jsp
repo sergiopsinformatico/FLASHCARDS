@@ -6,10 +6,21 @@
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="resources/css/mdb.min.css" rel="stylesheet">
-	    <link href="resources/css/style.css" rel="stylesheet">
+	    <link href="resources/css/style.css" rel="stylesheet">-->
+	    
+	    
+	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    
+	    
+	    
+	    
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -152,7 +163,11 @@
 						uno
 					</div>
 					<div class="col-sm-3">
-						tres
+						<div class="form-group">
+						    <label for="creador">Creador</label>
+						    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
+						    <small id="creadorHelp" class="form-text text-muted">El creador de la colección será el usuario registrado</small>
+						  </div>
 					</div>
 					<div class="col-sm-1">
 						uno
