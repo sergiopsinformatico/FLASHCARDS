@@ -157,32 +157,37 @@
 			<br>
 		</div>
 		<div class="row">
-			<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
-				<div class="row">
-					<div class="col-sm-1">
-						uno
+			<div class="col-sm-1">
+			</div>
+			<div class="col-sm-11">
+				<form>
+					<div class="row">
+						<div class="col-sm-1">
+							uno
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group">
+							    <label for="creador">Creador</label>
+							    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
+								<small id="creadorHelp" class="form-text text-muted">El creador de la colección será el usuario registrado</small>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+						<div class="col-sm-1">
+							uno
+						</div>
+						<div class="col-sm-3">
+							tres
+						</div>
+						<div class="col-sm-1">
+							uno
+						</div>
+						<div class="col-sm-3">
+							tres
+						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="form-group">
-						    <label for="creador">Creador</label>
-						    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
-						    <small id="creadorHelp" class="form-text text-muted">El creador de la colección será el usuario registrado</small>
-						  </div>
-					</div>
-					<div class="col-sm-1">
-						uno
-					</div>
-					<div class="col-sm-3">
-						tres
-					</div>
-					<div class="col-sm-1">
-						uno
-					</div>
-					<div class="col-sm-3">
-						tres
-					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 		
 			<!-- Material form contact
