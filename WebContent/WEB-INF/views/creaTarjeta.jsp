@@ -192,6 +192,22 @@
 									<option value="usuario">Usuario</option>
 								</select>
 							</div>
+							<div class="form-group" style="min-width: 100%;" id="club" ng-controller="clubCtrl">
+								<div ng-if="clubes.length == 0"> 
+							        No pertenece a ningún club.
+							        <br>
+							        <script language="JavaScript" type="text/javascript">
+										change();
+									</script>
+							    </div>
+							    <div ng-if="clubes.length > 0">
+									<label for="selectClub">Nombre del Club</label>
+									<input class="form-control" style="min-width: 100%;" ng-model="expression" placeholder="Buscar club..." />
+									<select multiple class="form-control" style="min-width: 100%;" name="selectClub" id="selectClub" ng-repeat="club in clubes | filter:expression">
+										<option value="{{ club.identificador }}">{{ club.name }}</option>
+									</select>
+								</div>
+							</div>
 						</div>
 						<div class="col-sm-1"></div>
 					</div>
