@@ -200,12 +200,28 @@
 										change();
 									</script>
 							    </div>
-							    <div ng-if="clubes.length > 0">
+							    <!-- <div ng-if="clubes.length > 0">
 									<label for="selectClub">Nombre del Club</label>
 									<input class="form-control" style="min-width: 100%;" ng-model="expression" placeholder="Buscar club..." />
 									<select multiple class="form-control" style="min-width: 100%;" name="selectClub" id="selectClub" ng-repeat="club in clubes | filter:expression">
 										<option value="{{ club.identificador }}">{{ club.name }}</option>
 									</select>
+								</div> -->
+								<div ng-if="clubes.length > 0">
+									<div class="panel-heading">
+										<br>Nombre del Club<br>
+										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+									</div>
+									<div class="panel-body" style="min-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+										<table class="table table-bordered table-striped">
+											<tbody>
+												<tr ng-repeat="club in clubes | filter:expression">
+													<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
+													<td>{{ club.name }}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
