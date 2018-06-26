@@ -61,7 +61,8 @@
 			   resize: none;
 			}
 			.scene {
-			  width: 300px;
+			  /*width: 300px;*/
+			  width: 100%;
 			  height: 450px;
 			  border: 1px solid #CCC;
 			  margin: 40px 0;
@@ -651,10 +652,10 @@
 				  card.classList.toggle('is-flipped');
 				});
 			
-			var showControlador = function($scopo, $http){
+			var showControlador = function($scope, $http){
 				$scope.newAnverso="Ejemplo de Anverso";
 				$scope.newReverso="Ejemplo de Reverso";
-			}
+			};
 			
 			var recordControlador = function ($scope, $http) {
 	
@@ -724,7 +725,7 @@
 		            $scope.records.push(elemento);
 		            $scope.history.pop();
 		        }
-			}
+			};
 			
 			var usuarioControlador = function ($scope){
 				$scope.people = [];
