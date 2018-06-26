@@ -269,12 +269,12 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="anverso">Anverso</label>
-							<textarea class="form-control" id="anverso" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
+							<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
 							<small id="creadorHelp" class="form-text text-muted">Máximo 250 caracteres</small>
 						</div>
 						<div class="form-group">
 							<label for="reverso">Reverso</label>
-							<textarea class="form-control" id="reverso" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
+							<textarea class="form-control" id="reverso" style="width:100%;" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
 							<small id="creadorHelp" class="form-text text-muted">Máximo 250 caracteres</small>
 						</div>
 						<button type="submit" class="btn btn-primary" ng-click="Add()">Insertar</button>
@@ -655,6 +655,12 @@
 			var showControlador = function($scope, $http){
 				$scope.newAnverso="Ejemplo de Anverso";
 				$scope.newReverso="Ejemplo de Reverso";
+				
+				$scope.Reset = function () {
+		            $scope.newAnverso = '';
+		            $scope.newReverso = '';
+		        }
+				
 			};
 			
 			var recordControlador = function ($scope, $http) {
