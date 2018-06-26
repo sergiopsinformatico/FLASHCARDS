@@ -250,7 +250,6 @@
 			</div>
 			<div class="col-sm-11">
 				<div class="col-sm-5" ng-controller="showCtrl">
-					<br><br>
 					<div class="col-sm-6">
 						<h6 align="center">Vista Previa de la Tarjeta</h6>
 						<div class="scene scene--card">
