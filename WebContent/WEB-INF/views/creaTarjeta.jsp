@@ -248,7 +248,7 @@
 			<div class="col-sm-1">
 			</div>
 			<div class="col-sm-11">
-				<div class="col-sm-5">
+				<div class="col-sm-5" ng-controller="showCtrl">
 					<br><br>
 					<div class="col-sm-6">
 						<h6 align="center">Vista Previa de la Tarjeta</h6>
@@ -265,7 +265,7 @@
 						  </div>
 						</div>
 					</div>
-					<div class="col-sm-6" ng-controller="showCtrl">
+					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="anverso">Anverso</label>
 							<textarea class="form-control" id="anverso" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
@@ -646,7 +646,16 @@
 		    
 		</script>
 		<script>
-		
+			var card = document.querySelector('.card');
+			card.addEventListener( 'click', function() {
+				  card.classList.toggle('is-flipped');
+				});
+			
+			var showControlador = function($scopo, $http){
+				$scope.newAnverso="Ejemplo de Anverso";
+				$scope.newReverso="Ejemplo de Reverso";
+			}
+			
 			var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
@@ -753,6 +762,7 @@
 			app.controller('clubCtrl', clubControlador);
 			app.controller('usuarioCtrl', usuarioControlador);
 			app.controller('recordCtrl', recordControlador);
+			app.controller('showCtrl', showControlador);
 		</script>
 	</body>
 </html>
