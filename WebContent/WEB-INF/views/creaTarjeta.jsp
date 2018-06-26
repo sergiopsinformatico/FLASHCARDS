@@ -202,7 +202,59 @@
 						<div ng-if="records.length > 0">
 							<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
 							  <div class="carousel-inner">
-							    <div class="carousel-item" ng-repeat="registro in records | filter:expression">
+							  	
+							  	<div class="carousel-item">
+							      <div class="scene scene--card">
+								  <div class="card text-center">
+								    <div class="card__face card__face--front align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">hola</p>
+									</div>
+								    <div class="card__face card__face--back align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">adios</p>
+									</div>
+								  </div>
+								</div>
+							    </div>
+							    
+							    <div class="carousel-item">
+							      <div class="scene scene--card">
+								  <div class="card text-center">
+								    <div class="card__face card__face--front align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">hola</p>
+									</div>
+								    <div class="card__face card__face--back align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">adios</p>
+									</div>
+								  </div>
+								</div>
+							    </div>
+							    
+							    <div class="carousel-item">
+							      <div class="scene scene--card">
+								  <div class="card text-center">
+								    <div class="card__face card__face--front align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">hola</p>
+									</div>
+								    <div class="card__face card__face--back align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">adios</p>
+									</div>
+								  </div>
+								</div>
+							    </div>
+							  
+							  
+							  
+							  
+							  
+							  
+							  
+							     <!-- <div class="carousel-item" ng-repeat="registro in records | filter:expression">
 							      <div class="scene scene--card">
 								  <div class="card text-center">
 								    <div class="card__face card__face--front align-items-center justify-content-center">
@@ -215,7 +267,7 @@
 									</div>
 								  </div>
 								</div>
-							    </div>
+							    </div>-->
 							    <!-- <div class="carousel-item">
 							      <img class="d-block w-100" src="..." alt="Second slide">
 							    </div>
