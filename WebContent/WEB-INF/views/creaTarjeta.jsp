@@ -179,13 +179,14 @@
 								</div>
 							</div>
 							<div class="col-sm-6">
+							<br><br>
 								<div class="form-group">
-									<label for="anverso">Anverso</label>
+									<label for="anverso">Anverso de la Tarjeta</label>
 									<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
 									<small id="creadorHelp" class="form-text text-muted">{{ newAnverso.length }} carácteres de 250 carácteres máximo.</small>
 								</div>
 								<div class="form-group">
-									<label for="reverso">Reverso</label>
+									<label for="reverso">Reverso de la Tarjeta</label>
 									<textarea class="form-control" id="reverso" style="width:100%;" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
 									<small id="creadorHelp" class="form-text text-muted">{{ newReverso.length }} carácteres de 250 carácteres máximo.</small>
 								</div>
@@ -228,6 +229,30 @@
 								</div>
 							</div>
 						</div>
+						<script>
+							$('.owl-carousel').owlCarousel({
+								  loop: true,
+								  margin: 30,
+								  dots: true,
+								  nav: false,
+								  responsiveClass: true,
+								  responsive: {
+								    0: {
+								      items: 2,
+								      margin: 10,
+								      stagePadding: 20,
+								    },
+								    600: {
+								      items: 3,
+								      margin: 20,
+								      stagePadding: 50,
+								    },
+								    1000: {
+								      items: 4
+								    }
+								  }
+								});
+						</script>
 					</div>
 					<div class="col-sm-1"></div>
 				</div>
