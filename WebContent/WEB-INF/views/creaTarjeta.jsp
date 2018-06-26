@@ -248,62 +248,106 @@
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-11" ng-controller="showCtrl">
-				<div class="col-sm-5">
-					<div class="col-sm-6">
-						<h6 align="center">Vista Previa de la Tarjeta</h6>
-						<div class="scene scene--card">
-						  <div class="card text-center">
-						    <div class="card__face card__face--front align-items-center justify-content-center">
-						    	<br>
-						    	<p class="card-text">{{ newAnverso }}</p>
+				<div class="row">
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="col-sm-5">
+						<div class="row">
+							
+							
+							
+							<div class="col-sm-6">
+								<h6 align="center">Vista Previa de la Tarjeta</h6>
+								<div class="scene scene--card">
+								  <div class="card text-center">
+								    <div class="card__face card__face--front align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">{{ newAnverso }}</p>
+									</div>
+								    <div class="card__face card__face--back align-items-center justify-content-center">
+								    	<br>
+								    	<p class="card-text">{{ newReverso }}</p>
+									</div>
+								  </div>
+								</div>
 							</div>
-						    <div class="card__face card__face--back align-items-center justify-content-center">
-						    	<br>
-						    	<p class="card-text">{{ newReverso }}</p>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="anverso">Anverso</label>
+									<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
+									<small id="creadorHelp" class="form-text text-muted">{{ newAnverso.length }} carácteres de 250 carácteres máximo.</small>
+								</div>
+								<div class="form-group">
+									<label for="reverso">Reverso</label>
+									<textarea class="form-control" id="reverso" style="width:100%;" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
+									<small id="creadorHelp" class="form-text text-muted">{{ newReverso.length }} carácteres de 250 carácteres máximo.</small>
+								</div>
+								<button type="submit" class="btn btn-primary" ng-click="Add()">Insertar</button>
+								<button type="submit" class="btn btn-primary" ng-click="Reset()">Limpiar Campos</button>
 							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+						</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						
+						
+						
+					</div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-5">
+						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+						  <div class="carousel-inner">
+						    <div class="carousel-item active">
+						      <img class="d-block w-100" src="..." alt="First slide">
+						    </div>
+						    <div class="carousel-item">
+						      <img class="d-block w-100" src="..." alt="Second slide">
+						    </div>
+						    <div class="carousel-item">
+						      <img class="d-block w-100" src="..." alt="Third slide">
+						    </div>
 						  </div>
+						  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="anverso">Anverso</label>
-							<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
-							<small id="creadorHelp" class="form-text text-muted">{{ newAnverso.length }} carácteres de 250 carácteres máximo.</small>
-						</div>
-						<div class="form-group">
-							<label for="reverso">Reverso</label>
-							<textarea class="form-control" id="reverso" style="width:100%;" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
-							<small id="creadorHelp" class="form-text text-muted">{{ newReverso.length }} carácteres de 250 carácteres máximo.</small>
-						</div>
-						<button type="submit" class="btn btn-primary" ng-click="Add()">Insertar</button>
-						<button type="submit" class="btn btn-primary" ng-click="Reset()">Limpiar Campos</button>
-					</div>
+					<div class="col-sm-1"></div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				</div>
-				<div class="col-sm-1"></div>
-				<div class="col-sm-5">
-					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-					  <div class="carousel-inner">
-					    <div class="carousel-item active">
-					      <img class="d-block w-100" src="..." alt="First slide">
-					    </div>
-					    <div class="carousel-item">
-					      <img class="d-block w-100" src="..." alt="Second slide">
-					    </div>
-					    <div class="carousel-item">
-					      <img class="d-block w-100" src="..." alt="Third slide">
-					    </div>
-					  </div>
-					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					  </a>
-					  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					</div>
-				</div>
-				<div class="col-sm-1"></div>
 			</div>
 		</div>
 		
