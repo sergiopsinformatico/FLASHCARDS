@@ -303,10 +303,82 @@
 								}
 							</style>
 							<div class="container-fluid">
-							  <h1 class="text-center mb-3">Bootstrap Multi-Card Carousel</h1>
+							  <h6 class="text-center mb-3">Colección de Flashcards</h6>
 							  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 							    <div class="carousel-inner row w-100 mx-auto">
-							      <div class="carousel-item col-md-4 active">
+							    	<div class="carousel-item col-md-4 active">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso1</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso1</p>
+											</div>
+										</div>
+							   		</div>
+							    	<div class="carousel-item col-md-4">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso2</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso2</p>
+											</div>
+										</div>
+							    	</div>
+							    	<div class="carousel-item col-md-4">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso3</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso3</p>
+											</div>
+										</div>
+							    	</div>
+							    	<div class="carousel-item col-md-4">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso4</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso4</p>
+											</div>
+										</div>
+							    	</div>
+							    	<div class="carousel-item col-md-4">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso5</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso5</p>
+											</div>
+										</div>
+							    	</div>
+							    	<div class="carousel-item col-md-4">
+							    		<div class="card text-center">
+											<div class="card__face card__face--front align-items-center justify-content-center">
+												<br>
+												<p class="card-text">Anverso6</p>
+											</div>
+											<div class="card__face card__face--back align-items-center justify-content-center">
+												<br>
+										  		<p class="card-text">Reverso6</p>
+											</div>
+										</div>
+							    	</div>
+							      <!-- <div class="carousel-item col-md-4 active">
 							        <div class="card">
 							          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
 							          <div class="card-body">
@@ -375,7 +447,7 @@
 							            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 							          </div>
 							        </div>
-							      </div>
+							      </div>-->
 							    </div>
 							    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 							      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
