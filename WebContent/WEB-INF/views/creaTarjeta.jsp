@@ -196,42 +196,17 @@
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
 						<div class="row">
-						
-						
-							<carousel interval="setInterval">
-								<slide ng-repeat="slide in records">
-									{{slide.anverso}}
-									{{slide.reverso}}
-								</slide>
-							</carousel>
-						
-						
-						
-							<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-							
-								<div class="carousel-inner">
-								    <div class="item active">
-								    	HOLA
-								    </div>
-								
-								    <div class="item">
-								      PEPITO
-								    </div>
-								
-								    <div class="item">
-								      JOSE
-								    </div>
-								  </div>
-														
-							  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							    <span class="glyphicon glyphicon-chevron-left"></span>
-							    <span class="sr-only">Previous</span>
-							  </a>
-							  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-							    <span class="glyphicon glyphicon-chevron-right"></span>
-							    <span class="sr-only">Next</span>
-							  </a>
-							</div>-->							
+							<div ng-if="records.length == 0">
+								Aun no hay tarjetas creadas
+							</div>
+							<div ng-if="records.length > 0">
+								<carousel interval="setInterval">
+									<slide ng-repeat="slide in records">
+										{{slide.anverso}}
+										{{slide.reverso}}
+									</slide>
+								</carousel>	
+							</div>	
 						</div>
 					</div>
 					<div class="col-sm-1"></div>
@@ -723,7 +698,7 @@
 				
 			};
 			
-			/*var recordControlador = function ($scope, $http) {
+			var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
 	
@@ -731,11 +706,11 @@
 		        
 		        var cadena = "${cards}";
 		        var array = cadena.split("///****nuevaCARD****///");
-		       /* var i;
+		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
 			        	var elemento = array[i].split("///****resp****///");
-			        	/*$scope.records.push({
+			        	$scope.records.push({
 			        		enunciado: elemento[0],
 			        		respuesta: elemento[1]
 			        	});
@@ -790,7 +765,7 @@
 		            $scope.records.push(elemento);
 		            $scope.history.pop();
 		        }
-			};*/
+			};
 			
 			var usuarioControlador = function ($scope){
 				$scope.people = [];
