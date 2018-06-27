@@ -203,10 +203,14 @@
 								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 								  <div class="carousel-inner">
 								    <div class="carousel-item active">
-								      <img class="d-block w-100" src="..." alt="La coleccion consta de {{records.length}} cartas">
+								    	<div class="card">
+								    		La coleccion consta de {{records.length}} cartas.
+								    	</div>
 								    </div>
-								    <div class="carousel-item" ng-repeat="card in records">
-								      <img class="d-block w-100" src="..." alt="{{card.anverso}} - {{card.reverso}}">
+								    <div class="carousel-item" ng-repeat="tarjeta in records">
+								      <div class="card">
+								    		{{ tarjeta.anverso }} - {{ tarjeta.reverso }} 
+								    	</div>
 								    </div>
 								  </div>
 								  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
