@@ -181,12 +181,10 @@
 							<div class="col-sm-6">
 							<br><br>
 								<div class="form-group">
-									<label for="anverso">Anverso de la Tarjeta</label>
 									<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
 									<small id="creadorHelp" class="form-text text-muted">{{ newAnverso.length }} carácteres de 250 carácteres máximo.</small>
 								</div>
 								<div class="form-group">
-									<label for="reverso">Reverso de la Tarjeta</label>
 									<textarea class="form-control" id="reverso" style="width:100%;" name="reverso" maxlength="250" rows="6" ng-model="newReverso"></textarea>
 									<small id="creadorHelp" class="form-text text-muted">{{ newReverso.length }} carácteres de 250 carácteres máximo.</small>
 								</div>
@@ -198,7 +196,18 @@
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
 						<div class="row">
-							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						
+						
+							<carousel interval="setInterval">
+								<slide ng-repeat="slide in records">
+									{{slide.anverso}}
+									{{slide.reverso}}
+								</slide>
+							</carousel>
+						
+						
+						
+							<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
 							
 								<div class="carousel-inner">
 								    <div class="item active">
@@ -214,7 +223,6 @@
 								    </div>
 								  </div>
 														
-							  <!-- Left and right controls -->
 							  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 							    <span class="glyphicon glyphicon-chevron-left"></span>
 							    <span class="sr-only">Previous</span>
@@ -223,7 +231,7 @@
 							    <span class="glyphicon glyphicon-chevron-right"></span>
 							    <span class="sr-only">Next</span>
 							  </a>
-							</div>							
+							</div>-->							
 						</div>
 					</div>
 					<div class="col-sm-1"></div>
@@ -684,8 +692,9 @@
 				});
 			
 			var showControlador = function($scope, $http){
-				$scope.newAnverso="Ejemplo de Anverso";
-				$scope.newReverso="Ejemplo de Reverso";
+				$scope.newAnverso="Anverso de la Tarjeta";
+				$scope.newReverso="Reverso de la Tarjeta";
+				$scope.setInterval = false;
 				
 				$scope.records=[];
 				
@@ -714,7 +723,7 @@
 				
 			};
 			
-			var recordControlador = function ($scope, $http) {
+			/*var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
 	
@@ -722,11 +731,11 @@
 		        
 		        var cadena = "${cards}";
 		        var array = cadena.split("///****nuevaCARD****///");
-		        var i;
+		       /* var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
 			        	var elemento = array[i].split("///****resp****///");
-			        	$scope.records.push({
+			        	/*$scope.records.push({
 			        		enunciado: elemento[0],
 			        		respuesta: elemento[1]
 			        	});
@@ -771,7 +780,6 @@
 		  	            $scope.Reset();
 		            
 		        }
-		        // Undo action (delete)
 		        $scope.Undo = function () {
 		            var elemento = $scope.history[ $scope.history.length - 1 ];
 		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
@@ -782,7 +790,7 @@
 		            $scope.records.push(elemento);
 		            $scope.history.pop();
 		        }
-			};
+			};*/
 			
 			var usuarioControlador = function ($scope){
 				$scope.people = [];
