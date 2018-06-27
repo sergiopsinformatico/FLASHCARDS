@@ -198,6 +198,7 @@
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
 						<div class="row">
+							<!-- https://codepen.io/kreigd/pen/ybYNoN -->
 							<script>
 								$("#myCarousel").on("slide.bs.carousel", function(e) {
 									  var $e = $(e.relatedTarget);
@@ -305,7 +306,7 @@
 							  <h1 class="text-center mb-3">Bootstrap Multi-Card Carousel</h1>
 							  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 							    <div class="carousel-inner row w-100 mx-auto">
-							      <div class="carousel-item col-md-4 active">
+							      <div class="carousel-item col-md-4">
 							        <div class="card">
 							          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
 							          <div class="card-body">
