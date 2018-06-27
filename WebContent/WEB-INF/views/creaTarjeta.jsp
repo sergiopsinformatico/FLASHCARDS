@@ -199,32 +199,21 @@
 					<div class="col-sm-5">
 						<div class="row">
 							<div id="myCarousel" class="carousel slide" data-ride="carousel">
-							  <div class="carousel-inner">
-							    <div class="item active">
-							      <img src="la.jpg" alt="Chania">
-							      <div class="carousel-caption">
-							        <h3>Los Angeles</h3>
-							        <p>LA is always so much fun!</p>
-							      </div>
-							    </div>
 							
-							    <div class="item">
-							      <img src="chicago.jpg" alt="Chicago">
-							      <div class="carousel-caption">
-							        <h3>Chicago</h3>
-							        <p>Thank you, Chicago!</p>
-							      </div>
-							    </div>
-							
-							    <div class="item">
-							      <img src="ny.jpg" alt="New York">
-							      <div class="carousel-caption">
-							        <h3>New York</h3>
-							        <p>We love the Big Apple!</p>
-							      </div>
-							    </div>
-							  </div>
-							
+								<div class="carousel-inner">
+								    <div class="item active">
+								    	HOLA
+								    </div>
+								
+								    <div class="item">
+								      PEPITO
+								    </div>
+								
+								    <div class="item">
+								      JOSE
+								    </div>
+								  </div>
+														
 							  <!-- Left and right controls -->
 							  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 							    <span class="glyphicon glyphicon-chevron-left"></span>
