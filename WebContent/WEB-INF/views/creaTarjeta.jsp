@@ -200,12 +200,16 @@
 								Aun no hay tarjetas creadas
 							</div>
 							<div ng-if="records.length > 0">
-								<carousel interval="setInterval">
-									<slide ng-repeat="slide in records">
-										{{slide.anverso}}
-										{{slide.reverso}}
-									</slide>
-								</carousel>	
+								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+								  <div class="carousel-inner">
+								    <div class="carousel-item active">
+								      <img class="d-block w-100" src="..." alt="La coleccion consta de {{records.length}} cartas">
+								    </div>
+								    <div class="carousel-item" ng-repeat="card in records">
+								      <img class="d-block w-100" src="..." alt="{{card.anverso}} - {{card.reverso}}">
+								    </div>
+								  </div>
+								</div>	
 							</div>	
 						</div>
 					</div>
