@@ -207,7 +207,7 @@
 								    		La coleccion consta de {{records.length}} cartas.
 								    	</div>
 								    </div>
-								    <div class="carousel-item" ng-repeat="tarjeta in records">
+								    <div class="carousel-item active" ng-repeat="tarjeta in records">
 								      <div class="card">
 								    		{{ tarjeta.anverso }} - {{ tarjeta.reverso }} 
 								    	</div>
