@@ -312,6 +312,8 @@
 												<br>
 												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
 										  		<p class="card-text">Reverso1</p>
@@ -322,11 +324,13 @@
 							    		<div class="card text-center">
 											<div class="card__face card__face--front align-items-center justify-content-center">
 												<br>
-												<p class="card-text">Anverso2</p>
+												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
-										  		<p class="card-text">Reverso2</p>
+										  		<p class="card-text">Reverso1</p>
 											</div>
 										</div>
 							    	</div>
@@ -334,11 +338,13 @@
 							    		<div class="card text-center">
 											<div class="card__face card__face--front align-items-center justify-content-center">
 												<br>
-												<p class="card-text">Anverso3</p>
+												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
-										  		<p class="card-text">Reverso3</p>
+										  		<p class="card-text">Reverso1</p>
 											</div>
 										</div>
 							    	</div>
@@ -346,11 +352,13 @@
 							    		<div class="card text-center">
 											<div class="card__face card__face--front align-items-center justify-content-center">
 												<br>
-												<p class="card-text">Anverso4</p>
+												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
-										  		<p class="card-text">Reverso4</p>
+										  		<p class="card-text">Reverso1</p>
 											</div>
 										</div>
 							    	</div>
@@ -358,11 +366,13 @@
 							    		<div class="card text-center">
 											<div class="card__face card__face--front align-items-center justify-content-center">
 												<br>
-												<p class="card-text">Anverso5</p>
+												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
-										  		<p class="card-text">Reverso5</p>
+										  		<p class="card-text">Reverso1</p>
 											</div>
 										</div>
 							    	</div>
@@ -370,11 +380,13 @@
 							    		<div class="card text-center">
 											<div class="card__face card__face--front align-items-center justify-content-center">
 												<br>
-												<p class="card-text">Anverso6</p>
+												<p class="card-text">Anverso1</p>
 											</div>
+										</div>
+										<div class="card text-center">
 											<div class="card__face card__face--back align-items-center justify-content-center">
 												<br>
-										  		<p class="card-text">Reverso6</p>
+										  		<p class="card-text">Reverso1</p>
 											</div>
 										</div>
 							    	</div>
