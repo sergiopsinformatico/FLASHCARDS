@@ -200,7 +200,7 @@
 								Aun no hay tarjetas creadas
 							</div>
 							<div ng-if="records.length > 0">
-								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="width:100%;">
 								  <div class="carousel-inner">
 								    <div class="carousel-item active">
 								    	<div class="card">
