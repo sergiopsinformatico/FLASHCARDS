@@ -324,7 +324,7 @@
 								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
 								          </div>
 								        </div>-->
-								        <div class="scene scene--card">
+								        <div class="scene scene--card" style="height: 400px;">
 										  <div class="card text-center">
 										    <div class="card__face card__face--front align-items-center justify-content-center">
 										    	<br>
