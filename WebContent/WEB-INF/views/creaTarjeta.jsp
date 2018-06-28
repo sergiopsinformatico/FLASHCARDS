@@ -311,14 +311,14 @@
 								  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 								    <div class="carousel-inner row w-100 mx-auto">
 								      <div class="carousel-item col-md-4 active">
-								        <div class="card">
+								        <div class="card" style="height: 400px;">
 								          <div class="card-body">
 								            <h4 class="card-title">Coleccion de Cartas</h4>
 								          </div>
 								        </div>
 								      </div>
 								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
-								        <div class="card">
+								        <div class="card" style="height: 400px;">
 								          <div class="card-body">
 								            <p class="card-text">Anverso: {{ tarjeta.anverso }}</p>
 								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
@@ -336,16 +336,6 @@
 								    </a>
 								  </div>
 								</div>
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
 								
 							</div>	
 						</div>
