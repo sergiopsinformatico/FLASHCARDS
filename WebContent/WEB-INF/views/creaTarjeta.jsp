@@ -324,19 +324,60 @@
 								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
 								          </div>
 								        </div>-->
-								        <div class="scene scene--card" style="height: 400px;">
-										  <div class="card text-center">
-										    <div class="card__face card__face--front align-items-center justify-content-center">
-										    	<br>
-										    	<p class="card-text">{{ tarjeta.anverso }}</p>
-											</div>
-										    <div class="card__face card__face--back align-items-center justify-content-center">
-										    	<br>
-										    	<p class="card-text">{{ tarjeta.reverso }}</p>
-											</div>
+								        
+								        
+										<div class="card-wrapper">
+										  <div id="card-2" class="card-rotating effect__click h-100 w-100">
+										
+										    <div class="face front card">
+										
+										      <div class="card-body">
+										        
+										        <h4 class="">Anverso</h4>
+										        <br>
+										        {{ tarjeta.anverso }}
+										        <br>
+										        <a class="rotate-btn float-right" data-card="card-2">Reverso</a>
+										
+										      </div>
+										
+										    </div>
+										    <!--Front Side-->
+										
+										    <!--Back Side-->
+										    <!-- <div class="face back"> -->
+										    <div class="face back">
+										
+										      <!-- Content -->
+										      <!-- <div class="content text-center">									        
+										      </div>-->
+										      <div class="card-body">
+										        
+										        <h4 class="">Reverso</h4>
+										        <br>
+										        {{ tarjeta.reverso }}
+										        <br>
+										
+										      </div>
+										
+										    </div>
+										    <!--Back Side-->
+										
 										  </div>
 										</div>
-								      </div>
+										<!-- Rotating card -->
+								        
+								        
+								        
+								        
+								        
+								        
+								        
+								        
+								        
+								        
+								        
+								        
 								    </div>
 								    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
