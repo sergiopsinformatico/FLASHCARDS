@@ -200,28 +200,153 @@
 								Aun no hay tarjetas creadas
 							</div>
 							<div ng-if="records.length > 0">
-								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="width:100%;">
-								  <div class="carousel-inner">
-								    <div class="carousel-item w3-yellow active">
-								    	<div class="card">
-								    		La coleccion consta de {{records.length}} cartas.
-								    	</div>
+								<style>
+								@media (min-width: 768px) {
+								  /* show 3 items */
+								  .carousel-inner .active,
+								  .carousel-inner .active + .carousel-item,
+								  .carousel-inner .active + .carousel-item + .carousel-item {
+								    display: block;
+								  }
+								
+								  .carousel-inner
+								    .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+								  .carousel-inner
+								    .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+								    + .carousel-item,
+								  .carousel-inner
+								    .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+								    + .carousel-item
+								    + .carousel-item {
+								    transition: none;
+								  }
+								
+								  .carousel-inner .carousel-item-next,
+								  .carousel-inner .carousel-item-prev {
+								    position: relative;
+								    transform: translate3d(0, 0, 0);
+								  }
+								
+								  .carousel-inner
+								    .active.carousel-item
+								    + .carousel-item
+								    + .carousel-item
+								    + .carousel-item {
+								    position: absolute;
+								    top: 0;
+								    right: -33.3333%;
+								    z-index: -1;
+								    display: block;
+								    visibility: visible;
+								  }
+								
+								  /* left or forward direction */
+								  .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+								  .carousel-item-next.carousel-item-left + .carousel-item,
+								  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+								  .carousel-item-next.carousel-item-left
+								    + .carousel-item
+								    + .carousel-item
+								    + .carousel-item {
+								    position: relative;
+								    transform: translate3d(-100%, 0, 0);
+								    visibility: visible;
+								  }
+								
+								  /* farthest right hidden item must be abso position for animations */
+								  .carousel-inner .carousel-item-prev.carousel-item-right {
+								    position: absolute;
+								    top: 0;
+								    left: 0;
+								    z-index: -1;
+								    display: block;
+								    visibility: visible;
+								  }
+								
+								  /* right or prev direction */
+								  .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+								  .carousel-item-prev.carousel-item-right + .carousel-item,
+								  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+								  .carousel-item-prev.carousel-item-right
+								    + .carousel-item
+								    + .carousel-item
+								    + .carousel-item {
+								    position: relative;
+								    transform: translate3d(100%, 0, 0);
+								    visibility: visible;
+								    display: block;
+								    visibility: visible;
+								  }
+								}
+								</style>
+								
+								<script>
+									$("#myCarousel").on("slide.bs.carousel", function(e) {
+										  var $e = $(e.relatedTarget);
+										  var idx = $e.index();
+										  var itemsPerSlide = 3;
+										  var totalItems = $(".carousel-item").length;
+	
+										  if (idx >= totalItems - (itemsPerSlide - 1)) {
+										    var it = itemsPerSlide - (totalItems - idx);
+										    for (var i = 0; i < it; i++) {
+										      // append slides to end
+										      if (e.direction == "left") {
+										        $(".carousel-item")
+										          .eq(i)
+										          .appendTo(".carousel-inner");
+										      } else {
+										        $(".carousel-item")
+										          .eq(0)
+										          .appendTo($(this).find(".carousel-inner"));
+										      }
+										    }
+										  }
+										});
+								</script>
+								
+								
+								
+								<div class="container-fluid">
+								  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+								    <div class="carousel-inner row w-100 mx-auto">
+								      <div class="carousel-item col-md-4 active">
+								        <div class="card">
+								          <div class="card-body">
+								            <h4 class="card-title">Coleccion de Cartas</h4>
+								          </div>
+								        </div>
+								      </div>
+								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
+								        <div class="card">
+								          <div class="card-body">
+								            <p class="card-text">Anverso: {{ tarjeta.anverso }}</p>
+								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
+								          </div>
+								        </div>
+								      </div>
 								    </div>
-								    <div class="carousel-item w3-yellow" ng-repeat="tarjeta in records">
-								      <div class="card">
-								    		{{ tarjeta.anverso }} - {{ tarjeta.reverso }} 
-								    	</div>
-								    </div>
+								    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
 								  </div>
-								  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								    <span class="sr-only">Previous</span>
-								  </a>
-								  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-								    <span class="sr-only">Next</span>
-								  </a>
-								</div>	
+								</div>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
 							</div>	
 						</div>
 					</div>
@@ -318,336 +443,6 @@
 			</div>
 		</div>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<!-- 
-		<div class="row">
-			<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
-				<script>
-				    function option(that) {
-				        if (that.value == "club") {
-				            document.getElementById("club").style.display = "block";
-				            document.getElementById("usuario").style.display = "none";
-				        } else if(that.value == "usuario"){
-				        	document.getElementById("club").style.display = "none";
-				            document.getElementById("usuario").style.display = "block";
-				        }else{
-				        	document.getElementById("club").style.display = "none";
-				            document.getElementById("usuario").style.display = "none";
-				        }
-				    }
-				    
-				    function change(){
-						document.form1.shareWith.value = "publico";
-					}
-				</script>
-				<div class="row" style="min-width: 100%;">
-					<div class="col-md-1"></div>
-					<div class="col-md-3">
-						<div class="row">
-							<div class="form-group" style="min-width: 100%;">
-								<label for="creador" class="cols-md-2 control-label">Creador</label>
-								<div class="cols-md-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario()} disabled/>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group" style="min-width: 100%;">
-								<label for="nombre" class="cols-md-2 control-label">Nombre de la Colección</label>
-								<div class="cols-md-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group" style="min-width: 100%;">
-								<div class="cols-md-12">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="row">
-							<div class="form-group" style="min-width: 100%;">
-								<label for="descripcion" class="cols-md-2 control-label">Descripción</label>
-								<div class="cols-md-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<style>
-											textarea {
-											   resize: none;
-											}
-										</style>
-										<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="row">
-							<div class="form-group" style="min-width: 100%;">
-								<label for="shareWith" class="cols-md-2 control-label">Compartir con:</label>
-								<div class="cols-md-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<select name="shareWith" id="shareWith" onchange="option(this);" required>
-										    <option value="publico">Todo el Mundo</option>
-										    <option value="privado">Solo yo</option>
-										    <option value="club">Club</option>
-										    <option value="usuario">Usuario</option>
-										  </select>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-primary" style="min-width: 100%;" id="club" ng-controller="clubCtrl">
-								<div ng-if="clubes.length == 0"> 
-							        No pertenece a ningún club.
-							        <br>
-							        <script language="JavaScript" type="text/javascript">
-										change();
-									</script>
-							    </div>
-							    <div ng-if="clubes.length > 0">
-									<div class="panel-heading">
-										<br>Nombre del Club<br>
-										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-									</div>
-									<div class="panel-body" style="min-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
-										<table class="table table-bordered table-striped">
-											<tbody>
-												<tr ng-repeat="club in clubes | filter:expression">
-													<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
-													<td>{{ club.name }}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-primary" style="min-width: 100%;" id="usuario" ng-controller="usuarioCtrl">
-								<div ng-if="people.length == 0"> 
-							        No tiene aún amigos.
-							        <br>
-							        <script language="JavaScript" type="text/javascript">
-										change();
-									</script>
-							    </div>
-								<div ng-if="people.length > 0">
-									<div class="panel-heading">
-										<br>Nombre del Usuario<br>
-										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
-									</div>
-									<div class="panel-body" style="min-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
-										<table class="table table-bordered table-striped">
-											<tbody>
-												<tr ng-repeat="person in people | filter:expression">
-													<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.usuario }}" /></td>
-													<td>{{ person.name }} ({{ person.usuario }})</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-		-->
-		<!-- <div class="row">
-			<br><br>
-		</div>
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-6" ng-controller="showCtrl">
-				<div class="row">
-					<div class="col-md-5">
-						<h6 align="center">Vista Previa de la Tarjeta</h6>
-						<div class="scene scene--card">
-						  <div class="card text-center">
-						    <div class="card__face card__face--front align-items-center justify-content-center">
-						    	<br>
-						    	<p class="card-text">{{ newAnverso }}</p>
-							</div>
-						    <div class="card__face card__face--back align-items-center justify-content-center">
-						    	<br>
-						    	<p class="card-text">{{ newReverso }}</p>
-							</div>
-						  </div>
-						</div>
-					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-5">
-						<div class="row">
-							<br><br>
-						</div>
-						<div class="row">
-							<h6>Anverso de la Tarjeta (max. 250 caracteres)</h6>
-						</div>
-						<div class="row">
-							<textarea rows="6" cols="50" maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
-						</div>
-						<div class="row">
-							<br><br>
-						</div>
-						<div class="row">
-							<h6>Reverso de la Tarjeta (max. 250 caracteres)</h6>
-						</div>
-						<div class="row">
-							<textarea rows="6" cols="50" maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
-						</div>
-						<div class="row">
-							<br>
-						</div>
-						<div class="row">
-							<div class="action col-md-4">
-								<button ng-click="Add()">Insertar</button>
-							</div>
-							<div class="action col-md-8">
-								<button ng-click="Reset()">Limpiar Campos</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1"></div>
-				</div>
-				<div class="row">
-				</div>
-			</div>
-			<script>
-				document.form1.nombre.value = "${name}";
-				document.form1.descripcion.value = "${description}";
-				document.form1.shareWith.value = "${shareOption}";
-			    option(document.form1.shareWith);
-			    var optionWith = "${shareOptionWith}";
-			    var optionGeneric = "${shareOption}";
-			    var vacio = optionWith.localeCompare("");
-			    if(vacio != 0){
-			    	var club = "club";
-			    	var usuario = "usuario";
-			    	var isClub = optionGeneric.localeCompare(club);
-			    	var isUsuario = optionGeneric.localeCompare(usuario);
-			    	if(isClub == 0){
-			    		document.getElementById("selectClub").value = optionWith;
-			    	}else{
-			    		if(isUsuario == 0){
-			    			document.getElementById("selectUsuario").value = optionWith;
-			    		}
-			    	}		    		
-			    }
-			    
-			</script>
-			<script>
-			var card = document.querySelector('.card');
-			card.addEventListener( 'click', function() {
-				  card.classList.toggle('is-flipped');
-				});
-			</script>
-			<script>
-				var app = angular.module('myAppCard', []);
-			
-				var controller = function ($scope, $http) {
-					
-					 $scope.records=[];
-					
-					$scope.newAnverso = "Anverso";
-				    $scope.newReverso = "Reverso";
-					
-			       		
-			        $scope.Reset = function () {
-			        	$scope.newAnverso = '';
-			        	$scope.newReverso = '';
-			        }
-		
-			        $scope.Add = function () {
-			            if (!$scope.newAnverso || !$scope.newReverso)
-			                return;
-			            
-			            $scope.records.push({
-			                anverso: $scope.newAnverso,
-			                reverso: $scope.newReverso
-			            });
-			            
-			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-				            {
-				            	anverso: $scope.newAnverso,
-				            	reverso: $scope.newReverso
-				            });          
-			  	            $scope.Reset();
-			            
-			        }
-			        // Undo action (delete)
-			        $scope.Undo = function () {
-			            var elemento = $scope.history[ $scope.history.length - 1 ];
-			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-				            {
-				            	anverso: elemento.anverso,
-				            	reverso: elemento.reverso
-				            });  
-			            $scope.records.push(elemento);
-			            $scope.history.pop();
-			        }
-				};
-				
-				var usuarioControlador = function ($scope){
-					$scope.people = [];
-					var cadena = "${amigos}";
-			        var array = cadena.split("///****nuevoAmigo****///");
-			        var i;
-			        if(cadena != ""){
-				        for (i = 0; i < array.length; i++) { 
-				        	var person = array[i].split("///****user****///");
-				        	$scope.people.push({
-				        		name: person[0],
-				        		usuario: person[1]
-				        	});
-				        }
-			        }
-				};
-				
-				var clubControlador = function ($scope){
-					$scope.clubes = [];
-					var cadena = "${clubes}";
-			        var array = cadena.split("///****nuevoCLUB****///");
-			        var i;
-			        if(cadena != ""){
-				        for (i = 0; i < array.length; i++) { 
-				        	var club = array[i].split("///****id****///");
-				        	$scope.clubes.push({
-				        		name: club[0],
-				        		identificador: club[1]
-				        	});
-				        }
-			        }
-				};
-				
-				app.controller('showCtrl', controller);
-				app.controller('clubCtrl', clubControlador);
-				app.controller('usuarioCtrl', usuarioControlador);
-			</script>
-		</div>-->
 		<script>
 			function change(){
 				document.form1.shareWith.value = "publico";
@@ -1005,3 +800,322 @@
 		</div>
 		
 		-->
+		
+		<!-- 
+		<div class="row">
+			<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
+				<script>
+				    function option(that) {
+				        if (that.value == "club") {
+				            document.getElementById("club").style.display = "block";
+				            document.getElementById("usuario").style.display = "none";
+				        } else if(that.value == "usuario"){
+				        	document.getElementById("club").style.display = "none";
+				            document.getElementById("usuario").style.display = "block";
+				        }else{
+				        	document.getElementById("club").style.display = "none";
+				            document.getElementById("usuario").style.display = "none";
+				        }
+				    }
+				    
+				    function change(){
+						document.form1.shareWith.value = "publico";
+					}
+				</script>
+				<div class="row" style="min-width: 100%;">
+					<div class="col-md-1"></div>
+					<div class="col-md-3">
+						<div class="row">
+							<div class="form-group" style="min-width: 100%;">
+								<label for="creador" class="cols-md-2 control-label">Creador</label>
+								<div class="cols-md-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="creador" id="creador" value=${usuario.getUsuario()} disabled/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group" style="min-width: 100%;">
+								<label for="nombre" class="cols-md-2 control-label">Nombre de la Colección</label>
+								<div class="cols-md-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Colección" required />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group" style="min-width: 100%;">
+								<div class="cols-md-12">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<br> <button type="submit" class="btn btn-primary">Guardar Coleccion</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="form-group" style="min-width: 100%;">
+								<label for="descripcion" class="cols-md-2 control-label">Descripción</label>
+								<div class="cols-md-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<style>
+											textarea {
+											   resize: none;
+											}
+										</style>
+										<textarea rows="4" cols="50" id="descripcion" class="form-control" name="descripcion" form="form1" placeholder="Descripción" required></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="form-group" style="min-width: 100%;">
+								<label for="shareWith" class="cols-md-2 control-label">Compartir con:</label>
+								<div class="cols-md-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<select name="shareWith" id="shareWith" onchange="option(this);" required>
+										    <option value="publico">Todo el Mundo</option>
+										    <option value="privado">Solo yo</option>
+										    <option value="club">Club</option>
+										    <option value="usuario">Usuario</option>
+										  </select>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="min-width: 100%;" id="club" ng-controller="clubCtrl">
+								<div ng-if="clubes.length == 0"> 
+							        No pertenece a ningún club.
+							        <br>
+							        <script language="JavaScript" type="text/javascript">
+										change();
+									</script>
+							    </div>
+							    <div ng-if="clubes.length > 0">
+									<div class="panel-heading">
+										<br>Nombre del Club<br>
+										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+									</div>
+									<div class="panel-body" style="min-width: 100%;max-height:200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;">
+										<table class="table table-bordered table-striped">
+											<tbody>
+												<tr ng-repeat="club in clubes | filter:expression">
+													<td><input type="radio" class="form-control" name="selectClub" value="{{ club.identificador }}" /></td>
+													<td>{{ club.name }}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="min-width: 100%;" id="usuario" ng-controller="usuarioCtrl">
+								<div ng-if="people.length == 0"> 
+							        No tiene aún amigos.
+							        <br>
+							        <script language="JavaScript" type="text/javascript">
+										change();
+									</script>
+							    </div>
+								<div ng-if="people.length > 0">
+									<div class="panel-heading">
+										<br>Nombre del Usuario<br>
+										<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+									</div>
+									<div class="panel-body" style="min-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
+										<table class="table table-bordered table-striped">
+											<tbody>
+												<tr ng-repeat="person in people | filter:expression">
+													<td><input type="radio" class="form-control" name="selectUsuario" value="{{ person.usuario }}" /></td>
+													<td>{{ person.name }} ({{ person.usuario }})</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		-->
+		<!-- <div class="row">
+			<br><br>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-6" ng-controller="showCtrl">
+				<div class="row">
+					<div class="col-md-5">
+						<h6 align="center">Vista Previa de la Tarjeta</h6>
+						<div class="scene scene--card">
+						  <div class="card text-center">
+						    <div class="card__face card__face--front align-items-center justify-content-center">
+						    	<br>
+						    	<p class="card-text">{{ newAnverso }}</p>
+							</div>
+						    <div class="card__face card__face--back align-items-center justify-content-center">
+						    	<br>
+						    	<p class="card-text">{{ newReverso }}</p>
+							</div>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-5">
+						<div class="row">
+							<br><br>
+						</div>
+						<div class="row">
+							<h6>Anverso de la Tarjeta (max. 250 caracteres)</h6>
+						</div>
+						<div class="row">
+							<textarea rows="6" cols="50" maxlength="250" id="anverso" name="anverso" form="form2" ng-model="newAnverso"></textarea>
+						</div>
+						<div class="row">
+							<br><br>
+						</div>
+						<div class="row">
+							<h6>Reverso de la Tarjeta (max. 250 caracteres)</h6>
+						</div>
+						<div class="row">
+							<textarea rows="6" cols="50" maxlength="250" id="reverso" name="reverso" form="form3" ng-model="newReverso"></textarea>
+						</div>
+						<div class="row">
+							<br>
+						</div>
+						<div class="row">
+							<div class="action col-md-4">
+								<button ng-click="Add()">Insertar</button>
+							</div>
+							<div class="action col-md-8">
+								<button ng-click="Reset()">Limpiar Campos</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+				<div class="row">
+				</div>
+			</div>
+			<script>
+				document.form1.nombre.value = "${name}";
+				document.form1.descripcion.value = "${description}";
+				document.form1.shareWith.value = "${shareOption}";
+			    option(document.form1.shareWith);
+			    var optionWith = "${shareOptionWith}";
+			    var optionGeneric = "${shareOption}";
+			    var vacio = optionWith.localeCompare("");
+			    if(vacio != 0){
+			    	var club = "club";
+			    	var usuario = "usuario";
+			    	var isClub = optionGeneric.localeCompare(club);
+			    	var isUsuario = optionGeneric.localeCompare(usuario);
+			    	if(isClub == 0){
+			    		document.getElementById("selectClub").value = optionWith;
+			    	}else{
+			    		if(isUsuario == 0){
+			    			document.getElementById("selectUsuario").value = optionWith;
+			    		}
+			    	}		    		
+			    }
+			    
+			</script>
+			<script>
+			var card = document.querySelector('.card');
+			card.addEventListener( 'click', function() {
+				  card.classList.toggle('is-flipped');
+				});
+			</script>
+			<script>
+				var app = angular.module('myAppCard', []);
+			
+				var controller = function ($scope, $http) {
+					
+					 $scope.records=[];
+					
+					$scope.newAnverso = "Anverso";
+				    $scope.newReverso = "Reverso";
+					
+			       		
+			        $scope.Reset = function () {
+			        	$scope.newAnverso = '';
+			        	$scope.newReverso = '';
+			        }
+		
+			        $scope.Add = function () {
+			            if (!$scope.newAnverso || !$scope.newReverso)
+			                return;
+			            
+			            $scope.records.push({
+			                anverso: $scope.newAnverso,
+			                reverso: $scope.newReverso
+			            });
+			            
+			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
+				            {
+				            	anverso: $scope.newAnverso,
+				            	reverso: $scope.newReverso
+				            });          
+			  	            $scope.Reset();
+			            
+			        }
+			        // Undo action (delete)
+			        $scope.Undo = function () {
+			            var elemento = $scope.history[ $scope.history.length - 1 ];
+			            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
+				            {
+				            	anverso: elemento.anverso,
+				            	reverso: elemento.reverso
+				            });  
+			            $scope.records.push(elemento);
+			            $scope.history.pop();
+			        }
+				};
+				
+				var usuarioControlador = function ($scope){
+					$scope.people = [];
+					var cadena = "${amigos}";
+			        var array = cadena.split("///****nuevoAmigo****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var person = array[i].split("///****user****///");
+				        	$scope.people.push({
+				        		name: person[0],
+				        		usuario: person[1]
+				        	});
+				        }
+			        }
+				};
+				
+				var clubControlador = function ($scope){
+					$scope.clubes = [];
+					var cadena = "${clubes}";
+			        var array = cadena.split("///****nuevoCLUB****///");
+			        var i;
+			        if(cadena != ""){
+				        for (i = 0; i < array.length; i++) { 
+				        	var club = array[i].split("///****id****///");
+				        	$scope.clubes.push({
+				        		name: club[0],
+				        		identificador: club[1]
+				        	});
+				        }
+			        }
+				};
+				
+				app.controller('showCtrl', controller);
+				app.controller('clubCtrl', clubControlador);
+				app.controller('usuarioCtrl', usuarioControlador);
+			</script>
+		</div>-->
