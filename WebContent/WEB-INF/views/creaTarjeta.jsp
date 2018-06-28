@@ -202,12 +202,12 @@
 							<div ng-if="records.length > 0">
 								<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="width:100%;">
 								  <div class="carousel-inner">
-								    <div class="carousel-item active">
+								    <div class="carousel-item w3-yellow active">
 								    	<div class="card">
 								    		La coleccion consta de {{records.length}} cartas.
 								    	</div>
 								    </div>
-								    <div class="carousel-item active" ng-repeat="tarjeta in records">
+								    <div class="carousel-item w3-yellow" ng-repeat="tarjeta in records">
 								      <div class="card">
 								    		{{ tarjeta.anverso }} - {{ tarjeta.reverso }} 
 								    	</div>
