@@ -318,12 +318,24 @@
 								        </div>
 								      </div>
 								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
-								        <div class="card" style="height: 400px;">
+								        <!-- <div class="card" style="height: 400px;">
 								          <div class="card-body">
 								            <p class="card-text">Anverso: {{ tarjeta.anverso }}</p>
 								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
 								          </div>
-								        </div>
+								        </div>-->
+								        <div class="scene scene--card">
+										  <div class="card text-center">
+										    <div class="card__face card__face--front align-items-center justify-content-center">
+										    	<br>
+										    	<p class="card-text">{{ tarjeta.anverso }}</p>
+											</div>
+										    <div class="card__face card__face--back align-items-center justify-content-center">
+										    	<br>
+										    	<p class="card-text">{{ tarjeta.reverso }}</p>
+											</div>
+										  </div>
+										</div>
 								      </div>
 								    </div>
 								    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
