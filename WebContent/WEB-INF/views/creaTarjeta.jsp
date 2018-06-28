@@ -474,10 +474,6 @@
 		    
 		</script>
 		<script>
-			var card = document.querySelector('.card');
-			card.addEventListener( 'click', function() {
-				  card.classList.toggle('is-flipped');
-				});
 			
 			var showControlador = function($scope, $http){
 				$scope.newAnverso="Anverso de la Tarjeta";
@@ -485,6 +481,11 @@
 				$scope.setInterval = false;
 				
 				$scope.records=[];
+				
+				var card = document.querySelector('.card');
+				card.addEventListener( 'click', function() {
+					  card.classList.toggle('is-flipped');
+					});
 				
 				$scope.Reset = function () {
 		            $scope.newAnverso = '';
@@ -499,6 +500,10 @@
 		                anverso: $scope.newAnverso,
 		                reverso: $scope.newReverso
 		            });
+		            
+		            card.addEventListener( 'click', function() {
+						  card.classList.toggle('is-flipped');
+						});
 		            
 		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
