@@ -531,11 +531,7 @@
 		                reverso: $scope.newReverso
 		            });
 		            
-		            card.addEventListener( 'click', function() {
-						  card.classList.toggle('is-flipped');
-						});
-		            
-		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
+		           $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
 			            	anverso: $scope.newAnverso,
 			            	reverso: $scope.newReverso
@@ -650,7 +646,7 @@
 			var app = angular.module('myAppCard', []);
 			app.controller('clubCtrl', clubControlador);
 			app.controller('usuarioCtrl', usuarioControlador);
-			app.controller('recordCtrl', recordControlador);
+			//app.controller('recordCtrl', recordControlador);
 			app.controller('showCtrl', showControlador);
 		</script>
 	</body>
