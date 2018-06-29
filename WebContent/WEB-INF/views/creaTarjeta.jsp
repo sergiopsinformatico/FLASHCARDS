@@ -305,56 +305,70 @@
 										});
 								</script>
 								
+								<style>
+										/*
+										flip card
+										*/
+										.card-flip > div {
+										  backface-visibility: hidden;
+										  transition: transform 300ms;
+										  transition-timing-function: linear;
+										  width: 100%;
+										  height: 100%;
+										  margin: 0;
+										  display: flex;
+										}
+										
+										.card-front {
+										  transform: rotateY(0deg);
+										}
+										
+										.card-back {
+										  transform: rotateY(180deg);
+										  position: absolute;
+										  top: 0;
+										}
+										
+										.card-flip:hover .card-front {
+										  transform: rotateY(-180deg);
+										}
+										  
+										.card-flip:hover .card-back {
+										  transform: rotateY(0deg);
+										}
+								      
+								</style>
 								
 								
 								<div class="container-fluid">
 								  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 								    <div class="carousel-inner row w-100 mx-auto">
 								      <div class="carousel-item col-md-4 active">
-								        <div class="card" style="height: 400px;">
+								        <div class="card">
 								          <div class="card-body">
 								            <h4 class="card-title">Coleccion de Cartas</h4>
 								          </div>
 								        </div>
 								      </div>
-								      <style>
-								      	.card-container {
-										  perspective: 700px;
-										}
-										
-										.card-flip, .card-container {
-										  transform-style: preserve-3d;
-										  transition: all 0.7s ease;
-										}
-										
-										.card-flip div {
-										  backface-visibility: hidden;
-										  transform-style: preserve-3d;
-										}
-										
-										.back {
-										  transform: rotateY(-180deg);
-										}
-										
-										.card-container:hover .card-flip {
-										  transform: rotateY(180deg);
-										}
-								      </style>
+								      
 								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
-								        <div class="card" style="height: 400px;">
-								        	<div class="card-container">
-											    <div class="card-flip">
-											        <div class="front">
-											        	{{ tarjeta.anverso }}
-											        </div>
-											        <div class="back">
-											        	{{ tarjeta.reverso }}
-											        </div>
-											    </div>
-											</div>
+									        <div class="card card-flip h-100">
+								                <div class="card-front text-white bg-dark">
+								                    <div class="card-body">
+								                        <i class="fa fa-search fa-5x float-right"></i>
+								                        <h3 class="card-title">Front</h3>
+								                        <p class="card-text">{{ tarjeta.anverso }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-white">
+								                    <div class="card-body">
+								                        <h3 class="card-title">Back</h3>
+								                        <p class="card-text">{{ tarjeta.reverso }}</p>
+								                        <a href="#" class="btn btn-outline-secondary">Action</a>
+								                    </div>
+								                </div>
+								            </div>
 								        </div>
-								        								        
-								    	</div>
 								    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								      <span class="sr-only">Previous</span>
