@@ -317,68 +317,44 @@
 								          </div>
 								        </div>
 								      </div>
+								      <style>
+								      	.card-container {
+										  perspective: 700px;
+										}
+										
+										.card-flip, .card-container {
+										  transform-style: preserve-3d;
+										  transition: all 0.7s ease;
+										}
+										
+										.card-flip div {
+										  backface-visibility: hidden;
+										  transform-style: preserve-3d;
+										}
+										
+										.back {
+										  transform: rotateY(-180deg);
+										}
+										
+										.card-container:hover .card-flip {
+										  transform: rotateY(180deg);
+										}
+								      </style>
 								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
-								        <!-- <div class="card" style="height: 400px;">
-								          <div class="card-body">
-								            <p class="card-text">Anverso: {{ tarjeta.anverso }}</p>
-								            <p class="card-text">Reverso: {{ tarjeta.reverso }}</p>
-								          </div>
-								        </div>-->
-								        
-								        
-										<div class="card-wrapper">
-										  <div id="card-2" class="card-rotating effect__click h-100 w-100">
-										
-										    <div class="face front card">
-										
-										      <div class="card-body">
-										        
-										        <h4 class="">Anverso</h4>
-										        <br>
-										        {{ tarjeta.anverso }}
-										        <br>
-										        <a class="rotate-btn float-right" data-card="card-2">Reverso</a>
-										
-										      </div>
-										
-										    </div>
-										    <!--Front Side-->
-										
-										    <!--Back Side-->
-										    <!-- <div class="face back"> -->
-										    <div class="face back">
-										
-										      <!-- Content -->
-										      <!-- <div class="content text-center">									        
-										      </div>-->
-										      <div class="card-body">
-										        
-										        <h4 class="">Reverso</h4>
-										        <br>
-										        {{ tarjeta.reverso }}
-										        <br>
-										
-										      </div>
-										
-										    </div>
-										    <!--Back Side-->
-										
-										  </div>
-										</div>
-										<!-- Rotating card -->
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								        
-								    </div>
+								        <div class="card" style="height: 400px;">
+								        	<div class="card-container">
+											    <div class="card-flip">
+											        <div class="front">
+											        	{{ tarjeta.anverso }}
+											        </div>
+											        <div class="back">
+											        	{{ tarjeta.reverso }}
+											        </div>
+											    </div>
+											</div>
+								        </div>
+								        								        
+								    	</div>
 								    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								      <span class="sr-only">Previous</span>
