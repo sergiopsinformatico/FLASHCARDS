@@ -314,57 +314,57 @@
 										  transition: transform 300ms;
 										  transition-timing-function: linear;
 										  width: 100%;
-										  height: 100%;
+										  height: 100% !important;
 										  margin: 0;
 										  display: flex;
 										}
 										
 										.card-front {
-										  width: 100%;
+										  width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 										
 										.card-back {
-										  width: 100%;
+										  width: 100% !important;
 										  transform: rotateY(180deg);
 										  position: absolute;
 										  top: 0;
 										}
 										
 										.card-flip:hover .card-front {
-										  width: 100%;
+										  width: 100% !important;
 										  transform: rotateY(-180deg);
 										}
 										  
 										.card-flip:hover .card-back {
-										  width: 100%;
+										  width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 								      
 								</style>
 								
 								
-								<div class="container-fluid" style="width:100%;">
-								  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:100%;">
-								    <div class="carousel-inner row w-100 mx-auto" style="width:100%;">
-								      <div class="carousel-item col-md-4 active" style="width:100%;">
-								        <div class="card" style="width:100%;">
-								          <div class="card-body" style="width:100%;">
+								<div class="container-fluid" style="width:100% !important;">
+								  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:100% !important;">
+								    <div class="carousel-inner row w-100 mx-auto" style="width:100% !important;">
+								      <div class="carousel-item col-md-4 active" style="width:100% !important;">
+								        <div class="card" style="width:100% !important;">
+								          <div class="card-body" style="width:100% !important;">
 								            <h4 class="card-title">Coleccion de Cartas</h4>
 								          </div>
 								        </div>
 								      </div>
 								      <div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression" style="width:100%;">
-									        <div class="card card-flip h-100" style="width:100%;">
-								                <div class="card-front text-white bg-primary" style="width:100%;">
-								                    <div class="card-body" style="width:100%;">
+									        <div class="card card-flip h-100" style="width:100% !important;">
+								                <div class="card-front text-white bg-primary" style="width:100% !important;">
+								                    <div class="card-body" style="width:100% !important;">
 								                        <i class="fa fa-search fa-5x float-right"></i>
 								                        <h3 class="card-title">Front</h3>
 								                        <p class="card-text">{{ tarjeta.anverso }}</p>
 								                    </div>
 								                </div>
-								                <div class="card-back bg-success" style="width:100%;">
-								                    <div class="card-body" style="width:100%;">
+								                <div class="card-back bg-success" style="width:100% !important;">
+								                    <div class="card-body" style="width:100% !important;">
 								                        <h3 class="card-title">Back</h3>
 								                        <p class="card-text">{{ tarjeta.reverso }}</p>
 								                    </div>
