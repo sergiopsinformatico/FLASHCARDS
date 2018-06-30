@@ -70,10 +70,6 @@
 			}
 			
 			.card {
-				/*
-			  width: 100%;
-			  height: 100%;
-			  */
 			  width: 100%;
 			  height: 450px;
 			  transition: transform 1s;
@@ -98,11 +94,11 @@
 			}
 			
 			.card__face--front {
-			  background: bg-danger;
+			  background: red;
 			}
 			
 			.card__face--back {
-			  background: bg-info;
+			  background: blue;
 			  transform: rotateY(180deg);
 			}
 	    </style>
@@ -205,16 +201,7 @@
 							</div>
 							<div ng-if="records.length > 0">
 								    <style>						    								    	
-								    	.jumbotron{
-										     min-width:600px;
-										     max-width:600px;
-										     widt:600px;
-										     min-height:400px;
-											 max-height:400px;
-											 height:400px;
-									     }
-									     
-									     .container{
+								    	.container{
 										     min-width:250px;
 										     max-width:250px;
 										     widt:250px;
@@ -264,15 +251,15 @@
 												</div>
 												<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 											        <div class="card card-flip h-100">
-										                <div class="card-front bg-danger">
+										                <div class="card-front bg-danger align-items-center justify-content-center">
 										                    <div class="card-body">
 										                        <i class="fa fa-search fa-5x float-right"></i>
-										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.anverso }}</p>
+										                        <p class="card-text">{{ tarjeta.anverso }}</p>
 										                    </div>
 										                </div>
-										                <div class="card-back bg-info">
+										                <div class="card-back bg-info align-items-center justify-content-center">
 										                    <div class="card-body">
-										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.reverso }}</p>
+										                        <p class="card-text">{{ tarjeta.reverso }}</p>
 										                    </div>
 										                </div>
 										            </div>								
