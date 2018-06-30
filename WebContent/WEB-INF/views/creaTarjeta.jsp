@@ -243,21 +243,20 @@
 								        <div class="container">
 								            <div class="carousel-inner row w-100 mx-auto">
 								            	<div class="carousel-item active">
-								                    <div class="card">
+								                    <div class="card bg-success">
 											          <div class="card-body">
-											            <h4 class="card-title">Coleccion de Cartas</h4>
+											            <h4 class="card-title">Coleccion de Tarjetas</h4>
 											          </div>
 											        </div>
 												</div>
 												<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 											        <div class="card card-flip h-100">
-										                <div class="card-front bg-danger align-items-center justify-content-center">
+										                <div class="card-front bg-danger card text-center">
 										                    <div class="card-body">
-										                        <i class="fa fa-search fa-5x float-right"></i>
 										                        <p class="card-text">{{ tarjeta.anverso }}</p>
 										                    </div>
 										                </div>
-										                <div class="card-back bg-info align-items-center justify-content-center">
+										                <div class="card-back bg-info card text-center">
 										                    <div class="card-body">
 										                        <p class="card-text">{{ tarjeta.reverso }}</p>
 										                    </div>
