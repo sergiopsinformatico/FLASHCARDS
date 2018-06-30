@@ -320,24 +320,24 @@
 										}
 										
 										.card-front {
-										  width: 100% !important;
+										  min-width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 										
 										.card-back {
-										  width: 100% !important;
+										  min-width: 100% !important;
 										  transform: rotateY(180deg);
 										  position: absolute;
 										  top: 0;
 										}
 										
 										.card-flip:hover .card-front {
-										  width: 100% !important;
+										  min-width: 100% !important;
 										  transform: rotateY(-180deg);
 										}
 										  
 										.card-flip:hover .card-back {
-										  width: 100% !important;
+										  min-width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 								      
