@@ -215,12 +215,12 @@
 									     }
 									     
 									     .container{
-										     min-width:600px;
-										     max-width:600px;
-										     widt:600px;
-										     min-height:400px;
-											 max-height:400px;
-											 height:400px;
+										     min-width:250px;
+										     max-width:250px;
+										     widt:250px;
+										     min-height:450px;
+											 max-height:450px;
+											 height:450px;
 									     }
 								    	
 										.card-flip > div {
@@ -264,13 +264,13 @@
 												</div>
 												<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 											        <div class="card card-flip h-100">
-										                <div class="card-front text-white bg-primary">
+										                <div class="card-front text-white red">
 										                    <div class="card-body">
 										                        <i class="fa fa-search fa-5x float-right"></i>
 										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.anverso }}</p>
 										                    </div>
 										                </div>
-										                <div class="card-back bg-success">
+										                <div class="card-back blue">
 										                    <div class="card-body">
 										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.reverso }}</p>
 										                    </div>
