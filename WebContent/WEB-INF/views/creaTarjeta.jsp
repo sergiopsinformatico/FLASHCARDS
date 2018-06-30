@@ -201,6 +201,7 @@
 							</div>
 							<div ng-if="records.length > 0">
 								<h6 align="center">Colección de Tarjetas</h6>
+								<br>
 								    <style>						    								    	
 								    	.container{
 										     min-width:260px;
@@ -259,6 +260,8 @@
 									                <div class="card-back bg-info card text-center">
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
+									                        <br>
+									                        <button type="submit" class="btn btn-primary" ng-click="Delete($index)">Eliminar Tarjeta</button>
 									                    </div>
 									                </div>
 									            </div>								
@@ -415,7 +418,7 @@
 				$scope.Reset = function () {
 		            $scope.newAnverso = '';
 		            $scope.newReverso = '';
-		        }
+		        };
 				
 				$scope.Add = function () {
 		            if (!$scope.newAnverso || !$scope.newReverso)
@@ -433,22 +436,31 @@
 			            });          
 		  	            $scope.Reset();
 		            
-		        }
+		        };
+		        
+		        $scope.Delete = function (index) {
+		            // Remove first / oldest element from history if it reaches maximum capacity of 10 records
+		            var eliminar = $scope.records[index];
+		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
+			            {
+			            	anverso: eliminar.anverso,
+			            	reverso: eliminar.reverso
+			            });
+		            $scope.records.splice(index, 1);
+		        };
 				
 			};
 			
-			var recordControlador = function ($scope, $http) {
+			/*var recordControlador = function ($scope, $http) {
 	
 		        $scope.history = [];
 	
 		        $scope.records = [];
 		        
 		        var cadena = "${cards}";
-		        var array = cadena.split("///****nuevaCARD****///");
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
-			        	var elemento = array[i].split("///****resp****///");
 			        	$scope.records.push({
 			        		enunciado: elemento[0],
 			        		respuesta: elemento[1]
@@ -504,7 +516,7 @@
 		            $scope.records.push(elemento);
 		            $scope.history.pop();
 		        }
-			};
+			};*/
 			
 			var usuarioControlador = function ($scope){
 				$scope.people = [];
