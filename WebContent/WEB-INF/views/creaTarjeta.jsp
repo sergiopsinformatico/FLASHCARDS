@@ -254,11 +254,11 @@
 								
 								    </style>
 								    
-								     <div id="myCarousel"class="carousel slide jumbotron">
-								        <div class="container">
+								     <div id="myCarousel"class="carousel slide jumbotron" style="min-width: 100%;">
+								        <div class="container" style="min-width: 100%;">
 								            <!-- <div class="carousel-inner"> -->
 								            <div class="carousel-inner row w-100 mx-auto">
-								            	<div class="carousel-item col-md-4 active">
+								            	<div class="carousel-item col-md-12 active">
 								                <!-- <div class="item active"> -->
 								                    <div class="card">
 											          <div class="card-body">
@@ -266,7 +266,7 @@
 											          </div>
 											        </div>
 												</div>
-												<div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
+												<div class="carousel-item col-md-12" ng-repeat="tarjeta in records | filter:expression">
 								                <!--  <div class="item" ng-repeat="tarjeta in records | filter:expression"> -->
 											        <div class="card card-flip h-100">
 										                <div class="card-front text-white bg-primary">
