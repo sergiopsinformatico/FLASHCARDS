@@ -98,11 +98,11 @@
 			}
 			
 			.card__face--front {
-			  background: red;
+			  background: bg-danger;
 			}
 			
 			.card__face--back {
-			  background: blue;
+			  background: bg-info;
 			  transform: rotateY(180deg);
 			}
 	    </style>
@@ -264,13 +264,13 @@
 												</div>
 												<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 											        <div class="card card-flip h-100">
-										                <div class="card-front text-white red">
+										                <div class="card-front bg-danger">
 										                    <div class="card-body">
 										                        <i class="fa fa-search fa-5x float-right"></i>
 										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.anverso }}</p>
 										                    </div>
 										                </div>
-										                <div class="card-back blue">
+										                <div class="card-back bg-info">
 										                    <div class="card-body">
 										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.reverso }}</p>
 										                    </div>
