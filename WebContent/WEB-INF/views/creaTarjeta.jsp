@@ -202,9 +202,9 @@
 							<div ng-if="records.length > 0">
 								    <style>						    								    	
 								    	.jumbotron{
-										     min-width:250px;
-										     max-width:250px;
-										     widt:250px;
+										     min-width:600px;
+										     max-width:600px;
+										     widt:600px;
 										     min-height:400px;
 											 max-height:400px;
 											 height:400px;
