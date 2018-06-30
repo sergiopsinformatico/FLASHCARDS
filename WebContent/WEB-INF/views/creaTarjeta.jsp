@@ -210,30 +210,26 @@
 										  transition: transform 300ms;
 										  transition-timing-function: linear;
 										  width: 100%;
-										  height: 100% !important;
+										  height: 100%;
 										  margin: 0;
 										  display: flex;
 										}
 										
 										.card-front {
-										  min-width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 										
 										.card-back {
-										  min-width: 100% !important;
 										  transform: rotateY(180deg);
 										  position: absolute;
 										  top: 0;
 										}
 										
 										.card-flip:hover .card-front {
-										  min-width: 100% !important;
 										  transform: rotateY(-180deg);
 										}
 										  
 										.card-flip:hover .card-back {
-										  min-width: 100% !important;
 										  transform: rotateY(0deg);
 										}
 								    
@@ -257,14 +253,14 @@
 								     <div id="myCarousel"class="carousel slide jumbotron">
 								        <div class="container">
 								            <div class="carousel-inner row w-100 mx-auto">
-								            	<div class="carousel-item col-md-4 active">
+								            	<div class="carousel-item active">
 								                    <div class="card">
 											          <div class="card-body">
 											            <h4 class="card-title">Coleccion de Cartas</h4>
 											          </div>
 											        </div>
 												</div>
-												<div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
+												<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 											        <div class="card card-flip h-100">
 										                <div class="card-front text-white bg-primary">
 										                    <div class="card-body">
@@ -292,30 +288,6 @@
 									      <span class="sr-only">Next</span>
 									    </a>
 								    <!--End Carousel -->
-								<script>
-									$("#myCarousel").on("slide.bs.carousel", function(e) {
-										  var $e = $(e.relatedTarget);
-										  var idx = $e.index();
-										  var itemsPerSlide = 3;
-										  var totalItems = $(".carousel-item").length;
-	
-										  if (idx >= totalItems - (itemsPerSlide - 1)) {
-										    var it = itemsPerSlide - (totalItems - idx);
-										    for (var i = 0; i < it; i++) {
-										      // append slides to end
-										      if (e.direction == "left") {
-										        $(".carousel-item")
-										          .eq(i)
-										          .appendTo(".carousel-inner");
-										      } else {
-										        $(".carousel-item")
-										          .eq(0)
-										          .appendTo($(this).find(".carousel-inner"));
-										      }
-										    }
-										  }
-										});
-								</script>
 							<!-- 
 								<style>
 								@media (min-width: 768px) {
