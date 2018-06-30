@@ -70,8 +70,12 @@
 			}
 			
 			.card {
+				/*
 			  width: 100%;
 			  height: 100%;
+			  */
+			  width: 100%;
+			  height: 450px;
 			  transition: transform 1s;
 			  transform-style: preserve-3d;
 			  cursor: pointer;
@@ -202,6 +206,15 @@
 							<div ng-if="records.length > 0">
 								    <style>						    								    	
 								    	.jumbotron{
+										     min-width:600px;
+										     max-width:600px;
+										     widt:600px;
+										     min-height:400px;
+											 max-height:400px;
+											 height:400px;
+									     }
+									     
+									     .container{
 										     min-width:600px;
 										     max-width:600px;
 										     widt:600px;
