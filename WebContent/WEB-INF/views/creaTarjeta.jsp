@@ -200,8 +200,16 @@
 								Aun no hay tarjetas creadas
 							</div>
 							<div ng-if="records.length > 0">
-								    <style>						    	
-								    	/*	flip card	*/
+								    <style>						    								    	
+								    	.jumbotron{
+										     min-width:100%;
+										     max-width:100%;
+										     widt:100%;
+										     min-height:400px;
+											 max-height:400px;
+											 height:400px;
+									     }
+								    	
 										.card-flip > div {
 										  backface-visibility: hidden;
 										  transition: transform 300ms;
@@ -228,13 +236,7 @@
 										  
 										.card-flip:hover .card-back {
 										  transform: rotateY(0deg);
-										}
-								    
-									     .jumbotron{
-										     width:100%;
-										     height:400px;
-									
-									     }								
+										}								
 								    </style>
 								    
 								     <div id="myCarousel"class="carousel slide jumbotron">
