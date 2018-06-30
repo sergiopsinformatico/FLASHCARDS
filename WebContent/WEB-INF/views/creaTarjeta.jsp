@@ -254,14 +254,12 @@
 										                <div class="card-front text-white bg-primary">
 										                    <div class="card-body">
 										                        <i class="fa fa-search fa-5x float-right"></i>
-										                        <h3 class="card-title">Front</h3>
-										                        <p class="card-text">{{ tarjeta.anverso }}</p>
+										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.anverso }}</p>
 										                    </div>
 										                </div>
 										                <div class="card-back bg-success">
 										                    <div class="card-body">
-										                        <h3 class="card-title">Back</h3>
-										                        <p class="card-text">{{ tarjeta.reverso }}</p>
+										                        <p class="card-text align-items-center justify-content-center">{{ tarjeta.reverso }}</p>
 										                    </div>
 										                </div>
 										            </div>								
