@@ -145,9 +145,12 @@
 		</script>
 		
 		<div class="row">
-			<br>
-			<h3 align="center">Creación de una Colección de Flashcards</h3>
-			<br>
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11">
+				<br>
+				<h3 align="center">Creación de una Colección de Flashcards</h3>
+				<br>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-1"></div>
