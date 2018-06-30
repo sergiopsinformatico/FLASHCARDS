@@ -2,26 +2,16 @@
 	<head>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	    <title>Crear Tarjeta - Flashcard</title>
+	    <title>Crear Colección de Flashcards - Flashcard</title>
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="resources/css/mdb.min.css" rel="stylesheet">
-	    <link href="resources/css/style.css" rel="stylesheet">-->
-	    
-	    
-	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	   <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
 		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-	    
-	    
-	    
-	    
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -155,6 +145,8 @@
 		</script>
 		
 		<div class="row">
+			<br>
+			<h3 align="center">Creación de una Colección de Flashcards</h3>
 			<br>
 		</div>
 		<div class="row">
@@ -439,7 +431,6 @@
 		        };
 		        
 		        $scope.Delete = function (index) {
-		            // Remove first / oldest element from history if it reaches maximum capacity of 10 records
 		            var eliminar = $scope.records[index];
 		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
@@ -450,73 +441,6 @@
 		        };
 				
 			};
-			
-			/*var recordControlador = function ($scope, $http) {
-	
-		        $scope.history = [];
-	
-		        $scope.records = [];
-		        
-		        var cadena = "${cards}";
-		        var i;
-		        if(cadena != ""){
-			        for (i = 0; i < array.length; i++) { 
-			        	$scope.records.push({
-			        		enunciado: elemento[0],
-			        		respuesta: elemento[1]
-			        	});
-			        }
-		        }
-		        
-		        $scope.Delete = function (index) {
-		            // Remove first / oldest element from history if it reaches maximum capacity of 10 records
-		            if ($scope.history.length === 10)
-		                $scope.history.shift();
-	
-		            var eliminar = $scope.records[index];
-		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
-			            {
-			            	enunciado: eliminar.enunciado,
-			            	respuesta: eliminar.respuesta
-			            });
-		            $scope.history.push(eliminar);
-		            $scope.records.splice(index, 1);
-		        };
-	
-		        $scope.Reset = function () {
-		            $scope.newEnunciado = '';
-		            $scope.newRespuesta = '';
-		        }
-		        $scope.Reset();
-	
-		        $scope.Add = function () {
-		            if (!$scope.newEnunciado || !$scope.newRespuesta)
-		                return;
-		            
-		            $scope.records.push({
-		                enunciado: $scope.newEnunciado,
-		                respuesta: $scope.newRespuesta
-		            });
-		            
-		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-			            {
-			            	enunciado: $scope.newEnunciado,
-			            	respuesta: $scope.newRespuesta
-			            });          
-		  	            $scope.Reset();
-		            
-		        }
-		        $scope.Undo = function () {
-		            var elemento = $scope.history[ $scope.history.length - 1 ];
-		            $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
-			            {
-			            	enunciado: elemento.enunciado,
-			            	respuesta: elemento.respuesta
-			            });  
-		            $scope.records.push(elemento);
-		            $scope.history.pop();
-		        }
-			};*/
 			
 			var usuarioControlador = function ($scope){
 				$scope.people = [];
@@ -553,7 +477,6 @@
 			var app = angular.module('myAppCard', []);
 			app.controller('clubCtrl', clubControlador);
 			app.controller('usuarioCtrl', usuarioControlador);
-			//app.controller('recordCtrl', recordControlador);
 			app.controller('showCtrl', showControlador);
 		</script>
 	</body>
@@ -1058,13 +981,8 @@
 				app.controller('clubCtrl', clubControlador);
 				app.controller('usuarioCtrl', usuarioControlador);
 			</script>
-		</div>-->
-		
-		
-		
-		
-		
-		<!-- 
+		</div>
+ 
 								<style>
 								@media (min-width: 768px) {
 								  /* show 3 items */
