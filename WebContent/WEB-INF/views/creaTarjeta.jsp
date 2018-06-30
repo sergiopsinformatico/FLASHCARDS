@@ -256,20 +256,18 @@
 								    
 								     <div id="myCarousel"class="carousel slide jumbotron">
 								        <div class="container">
-								            <!-- <ol class="carousel-indicators">
-								                <li data-target="#myCarousel" data-slide-to="0"></li>
-								                <li data-target="#myCarousel" data-slide-to="1"></li>
-								                <li data-target="#myCarousel" data-slide-to="2"></li>
-								            </ol>-->
-								            <div class="carousel-inner">
-								                <div class="item active">
+								            <!-- <div class="carousel-inner"> -->
+								            <div class="carousel-inner row w-100 mx-auto">
+								            	<div class="carousel-item col-md-4 active">
+								                <!-- <div class="item active"> -->
 								                    <div class="card">
 											          <div class="card-body">
 											            <h4 class="card-title">Coleccion de Cartas</h4>
 											          </div>
 											        </div>
 												</div>
-								                <div class="item" ng-repeat="tarjeta in records | filter:expression">
+												<div class="carousel-item col-md-4" ng-repeat="tarjeta in records | filter:expression">
+								                <!--  <div class="item" ng-repeat="tarjeta in records | filter:expression"> -->
 											        <div class="card card-flip h-100">
 										                <div class="card-front text-white bg-primary">
 										                    <div class="card-body">
@@ -296,14 +294,6 @@
 									      <span class="carousel-control-next-icon" aria-hidden="true"></span>
 									      <span class="sr-only">Next</span>
 									    </a>
-								     <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-								        <span class="icon-prev bg-dark"></span>
-								    </a>
-								
-								    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-								        <span class="icon-next bg-dark"></span>
-								    </a>-->
-								    </div> 
 								    <!--End Carousel -->
 							
 							
