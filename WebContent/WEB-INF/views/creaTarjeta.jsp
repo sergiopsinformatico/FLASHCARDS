@@ -195,7 +195,7 @@
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
-						<div class="row">
+						<div class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
 								<h6 align="center">Aun no hay tarjetas creadas</h6>
 							</div>
@@ -238,48 +238,42 @@
 										.card-flip:hover .card-back {
 										  transform: rotateY(0deg);
 										}								
-								    </style>
-								    <div class="row">
-								    	<div class="col-sm-3"></div>
-								    	<div class="col-sm-6">
-								    		<div id="myCarousel"class="carousel slide">
-										        <div class="container">
-										            <div class="carousel-inner row w-100 mx-auto">
-										            	<div class="carousel-item active">
-										                    <div class="card bg-success">
-													          <div class="card-body">
-													            <h4 class="card-title">Coleccion de Tarjetas</h4>
-													          </div>
-													        </div>
-														</div>
-														<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
-													        <div class="card card-flip h-100">
-												                <div class="card-front bg-danger card text-center">
-												                    <div class="card-body">
-												                        <p class="card-text">{{ tarjeta.anverso }}</p>
-												                    </div>
-												                </div>
-												                <div class="card-back bg-info card text-center">
-												                    <div class="card-body">
-												                        <p class="card-text">{{ tarjeta.reverso }}</p>
-												                    </div>
-												                </div>
-												            </div>								
-										                </div>
-										            </div>
-											        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-												      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-												      <span class="sr-only">Previous</span>
-												    </a>
-												    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-												      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-												      <span class="sr-only">Next</span>
-												    </a>
-											    </div>
+								</style>
+					    		<div id="myCarousel"class="carousel slide">
+							        <div class="container">
+							            <div class="carousel-inner row w-100 mx-auto">
+							            	<div class="carousel-item active">
+							                    <div class="card bg-success">
+										          <div class="card-body">
+										            <h4 class="card-title">Coleccion de Tarjetas</h4>
+										          </div>
+										        </div>
 											</div>
-								    	</div>
-								    	<div class="col-sm-3"></div>
+											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
+										        <div class="card card-flip h-100">
+									                <div class="card-front bg-danger card text-center">
+									                    <div class="card-body">
+									                        <p class="card-text">{{ tarjeta.anverso }}</p>
+									                    </div>
+									                </div>
+									                <div class="card-back bg-info card text-center">
+									                    <div class="card-body">
+									                        <p class="card-text">{{ tarjeta.reverso }}</p>
+									                    </div>
+									                </div>
+									            </div>								
+							                </div>
+							            </div>
+								        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+									      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									      <span class="sr-only">Previous</span>
+									    </a>
+									    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+									      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+									      <span class="sr-only">Next</span>
+									    </a>
 								    </div>
+								</div>
 							</div>
 						</div>
 					</div>
