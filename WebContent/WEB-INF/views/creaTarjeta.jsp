@@ -286,38 +286,16 @@
 										                </div>
 										            </div>								
 								                </div>
-								
-								                <div class="item">
-								                    <h1>Learn how to build it for Android</h1>
-								                    <p class="lead">We'll teach you how to build it from scratch!</p>
-								                      <p>
-								                        <a class="btn btn-success btn-lg" href="#">Get started today!</a>
-								                      </p> 
-								
-								                </div>
 								            </div>
 								        </div>
 								     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-								        <span class="icon-prev"></span>
+								        <span class="icon-prev bg-dark"></span>
 								    </a>
 								
 								    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-								        <span class="icon-next"></span>
+								        <span class="icon-next bg-dark"></span>
 								    </a>
 								    </div> <!--End Carousel -->
-								
-								
-								      <hr>
-								      <div class="pull-right">
-								        <p>&copy; 2013 Ribbit - By Treehouse Island, Inc.</p>
-								      </div>
-								    </div>
-								    <script src="http://code.jquery.com/jquery.js"></script>
-								    <script src="js/bootstrap.min.js"></script>
-							
-							
-							
-							
 							
 							
 							
