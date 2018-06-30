@@ -200,6 +200,131 @@
 								Aun no hay tarjetas creadas
 							</div>
 							<div ng-if="records.length > 0">
+								    <style>
+								    
+								    	/*
+										flip card
+										*/
+										.card-flip > div {
+										  backface-visibility: hidden;
+										  transition: transform 300ms;
+										  transition-timing-function: linear;
+										  width: 100%;
+										  height: 100% !important;
+										  margin: 0;
+										  display: flex;
+										}
+										
+										.card-front {
+										  min-width: 100% !important;
+										  transform: rotateY(0deg);
+										}
+										
+										.card-back {
+										  min-width: 100% !important;
+										  transform: rotateY(180deg);
+										  position: absolute;
+										  top: 0;
+										}
+										
+										.card-flip:hover .card-front {
+										  min-width: 100% !important;
+										  transform: rotateY(-180deg);
+										}
+										  
+										.card-flip:hover .card-back {
+										  min-width: 100% !important;
+										  transform: rotateY(0deg);
+										}
+								    
+									     .jumbotron{
+									     width:50%;
+									     height:50%;
+									
+									     }
+								        .carousel-indicators{
+								        bottom:0;
+								        }
+								        .carousel-indicators .active{
+								         background-color:#222;
+								        }
+								        .carousel-indicators li{
+								         border-color:#222;
+								        }
+								
+								    </style>
+								    
+								     <div id="myCarousel"class="carousel slide jumbotron">
+								        <div class="container">
+								            <!-- <ol class="carousel-indicators">
+								                <li data-target="#myCarousel" data-slide-to="0"></li>
+								                <li data-target="#myCarousel" data-slide-to="1"></li>
+								                <li data-target="#myCarousel" data-slide-to="2"></li>
+								            </ol>-->
+								            <div class="carousel-inner">
+								                <div class="item active">
+								                    <div class="card">
+											          <div class="card-body">
+											            <h4 class="card-title">Coleccion de Cartas</h4>
+											          </div>
+											        </div>
+												</div>
+								                <div class="item" ng-repeat="tarjeta in records | filter:expression">
+											        <div class="card card-flip h-100">
+										                <div class="card-front text-white bg-primary">
+										                    <div class="card-body">
+										                        <i class="fa fa-search fa-5x float-right"></i>
+										                        <h3 class="card-title">Front</h3>
+										                        <p class="card-text">{{ tarjeta.anverso }}</p>
+										                    </div>
+										                </div>
+										                <div class="card-back bg-success">
+										                    <div class="card-body">
+										                        <h3 class="card-title">Back</h3>
+										                        <p class="card-text">{{ tarjeta.reverso }}</p>
+										                    </div>
+										                </div>
+										            </div>								
+								                </div>
+								
+								                <div class="item">
+								                    <h1>Learn how to build it for Android</h1>
+								                    <p class="lead">We'll teach you how to build it from scratch!</p>
+								                      <p>
+								                        <a class="btn btn-success btn-lg" href="#">Get started today!</a>
+								                      </p> 
+								
+								                </div>
+								            </div>
+								        </div>
+								     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								        <span class="icon-prev"></span>
+								    </a>
+								
+								    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+								        <span class="icon-next"></span>
+								    </a>
+								    </div> <!--End Carousel -->
+								
+								
+								      <hr>
+								      <div class="pull-right">
+								        <p>&copy; 2013 Ribbit - By Treehouse Island, Inc.</p>
+								      </div>
+								    </div>
+								    <script src="http://code.jquery.com/jquery.js"></script>
+								    <script src="js/bootstrap.min.js"></script>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							<!-- 
 								<style>
 								@media (min-width: 768px) {
 								  /* show 3 items */
@@ -387,7 +512,8 @@
 								  </div>
 								</div>
 								
-							</div>	
+							</div>-->
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-1"></div>
