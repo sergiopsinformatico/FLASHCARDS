@@ -256,7 +256,7 @@
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
 									                        <br>
-									                       <button type="submit" class="btn btn-primary" ng-click="Delete(tarjeta)">Eliminar Tarjeta</button> 
+									                       <button type="submit" class="btn btn-primary" ng-click="Delete($tarjeta)">Eliminar Tarjeta</button> 
 									                    </div>
 									                </div>
 									            </div>								
@@ -444,8 +444,8 @@
 		            
 		        };*/
 		        
-		        $scope.Delete = function (tarjeta) {
-		        	var indice = $scope.records.indexOf(tarjeta);
+		        $scope.Delete = function ($tarjeta) {
+		        	var indice = $scope.records.indexOf($tarjeta);
 		            $scope.records.splice(indice, 1);
 		        };
 				
