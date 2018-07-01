@@ -70,7 +70,7 @@ public class ControladorTarjetas {
 			t = tarjetas.get(i);
 			if(t.getAnverso().equals(readJSON(json, "anverso")) && t.getReverso().equals(readJSON(json, "reverso"))) {
 				tarjetas.remove(i);
-				i=0;
+				i = tarjetas.size();
 			}
 		}
 	}
