@@ -68,7 +68,7 @@ public class ControladorTarjetas {
 	public void eliminaTarjeta(@RequestBody String json) {
 		for(i=0; i<tarjetas.size(); i++) {
 			t = tarjetas.get(i);
-			if(t.getAnverso().equals(readJSON(json, "enunciado")) && t.getReverso().equals(readJSON(json, "respuesta"))) {
+			if(t.getAnverso().equals(readJSON(json, "anverso")) && t.getReverso().equals(readJSON(json, "reverso"))) {
 				tarjetas.remove(i);
 				i=0;
 			}

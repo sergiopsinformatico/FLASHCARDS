@@ -235,7 +235,7 @@
 										  transform: rotateY(0deg);
 										}								
 								</style>
-					    		<div id="myCarousel"class="carousel slide">
+					    		<div id="myCarousel" class="carousel slide">
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
 							            	<div class="carousel-item active">
@@ -256,7 +256,6 @@
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
 									                        <br>
-									                         <!--<button type="submit" class="btn btn-primary" ng-click="Delete($index)">Eliminar Tarjeta</button>-->
 									                       <button type="submit" class="btn btn-primary" ng-click="remove(tarjeta)">Eliminar Tarjeta</button> 
 									                    </div>
 									                </div>
@@ -433,16 +432,6 @@
 		  	            $scope.Reset();
 		            
 		        };
-		        
-		        /*$scope.Delete = function ($index) {
-		            var eliminar = $scope.records[$index];
-		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
-			            {
-			            	anverso: eliminar.anverso,
-			            	reverso: eliminar.reverso
-			            });
-		            $scope.records.splice($index, 1);
-		        };*/
 		        
 		       $scope.remove = function (tarjeta) {
 		            var indice = $scope.records.indexOf(tarjeta);
