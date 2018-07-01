@@ -433,15 +433,20 @@
 		            
 		        };
 		        
-		       $scope.Delete = function (index) {
+		        /*$scope.Delete = function (index) {
 		            $scope.records.splice(index, 1);
-		            /*
+		            
 		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
 			            	reverso: tarjeta.reverso
 			            });
-		            */
+		            
+		        };*/
+		        
+		        $scope.Delete = function ($tarjeta) {
+		        	var indice = $scope.records.indexOf($tarjeta);
+		            $scope.records.splice(indice, 1);
 		        };
 				
 			};
