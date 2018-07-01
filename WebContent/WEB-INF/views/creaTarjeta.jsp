@@ -256,7 +256,7 @@
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
 									                        <br>
-									                       <button type="submit" class="btn btn-primary" ng-click="Delete($index)">Eliminar Tarjeta</button> 
+									                       <button type="submit" class="btn btn-primary" ng-click="Delete(tarjeta)">Eliminar Tarjeta</button> 
 									                    </div>
 									                </div>
 									            </div>								
