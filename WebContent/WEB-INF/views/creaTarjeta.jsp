@@ -256,7 +256,7 @@
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
 									                        <br>
-									                       <button type="submit" class="btn btn-primary" ng-click="remove($index)">Eliminar Tarjeta</button> 
+									                       <button type="submit" class="btn btn-primary" ng-click="Delete($index)">Eliminar Tarjeta</button> 
 									                    </div>
 									                </div>
 									            </div>								
@@ -433,8 +433,8 @@
 		            
 		        };
 		        
-		       $scope.Delete = function ($index) {
-		            $scope.records.splice($index, 1);
+		       $scope.Delete = function (index) {
+		            $scope.records.splice(index, 1);
 		            /*
 		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
