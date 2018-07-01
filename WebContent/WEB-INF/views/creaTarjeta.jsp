@@ -192,10 +192,10 @@
 					<div class="col-sm-5">
 						<div class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
-								<h6 align="center">Aun no hay tarjetas creadas</h6>
+								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
 							</div>
 							<div ng-if="records.length > 0">
-								<h6 align="center">Colección de Tarjetas</h6>
+								<h6 align="center" style="font-weight: bold;">Colección de Tarjetas: {{ records.length }} </h6>
 								<br>
 								    <style>						    								    	
 								    	.container{
