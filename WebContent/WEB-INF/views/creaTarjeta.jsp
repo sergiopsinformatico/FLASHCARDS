@@ -433,8 +433,8 @@
 		            
 		        };
 		        
-		       $scope.Delete = function (index) {
-		            $scope.records.splice(index, 1);
+		       $scope.Delete = function ($index) {
+		            $scope.records.splice($index, 1);
 		            /*
 		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
