@@ -152,9 +152,9 @@
 				<br>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" ng-controller="showCtrl">
 			<div class="col-sm-1"></div>
-			<div class="col-sm-11" ng-controller="showCtrl">
+			<div class="col-sm-11">
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="row">
