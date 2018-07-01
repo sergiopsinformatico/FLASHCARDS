@@ -444,8 +444,8 @@
 		            
 		        };*/
 		        
-		        $scope.Delete = function ($tarjeta) {
-		        	var indice = $scope.records.indexOf($tarjeta);
+		        $scope.Delete = function (tarjeta) {
+		        	var indice = $scope.records.indexOf(tarjeta);
 		            $scope.records.splice(indice, 1);
 		        };
 				
