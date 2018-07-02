@@ -436,16 +436,18 @@
 		            
 		        };
 		        
+		        var $carousel = $('#myCarousel');
+	        	$("btnCard").click(function() {
+	        	  var currentIndex = $('div.active').index();
+	        	  $scope.records.splice(currentIndex, 1);
+	        	  var ActiveElement = $carousel.find('.item.active');
+	        	  ActiveElement.remove();
+	        	  var NextElement = $carousel.find('.item').first();
+	        	  NextElement.addClass('active');
+	        	});
+		        
 		        $scope.Delete = function () {
-		        	var $carousel = $('#myCarousel');
-		        	$("btnCard").click(function() {
-		        	  var currentIndex = $('div.active').index();
-		        	  $scope.records.splice(currentIndex, 1);
-		        	  var ActiveElement = $carousel.find('.item.active');
-		        	  ActiveElement.remove();
-		        	  var NextElement = $carousel.find('.item').first();
-		        	  NextElement.addClass('active');
-		        	});
+		        	
 		            /*var container = document.getElementById("myVisorCards");
 		            var content = container.innerHTML;
 		            container.innerHTML= content; 
