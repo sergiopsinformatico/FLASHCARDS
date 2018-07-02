@@ -238,16 +238,14 @@
 					    		<div id="myCarousel" class="carousel slide">
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
-							            	<!-- <div class="carousel-item active"> -->
-							            	<div class="item active">
+							            	<div class="carousel-item active">
 							                    <div class="card bg-success">
 										          <div class="card-body">
 										            <h4 class="card-title">Coleccion de Tarjetas</h4>
 										          </div>
 										        </div>
 											</div>
-											<!-- <div class="carousel-item" ng-repeat="tarjeta in records | filter:expression"> -->
-											<div class="item" ng-repeat="tarjeta in records | filter:expression">
+											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 										        <div class="card card-flip h-100">
 									                <div class="card-front bg-danger card text-center">
 									                    <div class="card-body">
@@ -438,9 +436,7 @@
 		        $scope.Delete = function (tarjeta) {
 		        	var indice = $scope.records.indexOf(tarjeta);
 		        	$scope.records.splice(indice, 1);
-		            var container = document.getElementById("myVisorCards");
-		            var content = container.innerHTML;
-		            container.innerHTML= content; 
+		        	$('.carousel-item').first().addClass('active');
 		            /*$http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
