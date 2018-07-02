@@ -435,10 +435,10 @@
 		        
 		        $scope.Delete = function ($index) {
 		            $scope.records.splice($index, 1);
-		            var container = document.getElementById("myVisorCards");
+		            /*var container = document.getElementById("myVisorCards");
 		            var content = container.innerHTML;
 		            container.innerHTML= content; 
-		            console.log("Refreshed"); 
+		            console.log("Refreshed");*/ 
 		            /*$http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
