@@ -190,7 +190,7 @@
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
-						<div class="row" style="text-align: center;">
+						<div id="myVisorCards" class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
 								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
 							</div>
@@ -258,8 +258,7 @@
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.reverso }}</p>
 									                        <br>
-									                       <!-- <button type="submit" class="btn btn-primary" ng-click="Delete($index)">Eliminar Tarjeta</button>-->
-									                       <button type="submit" class="btn btn-primary" id="btnCard">Eliminar Tarjeta</button>
+									                       <button type="submit" class="btn btn-primary" ng-click="Delete(tarjeta)">Eliminar Tarjeta</button>
 									                    </div>
 									                </div>
 									            </div>								
@@ -436,22 +435,12 @@
 		            
 		        };
 		        
-		        var $carousel = $('#myCarousel');
-	        	$("btnCard").click(function() {
-	        	  var currentIndex = $('div.active').index();
-	        	  $scope.records.splice(currentIndex, 1);
-	        	  var ActiveElement = $carousel.find('.item.active');
-	        	  ActiveElement.remove();
-	        	  var NextElement = $carousel.find('.item').first();
-	        	  NextElement.addClass('active');
-	        	});
-		        
-		        $scope.Delete = function () {
-		        	
-		            /*var container = document.getElementById("myVisorCards");
+		        $scope.Delete = function (tarjeta) {
+		        	var indice = $scope.records.indexOf(tarjeta);
+		        	$scope.records.splice(indice, 1);
+		            var container = document.getElementById("myVisorCards");
 		            var content = container.innerHTML;
 		            container.innerHTML= content; 
-		            console.log("Refreshed");*/ 
 		            /*$http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
