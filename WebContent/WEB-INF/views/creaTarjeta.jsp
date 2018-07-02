@@ -190,7 +190,7 @@
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-5">
-						<div class="row" style="text-align: center;">
+						<div id="myVisorCards" class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
 								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
 							</div>
@@ -236,7 +236,7 @@
 										}								
 								</style>
 					    		<div id="myCarousel" class="carousel slide">
-							        <!-- <div class="container"> -->
+							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
 							            	<div class="carousel-item active">
 							                    <div class="card bg-success">
@@ -270,7 +270,7 @@
 									      <span class="carousel-control-next-icon" aria-hidden="true"></span>
 									      <span class="sr-only">Next</span>
 									    </a>
-								    <!-- </div>-->
+								    </div>
 								</div>
 							</div>
 						</div>
@@ -435,6 +435,10 @@
 		        
 		        $scope.Delete = function ($index) {
 		            $scope.records.splice($index, 1);
+		            var container = document.getElementById("myVisorCards");
+		            var content = container.innerHTML;
+		            container.innerHTML= content; 
+		            console.log("Refreshed"); 
 		            /*$http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
