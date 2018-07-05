@@ -32,7 +32,7 @@ public class ControladorClubes {
 	public void crearClub(HttpServletRequest request, HttpServletResponse response) {
 		GestionClubes gC = new GestionClubes();
 		do {
-			identificador = request.getParameter("usuario")+r.nextInt(2000000)+r.nextInt(2000000);
+			identificador = request.getParameter("usuario")+"-"+request.getParameter("nClub")+r.nextInt(2000000)+r.nextInt(2000000);
 		}while(gC.existeClubIdentificador(identificador));
 		club = new Club(identificador, request.getParameter("nClub"), request.getParameter("usuario"), request.getParameter("descripcionClub"));
 		gC.crearClub(club);
