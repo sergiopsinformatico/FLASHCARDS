@@ -92,9 +92,9 @@
 			  transform: rotateY(180deg);
 			}
 	    </style>
-		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			    <ul class="navbar-nav mr-auto">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			    <ul class="navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
 							Inicio
@@ -123,8 +123,11 @@
 	    		</ul>
 	    		<ul class="navbar-nav ml-auto">
 	    			<li class="nav-item dropdown">
-                    	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
-	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Hola ${usuario.getUsuario()}!!!
+				        </a>
+                    	<!--  <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a> -->
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 	                        <div class="dropdown-divider"></div>
