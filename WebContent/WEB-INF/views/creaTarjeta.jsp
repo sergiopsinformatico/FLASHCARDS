@@ -94,7 +94,7 @@
 	    </style>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			    <ul class="navbar-nav mr-auto">
+			    <ul class="navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
 							Inicio
@@ -121,18 +121,29 @@
 						</a>
 					</li>
 	    		</ul>
-	    		<ul class="navbar-nav">
-	    			<li class="nav-item dropdown">
+	    		<ul class="navbar-nav justify-content-end">
+	    			<!-- <li class="nav-item dropdown">
 	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Hola ${usuario.getUsuario()}!!!
+				          Hola ${usuario.getNombreApellidos()}!!!
 				        </a>
-	                   <div class="dropdown-menu"> <!-- aria-labelledby="navbarDropdown" -->
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 	                        <div role="separator" class="dropdown-divider"></div>
 	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	                    </div>
-	                </li>
+	                </li>-->
+	                <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          ¡Bienvenido ${usuario.getNombreApellidos()}!
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+				          <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+				        </div>
+				     </li>
 	    		</ul>
 	  		</div>
 		</nav>
