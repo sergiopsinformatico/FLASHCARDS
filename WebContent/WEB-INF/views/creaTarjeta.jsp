@@ -294,7 +294,7 @@
 							<br>
 							<div class="form-group">
 							    <label for="nombre">Nombre de la Colección</label>
-							    <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre" required>
+							    <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="emailHelp" placeholder="Nombre" required>
 							</div>
 							<br><br>
 							<button type="submit" class="btn btn-primary">Guardar Colección</button>
@@ -303,7 +303,7 @@
 						<div class="col-sm-3">
 							<div class="form-group">
 								<label for="descripcion">Descripción</label>
-							    <textarea class="form-control" id="descripción" rows="3" maxlength="100" style="resize: none;" required></textarea>
+							    <textarea class="form-control" name="descripcion" id="descripcion" rows="3" maxlength="100" style="resize: none;" required></textarea>
 							</div>
 						</div>
 						<div class="col-sm-1"></div>
@@ -404,6 +404,20 @@
 				$scope.setInterval = false;
 				
 				$scope.records=[];
+				
+				var tarjetas ="${cards}";
+				var i = 0;
+				if(tarjetas != ""){
+					var t = tarjetas.split("///****nuevaCARD****///");
+					for(i=0; i<t.length; i++){
+						var c = t[i];
+						var tj = c.split("///****resp****///");
+						$scope.records.push({
+			                anverso: tj[0],
+			                reverso: tj[1]
+			            });
+					}
+				}
 				
 				var card = document.querySelector('.card');
 				card.addEventListener( 'click', function() {
