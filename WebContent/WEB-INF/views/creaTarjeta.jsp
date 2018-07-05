@@ -376,7 +376,7 @@
 			change();
 			document.form1.nombre.value = "${name}";
 			document.form1.descripcion.value = "${description}";
-			document.form1.shareWith.value = "${shareOption}";
+			document.form1.shareWith.value = "${shareWith}";
 		    option(document.form1.shareWith);
 		    var optionWith = "${shareOptionWith}";
 		    var optionGeneric = "${shareOption}";

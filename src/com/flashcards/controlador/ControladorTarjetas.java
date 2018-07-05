@@ -132,7 +132,7 @@ public class ControladorTarjetas {
 					identificador = "privado-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setNombreCompartido("flash.getCreador()");
+				flash.setNombreCompartido(flash.getCreador());
 				break;
 			case "club":
 				do {
@@ -148,7 +148,7 @@ public class ControladorTarjetas {
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
 					vista.addObject("description", flash.getDescripcion());
-					vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+					vista.addObject("shareWith", "club");
 					vista.addObject("cards", flash.getColeccionJSON());
 					vista.addObject("mensaje", "No ha seleccionado el nombre del club");
 					return vista;
@@ -159,7 +159,7 @@ public class ControladorTarjetas {
 				break;
 			case "usuario":
 				do {
-					identificador = "usuario/"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
+					identificador = "usuario-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectUsuario")==null || request.getParameter("selectUsuario").equals("")) {
@@ -171,7 +171,7 @@ public class ControladorTarjetas {
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
 					vista.addObject("description", flash.getDescripcion());
-					vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+					vista.addObject("shareWith", "usuario");
 					vista.addObject("cards", flash.getColeccionJSON());
 					vista.addObject("mensaje", "No ha seleccionado a un usuario");
 					return vista;
