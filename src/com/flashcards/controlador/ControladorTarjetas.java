@@ -132,7 +132,7 @@ public class ControladorTarjetas {
 					identificador = "privado-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setNombreCompartido(flash.getCreador());
+				flash.setNombreCompartido(user.getUsuario());
 				break;
 			case "club":
 				do {
@@ -190,7 +190,7 @@ public class ControladorTarjetas {
 			vista.addObject("crea", flash.getCreador());
 			vista.addObject("name", flash.getNombreColeccion());
 			vista.addObject("description", flash.getDescripcion());
-			vista.addObject("shareOption", flash.getIdentificador().split("/")[0]);
+			vista.addObject("shareWith", flash.getCompartido());
 			vista.addObject("shareOptionWith", flash.getNombreCompartido());
 			vista.addObject("mensaje", "La colección debe estar formada por al menos una tarjeta");
 			return vista;

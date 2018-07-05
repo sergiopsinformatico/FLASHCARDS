@@ -379,7 +379,7 @@
 			document.form1.shareWith.value = "${shareWith}";
 		    option(document.form1.shareWith);
 		    var optionWith = "${shareOptionWith}";
-		    var optionGeneric = "${shareOption}";
+		    var optionGeneric = "${shareWith}";
 		    var vacio = optionWith.localeCompare("");
 		    if(vacio != 0){
 		    	var club = "club";
