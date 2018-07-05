@@ -32,17 +32,17 @@
 			}
 		</script>
 		<style>
-		    .list_data { margin-bottom: 2rem }
+		    /*.list_data { margin-bottom: 2rem }
 		    table, th, td { border: 1px solid #AAA }
 		    th { cursor: pointer }
 		    div.left {
 			    text-align: left;
-			}
-			.navbar-nav > li > a, .navbar-brand {
+			}*/
+			/*.navbar-nav > li > a, .navbar-brand {
 			    padding-top:4px !important; 
 			    padding-bottom:0 !important;
 			    height: 28px;
-			}
+			}*/
 			.navbar {min-height:28px !important;}
 			div.center {
 			    text-align: center;
@@ -121,12 +121,11 @@
 						</a>
 					</li>
 	    		</ul>
-	    		<ul class="navbar-nav ml-auto">
+	    		<ul class="nav nav-pills">
 	    			<li class="nav-item dropdown">
 	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          Hola ${usuario.getUsuario()}!!!
 				        </a>
-                    	<!--  <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a> -->
 	                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
