@@ -32,17 +32,17 @@
 			}
 		</script>
 		<style>
-		    /*.list_data { margin-bottom: 2rem }
+		    .list_data { margin-bottom: 2rem }
 		    table, th, td { border: 1px solid #AAA }
 		    th { cursor: pointer }
 		    div.left {
 			    text-align: left;
-			}*/
-			/*.navbar-nav > li > a, .navbar-brand {
+			}
+			.navbar-nav > li > a, .navbar-brand {
 			    padding-top:4px !important; 
 			    padding-bottom:0 !important;
 			    height: 28px;
-			}*/
+			}
 			.navbar {min-height:28px !important;}
 			div.center {
 			    text-align: center;
