@@ -94,7 +94,7 @@
 	    </style>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			    <ul class="navbar-nav">
+			    <ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
 							Inicio
@@ -121,7 +121,7 @@
 						</a>
 					</li>
 	    		</ul>
-	    		<ul class="nav nav-pills">
+	    		<ul class="navbar-nav">
 	    			<li class="nav-item dropdown">
 	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          Hola ${usuario.getUsuario()}!!!
