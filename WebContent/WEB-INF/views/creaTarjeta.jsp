@@ -126,7 +126,7 @@
 	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          Hola ${usuario.getUsuario()}!!!
 				        </a>
-	                   <div class="dropdown-menu show" aria-labelledby="navbarDropdown">
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 	                        <!-- <div class="dropdown-divider"></div> -->
