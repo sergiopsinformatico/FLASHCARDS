@@ -32,18 +32,9 @@
 			}
 		</script>
 		<style>
-		    /*.list_data { margin-bottom: 2rem }
-		    table, th, td { border: 1px solid #AAA }
-		    th { cursor: pointer }*/
 		    div.left {
 			    text-align: left;
 			}
-			/*.navbar-nav > li > a, .navbar-brand {
-			    padding-top:4px !important; 
-			    padding-bottom:0 !important;
-			    height: 28px;
-			}
-			.navbar {min-height:28px !important;}*/
 			div.center {
 			    text-align: center;
 			}
@@ -92,65 +83,6 @@
 			  transform: rotateY(180deg);
 			}
 	    </style>
-		<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			    <ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
-							Inicio
-						</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
-							Flashcards
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
-							Gente
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
-							Clubes
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
-							Gestionar Cuentas
-						</a>
-					</li>
-	    		</ul>
-	    		<ul class="navbar-nav justify-content-end">
-	    			
-	    			<li class="nav-item dropdown">
-	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Hola ${usuario.getNombreApellidos()}!!!
-				        </a>
-	                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
-	                        <div role="separator" class="dropdown-divider"></div>
-	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
-	                    </div>
-	                </li>
-	                
-	                
-	                <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          ¡Bienvenido ${usuario.getNombreApellidos()}!
-				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-				          <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
-				          <div class="dropdown-divider"></div>
-				          <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
-				        </div>
-				     </li>
-	    		</ul>
-	  		</div>
-		</nav>-->
-		<div class="container" style="width: 100%">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
@@ -211,21 +143,27 @@
 		</script>
 		
 		<div class="row">
-			<div class="col-sm-1"></div>
-			<div class="col-sm-11">
+			<!-- <div class="col-sm-1"></div>-->
+			<div class="col-md-1"></div>
+			<!-- <div class="col-sm-11"> -->
+			<div class="col-md-11">
 				<br>
 				<h3 align="center">Creación de una Colección de Flashcards</h3>
 				<br>
 			</div>
 		</div>
 		<div class="row" ng-controller="showCtrl">
-			<div class="col-sm-1"></div>
-			<div class="col-sm-11">
+			<!-- <div class="col-sm-1"></div>-->
+			<div class="col-md-1"></div>
+			<!-- <div class="col-sm-11"> -->
+			<div class="col-md-11">
 				<div class="row">
-					<div class="col-sm-5">
+					<!-- <div class="col-sm-5"> -->
+					<div class="col-md-5">
 						<div class="row">
-							<div class="col-sm-6">
-								<b><h6 align="center">Vista Previa de la Tarjeta</h6></b>
+							<!-- <div class="col-sm-6"> -->
+							<div class="col-md-6">
+								<h6 align="center" style="font-weight: bold;">Vista Previa de la Tarjeta</h6>
 								<div class="scene scene--card">
 								  <div class="card text-center">
 								    <div class="card__face card__face--front align-items-center justify-content-center">
@@ -239,7 +177,8 @@
 								  </div>
 								</div>
 							</div>
-							<div class="col-sm-6">
+							<!-- <div class="col-sm-6"> -->
+							<div class="col-md-6">
 							<br><br>
 								<div class="form-group">
 									<textarea class="form-control" id="anverso" style="width:100%;" name="anverso" maxlength="250" rows="6" ng-model="newAnverso"></textarea>
@@ -254,8 +193,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-1"></div>
-					<div class="col-sm-5">
+					<!-- <div class="col-sm-1"></div> -->
+					<div class="col-md-1"></div>
+					<!-- <div class="col-sm-5"> -->
+					<div class="col-md-5">
 						<div id="myVisorCards" class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
 								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
@@ -341,17 +282,21 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-1"></div>
+					<!-- <div class="col-sm-1"></div> -->
+					<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1">
+			<!-- <div class="col-sm-1"> -->
+			<div class="col-md-1">
 			</div>
-			<div class="col-sm-11">
+			<!-- <div class="col-sm-11">-->
+			<div class="col-md-11">
 				<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
 					<div class="row">
-						<div class="col-sm-3">
+						<div class="col-md-3">
+						<!-- <div class="col-sm-3"> -->
 							<div class="form-group">
 							    <label for="creador">Creador</label>
 							    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
@@ -365,15 +310,15 @@
 							<br><br>
 							<button type="submit" class="btn btn-primary">Guardar Colección</button>
 						</div>
-						<div class="col-sm-1"></div>
-						<div class="col-sm-3">
+						<div class="col-md-1"></div>
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="descripcion">Descripción</label>
 							    <textarea class="form-control" name="descripcion" id="descripcion" rows="3" maxlength="100" style="resize: none;" required></textarea>
 							</div>
 						</div>
-						<div class="col-sm-1"></div>
-						<div class="col-sm-3">
+						<div class="col-md-1"></div>
+						<div class="col-md-3">
 							<script>
 							    function option(that) {
 							        if (that.value == "club") {
@@ -428,7 +373,7 @@
 								</div>
 							</div>							
 						</div>
-						<div class="col-sm-1"></div>
+						<div class="col-md-1"></div>
 					</div>
 				</form>
 			</div>
@@ -564,6 +509,5 @@
 			app.controller('usuarioCtrl', usuarioControlador);
 			app.controller('showCtrl', showControlador);
 		</script>
-		</div>
 	</body>
 </html>
