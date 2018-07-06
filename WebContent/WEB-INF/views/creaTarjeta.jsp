@@ -152,10 +152,9 @@
 		</nav>-->
 		
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-	      <!-- <a class="navbar-brand" href="#">Expand at sm</a>
 	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
-	      </button>-->
+	      </button>
 	
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
