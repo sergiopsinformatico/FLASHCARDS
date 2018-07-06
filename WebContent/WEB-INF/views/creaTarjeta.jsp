@@ -191,6 +191,9 @@
 	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
+	            <script>
+	            	$('.dropdown-toggle').dropdown();
+	            </script>
 	          </li>
 	        </ul>
 	      </div>
