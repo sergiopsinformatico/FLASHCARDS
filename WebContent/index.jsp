@@ -210,13 +210,13 @@
 		    </div> -->
 		    <div class="container">
 		        <div class="card card-container">
-				    <form action="iniciarSesion.html" class="form-signin">
+				    <form action="iniciarSesion.html" method="post" class="form-signin">
 				      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
 				      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
 				      <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
 				      <label for="inputClave" class="sr-only">Clave</label>
 				      <input type="password" id="inputClave" class="form-control" placeholder="Clave" required>
-				      <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion</button>
+				      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
 				    </form>
 				    <a href="registro.html" class="register">
 		                Si aún no tienes cuenta, regístrate
