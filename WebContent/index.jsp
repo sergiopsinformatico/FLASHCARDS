@@ -163,7 +163,7 @@
 			}
 		</style>
 	</head>
-	<body background="resources/img/background.jpg">
+	<body background="resources/img/background.jpg" style="background-position: center;">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 		Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -182,7 +182,7 @@
 		</div>
 		<div class="row">
 		    <div class="col-md-12">
-		      <h2 align="center">
+		      <h2 align="center" style="color:blue;">
 				FLASHCARDS. Sistema Basado En Aprendizaje con Tarjetas.
 			  </h2>
 		    </div>
