@@ -191,7 +191,7 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-4">
-				<img src="/resources/img/background.jpg">
+				<img src="/resources/img/background.jpg" style="max-width: 100%; max-height: 100%;">
 			</div>
 			<div class="col-md-2"></div>
 			<div class="col-md-4">

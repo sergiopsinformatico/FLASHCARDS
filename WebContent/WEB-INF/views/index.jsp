@@ -1,14 +1,31 @@
 <html>
 	<head>
-		<title>Login - Flashcards</title>
+		<!-- <title>Login - Flashcards</title>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+		
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>Login - Flashcards</title>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		
 		<style>
 			body, html {
 			    height: 100%;
 			    background-repeat: no-repeat;
-			    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+			    /*background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
 			}
 			
 			.card-container.card {
@@ -146,10 +163,11 @@
 			}
 		</style>
 	</head>
+	<!--  <body background="resources/img/background.jpg" style="background-size: 100%;"> background-position: center;-->
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+		Usuario user = ((Usuario)(session.getAttribute("usuario")));
 			if(user!=null && (!user.getUsuario().equals(""))){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((Usuario)(session.getAttribute("usuario"))).getUsuario());
 			}
@@ -159,40 +177,47 @@
 				alert("${mensaje}");
 			}
 		</script>
+		
 		<div class="row">
 			<br><br>
 		</div>
 		<div class="row">
 		    <div class="col-md-12">
-		      <h2 align="center">
+		      <h2 align="center" style="color:blue;">
 				FLASHCARDS. Sistema Basado En Aprendizaje con Tarjetas.
 			  </h2>
 		    </div>
 		</div>
 		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<img src="/resources/img/background.jpg" style="max-width: 100%; max-height: 100%;">
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div class="container">
+			        <div class="card card-container">
+					    <form action="iniciarSesion.html" method="post" class="form-signin">
+					      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+					      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
+					      <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
+					      <label for="inputClave" class="sr-only">Clave</label>
+					      <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
+					      <button class="btn btn-outline-success btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
+					    </form>
+					    <a href="registro.html" class="register">
+			                Si aún no tienes cuenta, regístrate
+			            </a>
+			            <a href="recovery.html" class="forgot-password">
+			                ¿Olvidaste la Clave?
+			            </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<div class="row">
-		    <div class="container">
-		        <div class="card card-container">
-		            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-		            <p id="profile-name" class="profile-name-card"></p>
-		            <form action="iniciarSesion.html" method="post" class="form-signin">
-		                <span id="reauth-email" class="reauth-email"></span>
-		                <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required autofocus>
-		                <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
-		                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
-		            </form>
-		            <a href="registro.html" class="register">
-		                Si aún no tienes cuenta, regístrate
-		            </a><br>
-		            <a href="recovery.html" class="forgot-password">
-		                ¿Olvidaste la Clave?
-		            </a>
-		        </div>
-		    </div> 
-		</div>
-		<div class="row">
-		  <div class="col-md-12" align="center">
+		  <div class="col-md-12" align="center" style="color:green;">
 		    Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.
 		  </div>
 		</div>
