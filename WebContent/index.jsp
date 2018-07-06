@@ -1,9 +1,26 @@
 <html>
 	<head>
-		<title>Login - Flashcards</title>
+		<!-- <title>Login - Flashcards</title>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+		
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>Login - Flashcards</title>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		
 		<style>
 			body, html {
 			    height: 100%;
@@ -172,7 +189,7 @@
 		<div class="row">
 		</div>
 		<div class="row">
-		    <div class="container">
+		    <!-- <div class="container">
 		        <div class="card card-container">
 		            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 		            <p id="profile-name" class="profile-name-card"></p>
@@ -189,7 +206,32 @@
 		                ¿Olvidaste la Clave?
 		            </a>
 		        </div>
-		    </div> 
+		    </div> -->
+		    <div class="container">
+		        <div class="card card-container">
+				    <form class="form-signin">
+				      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+				      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+				      <label for="inputEmail" class="sr-only">Email address</label>
+				      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+				      <label for="inputPassword" class="sr-only">Password</label>
+				      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+				      <div class="checkbox mb-3">
+				        <label>
+				          <input type="checkbox" value="remember-me"> Remember me
+				        </label>
+				      </div>
+				      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				      <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+				    </form>
+				    <a href="registro.html" class="register">
+		                Si aún no tienes cuenta, regístrate
+		            </a><br>
+		            <a href="recovery.html" class="forgot-password">
+		                ¿Olvidaste la Clave?
+		            </a>
+				</div>
+			</div>
 		</div>
 		<div class="row">
 		  <div class="col-md-12" align="center">
