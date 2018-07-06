@@ -157,7 +157,7 @@
 	        <span class="navbar-toggler-icon"></span>
 	      </button>-->
 	
-	      <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
 	          <li class="nav-item">
 	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
@@ -185,8 +185,8 @@
 				</a>
 			  </li>
 	          <li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">¡Bienvenido ${usuario.getNombreApellidos()}!</a>
-	            <div class="dropdown-menu"><!-- aria-labelledby="dropdown03" -->
+	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
+	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
 	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
 	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
