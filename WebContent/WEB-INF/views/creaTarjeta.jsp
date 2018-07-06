@@ -32,18 +32,18 @@
 			}
 		</script>
 		<style>
-		    .list_data { margin-bottom: 2rem }
+		    /*.list_data { margin-bottom: 2rem }
 		    table, th, td { border: 1px solid #AAA }
-		    th { cursor: pointer }
+		    th { cursor: pointer }*/
 		    div.left {
 			    text-align: left;
 			}
-			.navbar-nav > li > a, .navbar-brand {
+			/*.navbar-nav > li > a, .navbar-brand {
 			    padding-top:4px !important; 
 			    padding-bottom:0 !important;
 			    height: 28px;
 			}
-			.navbar {min-height:28px !important;}
+			.navbar {min-height:28px !important;}*/
 			div.center {
 			    text-align: center;
 			}
@@ -92,7 +92,7 @@
 			  transform: rotateY(180deg);
 			}
 	    </style>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			    <ul class="navbar-nav">
 					<li class="nav-item">
@@ -122,7 +122,8 @@
 					</li>
 	    		</ul>
 	    		<ul class="navbar-nav justify-content-end">
-	    			<!-- <li class="nav-item dropdown">
+	    			
+	    			<li class="nav-item dropdown">
 	    				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          Hola ${usuario.getNombreApellidos()}!!!
 				        </a>
@@ -132,7 +133,9 @@
 	                        <div role="separator" class="dropdown-divider"></div>
 	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	                    </div>
-	                </li>-->
+	                </li>
+	                
+	                
 	                <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          ¡Bienvenido ${usuario.getNombreApellidos()}!
@@ -146,7 +149,52 @@
 				     </li>
 	    		</ul>
 	  		</div>
-		</nav>
+		</nav>-->
+		
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	      <!-- <a class="navbar-brand" href="#">Expand at sm</a>
+	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>-->
+	
+	      <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+					Inicio
+				</a>
+	          </li>
+	          <li class="nav-item active">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+					Flashcards
+				</a>
+			  </li>
+			  <li class="nav-item">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+					Gente
+				</a>
+			  </li>
+			  <li class="nav-item">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+					Clubes
+				</a>
+			  </li>
+			  <li class="nav-item">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+					Gestionar Cuentas
+				</a>
+			  </li>
+	          <li class="nav-item dropdown">
+	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">¡Bienvenido ${usuario.getNombreApellidos()}!</a>
+	            <div class="dropdown-menu" aria-labelledby="dropdown03">
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	            </div>
+	          </li>
+	        </ul>
+	      </div>
+	    </nav>
 		
 		<script language="JavaScript" type="text/javascript">
 			var comp = ${usuario.isAdministrador()};
