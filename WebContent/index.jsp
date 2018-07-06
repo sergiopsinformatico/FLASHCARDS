@@ -163,7 +163,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body background="resources/background.jpg">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 		Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -176,6 +176,7 @@
 				alert("${mensaje}");
 			}
 		</script>
+		
 		<div class="row">
 			<br><br>
 		</div>
@@ -209,20 +210,13 @@
 		    </div> -->
 		    <div class="container">
 		        <div class="card card-container">
-				    <form class="form-signin">
-				      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-				      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-				      <label for="inputEmail" class="sr-only">Email address</label>
-				      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-				      <label for="inputPassword" class="sr-only">Password</label>
-				      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-				      <div class="checkbox mb-3">
-				        <label>
-				          <input type="checkbox" value="remember-me"> Remember me
-				        </label>
-				      </div>
-				      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-				      <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+				    <form action="iniciarSesion.html" class="form-signin">
+				      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+				      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
+				      <input type="email" id="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
+				      <label for="inputClave" class="sr-only">Clave</label>
+				      <input type="password" id="inputClave" class="form-control" placeholder="Clave" required>
+				      <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion</button>
 				    </form>
 				    <a href="registro.html" class="register">
 		                Si aún no tienes cuenta, regístrate
