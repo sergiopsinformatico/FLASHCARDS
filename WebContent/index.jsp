@@ -213,9 +213,9 @@
 				    <form action="iniciarSesion.html" method="post" class="form-signin">
 				      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
 				      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
-				      <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
+				      <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
 				      <label for="inputClave" class="sr-only">Clave</label>
-				      <input type="password" id="inputClave" class="form-control" placeholder="Clave" required>
+				      <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
 				      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
 				    </form>
 				    <a href="registro.html" class="register">
