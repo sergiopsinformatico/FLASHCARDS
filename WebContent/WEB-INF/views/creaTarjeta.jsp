@@ -150,7 +150,7 @@
 	    		</ul>
 	  		</div>
 		</nav>-->
-		
+		<div class="container" style="width: 100%">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
@@ -564,5 +564,6 @@
 			app.controller('usuarioCtrl', usuarioControlador);
 			app.controller('showCtrl', showControlador);
 		</script>
+		</div>
 	</body>
 </html>
