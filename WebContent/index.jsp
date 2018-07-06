@@ -163,7 +163,7 @@
 			}
 		</style>
 	</head>
-	<body background="resources/img/background.jpg" style="background-position: center;">
+	<body background="resources/img/background.jpg" style="background-size: 100%;"><!--background-position: center;-->
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 		Usuario user = ((Usuario)(session.getAttribute("usuario")));
