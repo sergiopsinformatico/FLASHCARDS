@@ -203,7 +203,7 @@
 					      <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
 					      <label for="inputClave" class="sr-only">Clave</label>
 					      <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
-					      <button class="btn btn-link btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
+					      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
 					    </form>
 					    <a href="registro.html" class="register">
 			                Si aún no tienes cuenta, regístrate
