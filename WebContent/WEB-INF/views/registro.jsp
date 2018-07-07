@@ -211,15 +211,15 @@
 					</div>
 					<div class="form-group">
 						<label for="email" style="font-weight: bold;">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="${usuario.getEmail()}" required>
 					</div>
 					<div class="form-group">
 						<label for="clave" style="font-weight: bold;">Clave</label>
-						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave" required>
+						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave" value="${usuario.getClave()}" required>
 					</div>
 					<div class="form-group">
 						<label for="repiteClave" style="font-weight: bold;">Repite la Clave</label>
-						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" required>
+						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" value="${usuario.getClave()}" required>
 					</div>
 					<!-- <div class="card"> -->
 					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
@@ -239,19 +239,19 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="nombreApellidos" style="font-weight: bold;">Nombre y Apellidos</label>
-						<input type="text" class="form-control" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" required>
+						<input type="text" class="form-control" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" value="${usuario.getNombreApellidos()}" required>
 					</div>
 					<div class="form-group">
 						<label for="edad" style="font-weight: bold;">Edad</label>
-						<input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" required>
+						<input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" value="${usuario.getEdad()}" required>
 					</div>
 					<div class="form-group">
 						<label for="ciudad" style="font-weight: bold;">Ciudad</label>
-						<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+						<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" value="${usuario.getCiudad()}" required>
 					</div>
 					<div class="form-group">
 						<label for="pais" style="font-weight: bold;">Pais</label>
-						<input type="text" class="form-control" id="pais" name="pais" placeholder="Pais" required>
+						<input type="text" class="form-control" id="pais" name="pais" placeholder="Pais" value="${usuario.getPais()}" required>
 					</div>
 					<div class="form-group">
 						<label for="genero" class="cols-sm-2 control-label" style="font-weight: bold;">Género</label>
@@ -263,6 +263,33 @@
 							<input class="form-check-input" type="radio" name="genero" id="genero_Mujer" value="Mujer" required>
 							<label class="form-check-label" for="genero_Mujer"> Mujer </label>
 						</div>
+							<script language="JavaScript" type="text/javascript">
+								var genero = "${usuario.getGenero()}";
+								if (genero!=""){
+									var hombre = "Hombre";
+									var mujer = "Mujer";
+									var resultH = genero.localeCompare(hombre);
+									var resultM = genero.localeCompare(mujer);
+									if(resultH eq 0){
+										var checkHombre=document.getElementById("genero_Hombre");
+										checkHombre.checked=true;
+										var checkMujer=document.getElementById("genero_Mujer");
+										checkMujer.checked=false;
+									}else{
+										if(resultM eq 0){
+											var checkHombre=document.getElementById("genero_Hombre");
+											checkHombre.checked=false;
+											var checkMujer=document.getElementById("genero_Mujer");
+											checkMujer.checked=true;
+										}else{
+											var checkHombre=document.getElementById("genero_Hombre");
+											checkHombre.checked=false;
+											var checkMujer=document.getElementById("genero_Mujer");
+											checkMujer.checked=false;
+										}
+									}
+								}
+							</script>
 					</div>
 					
 					<div class="form-group ">
@@ -279,60 +306,5 @@
 				<div class="col-md-1"></div>
 			</div>
 		</form>
-				
-		<script language="JavaScript" type="text/javascript">
-		  /*document.form1.nombreUsuario.value = "${usuario.getUsuario()}";
-			document.form1.clave.value = "${usuario.getClave()}";
-			document.form1.repiteClave.value = "${usuario.getClave()}";
-			document.form1.email.value = "${usuario.getEmail()}";
-			document.form1.nombreApellidos.value = "${usuario.getNombreApellidos()}";
-			document.form1.edad.value = "${usuario.getEdad()}";
-			document.form1.ciudad.value = "${usuario.getCiudad()}";
-			document.form1.pais.value = "${usuario.getPais()}";*/
-			
-			document.getElementById("nombreUsuario").value = "${usuario.getUsuario()}";
-			document.getElementById("clave").value = "${usuario.getClave()}";
-			document.getElementById("repiteClave").value = "${usuario.getClave()}";
-			document.getElementById("email").value = "${usuario.getEmail()}";
-			document.getElementById("nombreApellidos").value = "${usuario.getNombreApellidos()}";
-			document.getElementById("edad").value = "${usuario.getEdad()}";
-			document.getElementById("ciudad").value = "${usuario.getCiudad()}";
-			document.getElementById("pais").value = "${usuario.getPais()}";
-			
-			var genero = "${usuario.getGenero()}";
-			if (genero!=""){
-				var hombre = "Hombre";
-				var mujer = "Mujer";
-				var resultH = genero.localeCompare(hombre);
-				var resultM = genero.localeCompare(mujer);
-				if(resultH eq 0){
-					var checkHombre=document.getElementById("genero_Hombre");
-					checkHombre.checked=true;
-					var checkMujer=document.getElementById("genero_Mujer");
-					checkMujer.checked=false;
-					
-					/*document.getElementById("genero_Hombre").checked = true;
-					document.getElementById("genero_Mujer").checked = false;*/
-				}else{
-					if(resultM eq 0){
-						var checkHombre=document.getElementById("genero_Hombre");
-						checkHombre.checked=false;
-						var checkMujer=document.getElementById("genero_Mujer");
-						checkMujer.checked=true;
-						
-						/*document.getElementById("genero_Hombre").checked = false;
-						document.getElementById("genero_Mujer").checked = true;*/
-					}else{
-						var checkHombre=document.getElementById("genero_Hombre");
-						checkHombre.checked=false;
-						var checkMujer=document.getElementById("genero_Mujer");
-						checkMujer.checked=false;
-						
-						/*document.getElementById("genero_Hombre").checked = false;
-						document.getElementById("genero_Mujer").checked = false;*/
-					}
-				}
-			}
-		</script>
 	</body>
 </html>
