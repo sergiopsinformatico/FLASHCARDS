@@ -1,10 +1,5 @@
 <html>
 	<head>
-		<!-- <title>Registro - Flashcards</title>
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-		
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <title>Registro - Flashcards</title>
@@ -224,13 +219,18 @@
 					<!-- <div class="card"> -->
 					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
 						<div class="card-body">
-							La clave debe cumplir los siguientes requisitos: <br>
+							El nombre de usuario DEBE CUMPLIR el siguiente requisito: <br>
 				    			<ul> 
-									<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
-									<li>Sólo puede contener estos carácteres [A-Z] [a-z] [0-9]</li> 
-									<li>Al menos debe contener una mayúscula (A-Z)</li> 
-									<li>Al menos debe contener una minúscula (a-z)</li> 
-									<li>Al menos debe contener un número (0-9)</li> 
+									<li>Sólo puede contener mayúsculas, minúsculas y números</li>
+								</ul>
+							<br>
+							La clave DEBE CUMPLIR los siguientes requisitos: <br>
+				    			<ul> 
+									<li>Longitud Mínima de la Clave: 4 carácteres</li> 
+									<li>Sólo puede contener mayúsculas, minúsculas y números</li> 
+									<li>Al menos debe haber una mayúscula (A-Z)</li> 
+									<li>Al menos debe haber una minúscula (a-z)</li> 
+									<li>Al menos debe haber un número (0-9)</li> 
 								</ul>
 						</div>
 					</div>
