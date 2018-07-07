@@ -207,19 +207,19 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="nombreUsuario" style="font-weight: bold;">Nombre de Usuario</label>
-						<input type="text" class="sr-only" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required>
+						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required>
 					</div>
 					<div class="form-group">
 						<label for="email" style="font-weight: bold;">Email</label>
-						<input type="email" class="sr-only" id="email" name="email" placeholder="Email" required>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
 					</div>
 					<div class="form-group">
 						<label for="clave" style="font-weight: bold;">Clave</label>
-						<input type="password" class="sr-only" id="clave" name="clave" placeholder="Clave" required>
+						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave" required>
 					</div>
 					<div class="form-group">
 						<label for="repiteClave" style="font-weight: bold;">Repite la Clave</label>
-						<input type="password" class="sr-only" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" required>
+						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" required>
 					</div>
 					La clave debe cumplir los siguientes requisitos: <br>
 				    <ul> 
@@ -234,19 +234,19 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="nombreApellidos" style="font-weight: bold;">Nombre y Apellidos</label>
-						<input type="text" class="sr-only" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" required>
+						<input type="text" class="form-control" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" required>
 					</div>
 					<div class="form-group">
 						<label for="edad" style="font-weight: bold;">Edad</label>
-						<input type="number" class="sr-only" id="edad" name="edad" placeholder="Edad" required>
+						<input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" required>
 					</div>
 					<div class="form-group">
 						<label for="ciudad" style="font-weight: bold;">Ciudad</label>
-						<input type="text" class="sr-only" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+						<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" required>
 					</div>
 					<div class="form-group">
 						<label for="pais" style="font-weight: bold;">Pais</label>
-						<input type="text" class=sr-only" id="pais" name="pais" placeholder="Pais" required>
+						<input type="text" class="form-control" id="pais" name="pais" placeholder="Pais" required>
 					</div>
 					<div class="form-group">
 						<label for="genero" class="cols-sm-2 control-label">Género</label>
