@@ -221,14 +221,19 @@
 						<label for="repiteClave" style="font-weight: bold;">Repite la Clave</label>
 						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" required>
 					</div>
-					La clave debe cumplir los siguientes requisitos: <br>
-				    <ul> 
-						<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
-						<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
-						<li>Al menos debe contener una mayúscula (A-Z)</li> 
-						<li>Al menos debe contener una minúscula (a-z)</li> 
-						<li>Al menos debe contener un número (0-9)</li> 
-					</ul>
+					<!-- <div class="card"> -->
+					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
+						<div class="card-body">
+							La clave debe cumplir los siguientes requisitos: <br>
+				    			<ul> 
+									<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
+									<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
+									<li>Al menos debe contener una mayúscula (A-Z)</li> 
+									<li>Al menos debe contener una minúscula (a-z)</li> 
+									<li>Al menos debe contener un número (0-9)</li> 
+								</ul>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-4">
@@ -249,11 +254,11 @@
 						<input type="text" class="form-control" id="pais" name="pais" placeholder="Pais" required>
 					</div>
 					<div class="form-group">
-						<label for="genero" class="cols-sm-2 control-label">Género</label>
+						<label for="genero" class="cols-sm-2 control-label" style="font-weight: bold;">Género</label>
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="genero" id="genero_Hombre" value="Hombre" required>
 							<label class="form-check-label" for="genero_Hombre"> Hombre </label>
-						</div>
+						</div><br>
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="genero" id="genero_Mujer" value="Mujer" required>
 							<label class="form-check-label" for="genero_Mujer"> Mujer </label>
