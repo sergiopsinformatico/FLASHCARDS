@@ -197,213 +197,211 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-11">
-				<h6 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h6>
+				<h4 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h4>
 			</div>
 		</div>
-		<div class="row"> 
-			<form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
-				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="nombreUsuario">Nombre de Usuario</label>
-							<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario">
-						</div>
-						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<label for="clave">Clave</label>
-							<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave">
-						</div>
-						<div class="form-group">
-							<label for="repiteClave">Repite la Clave</label>
-							<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave">
-						</div>
-						La clave debe cumplir los siguientes requisitos: <br>
-					    <ul> 
-							<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
-							<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
-							<li>Al menos debe contener una mayúscula (A - Z)</li> 
-							<li>Al menos debe contener una minúscula (a - z)</li> 
-							<li>Al menos debe contener un número (0 - 9)</li> 
-						</ul>
+		<form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="nombreUsuario">Nombre de Usuario</label>
+						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario">
 					</div>
-					<div class="col-md-2"></div>
-					<div class="col-md-4">
-					
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email">
 					</div>
-					<div class="col-md-1"></div>
+					<div class="form-group">
+						<label for="clave">Clave</label>
+						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave">
+					</div>
+					<div class="form-group">
+						<label for="repiteClave">Repite la Clave</label>
+						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave">
+					</div>
+					La clave debe cumplir los siguientes requisitos: <br>
+				    <ul> 
+						<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
+						<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
+						<li>Al menos debe contener una mayúscula (A-Z)</li> 
+						<li>Al menos debe contener una minúscula (a-z)</li> 
+						<li>Al menos debe contener un número (0-9)</li> 
+					</ul>
 				</div>
-			</form>
-					<!-- <form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
-						<div class="row">
-							<div class="col-md-5">
-								<div class="form-group">
-									<label for="nombreUsuario" class="cols-sm-2 control-label">Nombre de Usuario</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" placeholder="introduce tú nombre de usuario" required/>
-										</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-4">
+				
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</form>
+				<!-- <form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="nombreUsuario" class="cols-sm-2 control-label">Nombre de Usuario</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" placeholder="introduce tú nombre de usuario" required/>
 									</div>
 								</div>
-		
-								<div class="form-group">
-									<label for="email" class="cols-sm-2 control-label">Email</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-											<input type="email" class="form-control" name="email" id="email"  placeholder="Introduce tú email" required/>
-										</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label for="clave" class="cols-sm-2 control-label">Clave</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-											<input type="password" class="form-control" name="clave" id="clave"  placeholder="Introduce tú clave" required/>
-										</div>
-									</div>
-								</div>
-		
-								<div class="form-group">
-									<label for="repiteClave" class="cols-sm-2 control-label">Confirma Clave</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-											<input type="password" class="form-control" name="repiteClave" id="repiteClave"  placeholder="Vuelve a introducir tú clave" required/>
-										</div>
-									</div>
-								</div>
-								
-								
-							    La clave debe cumplir los siguientes requisitos: <br>
-							    <ul> 
-									<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
-									<li>Al menos debe contener una mayúscula (A - Z)</li> 
-									<li>Al menos debe contener una minúscula (a - z)</li> 
-									<li>Al menos debe contener un número (0 - 9)</li> 
-								</ul>
 							</div>
-							<div class="col-md-2">
-								
+	
+							<div class="form-group">
+								<label for="email" class="cols-sm-2 control-label">Email</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+										<input type="email" class="form-control" name="email" id="email"  placeholder="Introduce tú email" required/>
+									</div>
+								</div>
 							</div>
-								
-							<div class="col-md-5">
-								<div class="form-group">
-									<label for="nombreApellidos" class="cols-sm-2 control-label">Nombre y Apellidos</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos"  placeholder="Introduce tú nombre y tus apellidos" required />
-										</div>
+							
+							<div class="form-group">
+								<label for="clave" class="cols-sm-2 control-label">Clave</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+										<input type="password" class="form-control" name="clave" id="clave"  placeholder="Introduce tú clave" required/>
 									</div>
 								</div>
-		
-								<div class="form-group">
-									<label for="edad" class="cols-sm-2 control-label">Edad</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="number" class="form-control" name="edad" id="edad"  min="1" max="200" placeholder="Introduce tu edad" required />
-										</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label for="ciudad" class="cols-sm-2 control-label">Ciudad</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="ciudad" id="ciudad"  placeholder="Introduce tu ciudad" required />
-										</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label for="pais" class="cols-sm-2 control-label">Pais</label>
-									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="pais" id="pais"  placeholder="Introduce tu pais" required />
-										</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label for="genero" class="cols-sm-2 control-label">Género</label>
-									<div class="cols-sm-10">
-											<div class="row">
-												<div class="col-md-4 center">
-													<br>Hombre
-												</div>
-												<div class="col-md-2">
-													<input type="radio" class="form-control" name="genero" id="genero_Hombre"  value="Hombre" required />
-												</div>
-												<div class="col-md-4 center">
-													<br>Mujer
-												</div>
-												<div class="col-md-2">
-													<input type="radio" class="form-control" name="genero" id="genero_Mujer"  value="Mujer" required />
-												</div>
-											</div>
-									</div>
-								</div>
-		
-								<div class="form-group ">
-									<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
-								</div>
-								
-								<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
-					                Login
-					            </a><br>
-					            <a href="recovery.html" class="forgot-password">
-					                ¿Olvidaste la Clave?
-					            </a>
 							</div>
+	
+							<div class="form-group">
+								<label for="repiteClave" class="cols-sm-2 control-label">Confirma Clave</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+										<input type="password" class="form-control" name="repiteClave" id="repiteClave"  placeholder="Vuelve a introducir tú clave" required/>
+									</div>
+								</div>
+							</div>
+							
+							
+						    La clave debe cumplir los siguientes requisitos: <br>
+						    <ul> 
+								<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
+								<li>Al menos debe contener una mayúscula (A - Z)</li> 
+								<li>Al menos debe contener una minúscula (a - z)</li> 
+								<li>Al menos debe contener un número (0 - 9)</li> 
+							</ul>
 						</div>
-					</form>-->
-			<script language="JavaScript" type="text/javascript">
-				/*document.form1.nombreUsuario.value = "${usuario.getUsuario()}";
-				document.form1.clave.value = "${usuario.getClave()}";
-				document.form1.repiteClave.value = "${usuario.getClave()}";
-				document.form1.email.value = "${usuario.getEmail()}";
-				document.form1.nombreApellidos.value = "${usuario.getNombreApellidos()}";
-				document.form1.edad.value = "${usuario.getEdad()}";
-				document.form1.ciudad.value = "${usuario.getCiudad()}";
-				document.form1.pais.value = "${usuario.getPais()}";*/
-				
-				document.getElementById("nombreUsuario").value = "${usuario.getUsuario()}";
-				document.getElementById("clave").value = "${usuario.getClave()}";
-				document.getElementById("repiteClave").value = "${usuario.getClave()}";
-				document.getElementById("email").value = "${usuario.getEmail()}";
-				document.getElementById("nombreApellidos").value = "${usuario.getNombreApellidos()}";
-				document.getElementById("edad").value = "${usuario.getEdad()}";
-				document.getElementById("ciudad").value = "${usuario.getCiudad()}";
-				document.getElementById("pais").value = "${usuario.getPais()}";
-				
-				var genero = "${usuario.getGenero()}";
-				var hombre = "Hombre";
-				var mujer = "Mujer";
-				var resultH = genero.localeCompare(hombre);
-				var resultM = genero.localeCompare(mujer);
-				if(resultH eq 0){
-					document.getElementById("genero_Hombre").checked = true;
-					document.getElementById("genero_Mujer").checked = false;
+						<div class="col-md-2">
+							
+						</div>
+							
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="nombreApellidos" class="cols-sm-2 control-label">Nombre y Apellidos</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="nombreApellidos" id="nombreApellidos"  placeholder="Introduce tú nombre y tus apellidos" required />
+									</div>
+								</div>
+							</div>
+	
+							<div class="form-group">
+								<label for="edad" class="cols-sm-2 control-label">Edad</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+										<input type="number" class="form-control" name="edad" id="edad"  min="1" max="200" placeholder="Introduce tu edad" required />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="ciudad" class="cols-sm-2 control-label">Ciudad</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="ciudad" id="ciudad"  placeholder="Introduce tu ciudad" required />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="pais" class="cols-sm-2 control-label">Pais</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="pais" id="pais"  placeholder="Introduce tu pais" required />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="genero" class="cols-sm-2 control-label">Género</label>
+								<div class="cols-sm-10">
+										<div class="row">
+											<div class="col-md-4 center">
+												<br>Hombre
+											</div>
+											<div class="col-md-2">
+												<input type="radio" class="form-control" name="genero" id="genero_Hombre"  value="Hombre" required />
+											</div>
+											<div class="col-md-4 center">
+												<br>Mujer
+											</div>
+											<div class="col-md-2">
+												<input type="radio" class="form-control" name="genero" id="genero_Mujer"  value="Mujer" required />
+											</div>
+										</div>
+								</div>
+							</div>
+	
+							<div class="form-group ">
+								<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
+							</div>
+							
+							<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
+				                Login
+				            </a><br>
+				            <a href="recovery.html" class="forgot-password">
+				                ¿Olvidaste la Clave?
+				            </a>
+						</div>
+					</div>
+				</form>-->
+		<script language="JavaScript" type="text/javascript">
+			/*document.form1.nombreUsuario.value = "${usuario.getUsuario()}";
+			document.form1.clave.value = "${usuario.getClave()}";
+			document.form1.repiteClave.value = "${usuario.getClave()}";
+			document.form1.email.value = "${usuario.getEmail()}";
+			document.form1.nombreApellidos.value = "${usuario.getNombreApellidos()}";
+			document.form1.edad.value = "${usuario.getEdad()}";
+			document.form1.ciudad.value = "${usuario.getCiudad()}";
+			document.form1.pais.value = "${usuario.getPais()}";*/
+			
+			document.getElementById("nombreUsuario").value = "${usuario.getUsuario()}";
+			document.getElementById("clave").value = "${usuario.getClave()}";
+			document.getElementById("repiteClave").value = "${usuario.getClave()}";
+			document.getElementById("email").value = "${usuario.getEmail()}";
+			document.getElementById("nombreApellidos").value = "${usuario.getNombreApellidos()}";
+			document.getElementById("edad").value = "${usuario.getEdad()}";
+			document.getElementById("ciudad").value = "${usuario.getCiudad()}";
+			document.getElementById("pais").value = "${usuario.getPais()}";
+			
+			var genero = "${usuario.getGenero()}";
+			var hombre = "Hombre";
+			var mujer = "Mujer";
+			var resultH = genero.localeCompare(hombre);
+			var resultM = genero.localeCompare(mujer);
+			if(resultH eq 0){
+				document.getElementById("genero_Hombre").checked = true;
+				document.getElementById("genero_Mujer").checked = false;
+			}else{
+				if(resultM eq 0){
+					document.getElementById("genero_Hombre").checked = false;
+					document.getElementById("genero_Mujer").checked = true;
 				}else{
-					if(resultM eq 0){
-						document.getElementById("genero_Hombre").checked = false;
-						document.getElementById("genero_Mujer").checked = true;
-					}else{
-						document.getElementById("genero_Hombre").checked = false;
-						document.getElementById("genero_Mujer").checked = false;
-					}
+					document.getElementById("genero_Hombre").checked = false;
+					document.getElementById("genero_Mujer").checked = false;
 				}
-			</script>
-		</div>
+			}
+		</script>
 	</body>
 </html>
