@@ -263,33 +263,6 @@
 							<input class="form-check-input" type="radio" name="genero" id="genero_Mujer" value="Mujer" required>
 							<label class="form-check-label" for="genero_Mujer"> Mujer </label>
 						</div>
-							<script language="JavaScript" type="text/javascript">
-								var genero = "${usuario.getGenero()}";
-								if (genero!=""){
-									var hombre = "Hombre";
-									var mujer = "Mujer";
-									var resultH = genero.localeCompare(hombre);
-									var resultM = genero.localeCompare(mujer);
-									if(resultH eq 0){
-										var checkHombre=document.getElementById("genero_Hombre");
-										checkHombre.checked=true;
-										var checkMujer=document.getElementById("genero_Mujer");
-										checkMujer.checked=false;
-									}else{
-										if(resultM eq 0){
-											var checkHombre=document.getElementById("genero_Hombre");
-											checkHombre.checked=false;
-											var checkMujer=document.getElementById("genero_Mujer");
-											checkMujer.checked=true;
-										}else{
-											var checkHombre=document.getElementById("genero_Hombre");
-											checkHombre.checked=false;
-											var checkMujer=document.getElementById("genero_Mujer");
-											checkMujer.checked=false;
-										}
-									}
-								}
-							</script>
 					</div>
 					
 					<div class="form-group ">
@@ -306,5 +279,24 @@
 				<div class="col-md-1"></div>
 			</div>
 		</form>
+		<script language="JavaScript" type="text/javascript">
+			var genero = "${usuario.getGenero()}";
+			var hombre = "Hombre";
+			var mujer = "Mujer";
+			var result = genero.localeCompare(hombre);
+			var resultado = genero.localeCompare(mujer);
+			if (result == 0){
+				document.getElementById("genero_Hombre").checked = true;
+				document.getElementById("genero_Mujer").checked = false;
+			}else{
+				if(resultado == 0){
+					document.getElementById("genero_Hombre").checked = false;
+					document.getElementById("genero_Mujer").checked = true;
+				}else{
+					document.getElementById("genero_Hombre").checked = false;
+					document.getElementById("genero_Mujer").checked = false;
+				}
+			}
+		</script>
 	</body>
 </html>
