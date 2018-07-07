@@ -198,27 +198,28 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-11">
 				<h4 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h4>
+				<br><br>
 			</div>
 		</div>
-		<form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
+		<form action="crear.html" class="form-signin" method="post" id="form1" name="form1">
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-4">
 					<div class="form-group">
-						<label for="nombreUsuario">Nombre de Usuario</label>
-						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario">
+						<label for="nombreUsuario" style="font-weight: bold;">Nombre de Usuario</label>
+						<input type="text" class="sr-only" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required>
 					</div>
 					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						<label for="email" style="font-weight: bold;">Email</label>
+						<input type="email" class="sr-only" id="email" name="email" placeholder="Email" required>
 					</div>
 					<div class="form-group">
-						<label for="clave">Clave</label>
-						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave">
+						<label for="clave" style="font-weight: bold;">Clave</label>
+						<input type="password" class="sr-only" id="clave" name="clave" placeholder="Clave" required>
 					</div>
 					<div class="form-group">
-						<label for="repiteClave">Repite la Clave</label>
-						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave">
+						<label for="repiteClave" style="font-weight: bold;">Repite la Clave</label>
+						<input type="password" class="sr-only" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" required>
 					</div>
 					La clave debe cumplir los siguientes requisitos: <br>
 				    <ul> 
@@ -231,7 +232,44 @@
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-4">
-				
+					<div class="form-group">
+						<label for="nombreApellidos" style="font-weight: bold;">Nombre y Apellidos</label>
+						<input type="text" class="sr-only" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" required>
+					</div>
+					<div class="form-group">
+						<label for="edad" style="font-weight: bold;">Edad</label>
+						<input type="number" class="sr-only" id="edad" name="edad" placeholder="Edad" required>
+					</div>
+					<div class="form-group">
+						<label for="ciudad" style="font-weight: bold;">Ciudad</label>
+						<input type="text" class="sr-only" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+					</div>
+					<div class="form-group">
+						<label for="pais" style="font-weight: bold;">Pais</label>
+						<input type="text" class=sr-only" id="pais" name="pais" placeholder="Pais" required>
+					</div>
+					<div class="form-group">
+						<label for="genero" class="cols-sm-2 control-label">Género</label>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="genero" id="genero_Hombre" value="Hombre" required>
+							<label class="form-check-label" for="genero_Hombre"> Hombre </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="genero" id="genero_Mujer" value="Mujer" required>
+							<label class="form-check-label" for="genero_Mujer"> Mujer </label>
+						</div>
+					</div>
+					
+					<div class="form-group ">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
+					</div>
+					
+					<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
+		                Login
+		            </a><br>
+		            <a href="recovery.html" class="forgot-password">
+		                ¿Olvidaste la Clave?
+		            </a>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
