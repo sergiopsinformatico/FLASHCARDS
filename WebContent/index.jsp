@@ -164,7 +164,7 @@
 		</style>
 	</head>
 	<!--  <body background="resources/img/background.jpg" style="background-size: 100%;"> background-position: center;-->
-	<body background="resources/img/flashcards.jpg" style="background-size: 100%;">
+	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 		Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -189,8 +189,10 @@
 		    </div>
 		</div>
 		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-8">
+				<img src="/resources/img/flashcards.jpg" style="max-width: 100%; max-height: 100%;">
+			</div>
+			<div class="col-md-4">
 			    <form action="iniciarSesion.html" method="post" class="form-signin">
 			      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
 			      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
@@ -206,7 +208,6 @@
 	                ¿Olvidaste la Clave?
 	            </a>
 			</div>
-			<div class="col-md-3"></div>
 			<!-- <div class="col-md-1"></div>
 			<div class="col-md-4">
 				<img src="/resources/img/flashcards.jpg" style="max-width: 100%; max-height: 100%;">
