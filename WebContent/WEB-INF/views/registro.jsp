@@ -195,10 +195,12 @@
 		    </div>
 		</div>
 		<div class="row">
-			
+			<div class="col-md-1"></div>
+			<div class="col-md-11">
+				<h6 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h6>
+			</div>
 		</div>
 		<div class="row"> 
-			<h6 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h6>
 			<form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
 				<div class="row">
 					<div class="col-md-1"></div>
