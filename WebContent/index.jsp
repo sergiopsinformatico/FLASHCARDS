@@ -186,6 +186,7 @@
 		      <h2 align="center" style="color:blue;">
 				FLASHCARDS. Sistema Basado En Aprendizaje con Tarjetas.
 			  </h2>
+			  <br><br>
 		    </div>
 		</div>
 		<div class="row">
@@ -211,7 +212,7 @@
 	            <a href="recovery.html" class="forgot-password">
 	                ¿Olvidaste la Clave?
 	            </a>
-	            <br><br><br><br>
+	            <br><br><br><br><br><br>
 				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.</h6>
 			</div>
 			<div class="col-md-1"></div>
