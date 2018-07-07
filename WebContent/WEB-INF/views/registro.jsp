@@ -207,7 +207,7 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="nombreUsuario" style="font-weight: bold;">Nombre de Usuario</label>
-						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required>
+						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" value="${usuario.getUsuario()}" required>
 					</div>
 					<div class="form-group">
 						<label for="email" style="font-weight: bold;">Email</label>
