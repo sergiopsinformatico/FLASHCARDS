@@ -186,40 +186,36 @@
 		      <h2 align="center" style="color:blue;">
 				FLASHCARDS. Sistema Basado En Aprendizaje con Tarjetas.
 			  </h2>
+			  <br><br>
 		    </div>
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-4">
-				<img src="/resources/img/background.jpg" style="max-width: 100%; max-height: 100%;">
-			</div>
-			<div class="col-md-2"></div>
-			<div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-					    <form action="iniciarSesion.html" method="post" class="form-signin">
-					      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
-					      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
-					      <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
-					      <label for="inputClave" class="sr-only">Clave</label>
-					      <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
-					      <button class="btn btn-outline-success btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
-					    </form>
-					    <a href="registro.html" class="register">
-			                Si aún no tienes cuenta, regístrate
-			            </a>
-			            <a href="recovery.html" class="forgot-password">
-			                ¿Olvidaste la Clave?
-			            </a>
-					</div>
-				</div>
+			<div class="col-md-6">
+				<img src="/resources/img/flashcards.jpg" style="max-width: 100%; max-height: 100%;">
 			</div>
 			<div class="col-md-1"></div>
-		</div>
-		<div class="row">
-		  <div class="col-md-12" align="center" style="color:green;">
-		    Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.
-		  </div>
+			<div class="col-md-3">
+				<br><br><br>
+			    <form action="iniciarSesion.html" method="post" class="form-signin">
+			      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+			      <label for="inputUsuario" class="sr-only">Usuario o Email</label>
+			      <input type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Usuario o Email" required>
+			      <label for="inputClave" class="sr-only">Clave</label>
+			      <input type="password" id="inputClave" name="inputClave" class="form-control" placeholder="Clave" required>
+			      <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+			    </form>
+			    <a href="registro.html" class="register">
+	                Si aún no tienes cuenta, regístrate
+	            </a>
+	            <br>
+	            <a href="recovery.html" class="forgot-password">
+	                ¿Olvidaste la Clave?
+	            </a>
+	            <br><br><br><br><br><br>
+				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.</h6>
+			</div>
+			<div class="col-md-1"></div>
 		</div>
 	</body>
 </html>
