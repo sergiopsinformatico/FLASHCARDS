@@ -198,39 +198,42 @@
 			
 		</div>
 		<div class="row"> 
+			<h6 align="center" style="font-weight: bold;"> Crear una Cuenta Nueva</h6>
 			<form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
-				<div class="col-md-1"></div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="nombreUsuario">Nombre de Usuario</label>
-						<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="nombreUsuario">Nombre de Usuario</label>
+							<input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario">
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<label for="clave">Clave</label>
+							<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave">
+						</div>
+						<div class="form-group">
+							<label for="repiteClave">Repite la Clave</label>
+							<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave">
+						</div>
+						La clave debe cumplir los siguientes requisitos: <br>
+					    <ul> 
+							<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
+							<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
+							<li>Al menos debe contener una mayúscula (A - Z)</li> 
+							<li>Al menos debe contener una minúscula (a - z)</li> 
+							<li>Al menos debe contener un número (0 - 9)</li> 
+						</ul>
 					</div>
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+					<div class="col-md-2"></div>
+					<div class="col-md-4">
+					
 					</div>
-					<div class="form-group">
-						<label for="clave">Clave</label>
-						<input type="password" class="form-control" id="clave" name="clave" placeholder="Clave">
-					</div>
-					<div class="form-group">
-						<label for="repiteClave">Repite la Clave</label>
-						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave">
-					</div>
-					La clave debe cumplir los siguientes requisitos: <br>
-				    <ul> 
-						<li>La longitud mínima de la clave, debe ser de 4 carácteres como mínimo.</li> 
-						<li>Sólo puede contener estos carácteres [A-Z][a-z][0-9]</li> 
-						<li>Al menos debe contener una mayúscula (A - Z)</li> 
-						<li>Al menos debe contener una minúscula (a - z)</li> 
-						<li>Al menos debe contener un número (0 - 9)</li> 
-					</ul>
+					<div class="col-md-1"></div>
 				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-4">
-				
-				</div>
-				<div class="col-md-1"></div>
 			</form>
 					<!-- <form action="crear.html" class="form-horizontal" method="post" id="form1" name="form1">
 						<div class="row">
