@@ -205,9 +205,8 @@
 								<br>
 								    <style>						    								    	
 								    	.container{
-										     /*min-width:260px;
-										     max-width:260px;
-										     width:260px;*/
+										     min-width: 100%;
+										     max-width: 100%;
 										     width: 100%;
 										     min-height:450px;
 											 max-height:450px;
@@ -219,6 +218,7 @@
 										  transition: transform 300ms;
 										  transition-timing-function: linear;
 										  width: 100%;
+										  min-width: 100%;
 										  height: 100%;
 										  margin: 0;
 										  display: flex;
