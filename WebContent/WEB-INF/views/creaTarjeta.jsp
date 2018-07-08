@@ -245,13 +245,13 @@
 					    		<div id="myCarousel" class="carousel slide">
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
-							            	<div class="carousel-item active">
+							            	<!-- <div class="carousel-item active">
 							                    <div class="card bg-success">
 										          <div class="card-body">
 										            <h4 class="card-title">Coleccion de Tarjetas</h4>
 										          </div>
 										        </div>
-											</div>
+											</div>-->
 											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 										        <div class="card card-flip h-100">
 									                <div class="card-front bg-danger card text-center">
@@ -429,6 +429,7 @@
 			            });
 					}
 				}
+				$('.carousel-item').first().addClass('active');
 				
 				var card = document.querySelector('.card');
 				card.addEventListener( 'click', function() {
@@ -455,7 +456,7 @@
 			            	reverso: $scope.newReverso
 			            });          
 		  	            $scope.Reset();
-		            
+		  	          $('.carousel-item').first().addClass('active');
 		        };
 		        
 		        $scope.Delete = function (tarjeta) {
