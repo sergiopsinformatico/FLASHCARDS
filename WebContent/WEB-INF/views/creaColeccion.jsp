@@ -238,6 +238,15 @@
 					    		<div id="myCarousel" class="carousel slide">
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
+							            	<div class="carousel-item">
+										        <div class="card">
+									                <div class="card-front bg-danger card text-center">
+									                    <div class="card-body">
+									                        <p class="card-text">Ejemplo Anver</p>
+									                    </div>
+									                </div>
+									            </div>								
+							                </div>
 											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
 										        <div class="card card-flip h-100">
 									                <div class="card-front bg-danger card text-center">
@@ -434,6 +443,8 @@
 		                anverso: $scope.newAnverso,
 		                reverso: $scope.newReverso
 		            });
+		            
+					$('.carousel-item').first().addClass('active');
 		            
 		           $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
