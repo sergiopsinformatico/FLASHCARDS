@@ -145,7 +145,7 @@
 			<br><br>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<h2 style="text-align:center">Mi Profile Card</h2>
 				<div class="card">
 				  <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Perfil" style="width:100%">
@@ -156,6 +156,8 @@
 				 </div>
 				</div>
 			</div>
+			<div class="col-md-6"></div>
+			<div class="col-md-3"></div>
 		</div>
 		
 		
