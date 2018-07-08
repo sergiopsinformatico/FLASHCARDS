@@ -254,9 +254,6 @@
 									                </div>
 									            </div>								
 							                </div>
-							                <script>
-							                	$('.carousel-item').first().addClass('active');
-							                </script>
 							            </div>
 								        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 									      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -268,24 +265,23 @@
 									    </a>
 								    </div>
 								</div>
+								<script>
+				                	$('.carousel-item').first().addClass('active');
+				                </script>
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-sm-1"></div> -->
 					<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<!-- <div class="col-sm-1"> -->
 			<div class="col-md-1">
 			</div>
-			<!-- <div class="col-sm-11">-->
 			<div class="col-md-11">
 				<form action="guardarFlashcard.html" method="post" name="form1" id="form1">
 					<div class="row">
 						<div class="col-md-3">
-						<!-- <div class="col-sm-3"> -->
 							<div class="form-group">
 							    <label for="creador">Creador</label>
 							    <input type="text" class="form-control" id="creador" aria-describedby="emailHelp" value="${usuario.getUsuario()}" disabled>
