@@ -293,11 +293,9 @@
 						</script>
 						
 						<div class="profile-usermenu">
-							<ul>
-								Edad: ${perfil.getEdad()} años <br>
-								Genero: ${perfil.getGenero()} <br>
-								Localización: ${perfil.getCiudad()} (${perfil.getPais()}) <br>
-							</ul>
+							<h6 style="font-weight: bold;">Edad: </h6><h6>${perfil.getEdad()} años </h6><br>
+							<h6 style="font-weight: bold;">Genero: </h6><h6>${perfil.getGenero()}</h6><br>
+							<h6 style="font-weight: bold;">Localización: </h6><h6>${perfil.getCiudad()} (${perfil.getPais()}) </h6><br>
 						</div>
 					</div>
 				</div>
