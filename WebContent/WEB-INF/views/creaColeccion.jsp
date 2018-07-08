@@ -202,13 +202,13 @@
 								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
 							</div>
 							<div ng-if="records.length > 0">
-								<h6 align="center" style="font-weight: bold;">Colección de Tarjetas: {{ records.length }} </h6>
 								<br>
 								    <style>						    								    	
 								    	.container{
-										     min-width:260px;
+										     /*min-width:260px;
 										     max-width:260px;
-										     widt:260px;
+										     width:260px;*/
+										     width: 100%;
 										     min-height:450px;
 											 max-height:450px;
 											 height:450px;
@@ -245,15 +245,9 @@
 					    		<div id="myCarousel" class="carousel slide">
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
-							            	<!-- <div class="carousel-item active">
-							                    <div class="card bg-success">
-										          <div class="card-body">
-										            <h4 class="card-title">Coleccion de Tarjetas</h4>
-										          </div>
-										        </div>
-											</div>-->
 											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
-										        <div class="card card-flip h-100">
+										        <!-- <div class="card card-flip h-100">-->
+										        <div class="card card-flip">
 									                <div class="card-front bg-danger card text-center">
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.anverso }}</p>
