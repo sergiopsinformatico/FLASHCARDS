@@ -263,11 +263,11 @@
 					<div class="profile-sidebar">
 						
 						<div class="profile-userpic">
-							<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="">
 						</div>
 						
 						<div class="profile-usertitle">
-							<div class="profile-usertitle-name" style="max-width: 100%;">
+							<div class="profile-usertitle-name">
 								${perfil.getNombreApellidos()} (${perfil.getUsuario()})
 							</div>
 							<div class="profile-usertitle-job">
@@ -296,19 +296,15 @@
 							<ul>
 								<li>
 									<i class="glyphicon glyphicon-user"></i>
-									<h6 style="max-width: 100%;">Edad: ${perfil.getEdad()} años</h6>
+									Edad: ${perfil.getEdad()} años
 								</li>
 								<li>
 									<i class="glyphicon glyphicon-user"></i>
-									<h6 style="max-width: 100%;">Genero: ${perfil.getGenero()}</h6>
-								</li>
-								<li>
-									<i class="glyphicon glyphicon-envelope"></i>
-									<h6 style="max-width: 100%;">Email: ${perfil.getEmail()}</h6>
+									Genero: ${perfil.getGenero()}
 								</li>
 								<li>
 									<i class="glyphicon glyphicon-map-marker"></i>
-									<h6 style="max-width: 100%;">Localización: ${perfil.getCiudad()} (${perfil.getPais()})</h6>
+									Localización: ${perfil.getCiudad()} (${perfil.getPais()})
 								</li>
 							</ul>
 						</div>
