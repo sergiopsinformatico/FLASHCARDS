@@ -147,9 +147,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
 			<div class="col-md-2">
-				<div class="row">
+				<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
+			</div>
+			<div class="col-md-2">
+				<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
+			</div>
+			<div class="col-md-2">
+				<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
+			</div>
+			<div class="col-md-2">
+				<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
+			</div>
+			<div class="col-md-2">
+				<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+				<!-- <div class="row">
 					<h4 align="center" style="font-weight: bold;">Todos los Usuarios</h4>
 				</div>
 				<div class="row">
@@ -249,6 +265,7 @@
 					</div>
 				</div>
 			</div>
+			</div>
 			<div class="col-md-2">
 				<div class="col-md-2">
 				<div class="row">
@@ -300,6 +317,7 @@
 					</div>
 				</div>
 			</div>
+			</div>
 			<div class="col-md-2">
 				<div class="col-md-2">
 				<div class="row">
@@ -350,6 +368,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 			<div class="col-md-2">
 				<div class="col-md-2">
