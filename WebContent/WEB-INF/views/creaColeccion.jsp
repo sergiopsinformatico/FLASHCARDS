@@ -265,6 +265,13 @@
 									    </a>
 								    </div>
 								</div>
+								<script>
+									$(document).ready(function(){
+									  $('.carousel').each(function(){
+									    $(this).find('.carousel-item').eq(0).addClass('active');
+									  });
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -431,7 +438,7 @@
 		                reverso: $scope.newReverso
 		            });
 		            
-		            $('.carousel-item').first().addClass('active');
+		            /*$('.carousel-item').first().addClass('active');*/
 		            
 		           $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
