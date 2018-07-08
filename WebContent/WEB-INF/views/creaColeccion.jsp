@@ -153,15 +153,11 @@
 			</div>
 		</div>
 		<div class="row" ng-controller="showCtrl">
-			<!-- <div class="col-sm-1"></div>-->
 			<div class="col-md-1"></div>
-			<!-- <div class="col-sm-11"> -->
 			<div class="col-md-11">
 				<div class="row">
-					<!-- <div class="col-sm-5"> -->
 					<div class="col-md-5">
 						<div class="row">
-							<!-- <div class="col-sm-6"> -->
 							<div class="col-md-6">
 								<h6 align="center" style="font-weight: bold;">Vista Previa de la Tarjeta</h6>
 								<div class="scene scene--card">
@@ -177,7 +173,6 @@
 								  </div>
 								</div>
 							</div>
-							<!-- <div class="col-sm-6"> -->
 							<div class="col-md-6">
 							<br><br>
 								<div class="form-group">
@@ -193,9 +188,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-sm-1"></div> -->
 					<div class="col-md-1"></div>
-					<!-- <div class="col-sm-5"> -->
 					<div class="col-md-5">
 						<div id="myVisorCards" class="row" style="text-align: center;">
 							<div ng-if="records.length == 0">
@@ -246,8 +239,7 @@
 							        <div class="container">
 							            <div class="carousel-inner row w-100 mx-auto">
 											<div class="carousel-item" ng-repeat="tarjeta in records | filter:expression">
-										        <!-- <div class="card card-flip h-100">-->
-										        <div class="card card-flip">
+										        <div class="card card-flip h-100">
 									                <div class="card-front bg-danger card text-center">
 									                    <div class="card-body">
 									                        <p class="card-text">{{ tarjeta.anverso }}</p>
@@ -274,9 +266,6 @@
 								    </div>
 								</div>
 							</div>
-							<script>
-								$('.carousel-item').first().addClass('active');
-							</script>
 						</div>
 					</div>
 					<!-- <div class="col-sm-1"></div> -->
