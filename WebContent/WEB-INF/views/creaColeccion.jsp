@@ -438,8 +438,6 @@
 		                reverso: $scope.newReverso
 		            });
 		            
-		            /*$('.carousel-item').first().addClass('active');*/
-		            
 		           $http.post('https://sistemaflashcards.herokuapp.com/tarjeta.html', 
 			            {
 			            	anverso: $scope.newAnverso,
@@ -457,7 +455,7 @@
 			            	anverso: tarjeta.anverso,
 			            	reverso: tarjeta.reverso
 			            });
-		            $('.carousel-item').first().addClass('active');
+
 		        };
 				
 			};
