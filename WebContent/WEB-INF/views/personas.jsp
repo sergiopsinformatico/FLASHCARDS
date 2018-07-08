@@ -1,14 +1,5 @@
 <html>
 	<head>
-		<!-- <title>Personas - Flashcards</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
-		
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <title>Gente - Flashcards</title>
@@ -162,54 +153,55 @@
 				</div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
-						<div class="panel-heading">
-							<input class="form-control" ng-model="expression" placeholder="Buscar..." />
+						<div ng-if="records.length == 0">
+							<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
 						</div>
-						<div class="panel-body fixed-panel">
-							<div ng-if="records.length == 0">
-								<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
+						<div ng-if="records.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+						            	<div class="carousel-item active">
+						                    <div class="card bg-success">
+									          <div class="card-body">
+									            <h4 class="card-title">Todos los Usuarios</h4>
+									          </div>
+									        </div>
+										</div>
+										<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
 							</div>
-							<div ng-if="records.length > 0">
-								<div id="myCarousel" class="carousel slide">
-							        <div class="container">
-							            <div class="carousel-inner row w-100 mx-auto">
-							            	<div class="carousel-item active">
-							                    <div class="card bg-success">
-										          <div class="card-body">
-										            <h4 class="card-title">Todos los Usuarios</h4>
-										          </div>
-										        </div>
-											</div>
-											<div class="carousel-item" ng-repeat="person in people | filter:expression">
-										        <div class="card card-flip h-100">
-									                <div class="card-front bg-danger card text-center">
-									                    <div class="card-body">
-									                        <p class="card-text">{{ person.name }}</p>
-									                    </div>
-									                </div>
-									                <div class="card-back bg-info card text-center">
-									                    <div class="card-body">
-									                        <p class="card-text">{{ person.usuario }}</p>
-									                        <br>
-									                    </div>
-									                </div>
-									            </div>								
-							                </div>
-							            </div>
-								        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-									      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									      <span class="sr-only">Previous</span>
-									    </a>
-									    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-									      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-									      <span class="sr-only">Next</span>
-									    </a>
-								    </div>
-								</div>
-							</div>
-							
-							
-							<!-- <table class="table table-bordered table-striped">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- <table class="table table-bordered table-striped">
 								<tbody>
 									<tr ng-repeat="person in people | filter:expression">
 										<td>{{ person.name }} ( {{ person.usuario }} )</td>
@@ -229,11 +221,8 @@
 									</tr>
 								</tbody>
 							</table> -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
+		
 		
 		<!-- 
 		<div class="row">
