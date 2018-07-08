@@ -267,7 +267,7 @@
 						</div>
 						
 						<div class="profile-usertitle">
-							<div class="profile-usertitle-name">
+							<div class="profile-usertitle-name" style="max-width: 100%;">
 								${perfil.getNombreApellidos()} (${perfil.getUsuario()})
 							</div>
 							<div class="profile-usertitle-job">
@@ -296,19 +296,19 @@
 							<ul>
 								<li>
 									<i class="glyphicon glyphicon-user"></i>
-									Edad: ${perfil.getEdad()} años
+									<h6 style="max-width: 100%;">Edad: ${perfil.getEdad()} años</h6>
 								</li>
 								<li>
 									<i class="glyphicon glyphicon-user"></i>
-									Genero: ${perfil.getGenero()}
+									<h6 style="max-width: 100%;">Genero: ${perfil.getGenero()}</h6>
 								</li>
 								<li>
 									<i class="glyphicon glyphicon-envelope"></i>
-									Email: ${perfil.getEmail()}
+									<h6 style="max-width: 100%;">Email: ${perfil.getEmail()}</h6>
 								</li>
 								<li>
 									<i class="glyphicon glyphicon-map-marker"></i>
-									Localización: ${perfil.getCiudad()} (${perfil.getPais()})
+									<h6 style="max-width: 100%;">Localización: ${perfil.getCiudad()} (${perfil.getPais()})</h6>
 								</li>
 							</ul>
 						</div>
@@ -316,7 +316,7 @@
 				</div>
 				<div class="col-md-9">
 		            <div class="profile-content">
-					   Some user related content goes here...
+					   
 		            </div>
 				</div>
 			</div>
