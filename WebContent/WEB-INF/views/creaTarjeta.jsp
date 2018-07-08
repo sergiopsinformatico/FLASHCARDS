@@ -278,6 +278,9 @@
 									      <span class="sr-only">Next</span>
 									    </a>
 								    </div>
+								    <script>
+										$('.carousel-item').first().addClass('active');
+									</script>
 								</div>
 							</div>
 						</div>
@@ -429,7 +432,6 @@
 			            });
 					}
 				}
-				$('.carousel-item').first().addClass('active');
 				
 				var card = document.querySelector('.card');
 				card.addEventListener( 'click', function() {
@@ -456,13 +458,12 @@
 			            	reverso: $scope.newReverso
 			            });          
 		  	            $scope.Reset();
-		  	          $('.carousel-item').first().addClass('active');
+		  	          
 		        };
 		        
 		        $scope.Delete = function (tarjeta) {
 		        	var indice = $scope.records.indexOf(tarjeta);
 		        	$scope.records.splice(indice, 1);
-		        	$('.carousel-item').first().addClass('active');
 		            $http.post('https://sistemaflashcards.herokuapp.com/eliminarTarjeta.html', 
 			            {
 			            	anverso: tarjeta.anverso,
