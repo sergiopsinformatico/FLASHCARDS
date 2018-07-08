@@ -263,7 +263,7 @@
 					<div class="profile-sidebar">
 						
 						<div class="profile-userpic">
-							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="" style="height: 100%;">
+							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="" style="height: 50%; width:100%;">
 						</div>
 						
 						<div class="profile-usertitle">
