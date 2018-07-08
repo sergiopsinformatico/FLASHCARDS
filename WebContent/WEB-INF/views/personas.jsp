@@ -153,10 +153,10 @@
 				</div>
 				<div class="row">
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
-						<div ng-if="records.length == 0">
-							<h6 align="center" style="font-weight: bold;">Aun no hay tarjetas creadas</h6>
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">No hay nuevos usuarios</h6>
 						</div>
-						<div ng-if="records.length > 0">
+						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
