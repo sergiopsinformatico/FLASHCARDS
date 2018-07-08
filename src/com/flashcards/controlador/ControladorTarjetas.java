@@ -50,7 +50,7 @@ public class ControladorTarjetas {
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
 	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("creaTarjeta");
+		vista = new ModelAndView("creaColeccion");
 		tarjetas = new LinkedList<Tarjeta>();
 		user = (Usuario)request.getSession().getAttribute("usuario");
 		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
@@ -140,7 +140,7 @@ public class ControladorTarjetas {
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectClub")==null || request.getParameter("selectClub").equals("")) {
-					vista = new ModelAndView("creaTarjeta");
+					vista = new ModelAndView("creaColeccion");
 					user = (Usuario)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
@@ -163,7 +163,7 @@ public class ControladorTarjetas {
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectUsuario")==null || request.getParameter("selectUsuario").equals("")) {
-					vista = new ModelAndView("creaTarjeta");
+					vista = new ModelAndView("creaColeccion");
 					user = (Usuario)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
@@ -182,7 +182,7 @@ public class ControladorTarjetas {
 		}
 		
 		if(tarjetas.size()==0) {
-			vista = new ModelAndView("creaTarjeta");
+			vista = new ModelAndView("creaColeccion");
 			user = (Usuario)request.getSession().getAttribute("usuario");
 			vista.addObject("usuario",user);
 			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));

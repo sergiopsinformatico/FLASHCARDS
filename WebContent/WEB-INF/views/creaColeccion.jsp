@@ -278,11 +278,11 @@
 									      <span class="sr-only">Next</span>
 									    </a>
 								    </div>
-								    <script>
-										$('.carousel-item').first().addClass('active');
-									</script>
 								</div>
 							</div>
+							<script>
+								$('.carousel-item').first().addClass('active');
+							</script>
 						</div>
 					</div>
 					<!-- <div class="col-sm-1"></div> -->
