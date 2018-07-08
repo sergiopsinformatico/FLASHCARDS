@@ -263,7 +263,7 @@
 					<div class="profile-sidebar">
 						
 						<div class="profile-userpic">
-							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="" style="height: 50%; width:100%;">
+							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="" style="height: 35%; width:100%;">
 						</div>
 						
 						<div class="profile-usertitle">
@@ -293,9 +293,11 @@
 						</script>
 						
 						<div class="profile-usermenu">
-							Edad: ${perfil.getEdad()} años
-							Genero: ${perfil.getGenero()}
-							Localización: ${perfil.getCiudad()} (${perfil.getPais()})
+							<ul>
+								Edad: ${perfil.getEdad()} años <br>
+								Genero: ${perfil.getGenero()} <br>
+								Localización: ${perfil.getCiudad()} (${perfil.getPais()}) <br>
+							</ul>
 						</div>
 					</div>
 				</div>
