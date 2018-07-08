@@ -90,12 +90,12 @@
 	
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
-	          <li class="nav-item">
+	          <li class="nav-item active">
 	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
 					Inicio
 				</a>
 	          </li>
-	          <li class="nav-item active">
+	          <li class="nav-item">
 				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
 					Flashcards
 				</a>

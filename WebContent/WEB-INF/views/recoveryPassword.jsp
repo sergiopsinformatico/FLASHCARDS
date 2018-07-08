@@ -1,9 +1,20 @@
 <html>
 	<head>
-		<title>Recuperación de Credenciales - Flashcards</title>
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>Recuperación de Credenciales - Flashcards</title>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<style>
 			body, html {
 			    height: 100%;
@@ -153,7 +164,7 @@
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+		Usuario user = ((Usuario)(session.getAttribute("usuario")));
 			if(user!=null && (!user.getUsuario().equals(""))){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((Usuario)(session.getAttribute("usuario"))).getUsuario());
 			}
@@ -163,7 +174,57 @@
 				alert("${mensaje}");
 			}
 		</script>
-		<% session.removeAttribute("usuario"); %>
+		
+		<div class="row">
+			<br><br>
+		</div>
+		<div class="row">
+		    <div class="col-md-12">
+		      <h2 align="center" style="color:blue;">
+				FLASHCARDS. Sistema Basado En Aprendizaje con Tarjetas.
+			  </h2>
+			  <br><br>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<br><br><br>
+			    <form action="recuperar.html" method="post" class="form-signin">
+			      <h1 class="h3 mb-3 font-weight-normal" style="font-weight: bold;">Recuperación de Credenciales.</h1>
+			      <h6 align="center" style="font-weight: bold;">
+					Por favor, introduzca su email o su nombre de usuario para recuperar sus datos.<br>
+					Dichos datos serán enviados al email que nos proporcionó en su registro.
+				  </h6>
+			      <label for="usuario" class="sr-only" style="font-weight: bold;">Usuario o Email</label>
+			      <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario o Email" required>
+			      <button class="btn btn-primary" type="submit">Recuperar Datos</button>
+			    </form>
+			   	<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
+		        	Login
+		        </a><br>
+		        <a href="registro.html" class="register centro">
+		        	Si aún no tienes cuenta, regístrate
+		       	</a>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<!-- 
+		<script language="JavaScript" type="text/javascript">
+			if("${mensaje}" != ""){
+				alert("${mensaje}");
+			}
+		</script>
 		<div class="row">
 			<br><br>
 		</div>
@@ -179,7 +240,7 @@
 		<div class="row">
 		    <div class="col-md-12">
 		      <h3 align="center">
-				Recuperación de Credenciales.
+				
 			  </h3>
 		    </div>
 		</div>
@@ -213,6 +274,6 @@
 		            </a>
 		        </div>
 		    </div> 
-		</div>
+		</div>-->
 	</body>
 </html>

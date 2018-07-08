@@ -158,7 +158,6 @@
 			}
 		</style>
 	</head>
-	<!--  <body background="resources/img/background.jpg" style="background-size: 100%;"> background-position: center;-->
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
