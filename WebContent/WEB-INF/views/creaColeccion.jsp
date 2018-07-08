@@ -455,7 +455,7 @@
 			            	anverso: tarjeta.anverso,
 			            	reverso: tarjeta.reverso
 			            });
-
+		            $('.carousel-item').first().addClass('active');
 		        };
 				
 			};
