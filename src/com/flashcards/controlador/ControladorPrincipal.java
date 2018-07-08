@@ -27,7 +27,7 @@ import com.flashcards.modelo.Usuario;
 @Controller
 public class ControladorPrincipal {
 	
-	Usuario user;
+	Usuario user, userPerfil;
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionPeticiones gP = new GestionPeticiones();
 	GestionAmigos gA = new GestionAmigos();
@@ -60,13 +60,28 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Ver Mi Perfil
+	//Ver Perfil
 	
 	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
-	public ModelAndView miperfil(@RequestParam("usuario") String usuario) {
+	public ModelAndView miperfil(@RequestParam("usuario") String usuario, @RequestParam("perfil") String perfil) {
 		user = gU.leerUsuario(usuario);
-		vista = new ModelAndView("miperfil");
+		vista = new ModelAndView("perfil");
 		vista.addObject("usuario", user);
+		if(usuario.equals(perfil)) {
+			userPerfil = gU.leerUsuario(usuario);
+			vista.addObject("modificar", true);
+		}else {
+			userPerfil = gU.leerUsuario(perfil);
+			vista.addObject("modificar", false);
+		}
+		vista.addObject("perfil", userPerfil);
+		if(userPerfil.isUsuario()) {
+			vista.addObject("rol", "Usuario");
+		}else if(userPerfil.isModerador()) {
+			vista.addObject("rol", "Moderador");
+		}else {
+			vista.addObject("rol", "Administrador");
+		}
 		return vista;
 	}
 	
