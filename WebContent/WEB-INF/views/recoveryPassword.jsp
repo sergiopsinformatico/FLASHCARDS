@@ -191,14 +191,17 @@
 				<br><br><br>
 			    <form action="recuperar.html" method="post" class="form-signin">
 			      <h1 class="h3 mb-3 font-weight-normal" style="font-weight: bold;">Recuperación de Credenciales.</h1>
+			      <br><br>
 			      <h6 align="center" style="font-weight: bold;">
 					Por favor, introduzca su email o su nombre de usuario para recuperar sus datos.<br>
 					Dichos datos serán enviados al email que nos proporcionó en su registro.
 				  </h6>
+				  <br>
 			      <label for="usuario" class="sr-only" style="font-weight: bold;">Usuario o Email</label>
 			      <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario o Email" required>
 			      <button class="btn btn-primary" type="submit">Recuperar Datos</button>
 			    </form>
+			    <br><br>
 			   	<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
 		        	Login
 		        </a><br>

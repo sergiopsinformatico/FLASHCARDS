@@ -147,6 +147,74 @@
 			</div>
 		</div>
 		<div class="row">
+			
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+			
+				<script>
+					function check(myRadio){
+						var option = myRadio.value;
+						if(option=="todos"){
+							
+						}else if(option=="amigos"){
+							
+						}else if(option=="peticionesEnviadas"){
+							
+						}else if(option=="peticionesRecibidas"){
+							
+						}else{
+							
+						}
+					}
+				</script>
+			
+				<label class="radio-inline">
+					<input type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)"> Todas las Personas
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="viewOption" id="amigos" value="amigos" onclick="check(this)"> Amigos
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="viewOption" id="peticionesEnviadas" value="peticionesEnviadas" onclick="check(this)"> Peticiones de Amistad Enviadas
+				</label>  
+				<label class="radio-inline">
+					<input type="radio" name="viewOption" id="peticionesRecibidas" value="peticionesRecibidas" onclick="check(this)"> Peticiones de Amistad Recibidas
+				</label> 
+				<label class="radio-inline">
+					<input type="radio" name="viewOption" id="bloqueados" value="bloqueados" onclick="check(this)"> Bloqueados
+				</label>
+			</div>
+			<div class="col-md-2"></div>
+			
+		</div>
+		<div class="row">
+		
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+			
+				<div id="showTodos">
+					<h6 align="center" style="">Todos los Usuarios</h6>
+				</div>
+				<div id="showAmigos">
+					
+				</div>
+				<div id="showPeticionesEnviadas">
+					
+				</div>
+				<div id="showPeticionesRecibidas">
+					
+				</div>
+				<div id="showBloqueados">
+					
+				</div>
+			
+			</div>
+			<div class="col-md-4"></div>
+		
+		</div>
+		
+		
+		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
