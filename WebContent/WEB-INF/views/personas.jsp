@@ -152,6 +152,13 @@
 			<div class="col-md-8">
 			
 				<script>
+				
+					document.getElementById("showTodos").style.display = "block";
+					document.getElementById("showAmigos").style.display = "none";
+					document.getElementById("showPeticionesEnviadas").style.display = "none";
+					document.getElementById("showPeticionesRecibidas").style.display = "none";
+					document.getElementById("showBloqueados").style.display = "none";
+				
 					function check(myRadio){
 						var option = myRadio.value;
 						if(option=="todos"){
@@ -219,19 +226,63 @@
 			<div class="col-md-4">
 			
 				<div id="showTodos">
-					Todos
+					<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
+					<br>
+					<div class="panel panel-primary" ng-controller="peopleCtrl">
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">No hay nuevos usuarios</h6>
+						</div>
+						<div ng-if="people.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+										<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+								$(document).ready(function(){
+								  $('.carousel').each(function(){
+								    $(this).find('.carousel-item').eq(0).addClass('active');
+								  });
+								});
+							</script>
+						</div>
+					</div>
 				</div>
 				<div id="showAmigos">
-					Amigos
+					<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
 				</div>
 				<div id="showPeticionesEnviadas">
-					PDA Enviadas
+					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
 				</div>
 				<div id="showPeticionesRecibidas">
-					PDA Recibidas
+					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
 				</div>
 				<div id="showBloqueados">
-					Bloqueados
+					<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
 				</div>
 			
 			</div>
@@ -240,25 +291,7 @@
 		</div>
 		
 		
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-2">
-				<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
-			</div>
-			<div class="col-md-2">
-				<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
-			</div>
-			<div class="col-md-2">
-				<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
-			</div>
-			<div class="col-md-2">
-				<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
-			</div>
-			<div class="col-md-2">
-				<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
-			</div>
-			<div class="col-md-1"></div>
-		</div>
+		
 				<!-- <div class="row">
 					<h4 align="center" style="font-weight: bold;">Todos los Usuarios</h4>
 				</div>
