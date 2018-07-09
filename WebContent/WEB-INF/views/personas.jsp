@@ -152,12 +152,13 @@
 			<div class="col-md-8">
 			
 				<script>
-				
-					document.getElementById("showTodos").style.display = "block";
-					document.getElementById("showAmigos").style.display = "none";
-					document.getElementById("showPeticionesEnviadas").style.display = "none";
-					document.getElementById("showPeticionesRecibidas").style.display = "none";
-					document.getElementById("showBloqueados").style.display = "none";
+					function initialize(){
+						document.getElementById("showTodos").style.display = "block";
+						document.getElementById("showAmigos").style.display = "none";
+						document.getElementById("showPeticionesEnviadas").style.display = "none";
+						document.getElementById("showPeticionesRecibidas").style.display = "none";
+						document.getElementById("showBloqueados").style.display = "none";
+					}
 				
 					function check(myRadio){
 						var option = myRadio.value;
@@ -226,6 +227,7 @@
 			<div class="col-md-4">
 			
 				<div id="showTodos">
+					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
@@ -273,19 +275,28 @@
 					</div>
 				</div>
 				<div id="showAmigos">
+					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
+					<br>
 				</div>
 				<div id="showPeticionesEnviadas">
+					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
+					<br>
 				</div>
 				<div id="showPeticionesRecibidas">
+					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
+					<br>
 				</div>
 				<div id="showBloqueados">
+					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
+					<br>
 				</div>
 			
 			</div>
+			<script>initialize();</script>
 			<div class="col-md-4"></div>
 		
 		</div>
