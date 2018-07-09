@@ -103,12 +103,7 @@
 		</script>
 		<style>						    								    	
 	    	.container{
-			     /*min-width:260px;
-			     max-width:260px;
-			     widt:260px;*/
-			     /*min-height:450px;
-				 max-height:450px;*/
-			     width: 100%;
+			     width: 80%;
 				 height:450px;
 		     }
 	    	
@@ -236,7 +231,7 @@
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
-						        <div class="container">
+						        <div class="container" style="width: 100%;">
 						            <div class="carousel-inner row w-100 mx-auto">
 										<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
