@@ -155,34 +155,60 @@
 					function check(myRadio){
 						var option = myRadio.value;
 						if(option=="todos"){
-							
+							document.getElementById("showTodos").style.display = "block";
+							document.getElementById("showAmigos").style.display = "none";
+							document.getElementById("showPeticionesEnviadas").style.display = "none";
+							document.getElementById("showPeticionesRecibidas").style.display = "none";
+							document.getElementById("showBloqueados").style.display = "none";
 						}else if(option=="amigos"){
-							
+							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showAmigos").style.display = "block";
+							document.getElementById("showPeticionesEnviadas").style.display = "none";
+							document.getElementById("showPeticionesRecibidas").style.display = "none";
+							document.getElementById("showBloqueados").style.display = "none";
 						}else if(option=="peticionesEnviadas"){
-							
+							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showAmigos").style.display = "none";
+							document.getElementById("showPeticionesEnviadas").style.display = "block";
+							document.getElementById("showPeticionesRecibidas").style.display = "none";
+							document.getElementById("showBloqueados").style.display = "none";
 						}else if(option=="peticionesRecibidas"){
-							
+							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showAmigos").style.display = "none";
+							document.getElementById("showPeticionesEnviadas").style.display = "none";
+							document.getElementById("showPeticionesRecibidas").style.display = "block";
+							document.getElementById("showBloqueados").style.display = "none";
 						}else{
-							
+							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showAmigos").style.display = "none";
+							document.getElementById("showPeticionesEnviadas").style.display = "none";
+							document.getElementById("showPeticionesRecibidas").style.display = "none";
+							document.getElementById("showBloqueados").style.display = "block";
 						}
 					}
 				</script>
-			
-				<label class="radio-inline">
-					<input type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)"> Todas las Personas
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="viewOption" id="amigos" value="amigos" onclick="check(this)"> Amigos
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="viewOption" id="peticionesEnviadas" value="peticionesEnviadas" onclick="check(this)"> Peticiones de Amistad Enviadas
-				</label>  
-				<label class="radio-inline">
-					<input type="radio" name="viewOption" id="peticionesRecibidas" value="peticionesRecibidas" onclick="check(this)"> Peticiones de Amistad Recibidas
-				</label> 
-				<label class="radio-inline">
-					<input type="radio" name="viewOption" id="bloqueados" value="bloqueados" onclick="check(this)"> Bloqueados
-				</label>
+				
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
+					<label class="form-check-label" for="todos">Todos los Usuarios</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewOption" id="amigos" value="amigos" onclick="check(this)">
+					<label class="form-check-label" for="amigos">Amigos</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewOption" id="peticionesEnviadas" value="peticionesEnviadas" onclick="check(this)">
+					<label class="form-check-label" for="peticionesEnviadas">Peticiones de Amistad Enviadas</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewOption" id="peticionesRecibidas" value="peticionesRecibidas" onclick="check(this)">
+					<label class="form-check-label" for="peticionesRecibidas">Peticiones de Amistad Recibidas</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewOption" id="bloqueados" value="bloqueados" onclick="check(this)">
+					<label class="form-check-label" for="bloqueados">Bloqueados</label>
+				</div>
+				
 			</div>
 			<div class="col-md-2"></div>
 			
@@ -193,19 +219,19 @@
 			<div class="col-md-4">
 			
 				<div id="showTodos">
-					<h6 align="center" style="">Todos los Usuarios</h6>
+					Todos
 				</div>
 				<div id="showAmigos">
-					
+					Amigos
 				</div>
 				<div id="showPeticionesEnviadas">
-					
+					PDA Enviadas
 				</div>
 				<div id="showPeticionesRecibidas">
-					
+					PDA Recibidas
 				</div>
 				<div id="showBloqueados">
-					
+					Bloqueados
 				</div>
 			
 			</div>
