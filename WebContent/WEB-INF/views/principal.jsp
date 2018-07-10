@@ -148,7 +148,7 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<div class="card">
-				  <img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt="Perfil" style="width:100%">
+				  <img src="resources/img/profile.png" alt="Perfil" style="width:100%">
 				  <h5 style="text-align:center;">Mi Profile Card</h5>
 				  <h6>${usuario.getNombreApellidos()}</h6>
 				  <p class="title">${rol}</p>

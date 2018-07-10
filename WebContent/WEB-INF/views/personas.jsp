@@ -137,7 +137,14 @@
 			  
 			.card-flip:hover .card-back {
 			  transform: rotateY(0deg);
-			}								
+			}	
+			
+			.formato-img{
+				max-width: 100%;
+				height: 200px;
+				min-height: 200px;
+				max-height: 200px;
+			}							
 	    </style>
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -240,9 +247,10 @@
 										<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.name }}</p>
-								                    </div>
+													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+													<div class="card-body">
+														<p class="card-text">{{ person.name }}</p>
+													</div>
 								                </div>
 								                <div class="card-back bg-info card text-center">
 								                    <div class="card-body">
@@ -288,9 +296,10 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.name }}</p>
-								                    </div>
+								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+													<div class="card-body">
+														<p class="card-text">{{ person.name }}</p>
+													</div>
 								                </div>
 								                <div class="card-back bg-info card text-center">
 								                    <div class="card-body">
@@ -336,9 +345,10 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.name }}</p>
-								                    </div>
+								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+													<div class="card-body">
+														<p class="card-text">{{ person.name }}</p>
+													</div>
 								                </div>
 								                <div class="card-back bg-info card text-center">
 								                    <div class="card-body">
@@ -384,9 +394,10 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.name }}</p>
-								                    </div>
+								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+													<div class="card-body">
+														<p class="card-text">{{ person.name }}</p>
+													</div>
 								                </div>
 								                <div class="card-back bg-info card text-center">
 								                    <div class="card-body">
@@ -432,9 +443,10 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.name }}</p>
-								                    </div>
+								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+													<div class="card-body">
+														<p class="card-text">{{ person.name }}</p>
+													</div>
 								                </div>
 								                <div class="card-back bg-info card text-center">
 								                    <div class="card-body">
