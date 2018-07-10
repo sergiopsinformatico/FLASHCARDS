@@ -150,7 +150,7 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-11">
-				<br><h1 align="center" style="font-weight: bold;">Gente</h1><br>
+				<br><h1 align="center" style="font-weight: bold;">Gente</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -203,23 +203,27 @@
 						}
 					}
 				</script>
-				
+				<br><br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
 					<label class="form-check-label" for="todos">Todos los Usuarios</label>
 				</div>
+				<br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="amigos" value="amigos" onclick="check(this)">
 					<label class="form-check-label" for="amigos">Amigos</label>
 				</div>
+				<br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="peticionesEnviadas" value="peticionesEnviadas" onclick="check(this)">
 					<label class="form-check-label" for="peticionesEnviadas">Peticiones de Amistad Enviadas</label>
 				</div>
+				<br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="peticionesRecibidas" value="peticionesRecibidas" onclick="check(this)">
 					<label class="form-check-label" for="peticionesRecibidas">Peticiones de Amistad Recibidas</label>
 				</div>
+				<br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="bloqueados" value="bloqueados" onclick="check(this)">
 					<label class="form-check-label" for="bloqueados">Bloqueados</label>
@@ -229,7 +233,6 @@
 			<div class="col-md-3">
 			
 				<div id="showTodos">
-					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
@@ -279,7 +282,6 @@
 					</div>
 				</div>
 				<div id="showAmigos">
-					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="friendsCtrl">
@@ -329,7 +331,6 @@
 					</div>
 				</div>
 				<div id="showPeticionesEnviadas">
-					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
@@ -379,7 +380,6 @@
 					</div>
 				</div>
 				<div id="showPeticionesRecibidas">
-					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
@@ -429,7 +429,6 @@
 					</div>
 				</div>
 				<div id="showBloqueados">
-					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
