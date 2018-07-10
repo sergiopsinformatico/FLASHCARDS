@@ -140,10 +140,12 @@
 			}	
 			
 			.formato-img{
-				max-width: 100%;
 				height: 200px;
 				min-height: 200px;
 				max-height: 200px;
+				display: block;
+			    margin-left: auto;
+			    margin-right: auto;
 			}							
 	    </style>
 		<div class="row">
