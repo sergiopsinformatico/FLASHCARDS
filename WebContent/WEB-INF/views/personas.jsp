@@ -277,21 +277,193 @@
 					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
 					<br>
+					<div class="panel panel-primary" ng-controller="friendsCtrl">
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">Aún no tiene amigos</h6>
+						</div>
+						<div ng-if="people.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+								$(document).ready(function(){
+								  $('.carousel').each(function(){
+								    $(this).find('.carousel-item').eq(0).addClass('active');
+								  });
+								});
+							</script>
+						</div>
+					</div>
 				</div>
 				<div id="showPeticionesEnviadas">
 					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
 					<br>
+					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">Todas las peticiones de amistad enviadas, han sido aceptadas o rechazadas</h6>
+						</div>
+						<div ng-if="people.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+								$(document).ready(function(){
+								  $('.carousel').each(function(){
+								    $(this).find('.carousel-item').eq(0).addClass('active');
+								  });
+								});
+							</script>
+						</div>
+					</div>
 				</div>
 				<div id="showPeticionesRecibidas">
 					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
 					<br>
+					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">No tiene ninguna petición nueva de amistad</h6>
+						</div>
+						<div ng-if="people.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+								$(document).ready(function(){
+								  $('.carousel').each(function(){
+								    $(this).find('.carousel-item').eq(0).addClass('active');
+								  });
+								});
+							</script>
+						</div>
+					</div>
 				</div>
 				<div id="showBloqueados">
 					<br><br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
 					<br>
+					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
+						<div ng-if="people.length == 0">
+							<h6 align="center" style="font-weight: bold;">No tiene usuarios bloqueados</h6>
+						</div>
+						<div ng-if="people.length > 0">
+							<div id="myCarousel" class="carousel slide">
+						        <div class="container">
+						            <div class="carousel-inner row w-100 mx-auto">
+						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card card-flip h-100">
+								                <div class="card-front bg-danger card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.name }}</p>
+								                    </div>
+								                </div>
+								                <div class="card-back bg-info card text-center">
+								                    <div class="card-body">
+								                        <p class="card-text">{{ person.usuario }}</p>
+								                        <br>
+								                    </div>
+								                </div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+								$(document).ready(function(){
+								  $('.carousel').each(function(){
+								    $(this).find('.carousel-item').eq(0).addClass('active');
+								  });
+								});
+							</script>
+						</div>
+					</div>
 				</div>
 			
 			</div>
