@@ -140,8 +140,8 @@
 			}	
 			
 			.formato-img{
-				width: 100%;
-    			height: 200px;
+				height: 200px;
+				width: auto;
 				display: block;
 			    margin-left: auto;
 			    margin-right: auto;
