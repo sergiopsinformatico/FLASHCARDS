@@ -154,10 +154,11 @@
 			</div>
 		</div>
 		<div class="row">
-			
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-			
+			<br><br><br>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 				<script>
 					function initialize(){
 						document.getElementById("showTodos").style.display = "block";
@@ -203,34 +204,28 @@
 					}
 				</script>
 				
-				<div class="form-check form-check-inline">
+				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
 					<label class="form-check-label" for="todos">Todos los Usuarios</label>
 				</div>
-				<div class="form-check form-check-inline">
+				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="amigos" value="amigos" onclick="check(this)">
 					<label class="form-check-label" for="amigos">Amigos</label>
 				</div>
-				<div class="form-check form-check-inline">
+				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="peticionesEnviadas" value="peticionesEnviadas" onclick="check(this)">
 					<label class="form-check-label" for="peticionesEnviadas">Peticiones de Amistad Enviadas</label>
 				</div>
-				<div class="form-check form-check-inline">
+				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="peticionesRecibidas" value="peticionesRecibidas" onclick="check(this)">
 					<label class="form-check-label" for="peticionesRecibidas">Peticiones de Amistad Recibidas</label>
 				</div>
-				<div class="form-check form-check-inline">
+				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="bloqueados" value="bloqueados" onclick="check(this)">
 					<label class="form-check-label" for="bloqueados">Bloqueados</label>
 				</div>
-				
 			</div>
-			<div class="col-md-2"></div>
-			
-		</div>
-		<div class="row">
-		
-			<div class="col-md-5"></div>
+			<div class="col-md-1"></div>
 			<div class="col-md-3">
 			
 				<div id="showTodos">
@@ -486,7 +481,7 @@
 			
 			</div>
 			<script>initialize();</script>
-			<div class="col-md-4"></div>
+			<div class="col-md-2"></div>
 		
 		</div>
 		
