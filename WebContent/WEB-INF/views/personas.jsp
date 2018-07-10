@@ -248,7 +248,7 @@
 										<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-													<!-- <img class="card-img-top rounded" src="resources/img/profile.png" alt="Card image cap"> -->
+													<br>
 													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
 														<p class="card-text">{{ person.name }}</p>
@@ -298,7 +298,8 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+								                    <br>
+													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
 														<p class="card-text">{{ person.name }}</p>
 													</div>
@@ -347,7 +348,8 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+								                    <br>
+													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
 														<p class="card-text">{{ person.name }}</p>
 													</div>
@@ -396,7 +398,8 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+								                    <br>
+													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
 														<p class="card-text">{{ person.name }}</p>
 													</div>
@@ -445,7 +448,8 @@
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card card-flip h-100">
 								                <div class="card-front bg-danger card text-center">
-								                    <img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+								                    <br>
+													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
 														<p class="card-text">{{ person.name }}</p>
 													</div>
