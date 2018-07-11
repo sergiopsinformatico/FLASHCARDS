@@ -292,7 +292,7 @@
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card h-100 bg-danger card text-center">
+									        <div class="card h-100 bg-info text-center text-white">
 							                    <br>
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
