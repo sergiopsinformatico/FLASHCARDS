@@ -292,7 +292,7 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h6 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h6>
