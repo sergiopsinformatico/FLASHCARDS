@@ -296,6 +296,19 @@
 																{{ person.name }}
 															</a>
 														</h6>
+														<div>
+															<form action="eliminarAmigo.html" method="POST">
+													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Amigo" />
+															</form>
+															<br><br>
+															<form action="bloquearAmigo.html" method="POST">
+													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
+															</form>
+														</div>
 													</p>
 												</div>
 								            </div>								
