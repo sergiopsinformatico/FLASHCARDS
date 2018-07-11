@@ -157,8 +157,8 @@
 			<br><br><br>
 		</div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-5">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
 				<script>
 					function initialize(){
 						document.getElementById("showTodos").style.display = "block";
