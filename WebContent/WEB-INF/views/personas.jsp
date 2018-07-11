@@ -154,9 +154,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<br><br><br>
-		</div>
-		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-3">
 				<script>
@@ -233,6 +230,7 @@
 			<div class="col-md-3">
 			
 				<div id="showTodos">
+					<br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Todos los Usuarios</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
@@ -282,6 +280,7 @@
 					</div>
 				</div>
 				<div id="showAmigos">
+					<br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Amigos</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="friendsCtrl">
@@ -293,20 +292,12 @@
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card card-flip h-100">
-								                <div class="card-front bg-danger card text-center">
-								                    <br>
-													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-													<div class="card-body">
-														<p class="card-text">{{ person.name }}</p>
-													</div>
-								                </div>
-								                <div class="card-back bg-info card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.usuario }}</p>
-								                        <br>
-								                    </div>
-								                </div>
+									        <div class="card h-100 bg-danger card text-center">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">{{ person.name }} ({{ person.usuario }})</p>
+												</div>
 								            </div>								
 						                </div>
 						            </div>
@@ -331,6 +322,7 @@
 					</div>
 				</div>
 				<div id="showPeticionesEnviadas">
+					<br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Enviadas</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
@@ -380,6 +372,7 @@
 					</div>
 				</div>
 				<div id="showPeticionesRecibidas">
+					<br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Peticiones de Amistad Recibidas</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
@@ -429,6 +422,7 @@
 					</div>
 				</div>
 				<div id="showBloqueados">
+					<br>
 					<h6 align="center" style="width: 100%; font-weight: bold;">Bloqueados</h6>
 					<br>
 					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
