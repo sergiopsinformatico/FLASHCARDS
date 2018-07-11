@@ -203,7 +203,7 @@
 						}
 					}
 				</script>
-				<br><br>
+				<br><br><br><br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
 					<label class="form-check-label" for="todos">Todos los Usuarios</label>
