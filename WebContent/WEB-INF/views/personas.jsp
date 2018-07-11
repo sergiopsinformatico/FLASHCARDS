@@ -241,21 +241,15 @@
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container" style="width: 100%;">
 						            <div class="carousel-inner row w-100 mx-auto">
-										<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card card-flip h-100">
-								                <div class="card-front bg-danger card text-center">
-													<br>
-													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-													<div class="card-body">
-														<p class="card-text">{{ person.name }}</p>
-													</div>
-								                </div>
-								                <div class="card-back bg-info card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.usuario }}</p>
-								                        <br>
-								                    </div>
-								                </div>
+							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card h-100 bg-info text-center text-white">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">
+														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+													</p>
+												</div>
 								            </div>								
 						                </div>
 						            </div>
@@ -291,13 +285,17 @@
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
-						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
+							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
 									        <div class="card h-100 bg-info text-center text-white">
 							                    <br>
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+														<h6 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}">
+																{{ person.name }}
+															</a>
+														</h6>
 													</p>
 												</div>
 								            </div>								
@@ -335,21 +333,15 @@
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
-						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card card-flip h-100">
-								                <div class="card-front bg-danger card text-center">
-								                    <br>
-													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-													<div class="card-body">
-														<p class="card-text">{{ person.name }}</p>
-													</div>
-								                </div>
-								                <div class="card-back bg-info card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.usuario }}</p>
-								                        <br>
-								                    </div>
-								                </div>
+							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card h-100 bg-info text-center text-white">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">
+														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+													</p>
+												</div>
 								            </div>								
 						                </div>
 						            </div>
@@ -385,21 +377,15 @@
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
-						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card card-flip h-100">
-								                <div class="card-front bg-danger card text-center">
-								                    <br>
-													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-													<div class="card-body">
-														<p class="card-text">{{ person.name }}</p>
-													</div>
-								                </div>
-								                <div class="card-back bg-info card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.usuario }}</p>
-								                        <br>
-								                    </div>
-								                </div>
+							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card h-100 bg-info text-center text-white">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">
+														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+													</p>
+												</div>
 								            </div>								
 						                </div>
 						            </div>
@@ -435,21 +421,15 @@
 							<div id="myCarousel" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
-						            	<div class="carousel-item" ng-repeat="person in people | filter:expression">
-									        <div class="card card-flip h-100">
-								                <div class="card-front bg-danger card text-center">
-								                    <br>
-													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-													<div class="card-body">
-														<p class="card-text">{{ person.name }}</p>
-													</div>
-								                </div>
-								                <div class="card-back bg-info card text-center">
-								                    <div class="card-body">
-								                        <p class="card-text">{{ person.usuario }}</p>
-								                        <br>
-								                    </div>
-								                </div>
+							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
+									        <div class="card h-100 bg-info text-center text-white">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">
+														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+													</p>
+												</div>
 								            </div>								
 						                </div>
 						            </div>
