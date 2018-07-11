@@ -296,7 +296,9 @@
 							                    <br>
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
-													<p class="card-text">{{ person.name }} ({{ person.usuario }})</p>
+													<p class="card-text">
+														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+													</p>
 												</div>
 								            </div>								
 						                </div>
