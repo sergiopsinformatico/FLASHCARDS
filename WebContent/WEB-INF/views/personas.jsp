@@ -294,29 +294,33 @@
 															</form>
 														</div>
 														<script>
-															var estado = {{ person.status }};
-															if(estado=="amigo"){
+															var estado="{{ person.status }}";
+															var amigo="amigo";
+															var pdaE="pdaEnviada";
+															var pdaR="pdaRecibida";
+															var bloc="bloqueado";
+															if(estado==amigo){
 																document.getElementById("divAmigos").style.display = "block";
 																document.getElementById("divPDAEnviada").style.display = "none";
 																document.getElementById("divPDARecibida").style.display = "none";
 																document.getElementById("divBloqueado").style.display = "none";
 																document.getElementById("divNuevo").style.display = "none";
 															}else{
-																if(estado=="pdaEnviada"){
+																if(estado==pdaE){
 																	document.getElementById("divAmigos").style.display = "none";
 																	document.getElementById("divPDAEnviada").style.display = "block";
 																	document.getElementById("divPDARecibida").style.display = "none";
 																	document.getElementById("divBloqueado").style.display = "none";
 																	document.getElementById("divNuevo").style.display = "none";
 																}else{
-																	if(estado=="pdaRecibida"){
+																	if(estado==pdaR){
 																		document.getElementById("divAmigos").style.display = "none";
 																		document.getElementById("divPDAEnviada").style.display = "none";
 																		document.getElementById("divPDARecibida").style.display = "block";
 																		document.getElementById("divBloqueado").style.display = "none";
 																		document.getElementById("divNuevo").style.display = "none";
 																	}else{
-																		if(estado=="bloqueado"){
+																		if(estado==bloc){
 																			document.getElementById("divAmigos").style.display = "none";
 																			document.getElementById("divPDAEnviada").style.display = "none";
 																			document.getElementById("divPDARecibida").style.display = "none";
