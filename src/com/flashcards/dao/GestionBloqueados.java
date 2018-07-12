@@ -24,6 +24,10 @@ public class GestionBloqueados {
 		return dB.getUsuariosBloqueadores(bloqueado);
 	}
 	
+	public boolean existe(Bloqueado bloqueado) {
+		return dB.existBloqueado(bloqueado);
+	}
+	
 	public boolean borrarBloqueado(Bloqueado bloqueado) {
 		return dB.deleteBloqueado(bloqueado);
 	}

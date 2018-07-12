@@ -78,6 +78,16 @@ public class DBPeticiones {
 		}
 	}
 	
+	public boolean existPeticion(PeticionDeAmistad pdA) {
+		doc = new Document("envia", pdA.getEnvia()).append("recibe", pdA.getRecibe());
+		MongoCursor<Document> elementos = coleccionPeticiones.find(doc).iterator();
+		if(elementos.hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public boolean updatePeticion(PeticionDeAmistad peticion) {
 		try {
 			return (deletePeticion(peticion) && createPeticion(peticion));

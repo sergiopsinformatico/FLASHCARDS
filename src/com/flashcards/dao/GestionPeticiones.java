@@ -29,6 +29,10 @@ public class GestionPeticiones {
 		return dB.updatePeticion(peticion);
 	}
 	
+	public boolean existe(PeticionDeAmistad peticion) {
+		return dB.existPeticion(peticion);
+	}
+	
 	public boolean eliminarPeticion(PeticionDeAmistad peticion) {
 		return dB.deletePeticion(peticion);
 	}

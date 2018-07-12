@@ -235,7 +235,7 @@
 					<br>
 					<div class="panel panel-primary" ng-controller="peopleCtrl">
 						<div ng-if="people.length == 0">
-							<h6 align="center" style="font-weight: bold;">No hay nuevos usuarios</h6>
+							<h6 align="center">No hay usuarios en el sistema, aparte de tú</h6>
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
@@ -247,7 +247,92 @@
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+														<h5 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+																{{ person.name }}
+															</a>
+														</h5>
+														<div id="divAmigos">
+															<form action="eliminarAmigo.html" method="POST">
+													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Amigo" />
+															</form>
+															<form action="bloquearAmigo.html" method="POST">
+													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
+															</form>
+														</div>
+														<div id="divPDAEnviada">
+															<h6 align="center">
+																Ha enviado una petición de Amistad a este usuario. La puede ver en "Peticiones de Amistad Enviadas".
+															</h6>
+														</div>
+														<div id="divPDARecibida">
+															<h6 align="center">
+																Ha recibido una petición de Amistad. La puede ver en "Peticiones de Amistad Recibidas".
+															</h6>
+														</div>
+														<div id="divBloqueado">
+															<form action="desbloquear.html" method="POST">
+																<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
+															</form>
+														</div>
+														<div id="divNuevo">
+															<form action="peticionAmistad.html" method="POST">
+													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" value="Añadir Amigo" />
+															</form>
+															<form action="bloquear.html" method="POST">
+													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+															    <input type="submit" name="action" value="Bloquear Usuario" />
+															</form>
+														</div>
+														<script>
+															var estado = "{{ person.name }}";
+															if(estado=="amigo"){
+																document.getElementById("divAmigos").style.display = "block";
+																document.getElementById("divPDAEnviada").style.display = "none";
+																document.getElementById("divPDARecibida").style.display = "none";
+																document.getElementById("divBloqueado").style.display = "none";
+																document.getElementById("divNuevo").style.display = "none";
+															}else{
+																if(estado=="pdaEnviada"){
+																	document.getElementById("divAmigos").style.display = "none";
+																	document.getElementById("divPDAEnviada").style.display = "block";
+																	document.getElementById("divPDARecibida").style.display = "none";
+																	document.getElementById("divBloqueado").style.display = "none";
+																	document.getElementById("divNuevo").style.display = "none";
+																}else{
+																	if(estado=="pdaRecibida"){
+																		document.getElementById("divAmigos").style.display = "none";
+																		document.getElementById("divPDAEnviada").style.display = "none";
+																		document.getElementById("divPDARecibida").style.display = "block";
+																		document.getElementById("divBloqueado").style.display = "none";
+																		document.getElementById("divNuevo").style.display = "none";
+																	}else{
+																		if(estado=="bloqueado"){
+																			document.getElementById("divAmigos").style.display = "none";
+																			document.getElementById("divPDAEnviada").style.display = "none";
+																			document.getElementById("divPDARecibida").style.display = "none";
+																			document.getElementById("divBloqueado").style.display = "block";
+																			document.getElementById("divNuevo").style.display = "none";
+																		}else{
+																			document.getElementById("divAmigos").style.display = "none";
+																			document.getElementById("divPDAEnviada").style.display = "none";
+																			document.getElementById("divPDARecibida").style.display = "none";
+																			document.getElementById("divBloqueado").style.display = "none";
+																			document.getElementById("divNuevo").style.display = "block";
+																		}
+																	}
+																}
+															}
+														</script>
 													</p>
 												</div>
 								            </div>								
@@ -279,7 +364,7 @@
 					<br>
 					<div class="panel panel-primary" ng-controller="friendsCtrl">
 						<div ng-if="people.length == 0">
-							<h6 align="center" style="font-weight: bold;">Aún no tiene amigos</h6>
+							<h6 align="center">Aún no tiene amigos</h6>
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
@@ -291,18 +376,18 @@
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">
+														<h5 align="center" style="font-weight: bold;">
 															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
-														</h6>
+														</h5>
 														<div>
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Amigo" />
 															</form>
-															<br><br>
+															<br>
 															<form action="bloquearAmigo.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -340,7 +425,7 @@
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaEnviadasCtrl">
 						<div ng-if="people.length == 0">
-							<h6 align="center" style="font-weight: bold;">Todas las peticiones de amistad enviadas, han sido aceptadas o rechazadas</h6>
+							<h6 align="center">Todas las peticiones de amistad enviadas, han sido aceptadas o rechazadas</h6>
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
@@ -352,8 +437,18 @@
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+														<h5 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+																{{ person.name }}
+															</a>
+														</h5>
 													</p>
+													<form action="eliminarPeticion.html" method="POST">
+											    		<input id="envia" name="envia" type="hidden" value="${usuario.getUsuario()}">
+											    		<input id="recibe" name="recibe" type="hidden" value="{{ person.usuario }}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Petición" />
+													</form>
 												</div>
 								            </div>								
 						                </div>
@@ -384,7 +479,7 @@
 					<br>
 					<div class="panel panel-primary" ng-controller="pdaRecibidasCtrl">
 						<div ng-if="people.length == 0">
-							<h6 align="center" style="font-weight: bold;">No tiene ninguna petición nueva de amistad</h6>
+							<h6 align="center">No tiene ninguna petición nueva de amistad</h6>
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
@@ -396,8 +491,27 @@
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+														<h5 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+																{{ person.name }}
+															</a>
+														</h5>
 													</p>
+													<form action="aceptar.html" method="POST">
+											    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													    <input type="submit" name="action" class="btn btn-raised btn-success" value="Aceptar Petición" />
+													</form>
+													<form action="rechazar.html" method="POST">
+											    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Rechazar Petición" />
+													</form>
+													<form action="bloquearPeticion.html" method="POST">
+											    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
+													</form>
 												</div>
 								            </div>								
 						                </div>
@@ -428,7 +542,7 @@
 					<br>
 					<div class="panel panel-primary" ng-controller="bloqueadosCtrl">
 						<div ng-if="people.length == 0">
-							<h6 align="center" style="font-weight: bold;">No tiene usuarios bloqueados</h6>
+							<h6 align="center">No tiene usuarios bloqueados</h6>
 						</div>
 						<div ng-if="people.length > 0">
 							<div id="myCarousel" class="carousel slide">
@@ -440,8 +554,17 @@
 												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 												<div class="card-body">
 													<p class="card-text">
-														<h6 align="center" style="font-weight: bold;">{{ person.name }}</h6>
+														<h5 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+																{{ person.name }}
+															</a>
+														</h5>
 													</p>
+													<form action="desbloquear.html" method="POST">
+														<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+													    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
+													</form>
 												</div>
 								            </div>								
 						                </div>
@@ -960,7 +1083,8 @@
 			        	var user = array[i].split("///-///");
 			        	$scope.people.push({
 			        		name: user[0],
-			        		usuario: user[1]
+			        		usuario: user[1],
+			        		status: user[2]
 			        	});
 			        }
 		        }

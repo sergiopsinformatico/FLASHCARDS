@@ -4,14 +4,20 @@ import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
+import com.flashcards.modelo.Amigos;
+import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Eliminado;
+import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.Usuario;
 
 public class GestionUsuarios {
 	
 	DBUsuarios db;
-	GestionEliminados gE;
+	GestionEliminados gE = new GestionEliminados();
+	GestionBloqueados gB = new GestionBloqueados();
+	GestionAmigos gA = new GestionAmigos();
+	GestionPeticiones gP = new GestionPeticiones();
 	Fecha fecha;
 	LinkedList<Eliminado> lista;
 	Eliminado el;
@@ -64,13 +70,43 @@ public class GestionUsuarios {
 	public String gente(String usuario) {
 		usuarios = db.gente(usuario);
 		json = "";
+		int check=0;
+		String status="";
 		for(indice = 0; indice<usuarios.size(); indice++) {
 			user = usuarios.get(indice);
-			if(indice==0) {
-				json = user.getNombreApellidos()+"///-///"+user.getUsuario();
-			}else {
-				json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario();
+			if(!(gB.existe(new Bloqueado(user.getUsuario(), usuario)))) {
+				if(gA.existeAmigos(new Amigos(usuario, user.getUsuario()))) {
+					status = "amigo";
+				}else {
+					if(gP.existe(new PeticionDeAmistad(usuario, user.getUsuario()))) {
+						status = "pdaEnviada";
+					}else {
+						if(gP.existe(new PeticionDeAmistad(user.getUsuario(), usuario))) {
+							status = "pdaRecibida";
+						}else {
+							if(gB.existe(new Bloqueado(usuario, user.getUsuario()))) {
+								status = "bloqueado";
+							}else {
+								status = "nuevo";
+							}
+						}
+					}
+				}
+				if(check==0) {
+					json = user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
+					check++;
+				}else {
+					json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
+				}
 			}
+			/*
+			 * 
+			 * tocar en el controlador para leer
+			 * 
+			 * tarjetas club
+			 * control cuentas by administrador
+			 * 
+			 */
 		}
 		return json;
 	}

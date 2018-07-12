@@ -46,6 +46,7 @@ public class ControladorPersonas {
 	@RequestMapping(value = "/peticionAmistad", method = RequestMethod.POST)
 	public void peticionAmistad(HttpServletRequest request, HttpServletResponse response) {
 		pA = new PeticionDeAmistad(request.getParameter("usuario"),request.getParameter("peticion"));
+		pA.setEstado("Sin Contestar");
 		gP = new GestionPeticiones();
 		gP.crearPeticiones(pA);
 		try {

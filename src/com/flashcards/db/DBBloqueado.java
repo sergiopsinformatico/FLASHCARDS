@@ -55,6 +55,15 @@ public class DBBloqueado {
 		return bloqueados;
 	}
 	
+	public boolean existBloqueado (Bloqueado bloq) {
+		MongoCursor<Document> listaBloqueos = coleccionBloqueado.find(new BsonDocument().append("bloqueador", new BsonString(bloq.getBloqueador())).append("bloqueado", new BsonString(bloq.getBloqueado()))).iterator();
+		if(listaBloqueos.hasNext()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public LinkedList<String> getUsuariosBloqueadores (String bloqueado) {
 		LinkedList<String> bloqueadores = new LinkedList<String>();
 		MongoCursor<Document> listaBloqueos = coleccionBloqueado.find(new BsonDocument().append("bloqueado", new BsonString(bloqueado))).iterator();

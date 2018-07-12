@@ -7,7 +7,6 @@ public class PeticionDeAmistad {
 	public PeticionDeAmistad(String envia, String recibe) {
 		setEnvia(envia);
 		setRecibe(recibe);
-		setEstado("Sin Contestar");
 	}
 	
 	public PeticionDeAmistad(String envia, String recibe, String estado) {

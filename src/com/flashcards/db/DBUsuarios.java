@@ -106,7 +106,6 @@ public class DBUsuarios {
 	
 	public LinkedList<Usuario> gente (String username) {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
-		//Lectura de Todos
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
 			doc = lista.next();
@@ -114,6 +113,7 @@ public class DBUsuarios {
 				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
+		/*
 		//Eliminamos Amigos
 		GestionAmigos gA=new GestionAmigos();
 		LinkedList<String>personas = gA.getAmigos(username);
@@ -169,7 +169,7 @@ public class DBUsuarios {
 					j=0;
 				}
 			}
-		}
+		}*/
 		return usuarios;
 	}
 	
