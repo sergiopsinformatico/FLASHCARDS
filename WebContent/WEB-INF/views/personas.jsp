@@ -294,7 +294,7 @@
 															</form>
 														</div>
 														<script>
-															var estado = "{{ person.name }}";
+															var estado = "{{ person.status }}";
 															if(estado=="amigo"){
 																document.getElementById("divAmigos").style.display = "block";
 																document.getElementById("divPDAEnviada").style.display = "none";
