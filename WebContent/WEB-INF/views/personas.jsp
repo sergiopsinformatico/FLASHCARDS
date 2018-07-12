@@ -285,53 +285,53 @@
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-															    <input type="submit" name="action" value="Añadir Amigo" />
+															    <input type="submit" name="action" class="btn btn-success" value="Añadir Amigo" />
 															</form>
 															<form action="bloquear.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-															    <input type="submit" name="action" value="Bloquear Usuario" />
+															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
 														<script>
-															var estado="{{ person.status }}";
+															var estado="{{person.status}}";
 															var amigo="amigo";
 															var pdaE="pdaEnviada";
 															var pdaR="pdaRecibida";
 															var bloc="bloqueado";
 															if(estado==amigo){
-																document.getElementById("divAmigos{{ person.usuario }}").style.display = "block";
-																document.getElementById("divPDAEnviada{{ person.usuario }}").style.display = "none";
-																document.getElementById("divPDARecibida{{ person.usuario }}").style.display = "none";
-																document.getElementById("divBloqueado{{ person.usuario }}").style.display = "none";
-																document.getElementById("divNuevo{{ person.usuario }}").style.display = "none";
+																document.getElementById("divAmigos{{person.usuario}}").style.display = "block";
+																document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
+																document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
+																document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
+																document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
 															}else{
 																if(estado==pdaE){
-																	document.getElementById("divAmigos{{ person.usuario }}").style.display = "none";
-																	document.getElementById("divPDAEnviada{{ person.usuario }}").style.display = "block";
-																	document.getElementById("divPDARecibida{{ person.usuario }}").style.display = "none";
-																	document.getElementById("divBloqueado{{ person.usuario }}").style.display = "none";
-																	document.getElementById("divNuevo{{ person.usuario }}").style.display = "none";
+																	document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
+																	document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "block";
+																	document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
+																	document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
+																	document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
 																}else{
 																	if(estado==pdaR){
-																		document.getElementById("divAmigos{{ person.usuario }}").style.display = "none";
-																		document.getElementById("divPDAEnviada{{ person.usuario }}").style.display = "none";
-																		document.getElementById("divPDARecibida{{ person.usuario }}").style.display = "block";
-																		document.getElementById("divBloqueado{{ person.usuario }}").style.display = "none";
-																		document.getElementById("divNuevo{{ person.usuario }}").style.display = "none";
+																		document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
+																		document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
+																		document.getElementById("divPDARecibida{{person.usuario}}").style.display = "block";
+																		document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
+																		document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
 																	}else{
 																		if(estado==bloc){
-																			document.getElementById("divAmigos{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divPDAEnviada{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divPDARecibida{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divBloqueado{{ person.usuario }}").style.display = "block";
-																			document.getElementById("divNuevo{{ person.usuario }}").style.display = "none";
+																			document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
+																			document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
+																			document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
+																			document.getElementById("divBloqueado{{person.usuario}}").style.display = "block";
+																			document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
 																		}else{
-																			document.getElementById("divAmigos{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divPDAEnviada{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divPDARecibida{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divBloqueado{{ person.usuario }}").style.display = "none";
-																			document.getElementById("divNuevo{{ person.usuario }}").style.display = "block";
+																			document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
+																			document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
+																			document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
+																			document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
+																			document.getElementById("divNuevo{{person.usuario}}").style.display = "block";
 																		}
 																	}
 																}
