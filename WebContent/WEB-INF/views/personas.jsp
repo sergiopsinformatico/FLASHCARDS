@@ -294,7 +294,7 @@
 															</form>
 														</div>
 														
-														<input id="estadoUsuario" name="estado" type="hidden" value="{{person.status}}">
+														<input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}">
 														
 														<script>
 															var estado=document.getElementById("estadoUsuario").value;
