@@ -126,16 +126,18 @@ public class ControladorPrincipal {
 		vista = new ModelAndView("personas");
 		gU=new GestionUsuarios();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
-		
+		int check;
 		jsonPeople = gU.gente(usuario);
 		vista.addObject("people", jsonPeople);
 		
 		jsonAmigos = "";
 		users = gA.getAmigos(usuario);
+		check = 0;
 		for(indice = 0; indice<users.size(); indice++) {
 			usuario = users.get(indice);
-			if(indice==0) {
+			if(check==0) {
 				jsonAmigos = gU.getNyA(usuario)+"///-///"+usuario;
+				check++;
 			}else {
 				jsonAmigos = jsonAmigos+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
 			}
@@ -144,10 +146,12 @@ public class ControladorPrincipal {
 		
 		jsonPdAEn = "";
 		peticiones = gP.leerPeticionEnviada(usuario);
+		check = 0;
 		for(indice = 0; indice<peticiones.size(); indice++) {
 			pA = peticiones.get(indice);
-			if(indice==0) {
+			if(check==0) {
 				jsonPdAEn = gU.getNyA(pA.getRecibe())+"///-///"+pA.getRecibe();
+				check++;
 			}else {
 				jsonPdAEn = jsonPdAEn+"///****nuevaP****///"+gU.getNyA(pA.getRecibe())+"///-///"+pA.getRecibe();
 			}
@@ -156,10 +160,12 @@ public class ControladorPrincipal {
 		
 		jsonPdARe = "";
 		peticiones = gP.leerPeticionRecibida(usuario);
+		check = 0;
 		for(indice = 0; indice<peticiones.size(); indice++) {
 			pA = peticiones.get(indice);
-			if(indice==0) {
+			if(check==0) {
 				jsonPdARe = gU.getNyA(pA.getEnvia())+"///-///"+pA.getEnvia();
+				check++;
 			}else {
 				jsonPdARe = jsonPdARe+"///****nuevaP****///"+gU.getNyA(pA.getEnvia())+"///-///"+pA.getEnvia();
 			}
@@ -168,10 +174,12 @@ public class ControladorPrincipal {
 		
 		jsonBlo = "";
 		users = gB.leerBloqueados(usuario);
+		check = 0;
 		for(indice = 0; indice<users.size(); indice++) {
 			usuario= users.get(indice);
-			if(indice==0) {
+			if(check==0) {
 				jsonBlo = gU.getNyA(usuario)+"///-///"+usuario;
+				check++;
 			}else {
 				jsonBlo = jsonBlo+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
 			}
