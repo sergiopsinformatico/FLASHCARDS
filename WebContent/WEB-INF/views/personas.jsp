@@ -295,33 +295,29 @@
 														</div>
 														{{person.status}}
 														<script>
-															var estado="{{person.status}}";
-															var amigo="amigo";
-															var pdaE="pdaEnviada";
-															var pdaR="pdaRecibida";
-															var bloc="bloqueado";
-															if(estado.localeCompare(amigo)==0){
+															var estado={{person.status}};
+															if(estado.localeCompare("amigo")==0){
 																document.getElementById("divAmigos").style.display = "block";
 																document.getElementById("divPDAEnviada").style.display = "none";
 																document.getElementById("divPDARecibida").style.display = "none";
 																document.getElementById("divBloqueado").style.display = "none";
 																document.getElementById("divNuevo").style.display = "none";
 															}else{
-																if(estado.localeCompare(pdaE)==0){
+																if(estado.localeCompare("pdaEnviada")==0){
 																	document.getElementById("divAmigos").style.display = "none";
 																	document.getElementById("divPDAEnviada").style.display = "block";
 																	document.getElementById("divPDARecibida").style.display = "none";
 																	document.getElementById("divBloqueado").style.display = "none";
 																	document.getElementById("divNuevo").style.display = "none";
 																}else{
-																	if(estado.localeCompare(pdaR)==0){
+																	if(estado.localeCompare("pdaRecibida")==0){
 																		document.getElementById("divAmigos").style.display = "none";
 																		document.getElementById("divPDAEnviada").style.display = "none";
 																		document.getElementById("divPDARecibida").style.display = "block";
 																		document.getElementById("divBloqueado").style.display = "none";
 																		document.getElementById("divNuevo").style.display = "none";
 																	}else{
-																		if(estado.localeCompare(bloc)==0){
+																		if(estado.localeCompare("bloqueado")==0){
 																			document.getElementById("divAmigos").style.display = "none";
 																			document.getElementById("divPDAEnviada").style.display = "none";
 																			document.getElementById("divPDARecibida").style.display = "none";
