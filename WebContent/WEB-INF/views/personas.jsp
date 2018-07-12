@@ -252,7 +252,7 @@
 																{{ person.name }}
 															</a>
 														</h5>
-														<div id="divAmigos">
+														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -264,24 +264,24 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
 															</form>
 														</div>
-														<div id="divPDAEnviada">
+														<div id="divPDAEnviada{{ person.usuario }}">
 															<h6 align="center">
 																Ha enviado una petición de Amistad a este usuario. La puede ver en "Peticiones de Amistad Enviadas".
 															</h6>
 														</div>
-														<div id="divPDARecibida">
+														<div id="divPDARecibida{{ person.usuario }}">
 															<h6 align="center">
 																Ha recibido una petición de Amistad. La puede ver en "Peticiones de Amistad Recibidas".
 															</h6>
 														</div>
-														<div id="divBloqueado">
+														<div id="divBloqueado{{ person.usuario }}">
 															<form action="desbloquear.html" method="POST">
 																<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
 															</form>
 														</div>
-														<div id="divNuevo">
+														<div id="divNuevo{{ person.usuario }}">
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -295,42 +295,57 @@
 														</div>
 														
 														<input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}">
+														<input id="usuarioUsuario" name="usuarioUsuario" type="hidden" value="{{person.usuario}}">
 														
 														<script>
 															var estado=document.getElementById("estadoUsuario").value;
+															var usuario=document.getElementById("usuarioUsuario").value;
+															
+															var amigo="divAmigos";
+															var pdaE="divPDAEnviada";
+															var pdaR="divPDARecibida";
+															var bloc="divBloqueado";
+															var nuevo="divNuevo";
+															
+															var divAm=amigo.concat(usuario);
+															var divPDAE=pdaE.concat(usuario);
+															var divPDAR=pdaR.concat(usuario);
+															var divBloc=bloc.concat(usuario);
+															var divNew=nuevo.concat(usuario);
+															
 															if(estado.localeCompare("amigo")==0){
-																document.getElementById("divAmigos").style.display = "block";
-																document.getElementById("divPDAEnviada").style.display = "none";
-																document.getElementById("divPDARecibida").style.display = "none";
-																document.getElementById("divBloqueado").style.display = "none";
-																document.getElementById("divNuevo").style.display = "none";
+																document.getElementById(divAm).style.display = "block";
+																document.getElementById(divPDAE).style.display = "none";
+																document.getElementById(divPDAR).style.display = "none";
+																document.getElementById(divBloc).style.display = "none";
+																document.getElementById(divNew).style.display = "none";
 															}else{
 																if(estado.localeCompare("pdaEnviada")==0){
-																	document.getElementById("divAmigos").style.display = "none";
-																	document.getElementById("divPDAEnviada").style.display = "block";
-																	document.getElementById("divPDARecibida").style.display = "none";
-																	document.getElementById("divBloqueado").style.display = "none";
-																	document.getElementById("divNuevo").style.display = "none";
+																	document.getElementById(divAm).style.display = "none";
+																	document.getElementById(divPDAE).style.display = "block";
+																	document.getElementById(divPDAR).style.display = "none";
+																	document.getElementById(divBloc).style.display = "none";
+																	document.getElementById(divNew).style.display = "none";
 																}else{
 																	if(estado.localeCompare("pdaRecibida")==0){
-																		document.getElementById("divAmigos").style.display = "none";
-																		document.getElementById("divPDAEnviada").style.display = "none";
-																		document.getElementById("divPDARecibida").style.display = "block";
-																		document.getElementById("divBloqueado").style.display = "none";
-																		document.getElementById("divNuevo").style.display = "none";
+																		document.getElementById(divAm).style.display = "none";
+																		document.getElementById(divPDAE).style.display = "none";
+																		document.getElementById(divPDAR).style.display = "block";
+																		document.getElementById(divBloc).style.display = "none";
+																		document.getElementById(divNew).style.display = "none";
 																	}else{
 																		if(estado.localeCompare("bloqueado")==0){
-																			document.getElementById("divAmigos").style.display = "none";
-																			document.getElementById("divPDAEnviada").style.display = "none";
-																			document.getElementById("divPDARecibida").style.display = "none";
-																			document.getElementById("divBloqueado").style.display = "block";
-																			document.getElementById("divNuevo").style.display = "none";
+																			document.getElementById(divAm).style.display = "none";
+																			document.getElementById(divPDAE).style.display = "none";
+																			document.getElementById(divPDAR).style.display = "none";
+																			document.getElementById(divBloc).style.display = "block";
+																			document.getElementById(divNew).style.display = "none";
 																		}else{
-																			document.getElementById("divAmigos").style.display = "none";
-																			document.getElementById("divPDAEnviada").style.display = "none";
-																			document.getElementById("divPDARecibida").style.display = "none";
-																			document.getElementById("divBloqueado").style.display = "none";
-																			document.getElementById("divNuevo").style.display = "block";
+																			document.getElementById(divAm).style.display = "none";
+																			document.getElementById(divPDAE).style.display = "none";
+																			document.getElementById(divPDAR).style.display = "none";
+																			document.getElementById(divBloc).style.display = "none";
+																			document.getElementById(divNew).style.display = "block";
 																		}
 																	}
 																}
