@@ -14,10 +14,10 @@ import com.flashcards.modelo.Usuario;
 public class GestionUsuarios {
 	
 	DBUsuarios db;
-	GestionEliminados gE = new GestionEliminados();
-	GestionBloqueados gB = new GestionBloqueados();
-	GestionAmigos gA = new GestionAmigos();
-	GestionPeticiones gP = new GestionPeticiones();
+	GestionEliminados gE;
+	GestionBloqueados gB;
+	GestionAmigos gA;
+	GestionPeticiones gP;
 	Fecha fecha;
 	LinkedList<Eliminado> lista;
 	Eliminado el;
@@ -72,6 +72,9 @@ public class GestionUsuarios {
 		json = "";
 		int check=0;
 		String status="";
+		gB = new GestionBloqueados();
+		gA = new GestionAmigos();
+		gP = new GestionPeticiones();
 		for(indice = 0; indice<usuarios.size(); indice++) {
 			user = usuarios.get(indice);
 			if(!(gB.existe(new Bloqueado(user.getUsuario(), usuario)))) {
