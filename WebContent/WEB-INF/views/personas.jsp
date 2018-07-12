@@ -285,7 +285,7 @@
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-															    <input type="submit" name="action" class="btn btn-success" value="Añadir Amigo" />
+															    <input type="submit" name="action" class="btn btn-raised btn-success" value="Añadir Amigo" />
 															</form>
 															<form action="bloquear.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
@@ -293,6 +293,7 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
+														{{person.status}}
 														<script>
 															var estado="{{person.status}}";
 															var amigo="amigo";
