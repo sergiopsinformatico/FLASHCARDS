@@ -293,42 +293,44 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
-														{{person.status}}
+														
+														<input id="estadoUsuario" name="estado" type="hidden" value="{{person.status}}">
+														
 														<script>
-															var estado="{{person.status}}";
+															var estado=document.getElementById("estadoUsuario").value;
 															if(estado.localeCompare("amigo")==0){
-																document.getElementById("divAmigos{{person.usuario}}").style.display = "block";
-																document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
-																document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
-																document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
-																document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
+																document.getElementById("divAmigos"+estado).style.display = "block";
+																document.getElementById("divPDAEnviada"+estado).style.display = "none";
+																document.getElementById("divPDARecibida"+estado).style.display = "none";
+																document.getElementById("divBloqueado"+estado).style.display = "none";
+																document.getElementById("divNuevo"+estado).style.display = "none";
 															}else{
 																if(estado.localeCompare("pdaEnviada{{person.usuario}}")==0){
-																	document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
-																	document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "block";
-																	document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
-																	document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
-																	document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
+																	document.getElementById("divAmigos"+estado).style.display = "none";
+																	document.getElementById("divPDAEnviada"+estado).style.display = "block";
+																	document.getElementById("divPDARecibida"+estado).style.display = "none";
+																	document.getElementById("divBloqueado"+estado).style.display = "none";
+																	document.getElementById("divNuevo"+estado).style.display = "none";
 																}else{
 																	if(estado.localeCompare("pdaRecibida")==0){
-																		document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
-																		document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
-																		document.getElementById("divPDARecibida{{person.usuario}}").style.display = "block";
-																		document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
-																		document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
+																		document.getElementById("divAmigos"+estado).style.display = "none";
+																		document.getElementById("divPDAEnviada"+estado).style.display = "none";
+																		document.getElementById("divPDARecibida"+estado).style.display = "block";
+																		document.getElementById("divBloqueado"+estado).style.display = "none";
+																		document.getElementById("divNuevo"+estado).style.display = "none";
 																	}else{
 																		if(estado.localeCompare("bloqueado")==0){
-																			document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
-																			document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
-																			document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
-																			document.getElementById("divBloqueado{{person.usuario}}").style.display = "block";
-																			document.getElementById("divNuevo{{person.usuario}}").style.display = "none";
+																			document.getElementById("divAmigos"+estado).style.display = "none";
+																			document.getElementById("divPDAEnviada"+estado).style.display = "none";
+																			document.getElementById("divPDARecibida"+estado).style.display = "none";
+																			document.getElementById("divBloqueado"+estado).style.display = "block";
+																			document.getElementById("divNuevo"+estado).style.display = "none";
 																		}else{
-																			document.getElementById("divAmigos{{person.usuario}}").style.display = "none";
-																			document.getElementById("divPDAEnviada{{person.usuario}}").style.display = "none";
-																			document.getElementById("divPDARecibida{{person.usuario}}").style.display = "none";
-																			document.getElementById("divBloqueado{{person.usuario}}").style.display = "none";
-																			document.getElementById("divNuevo{{person.usuario}}").style.display = "block";
+																			document.getElementById("divAmigos"+estado).style.display = "none";
+																			document.getElementById("divPDAEnviada"+estado).style.display = "none";
+																			document.getElementById("divPDARecibida"+estado).style.display = "none";
+																			document.getElementById("divBloqueado"+estado).style.display = "none";
+																			document.getElementById("divNuevo"+estado).style.display = "block";
 																		}
 																	}
 																}
