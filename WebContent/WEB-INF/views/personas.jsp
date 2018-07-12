@@ -295,7 +295,7 @@
 														</div>
 														{{person.status}}
 														<script>
-															var estado={{person.status}};
+															var estado="{{person.status}}";
 															if(estado.localeCompare("amigo")==0){
 																document.getElementById("divAmigos").style.display = "block";
 																document.getElementById("divPDAEnviada").style.display = "none";
