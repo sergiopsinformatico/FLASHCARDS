@@ -252,7 +252,7 @@
 																{{ person.name }}
 															</a>
 														</h5>
-														<div id="divAmigos{{ person.usuario }}">
+														<div id="divAmigos{{person.usuario}}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -264,24 +264,24 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
 															</form>
 														</div>
-														<div id="divPDAEnviada{{ person.usuario }}">
+														<div id="divPDAEnviada{{person.usuario}}">
 															<h6 align="center">
 																Ha enviado una petición de Amistad a este usuario. La puede ver en "Peticiones de Amistad Enviadas".
 															</h6>
 														</div>
-														<div id="divPDARecibida{{ person.usuario }}">
+														<div id="divPDARecibida{{person.usuario}}">
 															<h6 align="center">
 																Ha recibido una petición de Amistad. La puede ver en "Peticiones de Amistad Recibidas".
 															</h6>
 														</div>
-														<div id="divBloqueado{{ person.usuario }}">
+														<div id="divBloqueado{{person.usuario}}">
 															<form action="desbloquear.html" method="POST">
 																<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
 															</form>
 														</div>
-														<div id="divNuevo{{ person.usuario }}">
+														<div id="divNuevo{{person.usuario}}">
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
