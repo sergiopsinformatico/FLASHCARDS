@@ -260,6 +260,7 @@
 									document.getElementById(divPDAR).style.display = "none";
 									document.getElementById(divBloc).style.display = "none";
 									document.getElementById(divNew).style.display = "none";
+									document.getElementById("nID").value=divNew;
 								}else{
 									if(estado.localeCompare("pdaEnviada")==0){
 										document.getElementById(divAm).style.display = "none";
@@ -267,6 +268,7 @@
 										document.getElementById(divPDAR).style.display = "none";
 										document.getElementById(divBloc).style.display = "none";
 										document.getElementById(divNew).style.display = "none";
+										document.getElementById("nID").value=divNew;
 									}else{
 										if(estado.localeCompare("pdaRecibida")==0){
 											document.getElementById(divAm).style.display = "none";
@@ -274,6 +276,7 @@
 											document.getElementById(divPDAR).style.display = "block";
 											document.getElementById(divBloc).style.display = "none";
 											document.getElementById(divNew).style.display = "none";
+											document.getElementById("nID").value=divNew;
 										}else{
 											if(estado.localeCompare("bloqueado")==0){
 												document.getElementById(divAm).style.display = "none";
@@ -281,12 +284,14 @@
 												document.getElementById(divPDAR).style.display = "none";
 												document.getElementById(divBloc).style.display = "block";
 												document.getElementById(divNew).style.display = "none";
+												document.getElementById("nID").value=divNew;
 											}else{
 												document.getElementById(divAm).style.display = "none";
 												document.getElementById(divPDAE).style.display = "none";
 												document.getElementById(divPDAR).style.display = "none";
 												document.getElementById(divBloc).style.display = "none";
 												document.getElementById(divNew).style.display = "block";
+												document.getElementById("nID").value=divNew;
 											}
 										}
 									}
@@ -309,7 +314,7 @@
 																{{ person.name }}
 															</a>
 														</h5>
-														<div id="divAmigos{{person.usuario}}">
+														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -326,19 +331,19 @@
 																Ha enviado una petición de Amistad a este usuario. La puede ver en "Peticiones de Amistad Enviadas".
 															</h6>
 														</div>
-														<div id="divPDARecibida{{person.usuario}}">
+														<div id="divPDARecibida{{ person.usuario }}">
 															<h6 align="center">
 																Ha recibido una petición de Amistad. La puede ver en "Peticiones de Amistad Recibidas".
 															</h6>
 														</div>
-														<div id="divBloqueado{{person.usuario}}">
+														<div id="divBloqueado{{ person.usuario }}">
 															<form action="desbloquear.html" method="POST">
 																<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
 															</form>
 														</div>
-														<div id="divNuevo{{person.usuario}}">
+														<div id="divNuevo{{ person.usuario }}">
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
 																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
@@ -351,10 +356,11 @@
 															</form>
 														</div>
 														
-														<!-- <input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}-{{person.usuario}}" ng-blur="update({{person.status}}, {{person.usuario}})"> -->
-														<!-- {{ update({{person.status}}, {{person.usuario}}) }} -->
 														<input id="persona" name="persona" type="hidden" value="{{person.usuario}}">
 														<input id="estado" name="estado" type="hidden" value="{{person.status}}">
+														
+														<input id="nID" name="nID" type="text">
+														
 														<script>
 															update(document.getElementById("estado").value, document.getElementById("persona").value);
 														</script>
