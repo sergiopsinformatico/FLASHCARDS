@@ -240,7 +240,59 @@
 						<div ng-if="people.length > 0">
 							<script>
 							
+							function update (estado, usuario){
 								
+								var amigo="divAmigos";
+								var pdaE="divPDAEnviada";
+								var pdaR="divPDARecibida";
+								var bloc="divBloqueado";
+								var nuevo="divNuevo";
+								
+								var divAm=amigo.concat(usuario);
+								var divPDAE=pdaE.concat(usuario);
+								var divPDAR=pdaR.concat(usuario);
+								var divBloc=bloc.concat(usuario);
+								var divNew=nuevo.concat(usuario);
+								
+								if(estado.localeCompare("amigo")==0){
+									document.getElementById(divAm).style.display = "block";
+									document.getElementById(divPDAE).style.display = "none";
+									document.getElementById(divPDAR).style.display = "none";
+									document.getElementById(divBloc).style.display = "none";
+									document.getElementById(divNew).style.display = "none";
+								}else{
+									if(estado.localeCompare("pdaEnviada")==0){
+										document.getElementById(divAm).style.display = "none";
+										document.getElementById(divPDAE).style.display = "block";
+										document.getElementById(divPDAR).style.display = "none";
+										document.getElementById(divBloc).style.display = "none";
+										document.getElementById(divNew).style.display = "none";
+									}else{
+										if(estado.localeCompare("pdaRecibida")==0){
+											document.getElementById(divAm).style.display = "none";
+											document.getElementById(divPDAE).style.display = "none";
+											document.getElementById(divPDAR).style.display = "block";
+											document.getElementById(divBloc).style.display = "none";
+											document.getElementById(divNew).style.display = "none";
+										}else{
+											if(estado.localeCompare("bloqueado")==0){
+												document.getElementById(divAm).style.display = "none";
+												document.getElementById(divPDAE).style.display = "none";
+												document.getElementById(divPDAR).style.display = "none";
+												document.getElementById(divBloc).style.display = "block";
+												document.getElementById(divNew).style.display = "none";
+											}else{
+												document.getElementById(divAm).style.display = "none";
+												document.getElementById(divPDAE).style.display = "none";
+												document.getElementById(divPDAR).style.display = "none";
+												document.getElementById(divBloc).style.display = "none";
+												document.getElementById(divNew).style.display = "block";
+											}
+										}
+									}
+								}
+								
+							}
 							
 							</script>
 							<div id="myCarousel" class="carousel slide">
@@ -300,7 +352,10 @@
 														</div>
 														
 														<!-- <input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}-{{person.usuario}}" ng-blur="update({{person.status}}, {{person.usuario}})"> -->
-														{{ update({{person.status}}, {{person.usuario}}) }}
+														<!-- {{ update({{person.status}}, {{person.usuario}}) }} -->
+														<script>
+															update({{person.status}}, {{person.usuario}});
+														</script>
 														
 														<!-- <script>
 															/*var estado=document.getElementById("estadoUsuario").value;
@@ -1068,59 +1123,7 @@
 		        
 		        
 		        
-		        $scope.update = function (estado, usuario){
-					
-					var amigo="divAmigos";
-					var pdaE="divPDAEnviada";
-					var pdaR="divPDARecibida";
-					var bloc="divBloqueado";
-					var nuevo="divNuevo";
-					
-					var divAm=amigo.concat(usuario);
-					var divPDAE=pdaE.concat(usuario);
-					var divPDAR=pdaR.concat(usuario);
-					var divBloc=bloc.concat(usuario);
-					var divNew=nuevo.concat(usuario);
-					
-					if(estado.localeCompare("amigo")==0){
-						document.getElementById(divAm).style.display = "block";
-						document.getElementById(divPDAE).style.display = "none";
-						document.getElementById(divPDAR).style.display = "none";
-						document.getElementById(divBloc).style.display = "none";
-						document.getElementById(divNew).style.display = "none";
-					}else{
-						if(estado.localeCompare("pdaEnviada")==0){
-							document.getElementById(divAm).style.display = "none";
-							document.getElementById(divPDAE).style.display = "block";
-							document.getElementById(divPDAR).style.display = "none";
-							document.getElementById(divBloc).style.display = "none";
-							document.getElementById(divNew).style.display = "none";
-						}else{
-							if(estado.localeCompare("pdaRecibida")==0){
-								document.getElementById(divAm).style.display = "none";
-								document.getElementById(divPDAE).style.display = "none";
-								document.getElementById(divPDAR).style.display = "block";
-								document.getElementById(divBloc).style.display = "none";
-								document.getElementById(divNew).style.display = "none";
-							}else{
-								if(estado.localeCompare("bloqueado")==0){
-									document.getElementById(divAm).style.display = "none";
-									document.getElementById(divPDAE).style.display = "none";
-									document.getElementById(divPDAR).style.display = "none";
-									document.getElementById(divBloc).style.display = "block";
-									document.getElementById(divNew).style.display = "none";
-								}else{
-									document.getElementById(divAm).style.display = "none";
-									document.getElementById(divPDAE).style.display = "none";
-									document.getElementById(divPDAR).style.display = "none";
-									document.getElementById(divBloc).style.display = "none";
-									document.getElementById(divNew).style.display = "block";
-								}
-							}
-						}
-					}
-					
-				}
+		        
 		        
 		        
 		        
