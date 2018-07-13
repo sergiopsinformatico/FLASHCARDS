@@ -317,6 +317,9 @@
 															</a>
 														</h5>
 														<input id="nId" name="nId" type="text">
+														<input id="nUsuario" name="nUsuario" type="hidden" value="{{ person.usuario }}">
+														<input id="nStatus" name="nStatus" type="hidden" value="{{ person.status }}">
+														
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
@@ -358,9 +361,6 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
-														
-														<input id="nUsuario" name="nUsuario" type="hidden" value={{person.usuario}}>
-														<input id="nStatus" name="nStatus" type="hidden" value={{person.status}}>
 														
 														<script>
 															update(document.getElementById("nStatus").value, document.getElementById("nUsuario").value);
