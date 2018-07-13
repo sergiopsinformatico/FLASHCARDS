@@ -299,7 +299,8 @@
 															</form>
 														</div>
 														
-														<input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}-{{person.usuario}}" ng-blur="update({{person.status}}, {{person.usuario}})">
+														<!-- <input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}-{{person.usuario}}" ng-blur="update({{person.status}}, {{person.usuario}})"> -->
+														{{ update({{person.status}}, {{person.usuario}}) }}
 														
 														<!-- <script>
 															/*var estado=document.getElementById("estadoUsuario").value;
