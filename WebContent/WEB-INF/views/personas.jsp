@@ -383,14 +383,10 @@
 							    </div>
 							</div>
 							<script>
-								/*$(document).ready(function(){
-								  $('.carousel').each(function(){
-								    $(this).find('.carousel-item').eq(0).addClass('active');
-								  });
-								});*/
-								$('#myCarouselPeople').carousel({
+								
+								/*$('#myCarouselPeople').carousel({
 									  interval: 10000
-									})
+									})*/
 							</script>
 						</div>
 					</div>
@@ -447,9 +443,9 @@
 							    </div>
 							</div>
 							<script>
-							$('#myCarouselFriends').carousel({
+							/*$('#myCarouselFriends').carousel({
 								  interval: 10000
-								})
+								})*/
 							</script>
 						</div>
 					</div>
@@ -499,9 +495,9 @@
 							    </div>
 							</div>
 							<script>
-							$('#myCarouselPDAe').carousel({
+							/*$('#myCarouselPDAe').carousel({
 								  interval: 10000
-								})
+								})*/
 							</script>
 						</div>
 					</div>
@@ -560,9 +556,9 @@
 							    </div>
 							</div>
 							<script>
-							$('#myCarouselPDAr').carousel({
+							/*$('#myCarouselPDAr').carousel({
 								  interval: 10000
-								})
+								})*/
 							</script>
 						</div>
 					</div>
@@ -611,9 +607,9 @@
 							    </div>
 							</div>
 							<script>
-							$('#myCarouselBloc').carousel({
+							/*$('#myCarouselBloc').carousel({
 								  interval: 10000
-								})
+								})*/
 							</script>
 						</div>
 					</div>
