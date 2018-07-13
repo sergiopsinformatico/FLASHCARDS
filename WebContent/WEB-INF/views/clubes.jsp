@@ -107,13 +107,70 @@
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<script>
+					function initialize(){
+						document.getElementById("showTodos").style.display = "block";
+						document.getElementById("showMisClubes").style.display = "none";
+					}
+				
+					function check(myRadio){
+						var option = myRadio.value;
+						if(option=="todos"){
+							document.getElementById("showTodos").style.display = "block";
+							document.getElementById("showMisClubes").style.display = "none";
+						}else {
+							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showMisClubes").style.display = "block";
+						}
+					}
+				</script>
+				<br><br><br><br>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
+					<label class="form-check-label" for="todos">Todos los Clubes</label>
+				</div>
+				<br>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="viewOption" id="misClubes" value="misClubes" onclick="check(this)">
+					<label class="form-check-label" for="misClubes">Mis Clubes</label>
+				</div>
+			</div>
 			<div class="col-md-3" ng-app="clubsApp" ng-controller="clubsCtrl">
 				<div ng-if="clubes.length == 0"> 
 			        No existen clubes.
 			        <br>
 			    </div>
 				<div ng-if="clubes.length > 0">
-					<div class="panel-heading">
+					
+					<div id="myCarousel" class="carousel slide">
+				        <div class="container" style="width: 100%;">
+				            <div class="carousel-inner row w-100 mx-auto">
+					            <div class="carousel-item" ng-repeat="club in clubes | filter:expression">
+							        <div class="card h-100 bg-info text-center text-white">
+					                    
+						            </div>								
+				                </div>
+				            </div>
+					        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+						      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						      <span class="sr-only">Previous</span>
+						    </a>
+						    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+						      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						      <span class="sr-only">Next</span>
+						    </a>
+					    </div>
+					</div>
+					<script>
+						$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+					</script>
+					
+					<!-- <div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar un club..." />
 					</div>
 					<div class="panel-body" style="min-width: 100%;max-width: 100%;max-height: 200px;overflow-y: scroll;overflow: -moz-scrollbars-vertical;" >
@@ -125,7 +182,9 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
+					</div>-->
+					
+					
 				</div>
 			</div>
 			<div class="col-md-1"></div>

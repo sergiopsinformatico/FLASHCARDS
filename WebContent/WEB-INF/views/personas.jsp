@@ -295,7 +295,7 @@
 							}
 							
 							</script>
-							<div id="myCarousel" class="carousel slide">
+							<div id="myCarouselPeople" class="carousel slide">
 						        <div class="container" style="width: 100%;">
 						            <div class="carousel-inner row w-100 mx-auto">
 							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
@@ -383,11 +383,16 @@
 							    </div>
 							</div>
 							<script>
-								$(document).ready(function(){
+								/*$(document).ready(function(){
 								  $('.carousel').each(function(){
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
-								});
+								});*/
+								$(document).ready(function(){
+									  $('myCarouselPeople').each(function(){
+									    $(this).find('.carousel-item').eq(0).addClass('active');
+									  });
+									});
 							</script>
 						</div>
 					</div>
@@ -401,7 +406,7 @@
 							<h6 align="center">Aún no tiene amigos</h6>
 						</div>
 						<div ng-if="people.length > 0">
-							<div id="myCarousel" class="carousel slide">
+							<div id="myCarouselFriends" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
@@ -445,7 +450,7 @@
 							</div>
 							<script>
 								$(document).ready(function(){
-								  $('.carousel').each(function(){
+								  $('myCarouselFriends').each(function(){
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
 								});
@@ -462,7 +467,7 @@
 							<h6 align="center">Todas las peticiones de amistad enviadas, han sido aceptadas o rechazadas</h6>
 						</div>
 						<div ng-if="people.length > 0">
-							<div id="myCarousel" class="carousel slide">
+							<div id="myCarouselPDAe" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
@@ -499,7 +504,7 @@
 							</div>
 							<script>
 								$(document).ready(function(){
-								  $('.carousel').each(function(){
+								  $('myCarouselPDAe').each(function(){
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
 								});
@@ -516,7 +521,7 @@
 							<h6 align="center">No tiene ninguna petición nueva de amistad</h6>
 						</div>
 						<div ng-if="people.length > 0">
-							<div id="myCarousel" class="carousel slide">
+							<div id="myCarouselPDAr" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
@@ -562,7 +567,7 @@
 							</div>
 							<script>
 								$(document).ready(function(){
-								  $('.carousel').each(function(){
+								  $('myCarouselPDAr').each(function(){
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
 								});
@@ -579,7 +584,7 @@
 							<h6 align="center">No tiene usuarios bloqueados</h6>
 						</div>
 						<div ng-if="people.length > 0">
-							<div id="myCarousel" class="carousel slide">
+							<div id="myCarouselBloc" class="carousel slide">
 						        <div class="container">
 						            <div class="carousel-inner row w-100 mx-auto">
 							            <div class="carousel-item" ng-repeat="person in people | filter:expression">
@@ -615,7 +620,7 @@
 							</div>
 							<script>
 								$(document).ready(function(){
-								  $('.carousel').each(function(){
+								  $('myCarouselBloc').each(function(){
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
 								});
