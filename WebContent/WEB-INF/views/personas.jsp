@@ -359,8 +359,11 @@
 															</form>
 														</div>
 														
+														<input id="nUsuario" name="nUsuario" type="hidden" ng-model="person.usuario">
+														<input id="nStatus" name="nStatus" type="hidden" ng-model="person.status">
+														
 														<script>
-															update("{{person.status}}", "{{person.usuario}}");
+															update(document.getElementById("nStatus").value, document.getElementById("nUsuario").value);
 														</script>
 														
 														<!-- <script>
