@@ -39,7 +39,7 @@ public class ControladorPrincipal {
 	LinkedList<String> users;
 	LinkedList<PeticionDeAmistad>peticiones;
 	String jsonPeople, jsonAmigos, jsonPdAEn, jsonPdARe, jsonBlo;
-	String usuario;
+	String usuario, nUsuario;
 	int indice;
 	PeticionDeAmistad pA;
 	
@@ -134,12 +134,12 @@ public class ControladorPrincipal {
 		users = gA.getAmigos(usuario);
 		check = 0;
 		for(indice = 0; indice<users.size(); indice++) {
-			usuario = users.get(indice);
+			nUsuario = users.get(indice);
 			if(check==0) {
-				jsonAmigos = gU.getNyA(usuario)+"///-///"+usuario;
+				jsonAmigos = gU.getNyA(nUsuario)+"///-///"+nUsuario;
 				check++;
 			}else {
-				jsonAmigos = jsonAmigos+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
+				jsonAmigos = jsonAmigos+"///****nuevaP****///"+gU.getNyA(nUsuario)+"///-///"+nUsuario;
 			}
 		}
 		vista.addObject("friends", jsonAmigos);
@@ -176,12 +176,12 @@ public class ControladorPrincipal {
 		users = gB.leerBloqueados(usuario);
 		check = 0;
 		for(indice = 0; indice<users.size(); indice++) {
-			usuario= users.get(indice);
+			nUsuario= users.get(indice);
 			if(check==0) {
-				jsonBlo = gU.getNyA(usuario)+"///-///"+usuario;
+				jsonBlo = gU.getNyA(nUsuario)+"///-///"+nUsuario;
 				check++;
 			}else {
-				jsonBlo = jsonBlo+"///****nuevaP****///"+gU.getNyA(usuario)+"///-///"+usuario;
+				jsonBlo = jsonBlo+"///****nuevaP****///"+gU.getNyA(nUsuario)+"///-///"+nUsuario;
 			}
 		}
 		vista.addObject("bloq", jsonBlo);
