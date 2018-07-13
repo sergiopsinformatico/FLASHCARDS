@@ -254,6 +254,8 @@
 								var divBloc=bloc.concat(usuario);
 								var divNew=nuevo.concat(usuario);
 								
+								document.getElementById("nID").value=divNew;
+								
 								if(estado.localeCompare("amigo")==0){
 									document.getElementById(divAm).style.display = "block";
 									document.getElementById(divPDAE).style.display = "none";
@@ -314,6 +316,7 @@
 																{{ person.name }}
 															</a>
 														</h5>
+														<input id="nID" name="nID" type="text">
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
@@ -359,7 +362,7 @@
 														<input id="persona" name="persona" type="hidden" value="{{person.usuario}}">
 														<input id="estado" name="estado" type="hidden" value="{{person.status}}">
 														
-														<input id="nID" name="nID" type="text">
+														
 														
 														<script>
 															update(document.getElementById("estado").value, document.getElementById("persona").value);
