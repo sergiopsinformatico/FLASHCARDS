@@ -385,7 +385,6 @@
 							<script>
 								
 								$('#myCarouselPeople').carousel({
-									  interval: false
 									})
 							</script>
 						</div>
@@ -444,7 +443,6 @@
 							</div>
 							<script>
 							$('#myCarouselFriends').carousel({
-								  interval: false
 								})
 							</script>
 						</div>
@@ -496,7 +494,6 @@
 							</div>
 							<script>
 							$('#myCarouselPDAe').carousel({
-								  interval: false
 								})
 							</script>
 						</div>
@@ -557,7 +554,6 @@
 							</div>
 							<script>
 							$('#myCarouselPDAr').carousel({
-								  interval: false
 								})
 							</script>
 						</div>
@@ -608,7 +604,6 @@
 							</div>
 							<script>
 							$('#myCarouselBloc').carousel({
-								  interval: false
 								})
 							</script>
 						</div>
