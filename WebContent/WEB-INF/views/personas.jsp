@@ -353,8 +353,10 @@
 														
 														<!-- <input id="estadoUsuario" name="estadoUsuario" type="hidden" value="{{person.status}}-{{person.usuario}}" ng-blur="update({{person.status}}, {{person.usuario}})"> -->
 														<!-- {{ update({{person.status}}, {{person.usuario}}) }} -->
+														<input id="persona" name="persona" type="hidden" value="{{person.usuario}}">
+														<input id="estado" name="estado" type="hidden" value="{{person.status}}">
 														<script>
-															update({{person.status}}, {{person.usuario}});
+															update(document.getElementById("estado").value, document.getElementById("persona").value);
 														</script>
 														
 														<!-- <script>
