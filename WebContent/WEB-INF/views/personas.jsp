@@ -359,8 +359,8 @@
 															</form>
 														</div>
 														
-														<input id="persona" name="persona" type="hidden" value="{{person.usuario}}">
-														<input id="estado" name="estado" type="hidden" value="{{person.status}}">
+														<input id="persona" name="persona" type="hidden" value="{{ person.usuario }}">
+														<input id="estado" name="estado" type="hidden" value="{{ person.status }}">
 														
 														
 														
