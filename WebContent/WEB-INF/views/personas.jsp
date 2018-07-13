@@ -359,13 +359,8 @@
 															</form>
 														</div>
 														
-														<input id="nobUsuario" name="nobUsuario" type="hidden" value="{{ person.usuario }}">
-														<input id="nobStatus" name="nobStatus" type="hidden" value="{{ person.status }}">
-														
-														
-														
 														<script>
-															update(document.getElementById("nobStatus").value, document.getElementById("nobUsuario").value);
+															update({{ person.status }}, {{ person.usuario }});
 														</script>
 														
 														<!-- <script>
