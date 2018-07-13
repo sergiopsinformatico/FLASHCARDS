@@ -388,11 +388,9 @@
 								    $(this).find('.carousel-item').eq(0).addClass('active');
 								  });
 								});*/
-								$(document).ready(function(){
-									  $('myCarouselPeople').each(function(){
-									    $(this).find('.carousel-item').eq(0).addClass('active');
-									  });
-									});
+								$('#myCarouselPeople').carousel({
+									  interval: 10000
+									})
 							</script>
 						</div>
 					</div>
@@ -449,11 +447,9 @@
 							    </div>
 							</div>
 							<script>
-								$(document).ready(function(){
-								  $('myCarouselFriends').each(function(){
-								    $(this).find('.carousel-item').eq(0).addClass('active');
-								  });
-								});
+							$('#myCarouselFriends').carousel({
+								  interval: 10000
+								})
 							</script>
 						</div>
 					</div>
@@ -503,11 +499,9 @@
 							    </div>
 							</div>
 							<script>
-								$(document).ready(function(){
-								  $('myCarouselPDAe').each(function(){
-								    $(this).find('.carousel-item').eq(0).addClass('active');
-								  });
-								});
+							$('#myCarouselPDAe').carousel({
+								  interval: 10000
+								})
 							</script>
 						</div>
 					</div>
@@ -566,11 +560,9 @@
 							    </div>
 							</div>
 							<script>
-								$(document).ready(function(){
-								  $('myCarouselPDAr').each(function(){
-								    $(this).find('.carousel-item').eq(0).addClass('active');
-								  });
-								});
+							$('#myCarouselPDAr').carousel({
+								  interval: 10000
+								})
 							</script>
 						</div>
 					</div>
@@ -619,18 +611,23 @@
 							    </div>
 							</div>
 							<script>
-								$(document).ready(function(){
-								  $('myCarouselBloc').each(function(){
-								    $(this).find('.carousel-item').eq(0).addClass('active');
-								  });
-								});
+							$('#myCarouselBloc').carousel({
+								  interval: 10000
+								})
 							</script>
 						</div>
 					</div>
 				</div>
 			
 			</div>
-			<script>initialize();</script>
+			<script>
+			$(document).ready(function(){
+				  $('.carousel').each(function(){
+				    $(this).find('.carousel-item').eq(0).addClass('active');
+				  });
+				});
+			initialize();
+			</script>
 			<div class="col-md-3"></div>
 		
 		</div>
