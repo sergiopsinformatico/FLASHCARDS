@@ -317,8 +317,8 @@
 															</a>
 														</h5>
 														<input id="nId" name="nId" type="text">
-														<input id="nUser" name="nUser" type="hidden" value="{{ person.usuario }}">
-														<input id="nStatus" name="nStatus" type="hidden" value="{{ person.status }}">
+														<input id="nUser" name="nUser" type="hidden" ng-value="person.usuario">
+														<input id="nStatus" name="nStatus" type="hidden" ng-value="person.status">
 														
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
@@ -363,7 +363,9 @@
 														</div>
 														
 														<script>
-															update(document.getElementById("nStatus").value, document.getElementById("nUser").value);
+															var nUser = angular.element(document.getElementById("nUser"));
+															var nStatus = angular.element(document.getElementById("nStatus"));
+															update(nUser.val(), nStatus.val());
 														</script>
 													</p>
 												</div>
