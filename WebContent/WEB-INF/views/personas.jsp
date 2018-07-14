@@ -254,7 +254,7 @@
 								var divBloc=bloc.concat(usuario);
 								var divNew=nuevo.concat(usuario);
 								
-								document.getElementById("nId").value=divNew;
+								document.getElementById("nId").value=divNew+" "+estado;
 								
 								if(estado.localeCompare("amigo")==0){
 									document.getElementById(divAm).style.display = "block";
@@ -317,7 +317,7 @@
 															</a>
 														</h5>
 														<input id="nId" name="nId" type="text">
-														<input id="nUsuario" name="nUsuario" type="hidden" value="{{ person.usuario }}">
+														<input id="nUser" name="nUser" type="hidden" value="{{ person.usuario }}">
 														<input id="nStatus" name="nStatus" type="hidden" value="{{ person.status }}">
 														
 														<div id="divAmigos{{ person.usuario }}">
@@ -363,17 +363,8 @@
 														</div>
 														
 														<script>
-															update(document.getElementById("nStatus").value, document.getElementById("nUsuario").value);
+															update(document.getElementById("nStatus").value, document.getElementById("nUser").value);
 														</script>
-														
-														<!-- <script>
-															/*var estado=document.getElementById("estadoUsuario").value;
-															var usuario=document.getElementById("usuarioUsuario").value;
-															actualizaBotones(estado, usuario);*/
-															var variable = document.getElementById("estadoUsuario").value;
-															var vector = variable.split("-");
-															actualizaBotones(vector[0], vector[1]);
-														</script>-->
 													</p>
 												</div>
 								            </div>								
