@@ -82,9 +82,27 @@ public class DBClubes {
 		MongoCursor<Document> listas = coleccionClubes.find().iterator();
 		while(listas.hasNext()) {
 			doc = listas.next();
-			clubes.add(doc.getString("nombre")+"////id////"+doc.getString("identificador"));
+			clubes.add(doc.getString("nombre")+"////-////"+doc.getString("identificador")+"////-////"+doc.getString("descripcion"));
 		}
 		return clubes;
+	}
+	
+	public ArrayList<String> readAllClubesUser(String usuario) {
+		clubes = new ArrayList<String>();
+		MongoCursor<Document> listas = coleccionClubes.find().iterator();
+		while(listas.hasNext()) {
+			doc = listas.next();
+			miembros = (ArrayList<String>)doc.get("miembros");
+			for(indice=0; indice<miembros.size(); indice++) {
+				if(miembros.get(indice).equals(usuario)) {
+					clubes.add(doc.getString("nombre")+"////-////"+doc.getString("identificador")+"////-////"+doc.getString("descripcion"));
+					indice = miembros.size();
+				}
+			}
+		}
+		return clubes;
+		
+		
 	}
 	
 	public ArrayList<String> readClubesUsuario(String usuario) {

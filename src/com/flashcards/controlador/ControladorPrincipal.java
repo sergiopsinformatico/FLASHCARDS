@@ -193,18 +193,39 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(@RequestParam("usuario") String usuario) {
 		ModelAndView clubes = new ModelAndView("clubes");
+		
 		clubes.addObject("usuario", gU.leerUsuario(usuario));
+		
 		GestionClubes gC = new GestionClubes();
 		ArrayList<String> lista = gC.leerClubes();
 		String listaClubes="";
-		for(int indice=0; indice<lista.size(); indice++) {
-			if(indice==0) {
+		int check=0;
+		int indice=0;
+		for(indice=0; indice<lista.size(); indice++) {
+			if(check==0) {
 				listaClubes=lista.get(indice);
+				check++;
 			}else {
 				listaClubes = listaClubes + "///****nuevoCLUB****///" + lista.get(indice);
 			}
 		}
 		clubes.addObject("clubes", listaClubes);
+		
+		lista = gC.leerClubesUsuario(usuario);
+		String listaMisClubes="";
+		check=0;
+		indice=0;
+		for(indice=0; indice<lista.size(); indice++) {
+			if(check==0) {
+				listaMisClubes=lista.get(indice);
+				check++;
+			}else {
+				listaMisClubes = listaMisClubes + "///****nuevoCLUB****///" + lista.get(indice);
+			}
+		}
+		
+		clubes.addObject("misClubes", listaMisClubes);
+		
 		return clubes;
 	}
 	

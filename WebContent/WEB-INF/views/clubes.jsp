@@ -117,10 +117,10 @@
 					function check(myRadio){
 						var option = myRadio.value;
 						if(option=="todos"){
-							document.getElementById("showTodos").style.display = "block";
+							document.getElementById("showTodosClubes").style.display = "block";
 							document.getElementById("showMisClubes").style.display = "none";
 						}else {
-							document.getElementById("showTodos").style.display = "none";
+							document.getElementById("showTodosClubes").style.display = "none";
 							document.getElementById("showMisClubes").style.display = "block";
 						}
 					}
@@ -136,8 +136,169 @@
 					<label class="form-check-label" for="misClubes">Mis Clubes</label>
 				</div>
 			</div>
-			<div class="col-md-3" ng-app="clubsApp" ng-controller="clubsCtrl">
-				<div ng-if="clubes.length == 0"> 
+			<div class="col-md-3">
+				
+				<style>					    								    	
+			    	.container{
+					     width: 100%;
+					     min-width: 100%;
+					     max-width: 100%;
+						 height: 450px;
+						 min-height: 450px;
+						 max-height: 450px;
+				     }
+			    	
+					.card-flip > div {
+					  backface-visibility: hidden;
+					  transition: transform 300ms;
+					  transition-timing-function: linear;
+					  width: 100%;
+					  height: 100%;
+					  margin: 0;
+					  display: flex;
+					}
+					
+					.card-front {
+					  transform: rotateY(0deg);
+					}
+					
+					.card-back {
+					  transform: rotateY(180deg);
+					  position: absolute;
+					  top: 0;
+					}
+					
+					.card-flip:hover .card-front {
+					  transform: rotateY(-180deg);
+					}
+					  
+					.card-flip:hover .card-back {
+					  transform: rotateY(0deg);
+					}	
+					
+					.formato-img{
+						height: 200px;
+						width: auto;
+						display: block;
+					    margin-left: auto;
+					    margin-right: auto;
+					}								
+				</style>
+				
+				<div id="showTodosClubes" ng-app="clubsApp" ng-controller="clubsCtrl">
+					<div ng-if="clubes.length==0">
+						No hay clubes aún creados. ¡Anímate y sé el primero en crear un club!
+					</div>
+					<div ng-if="clubes.length>0">
+						<div id="clubesCarousel" class="carousel slide">
+					        <div class="container">
+					            <div class="carousel-inner row w-100 mx-auto">
+									<div class="carousel-item" ng-repeat="club in clubes | filter:expression">
+								        <div class="card card-flip h-100">
+							                <div class="card-front bg-danger card text-center">
+							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
+												<div class="card-body">
+							                        <p class="card-text">
+							                        	<h5 align="center" style="font-weight: bold;">
+															{{ club.club }}
+														</h5>
+							                        </p>
+							                    </div>
+							                </div>
+							                <div class="card-back bg-info card text-center">
+							                    <div class="card-body">
+							                        <p class="card-text">{{ club.descripcion }}</p>
+							                        <br>
+							       					<h5 align="center" style="font-weight: bold;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
+															Ver Club: {{ club.club }}
+														</a>
+													</h5>
+							                    </div>
+							                </div>
+							            </div>								
+					                </div>
+					            </div>
+						        <a class="carousel-control-prev" href="#clubesCarousel" role="button" data-slide="prev">
+							      <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="carousel-control-next" href="#clubesCarousel" role="button" data-slide="next">
+							      <span class="carousel-control-next-icon" aria-hidden="true" style="color: black;"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+						    </div>
+						</div>
+						<script>
+							$('#clubesCarousel').carousel({
+								})
+						</script>
+					</div>
+				</div>
+				
+				<div id="showMisClubes" ng-app="clubsApp" ng-controller="misClubsCtrl">
+					<div ng-if="clubes.length==0">
+						Aún no perteneces a ningún club.
+					</div>
+					<div ng-if="clubes.length>0">
+						<div id="miClubesCarousel" class="carousel slide">
+					        <div class="container">
+					            <div class="carousel-inner row w-100 mx-auto">
+									<div class="carousel-item" ng-repeat="club in clubes | filter:expression">
+								        <div class="card card-flip h-100">
+							                <div class="card-front bg-danger card text-center">
+							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
+												<div class="card-body">
+							                        <p class="card-text">
+							                        	<h5 align="center" style="font-weight: bold;">
+															{{ club.club }}
+														</h5>
+							                        </p>
+							                    </div>
+							                </div>
+							                <div class="card-back bg-info card text-center">
+							                    <div class="card-body">
+							                        <p class="card-text">{{ club.descripcion }}</p>
+							                        <br>
+							       					<h5 align="center" style="font-weight: bold;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
+															Ver Club: {{ club.club }}
+														</a>
+													</h5>
+							                    </div>
+							                </div>
+							            </div>								
+					                </div>
+					            </div>
+						        <a class="carousel-control-prev" href="#miClubesCarousel" role="button" data-slide="prev">
+							      <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="carousel-control-next" href="#miClubesCarousel" role="button" data-slide="next">
+							      <span class="carousel-control-next-icon" aria-hidden="true" style="color: black;"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+						    </div>
+						</div>
+						<script>
+							$('#miClubesCarousel').carousel({
+								})
+						</script>
+					</div>
+				</div>
+				
+				
+				<script>
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+					initialize();
+				</script>
+				
+				
+				<!-- <div ng-if="clubes.length == 0"> 
 			        No existen clubes.
 			        <br>
 			    </div>
@@ -168,7 +329,7 @@
 						    $(this).find('.carousel-item').eq(0).addClass('active');
 						  });
 						});
-					</script>
+					</script>-->
 					
 					<!-- <div class="panel-heading">
 						<input class="form-control" ng-model="expression" placeholder="Buscar un club..." />
@@ -185,9 +346,7 @@
 					</div>-->
 					
 					
-				</div>
 			</div>
-			<div class="col-md-1"></div>
 			<div class="col-md-4">
 				<div class="container">
 			        <div class="card card-container">
@@ -222,46 +381,34 @@
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
-			        	var club = array[i].split("////id////");
+			        	var club = array[i].split("////-////");
 			        	$scope.clubes.push({
 			        		club: club[0],
-			        		id: club[1]
+			        		id: club[1],
+			        		descripcion: club[2]
+			        	});
+			        }
+		        }
+			}
+			var misClubesControlador = function ($scope, $http) {
+		        $scope.clubes = [];
+		        var cadena = "${misClubes}";
+		        var array = cadena.split("///****nuevoCLUB****///");
+		        var i;
+		        if(cadena != ""){
+			        for (i = 0; i < array.length; i++) { 
+			        	var club = array[i].split("////-////");
+			        	$scope.clubes.push({
+			        		club: club[0],
+			        		id: club[1],
+			        		descripcion: club[2]
 			        	});
 			        }
 		        }
 			}
 			var app = angular.module('clubsApp', []);
 			app.controller('clubsCtrl', clubesControlador);
+			app.controller('misClubsCtrl', misClubesControlador);
 		</script>
 	</body>
 </html>
-
-
-<!-- 
-		<form action="crearClub.html" method="post">
-			Nombre del Club<input type="text" name="nClub">
-			<input id="usuario" name="usuario" type="hidden" value="${usuario}">
-		    <div class="button">
-		        <button type="submit">Crear Un Club</button>
-		    </div>
-		</form>
-		<br><br>
-		<c:if test="${not empty clubes}">
-			<table>
-			    <c:forEach items="${clubes}" var="club">
-			    	<tr>
-			    		<td> ${club} </td>
-			    		<td>
-			    			<form action="verClub.html" method="post">
-								<input id="club" name="club" type="hidden" value="${club}">
-								 <input id="usuario" name="usuario" type="hidden" value="${usuario}"> 
-							    <div class="button">
-							        <button type="submit">Ver Club</button>
-							    </div>
-							</form>
-			    		</td>
-			    	</tr>
-			    </c:forEach>
-			</table>
-		</c:if> 
--->

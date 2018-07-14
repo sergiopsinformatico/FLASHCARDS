@@ -353,7 +353,7 @@
 															</form>
 														</div>
 														<script>
-											            	update("person.status", "person.usuario");
+											            	update("{{person.status}}", "{{person.usuario}}");
 											            </script>
 													</p>
 												</div>

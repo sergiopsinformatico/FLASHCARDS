@@ -56,6 +56,10 @@ public class GestionClubes {
 		return dB.readAllClubes();
 	}
 	
+	public ArrayList<String> leerClubesUsuario(String usuario){
+		return dB.readAllClubesUser(usuario);
+	}
+	
 	public String leerMiembrosClubJSON(String identificador){
 		aux = "";
 		miembros = dB.readMiembros(identificador);
