@@ -163,9 +163,9 @@
 				     	width: 100%;
 				     	min-width: 100%;
 				     	max-width: 100%;
-				     	height: 100%;
-				     	min-height: 100%;
-				     	max-height: 100%;
+				     	height: 300px;
+				     	min-height: 300px;
+				     	max-height: 300px;
 				     }
 			    	
 					.card-flip > div {
