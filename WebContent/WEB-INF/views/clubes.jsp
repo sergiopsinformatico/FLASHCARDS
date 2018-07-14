@@ -189,7 +189,8 @@
 				
 				<div id="showTodosClubes" ng-app="clubsApp" ng-controller="clubsCtrl">
 					<div ng-if="clubes.length==0">
-						No hay clubes aún creados. ¡Anímate y sé el primero en crear un club!
+						<br><br><br><br><br><br>
+						<h6 style="font-weight: bold;">No hay clubes aún creados. ¡Anímate y sé el primero en crear un club!</h6>
 					</div>
 					<div ng-if="clubes.length>0">
 						<div id="clubesCarousel" class="carousel slide">
@@ -240,7 +241,8 @@
 				
 				<div id="showMisClubes" ng-app="clubsApp" ng-controller="misClubsCtrl">
 					<div ng-if="misClubes.length==0">
-						Aún no perteneces a ningún club.
+						<br><br><br><br><br><br>
+						<h6 style="font-weight: bold;">Aún no perteneces a ningún club.</h6>
 					</div>
 					<div ng-if="misClubes.length>0">
 						<div id="miClubesCarousel" class="carousel slide">
