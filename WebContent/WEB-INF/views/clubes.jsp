@@ -239,32 +239,32 @@
 				</div>
 				
 				<div id="showMisClubes" ng-app="clubsApp" ng-controller="misClubsCtrl">
-					<div ng-if="clubes.length==0">
+					<div ng-if="misClubes.length==0">
 						Aún no perteneces a ningún club.
 					</div>
-					<div ng-if="clubes.length>0">
+					<div ng-if="misClubes.length>0">
 						<div id="miClubesCarousel" class="carousel slide">
 					        <div class="container">
 					            <div class="carousel-inner row w-100 mx-auto">
-									<div class="carousel-item" ng-repeat="club in clubes | filter:expression">
+									<div class="carousel-item" ng-repeat="miClub in misClubes | filter:expression">
 								        <div class="card card-flip h-100">
 							                <div class="card-front bg-danger card text-center">
 							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 												<div class="card-body">
 							                        <p class="card-text">
 							                        	<h5 align="center" style="font-weight: bold;">
-															{{ club.club }}
+															{{ miClub.club }}
 														</h5>
 							                        </p>
 							                    </div>
 							                </div>
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
-							                        <p class="card-text">{{ club.descripcion }}</p>
+							                        <p class="card-text">{{ miClub.descripcion }}</p>
 							                        <br>
 							       					<h5 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
-															Ver Club: {{ club.club }}
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ miClub.id }}" style="color: white;">
+															Ver Club: {{ miClub.club }}
 														</a>
 													</h5>
 							                    </div>
@@ -334,27 +334,27 @@
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
-			        	var club = array[i].split("////-////");
+			        	var nClub = array[i].split("////-////");
 			        	$scope.clubes.push({
-			        		club: club[0],
-			        		id: club[1],
-			        		descripcion: club[2]
+			        		club: nClub[0],
+			        		id: nClub[1],
+			        		descripcion: nClub[2]
 			        	});
 			        }
 		        }
 			}
 			var misClubesControlador = function ($scope, $http) {
-		        $scope.clubes = [];
+		        $scope.misClubes = [];
 		        var cadena = "${misClubes}";
 		        var array = cadena.split("///****nuevoCLUB****///");
 		        var i;
 		        if(cadena != ""){
 			        for (i = 0; i < array.length; i++) { 
-			        	var club = array[i].split("////-////");
-			        	$scope.clubes.push({
-			        		club: club[0],
-			        		id: club[1],
-			        		descripcion: club[2]
+			        	var nClub = array[i].split("////-////");
+			        	$scope.misClubes.push({
+			        		club: nClub[0],
+			        		id: nClub[1],
+			        		descripcion: nClub[2]
 			        	});
 			        }
 		        }
