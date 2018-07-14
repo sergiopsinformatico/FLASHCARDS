@@ -208,6 +208,7 @@
 									<div class="carousel-item" ng-repeat="club in clubes | filter:expression">
 								        <div class="card card-flip h-100">
 							                <div class="card-front bg-danger card text-center">
+							                	<br>
 							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 												<div class="card-body">
 							                        <p class="card-text">
@@ -228,7 +229,8 @@
 													<br>
 							                    	<div class="card card-mini text-white bg-success">
 							                    		<p class="card-text">
-							                    			Descripción: {{ club.descripcion }}
+							                    			<br><h6 align="center" style="font-weight: bold;">Descripción:</h6>
+							                    			<br><h6 align="left">{{ club.descripcion }}</h6>
 							                    		</p>
 							                    	</div>							       					
 							                    </div>
@@ -265,6 +267,7 @@
 									<div class="carousel-item" ng-repeat="miClub in misClubes | filter:expression">
 								        <div class="card card-flip h-100">
 							                <div class="card-front bg-danger card text-center">
+							                	<br>
 							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 												<div class="card-body">
 							                        <p class="card-text">
@@ -285,7 +288,8 @@
 													<br>
 							                    	<div class="card card-mini text-white bg-success">
 							                    		<p class="card-text">
-							                    			Descripción: {{ miClub.descripcion }}
+							                    			<br><h6 align="center" style="font-weight: bold;">Descripción:</h6>
+							                    			<br><h6 align="left">{{ miClub.descripcion }}</h6>
 							                    		</p>
 							                    	</div>							       					
 							                    </div>
