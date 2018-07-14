@@ -156,6 +156,7 @@
 				     	height: 50%;
 				     	min-height: 50%;
 				     	max-height: 50%;
+				     	margin: 0 auto;
 				     }
 			    	
 					.card-flip > div {
@@ -219,17 +220,17 @@
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
 							                        <br>
+							                        <h6 align="center" style="font-weight: bold;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
+															Ver Club: {{ club.club }}
+														</a>
+													</h6>
+													<br>
 							                    	<div class="card card-mini text-white bg-success">
 							                    		<p class="card-text">
 							                    			Descripción: {{ club.descripcion }}
 							                    		</p>
-							                    	</div>
-							                        <br>
-							       					<h5 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
-															Ver Club: {{ club.club }}
-														</a>
-													</h5>
+							                    	</div>							       					
 							                    </div>
 							                </div>
 							            </div>								
@@ -276,17 +277,17 @@
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
 							                    	<br>
+							                    	<h6 align="center" style="font-weight: bold;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ miClub.id }}" style="color: white;">
+															Ver Club: {{ miClub.club }}
+														</a>
+													</h6>
+													<br>
 							                    	<div class="card card-mini text-white bg-success">
 							                    		<p class="card-text">
 							                    			Descripción: {{ miClub.descripcion }}
 							                    		</p>
-							                    	</div>
-							                        <br>
-							       					<h5 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ miClub.id }}" style="color: white;">
-															Ver Club: {{ miClub.club }}
-														</a>
-													</h5>
+							                    	</div>							       					
 							                    </div>
 							                </div>
 							            </div>								
