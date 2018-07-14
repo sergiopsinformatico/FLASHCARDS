@@ -216,7 +216,7 @@
 					            <div class="carousel-inner row w-100 mx-auto">
 									<div class="carousel-item" ng-repeat="club in clubes | filter:expression">
 								        <div class="card card-flip h-100">
-							                <div class="card-front card text-center" style="background-color: yellow;">
+							                <div class="card-front card text-center" style="background-color: orange;">
 							                	<br>
 							                    <img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 												<div class="card-body">
