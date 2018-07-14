@@ -361,7 +361,7 @@
 												</div>
 								            </div>		
 								            <script>
-								            	update({{ person.status }}, {{ person.usuario }});
+								            	update({{person.status}}, {{person.usuario}});
 								            </script>						
 						                </div>
 						            </div>
