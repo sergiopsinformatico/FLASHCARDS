@@ -240,66 +240,7 @@
 						<div ng-if="people.length > 0">
 							<script>
 							
-							function update (estado, usuario){
-								
-								var amigo="divAmigos";
-								var pdaE="divPDAEnviada";
-								var pdaR="divPDARecibida";
-								var bloc="divBloqueado";
-								var nuevo="divNuevo";
-								
-								var divAm=amigo.concat(usuario);
-								var divPDAE=pdaE.concat(usuario);
-								var divPDAR=pdaR.concat(usuario);
-								var divBloc=bloc.concat(usuario);
-								var divNew=nuevo.concat(usuario);
-								
-								document.getElementById("nId").value=divNew+" "+estado;
-								
-								if(estado.localeCompare("amigo")==0){
-									document.getElementById(divAm).style.display = "block";
-									document.getElementById(divPDAE).style.display = "none";
-									document.getElementById(divPDAR).style.display = "none";
-									document.getElementById(divBloc).style.display = "none";
-									document.getElementById(divNew).style.display = "none";
-									document.getElementById("nID").value=divNew;
-								}else{
-									if(estado.localeCompare("pdaEnviada")==0){
-										document.getElementById(divAm).style.display = "none";
-										document.getElementById(divPDAE).style.display = "block";
-										document.getElementById(divPDAR).style.display = "none";
-										document.getElementById(divBloc).style.display = "none";
-										document.getElementById(divNew).style.display = "none";
-										document.getElementById("nID").value=divNew;
-									}else{
-										if(estado.localeCompare("pdaRecibida")==0){
-											document.getElementById(divAm).style.display = "none";
-											document.getElementById(divPDAE).style.display = "none";
-											document.getElementById(divPDAR).style.display = "block";
-											document.getElementById(divBloc).style.display = "none";
-											document.getElementById(divNew).style.display = "none";
-											document.getElementById("nID").value=divNew;
-										}else{
-											if(estado.localeCompare("bloqueado")==0){
-												document.getElementById(divAm).style.display = "none";
-												document.getElementById(divPDAE).style.display = "none";
-												document.getElementById(divPDAR).style.display = "none";
-												document.getElementById(divBloc).style.display = "block";
-												document.getElementById(divNew).style.display = "none";
-												document.getElementById("nID").value=divNew;
-											}else{
-												document.getElementById(divAm).style.display = "none";
-												document.getElementById(divPDAE).style.display = "none";
-												document.getElementById(divPDAR).style.display = "none";
-												document.getElementById(divBloc).style.display = "none";
-												document.getElementById(divNew).style.display = "block";
-												document.getElementById("nID").value=divNew;
-											}
-										}
-									}
-								}
-								
-							}
+							
 							
 							</script>
 							<div id="myCarouselPeople" class="carousel slide">
@@ -316,9 +257,11 @@
 																{{ person.name }}
 															</a>
 														</h5>
-														<input id="nId" name="nId" type="text">
+														<!-- <input id="nId" name="nId" type="text">
 														<input id="nUser" name="nUser" type="hidden" ng-value="person.usuario">
-														<input id="nStatus" name="nStatus" type="hidden" ng-value="person.status">
+														<input id="nStatus" name="nStatus" type="hidden" ng-value="person.status">-->
+														
+														{{ update({{ person.status }}, {{ person.usuario }}) }}
 														
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
@@ -1114,14 +1057,67 @@
 			        }
 		        }
 		        
-		        
-		        
-		        
-		        
-		        
-		        
-				
-			};
+		        var update = function(estado, usuario){
+					
+					var amigo="divAmigos";
+					var pdaE="divPDAEnviada";
+					var pdaR="divPDARecibida";
+					var bloc="divBloqueado";
+					var nuevo="divNuevo";
+					
+					var divAm=amigo.concat(usuario);
+					var divPDAE=pdaE.concat(usuario);
+					var divPDAR=pdaR.concat(usuario);
+					var divBloc=bloc.concat(usuario);
+					var divNew=nuevo.concat(usuario);
+					
+					document.getElementById("nId").value=divNew+" "+estado;
+					
+					if(estado.localeCompare("amigo")==0){
+						document.getElementById(divAm).style.display = "block";
+						document.getElementById(divPDAE).style.display = "none";
+						document.getElementById(divPDAR).style.display = "none";
+						document.getElementById(divBloc).style.display = "none";
+						document.getElementById(divNew).style.display = "none";
+						document.getElementById("nID").value=divNew;
+					}else{
+						if(estado.localeCompare("pdaEnviada")==0){
+							document.getElementById(divAm).style.display = "none";
+							document.getElementById(divPDAE).style.display = "block";
+							document.getElementById(divPDAR).style.display = "none";
+							document.getElementById(divBloc).style.display = "none";
+							document.getElementById(divNew).style.display = "none";
+							document.getElementById("nID").value=divNew;
+						}else{
+							if(estado.localeCompare("pdaRecibida")==0){
+								document.getElementById(divAm).style.display = "none";
+								document.getElementById(divPDAE).style.display = "none";
+								document.getElementById(divPDAR).style.display = "block";
+								document.getElementById(divBloc).style.display = "none";
+								document.getElementById(divNew).style.display = "none";
+								document.getElementById("nID").value=divNew;
+							}else{
+								if(estado.localeCompare("bloqueado")==0){
+									document.getElementById(divAm).style.display = "none";
+									document.getElementById(divPDAE).style.display = "none";
+									document.getElementById(divPDAR).style.display = "none";
+									document.getElementById(divBloc).style.display = "block";
+									document.getElementById(divNew).style.display = "none";
+									document.getElementById("nID").value=divNew;
+								}else{
+									document.getElementById(divAm).style.display = "none";
+									document.getElementById(divPDAE).style.display = "none";
+									document.getElementById(divPDAR).style.display = "none";
+									document.getElementById(divBloc).style.display = "none";
+									document.getElementById(divNew).style.display = "block";
+									document.getElementById("nID").value=divNew;
+								}
+							}
+						}
+					}
+					
+				}
+		    };
 			
 			var friendsControlador = function($scope){
 				$scope.people = [];
