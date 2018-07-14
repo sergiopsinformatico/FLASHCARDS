@@ -363,9 +363,7 @@
 														</div>
 														
 														<script>
-															var nUser = angular.element(document.getElementById("nUser"));
-															var nStatus = angular.element(document.getElementById("nStatus"));
-															update(nUser.val(), nStatus.val());
+															update(document.getElementById("nUser").value, document.getElementById("nStatus").value);
 														</script>
 													</p>
 												</div>
