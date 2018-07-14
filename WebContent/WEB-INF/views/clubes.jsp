@@ -109,6 +109,9 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
 				<script>
+					document.getElementById("showTodosClubes").style.display = "none";
+					document.getElementById("showMisClubes").style.display = "none";
+					
 					function initialize(){
 						document.getElementById("showTodos").style.display = "block";
 						document.getElementById("showMisClubes").style.display = "none";
