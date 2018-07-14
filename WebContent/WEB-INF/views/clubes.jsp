@@ -158,6 +158,15 @@
 				     	max-height: 50%;
 				     	margin: 0 auto;
 				     }
+				     
+				     .card-crea{
+				     	width: 100%;
+				     	min-width: 100%;
+				     	max-width: 100%;
+				     	height: 100%;
+				     	min-height: 100%;
+				     	max-height: 100%;
+				     }
 			    	
 					.card-flip > div {
 					  backface-visibility: hidden;
@@ -326,27 +335,29 @@
 				</script>				
 			</div>
 			<div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-						<form action="crearClub.html" method="post">
-							<br>
-							<h6>¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
-							Nombre del Club<br>
-							<input type="text" name="nClub" placeholder="Nombre del club..." required><br><br>
-							<style>
-								textarea {
-								   resize: none;
-								}
-							</style>
-							Descripción del Club<br>
-							<textarea rows="4" cols="50" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
-							<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-							<br><br><br><br>
-						    <div class="button">
-						        <button type="submit">Crear Un Club</button>
-						    </div>
-						</form>
-					</div>
+				<div class="card card-crea bg-danger">
+					<form action="crearClub.html" method="post">
+						<br>
+						<h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
+						<div class="form-group">
+							<label for="nClub">Nombre del Club</label>
+							<input type="text" class="form-control" id="nClub" placeholder="Nombre del Club...." required>
+						</div>
+						<style>
+							textarea {
+							   resize: none;
+							}
+						</style>
+						<div class="form-group">
+    						<label for="exampleFormControlTextarea1">Descripción del Club</label>
+    						<textarea rows="4" cols="50" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
+  						</div>
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+						<br><br><br><br>
+					    <div class="button">
+					        <button type="submit">Crear Un Club</button>
+					    </div>
+					</form>
 				</div>
 			</div>
 			<div class="col-md-1"></div>
