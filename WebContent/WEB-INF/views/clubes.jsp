@@ -98,16 +98,15 @@
 		</script>
 		
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-11">
+			<div class="col-md-12">
 				<br>
 					<h1 align="center">CLUBES</h1>
 				<br>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-3">
+			<div class="col-md-2"></div>
+			<div class="col-md-2">
 				<br><br><br><br>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="viewOption" id="todos" value="todos" onclick="check(this)" checked>
@@ -148,6 +147,15 @@
 						 height: 450px;
 						 min-height: 450px;
 						 max-height: 450px;
+				     }
+				     
+				     .card-mini{
+				     	width: 90%;
+				     	min-width: 90%;
+				     	max-width: 90%;
+				     	height: 50%;
+				     	min-height: 50%;
+				     	max-height: 50%;
 				     }
 			    	
 					.card-flip > div {
@@ -210,7 +218,10 @@
 							                </div>
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
-							                        <p class="card-text">{{ club.descripcion }}</p>
+							                        <br>
+							                    	<div class="card-mini">
+							                    		<p class="card-text">{{ club.descripcion }}</p>
+							                    	</div>
 							                        <br>
 							       					<h5 align="center" style="font-weight: bold;">
 														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
@@ -262,7 +273,10 @@
 							                </div>
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
-							                        <p class="card-text">{{ miClub.descripcion }}</p>
+							                    	<br>
+							                    	<div class="card-mini">
+							                    		<p class="card-text">{{ miClub.descripcion }}</p>
+							                    	</div>
 							                        <br>
 							       					<h5 align="center" style="font-weight: bold;">
 														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ miClub.id }}" style="color: white;">
