@@ -16,7 +16,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
-	<body>
+	<body ng-app="clubsApp">
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
@@ -187,7 +187,7 @@
 					}								
 				</style>
 				
-				<div id="showTodosClubes" ng-app="clubsApp" ng-controller="clubsCtrl">
+				<div id="showTodosClubes" ng-controller="clubesCtrl">
 					<div ng-if="clubes.length==0">
 						<br><br><br><br><br><br>
 						<h6 style="font-weight: bold;">No hay clubes aún creados. ¡Anímate y sé el primero en crear un club!</h6>
@@ -239,7 +239,7 @@
 					</div>
 				</div>
 				
-				<div id="showMisClubes" ng-app="clubsApp" ng-controller="misClubsCtrl">
+				<div id="showMisClubes" ng-controller="misClubesCtrl">
 					<div ng-if="misClubes.length==0">
 						<br><br><br><br><br><br>
 						<h6 style="font-weight: bold;">Aún no perteneces a ningún club.</h6>
@@ -362,8 +362,8 @@
 		        }
 			}
 			var app = angular.module('clubsApp', []);
-			app.controller('clubsCtrl', clubesControlador);
-			app.controller('misClubsCtrl', misClubesControlador);
+			app.controller('clubesCtrl', clubesControlador);
+			app.controller('misClubesCtrl', misClubesControlador);
 		</script>
 	</body>
 </html>
