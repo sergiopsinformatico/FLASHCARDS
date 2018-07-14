@@ -335,28 +335,37 @@
 				</script>				
 			</div>
 			<div class="col-md-4">
-				<div class="card card-crea bg-danger">
+				<div class="card card-crea bg-warning">
 					<form action="crearClub.html" method="post">
-						<br>
-						<h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? Puedes crearlo ahora:</h6>
-						<div class="form-group">
-							<label for="nClub">Nombre del Club</label>
-							<input type="text" class="form-control" id="nClub" placeholder="Nombre del Club...." required>
+						<div class="row">
+							<br>
+							<h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? <br> Puedes crearlo ahora:</h6>
+							<br>
 						</div>
-						<style>
-							textarea {
-							   resize: none;
-							}
-						</style>
-						<div class="form-group">
-    						<label for="exampleFormControlTextarea1">Descripción del Club</label>
-    						<textarea rows="4" cols="50" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
-  						</div>
-						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
-						<br><br><br><br>
-					    <div class="button">
-					        <button type="submit">Crear Un Club</button>
-					    </div>
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="col-md-8">
+								<div class="form-group">
+									<label for="nClub">Nombre del Club</label>
+									<input type="text" class="form-control" id="nClub" placeholder="Nombre del Club...." required>
+								</div>
+								<style>
+									textarea {
+									   resize: none;
+									}
+								</style>
+								<div class="form-group">
+		    						<label for="exampleFormControlTextarea1">Descripción del Club</label>
+		    						<textarea rows="4" maxlength="30" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
+		  						</div>
+								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+								<br><br><br><br>
+							    <div class="button">
+							        <button type="submit">Crear Un Club</button>
+							    </div>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
 					</form>
 				</div>
 			</div>
