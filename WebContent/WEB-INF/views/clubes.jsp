@@ -242,7 +242,7 @@
 					<div ng-if="misClubes.length==0">
 						Aún no perteneces a ningún club.
 					</div>
-					<div ng-if="misClubes.length==0">
+					<div ng-if="misClubes.length>0">
 						<div id="miClubesCarousel" class="carousel slide">
 					        <div class="container">
 					            <div class="carousel-inner row w-100 mx-auto">
