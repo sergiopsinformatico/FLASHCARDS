@@ -219,8 +219,10 @@
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
 							                        <br>
-							                    	<div class="card-mini">
-							                    		<p class="card-text">{{ club.descripcion }}</p>
+							                    	<div class="card card-mini text-white bg-success">
+							                    		<p class="card-text">
+							                    			Descripción: {{ club.descripcion }}
+							                    		</p>
 							                    	</div>
 							                        <br>
 							       					<h5 align="center" style="font-weight: bold;">
@@ -274,8 +276,10 @@
 							                <div class="card-back bg-info card text-center">
 							                    <div class="card-body">
 							                    	<br>
-							                    	<div class="card-mini">
-							                    		<p class="card-text">{{ miClub.descripcion }}</p>
+							                    	<div class="card card-mini text-white bg-success">
+							                    		<p class="card-text">
+							                    			Descripción: {{ miClub.descripcion }}
+							                    		</p>
 							                    	</div>
 							                        <br>
 							       					<h5 align="center" style="font-weight: bold;">
