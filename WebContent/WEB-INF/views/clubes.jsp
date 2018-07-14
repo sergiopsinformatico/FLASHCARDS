@@ -163,9 +163,9 @@
 				     	width: 100%;
 				     	min-width: 100%;
 				     	max-width: 100%;
-				     	height: 300px;
-				     	min-height: 300px;
-				     	max-height: 300px;
+				     	height: 600px;
+				     	min-height: 600px;
+				     	max-height: 600px;
 				     }
 			    	
 					.card-flip > div {
@@ -343,7 +343,7 @@
 						<div class="row">
 							<div class="col-md-2"></div>
 							<div class="col-md-8">
-								<br><h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? </h6><br>
+								<br><h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? </h6>
 								<h6 align="center" style="font-weight: bold;">Puedes crearlo ahora:</h6><br>
 								<div class="form-group">
 									<label for="nClub">Nombre del Club</label>
@@ -361,7 +361,7 @@
 								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 								<br><br><br><br>
 							    <div class="button">
-							        <button type="submit">Crear Un Club</button>
+							        <button type="submit" style="align: center;">Crear Un Club</button>
 							    </div>
 							</div>
 							<div class="col-md-2"></div>
