@@ -317,8 +317,8 @@
 															</a>
 														</h5>
 														<input id="nId" name="nId" type="text">
-														<input id="nUser" name="nUser" type="hidden" value="{{person.usuario}}">
-														<input id="nStatus" name="nStatus" type="hidden" value="{{person.status}}">
+														<input id="nUser" name="nUser" type="hidden" value="person.usuario">
+														<input id="nStatus" name="nStatus" type="hidden" value="person.status">
 														
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
