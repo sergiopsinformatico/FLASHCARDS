@@ -262,7 +262,6 @@
 									document.getElementById(divPDAR).style.display = "none";
 									document.getElementById(divBloc).style.display = "none";
 									document.getElementById(divNew).style.display = "none";
-									document.getElementById("nID").value=divNew;
 								}else{
 									if(estado.localeCompare("pdaEnviada")==0){
 										document.getElementById(divAm).style.display = "none";
@@ -270,7 +269,6 @@
 										document.getElementById(divPDAR).style.display = "none";
 										document.getElementById(divBloc).style.display = "none";
 										document.getElementById(divNew).style.display = "none";
-										document.getElementById("nID").value=divNew;
 									}else{
 										if(estado.localeCompare("pdaRecibida")==0){
 											document.getElementById(divAm).style.display = "none";
@@ -278,7 +276,6 @@
 											document.getElementById(divPDAR).style.display = "block";
 											document.getElementById(divBloc).style.display = "none";
 											document.getElementById(divNew).style.display = "none";
-											document.getElementById("nID").value=divNew;
 										}else{
 											if(estado.localeCompare("bloqueado")==0){
 												document.getElementById(divAm).style.display = "none";
@@ -286,14 +283,12 @@
 												document.getElementById(divPDAR).style.display = "none";
 												document.getElementById(divBloc).style.display = "block";
 												document.getElementById(divNew).style.display = "none";
-												document.getElementById("nID").value=divNew;
 											}else{
 												document.getElementById(divAm).style.display = "none";
 												document.getElementById(divPDAE).style.display = "none";
 												document.getElementById(divPDAR).style.display = "none";
 												document.getElementById(divBloc).style.display = "none";
 												document.getElementById(divNew).style.display = "block";
-												document.getElementById("nID").value=divNew;
 											}
 										}
 									}
@@ -357,12 +352,12 @@
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
+														<script>
+											            	update("person.status", "person.usuario");
+											            </script>
 													</p>
 												</div>
-								            </div>		
-								            <script>
-								            	update(person.status, person.usuario);
-								            </script>						
+								            </div>								
 						                </div>
 						            </div>
 							        <a class="carousel-control-prev" href="#myCarouselPeople" role="button" data-slide="prev">
