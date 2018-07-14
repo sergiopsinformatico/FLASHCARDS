@@ -163,9 +163,9 @@
 				     	width: 100%;
 				     	min-width: 100%;
 				     	max-width: 100%;
-				     	height: 600px;
-				     	min-height: 600px;
-				     	max-height: 600px;
+				     	height: 550px;
+				     	min-height: 550px;
+				     	max-height: 550px;
 				     }
 			    	
 					.card-flip > div {
@@ -347,7 +347,7 @@
 								<h6 align="center" style="font-weight: bold;">Puedes crearlo ahora:</h6><br>
 								<div class="form-group">
 									<label for="nClub">Nombre del Club</label>
-									<input type="text" class="form-control" id="nClub" placeholder="Nombre del Club...." required>
+									<input type="text" class="form-control" id="nClub" name="nClub" placeholder="Nombre del Club...." required>
 								</div>
 								<style>
 									textarea {
@@ -360,7 +360,7 @@
 		  						</div>
 								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 								<br><br><br><br>
-							    <div class="button">
+							    <div class="button" align="center">
 							        <button type="submit" style="align: center;">Crear Un Club</button>
 							    </div>
 							</div>
