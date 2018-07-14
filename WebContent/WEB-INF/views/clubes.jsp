@@ -144,9 +144,9 @@
 					     width: 100%;
 					     min-width: 100%;
 					     max-width: 100%;
-						 height: 450px;
-						 min-height: 450px;
-						 max-height: 450px;
+						 height: 500px;
+						 min-height: 500px;
+						 max-height: 500px;
 				     }
 				     
 				     .card-mini{
@@ -338,13 +338,13 @@
 				<div class="card card-crea bg-warning">
 					<form action="crearClub.html" method="post">
 						<div class="row">
-							<br>
-							<h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? <br> Puedes crearlo ahora:</h6>
-							<br>
+							<br><br>
 						</div>
 						<div class="row">
 							<div class="col-md-2"></div>
 							<div class="col-md-8">
+								<br><h6 align="center" style="font-weight: bold;">¿No encuentra un club sobre un tema? </h6><br>
+								<h6 align="center" style="font-weight: bold;">Puedes crearlo ahora:</h6><br>
 								<div class="form-group">
 									<label for="nClub">Nombre del Club</label>
 									<input type="text" class="form-control" id="nClub" placeholder="Nombre del Club...." required>
