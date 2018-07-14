@@ -227,7 +227,7 @@
 							                        </p>
 							                    </div>
 							                </div>
-							                <div class="card-back bg-info card text-center">
+							                <div class="card-back w3-yellow card text-center">
 							                    <div class="card-body">
 							                        <br>
 							                        <h6 align="center" style="font-weight: bold;">
@@ -286,7 +286,7 @@
 							                        </p>
 							                    </div>
 							                </div>
-							                <div class="card-back bg-info card text-center">
+							                <div class="card-back w3-yellow card text-center">
 							                    <div class="card-body">
 							                    	<br>
 							                    	<h6 align="center" style="font-weight: bold;">
