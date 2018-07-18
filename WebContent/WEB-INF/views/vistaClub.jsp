@@ -41,9 +41,9 @@
 				width: 100%;
 				min-width: 100%;
 				max-width: 100%;
-				height: 200px;
-				min-height: 200px;
-				max-height: 200px;
+				height: 300px;
+				min-height: 300px;
+				max-height: 300px;
 			}
 			
 			.formato-img{
