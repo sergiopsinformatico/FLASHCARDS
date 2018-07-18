@@ -200,9 +200,9 @@
 						</div>
 						<div ng-if="miembros.length > 0">
 							<div class="col-md-12">
-								<div id="carouselMiembros" class="carousel slide">
-							        <div class="container carousel-container">
-							            <div class="carousel-inner row w-100 mx-auto">
+								<div id="carouselMiembros" class="carousel slide" style="width: 100%; height: 100%;">
+							        <div class="container carousel-container" style="width: 100%; height: 100%;">
+							            <div class="carousel-inner row w-100 mx-auto" style="width: 100%; height: 100%;">
 								            <div class="carousel-item" ng-repeat="miembro in miembros | filter:expression">
 										        <div class="card h-100 bg-info text-center text-white" style="width: 100%; height: 100%;">
 								                    <br>
