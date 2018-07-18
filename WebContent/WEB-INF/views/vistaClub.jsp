@@ -46,6 +46,15 @@
 				max-height: 300px;
 			}
 			
+			.card-desc{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+				height: 200px;
+				min-height: 200px;
+				max-height: 200px;
+			}
+			
 			.formato-img{
 				height: 100px;
 				width: auto;
@@ -122,7 +131,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<div class="card card-admin" style="background-color: grey;">
 					<br><h5 align="center" style="font-weight: bold;">Administrador del Grupo</h5> 
 					<br><img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
@@ -131,7 +140,7 @@
 							${nombreAdministrador}
 						</a>
 					</h6>
-					<form action="eliminarClub.html" method="post" id="formDeleteClub">
+					<form action="eliminarClub.html" method="post" id="formDeleteClub" style="align: center;">
 						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}"> 
 						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					    <div class="button">
@@ -139,7 +148,7 @@
 					    </div>
 					</form>
 				</div>
-				<div class="card card-admin" style="background-color: green;">
+				<div class="card card-desc" style="background-color: green;">
 					<br><h5 align="center" style="font-weight: bold;">Descripción del Grupo</h5> 
 					<br><h6 align="left">
 						${club.getDescripcion()}
