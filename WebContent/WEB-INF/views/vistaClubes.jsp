@@ -356,8 +356,8 @@
 								</style>
 								<div class="form-group">
 		    						<label for="exampleFormControlTextarea1">Descripción del Club</label>
-		    						<textarea rows="4" maxlength="75" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." ng-model="descripcion" required></textarea>
-		    						<br>{{descripcion.length}} caracteres de 75 caracteres
+		    						<textarea rows="4" maxlength="90" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." ng-model="descripcion" required></textarea>
+		    						<br>{{descripcion.length}} caracteres de 90 caracteres
 		  						</div>
 								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 								<br><br><br><br>

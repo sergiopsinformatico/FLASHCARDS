@@ -18,7 +18,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
-				<%@ page import="com.flashcards.modelo.Usuario" %>
+		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
 			Usuario user = ((Usuario)(session.getAttribute("usuario")));
 			if(user==null || user.getUsuario().equals("")){
@@ -148,13 +148,13 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<div class="card">
-				  <img src="resources/img/profile.png" alt="Perfil" style="width:100%">
-				  <h5 style="text-align:center;">Mi Profile Card</h5>
-				  <h6>${usuario.getNombreApellidos()}</h6>
-				  <p class="title">${rol}</p>
-				  <div style="margin: 24px 0;">
-				    <h6><a href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil y Logros<i class="fa fa-dribbble"></i></a></h6> 
-				 </div>
+					<h5 align="center">Profile Card</h5>
+					<img src="resources/img/profile.png" alt="Perfil" style="width:100%">
+					<h6 align="center">${usuario.getNombreApellidos()}</h6>
+					<p class="title" align="center">${rol}</p>
+					<div style="margin: 24px 0;">
+						<h6 align="center"><a href="miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${usuario.getUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a></h6> 
+					</div>
 				</div>
 			</div>
 			<div class="col-md-5"></div>
