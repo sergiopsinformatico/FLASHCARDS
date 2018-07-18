@@ -94,6 +94,7 @@ public class ControladorTarjetas {
 		flash = gF.leerFlashcard(coleccion);
 		String tarjeta = flash.getColeccionJSON();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
+		vista.addObject("nombre", flash.getNombreColeccion());
 		vista.addObject("coleccion", tarjeta);
 		return vista;
 	}
