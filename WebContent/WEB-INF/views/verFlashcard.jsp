@@ -159,7 +159,7 @@
 			<script>
 				var coleccionControlador = function ($scope){
 					$scope.cards = [];
-					var coleccion = "${clubes}";
+					var coleccion = "${coleccion}";
 			        var array = cadena.split("///****nuevaCARD****///");
 			        var i;
 			        if(cadena != ""){
