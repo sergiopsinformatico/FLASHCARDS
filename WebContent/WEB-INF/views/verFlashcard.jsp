@@ -159,15 +159,15 @@
 			<script>
 				var coleccionControlador = function ($scope){
 					$scope.cards = [];
-					var coleccion = "${coleccion}";
-			        var array = cadena.split("///****nuevaCARD****///");
+					var col = "${coleccion}";
+			        var tarjetas = col.split("///****nuevaCARD****///");
 			        var i;
-			        if(cadena != ""){
-				        for (i = 0; i < array.length; i++) { 
-				        	var club = array[i].split("///****resp****///");
-				        	$scope.clubes.push({
-				        		anverso: club[0],
-				        		reverso: club[1]
+			        if(col != ""){
+				        for (i = 0; i < tarjetas.length; i++) { 
+				        	var tarjeta = tarjetas[i].split("///****resp****///");
+				        	$scope.cards.push({
+				        		anverso: tarjeta[0],
+				        		reverso: tarjeta[1]
 				        	});
 				        }
 			        }
