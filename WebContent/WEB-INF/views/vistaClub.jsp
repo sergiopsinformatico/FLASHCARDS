@@ -127,7 +127,7 @@
 					<br><h5 align="center" style="font-weight: bold;">Administrador del Grupo</h5> 
 					<br><img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 					<br><h6 align="center" style="font-weight: bold;">
-						<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${idAdministrador}" style="color: white;">
+						<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${club.getAdministrador()}" style="color: white;">
 							${nombreAdministrador}
 						</a>
 					</h6>
@@ -142,7 +142,7 @@
 				<div class="card card-admin" style="background-color: green;">
 					<br><h5 align="center" style="font-weight: bold;">Descripción del Grupo</h5> 
 					<br><h6 align="left">
-						${descripcionGrupo}
+						${club.getDescripcion()}
 					</h6>
 				</div>
 			</div>
