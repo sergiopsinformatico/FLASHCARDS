@@ -194,7 +194,9 @@
 					</div>
 					<div class="row">
 						<div ng-if="miembros.length == 0">
-							<h6 align="center">Este club no tiene miembros</h6>
+							<div class="col-md-12">
+								<h6 align="center">El unico miembro de este club es el administrador</h6>
+							</div>
 						</div>
 						<div ng-if="miembros.length > 0">
 							<div class="col-md-12">
