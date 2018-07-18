@@ -46,7 +46,7 @@ public class ControladorClubes {
 	@RequestMapping(value = "/verClub", method = RequestMethod.GET)
 	public ModelAndView verClub(@RequestParam("usuario") String usuario, @RequestParam("club") String identificador) {
 		GestionClubes gC = new GestionClubes();
-		ModelAndView verClub = new ModelAndView("club");
+		ModelAndView verClub = new ModelAndView("vistaClub");
 		club =  gC.leerClubConIdentificador(identificador);
 		gA = new GestionAcceso();
 		verClub.addObject("usuario", gU.leerUsuario(usuario));
