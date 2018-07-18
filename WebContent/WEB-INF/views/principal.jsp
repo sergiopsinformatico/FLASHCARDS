@@ -82,6 +82,16 @@
 			  background: blue;
 			  transform: rotateY(180deg);
 			}
+			
+			.formato-img{
+				height: 180px;
+				min-height: 180px;
+				max-height: 180px;
+				width: auto;
+				display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			}	
 	    </style>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,8 +158,12 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<div class="card">
+					<br>
 					<h5 align="center">Profile Card</h5>
-					<img src="resources/img/profile.png" alt="Perfil" style="width:100%">
+					<br>
+					<div class="row">
+						<img src="resources/img/profile.png" alt="Perfil" class="formato-img">
+					</div>
 					<h6 align="center">${usuario.getNombreApellidos()}</h6>
 					<p class="title" align="center">${rol}</p>
 					<div style="margin: 24px 0;">

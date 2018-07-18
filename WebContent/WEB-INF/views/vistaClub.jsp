@@ -50,9 +50,18 @@
 				width: 100%;
 				min-width: 100%;
 				max-width: 100%;
-				height: 200px;
-				min-height: 200px;
-				max-height: 200px;
+				height: 250px;
+				min-height: 250px;
+				max-height: 250px;
+			}
+			
+			.card-users{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+				height: 550px;
+				min-height: 550px;
+				max-height: 550px;
 			}
 			
 			.formato-img{
@@ -62,6 +71,15 @@
 			    margin-left: auto;
 			    margin-right: auto;
 			}	
+			
+			.carousel-container{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+				height: 100%;
+				min-height: 100%;
+				max-height: 100%;
+			}
 		</style>
 		
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -168,30 +186,48 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div id="flashcardsCarousel" class="carousel slide">
-			        <div class="container">
-			            <div class="carousel-inner row w-100 mx-auto">
-							<div class="carousel-item" ng-repeat="flashcard in setFlashcards | filter:expression">
-						        <div class="card card-admin">
-					                {{ flashcard }}
-					            </div>								
-			                </div>
-			            </div>
-				        <a class="carousel-control-prev" href="#flashcardsCarousel" role="button" data-slide="prev">
-					      <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
-					      <span class="sr-only">Previous</span>
-					    </a>
-					    <a class="carousel-control-next" href="#flashcardsCarousel" role="button" data-slide="next">
-					      <span class="carousel-control-next-icon" aria-hidden="true" style="color: black;"></span>
-					      <span class="sr-only">Next</span>
-					    </a>
-				    </div>
+				<div class="card card-users" style="background: yellow;">
+					<div class="row">
+						<br><h6 align="center">Miembros</h6><br>
+					</div>
+					<div class="row" ng-controller="membersCtrl">
+						<div id="carouselMiembros" class="carousel slide">
+					        <div class="container carousel-container">
+					            <div class="carousel-inner row w-100 mx-auto">
+						            <div class="carousel-item" ng-repeat="miembro in miembros | filter:expression">
+								        <div class="card h-100 bg-info text-center text-white">
+						                    <br>
+											<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+											<div class="card-body">
+												<p class="card-text">
+													<h5 align="center" style="font-weight: bold;">
+														<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ miembro.usuario }}" style="color: white;">
+															{{ miembro.name }}
+														</a>
+													</h5>
+												</p>
+											</div>
+							            </div>								
+					                </div>
+					            </div>
+						        <a class="carousel-control-prev" href="#carouselMiembros" role="button" data-slide="prev">
+							      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="carousel-control-next" href="#carouselMiembros" role="button" data-slide="next">
+							      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+						    </div>
+						</div>
+						<script>
+						$('#carouselMiembros').carousel({
+							})
+						</script>
+					</div>
 				</div>
-				<script>
-					$('#flashcardsCarousel').carousel({})
-				</script>
 			</div>
-			<div class="col-md-5"></div>
+			<div class="col-md-4"></div>
 		</div>
 		
 		
