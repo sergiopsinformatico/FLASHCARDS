@@ -334,7 +334,7 @@
 					
 				</script>				
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4" ng-controller="creaCtrl">
 				<div class="card card-crea bg-info">
 					<form action="crearClub.html" method="post">
 						<div class="row">
@@ -356,7 +356,8 @@
 								</style>
 								<div class="form-group">
 		    						<label for="exampleFormControlTextarea1">Descripción del Club</label>
-		    						<textarea rows="4" maxlength="30" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." required></textarea>
+		    						<textarea rows="4" maxlength="75" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." ng-model="descripcion" required></textarea>
+		    						<br>{{descripcion.length}} caracteres de 75 caracteres
 		  						</div>
 								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
 								<br><br><br><br>
@@ -404,9 +405,15 @@
 			        }
 		        }
 			}
+			
+			var creaControlador = function ($scope, $http) {
+		        $scope.descripcion = "";
+			}
+			
 			var app = angular.module('clubsApp', []);
 			app.controller('clubesCtrl', clubesControlador);
 			app.controller('misClubesCtrl', misClubesControlador);
+			app.controller('creaCtrl', creaControlador);
 		</script>
 	</body>
 </html>
