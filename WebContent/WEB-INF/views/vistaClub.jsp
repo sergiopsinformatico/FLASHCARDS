@@ -186,44 +186,48 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div class="card card-users" style="background: yellow;">
+				<div class="card card-users" style="background: orange;">
 					<div class="row">
-						<br><h6 align="center">Miembros</h6><br>
+						<div class="col-md-12">
+							<br><h6 align="center">Miembros</h6><br>
+						</div>
 					</div>
 					<div class="row" ng-controller="membersCtrl">
-						<div id="carouselMiembros" class="carousel slide">
-					        <div class="container carousel-container">
-					            <div class="carousel-inner row w-100 mx-auto">
-						            <div class="carousel-item" ng-repeat="miembro in miembros | filter:expression">
-								        <div class="card h-100 bg-info text-center text-white">
-						                    <br>
-											<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
-											<div class="card-body">
-												<p class="card-text">
-													<h5 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ miembro.usuario }}" style="color: white;">
-															{{ miembro.name }}
-														</a>
-													</h5>
-												</p>
-											</div>
-							            </div>								
-					                </div>
-					            </div>
-						        <a class="carousel-control-prev" href="#carouselMiembros" role="button" data-slide="prev">
-							      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							      <span class="sr-only">Previous</span>
-							    </a>
-							    <a class="carousel-control-next" href="#carouselMiembros" role="button" data-slide="next">
-							      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-							      <span class="sr-only">Next</span>
-							    </a>
-						    </div>
+						<div class="col-md-12">
+							<div id="carouselMiembros" class="carousel slide">
+						        <div class="container carousel-container">
+						            <div class="carousel-inner row w-100 mx-auto">
+							            <div class="carousel-item" ng-repeat="miembro in miembros | filter:expression">
+									        <div class="card h-100 bg-info text-center text-white">
+							                    <br>
+												<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
+												<div class="card-body">
+													<p class="card-text">
+														<h5 align="center" style="font-weight: bold;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ miembro.usuario }}" style="color: white;">
+																{{ miembro.name }}
+															</a>
+														</h5>
+													</p>
+												</div>
+								            </div>								
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#carouselMiembros" role="button" data-slide="prev">
+								      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="carousel-control-next" href="#carouselMiembros" role="button" data-slide="next">
+								      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								      <span class="sr-only">Next</span>
+								    </a>
+							    </div>
+							</div>
+							<script>
+							$('#carouselMiembros').carousel({
+								})
+							</script>
 						</div>
-						<script>
-						$('#carouselMiembros').carousel({
-							})
-						</script>
 					</div>
 				</div>
 			</div>
