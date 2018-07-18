@@ -150,7 +150,11 @@
 				</div>
 				<div class="card card-desc" style="background-color: green;">
 					<div class="row">
-						<br><h5 align="center" style="font-weight: bold;">Descripción del Grupo</h5>
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<br><h5 align="center" style="font-weight: bold;">Descripción del Grupo</h5>
+						</div>
+						<div class="col-md-1"></div>
 					</div>
 					<div class="row">
 						<div class="col-md-1"></div>
