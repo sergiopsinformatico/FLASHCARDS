@@ -189,7 +189,7 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Clubes
+	//Vista Clubes
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(@RequestParam("usuario") String usuario) {
 		ModelAndView clubes = new ModelAndView("vistaClubes");
