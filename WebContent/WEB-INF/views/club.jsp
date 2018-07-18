@@ -2,11 +2,16 @@
 	<head>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Ver Club - ${club.getNombre()}</title>
+	    <title>Ver Club ${club.getNombre()} - Flashcards</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -31,50 +36,75 @@
 			    height: 28px;
 			}
 			.navbar-inner {min-height:28px;}		
+			
+			.card-admin{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+				height: 200px;
+				min-height: 200px;
+				max-height: 200px;
+			}
+			
+			.formato-img{
+				height: 100px;
+				width: auto;
+				display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			}	
 		</style>
 		
-		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<div class="navbar-inner navbar-collapse" id="collapsibleNavbar">
-			    <ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
-							Inicio
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
-							Flashcards
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
-							Gente
-						</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
-							Clubes
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
-							Gestionar Cuentas
-						</a>
-					</li>
-	    		</ul>
-	    		<ul class="navbar-nav ml-auto">
-	    			<li class="nav-item dropdown">
-                    	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
-	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
-	                        <div class="dropdown-divider"></div>
-	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
-	                    </div>
-	                </li>
-	    		</ul>
-	  		</div>
-		</nav>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	
+	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+					Inicio
+				</a>
+	          </li>
+	          <li class="nav-item">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+					Flashcards
+				</a>
+			  </li>
+			  <li class="nav-item">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+					Gente
+				</a>
+			  </li>
+			  <li class="nav-item active">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+					Clubes
+				</a>
+			  </li>
+			  <li class="nav-item">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+					Gestionar Cuentas
+				</a>
+			  </li>
+	        </ul>
+	        <ul class="navbar-nav ml-auto">
+	        <li class="nav-item dropdown">
+	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
+	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	              <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+	            </div>
+	            <script>
+	            	$('.dropdown-toggle').dropdown();
+	            </script>
+	          </li>
+	        </ul>
+	      </div>
+	    </nav>
+		
 		<script language="JavaScript" type="text/javascript">
 			var comp = ${usuario.isAdministrador()};
 			if (comp){
@@ -82,21 +112,78 @@
 			}else{
 				document.getElementById("btn-Gestion").style.visibility="hidden";
 			}
-		</script> 
+		</script>
 		
 		
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-11">
-				<br><h1>CLUB: ${club.getNombre()}</h1><br>
+			<div class="col-md-12">
+				<br><h1 align="center" style="font-weight: bold;">CLUB: ${club.getNombre()}</h1><br>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<div class="card card-admin" style="background-color: grey;">
+					<br><h5 align="center" style="font-weight: bold;">Administrador del Grupo</h5> 
+					<br><img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
+					<br><h6 align="center" style="font-weight: bold;">
+						<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${idAdministrador}" style="color: white;">
+							${nombreAdministrador}
+						</a>
+					</h6>
+					<form action="eliminarClub.html" method="post" id="formDeleteClub">
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}"> 
+						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
+					    <div class="button">
+					        <button type="submit" class="btn btn-raised btn-warning text-white">Eliminar Club</button>
+					    </div>
+					</form>
+				</div>
+				<div class="card card-admin" style="background-color: green;">
+					<br><h5 align="center" style="font-weight: bold;">Descripción del Grupo</h5> 
+					<br><h6 align="left">
+						${descripcionGrupo}
+					</h6>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div id="flashcardsCarousel" class="carousel slide">
+			        <div class="container">
+			            <div class="carousel-inner row w-100 mx-auto">
+							<div class="carousel-item" ng-repeat="flashcard in setFlashcards | filter:expression">
+						        <div class="card card-admin">
+					                {{ flashcard }}
+					            </div>								
+			                </div>
+			            </div>
+				        <a class="carousel-control-prev" href="#flashcardsCarousel" role="button" data-slide="prev">
+					      <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
+					      <span class="sr-only">Previous</span>
+					    </a>
+					    <a class="carousel-control-next" href="#flashcardsCarousel" role="button" data-slide="next">
+					      <span class="carousel-control-next-icon" aria-hidden="true" style="color: black;"></span>
+					      <span class="sr-only">Next</span>
+					    </a>
+				    </div>
+				</div>
+				<script>
+					$('#flashcardsCarousel').carousel({})
+				</script>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<!-- 
 		
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-5">
 				<div class="row">
-					<h6>Administrador del Grupo:</h6> 
+					
 				</div>
 				<div class="row">
 					${administrador}
@@ -143,7 +230,6 @@
 											<td>
 												<form action="eliminarMiembro.html" method="post" name="form2{{ miembro.usuario }}" id="form2{{ miembro.usuario }}">
 													<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
-													<!-- <input id="usuario" name="usuario" type="hidden" value="${usuario}"> -->
 													<input id="miembro" name="miembro" type="hidden" value="{{ miembro.usuario }}">
 												    <div class="button">
 												        <button type="submit">Eliminar Miembro</button>
@@ -300,7 +386,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1"></div>-->
 			<script>
 				if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
 					document.getElementById("formNuevos").style.visibility="visible";
@@ -344,7 +430,6 @@
 					document.getElementById("formSolicitadoAcceso").style.visibility="hidden";
 				}
 			</script>
-		</div>
 		<script>
 			
 		var miembrosControlador = function ($scope){

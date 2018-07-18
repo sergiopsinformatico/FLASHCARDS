@@ -100,7 +100,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<br>
-					<h1 align="center">CLUBES</h1>
+					<h1 align="center" style="font-weight: bold;">CLUBES</h1>
 				<br>
 			</div>
 		</div>
