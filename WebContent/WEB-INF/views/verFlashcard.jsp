@@ -37,7 +37,50 @@
 			}
 			.navbar-inner {min-height:28px;}	
 			
-				
+			.container{
+			     width: 100%;
+			     min-width: 100%;
+			     max-width: 100%;
+				 height: 600px;
+				 min-height: 600px;
+				 max-height: 600px;
+		     }
+	    	
+			.card-flip > div {
+			  backface-visibility: hidden;
+			  transition: transform 300ms;
+			  transition-timing-function: linear;
+			  width: 100%;
+			  height: 100%;
+			  margin: 0;
+			  display: flex;
+			}
+			
+			.card-front {
+			  transform: rotateY(0deg);
+			}
+			
+			.card-back {
+			  transform: rotateY(180deg);
+			  position: absolute;
+			  top: 0;
+			}
+			
+			.card-flip:hover .card-front {
+			  transform: rotateY(-180deg);
+			}
+			  
+			.card-flip:hover .card-back {
+			  transform: rotateY(0deg);
+			}	
+			
+			.formato-img{
+				height: 200px;
+				width: auto;
+				display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			}
 		</style>
 		
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
