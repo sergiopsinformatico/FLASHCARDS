@@ -238,7 +238,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="row">
+					<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&coleccion=privado-sergio123451984106222234">Ejemplo de Coleccion a Ver</a>
+				</div>
+			</div>
 		</div>
 		
 		

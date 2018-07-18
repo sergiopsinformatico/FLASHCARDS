@@ -87,24 +87,14 @@ public class ControladorTarjetas {
 	}
 	
 	@RequestMapping(value = "/verFlashcard", method = RequestMethod.GET)
-	public ModelAndView verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("id") String id, @RequestParam("card") int card) {
+	public ModelAndView verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("coleccion") String coleccion) {
 		gU = new GestionUsuarios();
 		gF = new GestionFlashcards();
 		vista = new ModelAndView("verFlashcard");
-		flash = gF.leerFlashcard(id);
-		tarjetas = flash.getColeccion();
-		vista.addObject("front", tarjetas.get(card).getAnverso());
-		vista.addObject("back", tarjetas.get(card).getReverso());
-		if(card<(tarjetas.size()-1)) {
-			vista.addObject("urlRight", "https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario="+usuario+"&id="+id+"&card="+(card+1));
-		}else {
-			vista.addObject("urlRight", "");
-		}
-		if(card>0) {
-			vista.addObject("urlLeft", "https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario="+usuario+"&id="+id+"&card="+(card-1));
-		}else {
-			vista.addObject("urlLeft", "");
-		}
+		flash = gF.leerFlashcard(coleccion);
+		String tarjeta = flash.getColeccionJSON();
+		vista.addObject("usuario", gU.leerUsuario(usuario));
+		vista.addObject("coleccion", tarjeta);
 		return vista;
 	}
 
