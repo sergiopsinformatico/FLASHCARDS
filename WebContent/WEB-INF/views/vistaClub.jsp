@@ -204,7 +204,7 @@
 							        <div class="container carousel-container">
 							            <div class="carousel-inner row w-100 mx-auto">
 								            <div class="carousel-item" ng-repeat="miembro in miembros | filter:expression">
-										        <div class="card h-100 bg-info text-center text-white">
+										        <div class="card h-100 bg-info text-center text-white" style="width: 100%; height: 100%;">
 								                    <br>
 													<img class="card-img-top formato-img" src="resources/img/profile.png" alt="Card image cap">
 													<div class="card-body">
