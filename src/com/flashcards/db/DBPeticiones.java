@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -17,17 +18,19 @@ public class DBPeticiones {
     MongoDatabase db;
     MongoCollection<Document> coleccionPeticiones;
     Document doc;
+    ReadDBProperties properties;
     
     public DBPeticiones() {
+    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionPeticiones = db.getCollection("Peticiones");
+	        coleccionPeticiones = db.getCollection(properties.getProperty("tPeticiones"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

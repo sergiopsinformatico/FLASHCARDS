@@ -6,6 +6,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.dao.GestionAmigos;
 import com.flashcards.dao.GestionClubes;
 import com.flashcards.modelo.Amigos;
@@ -35,17 +36,19 @@ public class DBFlashcards {
     String listJSON;
     GestionClubes gC;
     GestionAmigos gA;
+    ReadDBProperties properties;
     
 	public DBFlashcards() {
+		properties = new ReadDBProperties();
 		conexionDB();
 	}
 	
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionFlashcards = db.getCollection("Flashcards");
+	        coleccionFlashcards = db.getCollection(properties.getProperty("tFlashcards"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

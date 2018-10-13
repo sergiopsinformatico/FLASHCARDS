@@ -7,6 +7,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
@@ -27,17 +28,19 @@ public class DBAcceso {
     MongoCursor<Document> listas;
     int cont;
     GestionUsuarios gU;
+    ReadDBProperties properties;
 	
 	public DBAcceso() {
+		properties = new ReadDBProperties();
 		conexionDB();
 	}
 	
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionSolicitudes = db.getCollection("Acceso");
+	        coleccionSolicitudes = db.getCollection(properties.getProperty("tAcceso"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

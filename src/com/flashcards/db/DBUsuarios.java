@@ -7,13 +7,9 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.dao.GestionAcceso;
-import com.flashcards.dao.GestionAmigos;
-import com.flashcards.dao.GestionBloqueados;
-import com.flashcards.dao.GestionClubes;
-import com.flashcards.dao.GestionPeticiones;
 import com.flashcards.modelo.Club;
-import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.SolicitudAcceso;
 import com.flashcards.modelo.Usuario;
 import com.mongodb.MongoClient;
@@ -35,17 +31,19 @@ public class DBUsuarios {
     int indice, cont;
     String miembros;
     GestionAcceso gA;
+    ReadDBProperties properties;
     
     public DBUsuarios() {
+    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionUsuarios = db.getCollection("Usuarios");
+	        coleccionUsuarios = db.getCollection(properties.getProperty("tUsuarios"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

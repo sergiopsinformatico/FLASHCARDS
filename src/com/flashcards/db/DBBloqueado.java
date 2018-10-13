@@ -6,6 +6,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.modelo.Bloqueado;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -19,17 +20,19 @@ public class DBBloqueado {
     MongoDatabase db;
     MongoCollection<Document> coleccionBloqueado;
     Document doc;
+    ReadDBProperties properties;
     
     public DBBloqueado() {
+    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionBloqueado = db.getCollection("Bloqueado");
+	        coleccionBloqueado = db.getCollection(properties.getProperty("tBloqueado"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

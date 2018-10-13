@@ -6,6 +6,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.modelo.Amigos;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -20,17 +21,19 @@ public class DBAmigos {
     MongoDatabase db;
     MongoCollection<Document> coleccionAmigos;
     Document doc;
+    ReadDBProperties properties;
     
     public DBAmigos() {
+    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(properties.getProperty("url")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionAmigos = db.getCollection("Amigos");
+	        coleccionAmigos = db.getCollection(properties.getProperty("tAmigos"));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
