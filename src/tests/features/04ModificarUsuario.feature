@@ -3,6 +3,6 @@
 Feature: Modificar Usuario
 
 Scenario: Modificar datos de un usuario
-Given Una persona logueada
+Given Una persona quiere modificar los datos
 When Modifica sus datos
-Then Se guardan correctamente
+Then Se modifican correctamente
