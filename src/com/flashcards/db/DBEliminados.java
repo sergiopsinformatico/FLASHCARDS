@@ -7,7 +7,6 @@ import org.bson.BsonString;
 import org.bson.Document;
 
 import com.flashcards.auxiliares.Fecha;
-import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.modelo.Eliminado;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -25,19 +24,17 @@ public class DBEliminados {
     Fecha fecha;
     LinkedList<Eliminado> lista;
     String result;
-    ReadDBProperties properties;
     
     public DBEliminados() {
-    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI(properties.getProperty("url")); 
+			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionEliminados = db.getCollection(properties.getProperty("tEliminados"));
+	        coleccionEliminados = db.getCollection("Eliminados");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

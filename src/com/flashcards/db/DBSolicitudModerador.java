@@ -4,7 +4,6 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
-import com.flashcards.auxiliares.ReadDBProperties;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.SolicitudModerador;
 import com.mongodb.MongoClient;
@@ -18,19 +17,17 @@ public class DBSolicitudModerador {
     MongoDatabase db;
     MongoCollection<Document> coleccionSolicitudes;
     Document doc;
-    ReadDBProperties properties;
     
     public DBSolicitudModerador() {
-    	properties = new ReadDBProperties();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI(properties.getProperty("url")); 
+			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionSolicitudes = db.getCollection(properties.getProperty("tSolModerador"));
+	        coleccionSolicitudes = db.getCollection("SolicitudModerador");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
