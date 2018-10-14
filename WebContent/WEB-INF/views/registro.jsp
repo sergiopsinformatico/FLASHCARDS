@@ -219,9 +219,11 @@
 					<!-- <div class="card"> -->
 					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
 						<div class="card-body">
+							<h6 class="center">ADVERTENCIA</h6><br>
 							El nombre de usuario DEBE CUMPLIR el siguiente requisito: <br>
 				    			<ul> 
 									<li>Sólo puede contener mayúsculas, minúsculas y números</li>
+									<li>El nombre de usuario no debe contener espacios</li>
 								</ul>
 							<br>
 							La clave DEBE CUMPLIR los siguientes requisitos: <br>
@@ -231,6 +233,7 @@
 									<li>Al menos debe haber una mayúscula (A-Z)</li> 
 									<li>Al menos debe haber una minúscula (a-z)</li> 
 									<li>Al menos debe haber un número (0-9)</li> 
+									<li>La clave no debe contener espacios</li>
 								</ul>
 						</div>
 					</div>

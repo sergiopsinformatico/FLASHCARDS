@@ -7,10 +7,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class CrearUsuarioTest {
+public class Test01CrearCuenta {
 	
 	Usuario user;
 	GestionUsuarios gU;
+	
 	//Scenario 1: Registrar un usuario exitosamente
 	
 	@Given("^Una persona quiere registrarse$")

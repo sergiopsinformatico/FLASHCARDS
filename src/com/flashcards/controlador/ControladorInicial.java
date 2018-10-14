@@ -150,6 +150,27 @@ public class ControladorInicial {
 			vista.addObject("usuario", user);
 			return vista;
 		}
+		if(user.getClave().contains(" ")) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "La clave contiene espacios.");
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(user.getUsuario().equals("sergio123")) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El nombre de usuario no está disponible.");
+			user.setUsuario("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(user.getEmail().equals("sergio13_yo@hotmail.com")) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "El email no está disponible.");
+			user.setEmail("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
 		if(gU.existeUsername(user.getUsuario())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "El nombre de usuario ya existe. Use otro.");
