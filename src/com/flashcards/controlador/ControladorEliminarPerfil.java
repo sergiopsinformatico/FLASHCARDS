@@ -16,11 +16,10 @@ import com.flashcards.modelo.Usuario;
 
 @Controller
 public class ControladorEliminarPerfil {
-	//Variables
-	Email em = new Email();
 	
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
+		Email em = new Email();
 		GestionUsuarios gU = new GestionUsuarios();
 		Usuario user = gU.leerUsuario(((Usuario)request.getSession().getAttribute("usuario")).getUsuario());
 		Eliminado pB = new Eliminado(user.getEmail());

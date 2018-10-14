@@ -76,7 +76,7 @@
 			}
 			
 			.card__face--front {
-			  background: red;
+			  background: green;
 			}
 			
 			.card__face--back {

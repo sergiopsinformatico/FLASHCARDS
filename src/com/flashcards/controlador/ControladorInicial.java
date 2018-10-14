@@ -201,6 +201,7 @@ public class ControladorInicial {
 						return vista;
 					}else {
 						gU.registrarUsuario(user);
+						email = new Email();
 						email.crearCuenta(user);
 						vista = new ModelAndView("index");
 						vista.addObject("mensaje", "Registro Correcto");
