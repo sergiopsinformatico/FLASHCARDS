@@ -219,7 +219,7 @@
 					<!-- <div class="card"> -->
 					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
 						<div class="card-body">
-							<h6 class="center">ADVERTENCIA</h6><br>
+							<h6 align="center">ADVERTENCIA</h6><br>
 							El nombre de usuario DEBE CUMPLIR el siguiente requisito: <br>
 				    			<ul> 
 									<li>Sólo puede contener mayúsculas, minúsculas y números</li>

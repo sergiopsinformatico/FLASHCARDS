@@ -2,10 +2,15 @@
 
 Feature: Login Usuario
 
-Scenario: Login de un usuario exitosamente
-Given Una persona quiere loguearse
-When Escribe sus credenciales
-Then Entra al sistema
+Scenario: Login de un usuario con usuario
+Given Una persona quiere loguearse con su usuario
+When Escribe sus credenciales con el usuario
+Then Entra al sistema con el usuario
+
+Scenario: Login de un usuario con email
+Given Una persona quiere loguearse con su email
+When Escribe sus credenciales con el email
+Then Entra al sistema con el email
 
 Scenario: Error en el login con el usuario o email
 Given Una persona va a loguearse

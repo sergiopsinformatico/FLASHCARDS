@@ -1,7 +1,5 @@
 package tests.java;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Usuario;
 
@@ -9,29 +7,49 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class LoginUsuarioTest {
+public class Test02LoginUsuario {
 	Usuario user;
 	GestionUsuarios gU;
-	String usuario, clave;
+	String usuario, email, clave;
 	
-	//Login Correcto
+	//Login Correcto con el Usuario
 	
-	@Given("^Una persona quiere loguearse$")
-	public void una_persona_quiere_loguearse() throws Throwable {
+	@Given("^Una persona quiere loguearse con su usuario$")
+	public void una_persona_quiere_loguearse_con_su_usuario() throws Throwable {
 		gU = new GestionUsuarios();
 		assert(true);
 	}
 
-	@When("^Escribe sus credenciales$")
-	public void escribe_sus_credenciales() throws Throwable {
+	@When("^Escribe sus credenciales con el usuario$")
+	public void escribe_sus_credenciales_con_el_usuario() throws Throwable {
 		usuario="sergio123";
 		clave="Sergio123";
 		assert(true);
 	}
 
-	@Then("^Entra al sistema$")
-	public void entra_al_sistema() throws Throwable {
+	@Then("^Entra al sistema con el usuario$")
+	public void entra_al_sistema_con_el_usuario() throws Throwable {
 		assert(gU.login(usuario, clave));
+	}
+	
+	//Login Correcto con el Email
+
+	@Given("^Una persona quiere loguearse con su email$")
+	public void una_persona_quiere_loguearse_con_su_email() throws Throwable {
+		gU = new GestionUsuarios();
+		assert(true);
+	}
+
+	@When("^Escribe sus credenciales con el email$")
+	public void escribe_sus_credenciales_con_el_email() throws Throwable {
+		email="sergio13_yo@hotmail.com";
+		clave="Sergio123";
+		assert(true);
+	}
+
+	@Then("^Entra al sistema con el email$")
+	public void entra_al_sistema_con_el_email() throws Throwable {
+		assert(gU.login(email, clave));
 	}
 
 	//El nombre de usuario no existe
