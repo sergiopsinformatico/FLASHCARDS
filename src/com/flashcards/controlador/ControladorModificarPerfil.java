@@ -26,7 +26,13 @@ public class ControladorModificarPerfil {
 		               request.getParameter("pais"), request.getParameter("genero"),
 		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
 		ModelAndView vista = new ModelAndView("");
-		if(nuevo.getUsuario().contains(" ")) {
+		if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", "Los campos clave y repite clave deben coincidir.");
+			vista.addObject("usuario", antiguo);
+			nuevo.setUsuario("");
+			vista.addObject("usuarioM", nuevo);
+		}else if(nuevo.getUsuario().contains(" ")) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "El nombre de usuario no puede contener espacios.");
 			vista.addObject("usuario", antiguo);
