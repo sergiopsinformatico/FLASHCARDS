@@ -63,7 +63,7 @@ public class ControladorModificarPerfil {
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
-					vista = new ModelAndView("miperfil");
+					vista = new ModelAndView("perfil");
 					try {
 						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
 					} catch (IOException e) {
@@ -82,7 +82,7 @@ public class ControladorModificarPerfil {
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
-					vista = new ModelAndView("miperfil");
+					vista = new ModelAndView("perfil");
 					try {
 						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
 					} catch (IOException e) {
@@ -107,7 +107,7 @@ public class ControladorModificarPerfil {
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
-					vista = new ModelAndView("miperfil");
+					vista = new ModelAndView("perfil");
 					try {
 						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
 					} catch (IOException e) {
@@ -119,7 +119,7 @@ public class ControladorModificarPerfil {
 				gU.registrarUsuario(nuevo);
 				request.getSession().removeAttribute("usuario");
 				request.getSession().setAttribute("usuario", nuevo);
-				vista = new ModelAndView("miperfil");
+				vista = new ModelAndView("perfil");
 				try {
 					response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsuario());
 				} catch (IOException e) {
