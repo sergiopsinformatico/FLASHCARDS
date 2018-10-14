@@ -481,14 +481,6 @@
 		</style>
 	</head>
 	<body>
-		<%@ page import="com.flashcards.modelo.Usuario" %>
-		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
-			if(user==null || user.getUsuario().equals("")){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
-			}
-			session.setAttribute("usuario", user);
-		%>
 		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
 				alert("${mensaje}");
