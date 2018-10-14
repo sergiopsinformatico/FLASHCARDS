@@ -148,7 +148,7 @@
 		<div class="row">
 			<div class="col-md-1 center"></div>
 			<div class="col-md-5 center">
-				<div class="card text-white bg-warning mb-3" style="height: 350px; max-width: 100%;">
+				<!-- <div class="card text-white bg-success mb-3" style="height: 350px; max-width: 100%;">
 					<div class="card-body">
 							<form action="eliminar.html?usuario=${usuario.getUsuario()}">
 								<button class="btn btn-lg btn-info btn-block btn-signin" type="submit" onclick="return confirm('¿Desea Eliminar la Cuenta?');">
@@ -157,6 +157,15 @@
 							</form>
 						<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
 					</div>
+				</div>-->
+				<div class="text-white bg-success" style="height: 350px; max-width: 100%;">
+					<form action="eliminar.html?usuario=${usuario.getUsuario()}">
+						<button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Desea Eliminar la Cuenta?');">
+							Eliminar Cuenta
+						</button>
+					</form>
+					<br>
+					<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
 				</div>
 			</div>
 			<div class="col-md-1 center"></div>
