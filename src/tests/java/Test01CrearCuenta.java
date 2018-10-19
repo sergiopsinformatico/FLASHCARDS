@@ -16,8 +16,9 @@ public class Test01CrearCuenta {
 	
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 		assert(true);
+		
 	}
 
 	@When("^Introduce los datos$")
@@ -36,7 +37,7 @@ public class Test01CrearCuenta {
 	
 	@Given("^Una persona desea registrarse$")
 	public void una_persona_desea_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "Sergio123", "", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("sergio123", "Sergio123", "", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -57,7 +58,7 @@ public class Test01CrearCuenta {
 	
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
-		user = new Usuario("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}
@@ -78,7 +79,7 @@ public class Test01CrearCuenta {
 	
 	@Given("^Un usuario quiere registrarse$")
 	public void un_usuario_quiere_registrarse() throws Throwable {
-		user = new Usuario("sergio123", "", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", true, false, false);
+		user = new Usuario("sergio123", "", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 		gU = new GestionUsuarios();
 		assert(true);
 	}

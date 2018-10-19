@@ -55,6 +55,7 @@ public class DBUsuarios {
 				  .append("ciudad", user.getCiudad())
 				  .append("pais", user.getPais())
 				  .append("genero", user.getGenero())
+				  .append("photo", user.getPhoto())
 				  .append("isUsuario", user.isUsuario())
 				  .append("isModerador", user.isModerador())
 				  .append("isAdministrador", user.isAdministrador());
@@ -105,7 +106,7 @@ public class DBUsuarios {
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		/*
@@ -174,7 +175,7 @@ public class DBUsuarios {
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		return usuarios;
@@ -184,7 +185,7 @@ public class DBUsuarios {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
@@ -193,7 +194,7 @@ public class DBUsuarios {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}

@@ -162,7 +162,7 @@
 					<h5 align="center">Profile Card</h5>
 					<br>
 					<div class="row">
-						<img src="resources/img/profile.png" alt="Perfil" class="formato-img">
+						<img src=${usuario.getPhoto()} alt="Perfil" class="formato-img">
 					</div>
 					<h6 align="center">${usuario.getNombreApellidos()}</h6>
 					<p class="title" align="center">${rol}</p>

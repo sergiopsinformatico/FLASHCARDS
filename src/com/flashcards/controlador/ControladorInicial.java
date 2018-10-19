@@ -133,7 +133,12 @@ public class ControladorInicial {
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"), true, false, false);
+		               request.getParameter("pais"), request.getParameter("genero"), "", true, false, false);
+		if(user.getGenero().equalsIgnoreCase("hombre")){
+			user.setPhoto("resources/img/profileHombre.jpg");
+		}else {
+			user.setPhoto("resources/img/profileMujer.jpg");
+		}
 		ModelAndView vista;
 		GestionUsuarios gU = new GestionUsuarios();
 		if(user.getUsuario().contains(" ")) {

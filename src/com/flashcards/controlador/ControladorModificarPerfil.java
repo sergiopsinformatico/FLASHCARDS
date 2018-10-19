@@ -23,8 +23,13 @@ public class ControladorModificarPerfil {
 		Usuario nuevo = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"),
+		               request.getParameter("pais"), request.getParameter("genero"), "",
 		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
+		if(nuevo.getGenero().equalsIgnoreCase("hombre")){
+			nuevo.setPhoto("resources/img/profileHombre.jpg");
+		}else {
+			nuevo.setPhoto("resources/img/profileMujer.jpg");
+		}
 		ModelAndView vista = new ModelAndView("");
 		if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
 			vista = new ModelAndView("modificarPerfil");
