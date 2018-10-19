@@ -7,7 +7,6 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
-import com.flashcards.auxiliares.DBConnection;
 import com.flashcards.dao.GestionAcceso;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
@@ -31,18 +30,16 @@ public class DBUsuarios {
     int indice, cont;
     String miembros;
     GestionAcceso gA;
-    DBConnection dbConn;
     public DBUsuarios() {
-    	dbConn = new DBConnection();
     	conexionDB();
     }
     
 	public void conexionDB() {
 		try {
-			uri  = new MongoClientURI(dbConn.dbEndpoint("url")); 
+			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionUsuarios = db.getCollection(dbConn.dbEndpoint("tUsuarios"));
+	        coleccionUsuarios = db.getCollection("Usuarios");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -50,7 +47,6 @@ public class DBUsuarios {
 	
 	public boolean createUsuario(Usuario user) {
 		try {
-			conexionDB();
 			doc = new Document("usuario", user.getUsuario())
 				  .append("clave", user.getClave())
 				  .append("email", user.getEmail())
@@ -71,7 +67,6 @@ public class DBUsuarios {
 	}
 	
 	public boolean existeEmail (String email) {
-		conexionDB();
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			return true;
 		}else {
@@ -80,7 +75,6 @@ public class DBUsuarios {
 	}
 
 	public boolean existeUsername (String username) {
-		conexionDB();
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			return true;
 		}else {
@@ -89,7 +83,6 @@ public class DBUsuarios {
 	}
 	
 	public boolean loginByUsername (String username, String clave) {
-		conexionDB();
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username)).append("clave", new BsonString(clave))).iterator().hasNext()) {
 			return true;
 		}else {
@@ -98,7 +91,6 @@ public class DBUsuarios {
 	}
 	
 	public boolean loginByEmail (String email, String clave) {
-		conexionDB();
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email)).append("clave", new BsonString(clave))).iterator().hasNext()) {
 			return true;
 		}else {
@@ -177,7 +169,6 @@ public class DBUsuarios {
 	}
 	
 	public LinkedList<Usuario> todosUsuariosAdministrador (String username) {
-		conexionDB();
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
@@ -190,7 +181,6 @@ public class DBUsuarios {
 	}
 	
 	public Usuario usuarioByUsername (String username) {
-		conexionDB();
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
@@ -200,7 +190,6 @@ public class DBUsuarios {
 	}
 	
 	public Usuario usuarioByEmail (String email) {
-		conexionDB();
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
@@ -211,7 +200,6 @@ public class DBUsuarios {
 	
 	public boolean modificarUsuario (Usuario user) {
 		try {
-			conexionDB();
 			if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(user.getEmail()))).iterator().hasNext()) {
 				coleccionUsuarios.deleteOne(new BsonDocument().append("email", new BsonString(user.getEmail())));
 				return createUsuario(user);
@@ -225,7 +213,6 @@ public class DBUsuarios {
 	
 	public boolean eliminarCuenta(String usuario) {
 		try {
-			conexionDB();
 			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
 				coleccionUsuarios.deleteOne(new BsonDocument().append("usuario", new BsonString(usuario)));
 				if(!existeUsername(usuario)) {
@@ -243,7 +230,6 @@ public class DBUsuarios {
 	
 	public String getNyA(String usuario) {
 		try {
-			conexionDB();
 			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
 				return coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().next().getString("nombreApellidos");
 			}else {
@@ -255,7 +241,6 @@ public class DBUsuarios {
 	}
 	
 	public String getNewMiembros(Club club) {
-		conexionDB();
 		gA = new GestionAcceso();
 		miembros="";
 		cont = 0;
