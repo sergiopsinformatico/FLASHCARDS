@@ -245,8 +245,8 @@
 						<input type="text" class="form-control" id="nombreApellidos" name="nombreApellidos" placeholder="Nombre y Apellidos" value="${usuario.getNombreApellidos()}" required>
 					</div>
 					<div class="form-group">
-						<label for="edad" style="font-weight: bold;">Edad</label>
-						<input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" value="${usuario.getEdad()}" required>
+						<label for="edad" style="font-weight: bold;">Edad (mínimo 18 años)</label>
+						<input type="number" class="form-control" id="edad" name="edad" min="18" placeholder="Edad" value="${usuario.getEdad()}" required>
 					</div>
 					<div class="form-group">
 						<label for="ciudad" style="font-weight: bold;">Ciudad</label>

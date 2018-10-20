@@ -94,6 +94,7 @@ public class ControladorInicial {
 	
 	@RequestMapping(value = "/recuperar", method = RequestMethod.POST)
 	public ModelAndView recuperar(HttpServletRequest request, HttpServletResponse response) {
+		gU.eliminarCuentas();
 		user = gU.leerUsuario(request.getParameter("usuario"));
 		if(user!=null) {
 			if(email.recuperarClave(user)) {
@@ -130,6 +131,7 @@ public class ControladorInicial {
 	
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
+		gU.eliminarCuentas();
 		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 

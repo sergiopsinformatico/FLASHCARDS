@@ -89,6 +89,16 @@
 			  background: blue;
 			  transform: rotateY(180deg);
 			}
+			
+			.formato-img{
+				height: 180px;
+				min-height: 180px;
+				max-height: 180px;
+				width: auto;
+				display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			}	
 	    </style>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -262,8 +272,12 @@
 				<div class="col-md-3">
 					<div class="profile-sidebar">
 						
-						<div class="profile-userpic">
+						<!-- <div class="profile-userpic">
 							<img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" class="img-responsive" alt="" style="height: 35%; width:100%;">
+						</div>-->
+						
+						<div class="row">
+							<img src=${usuario.getPhoto()} alt="Perfil" class="formato-img">
 						</div>
 						
 						<div class="profile-usertitle">

@@ -157,15 +157,16 @@
 							</form>
 						<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
 					</div>
-				</div>-->
-				<div class="text-white bg-success" style="height: 300px; max-width: 100%;">
-					<br>
-					<form action="eliminar.html?usuario=${usuario.getUsuario()}">
-						<button class="btn btn-danger" onclick="return confirm('¿Desea Eliminar la Cuenta?');">
-							Eliminar Cuenta
-						</button>
-					</form>
-					<br>
+				</div>--><br>
+				
+				<form action="eliminar.html?usuario=${usuario.getUsuario()}">
+					<button class="btn btn-danger" onclick="return confirm('¿Desea Eliminar la Cuenta?');">
+						Eliminar Cuenta
+					</button>
+				</form>
+				<br>
+				
+				<div class="text-white bg-success" style="height: 150px; max-width: 100%;">
 					<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
 				</div>
 			</div>
