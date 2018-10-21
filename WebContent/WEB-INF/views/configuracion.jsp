@@ -149,13 +149,13 @@
 			<div class="col-md-1 center"></div>
 			<div class="col-md-5 center">
 				<br>
-				<form action="eliminar.html?usuario=${usuario.getUsuario()}">
-					<button class="btn border text-warning" onclick="return confirm('¿Desea Eliminar la Cuenta?');" style="background-color: #f44336;">
-						Eliminar Cuenta
-					</button>
-				</form>
-				<br>
 				<div class="card text-white bg-success mb-3" style="max-height: 150px; max-width: 100%;">
+					<form action="eliminar.html?usuario=${usuario.getUsuario()}">
+						<button class="btn border text-dark" onclick="return confirm('¿Desea Eliminar la Cuenta?');" style="background-color: #f44336;">
+							Eliminar Cuenta
+						</button>
+					</form>
+					<br>
 					<div class="card-body">
 						<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente.</h6>
 					</div>
