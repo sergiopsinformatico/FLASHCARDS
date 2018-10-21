@@ -165,10 +165,14 @@
 					</button>
 				</form>
 				<br>
-				
-				<div class="text-white bg-success" style="height: 150px; max-width: 100%; text-align: center;">
-					<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
+				<div class="card text-white bg-success mb-3" style="max-width: 100%;">
+					<div class="card-body">
+						<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
+					</div>
 				</div>
+				<!-- <div class="text-white bg-success" style="height: 150px; max-width: 100%; text-align: center;">
+					<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
+				</div>-->
 			</div>
 			<div class="col-md-1 center"></div>
 			<div class="col-md-4 center">
