@@ -165,7 +165,7 @@
 					</button>
 				</form>
 				<br>
-				<div class="card text-white bg-success mb-3" style="max-width: 100%;">
+				<div class="card text-white bg-success mb-3" style="max-height: 150px; max-width: 100%;">
 					<div class="card-body">
 						<h6 align="center" style="font-weight: bold;">Nota: Si da a aceptar, dispone de 14 días para recuperar la cuenta, iniciando sesión de nuevo o se eliminará definitivamente. Recibirá un email con toda la informacion.</h6>
 					</div>
