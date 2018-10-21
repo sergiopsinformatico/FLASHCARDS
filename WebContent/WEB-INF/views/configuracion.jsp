@@ -150,7 +150,7 @@
 			<div class="col-md-5 center">
 				<br>
 				<form action="eliminar.html?usuario=${usuario.getUsuario()}">
-					<button class="btn btn-danger border" onclick="return confirm('¿Desea Eliminar la Cuenta?');" style="border: 2px;">
+					<button class="btn border text-warning" onclick="return confirm('¿Desea Eliminar la Cuenta?');" style="background-color: #f44336;">
 						Eliminar Cuenta
 					</button>
 				</form>
