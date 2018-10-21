@@ -158,6 +158,7 @@
 			}
 		</style>
 	</head>
+	<!--  <body background="resources/img/background.jpg" style="background-size: 100%;"> background-position: center;-->
 	<body>
 		<%@ page import="com.flashcards.modelo.Usuario" %>
 		<% 
@@ -203,9 +204,9 @@
 	                Si aún no tienes cuenta, regístrate
 	            </a>
 	            <br>
-	            <a href="recovery.html" class="forgot-password">
+	            <!-- <a href="recovery.html" class="forgot-password">
 	                ¿Olvidaste la Clave?
-	            </a>
+	            </a>-->
 	            <br><br><br><br><br><br>
 				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.</h6>
 			</div>
