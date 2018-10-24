@@ -23,7 +23,7 @@ import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.Tarjeta;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorTarjetas {
@@ -39,7 +39,7 @@ public class ControladorTarjetas {
 	Tarjeta t;
 	int i;
 	Flashcard flash;
-	Usuario user;
+	UsuarioDTO user;
 	String identificador;
 	Random r = new Random();
 	
@@ -52,7 +52,7 @@ public class ControladorTarjetas {
 	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("creaColeccion");
 		tarjetas = new LinkedList<Tarjeta>();
-		user = (Usuario)request.getSession().getAttribute("usuario");
+		user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 		vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
 		vista.addObject("usuario", user);
@@ -102,7 +102,7 @@ public class ControladorTarjetas {
 	@RequestMapping(value = "/guardarFlashcard", method = RequestMethod.POST)
 	public ModelAndView guardarFlashcard(HttpServletRequest request, HttpServletResponse response) {
 		flash = new Flashcard();
-		user = (Usuario)request.getSession().getAttribute("usuario");
+		user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 		flash.setCreador(user.getUsuario());
 		flash.setColeccion(tarjetas);
 		flash.setNombreColeccion(request.getParameter("nombre"));
@@ -132,7 +132,7 @@ public class ControladorTarjetas {
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectClub")==null || request.getParameter("selectClub").equals("")) {
 					vista = new ModelAndView("creaColeccion");
-					user = (Usuario)request.getSession().getAttribute("usuario");
+					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
@@ -155,7 +155,7 @@ public class ControladorTarjetas {
 				flash.setIdentificador(identificador);
 				if(request.getParameter("selectUsuario")==null || request.getParameter("selectUsuario").equals("")) {
 					vista = new ModelAndView("creaColeccion");
-					user = (Usuario)request.getSession().getAttribute("usuario");
+					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
 					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
@@ -174,7 +174,7 @@ public class ControladorTarjetas {
 		
 		if(tarjetas.size()==0) {
 			vista = new ModelAndView("creaColeccion");
-			user = (Usuario)request.getSession().getAttribute("usuario");
+			user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 			vista.addObject("usuario",user);
 			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsuario()));
 			vista.addObject("amigos", gA.getAmigosJSON(user.getUsuario()));
@@ -188,7 +188,7 @@ public class ControladorTarjetas {
 		}else {
 			gF.insertarFlashcard(flash);
 			vista = new ModelAndView("flashcards");
-			user = (Usuario)request.getSession().getAttribute("usuario");
+			user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 			vista.addObject("mensaje", "Coleccion Creada Correctamente");
 			vista.addObject("usuario",user);
 			return vista;

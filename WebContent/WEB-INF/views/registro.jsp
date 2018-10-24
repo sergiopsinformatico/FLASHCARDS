@@ -165,11 +165,11 @@
 		</style>
 	</head>
 	<body>
-		<%@ page import="com.flashcards.modelo.Usuario" %>
+		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 			if(user!=null && (!user.getUsuario().equals(""))){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((Usuario)(session.getAttribute("usuario"))).getUsuario());
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getUsuario());
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">
@@ -216,7 +216,6 @@
 						<label for="repiteClave" style="font-weight: bold;">Repite la Clave</label>
 						<input type="password" class="form-control" id="repiteClave" name="repiteClave" placeholder="Repite la Clave" value="${usuario.getClave()}" required>
 					</div>
-					<!-- <div class="card"> -->
 					<div class="card text-white bg-danger mb-3" style="max-width: 100%;">
 						<div class="card-body">
 							<h6 align="center">ADVERTENCIA</h6><br>
@@ -268,6 +267,20 @@
 						</div>
 					</div>
 					
+					<br>
+					<div class="card text-white bg-success mb-3" style="max-width: 100%;">
+						<div class="card-body">
+							Al hacer click en registrar, acepta:
+							<ul> 
+								<li>Que sus datos personales serán almacenados por la aplicación.</li>
+								<li>Que sus datos personales puedan ser visualizados por cualquier usuario que tenga cuenta.</li>
+								<li>Que sus datos personales sólo los puede rectificar o modificar mediante la aplicación.</li>
+								<li>Que sus datos personales los podrá eliminar o cancelar sólo si usted elimina su cuenta.</li>
+							</ul>
+						</div>
+					</div>
+					<br>
+					
 					<div class="form-group ">
 						<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
 					</div>
@@ -275,9 +288,9 @@
 					<a href="https://sistemaflashcards.herokuapp.com" class="login centro">
 		                Login
 		            </a><br>
-		            <a href="recovery.html" class="forgot-password">
+		            <!-- <a href="recovery.html" class="forgot-password">
 		                ¿Olvidaste la Clave?
-		            </a>
+		            </a>-->
 				</div>
 				<div class="col-md-1"></div>
 			</div>

@@ -9,7 +9,7 @@ import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.PeticionDeAmistad;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 public class GestionUsuarios {
 	
@@ -21,8 +21,8 @@ public class GestionUsuarios {
 	Fecha fecha;
 	LinkedList<Eliminado> lista;
 	Eliminado el;
-	Usuario user;
-	LinkedList<Usuario> usuarios;
+	UsuarioDTO user;
+	LinkedList<UsuarioDTO> usuarios;
 	String json;
 	int indice;
 	
@@ -30,7 +30,7 @@ public class GestionUsuarios {
 		db = new DBUsuarios();
 	}
 	
-	public boolean registrarUsuario(Usuario user) {
+	public boolean registrarUsuario(UsuarioDTO user) {
 		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))
 				&&(user.hayMayuscula())&&(user.hayMinuscula())&&(user.hayNumero())&&(user.longitudCorrecta())) {
 			return db.createUsuario(user);
@@ -57,7 +57,7 @@ public class GestionUsuarios {
 		}
 	}
 	
-	public Usuario leerUsuario(String usuario) {
+	public UsuarioDTO leerUsuario(String usuario) {
 		if(existeUsername(usuario)) {
 			return db.usuarioByUsername(usuario);
 		}else if (existeEmail(usuario)) {
@@ -114,11 +114,11 @@ public class GestionUsuarios {
 		return json;
 	}
 	
-	public LinkedList<Usuario> todosUsuariosAdministrador(String usuario) {
+	public LinkedList<UsuarioDTO> todosUsuariosAdministrador(String usuario) {
 		return db.todosUsuariosAdministrador(usuario);
 	}
 	
-	public boolean modificarUsuario(Usuario user) {
+	public boolean modificarUsuario(UsuarioDTO user) {
 		return db.modificarUsuario(user);
 	}
 	

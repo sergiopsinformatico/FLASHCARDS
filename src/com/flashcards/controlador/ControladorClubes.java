@@ -17,7 +17,7 @@ import com.flashcards.dao.GestionClubes;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorClubes {

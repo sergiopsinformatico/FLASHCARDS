@@ -19,7 +19,7 @@ import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorPersonas {
@@ -35,7 +35,7 @@ public class ControladorPersonas {
 	Bloqueado bloqueado;
 	Amigos amigos;
 	LinkedList<PeticionDeAmistad>pendientes;
-	LinkedList<Usuario>pendientesUsuario, amigosUsuario, bloqueados;
+	LinkedList<UsuarioDTO>pendientesUsuario, amigosUsuario, bloqueados;
 	LinkedList<String>amigosLeidos, bloqueadosLeidos;
 	
 	@RequestMapping(value = "/people", method = RequestMethod.GET)

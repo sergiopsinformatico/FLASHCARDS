@@ -13,14 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flashcards.auxiliares.Email;
 import com.flashcards.dao.GestionEliminados;
 import com.flashcards.dao.GestionUsuarios;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorInicial {
 	//Variables
 	GestionUsuarios gU = new GestionUsuarios();
 	Email email = new Email();
-	Usuario user;
+	UsuarioDTO user;
 	ModelAndView vista;
 	
 									//CONTROLADORES DE INICIAR SESIÓN
@@ -132,7 +132,7 @@ public class ControladorInicial {
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		gU.eliminarCuentas();
-		Usuario user = new Usuario(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
+		UsuarioDTO user = new UsuarioDTO(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
 		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
 		               request.getParameter("pais"), request.getParameter("genero"), "", true, false, false);

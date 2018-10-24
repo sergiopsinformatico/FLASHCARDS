@@ -160,11 +160,11 @@
 	</head>
 	<!--  <body background="resources/img/background.jpg" style="background-size: 100%;"> background-position: center;-->
 	<body>
-		<%@ page import="com.flashcards.modelo.Usuario" %>
+		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
-		Usuario user = ((Usuario)(session.getAttribute("usuario")));
+		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 			if(user!=null && (!user.getUsuario().equals(""))){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((Usuario)(session.getAttribute("usuario"))).getUsuario());
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getUsuario());
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">
@@ -201,7 +201,7 @@
 			      <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
 			    </form>
 			    <a href="registro.html" class="register">
-	                Si aún no tienes cuenta, regístrate
+	                Si aún no tienes cuenta, pulsa sobre este enlace para registrarte.
 	            </a>
 	            <br>
 	            <!-- <a href="recovery.html" class="forgot-password">

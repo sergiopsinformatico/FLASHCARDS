@@ -1,7 +1,7 @@
 package tests.java;
 
 import com.flashcards.dao.GestionUsuarios;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,7 +10,7 @@ import cucumber.api.java.en.When;
 public class Test04ModificarUsuario {
 	
 	GestionUsuarios gU;
-	Usuario user, user2;
+	UsuarioDTO user, user2;
 	
 	@Given("^Una persona quiere modificar los datos$")
 	public void una_persona_quiere_modificar_los_datos() throws Throwable {

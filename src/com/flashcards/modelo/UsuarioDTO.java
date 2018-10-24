@@ -1,11 +1,11 @@
 package com.flashcards.modelo;
 
-public class Usuario {
+public class UsuarioDTO {
 	String usuario, clave, email, nombreApellidos, ciudad, pais, genero, photo;
 	int edad, indice;
 	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
 	
-	public Usuario(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, String photo, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
+	public UsuarioDTO(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, String photo, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsuario(usuario);
 		setClave(clave);
 		setEmail(email);

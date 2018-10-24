@@ -18,9 +18,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
-		<%@ page import="com.flashcards.modelo.Usuario" %>
+		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
+			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 			if(user==null || user.getUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}

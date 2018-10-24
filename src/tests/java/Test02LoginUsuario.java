@@ -1,14 +1,14 @@
 package tests.java;
 
 import com.flashcards.dao.GestionUsuarios;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class Test02LoginUsuario {
-	Usuario user;
+	UsuarioDTO user;
 	GestionUsuarios gU;
 	String usuario, email, clave;
 	

@@ -3,7 +3,7 @@ package tests.java;
 import com.flashcards.dao.GestionFlashcards;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,7 +11,7 @@ import cucumber.api.java.en.When;
 
 public class FlashcardTest {
 	
-	Usuario user;
+	UsuarioDTO user;
 	GestionUsuarios gU;
 	Flashcard fl;
 	GestionFlashcards gF;
@@ -19,7 +19,7 @@ public class FlashcardTest {
 	@Given("^Una usuario logueado$")
 	public void una_usuario_logueado() throws Throwable {
 	    gU = new GestionUsuarios();
-	    user = new Usuario("user", "clave", "email", "nombre", 35, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
+	    user = new UsuarioDTO("user", "clave", "email", "nombre", 35, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
 	}
 

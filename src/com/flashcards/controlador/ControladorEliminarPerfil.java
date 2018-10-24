@@ -12,7 +12,7 @@ import com.flashcards.auxiliares.Email;
 import com.flashcards.dao.GestionEliminados;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.Eliminado;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorEliminarPerfil {
@@ -21,7 +21,7 @@ public class ControladorEliminarPerfil {
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
 		Email em = new Email();
 		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user = gU.leerUsuario(((Usuario)request.getSession().getAttribute("usuario")).getUsuario());
+		UsuarioDTO user = gU.leerUsuario(((UsuarioDTO)request.getSession().getAttribute("usuario")).getUsuario());
 		Eliminado pB = new Eliminado(user.getEmail());
 		GestionEliminados gE = new GestionEliminados();
 		gE.insertarEliminado(pB);

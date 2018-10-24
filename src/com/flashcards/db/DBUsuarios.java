@@ -10,7 +10,7 @@ import org.bson.Document;
 import com.flashcards.dao.GestionAcceso;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -24,7 +24,7 @@ public class DBUsuarios {
     MongoDatabase db;
     MongoCollection<Document> coleccionUsuarios;
     Document doc;
-    Usuario user;
+    UsuarioDTO user;
     ArrayList<String> lista;
     MongoCursor<Document> usuarios;
     int indice, cont;
@@ -45,7 +45,7 @@ public class DBUsuarios {
 		}
 	}
 	
-	public boolean createUsuario(Usuario user) {
+	public boolean createUsuario(UsuarioDTO user) {
 		try {
 			doc = new Document("usuario", user.getUsuario())
 				  .append("clave", user.getClave())
@@ -99,14 +99,14 @@ public class DBUsuarios {
 		}
 	}
 	
-	public LinkedList<Usuario> gente (String username) {
+	public LinkedList<UsuarioDTO> gente (String username) {
 		conexionDB();
-		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+		LinkedList<UsuarioDTO> usuarios = new LinkedList<UsuarioDTO>();
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+				usuarios.add(new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		/*
@@ -169,37 +169,37 @@ public class DBUsuarios {
 		return usuarios;
 	}
 	
-	public LinkedList<Usuario> todosUsuariosAdministrador (String username) {
-		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+	public LinkedList<UsuarioDTO> todosUsuariosAdministrador (String username) {
+		LinkedList<UsuarioDTO> usuarios = new LinkedList<UsuarioDTO>();
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+				usuarios.add(new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		return usuarios;
 	}
 	
-	public Usuario usuarioByUsername (String username) {
+	public UsuarioDTO usuarioByUsername (String username) {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
 	
-	public Usuario usuarioByEmail (String email) {
+	public UsuarioDTO usuarioByEmail (String email) {
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
-			user = new Usuario(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
 	
-	public boolean modificarUsuario (Usuario user) {
+	public boolean modificarUsuario (UsuarioDTO user) {
 		try {
 			if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(user.getEmail()))).iterator().hasNext()) {
 				coleccionUsuarios.deleteOne(new BsonDocument().append("email", new BsonString(user.getEmail())));

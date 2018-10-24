@@ -22,12 +22,12 @@ import com.flashcards.dao.GestionSolicitudModerador;
 import com.flashcards.dao.GestionUsuarios;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.SolicitudModerador;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorPrincipal {
 	
-	Usuario user, userPerfil;
+	UsuarioDTO user, userPerfil;
 	GestionUsuarios gU = new GestionUsuarios();
 	GestionPeticiones gP = new GestionPeticiones();
 	GestionAmigos gA = new GestionAmigos();
@@ -35,7 +35,7 @@ public class ControladorPrincipal {
 	GestionSolicitudModerador gSM;
 	GestionFlashcards gF;
 	ModelAndView vista;
-	LinkedList<Usuario> usuarios;
+	LinkedList<UsuarioDTO> usuarios;
 	LinkedList<String> users;
 	LinkedList<PeticionDeAmistad>peticiones;
 	String jsonPeople, jsonAmigos, jsonPdAEn, jsonPdARe, jsonBlo;
@@ -232,7 +232,7 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/principalLogueado", method = RequestMethod.POST)
 	public ModelAndView principalLogueado(HttpServletRequest request, HttpServletResponse response) {
 		GestionUsuarios gU = new GestionUsuarios();
-		Usuario user = gU.leerUsuario(request.getParameter("usuario"));
+		UsuarioDTO user = gU.leerUsuario(request.getParameter("usuario"));
 		ModelAndView vista = new ModelAndView("principal");
 		vista.addObject("nUsuario", request.getParameter("usuario"));
 		vista.addObject("administrador", user.isAdministrador());

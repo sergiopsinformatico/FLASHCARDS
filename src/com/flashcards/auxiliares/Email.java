@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 public class Email {
 	String envia, recibe, asunto, mensaje;
@@ -24,7 +24,7 @@ public class Email {
 		setEnvia("sistemaflashcards@gmail.com");
 	}
 	
-	public boolean crearCuenta(Usuario user) {
+	public boolean crearCuenta(UsuarioDTO user) {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Creación de la cuenta "+user.getEmail());
 		//Mensaje
@@ -38,7 +38,7 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean eliminarCuenta(Usuario user, String fecha) {
+	public boolean eliminarCuenta(UsuarioDTO user, String fecha) {
 		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getUsuario()+") - 14 dias");
 		//Mensaje
@@ -51,7 +51,7 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean recuperarClave(Usuario user) {
+	public boolean recuperarClave(UsuarioDTO user) {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Recuperación de la clave de "+user.getEmail());
 		//Mensaje
@@ -65,7 +65,7 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean reactivacionCuenta(Usuario user) {
+	public boolean reactivacionCuenta(UsuarioDTO user) {
 		//Asunto
 		setAsunto("[Sistema Flashcards] Reactivacion de la cuenta de "+user.getEmail());
 		//Mensaje

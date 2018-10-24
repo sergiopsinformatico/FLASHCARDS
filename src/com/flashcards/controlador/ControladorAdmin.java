@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.dao.GestionUsuarios;
-import com.flashcards.modelo.Usuario;
+import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorAdmin {
 	
 	GestionUsuarios gU = new GestionUsuarios();
-	LinkedList<Usuario>usuarios;
+	LinkedList<UsuarioDTO>usuarios;
 	ModelAndView vista;
-	Usuario user;
+	UsuarioDTO user;
 	String users, rol;
 	
 	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
