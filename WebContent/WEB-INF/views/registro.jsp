@@ -266,8 +266,6 @@
 							<label class="form-check-label" for="genero_Mujer"> Mujer </label>
 						</div>
 					</div>
-					
-					<br>
 					<div class="card text-white bg-success mb-3" style="max-width: 100%;">
 						<div class="card-body">
 							Al hacer click en registrar, acepta:
@@ -279,8 +277,6 @@
 							</ul>
 						</div>
 					</div>
-					<br>
-					
 					<div class="form-group ">
 						<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrarse</button>
 					</div>
