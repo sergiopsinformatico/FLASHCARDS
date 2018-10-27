@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;

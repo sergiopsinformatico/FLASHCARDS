@@ -1,6 +1,6 @@
-package com.flashcards.dao;
+package com.flashcards.db.gestores;
 
-import com.flashcards.db.DBFlashcards;
+import com.flashcards.db.dao.DBFlashcards;
 import com.flashcards.modelo.Flashcard;
 
 public class GestionFlashcards {

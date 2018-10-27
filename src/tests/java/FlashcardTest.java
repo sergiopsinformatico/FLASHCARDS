@@ -1,7 +1,7 @@
 package tests.java;
 
-import com.flashcards.dao.GestionFlashcards;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionFlashcards;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.UsuarioDTO;
 

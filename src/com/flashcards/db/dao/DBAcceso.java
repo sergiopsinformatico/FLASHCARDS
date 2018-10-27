@@ -1,4 +1,4 @@
-package com.flashcards.db;
+package com.flashcards.db.dao;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,7 +7,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
 import com.mongodb.MongoClient;

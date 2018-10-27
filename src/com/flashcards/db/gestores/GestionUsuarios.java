@@ -1,9 +1,9 @@
-package com.flashcards.dao;
+package com.flashcards.db.gestores;
 
 import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
-import com.flashcards.db.DBUsuarios;
+import com.flashcards.db.dao.DBUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.Club;

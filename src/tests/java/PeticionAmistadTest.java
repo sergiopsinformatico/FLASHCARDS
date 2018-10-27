@@ -2,10 +2,10 @@ package tests.java;
 
 import java.util.LinkedList;
 
-import com.flashcards.dao.GestionAmigos;
-import com.flashcards.dao.GestionBloqueados;
-import com.flashcards.dao.GestionPeticiones;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionAmigos;
+import com.flashcards.db.gestores.GestionBloqueados;
+import com.flashcards.db.gestores.GestionPeticiones;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;

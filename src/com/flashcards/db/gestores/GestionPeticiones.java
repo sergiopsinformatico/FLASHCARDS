@@ -1,8 +1,8 @@
-package com.flashcards.dao;
+package com.flashcards.db.gestores;
 
 import java.util.LinkedList;
 
-import com.flashcards.db.DBPeticiones;
+import com.flashcards.db.dao.DBPeticiones;
 import com.flashcards.modelo.PeticionDeAmistad;
 
 public class GestionPeticiones {

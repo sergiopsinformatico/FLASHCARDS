@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.auxiliares.Email;
-import com.flashcards.dao.GestionEliminados;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionEliminados;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.UsuarioDTO;
 

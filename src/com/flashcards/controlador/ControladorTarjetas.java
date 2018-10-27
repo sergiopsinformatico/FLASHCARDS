@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flashcards.dao.GestionAmigos;
-import com.flashcards.dao.GestionClubes;
-import com.flashcards.dao.GestionFlashcards;
-import com.flashcards.dao.GestionSolicitudModerador;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionAmigos;
+import com.flashcards.db.gestores.GestionClubes;
+import com.flashcards.db.gestores.GestionFlashcards;
+import com.flashcards.db.gestores.GestionSolicitudModerador;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.Tarjeta;

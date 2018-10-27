@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flashcards.dao.GestionEliminados;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionEliminados;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
@@ -32,7 +32,6 @@ public class Controlador02IniciarSesión {
 		gU = new GestionUsuarios();
 		gE = new GestionEliminados();
 		
-		gU.eliminarCuentas();
 		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){
 			user = gU.leerUsuario(request.getParameter("inputUsuario"));
 			vista = new ModelAndView("principal");

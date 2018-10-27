@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flashcards.dao.GestionAmigos;
-import com.flashcards.dao.GestionBloqueados;
-import com.flashcards.dao.GestionPeticiones;
-import com.flashcards.dao.GestionUsuarios;
+import com.flashcards.db.gestores.GestionAmigos;
+import com.flashcards.db.gestores.GestionBloqueados;
+import com.flashcards.db.gestores.GestionPeticiones;
+import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
