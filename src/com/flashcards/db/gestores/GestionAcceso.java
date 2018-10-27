@@ -1,8 +1,6 @@
 package com.flashcards.db.gestores;
 
-import java.util.LinkedList;
-
-import com.flashcards.db.dao.DBAcceso;
+import com.flashcards.db.DBAcceso;
 import com.flashcards.modelo.SolicitudAcceso;
 
 public class GestionAcceso {

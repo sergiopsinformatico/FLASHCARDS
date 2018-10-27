@@ -2,7 +2,7 @@ package com.flashcards.db.gestores;
 
 import java.util.ArrayList;
 
-import com.flashcards.db.dao.DBClubes;
+import com.flashcards.db.DBClubes;
 import com.flashcards.modelo.Club;
 
 public class GestionClubes {

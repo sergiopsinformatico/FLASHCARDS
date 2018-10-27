@@ -2,7 +2,7 @@ package com.flashcards.db.gestores;
 
 import java.util.LinkedList;
 
-import com.flashcards.db.dao.DBAmigos;
+import com.flashcards.db.DBAmigos;
 import com.flashcards.modelo.Amigos;
 
 public class GestionAmigos {

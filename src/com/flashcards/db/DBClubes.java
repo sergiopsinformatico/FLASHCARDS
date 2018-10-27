@@ -1,4 +1,4 @@
-package com.flashcards.db.dao;
+package com.flashcards.db;
 
 import java.util.ArrayList;
 import org.bson.BsonDocument;

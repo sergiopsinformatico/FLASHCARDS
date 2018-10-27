@@ -1,4 +1,4 @@
-package com.flashcards.db.dao;
+package com.flashcards.db;
 
 import org.bson.BsonDocument;
 import org.bson.BsonString;

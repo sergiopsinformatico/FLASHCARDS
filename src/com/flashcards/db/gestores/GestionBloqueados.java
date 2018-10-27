@@ -2,7 +2,7 @@ package com.flashcards.db.gestores;
 
 import java.util.LinkedList;
 
-import com.flashcards.db.dao.DBBloqueado;
+import com.flashcards.db.DBBloqueado;
 import com.flashcards.modelo.Bloqueado;
 
 public class GestionBloqueados {

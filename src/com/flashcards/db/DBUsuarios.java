@@ -1,4 +1,4 @@
-package com.flashcards.db.dao;
+package com.flashcards.db;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,9 +7,8 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.db.dao.InterfaceDAOUsuario;
 import com.flashcards.db.gestores.GestionAcceso;
-import com.flashcards.modelo.Club;
-import com.flashcards.modelo.SolicitudAcceso;
 import com.flashcards.modelo.UsuarioDTO;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -17,7 +16,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-public class DBUsuarios {
+public class DBUsuarios implements InterfaceDAOUsuario{
 	
 	MongoClientURI uri; 
     MongoClient client;
@@ -45,7 +44,7 @@ public class DBUsuarios {
 		}
 	}
 	
-	public boolean createUsuario(UsuarioDTO user) {
+	public boolean crearUsuario(UsuarioDTO user) {
 		try {
 			doc = new Document("usuario", user.getUsuario())
 				  .append("clave", user.getClave())
@@ -99,77 +98,7 @@ public class DBUsuarios {
 		}
 	}
 	
-	public LinkedList<UsuarioDTO> gente (String username) {
-		conexionDB();
-		LinkedList<UsuarioDTO> usuarios = new LinkedList<UsuarioDTO>();
-		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
-		while(lista.hasNext()) {
-			doc = lista.next();
-			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
-			}
-		}
-		/*
-		//Eliminamos Amigos
-		GestionAmigos gA=new GestionAmigos();
-		LinkedList<String>personas = gA.getAmigos(username);
-		for(int i=0; i<personas.size(); i++) {
-			for(int j=0;j<usuarios.size(); j++) {
-				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
-					usuarios.remove(j);
-					j=0;
-				}
-			}
-		}
-		//Eliminamos Bloqueados
-		GestionBloqueados gB = new GestionBloqueados();
-		personas = gB.leerBloqueados(username);
-		for(int i=0; i<personas.size(); i++) {
-			for(int j=0;j<usuarios.size(); j++) {
-				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
-					usuarios.remove(j);
-					j=0;
-				}
-			}
-		}
-		//Eliminamos los que nos han bloqueado
-		gB = new GestionBloqueados();
-		personas = gB.leerBloqueadores(username);
-		for(int i=0; i<personas.size(); i++) {
-			for(int j=0;j<usuarios.size(); j++) {
-				if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
-					usuarios.remove(j);
-					j=0;
-				}
-			}
-		}
-		//Eliminamos Los que han mandado peticion de Amistad
-		GestionPeticiones gP = new GestionPeticiones();
-		LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticionRecibida(username);
-		for(int i=0; i<peticiones.size();i++) {
-			for(int j=0; j<usuarios.size(); j++) {
-				if(peticiones.get(i).getEnvia().equals(usuarios.get(j).getUsuario())) {
-					usuarios.remove(j);
-					j=0;
-				}
-			}
-		}
-		
-		//Eliminamos a los que hemos enviado peticion de amistad
-		gP = new GestionPeticiones();
-		peticiones=gP.leerPeticionEnviada(username);
-		for(int i=0; i<peticiones.size();i++) {
-			for(int j=0; j<usuarios.size(); j++) {
-				if(peticiones.get(i).getRecibe().equals(usuarios.get(j).getUsuario())) {
-					usuarios.remove(j);
-					j=0;
-				}
-			}
-		}*/
-		return usuarios;
-	}
-	
-	public LinkedList<UsuarioDTO> todosUsuariosAdministrador (String username) {
+	public LinkedList<UsuarioDTO> usuarios (String username) {
 		LinkedList<UsuarioDTO> usuarios = new LinkedList<UsuarioDTO>();
 		MongoCursor<Document> lista = coleccionUsuarios.find().iterator();
 		while(lista.hasNext()) {
@@ -203,7 +132,7 @@ public class DBUsuarios {
 		try {
 			if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(user.getEmail()))).iterator().hasNext()) {
 				coleccionUsuarios.deleteOne(new BsonDocument().append("email", new BsonString(user.getEmail())));
-				return createUsuario(user);
+				return crearUsuario(user);
 			}else {
 				return false;
 			}
@@ -212,7 +141,7 @@ public class DBUsuarios {
 		}
 	}
 	
-	public boolean eliminarCuenta(String usuario) {
+	public boolean eliminarUsuario(String usuario) {
 		try {
 			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
 				coleccionUsuarios.deleteOne(new BsonDocument().append("usuario", new BsonString(usuario)));
@@ -228,40 +157,68 @@ public class DBUsuarios {
 			return false;
 		}
 	}
-	
-	public String getNyA(String usuario) {
-		try {
-			if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().hasNext()) {
-				return coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(usuario))).iterator().next().getString("nombreApellidos");
-			}else {
-				return "";
-			}
-		}catch(Exception ex) {
-			return "";
+}
+
+
+
+
+
+/*GENTE*/
+/*
+//Eliminamos Amigos
+GestionAmigos gA=new GestionAmigos();
+LinkedList<String>personas = gA.getAmigos(username);
+for(int i=0; i<personas.size(); i++) {
+	for(int j=0;j<usuarios.size(); j++) {
+		if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+			usuarios.remove(j);
+			j=0;
 		}
-	}
-	
-	public String getNewMiembros(Club club) {
-		gA = new GestionAcceso();
-		miembros="";
-		cont = 0;
-		usuarios = coleccionUsuarios.find().iterator();
-		lista = club.getColeccionMiembros();
-		while(usuarios.hasNext()) {
-			doc = usuarios.next();
-			for(indice=0; indice<lista.size(); indice++) {
-				if(doc.getString("usuario").equals(lista.get(indice))) {
-					indice = lista.size();
-				}else if((indice == (lista.size()-1)) && (!(gA.existeSolicitud(new SolicitudAcceso(doc.getString("usuario"),club.getIdentificador()))))) {
-					if(cont==0) {
-						miembros = getNyA(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
-						cont++;
-					}else {
-						miembros = miembros + "///****nMiembro****///" + getNyA(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
-					}
-				}
-			}
-		}
-		return miembros;
 	}
 }
+//Eliminamos Bloqueados
+GestionBloqueados gB = new GestionBloqueados();
+personas = gB.leerBloqueados(username);
+for(int i=0; i<personas.size(); i++) {
+	for(int j=0;j<usuarios.size(); j++) {
+		if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+			usuarios.remove(j);
+			j=0;
+		}
+	}
+}
+//Eliminamos los que nos han bloqueado
+gB = new GestionBloqueados();
+personas = gB.leerBloqueadores(username);
+for(int i=0; i<personas.size(); i++) {
+	for(int j=0;j<usuarios.size(); j++) {
+		if(personas.get(i).equals(usuarios.get(j).getUsuario())) {
+			usuarios.remove(j);
+			j=0;
+		}
+	}
+}
+//Eliminamos Los que han mandado peticion de Amistad
+GestionPeticiones gP = new GestionPeticiones();
+LinkedList<PeticionDeAmistad>peticiones=gP.leerPeticionRecibida(username);
+for(int i=0; i<peticiones.size();i++) {
+	for(int j=0; j<usuarios.size(); j++) {
+		if(peticiones.get(i).getEnvia().equals(usuarios.get(j).getUsuario())) {
+			usuarios.remove(j);
+			j=0;
+		}
+	}
+}
+
+//Eliminamos a los que hemos enviado peticion de amistad
+gP = new GestionPeticiones();
+peticiones=gP.leerPeticionEnviada(username);
+for(int i=0; i<peticiones.size();i++) {
+	for(int j=0; j<usuarios.size(); j++) {
+		if(peticiones.get(i).getRecibe().equals(usuarios.get(j).getUsuario())) {
+			usuarios.remove(j);
+			j=0;
+		}
+	}
+}*/
+

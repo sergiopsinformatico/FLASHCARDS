@@ -37,9 +37,6 @@ public class Controlador02IniciarSesión {
 			vista = new ModelAndView("principal");
 			vista.addObject("usuario", user);
 			request.getSession().setAttribute("usuario", user);
-			if(gE.isUsuario(user.getEmail())) {
-				gE.borrarEliminado(user.getEmail());
-			}
 			try {
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsuario());
 			} catch (IOException e) {

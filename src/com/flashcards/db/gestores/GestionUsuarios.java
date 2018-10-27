@@ -3,10 +3,9 @@ package com.flashcards.db.gestores;
 import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
-import com.flashcards.db.dao.DBUsuarios;
+import com.flashcards.db.DBUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
-import com.flashcards.modelo.Club;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.UsuarioDTO;
@@ -33,7 +32,7 @@ public class GestionUsuarios {
 	public boolean registrarUsuario(UsuarioDTO user) {
 		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))
 				&&(user.hayMayuscula())&&(user.hayMinuscula())&&(user.hayNumero())&&(user.longitudCorrecta())) {
-			return db.createUsuario(user);
+			return db.crearUsuario(user);
 		}else {
 			return false;
 		}
@@ -68,7 +67,7 @@ public class GestionUsuarios {
 	}
 	
 	public String gente(String usuario) {
-		usuarios = db.gente(usuario);
+		usuarios = todosUsuarios(usuario);
 		json = "";
 		int check=0;
 		String status="";
@@ -102,20 +101,12 @@ public class GestionUsuarios {
 					json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
 				}
 			}
-			/*
-			 * 
-			 * tocar en el controlador para leer
-			 * 
-			 * tarjetas club
-			 * control cuentas by administrador
-			 * 
-			 */
 		}
 		return json;
 	}
 	
-	public LinkedList<UsuarioDTO> todosUsuariosAdministrador(String usuario) {
-		return db.todosUsuariosAdministrador(usuario);
+	public LinkedList<UsuarioDTO> todosUsuarios(String usuario) {
+		return db.usuarios(usuario);
 	}
 	
 	public boolean modificarUsuario(UsuarioDTO user) {
@@ -123,15 +114,12 @@ public class GestionUsuarios {
 	}
 	
 	public boolean eliminaCuenta(String usuario) {
-		return db.eliminarCuenta(usuario);
+		return db.eliminarUsuario(usuario);
 	}
 	
 	public String getNyA(String usuario) {
-		return db.getNyA(usuario);
-	}
-	
-	public String getNuevosMiembros(Club club) {
-		return db.getNewMiembros(club);
+		user = leerUsuario(usuario);
+		return user.getNombreApellidos();
 	}
 	
 	public void eliminarCuentas() {
@@ -143,7 +131,6 @@ public class GestionUsuarios {
 			user = this.leerUsuario(el.getEmail());
 			this.eliminaCuenta(user.getUsuario());
 			gE.borrarEliminado(user.getEmail());
-			//Eliminar todo lo demas
 		}
 	}
 }
