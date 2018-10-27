@@ -29,7 +29,7 @@ public class ControladorAdmin {
 	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
 	public ModelAndView gestionar(@RequestParam("usuario") String usuario) {
 		users = "";
-		usuarios = gU.todosUsuariosAdministrador(usuario);
+		usuarios = gU.todosUsuarios(usuario);
 		for(int i=0; i<usuarios.size(); i++) {
 			
 			if(usuarios.get(i).isUsuario())rol="usuario";
@@ -58,7 +58,7 @@ public class ControladorAdmin {
 			e.printStackTrace();
 		}
 		users = "";
-		usuarios = gU.todosUsuariosAdministrador(request.getParameter("admin"));
+		usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		for(int i=0; i<usuarios.size(); i++) {
 			
 			if(usuarios.get(i).isUsuario())rol="usuario";
@@ -107,7 +107,7 @@ public class ControladorAdmin {
 			e.printStackTrace();
 		}
 		gU = new GestionUsuarios();
-		usuarios = gU.todosUsuariosAdministrador(request.getParameter("admin"));
+		usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);
 		vista.addObject("admin", request.getParameter("admin"));

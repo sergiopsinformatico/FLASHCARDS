@@ -5,7 +5,9 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
+import com.flashcards.db.gestores.GestionAcceso;
 import com.flashcards.modelo.Club;
+import com.flashcards.modelo.SolicitudAcceso;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -121,6 +123,30 @@ public class DBClubes {
 		}
 		return clubes;
 	}
+	
+	/*public String getNewMiembros(Club club) {
+		gA = new GestionAcceso();
+		miembros="";
+		cont = 0;
+		usuarios = coleccionUsuarios.find().iterator();
+		lista = club.getColeccionMiembros();
+		while(usuarios.hasNext()) {
+			doc = usuarios.next();
+			for(indice=0; indice<lista.size(); indice++) {
+				if(doc.getString("usuario").equals(lista.get(indice))) {
+					indice = lista.size();
+				}else if((indice == (lista.size()-1)) && (!(gA.existeSolicitud(new SolicitudAcceso(doc.getString("usuario"),club.getIdentificador()))))) {
+					if(cont==0) {
+						miembros = getNombreYApellidos(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
+/*						cont++;
+					}else {
+						miembros = miembros + "///****nMiembro****///" + getNombreYApellidos(doc.getString("usuario")) + "///****user****///"+doc.getString("usuario");
+	/*				}
+				}
+			}
+		}
+		return miembros;
+	}*/
 	
 	public ArrayList<String> readMiembros(String identificador) {
 		doc = coleccionClubes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator().next();
