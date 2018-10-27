@@ -50,21 +50,17 @@ public class Controlador02IniciarSesión {
 		}
 		return vista;
 	}
-	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("principal");
 		return vista;
 	}
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("index");
 	}
-	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("index");
 	}
-	
 }

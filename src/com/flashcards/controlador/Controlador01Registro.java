@@ -24,13 +24,11 @@ public class Controlador01Registro {
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registro");
-	}
-		
+	}	
 	@RequestMapping(value = "/registro", method = RequestMethod.POST)
 	public ModelAndView registre(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registro");
 	}
-		
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		gU = new GestionUsuarios();
