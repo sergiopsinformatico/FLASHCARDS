@@ -10,7 +10,7 @@ public class GestionAmigos {
 	LinkedList<String> amigos;
 	int indice;
 	String aux;
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	
 	public GestionAmigos() {
 		dB = new DBAmigos();

@@ -10,7 +10,7 @@ public class GestionClubes {
 	ArrayList<String> clubes, miembros;
 	String aux;
 	int indice;
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	
 	public GestionClubes() {
 		dB = new DBClubes();
@@ -64,7 +64,7 @@ public class GestionClubes {
 	public String leerMiembrosClubJSON(String identificador){
 		aux = "";
 		miembros = dB.readMiembros(identificador);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		for(indice=0; indice<miembros.size(); indice++) {
 			if(indice==0) {
 				aux = gU.getNyA(miembros.get(indice)+"///****user****///"+miembros.get(indice));

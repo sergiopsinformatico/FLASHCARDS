@@ -1,7 +1,7 @@
 package tests.java;
 
 import com.flashcards.db.gestores.GestionFlashcards;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.UsuarioDTO;
 
@@ -12,13 +12,13 @@ import cucumber.api.java.en.When;
 public class FlashcardTest {
 	
 	UsuarioDTO user;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	Flashcard fl;
 	GestionFlashcards gF;
 	
 	@Given("^Una usuario logueado$")
 	public void una_usuario_logueado() throws Throwable {
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    user = new UsuarioDTO("user", "clave", "email", "nombre", 35, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
 	}

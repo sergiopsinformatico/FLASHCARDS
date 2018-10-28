@@ -14,14 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.db.gestores.GestionAcceso;
 import com.flashcards.db.gestores.GestionClubes;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorClubes {
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	String identificador;
 	Random r = new Random();
 	Club club;

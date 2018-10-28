@@ -7,7 +7,7 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.SolicitudAcceso;
 import com.mongodb.MongoClient;
@@ -26,7 +26,7 @@ public class DBAcceso {
     String solicitudes;
     MongoCursor<Document> listas;
     int cont;
-    GestionUsuarios gU;
+    GestorUsuarios gU;
 	
 	public DBAcceso() {
 		conexionDB();
@@ -58,7 +58,7 @@ public class DBAcceso {
 	public String leerSolicitudes(String identificador){
 		solicitudes = "";
 		cont = 0;
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		listas = coleccionSolicitudes.find(new BsonDocument().append("identificador", new BsonString(identificador))).iterator();
 		while(listas.hasNext()) {
 			doc = listas.next();

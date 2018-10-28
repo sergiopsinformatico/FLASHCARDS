@@ -4,13 +4,10 @@ import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
-import com.flashcards.modelo.Amigos;
-import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.Eliminado;
-import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.UsuarioDTO;
 
-public class GestionUsuarios {
+public class GestorUsuarios {
 	
 	DBUsuarios db;
 	GestionEliminados gE;
@@ -25,17 +22,12 @@ public class GestionUsuarios {
 	String json;
 	int indice;
 	
-	public GestionUsuarios() {
+	public GestorUsuarios() {
 		db = new DBUsuarios();
 	}
 	
 	public boolean registrarUsuario(UsuarioDTO user) {
-		if((!(existeEmail(user.getEmail())))&&(!(existeUsername(user.getUsuario())))
-				&&(user.hayMayuscula())&&(user.hayMinuscula())&&(user.hayNumero())&&(user.longitudCorrecta())) {
-			return db.crearUsuario(user);
-		}else {
-			return false;
-		}
+		return db.crearUsuario(user);
 	}
 	
 	public boolean existeEmail(String email) {
@@ -66,45 +58,6 @@ public class GestionUsuarios {
 		}
 	}
 	
-	public String gente(String usuario) {
-		usuarios = todosUsuarios(usuario);
-		json = "";
-		int check=0;
-		String status="";
-		gB = new GestionBloqueados();
-		gA = new GestionAmigos();
-		gP = new GestionPeticiones();
-		for(indice = 0; indice<usuarios.size(); indice++) {
-			user = usuarios.get(indice);
-			if(!(gB.existe(new Bloqueado(user.getUsuario(), usuario)))) {
-				if(gA.existeAmigos(new Amigos(usuario, user.getUsuario()))) {
-					status = "amigo";
-				}else {
-					if(gP.existe(new PeticionDeAmistad(usuario, user.getUsuario()))) {
-						status = "pdaEnviada";
-					}else {
-						if(gP.existe(new PeticionDeAmistad(user.getUsuario(), usuario))) {
-							status = "pdaRecibida";
-						}else {
-							if(gB.existe(new Bloqueado(usuario, user.getUsuario()))) {
-								status = "bloqueado";
-							}else {
-								status = "nuevo";
-							}
-						}
-					}
-				}
-				if(check==0) {
-					json = user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
-					check++;
-				}else {
-					json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
-				}
-			}
-		}
-		return json;
-	}
-	
 	public LinkedList<UsuarioDTO> todosUsuarios(String usuario) {
 		return db.usuarios(usuario);
 	}
@@ -133,4 +86,43 @@ public class GestionUsuarios {
 			gE.borrarEliminado(user.getEmail());
 		}
 	}
+	
+	/*public String gente(String usuario) {
+	usuarios = todosUsuarios(usuario);
+	json = "";
+	int check=0;
+	String status="";
+	gB = new GestionBloqueados();
+	gA = new GestionAmigos();
+	gP = new GestionPeticiones();
+	for(indice = 0; indice<usuarios.size(); indice++) {
+		user = usuarios.get(indice);
+		if(!(gB.existe(new Bloqueado(user.getUsuario(), usuario)))) {
+			if(gA.existeAmigos(new Amigos(usuario, user.getUsuario()))) {
+				status = "amigo";
+			}else {
+				if(gP.existe(new PeticionDeAmistad(usuario, user.getUsuario()))) {
+					status = "pdaEnviada";
+				}else {
+					if(gP.existe(new PeticionDeAmistad(user.getUsuario(), usuario))) {
+						status = "pdaRecibida";
+					}else {
+						if(gB.existe(new Bloqueado(usuario, user.getUsuario()))) {
+							status = "bloqueado";
+						}else {
+							status = "nuevo";
+						}
+					}
+				}
+			}
+			if(check==0) {
+				json = user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
+				check++;
+			}else {
+				json = json + "///****nuevaP****///" + user.getNombreApellidos()+"///-///"+user.getUsuario()+"///-///"+status;
+			/*}
+		}
+	}
+	return json;
+}*/
 }

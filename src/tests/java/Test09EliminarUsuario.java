@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,11 +8,11 @@ import cucumber.api.java.en.When;
 
 public class Test09EliminarUsuario {
 	
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	
 	@Given("^Una persona conectada$")
 	public void una_persona_conectada() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(gU.login("sergio123", "Sergio123"));
 	}
 

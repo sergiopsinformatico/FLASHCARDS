@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
@@ -10,7 +10,7 @@ import cucumber.api.java.en.When;
 public class Test01CrearCuenta {
 	
 	UsuarioDTO user;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	
 	//Scenario 1: Registrar un usuario exitosamente
 	
@@ -23,7 +23,7 @@ public class Test01CrearCuenta {
 
 	@When("^Introduce los datos$")
 	public void introduce_los_datos() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 	    assert(true);
 	}
 
@@ -38,7 +38,7 @@ public class Test01CrearCuenta {
 	@Given("^Una persona desea registrarse$")
 	public void una_persona_desea_registrarse() throws Throwable {
 		user = new UsuarioDTO("sergio123", "Sergio123", "", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 
@@ -59,7 +59,7 @@ public class Test01CrearCuenta {
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
 		user = new UsuarioDTO("", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 
@@ -80,7 +80,7 @@ public class Test01CrearCuenta {
 	@Given("^Un usuario quiere registrarse$")
 	public void un_usuario_quiere_registrarse() throws Throwable {
 		user = new UsuarioDTO("sergio123", "", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.db.gestores.GestionEliminados;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
@@ -19,7 +19,7 @@ public class ControladorInicioSesionUsuarios {
 
 	//Variables Globales
 	
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	GestionEliminados gE;
 	UsuarioDTO user;
 	ModelAndView vista;
@@ -29,7 +29,7 @@ public class ControladorInicioSesionUsuarios {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gE = new GestionEliminados();
 		
 		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.auxiliares.Email;
 import com.flashcards.db.gestores.GestionEliminados;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.UsuarioDTO;
 
@@ -20,7 +20,7 @@ public class ControladorEliminarPerfil {
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
 		Email em = new Email();
-		GestionUsuarios gU = new GestionUsuarios();
+		GestorUsuarios gU = new GestorUsuarios();
 		UsuarioDTO user = gU.leerUsuario(((UsuarioDTO)request.getSession().getAttribute("usuario")).getUsuario());
 		Eliminado pB = new Eliminado(user.getEmail());
 		GestionEliminados gE = new GestionEliminados();

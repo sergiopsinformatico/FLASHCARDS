@@ -19,7 +19,7 @@ import com.flashcards.db.gestores.GestionAmigos;
 import com.flashcards.db.gestores.GestionClubes;
 import com.flashcards.db.gestores.GestionFlashcards;
 import com.flashcards.db.gestores.GestionSolicitudModerador;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Flashcard;
 import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.Tarjeta;
@@ -30,7 +30,7 @@ public class ControladorTarjetas {
 	
 	LinkedList<Tarjeta> tarjetas = new LinkedList<Tarjeta>();
 	GestionClubes gC = new GestionClubes();
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	GestionAmigos gA = new GestionAmigos();
 	GestionFlashcards gF = new GestionFlashcards();
 	GestionSolicitudModerador gSM;
@@ -88,7 +88,7 @@ public class ControladorTarjetas {
 	
 	@RequestMapping(value = "/verFlashcard", method = RequestMethod.GET)
 	public ModelAndView verFlashcard(@RequestParam("usuario") String usuario, @RequestParam("coleccion") String coleccion) {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gF = new GestionFlashcards();
 		vista = new ModelAndView("verFlashcard");
 		flash = gF.leerFlashcard(coleccion);

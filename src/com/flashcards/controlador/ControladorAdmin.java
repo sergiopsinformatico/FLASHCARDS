@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorAdmin {
 	
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	LinkedList<UsuarioDTO>usuarios;
 	ModelAndView vista;
 	UsuarioDTO user;
@@ -50,7 +50,7 @@ public class ControladorAdmin {
 	
 	@RequestMapping(value = "/adminEliminaCuenta", method = RequestMethod.POST)
 	public ModelAndView adminEliminaCuenta(HttpServletRequest request, HttpServletResponse response) {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gU.eliminaCuenta(request.getParameter("usuario"));
 		try {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gestionar.html?usuario="+request.getParameter("admin"));
@@ -79,7 +79,7 @@ public class ControladorAdmin {
 	
 	@RequestMapping(value = "/adminCambiaRol", method = RequestMethod.POST)
 	public ModelAndView adminCambiaRol(HttpServletRequest request, HttpServletResponse response) {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		user = gU.leerUsuario(request.getParameter("usuario"));
 		switch(request.getParameter("rol")) {
 			case "usuario":
@@ -106,7 +106,7 @@ public class ControladorAdmin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", usuarios);

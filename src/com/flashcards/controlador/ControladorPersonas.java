@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flashcards.db.gestores.GestionAmigos;
 import com.flashcards.db.gestores.GestionBloqueados;
 import com.flashcards.db.gestores.GestionPeticiones;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
@@ -29,7 +29,7 @@ public class ControladorPersonas {
 	GestionPeticiones gP;
 	GestionBloqueados gB;
 	GestionAmigos gA;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	//Clases Modelo
 	PeticionDeAmistad pA;
 	Bloqueado bloqueado;

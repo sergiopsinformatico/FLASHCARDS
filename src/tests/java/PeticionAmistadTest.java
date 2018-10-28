@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import com.flashcards.db.gestores.GestionAmigos;
 import com.flashcards.db.gestores.GestionBloqueados;
 import com.flashcards.db.gestores.GestionPeticiones;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Amigos;
 import com.flashcards.modelo.Bloqueado;
 import com.flashcards.modelo.PeticionDeAmistad;
@@ -20,7 +20,7 @@ public class PeticionAmistadTest {
 	PeticionDeAmistad pA;
 	GestionPeticiones gP;
 	UsuarioDTO user1, user2;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	GestionAmigos gA;
 	Amigos am;
 	Bloqueado bloqueado;
@@ -33,7 +33,7 @@ public class PeticionAmistadTest {
 	@Given("^Un usuario quiere tener amigos$")
 	public void un_usuario_quiere_tener_amigos() throws Throwable {
 	    user1=new UsuarioDTO("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    assert(gU.existeUsername(user1.getUsuario()));
 	}
 
@@ -100,7 +100,7 @@ public class PeticionAmistadTest {
 	@Given("^Un usuario ve un usuario$")
 	public void un_usuario_ve_un_usuario() throws Throwable {
 		user1=new UsuarioDTO("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    user2=new UsuarioDTO("sergio1234", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
 	    assert(user1.getUsuario()!=user2.getUsuario());
 	}

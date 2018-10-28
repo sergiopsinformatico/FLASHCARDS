@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
@@ -9,14 +9,14 @@ import cucumber.api.java.en.When;
 
 public class Test02LoginUsuario {
 	UsuarioDTO user;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	String usuario, email, clave;
 	
 	//Login Correcto con el Usuario
 	
 	@Given("^Una persona quiere loguearse con su usuario$")
 	public void una_persona_quiere_loguearse_con_su_usuario() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 
@@ -36,7 +36,7 @@ public class Test02LoginUsuario {
 
 	@Given("^Una persona quiere loguearse con su email$")
 	public void una_persona_quiere_loguearse_con_su_email() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 
@@ -56,7 +56,7 @@ public class Test02LoginUsuario {
 	
 	@Given("^Una persona va a loguearse$")
 	public void una_persona_va_a_loguearse() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 
@@ -76,7 +76,7 @@ public class Test02LoginUsuario {
 	
 	@Given("^Una persona va a entrar al sistema$")
 	public void una_persona_va_a_entrar_al_sistema() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		assert(true);
 	}
 

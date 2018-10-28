@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
@@ -18,7 +18,7 @@ public class ControladorModificarPerfil {
 	
 	@RequestMapping(value = "/mPerfil", method = RequestMethod.POST)
 	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
+		GestorUsuarios gU = new GestorUsuarios();
 		UsuarioDTO antiguo = gU.leerUsuario(request.getParameter("usuarioAntiguo"));
 		UsuarioDTO nuevo = new UsuarioDTO(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
@@ -49,7 +49,7 @@ public class ControladorModificarPerfil {
 			vista.addObject("usuario", antiguo);
 			nuevo.setEmail("");
 			vista.addObject("usuarioM", nuevo);
-		}else if(!nuevo.hayMayuscula() || !nuevo.hayMinuscula() || !nuevo.hayNumero() || !nuevo.longitudCorrecta()) {
+		}else if(!nuevo.hayMayusculaEnClave() || !nuevo.hayMinusculaEnClave() || !nuevo.hayNumeroEnClave() || !nuevo.correctaLongitudClave()) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
 			vista.addObject("usuario", antiguo);

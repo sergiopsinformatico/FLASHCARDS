@@ -1,7 +1,7 @@
 package tests.java;
 
 import com.flashcards.db.gestores.GestionClubes;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.Club;
 import com.flashcards.modelo.UsuarioDTO;
 
@@ -12,7 +12,7 @@ import cucumber.api.java.en.When;
 public class ClubesTest {
 	
 	UsuarioDTO user1, user2;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	GestionClubes gC;
 	Club club;
 	
@@ -20,7 +20,7 @@ public class ClubesTest {
 	@Given("^Un usuario crea un club$")
 	public void un_usuario_crea_un_club() throws Throwable {
 		user1=new UsuarioDTO("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    club = new Club("id", "Prueba", user1.getUsuario(), "Club de Prueba");
 	    assert(gU.existeUsername(user1.getUsuario()));
 	}
@@ -41,7 +41,7 @@ public class ClubesTest {
 	@Given("^Un usuario quiere entrar a un club$")
 	public void un_usuario_quiere_entrar_a_un_club() throws Throwable {
 		user2=new UsuarioDTO("sergio1234", "Sergio123", "sergio13_yo@email.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gU.registrarUsuario(user2);
 		assert(gU.existeUsername(user2.getUsuario()));
 	}
@@ -65,7 +65,7 @@ public class ClubesTest {
 	@Given("^Un usuario quiere abandonar un club$")
 	public void un_usuario_quiere_abandonar_un_club() throws Throwable {
 		user2=new UsuarioDTO("sergio1234", "Sergio123", "sergio13_yo@email.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gC = new GestionClubes();
 		club = gC.leerClubConIdentificador("id");
 		assert(gU.existeUsername(user2.getUsuario()) && club.existeMiembro(user2.getUsuario()));
@@ -130,7 +130,7 @@ public class ClubesTest {
 
 	@Then("^El club deja de existir$")
 	public void el_club_deja_de_existir() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		gU.eliminaCuenta(user2.getUsuario());
 	    assert(!gC.existeClubIdentificador(club.getIdentificador()));
 	}

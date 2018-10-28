@@ -2,14 +2,14 @@ package com.flashcards.modelo;
 
 import java.util.ArrayList;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 
 public class Club {
 	
 	String nombre, administrador, descripcion, identificador, aux;
 	ArrayList<String> miembros, auxMiembros;
 	int indice, cont;
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	
 	public Club(String identificador, String nombre, String administrador, String descripcion) {
 		miembros = new ArrayList<String>();
@@ -39,7 +39,7 @@ public class Club {
 	public String getColeccionMiembrosJSON(){
 		aux = "";
 		auxMiembros = getColeccionMiembros();
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 		
 		for(indice=0; indice<auxMiembros.size(); indice++) {
 			if(!(auxMiembros.get(indice).equals(getAdministrador()))) {

@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
@@ -9,14 +9,14 @@ import cucumber.api.java.en.When;
 
 public class Test03VerPerfil {
 	
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	UsuarioDTO user;
 	String email, usuario, clave;
 	
 	//Ver Perfil de Usuario con Nombre de Usuario
 	@Given("^Un usuario logueado con su nombre de usuario$")
 	public void un_usuario_logueado_con_su_nombre_de_usuario() throws Throwable {
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    usuario = "sergio123";
 	    clave = "Sergio123";
 	    assert(true);
@@ -39,7 +39,7 @@ public class Test03VerPerfil {
 
 	@Given("^Un usuario logueado con su email$")
 	public void un_usuario_logueado_con_su_email() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 	    email = "sergio13_yo@hotmail.com";
 	    clave = "Sergio123";
 	    assert(true);

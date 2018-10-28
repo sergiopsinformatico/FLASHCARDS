@@ -19,7 +19,7 @@ import com.flashcards.db.gestores.GestionClubes;
 import com.flashcards.db.gestores.GestionFlashcards;
 import com.flashcards.db.gestores.GestionPeticiones;
 import com.flashcards.db.gestores.GestionSolicitudModerador;
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.PeticionDeAmistad;
 import com.flashcards.modelo.SolicitudModerador;
 import com.flashcards.modelo.UsuarioDTO;
@@ -28,7 +28,7 @@ import com.flashcards.modelo.UsuarioDTO;
 public class ControladorPrincipal {
 	
 	UsuarioDTO user, userPerfil;
-	GestionUsuarios gU = new GestionUsuarios();
+	GestorUsuarios gU = new GestorUsuarios();
 	GestionPeticiones gP = new GestionPeticiones();
 	GestionAmigos gA = new GestionAmigos();
 	GestionBloqueados gB = new GestionBloqueados();
@@ -124,10 +124,10 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/gente", method = RequestMethod.GET)
 	public ModelAndView gente(@RequestParam("usuario") String usuario) {
 		vista = new ModelAndView("personas");
-		gU=new GestionUsuarios();
+		gU=new GestorUsuarios();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
 		int check;
-		jsonPeople = gU.gente(usuario);
+		//jsonPeople = gU.gente(usuario);
 		vista.addObject("people", jsonPeople);
 		
 		jsonAmigos = "";
@@ -231,7 +231,7 @@ public class ControladorPrincipal {
 	
 	@RequestMapping(value = "/principalLogueado", method = RequestMethod.POST)
 	public ModelAndView principalLogueado(HttpServletRequest request, HttpServletResponse response) {
-		GestionUsuarios gU = new GestionUsuarios();
+		GestorUsuarios gU = new GestorUsuarios();
 		UsuarioDTO user = gU.leerUsuario(request.getParameter("usuario"));
 		ModelAndView vista = new ModelAndView("principal");
 		vista.addObject("nUsuario", request.getParameter("usuario"));

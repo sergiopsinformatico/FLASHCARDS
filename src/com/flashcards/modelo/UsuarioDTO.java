@@ -2,7 +2,7 @@ package com.flashcards.modelo;
 
 public class UsuarioDTO {
 	String usuario, clave, email, nombreApellidos, ciudad, pais, genero, photo;
-	int edad, indice;
+	int edad;
 	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
 	
 	public UsuarioDTO(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, String photo, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
@@ -116,41 +116,48 @@ public class UsuarioDTO {
 		this.isAdministrador = isAdministrador;
 	}
 	
-	public boolean hayMayuscula() {
-		mayuscula = false;
-		for(indice=0; indice<getClave().length(); indice++) {
+	//Comprobación sobre los datos
+	
+	
+	public boolean cumpleNombreUsuario() {
+		for(int indice=0; indice<getUsuario().length(); indice++) {
+			if(!((getUsuario().charAt(indice)>='A' && getUsuario().charAt(indice)<='Z') ||
+				 (getUsuario().charAt(indice)>='a' && getUsuario().charAt(indice)<='z') ||
+				 (getUsuario().charAt(indice)>='0' && getUsuario().charAt(indice)<='9'))) {
+				return false;
+			}
+		}
+		return true;
+	}
+		
+	public boolean hayMayusculaEnClave() {
+		for(int indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='A')&&(getClave().charAt(indice)<='Z')) {
-				mayuscula=true;
-				indice=getClave().length();
+				return true;
 			}
 		}
-		return mayuscula;
+		return false;
 	}
 	
-	public boolean hayMinuscula() {
-		minuscula = false;
-		for(indice=0; indice<getClave().length(); indice++) {
+	public boolean hayMinusculaEnClave() {
+		for(int indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='a')&&(getClave().charAt(indice)<='z')) {
-				minuscula=true;
-				indice=getClave().length();
+				return true;
 			}
 		}
-		return minuscula;
+		return false;
 	}
 	
-	public boolean hayNumero() {
-		numero = false;
-		for(indice=0; indice<getClave().length(); indice++) {
+	public boolean hayNumeroEnClave() {
+		for(int indice=0; indice<getClave().length(); indice++) {
 			if ((getClave().charAt(indice)>='0')&&(getClave().charAt(indice)<='9')) {
-				numero=true;
-				indice=getClave().length();
+				return true;
 			}
 		}
-		return numero;
+		return false;
 	}
 	
-	public boolean longitudCorrecta() {
+	public boolean correctaLongitudClave() {
 		return (getClave().length()>=4);
 	}
-
 }

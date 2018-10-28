@@ -1,6 +1,6 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestionUsuarios;
+import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
@@ -9,14 +9,14 @@ import cucumber.api.java.en.When;
 
 public class AdministradorTest {
 	
-	GestionUsuarios gU;
+	GestorUsuarios gU;
 	UsuarioDTO user;
 	
 	//Cambio de Rol
 	
 	@Given("^El administrador logueado$")
 	public void el_administrador_logueado() throws Throwable {
-	    gU = new GestionUsuarios();
+	    gU = new GestorUsuarios();
 	    user = new UsuarioDTO("pepeAdmin", "Admin1234", "email@email.com", "Pepe Admin", 25, "Ciudad Real", "España", "Hombre", "resources/img/profileHombre.jpg", false, false, true);
 	    gU.registrarUsuario(user);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
@@ -42,7 +42,7 @@ public class AdministradorTest {
 	
 	@Given("^El administrador conectado$")
 	public void el_administrador_conectado() throws Throwable {
-		gU = new GestionUsuarios();
+		gU = new GestorUsuarios();
 	    user = new UsuarioDTO("pepeAdmin", "Admin1234", "email@email.com", "Pepe Admin", 25, "Ciudad Real", "España", "Hombre", "resources/img/profileHombre.jpg", false, false, true);
 	    assert(gU.login(user.getUsuario(), user.getClave()));
 	}
