@@ -44,9 +44,6 @@ public class ControladorRegistroUsuarios {
 		
 		
 		mensaje = "";
-		if(user.getUsuario().contains(" ")) {
-			mensaje = "Error. El nombre de usuario contiene espacios.";
-		}
 		if(!(user.cumpleNombreUsuario())) {
 			mensaje = "Error. El nombre de usuario solo puede contener minusculas, mayusculas o numeros.";
 		}
@@ -64,14 +61,6 @@ public class ControladorRegistroUsuarios {
 			vista.addObject("usuario", user);
 			return vista;
 		}
-		
-		if(user.getEmail().contains(" ")) {
-			vista = new ModelAndView("registro");
-			vista.addObject("mensaje", "Error. El email no debe contener espacios.");
-			user.setEmail("");
-			vista.addObject("usuario", user);
-			return vista;
-		}
 		if(user.getEmail().equals("sergio13_yo@hotmail.com") || gU.existeEmail(user.getEmail())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "Error. El email con el que se desea registrarse, ya existe.");
@@ -84,16 +73,16 @@ public class ControladorRegistroUsuarios {
 		if(user.getClave().contains(" ")) {
 			mensaje = "Error. La clave no debe contener espacios.";
 		}
-		if(user.correctaLongitudClave()) {
+		if(!user.correctaLongitudClave()) {
 			mensaje = "Error. La longitud de la clave no es correcta.";
 		}
-		if(user.hayMayusculaEnClave()) {
+		if(!user.hayMayusculaEnClave()) {
 			mensaje = "Error. La clave debe contener al menos una letra mayúscula.";
 		}
-		if(user.hayMinusculaEnClave()) {
+		if(!user.hayMinusculaEnClave()) {
 			mensaje = "Error. La clave debe contener al menos una letra minúscula.";
 		}
-		if (user.hayNumeroEnClave()) {
+		if (!user.hayNumeroEnClave()) {
 			mensaje = "Error. La clave debe contener al menos un número.";
 		}
 		if(!(mensaje.equalsIgnoreCase(""))) {
