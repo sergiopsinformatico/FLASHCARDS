@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.db.gestores.GestionAmigos;
@@ -23,13 +22,16 @@ import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
 public class ControladorPersonas {
+	
 	//Pagina
 	ModelAndView gente;
+	
 	//Gestores
 	GestionPeticiones gP;
 	GestionBloqueados gB;
 	GestionAmigos gA;
 	GestorUsuarios gU;
+	
 	//Clases Modelo
 	PeticionDeAmistad pA;
 	Bloqueado bloqueado;

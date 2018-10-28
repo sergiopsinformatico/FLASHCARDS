@@ -45,14 +45,13 @@ public class ControladorRegistroUsuarios {
 		
 		mensaje = "";
 		if(user.getUsuario().contains(" ")) {
-			mensaje = mensaje+"- El nombre de usuario contiene espacios.\n";
+			mensaje = "Error. El nombre de usuario contiene espacios.";
 		}
 		if(!(user.cumpleNombreUsuario())) {
-			mensaje = mensaje+"- El nombre de usuario solo puede contener minusculas, mayusculas o numeros.\n";
+			mensaje = "Error. El nombre de usuario solo puede contener minusculas, mayusculas o numeros.";
 		}
 		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("registro");
-			mensaje = "Error. El nombre de usuario no cumple con los requisitos:\n"+mensaje;
 			vista.addObject("mensaje", mensaje);
 			user.setUsuario("");
 			vista.addObject("usuario", user);
@@ -83,22 +82,21 @@ public class ControladorRegistroUsuarios {
 		
 		mensaje = "";
 		if(user.getClave().contains(" ")) {
-			mensaje = mensaje+"- La clave no debe contener espacios.\n";
+			mensaje = "- La clave no debe contener espacios.";
 		}
 		if(user.correctaLongitudClave()) {
-			mensaje = mensaje+"- La longitud de la clave no es correcta.\n";
+			mensaje = "- La longitud de la clave no es correcta.";
 		}
 		if(user.hayMayusculaEnClave()) {
-			mensaje = mensaje+"- La clave debe contener al menos una letra mayúscula.\n";
+			mensaje = "- La clave debe contener al menos una letra mayúscula.";
 		}
 		if(user.hayMinusculaEnClave()) {
-			mensaje = mensaje+"- La clave debe contener al menos una letra minúscula.\n";
+			mensaje = "- La clave debe contener al menos una letra minúscula.";
 		}
 		if (user.hayNumeroEnClave()) {
-			mensaje = mensaje+"- La clave debe contener al menos un número.\n";
+			mensaje = "- La clave debe contener al menos un número.";
 		}
 		if(!(mensaje.equalsIgnoreCase(""))) {
-			mensaje = "La clave no cumple los siguientes requisitos:\n" + mensaje;
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", mensaje);
 			user.setClave("");
