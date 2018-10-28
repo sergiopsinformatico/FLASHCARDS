@@ -82,19 +82,19 @@ public class ControladorRegistroUsuarios {
 		
 		mensaje = "";
 		if(user.getClave().contains(" ")) {
-			mensaje = "- La clave no debe contener espacios.";
+			mensaje = "Error. La clave no debe contener espacios.";
 		}
 		if(user.correctaLongitudClave()) {
-			mensaje = "- La longitud de la clave no es correcta.";
+			mensaje = "Error. La longitud de la clave no es correcta.";
 		}
 		if(user.hayMayusculaEnClave()) {
-			mensaje = "- La clave debe contener al menos una letra mayúscula.";
+			mensaje = "Error. La clave debe contener al menos una letra mayúscula.";
 		}
 		if(user.hayMinusculaEnClave()) {
-			mensaje = "- La clave debe contener al menos una letra minúscula.";
+			mensaje = "Error. La clave debe contener al menos una letra minúscula.";
 		}
 		if (user.hayNumeroEnClave()) {
-			mensaje = "- La clave debe contener al menos un número.";
+			mensaje = "Error. La clave debe contener al menos un número.";
 		}
 		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("registro");
