@@ -208,7 +208,7 @@
 	                ¿Olvidaste la Clave?
 	            </a>-->
 	            <br><br><br><br><br><br>
-				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez. Año 2018.</h6>
+				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez.</h6>
 			</div>
 			<div class="col-md-1"></div>
 		</div>
