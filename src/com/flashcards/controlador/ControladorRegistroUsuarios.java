@@ -70,40 +70,57 @@ public class ControladorRegistroUsuarios {
 		}
 		
 		mensaje = "";
-		if(user.getClave().contains(" ")) {
+		if(user.tieneEspaciosClave()) {
 			mensaje = "Error. La clave no debe contener espacios.";
-		}
-		if(!user.correctaLongitudClave()) {
-			mensaje = "Error. La longitud de la clave no es correcta.";
-		}
-		if(!user.hayMayusculaEnClave()) {
-			mensaje = "Error. La clave debe contener al menos una letra mayúscula.";
-		}
-		if(!user.hayMinusculaEnClave()) {
-			mensaje = "Error. La clave debe contener al menos una letra minúscula.";
-		}
-		if (!user.hayNumeroEnClave()) {
-			mensaje = "Error. La clave debe contener al menos un número.";
-		}
-		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", mensaje);
 			user.setClave("");
 			vista.addObject("usuario", user);
 			return vista;
+		}
+		if(!user.hayMayusculaEnClave()) {
+			mensaje = "Error. La clave debe contener al menos una letra mayúscula.";
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", mensaje);
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(!user.hayMinusculaEnClave()) {
+			mensaje = "Error. La clave debe contener al menos una letra minúscula.";
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", mensaje);
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if (!user.hayNumeroEnClave()) {
+			mensaje = "Error. La clave debe contener al menos un número.";
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", mensaje);
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(!user.correctaLongitudClave()) {
+			mensaje = "Error. La longitud de la clave no es correcta.";
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", mensaje);
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
+		}
+		if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
+			vista = new ModelAndView("registro");
+			vista.addObject("mensaje", "Error. Los campos clave y repite clave no coinciden.");
+			user.setClave("");
+			vista.addObject("usuario", user);
+			return vista;
 		}else {
-			if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
-				vista = new ModelAndView("registro");
-				vista.addObject("mensaje", "Error. Los campos clave y repite clave no coinciden.");
-				user.setClave("");
-				vista.addObject("usuario", user);
-				return vista;
-			}else {
-				gU.registrarUsuario(user);
-				vista = new ModelAndView("index");
-				vista.addObject("mensaje", "Registro Correcto");
-				return vista;
-			}
+			gU.registrarUsuario(user);
+			vista = new ModelAndView("index");
+			vista.addObject("mensaje", "Registro Correcto");
+			return vista;
 		}
 	}	
 	

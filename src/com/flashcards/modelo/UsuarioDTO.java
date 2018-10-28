@@ -160,4 +160,13 @@ public class UsuarioDTO {
 	public boolean correctaLongitudClave() {
 		return (getClave().length()>=4);
 	}
+	
+	public boolean tieneEspaciosClave() {
+		for(int indice=0; indice<getClave().length(); indice++) {
+			if (getClave().charAt(indice)==' ') {
+				return true;
+			}
+		}
+		return false;
+	}
 }
