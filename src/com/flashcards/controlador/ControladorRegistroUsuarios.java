@@ -12,7 +12,7 @@ import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
-public class Controlador01Registro {
+public class ControladorRegistroUsuarios {
 
 	//Declaracion de Variables
 	GestionUsuarios gU;

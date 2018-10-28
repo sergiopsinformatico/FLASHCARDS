@@ -15,7 +15,7 @@ import com.flashcards.db.gestores.GestionUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
-public class Controlador02IniciarSesión {
+public class ControladorInicioSesionUsuarios {
 
 	//Variables Globales
 	
