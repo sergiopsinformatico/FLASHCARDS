@@ -11,19 +11,18 @@ public class Test01CrearCuenta {
 	
 	UsuarioDTO user;
 	GestorUsuarios gU;
-	
-	//Scenario 1: Registrar un usuario exitosamente
-	
+		
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
 		user = new UsuarioDTO("sergio123", "Sergio123", "sergio13_yo@hotmail.com", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
+		gU = new GestorUsuarios();
 		assert(true);
 		
 	}
-
-	@When("^Introduce los datos$")
-	public void introduce_los_datos() throws Throwable {
-		gU = new GestorUsuarios();
+	
+	@When("^Introduce los datos correctamente$")
+	public void introduce_los_datos_correctamente() throws Throwable {
+		user.setNombreUsuario("sergio123");
 	    assert(true);
 	}
 
@@ -31,30 +30,58 @@ public class Test01CrearCuenta {
 	public void se_registra_correctamente() throws Throwable {
 	    assert(gU.registrarUsuario(user));
 	}
-
 	
-	//Scenario 2: Existe email
+	@When("^Introduce un nombre de usuario no valido$")
+	public void introduce_un_nombre_de_usuario_no_valido() throws Throwable {
+	    user.setNombreUsuario(" ");
+	    assert(true);
+	}
 	
-	@Given("^Una persona desea registrarse$")
-	public void una_persona_desea_registrarse() throws Throwable {
-		user = new UsuarioDTO("sergio123", "Sergio123", "", "Sergio Perez Sanchez", 24, "Toledo", "España", "Hombre", "resources/img/profileHombre.jpg", true, false, false);
-		gU = new GestorUsuarios();
+	@When("^Introduce un nombre de usuario existente$")
+	public void introduce_un_nombre_de_usuario_existente() throws Throwable {
+		user.setNombreUsuario("sergio123");
 		assert(true);
 	}
-
+	
 	@When("^Introduce un email existente$")
 	public void introduce_un_email_existente() throws Throwable {
+		user.setNombreUsuario("a");
 		user.setEmail("sergio13_yo@hotmail.com");
 		assert(true);
 	}
+	
+	@Then("^No se registra$")
+	public void no_se_registra() throws Throwable {
+	    if((!user.cumpleNombreUsuario())||
+	        gU.existeUsername(user.getNombreUsuario())||
+	        gU.existeEmail(user.getEmail())) {
+	    	assert(true);
+	    }else {
+	    	assert(false);
+	    }
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 
 	@Then("^No puede registrarse$")
 	public void no_puede_registrarse() throws Throwable {
 		assert(!gU.registrarUsuario(user));
 	}
-
-	
-	//Scenario 3: Existe nombre de usuario
 	
 	@Given("^Una persona va a registrarse$")
 	public void una_persona_va_a_registrarse() throws Throwable {
@@ -63,19 +90,12 @@ public class Test01CrearCuenta {
 		assert(true);
 	}
 
-	@When("^Introduce un nombre de usuario existente$")
-	public void introduce_un_nombre_de_usuario_existente() throws Throwable {
-		user.setUsuario("sergio123");
-		assert(true);
-	}
+	
 
 	@Then("^La cuenta no se crea$")
 	public void la_cuenta_no_se_crea() throws Throwable {
 		assert(!gU.registrarUsuario(user));
 	}
-
-	
-	//Scenario 4: La password no cumple con los requisitos
 	
 	@Given("^Un usuario quiere registrarse$")
 	public void un_usuario_quiere_registrarse() throws Throwable {
