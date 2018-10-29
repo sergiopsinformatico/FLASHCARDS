@@ -90,27 +90,27 @@
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
 	          <li class="nav-item">
-	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getNombreUsuario()}">
 					Inicio
 				</a>
 	          </li>
 	          <li class="nav-item">
-				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getNombreUsuario()}">
 					Flashcards
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getNombreUsuario()}">
 					Gente
 				</a>
 			  </li>
 			  <li class="nav-item active">
-			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getNombreUsuario()}">
 					Clubes
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getNombreUsuario()}" id="btn-Gestion">
 					Gestionar Cuentas
 				</a>
 			  </li>
@@ -119,8 +119,8 @@
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
 	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
-	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getNombreUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getNombreUsuario()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
@@ -154,12 +154,12 @@
 					<br><h5 align="center" style="font-weight: bold;">Administrador del Grupo</h5> 
 					<br><img class="card-img-top formato-img" src="resources/img/club.jpg" alt="Card image cap">
 					<br><h6 align="center" style="font-weight: bold;">
-						<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${club.getAdministrador()}" style="color: white;">
+						<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil=${club.getAdministrador()}" style="color: white;">
 							${nombreAdministrador}
 						</a>
 					</h6>
 					<form action="eliminarClub.html" method="post" id="formDeleteClub" style="align: center;">
-						<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}"> 
+						<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}"> 
 						<input id="identificador" name="identificador" type="hidden" value="${club.getIdentificador()}">
 					    <div class="button" align="center">
 					        <button type="submit" class="btn btn-raised btn-warning text-white">Eliminar Club</button>
@@ -210,7 +210,7 @@
 													<div class="card-body">
 														<p class="card-text">
 															<h5 align="center" style="font-weight: bold;">
-																<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ miembro.usuario }}" style="color: white;">
+																<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ miembro.usuario }}" style="color: white;">
 																	{{ miembro.name }}
 																</a>
 															</h5>
@@ -240,7 +240,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="row">
-					<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getUsuario()}&coleccion=privado-sergio123451984106222234">Ejemplo de Coleccion a Ver</a>
+					<a href="https://sistemaflashcards.herokuapp.com/verFlashcard.html?usuario=${usuario.getNombreUsuario()}&coleccion=privado-sergio123451984106222234">Ejemplo de Coleccion a Ver</a>
 				</div>
 			</div>
 		</div>
@@ -461,7 +461,7 @@
 			</div>
 			<div class="col-md-1"></div>-->
 			<script>
-				if(("${usuario.getUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
+				if(("${usuario.getNombreUsuario()}".localeCompare("${club.getAdministrador()}")) == 0){
 					document.getElementById("formNuevos").style.visibility="visible";
 					document.getElementById("formDeleteClub").style.visibility="visible";
 					document.getElementById("formSolicitarAcceso").style.visibility="hidden";

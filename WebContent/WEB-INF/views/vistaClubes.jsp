@@ -46,27 +46,27 @@
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
 	          <li class="nav-item">
-	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getNombreUsuario()}">
 					Inicio
 				</a>
 	          </li>
 	          <li class="nav-item">
-				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getNombreUsuario()}">
 					Flashcards
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getNombreUsuario()}">
 					Gente
 				</a>
 			  </li>
 			  <li class="nav-item active">
-			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getNombreUsuario()}">
 					Clubes
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getNombreUsuario()}" id="btn-Gestion">
 					Gestionar Cuentas
 				</a>
 			  </li>
@@ -75,8 +75,8 @@
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
 	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
-	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getNombreUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getNombreUsuario()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
@@ -231,7 +231,7 @@
 							                    <div class="card-body">
 							                        <br>
 							                        <h6 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ club.id }}" style="color: white;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getNombreUsuario()}&club={{ club.id }}" style="color: white;">
 															Ver Club: {{ club.club }}
 														</a>
 													</h6>
@@ -290,7 +290,7 @@
 							                    <div class="card-body">
 							                    	<br>
 							                    	<h6 align="center" style="font-weight: bold;">
-														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getUsuario()}&club={{ miClub.id }}" style="color: white;">
+														<a href="https://sistemaflashcards.herokuapp.com/verClub.html?usuario=${usuario.getNombreUsuario()}&club={{ miClub.id }}" style="color: white;">
 															Ver Club: {{ miClub.club }}
 														</a>
 													</h6>
@@ -359,7 +359,7 @@
 		    						<textarea rows="4" maxlength="90" class="form-control" id="descripcionClub" name="descripcionClub" placeholder="Descripcion..." ng-model="descripcion" required></textarea>
 		    						<br>{{descripcion.length}} caracteres de 90 caracteres
 		  						</div>
-								<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+								<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 								<br><br><br><br>
 							    <div class="button" align="center">
 							        <button type="submit" class="btn btn-raised btn-warning text-white" style="align: center;">Crear Un Club</button>

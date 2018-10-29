@@ -72,37 +72,37 @@
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			    <ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+						<a class="nav-link" href="inicio.html?usuario=${usuario.getNombreUsuario()}">
 							Inicio
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="flashcards.html?usuario=${usuario.getUsuario()}">
+						<a class="nav-link active" href="flashcards.html?usuario=${usuario.getNombreUsuario()}">
 							Flashcards
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+						<a class="nav-link" href="gente.html?usuario=${usuario.getNombreUsuario()}">
 							Gente
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+						<a class="nav-link" href="clubes.html?usuario=${usuario.getNombreUsuario()}">
 							Clubes
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+						<a class="nav-link" href="gestionar.html?usuario=${usuario.getNombreUsuario()}" id="btn-Gestion">
 							Gestionar Cuentas
 						</a>
 					</li>
 	    		</ul>
 	    		<ul class="navbar-nav ml-auto">
 	    			<li class="nav-item dropdown">
-                    	<a href="#" class="nav-link dropdown-toggle " id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getUsuario()}!!!</a>
+                    	<a href="#" class="nav-link dropdown-toggle " id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hola ${usuario.getNombreApellidos()}!!!</a>
 	                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	                        <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getNombreUsuario()}">Mi Perfil</a>
+	                        <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getNombreUsuario()}">Configuración</a>
 	                        <div class="dropdown-divider"></div>
 	                        <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	                    </div>

@@ -51,27 +51,27 @@
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
 	          <li class="nav-item">
-	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsuario()}">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getNombreUsuario()}">
 					Inicio
 				</a>
 	          </li>
 	          <li class="nav-item active">
-				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getNombreUsuario()}">
 					Flashcards
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getNombreUsuario()}">
 					Gente
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getNombreUsuario()}">
 					Clubes
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getNombreUsuario()}" id="btn-Gestion">
 					Gestionar Cuentas
 				</a>
 			  </li>
@@ -80,8 +80,8 @@
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
 	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
-	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}">Mi Perfil</a>
-	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getNombreUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getNombreUsuario()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
@@ -306,7 +306,7 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h5 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h5>
@@ -314,12 +314,12 @@
 														<div id="divAmigos{{ person.usuario }}">
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Amigo" />
 															</form>
 															<form action="bloquearAmigo.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
 															</form>
 														</div>
@@ -336,19 +336,19 @@
 														<div id="divBloqueado{{ person.usuario }}">
 															<form action="desbloquear.html" method="POST">
 																<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
 															</form>
 														</div>
 														<div id="divNuevo{{ person.usuario }}">
 															<form action="peticionAmistad.html" method="POST">
 													    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-success" value="Añadir Amigo" />
 															</form>
 															<form action="bloquear.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 															</form>
 														</div>
@@ -397,20 +397,20 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h5 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h5>
 														<div>
 															<form action="eliminarAmigo.html" method="POST">
 													    		<input id="eliminar" name="eliminar" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Amigo" />
 															</form>
 															<br>
 															<form action="bloquearAmigo.html" method="POST">
 													    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
-																<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+																<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 															    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Amigo" />
 															</form>
 														</div>
@@ -455,15 +455,15 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h5 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h5>
 													</p>
 													<form action="eliminarPeticion.html" method="POST">
-											    		<input id="envia" name="envia" type="hidden" value="${usuario.getUsuario()}">
+											    		<input id="envia" name="envia" type="hidden" value="${usuario.getNombreUsuario()}">
 											    		<input id="recibe" name="recibe" type="hidden" value="{{ person.usuario }}">
-														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 													    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Eliminar Petición" />
 													</form>
 												</div>
@@ -506,24 +506,24 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h5 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h5>
 													</p>
 													<form action="aceptar.html" method="POST">
 											    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
-														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 													    <input type="submit" name="action" class="btn btn-raised btn-success" value="Aceptar Petición" />
 													</form>
 													<form action="rechazar.html" method="POST">
 											    		<input id="peticion" name="peticion" type="hidden" value="{{ person.usuario }}">
-														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 													    <input type="submit" name="action" class="btn btn-raised btn-danger" value="Rechazar Petición" />
 													</form>
 													<form action="bloquearPeticion.html" method="POST">
 											    		<input id="bloquear" name="bloquear" type="hidden" value="{{ person.usuario }}">
-														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 													    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Bloquear Usuario" />
 													</form>
 												</div>
@@ -566,14 +566,14 @@
 												<div class="card-body">
 													<p class="card-text">
 														<h5 align="center" style="font-weight: bold;">
-															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getUsuario()}&perfil={{ person.usuario }}" style="color: white;">
+															<a href="https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil={{ person.usuario }}" style="color: white;">
 																{{ person.name }}
 															</a>
 														</h5>
 													</p>
 													<form action="desbloquear.html" method="POST">
 														<input id="bloqueado" name="bloqueado" type="hidden" value="{{ person.usuario }}">
-														<input id="usuario" name="usuario" type="hidden" value="${usuario.getUsuario()}">
+														<input id="usuario" name="usuario" type="hidden" value="${usuario.getNombreUsuario()}">
 													    <input type="submit" name="action" class="btn btn-raised btn-warning" value="Desbloquear" />
 													</form>
 												</div>
