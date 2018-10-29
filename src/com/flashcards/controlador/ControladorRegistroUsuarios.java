@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.flashcards.auxiliares.Email;
 import com.flashcards.db.gestores.GestorUsuarios;
 import com.flashcards.modelo.UsuarioDTO;
 
@@ -118,6 +119,8 @@ public class ControladorRegistroUsuarios {
 			return vista;
 		}else {
 			gU.registrarUsuario(user);
+			Email registroEmail= new Email();
+			registroEmail.crearCuenta(user);
 			vista = new ModelAndView("index");
 			vista.addObject("mensaje", "Registro Correcto");
 			return vista;
