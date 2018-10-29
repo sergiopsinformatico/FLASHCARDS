@@ -30,31 +30,82 @@ public class ControladorModificarPerfil {
 		}else {
 			nuevo.setPhoto("resources/img/profileMujer.jpg");
 		}
-		ModelAndView vista = new ModelAndView("");
+		
+		ModelAndView vista = new ModelAndView();
+		
+		String mensaje = "";
+		if(!(nuevo.cumpleNombreUsuario())) {
+			mensaje = "Error. El nombre de usuario solo puede contener minusculas, mayusculas o numeros.";
+		}
+		if(!(mensaje.equalsIgnoreCase(""))) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setNombreUsuario("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if(nuevo.getNombreUsuario().equals("sergio123") || gU.existeUsername(nuevo.getNombreUsuario())) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", "Error. El nombre de usuario ya existe.");
+			nuevo.setNombreUsuario("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if(nuevo.getEmail().equals("sergio13_yo@hotmail.com") || gU.existeEmail(nuevo.getEmail())) {
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", "Error. El email con el que se desea registrarse, ya existe.");
+			nuevo.setEmail("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		
+		mensaje = "";
+		if(nuevo.tieneEspaciosClave()) {
+			mensaje = "Error. La clave no debe contener espacios.";
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setClave("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if(!nuevo.hayMayusculaEnClave()) {
+			mensaje = "Error. La clave debe contener al menos una letra mayúscula.";
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setClave("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if(!nuevo.hayMinusculaEnClave()) {
+			mensaje = "Error. La clave debe contener al menos una letra minúscula.";
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setClave("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if (!nuevo.hayNumeroEnClave()) {
+			mensaje = "Error. La clave debe contener al menos un número.";
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setClave("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
+		if(!nuevo.correctaLongitudClave()) {
+			mensaje = "Error. La longitud de la clave no es correcta.";
+			vista = new ModelAndView("modificarPerfil");
+			vista.addObject("mensaje", mensaje);
+			nuevo.setClave("");
+			vista.addObject("usuario", nuevo);
+			return vista;
+		}
 		if(!(request.getParameter("clave").equals(request.getParameter("repiteClave")))) {
 			vista = new ModelAndView("modificarPerfil");
-			vista.addObject("mensaje", "Los campos clave y repite clave deben coincidir.");
-			vista.addObject("usuario", antiguo);
-			nuevo.setNombreUsuario("");
-			vista.addObject("usuarioM", nuevo);
-		}else if(nuevo.getNombreUsuario().contains(" ")) {
-			vista = new ModelAndView("modificarPerfil");
-			vista.addObject("mensaje", "El nombre de usuario no puede contener espacios.");
-			vista.addObject("usuario", antiguo);
-			nuevo.setNombreUsuario("");
-			vista.addObject("usuarioM", nuevo);
-		}else if(nuevo.getEmail().contains(" ")){
-			vista = new ModelAndView("modificarPerfil");
-			vista.addObject("mensaje", "El email no puede contener espacios.");
-			vista.addObject("usuario", antiguo);
-			nuevo.setEmail("");
-			vista.addObject("usuarioM", nuevo);
-		}else if(!nuevo.hayMayusculaEnClave() || !nuevo.hayMinusculaEnClave() || !nuevo.hayNumeroEnClave() || !nuevo.correctaLongitudClave()) {
-			vista = new ModelAndView("modificarPerfil");
-			vista.addObject("mensaje", "La clave no cumple con los requisitos indicados.");
-			vista.addObject("usuario", antiguo);
+			vista.addObject("mensaje", "Error. Los campos clave y repite clave no coinciden.");
 			nuevo.setClave("");
-			vista.addObject("usuarioM", nuevo);
+			vista.addObject("usuario", nuevo);
+			return vista;
 		}else {
 			if((nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getNombreUsuario().equals(antiguo.getNombreUsuario()))) {
 				if(gU.existeUsername(nuevo.getNombreUsuario())) {
