@@ -44,14 +44,14 @@ public class ControladorModificarPerfil {
 			vista.addObject("usuario", nuevo);
 			return vista;
 		}
-		if(nuevo.getNombreUsuario().equals("sergio123") || gU.existeUsername(nuevo.getNombreUsuario())) {
+		if(nuevo.getNombreUsuario().equals("sergio123")) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "Error. El nombre de usuario ya existe.");
 			nuevo.setNombreUsuario("");
 			vista.addObject("usuario", nuevo);
 			return vista;
 		}
-		if(nuevo.getEmail().equals("sergio13_yo@hotmail.com") || gU.existeEmail(nuevo.getEmail())) {
+		if(nuevo.getEmail().equals("sergio13_yo@hotmail.com")) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "Error. El email con el que se desea registrarse, ya existe.");
 			nuevo.setEmail("");
