@@ -37,9 +37,9 @@ public class ControladorAdmin {
 			if(usuarios.get(i).isAdministrador())rol="administrador";
 			
 			if(i==0) {
-				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
 			}else {
-				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
 			}
 		}
 		vista = new ModelAndView("administrador");
@@ -66,9 +66,9 @@ public class ControladorAdmin {
 			if(usuarios.get(i).isAdministrador())rol="administrador";
 			
 			if(i==0) {
-				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
 			}else {
-				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsuario() + "///****elem****///" + rol;
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
 			}
 		}
 		vista = new ModelAndView("administrador");

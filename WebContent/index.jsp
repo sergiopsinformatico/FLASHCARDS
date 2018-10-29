@@ -163,8 +163,8 @@
 		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
 		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user!=null && (!user.getUsuario().equals(""))){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getUsuario());
+			if(user!=null && (!user.getNombreUsuario().equals(""))){
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getNombreUsuario());
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">
@@ -204,9 +204,9 @@
 	                Si aún no tienes cuenta, pulsa sobre este enlace para registrarte.
 	            </a>
 	            <br>
-	            <!-- <a href="recovery.html" class="forgot-password">
+	            <a href="recovery.html" class="forgot-password">
 	                ¿Olvidaste la Clave?
-	            </a>-->
+	            </a>
 	            <br><br><br><br><br><br>
 				<h6 align="center" style="color:green;">Aplicación Desarrollada por Sergio Pérez Sánchez.</h6>
 			</div>

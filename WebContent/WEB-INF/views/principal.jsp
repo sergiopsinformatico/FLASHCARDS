@@ -21,7 +21,7 @@
 		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
 			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user==null || user.getUsuario().equals("")){
+			if(user==null || user.getNombreUsuario().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 			session.setAttribute("usuario", user);
@@ -105,7 +105,7 @@
 					Inicio
 				</a>
 	          </li>
-	          <!-- <li class="nav-item">
+	          <li class="nav-item">
 				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsuario()}">
 					Flashcards
 				</a>
@@ -119,7 +119,7 @@
 			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsuario()}">
 					Clubes
 				</a>
-			  </li>-->
+			  </li>
 			  <li class="nav-item">
 			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsuario()}" id="btn-Gestion">
 					Gestionar Cuentas
@@ -130,10 +130,10 @@
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
 	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
-	              <!-- <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${usuario.getUsuario()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsuario()}&perfil=${usuario.getUsuario()}">Mi Perfil</a>
 	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsuario()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>-->
+				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
 	            <script>
 	            	$('.dropdown-toggle').dropdown();
@@ -154,7 +154,7 @@
 		<div class="row">
 			<br><br>
 		</div>
-		<!-- <div class="row">
+		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<div class="card">
@@ -174,7 +174,7 @@
 			<div class="col-md-5"></div>
 			<div class="col-md-3"></div>
 			<div class="col-md-1"></div>
-		</div>-->
+		</div>
 		
 		
 		

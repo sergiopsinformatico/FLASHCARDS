@@ -38,7 +38,7 @@ public class ControladorInicioSesionUsuarios {
 			vista.addObject("usuario", user);
 			request.getSession().setAttribute("usuario", user);
 			try {
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsuario());
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getNombreUsuario());
 			} catch (IOException e) {
 				return vista;
 			}
@@ -63,4 +63,5 @@ public class ControladorInicioSesionUsuarios {
 	public ModelAndView loginPost(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("index");
 	}
+
 }

@@ -12,10 +12,10 @@
 		
 	</head>
 	<body>
-		<%@ page import="com.flashcards.modelo.Usuario" %>
+		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
-			Usuario user = ((Usuario)(session.getAttribute("usuario")));
-			if(user==null || user.getUsuario().equals("") || !user.isAdministrador()){
+			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
+			if(user==null || user.getNombreUsuario().equals("") || !user.isAdministrador()){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 			session.setAttribute("usuario", user);

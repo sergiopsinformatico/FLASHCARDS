@@ -168,8 +168,8 @@
 		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
 		<% 
 			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user!=null && (!user.getUsuario().equals(""))){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getUsuario());
+			if(user!=null && (!user.getNombreUsuario().equals(""))){
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getNombreUsuario());
 			}
 		%>
 		<script language="JavaScript" type="text/javascript">

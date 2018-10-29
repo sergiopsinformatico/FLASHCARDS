@@ -50,14 +50,14 @@ public class ControladorRegistroUsuarios {
 		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", mensaje);
-			user.setUsuario("");
+			user.setNombreUsuario("");
 			vista.addObject("usuario", user);
 			return vista;
 		}
-		if(user.getUsuario().equals("sergio123") || gU.existeUsername(user.getUsuario())) {
+		if(user.getNombreUsuario().equals("sergio123") || gU.existeUsername(user.getNombreUsuario())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "Error. El nombre de usuario ya existe.");
-			user.setUsuario("");
+			user.setNombreUsuario("");
 			vista.addObject("usuario", user);
 			return vista;
 		}

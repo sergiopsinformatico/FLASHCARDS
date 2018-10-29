@@ -82,7 +82,7 @@ public class GestorUsuarios {
 		for(int i = 0; i<lista.size(); i++) {
 			el = lista.get(i);
 			user = this.leerUsuario(el.getEmail());
-			this.eliminaCuenta(user.getUsuario());
+			this.eliminaCuenta(user.getNombreUsuario());
 			gE.borrarEliminado(user.getEmail());
 		}
 	}

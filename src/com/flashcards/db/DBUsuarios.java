@@ -46,7 +46,7 @@ public class DBUsuarios implements InterfaceDAOUsuario{
 	
 	public boolean crearUsuario(UsuarioDTO user) {
 		try {
-			doc = new Document("usuario", user.getUsuario())
+			doc = new Document("usuario", user.getNombreUsuario())
 				  .append("clave", user.getClave())
 				  .append("email", user.getEmail())
 				  .append("nombreApellidos", user.getNombreApellidos())

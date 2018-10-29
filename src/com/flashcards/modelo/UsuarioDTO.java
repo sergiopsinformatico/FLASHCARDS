@@ -6,7 +6,7 @@ public class UsuarioDTO {
 	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
 	
 	public UsuarioDTO(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, String photo, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
-		setUsuario(usuario);
+		setNombreUsuario(usuario);
 		setClave(clave);
 		setEmail(email);
 		setNombreApellidos(nombreApellidos);
@@ -20,11 +20,11 @@ public class UsuarioDTO {
 		setAdministrador(isAdministrador);
 	}
 
-	public String getUsuario() {
+	public String getNombreUsuario() {
 		return this.usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setNombreUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
@@ -120,10 +120,10 @@ public class UsuarioDTO {
 	
 	
 	public boolean cumpleNombreUsuario() {
-		for(int indice=0; indice<getUsuario().length(); indice++) {
-			if(!((getUsuario().charAt(indice)>='A' && getUsuario().charAt(indice)<='Z') ||
-				 (getUsuario().charAt(indice)>='a' && getUsuario().charAt(indice)<='z') ||
-				 (getUsuario().charAt(indice)>='0' && getUsuario().charAt(indice)<='9'))) {
+		for(int indice=0; indice<getNombreUsuario().length(); indice++) {
+			if(!((getNombreUsuario().charAt(indice)>='A' && getNombreUsuario().charAt(indice)<='Z') ||
+				 (getNombreUsuario().charAt(indice)>='a' && getNombreUsuario().charAt(indice)<='z') ||
+				 (getNombreUsuario().charAt(indice)>='0' && getNombreUsuario().charAt(indice)<='9'))) {
 				return false;
 			}
 		}
