@@ -41,7 +41,7 @@ public class ControladorInicioSesionUsuarios {
 		for(int indice = 0; indice<eliminados.size(); indice++) {
 			user = gU.leerUsuario(eliminados.get(indice).getEmail());
 			gE.borrarEliminado(user.getEmail());
-			gU.eliminaCuenta(user.getEmail());
+			gU.eliminaCuenta(user.getNombreUsuario());
 		}
 		
 		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){
