@@ -127,7 +127,7 @@ public class ControladorPrincipal {
 		gU=new GestorUsuarios();
 		vista.addObject("usuario", gU.leerUsuario(usuario));
 		int check;
-		//jsonPeople = gU.gente(usuario);
+		//jsonPeople = gU.;
 		vista.addObject("people", jsonPeople);
 		
 		jsonAmigos = "";
