@@ -1,6 +1,7 @@
 package com.flashcards.controlador;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.auxiliares.Email;
+import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.gestores.GestionEliminados;
 import com.flashcards.db.gestores.GestorUsuarios;
+import com.flashcards.modelo.Eliminado;
 import com.flashcards.modelo.UsuarioDTO;
 
 @Controller
@@ -32,6 +35,14 @@ public class ControladorInicioSesionUsuarios {
 		
 		gU = new GestorUsuarios();
 		gE = new GestionEliminados();
+		
+		Fecha fecha = new Fecha();
+		LinkedList<Eliminado> eliminados = gE.buscarEliminados(fecha.fechaHoy());
+		for(int indice = 0; indice<eliminados.size(); indice++) {
+			user = gU.leerUsuario(eliminados.get(indice).getEmail());
+			gE.borrarEliminado(user.getEmail());
+			gU.eliminaCuenta(user.getEmail());
+		}
 		
 		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){
 			user = gU.leerUsuario(request.getParameter("inputUsuario"));
