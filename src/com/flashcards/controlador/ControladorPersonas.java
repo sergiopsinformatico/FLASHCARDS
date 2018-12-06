@@ -15,10 +15,10 @@ import com.flashcards.db.gestores.GestionAmigos;
 import com.flashcards.db.gestores.GestionBloqueados;
 import com.flashcards.db.gestores.GestionPeticiones;
 import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.modelo.Amigos;
-import com.flashcards.modelo.Bloqueado;
-import com.flashcards.modelo.PeticionDeAmistad;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.Amigos;
+import com.flashcards.dto.Bloqueado;
+import com.flashcards.dto.PeticionDeAmistad;
+import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorPersonas {

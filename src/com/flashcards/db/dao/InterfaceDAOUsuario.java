@@ -2,7 +2,7 @@ package com.flashcards.db.dao;
 
 import java.util.LinkedList;
 
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.UsuarioDTO;
 
 public interface InterfaceDAOUsuario {
 	public void conexionDB();

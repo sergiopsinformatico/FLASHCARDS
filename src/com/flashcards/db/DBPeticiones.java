@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import org.bson.Document;
 
-import com.flashcards.modelo.PeticionDeAmistad;
+import com.flashcards.dto.PeticionDeAmistad;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

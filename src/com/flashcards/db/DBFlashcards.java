@@ -8,9 +8,9 @@ import org.bson.Document;
 
 import com.flashcards.db.gestores.GestionAmigos;
 import com.flashcards.db.gestores.GestionClubes;
-import com.flashcards.modelo.Amigos;
-import com.flashcards.modelo.Flashcard;
-import com.flashcards.modelo.Tarjeta;
+import com.flashcards.dto.Amigos;
+import com.flashcards.dto.Flashcard;
+import com.flashcards.dto.Tarjeta;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

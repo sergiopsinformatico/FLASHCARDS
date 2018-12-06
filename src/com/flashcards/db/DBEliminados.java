@@ -7,7 +7,7 @@ import org.bson.BsonString;
 import org.bson.Document;
 
 import com.flashcards.auxiliares.Fecha;
-import com.flashcards.modelo.Eliminado;
+import com.flashcards.dto.Eliminado;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

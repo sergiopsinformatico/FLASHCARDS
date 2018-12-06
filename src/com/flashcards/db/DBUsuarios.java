@@ -9,7 +9,7 @@ import org.bson.Document;
 
 import com.flashcards.db.dao.InterfaceDAOUsuario;
 import com.flashcards.db.gestores.GestionAcceso;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.UsuarioDTO;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

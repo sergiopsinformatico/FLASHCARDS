@@ -20,9 +20,9 @@ import com.flashcards.db.gestores.GestionFlashcards;
 import com.flashcards.db.gestores.GestionPeticiones;
 import com.flashcards.db.gestores.GestionSolicitudModerador;
 import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.modelo.PeticionDeAmistad;
-import com.flashcards.modelo.SolicitudModerador;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.PeticionDeAmistad;
+import com.flashcards.dto.SolicitudModerador;
+import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorPrincipal {

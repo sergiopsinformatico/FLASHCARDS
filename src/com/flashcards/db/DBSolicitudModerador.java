@@ -4,8 +4,8 @@ import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
 
-import com.flashcards.modelo.Bloqueado;
-import com.flashcards.modelo.SolicitudModerador;
+import com.flashcards.dto.Bloqueado;
+import com.flashcards.dto.SolicitudModerador;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

@@ -3,7 +3,7 @@ package com.flashcards.db.gestores;
 import java.util.LinkedList;
 
 import com.flashcards.db.DBEliminados;
-import com.flashcards.modelo.Eliminado;
+import com.flashcards.dto.Eliminado;
 
 
 public class GestionEliminados {

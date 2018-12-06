@@ -15,9 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flashcards.db.gestores.GestionAcceso;
 import com.flashcards.db.gestores.GestionClubes;
 import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.modelo.Club;
-import com.flashcards.modelo.SolicitudAcceso;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.Club;
+import com.flashcards.dto.SolicitudAcceso;
+import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorClubes {

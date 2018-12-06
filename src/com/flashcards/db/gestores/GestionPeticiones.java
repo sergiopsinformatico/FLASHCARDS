@@ -3,7 +3,7 @@ package com.flashcards.db.gestores;
 import java.util.LinkedList;
 
 import com.flashcards.db.DBPeticiones;
-import com.flashcards.modelo.PeticionDeAmistad;
+import com.flashcards.dto.PeticionDeAmistad;
 
 public class GestionPeticiones {
 	

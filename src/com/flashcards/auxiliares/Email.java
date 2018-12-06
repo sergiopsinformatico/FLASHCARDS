@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.UsuarioDTO;
 
 public class Email {
 	String envia, recibe, asunto, mensaje;

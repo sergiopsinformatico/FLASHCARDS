@@ -1,7 +1,7 @@
 package com.flashcards.db.gestores;
 
 import com.flashcards.db.DBAcceso;
-import com.flashcards.modelo.SolicitudAcceso;
+import com.flashcards.dto.SolicitudAcceso;
 
 public class GestionAcceso {
 	DBAcceso dB;

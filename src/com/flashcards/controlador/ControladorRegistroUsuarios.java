@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.flashcards.auxiliares.Email;
 import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorRegistroUsuarios {

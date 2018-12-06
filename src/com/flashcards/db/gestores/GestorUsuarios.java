@@ -4,8 +4,8 @@ import java.util.LinkedList;
 
 import com.flashcards.auxiliares.Fecha;
 import com.flashcards.db.DBUsuarios;
-import com.flashcards.modelo.Eliminado;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.Eliminado;
+import com.flashcards.dto.UsuarioDTO;
 
 public class GestorUsuarios {
 	

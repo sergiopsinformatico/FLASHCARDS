@@ -1,7 +1,7 @@
 package com.flashcards.db.gestores;
 
 import com.flashcards.db.DBSolicitudModerador;
-import com.flashcards.modelo.SolicitudModerador;
+import com.flashcards.dto.SolicitudModerador;
 
 public class GestionSolicitudModerador {
 	DBSolicitudModerador dB;

@@ -20,10 +20,10 @@ import com.flashcards.db.gestores.GestionClubes;
 import com.flashcards.db.gestores.GestionFlashcards;
 import com.flashcards.db.gestores.GestionSolicitudModerador;
 import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.modelo.Flashcard;
-import com.flashcards.modelo.SolicitudModerador;
-import com.flashcards.modelo.Tarjeta;
-import com.flashcards.modelo.UsuarioDTO;
+import com.flashcards.dto.Flashcard;
+import com.flashcards.dto.SolicitudModerador;
+import com.flashcards.dto.Tarjeta;
+import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorTarjetas {

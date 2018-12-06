@@ -1,7 +1,7 @@
 package com.flashcards.db.gestores;
 
 import com.flashcards.db.DBFlashcards;
-import com.flashcards.modelo.Flashcard;
+import com.flashcards.dto.Flashcard;
 
 public class GestionFlashcards {
 	DBFlashcards dB;
