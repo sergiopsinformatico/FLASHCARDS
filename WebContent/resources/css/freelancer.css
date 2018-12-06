@@ -175,7 +175,6 @@ section h2 {
 header.masthead {
   padding-top: calc(6rem + 72px);
   padding-bottom: 6rem;
-  background-image: "resources/img/flashcards.jpg";
 }
 
 header.masthead h1 {
@@ -192,7 +191,6 @@ header.masthead h2 {
   header.masthead {
     padding-top: calc(6rem + 106px);
     padding-bottom: 6rem;
-    background-image: "resources/img/flashcards.jpg";
   }
   header.masthead h1 {
     font-size: 4.75em;

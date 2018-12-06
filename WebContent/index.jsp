@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
 
     <meta charset="utf-8">
@@ -23,7 +22,11 @@
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
-
+    <style>
+    	img-fondo{
+    		background-image: "resources/img/flashcards.jpg";
+    	}
+    </style>
   </head>
 
   <body id="page-top">
@@ -50,7 +53,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead bg-primary text-white text-center img-fondo">
       <div class="container">
         <!--<img class="img-fluid mb-5 d-block mx-auto" src="resources/img/flashcards.jpg" alt="">-->
       </div>
