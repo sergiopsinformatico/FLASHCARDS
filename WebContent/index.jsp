@@ -24,7 +24,7 @@
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     <style>
     	img-fondo{
-    		background-image: url("resources/img/flashcards.jpg");
+    		background-image: url("img/flashcards.jpg");
     	}
     </style>
   </head>
@@ -53,9 +53,9 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead bg-primary text-white text-center img-fondo">
-      <div class="container img-fondo">
-        <!--<img class="img-fluid mb-5 d-block mx-auto" src="resources/img/flashcards.jpg" alt="">-->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="resources/img/flashcards.jpg" alt="">
       </div>
     </header>
 
