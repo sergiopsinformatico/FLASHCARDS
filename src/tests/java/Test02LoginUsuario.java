@@ -1,6 +1,7 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestorUsuarios;
+import com.flashcards.brokers.Broker;
+import com.flashcards.db.dao.InterfaceDAOUsuario;
 import com.flashcards.dto.UsuarioDTO;
 
 import cucumber.api.java.en.Given;
@@ -8,87 +9,61 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class Test02LoginUsuario {
+	
 	UsuarioDTO user;
-	GestorUsuarios gU;
-	String usuario, email, clave;
+	Broker broker;
+	InterfaceDAOUsuario dBUsuario;
+	boolean loguea;
 	
-	//Login Correcto con el Usuario
+	@Given("^Una persona quiere loguearse$")
+	public void una_persona_quiere_loguearse() throws Throwable {
+		broker = new Broker();
+		dBUsuario = broker.getInstanciaUsuario();
+	    user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
+	    assert(true);
+	}
+
+	@When("^Se loguea con el email$")
+	public void se_loguea_con_el_email() throws Throwable {
+	    loguea = dBUsuario.login(user.getEmail(), user.getClave());
+	    assert(true);
+	}
+
+	@Then("^Se loguea correctamente$")
+	public void se_loguea_correctamente() throws Throwable {
+	    assert(loguea);
+	}
+
+	@When("^Se loguea con el username$")
+	public void se_loguea_con_el_username() throws Throwable {
+		loguea = dBUsuario.login(user.getUsername(), user.getClave());
+	    assert(true);
+	}
+
+	@When("^El email es erroneo$")
+	public void el_email_es_erroneo() throws Throwable {
+		user.setEmail("hola");
+		loguea = dBUsuario.login(user.getEmail(), user.getClave());
+	    assert(true);
+	}
+
+	@Then("^No se puede loguear$")
+	public void no_se_puede_loguear() throws Throwable {
+		assert(!loguea);
+	}
+
+	@When("^El username es erroneo$")
+	public void el_username_es_erroneo() throws Throwable {
+		user.setUsername("--hola--");
+		loguea = dBUsuario.login(user.getUsername(), user.getClave());
+	    assert(true);
+	}
+
+	@When("^La clave es erronea$")
+	public void la_clave_es_erronea() throws Throwable {
+		user.setClave("--hola--");
+		loguea = dBUsuario.login(user.getEmail(), user.getClave());
+	    assert(true);
+	}
 	
-	@Given("^Una persona quiere loguearse con su usuario$")
-	public void una_persona_quiere_loguearse_con_su_usuario() throws Throwable {
-		gU = new GestorUsuarios();
-		assert(true);
-	}
-
-	@When("^Escribe sus credenciales con el usuario$")
-	public void escribe_sus_credenciales_con_el_usuario() throws Throwable {
-		usuario="sergio123";
-		clave="Sergio123";
-		assert(true);
-	}
-
-	@Then("^Entra al sistema con el usuario$")
-	public void entra_al_sistema_con_el_usuario() throws Throwable {
-		assert(gU.login(usuario, clave));
-	}
-	
-	//Login Correcto con el Email
-
-	@Given("^Una persona quiere loguearse con su email$")
-	public void una_persona_quiere_loguearse_con_su_email() throws Throwable {
-		gU = new GestorUsuarios();
-		assert(true);
-	}
-
-	@When("^Escribe sus credenciales con el email$")
-	public void escribe_sus_credenciales_con_el_email() throws Throwable {
-		email="sergio13_yo@hotmail.com";
-		clave="Sergio123";
-		assert(true);
-	}
-
-	@Then("^Entra al sistema con el email$")
-	public void entra_al_sistema_con_el_email() throws Throwable {
-		assert(gU.login(email, clave));
-	}
-
-	//El nombre de usuario no existe
-	
-	@Given("^Una persona va a loguearse$")
-	public void una_persona_va_a_loguearse() throws Throwable {
-		gU = new GestorUsuarios();
-		assert(true);
-	}
-
-	@When("^Introduce sus credenciales$")
-	public void introduce_sus_credenciales() throws Throwable {
-		usuario="sergio@123.es";
-		clave="Sergio123";
-		assert(true);
-	}
-
-	@Then("^El email o usuario no existe$")
-	public void el_email_o_usuario_no_existe() throws Throwable {
-		assert(!gU.login(usuario, clave));
-	}
-
-	//La clave no coincide
-	
-	@Given("^Una persona va a entrar al sistema$")
-	public void una_persona_va_a_entrar_al_sistema() throws Throwable {
-		gU = new GestorUsuarios();
-		assert(true);
-	}
-
-	@When("^Escribe las credenciales$")
-	public void escribe_las_credenciales() throws Throwable {
-		usuario="sergio13_yo@hotmail.com";
-		clave="Aergio123";
-		assert(true);
-	}
-
-	@Then("^La clave no coincide$")
-	public void la_clave_no_coincide() throws Throwable {
-		assert(!gU.login(usuario, clave));
-	}
 }

@@ -53,8 +53,8 @@ public class ControladorTarjetas {
 		vista = new ModelAndView("creaColeccion");
 		tarjetas = new LinkedList<Tarjeta>();
 		user = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getNombreUsuario()));
-		vista.addObject("amigos", gA.getAmigosJSON(user.getNombreUsuario()));
+		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+		vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 		vista.addObject("usuario", user);
 		return vista;
 	}
@@ -103,7 +103,7 @@ public class ControladorTarjetas {
 	public ModelAndView guardarFlashcard(HttpServletRequest request, HttpServletResponse response) {
 		flash = new Flashcard();
 		user = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		flash.setCreador(user.getNombreUsuario());
+		flash.setCreador(user.getUsername());
 		flash.setColeccion(tarjetas);
 		flash.setNombreColeccion(request.getParameter("nombre"));
 		flash.setDescripcion(request.getParameter("descripcion"));
@@ -123,7 +123,7 @@ public class ControladorTarjetas {
 					identificador = "privado-"+flash.getCreador()+ r.nextInt(2000000)+ r.nextInt(2000000);
 				}while(gF.existeIdentificador(identificador));
 				flash.setIdentificador(identificador);
-				flash.setNombreCompartido(user.getNombreUsuario());
+				flash.setNombreCompartido(user.getUsername());
 				break;
 			case "club":
 				do {
@@ -134,8 +134,8 @@ public class ControladorTarjetas {
 					vista = new ModelAndView("creaColeccion");
 					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
-					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getNombreUsuario()));
-					vista.addObject("amigos", gA.getAmigosJSON(user.getNombreUsuario()));
+					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+					vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
 					vista.addObject("description", flash.getDescripcion());
@@ -157,8 +157,8 @@ public class ControladorTarjetas {
 					vista = new ModelAndView("creaColeccion");
 					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
-					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getNombreUsuario()));
-					vista.addObject("amigos", gA.getAmigosJSON(user.getNombreUsuario()));
+					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+					vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
 					vista.addObject("description", flash.getDescripcion());
@@ -176,8 +176,8 @@ public class ControladorTarjetas {
 			vista = new ModelAndView("creaColeccion");
 			user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 			vista.addObject("usuario",user);
-			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getNombreUsuario()));
-			vista.addObject("amigos", gA.getAmigosJSON(user.getNombreUsuario()));
+			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+			vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 			vista.addObject("crea", flash.getCreador());
 			vista.addObject("name", flash.getNombreColeccion());
 			vista.addObject("description", flash.getDescripcion());

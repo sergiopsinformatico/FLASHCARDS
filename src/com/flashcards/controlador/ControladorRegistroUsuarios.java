@@ -30,13 +30,13 @@ public class ControladorRegistroUsuarios {
 	public ModelAndView registre(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registro");
 	}
-	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		gU = new GestorUsuarios();
 		user = new UsuarioDTO(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
-		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"), "", true, false, false);
+		               request.getParameter("ciudad"), request.getParameter("pais"), "", 
+		               true, false, false);
 		if(user.getGenero().equalsIgnoreCase("hombre")){
 			user.setPhoto("resources/img/profileHombre.jpg");
 		}else {
@@ -51,14 +51,14 @@ public class ControladorRegistroUsuarios {
 		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", mensaje);
-			user.setNombreUsuario("");
+			user.setUsername("");
 			vista.addObject("usuario", user);
 			return vista;
 		}
-		if(user.getNombreUsuario().equals("sergio123") || gU.existeUsername(user.getNombreUsuario())) {
+		if(user.getUsername().equals("sergio123") || gU.existeUsername(user.getUsername())) {
 			vista = new ModelAndView("registro");
 			vista.addObject("mensaje", "Error. El nombre de usuario ya existe.");
-			user.setNombreUsuario("");
+			user.setUsername("");
 			vista.addObject("usuario", user);
 			return vista;
 		}
@@ -125,6 +125,6 @@ public class ControladorRegistroUsuarios {
 			vista.addObject("mensaje", "Registro Correcto");
 			return vista;
 		}
-	}	
+	}	*/
 	
 }

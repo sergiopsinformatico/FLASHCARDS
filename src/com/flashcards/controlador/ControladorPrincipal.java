@@ -50,9 +50,9 @@ public class ControladorPrincipal {
 		user = gU.leerUsuario(usuario);
 		vista = new ModelAndView("principal");
 		vista.addObject("usuario", user);
-		if(user.isUsuario()) {
+		if(user.isRolUsuario()) {
 			vista.addObject("rol", "Usuario");
-		}else if(user.isModerador()) {
+		}else if(user.isRolModerador()) {
 			vista.addObject("rol", "Moderador");
 		}else {
 			vista.addObject("rol", "Administrador");
@@ -75,9 +75,9 @@ public class ControladorPrincipal {
 			vista.addObject("modificar", false);
 		}
 		vista.addObject("perfil", userPerfil);
-		if(userPerfil.isUsuario()) {
+		if(userPerfil.isRolUsuario()) {
 			vista.addObject("rol", "Usuario");
-		}else if(userPerfil.isModerador()) {
+		}else if(userPerfil.isRolModerador()) {
 			vista.addObject("rol", "Moderador");
 		}else {
 			vista.addObject("rol", "Administrador");
@@ -235,7 +235,7 @@ public class ControladorPrincipal {
 		UsuarioDTO user = gU.leerUsuario(request.getParameter("usuario"));
 		ModelAndView vista = new ModelAndView("principal");
 		vista.addObject("nUsuario", request.getParameter("usuario"));
-		vista.addObject("administrador", user.isAdministrador());
+		vista.addObject("administrador", user.isRolAdministrador());
 		vista.addObject("usuario", user);
 		return vista;
 	}

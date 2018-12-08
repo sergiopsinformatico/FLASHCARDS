@@ -1,31 +1,24 @@
 package com.flashcards.dto;
 
 public class UsuarioDTO {
-	String usuario, clave, email, nombreApellidos, ciudad, pais, genero, photo;
-	int edad;
-	boolean mayuscula, minuscula, numero, isUsuario, isModerador, isAdministrador;
+	String username, clave, email, nombreApellidos, ciudad, pais, photo;
+	boolean hasRolUsuario, hasRolModerador, hasRolAdministrador;
 	
-	public UsuarioDTO(String usuario, String clave, String email, String nombreApellidos, int edad, String ciudad, String pais, String genero, String photo, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
-		setNombreUsuario(usuario);
+	public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
+		setUsername(usuario);
 		setClave(clave);
 		setEmail(email);
-		setNombreApellidos(nombreApellidos);
-		setEdad(edad);
-		setCiudad(ciudad);
-		setPais(pais);
-		setGenero(genero);
-		setPhoto(photo);
-		setUsuario(isUsuario);
-		setModerador(isModerador);
-		setAdministrador(isAdministrador);
+		setRolUsuario(isUsuario);
+		setRolModerador(isModerador);
+		setRolAdministrador(isAdministrador);
 	}
 
-	public String getNombreUsuario() {
-		return this.usuario;
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setNombreUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsername(String usuario) {
+		this.username = usuario;
 	}
 
 	public String getClave() {
@@ -52,14 +45,6 @@ public class UsuarioDTO {
 		this.nombreApellidos = nombreApellidos;
 	}
 
-	public int getEdad() {
-		return this.edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
 	public String getCiudad() {
 		return this.ciudad;
 	}
@@ -76,14 +61,6 @@ public class UsuarioDTO {
 		this.pais = pais;
 	}
 	
-	public String getGenero() {
-		return this.genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	
 	public String getPhoto() {
 		return this.photo;
 	}
@@ -92,81 +69,27 @@ public class UsuarioDTO {
 		this.photo = photo;
 	}
 	
-	public boolean isUsuario() {
-		return this.isUsuario;
+	public boolean isRolUsuario() {
+		return this.hasRolUsuario;
 	}
 
-	public void setUsuario(boolean isUsuario) {
-		this.isUsuario = isUsuario;
+	public void setRolUsuario(boolean isUsuario) {
+		this.hasRolUsuario = isUsuario;
 	}
 
-	public boolean isModerador() {
-		return this.isModerador;
+	public boolean isRolModerador() {
+		return this.hasRolModerador;
 	}
 
-	public void setModerador(boolean isModerador) {
-		this.isModerador = isModerador;
+	public void setRolModerador(boolean isModerador) {
+		this.hasRolModerador = isModerador;
 	}
 
-	public boolean isAdministrador() {
-		return this.isAdministrador;
+	public boolean isRolAdministrador() {
+		return this.hasRolAdministrador;
 	}
 
-	public void setAdministrador(boolean isAdministrador) {
-		this.isAdministrador = isAdministrador;
-	}
-	
-	//Comprobación sobre los datos
-	
-	
-	public boolean cumpleNombreUsuario() {
-		for(int indice=0; indice<getNombreUsuario().length(); indice++) {
-			if(!((getNombreUsuario().charAt(indice)>='A' && getNombreUsuario().charAt(indice)<='Z') ||
-				 (getNombreUsuario().charAt(indice)>='a' && getNombreUsuario().charAt(indice)<='z') ||
-				 (getNombreUsuario().charAt(indice)>='0' && getNombreUsuario().charAt(indice)<='9'))) {
-				return false;
-			}
-		}
-		return true;
-	}
-		
-	public boolean hayMayusculaEnClave() {
-		for(int indice=0; indice<getClave().length(); indice++) {
-			if ((getClave().charAt(indice)>='A')&&(getClave().charAt(indice)<='Z')) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean hayMinusculaEnClave() {
-		for(int indice=0; indice<getClave().length(); indice++) {
-			if ((getClave().charAt(indice)>='a')&&(getClave().charAt(indice)<='z')) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean hayNumeroEnClave() {
-		for(int indice=0; indice<getClave().length(); indice++) {
-			if ((getClave().charAt(indice)>='0')&&(getClave().charAt(indice)<='9')) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean correctaLongitudClave() {
-		return (getClave().length()>=4);
-	}
-	
-	public boolean tieneEspaciosClave() {
-		for(int indice=0; indice<getClave().length(); indice++) {
-			if (getClave().charAt(indice)==' ') {
-				return true;
-			}
-		}
-		return false;
+	public void setRolAdministrador(boolean isAdministrador) {
+		this.hasRolAdministrador = isAdministrador;
 	}
 }

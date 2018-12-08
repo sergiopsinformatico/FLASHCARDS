@@ -1,23 +1,28 @@
 #Author: Sergio Perez Sanchez
 
-Feature: Login Usuario
+Feature: Como usuario quiero acceder al sistema para usar la aplicación
 
-Scenario: Login de un usuario con usuario
-Given Una persona quiere loguearse con su usuario
-When Escribe sus credenciales con el usuario
-Then Entra al sistema con el usuario
+Scenario: Login correcto. Login mediante email
+Given Una persona quiere loguearse
+When Se loguea con el email
+Then Se loguea correctamente
 
-Scenario: Login de un usuario con email
-Given Una persona quiere loguearse con su email
-When Escribe sus credenciales con el email
-Then Entra al sistema con el email
+Scenario: Login correcto. Login mediante username
+Given Una persona quiere loguearse
+When Se loguea con el username
+Then Se loguea correctamente
 
-Scenario: Error en el login con el usuario o email
-Given Una persona va a loguearse
-When Introduce sus credenciales
-Then El email o usuario no existe
-    
-Scenario: Error en el login con la clave del usuario
-Given Una persona va a entrar al sistema
-When Escribe las credenciales
-Then La clave no coincide
+Scenario: Login incorrecto. Error en el email
+Given Una persona quiere loguearse
+When El email es erroneo
+Then No se puede loguear
+
+Scenario: Login incorrecto. Error en el username
+Given Una persona quiere loguearse
+When El username es erroneo
+Then No se puede loguear
+
+Scenario: Login incorrecto. Error en la clave
+Given Una persona quiere loguearse
+When La clave es erronea
+Then No se puede loguear

@@ -41,7 +41,7 @@ public class ControladorInicioSesionUsuarios {
 		for(int indice = 0; indice<eliminados.size(); indice++) {
 			user = gU.leerUsuario(eliminados.get(indice).getEmail());
 			gE.borrarEliminado(user.getEmail());
-			gU.eliminaCuenta(user.getNombreUsuario());
+			gU.eliminaCuenta(user.getUsername());
 		}
 		
 		if(gU.login(request.getParameter("inputUsuario"), request.getParameter("inputClave"))){
@@ -55,7 +55,7 @@ public class ControladorInicioSesionUsuarios {
 			vista.addObject("usuario", user);
 			request.getSession().setAttribute("usuario", user);
 			try {
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getNombreUsuario());
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
 			} catch (IOException e) {
 				return vista;
 			}

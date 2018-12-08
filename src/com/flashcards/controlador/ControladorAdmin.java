@@ -32,14 +32,14 @@ public class ControladorAdmin {
 		usuarios = gU.todosUsuarios(usuario);
 		for(int i=0; i<usuarios.size(); i++) {
 			
-			if(usuarios.get(i).isUsuario())rol="usuario";
-			if(usuarios.get(i).isModerador())rol="moderador";
-			if(usuarios.get(i).isAdministrador())rol="administrador";
+			if(usuarios.get(i).isRolUsuario())rol="usuario";
+			if(usuarios.get(i).isRolModerador())rol="moderador";
+			if(usuarios.get(i).isRolAdministrador())rol="administrador";
 			
 			if(i==0) {
-				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
 			}else {
-				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
 			}
 		}
 		vista = new ModelAndView("administrador");
@@ -61,14 +61,14 @@ public class ControladorAdmin {
 		usuarios = gU.todosUsuarios(request.getParameter("admin"));
 		for(int i=0; i<usuarios.size(); i++) {
 			
-			if(usuarios.get(i).isUsuario())rol="usuario";
-			if(usuarios.get(i).isModerador())rol="moderador";
-			if(usuarios.get(i).isAdministrador())rol="administrador";
+			if(usuarios.get(i).isRolUsuario())rol="usuario";
+			if(usuarios.get(i).isRolModerador())rol="moderador";
+			if(usuarios.get(i).isRolAdministrador())rol="administrador";
 			
 			if(i==0) {
-				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
+				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
 			}else {
-				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getNombreUsuario() + "///****elem****///" + rol;
+				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
 			}
 		}
 		vista = new ModelAndView("administrador");
@@ -83,19 +83,19 @@ public class ControladorAdmin {
 		user = gU.leerUsuario(request.getParameter("usuario"));
 		switch(request.getParameter("rol")) {
 			case "usuario":
-				user.setUsuario(true);
-				user.setModerador(false);
-				user.setAdministrador(false);
+				user.setRolUsuario(true);
+				user.setRolModerador(false);
+				user.setRolAdministrador(false);
 				break;
 			case "moderador":
-				user.setUsuario(false);
-				user.setModerador(true);
-				user.setAdministrador(false);
+				user.setRolUsuario(false);
+				user.setRolModerador(true);
+				user.setRolAdministrador(false);
 				break;
 			case "administrador":
-				user.setUsuario(false);
-				user.setModerador(false);
-				user.setAdministrador(true);
+				user.setRolUsuario(false);
+				user.setRolModerador(false);
+				user.setRolAdministrador(true);
 				break;
 			default:
 				break;

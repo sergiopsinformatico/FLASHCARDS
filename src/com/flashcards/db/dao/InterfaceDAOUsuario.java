@@ -1,19 +1,15 @@
 package com.flashcards.db.dao;
 
-import java.util.LinkedList;
-
 import com.flashcards.dto.UsuarioDTO;
 
 public interface InterfaceDAOUsuario {
-	public void conexionDB();
-	public boolean crearUsuario(UsuarioDTO user);
-	public boolean existeEmail (String email);
-	public boolean existeUsername (String username);
-	public boolean loginByUsername (String username, String clave);
-	public boolean loginByEmail (String email, String clave);
-	public LinkedList<UsuarioDTO> usuarios (String username);
-	public UsuarioDTO usuarioByUsername (String username);
-	public UsuarioDTO usuarioByEmail (String email);
-	public boolean modificarUsuario (UsuarioDTO user);
-	public boolean eliminarUsuario(String usuario);
+	public boolean insertUsuario(UsuarioDTO user);
+	public boolean existEmail (String email);
+	public boolean existUsername (String username);
+	public boolean usernameIsCorrect(String username);
+	public boolean claveIsCorrect(String clave);
+	public boolean login(String usernameEmail, String clave);
+	public UsuarioDTO getUsuarioDTO(String usernameEmail);
+	public boolean updateUsuario(UsuarioDTO userAntiguo, UsuarioDTO userNuevo);
+	public boolean deleteUsuario(UsuarioDTO user);
 }

@@ -1,63 +1,46 @@
 package tests.java;
 
-import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.dto.UsuarioDTO;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import com.flashcards.brokers.Broker;
+import com.flashcards.db.dao.InterfaceDAOUsuario;
+import com.flashcards.dto.UsuarioDTO;
+
 public class Test03VerPerfil {
 	
-	GestorUsuarios gU;
-	UsuarioDTO user;
-	String email, usuario, clave;
+	UsuarioDTO user, user2;
+	Broker broker;
+	InterfaceDAOUsuario dBUsuario;
 	
-	//Ver Perfil de Usuario con Nombre de Usuario
-	@Given("^Un usuario logueado con su nombre de usuario$")
-	public void un_usuario_logueado_con_su_nombre_de_usuario() throws Throwable {
-	    gU = new GestorUsuarios();
-	    usuario = "sergio123";
-	    clave = "Sergio123";
+	@Given("^Una persona quiere ver su perfil$")
+	public void una_persona_quiere_ver_su_perfil() throws Throwable {
+	    broker = new Broker();
+	    dBUsuario = broker.getInstanciaUsuario();
+	    user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
 	    assert(true);
 	}
-
-	@When("^Va al perfil$")
-	public void va_al_perfil() throws Throwable {
-		assert(gU.login(usuario, clave));
-	}
-
-	@Then("^Ve sus datos$")
-	public void ve_sus_datos() throws Throwable {
-	    user = gU.leerUsuario(usuario);
-	    if(user != null) {
-	    	assert(true);
-	    }else {
-	    	assert(false);
-	    }
-	}
-
-	@Given("^Un usuario logueado con su email$")
-	public void un_usuario_logueado_con_su_email() throws Throwable {
-		gU = new GestorUsuarios();
-	    email = "sergio13_yo@hotmail.com";
-	    clave = "Sergio123";
-	    assert(true);
-	}
-
-	@When("^Se dirige al perfil$")
-	public void se_dirige_al_perfil() throws Throwable {
-		assert(gU.login(email, clave));
-	}
-
-	@Then("^Ve sus datos en el perfil$")
-	public void ve_sus_datos_en_el_perfil() throws Throwable {
-		user = gU.leerUsuario(email);
-	    if(user != null) {
-	    	assert(true);
-	    }else {
-	    	assert(false);
-	    }
+	
+	@When("^Se logueó con el username$")
+	public void se_logueó_con_el_username() throws Throwable {
+	    assert(dBUsuario.login(user.getUsername(), user.getClave()));
 	}
 	
+	@Then("^Ve el perfil con el username$")
+	public void ve_el_perfil_con_el_username() throws Throwable {
+	    user2 = dBUsuario.getUsuarioDTO(user.getUsername());
+	    assert(user2.getClave().equals(user.getClave()));
+	}
+
+	@When("^Se logueó con el email$")
+	public void se_logueó_con_el_email() throws Throwable {
+		assert(dBUsuario.login(user.getEmail(), user.getClave()));
+	}
+	
+	@Then("^Ve el perfil con el email$")
+	public void ve_el_perfil_con_el_email() throws Throwable {
+		user2 = dBUsuario.getUsuarioDTO(user.getEmail());
+	    assert(user2.getClave().equals(user.getClave()));
+	}
 }

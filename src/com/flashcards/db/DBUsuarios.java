@@ -16,7 +16,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-public class DBUsuarios implements InterfaceDAOUsuario{
+public class DBUsuarios{
 	
 	MongoClientURI uri; 
     MongoClient client;
@@ -46,18 +46,16 @@ public class DBUsuarios implements InterfaceDAOUsuario{
 	
 	public boolean crearUsuario(UsuarioDTO user) {
 		try {
-			doc = new Document("usuario", user.getNombreUsuario())
+			doc = new Document("usuario", user.getUsername())
 				  .append("clave", user.getClave())
 				  .append("email", user.getEmail())
 				  .append("nombreApellidos", user.getNombreApellidos())
-				  .append("edad", user.getEdad())
 				  .append("ciudad", user.getCiudad())
 				  .append("pais", user.getPais())
-				  .append("genero", user.getGenero())
 				  .append("photo", user.getPhoto())
-				  .append("isUsuario", user.isUsuario())
-				  .append("isModerador", user.isModerador())
-				  .append("isAdministrador", user.isAdministrador());
+				  .append("isUsuario", user.isRolUsuario())
+				  .append("isModerador", user.isRolModerador())
+				  .append("isAdministrador", user.isRolAdministrador());
 			coleccionUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -104,7 +102,7 @@ public class DBUsuarios implements InterfaceDAOUsuario{
 		while(lista.hasNext()) {
 			doc = lista.next();
 			if(!(doc.getString("usuario").equalsIgnoreCase(username))) {
-				usuarios.add(new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
+				//usuarios.add(new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador")));
 			}
 		}
 		return usuarios;
@@ -114,7 +112,7 @@ public class DBUsuarios implements InterfaceDAOUsuario{
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("usuario", new BsonString(username))).iterator().next();
-			user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			//user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}
@@ -123,7 +121,7 @@ public class DBUsuarios implements InterfaceDAOUsuario{
 		user=null;
 		if(coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().hasNext()) {
 			doc = coleccionUsuarios.find(new BsonDocument().append("email", new BsonString(email))).iterator().next();
-			user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getInteger("edad"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("genero"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
+			//user = new UsuarioDTO(doc.getString("usuario"), doc.getString("clave"), doc.getString("email"), doc.getString("nombreApellidos"), doc.getString("ciudad"), doc.getString("pais"), doc.getString("photo"), doc.getBoolean("isUsuario"), doc.getBoolean("isModerador"), doc.getBoolean("isAdministrador"));
 		}
 		return user;
 	}

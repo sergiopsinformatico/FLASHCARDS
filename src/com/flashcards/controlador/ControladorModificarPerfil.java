@@ -18,21 +18,20 @@ public class ControladorModificarPerfil {
 	
 	@RequestMapping(value = "/mPerfil", method = RequestMethod.POST)
 	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
-		GestorUsuarios gU = new GestorUsuarios();
+		/*GestorUsuarios gU = new GestorUsuarios();
 		UsuarioDTO antiguo = gU.leerUsuario(request.getParameter("usuarioAntiguo"));
 		UsuarioDTO nuevo = new UsuarioDTO(request.getParameter("nombreUsuario"), request.getParameter("clave"), 
 		               request.getParameter("email"), request.getParameter("nombreApellidos"),
-		               Integer.parseInt(request.getParameter("edad")), request.getParameter("ciudad"), 
-		               request.getParameter("pais"), request.getParameter("genero"), "",
-		               antiguo.isUsuario(), antiguo.isModerador(), antiguo.isAdministrador());
+		               request.getParameter("ciudad"), request.getParameter("pais"),
+		               "", antiguo.isRolUsuario(), antiguo.isRolModerador(), antiguo.isRolAdministrador());
 		if(nuevo.getGenero().equalsIgnoreCase("hombre")){
 			nuevo.setPhoto("resources/img/profileHombre.jpg");
 		}else {
 			nuevo.setPhoto("resources/img/profileMujer.jpg");
-		}
+		}*/
 		
 		ModelAndView vista = new ModelAndView();
-		
+		/*
 		String mensaje = "";
 		if(!(nuevo.cumpleNombreUsuario())) {
 			mensaje = "Error. El nombre de usuario solo puede contener minusculas, mayusculas o numeros.";
@@ -40,14 +39,14 @@ public class ControladorModificarPerfil {
 		if(!(mensaje.equalsIgnoreCase(""))) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", mensaje);
-			nuevo.setNombreUsuario("");
+			nuevo.setUsername("");
 			vista.addObject("usuario", nuevo);
 			return vista;
 		}
-		if(nuevo.getNombreUsuario().equals("sergio123")) {
+		if(nuevo.getUsername().equals("sergio123")) {
 			vista = new ModelAndView("modificarPerfil");
 			vista.addObject("mensaje", "Error. El nombre de usuario ya existe.");
-			nuevo.setNombreUsuario("");
+			nuevo.setUsername("");
 			vista.addObject("usuario", nuevo);
 			return vista;
 		}
@@ -107,26 +106,26 @@ public class ControladorModificarPerfil {
 			vista.addObject("usuario", nuevo);
 			return vista;
 		}else {
-			if((nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getNombreUsuario().equals(antiguo.getNombreUsuario()))) {
-				if(gU.existeUsername(nuevo.getNombreUsuario())) {
+			if((nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getUsername().equals(antiguo.getUsername()))) {
+				if(gU.existeUsername(nuevo.getUsername())) {
 					vista = new ModelAndView("modificarPerfil");
 					vista.addObject("mensaje", "El usuario ya existe.");
 					vista.addObject("usuario", antiguo);
-					nuevo.setNombreUsuario("");
+					nuevo.setUsername("");
 					vista.addObject("usuarioM", nuevo);
 				}else {
-					gU.eliminaCuenta(antiguo.getNombreUsuario());
+					gU.eliminaCuenta(antiguo.getUsername());
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("perfil");
 					try {
-						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getNombreUsuario());
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsername());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
-			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getNombreUsuario().equals(antiguo.getNombreUsuario()))) {
+			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsername().equals(antiguo.getUsername()))) {
 				if(gU.existeEmail(nuevo.getEmail())) {
 					vista = new ModelAndView("modificarPerfil");
 					vista.addObject("mensaje", "El email ya existe.");
@@ -134,23 +133,23 @@ public class ControladorModificarPerfil {
 					nuevo.setEmail("");
 					vista.addObject("usuarioM", nuevo);
 				}else {
-					gU.eliminaCuenta(antiguo.getNombreUsuario());
+					gU.eliminaCuenta(antiguo.getUsername());
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("perfil");
 					try {
-						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getNombreUsuario());
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsername());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
-			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getNombreUsuario().equals(antiguo.getNombreUsuario()))) {
-				if(gU.existeUsername(nuevo.getNombreUsuario())) {
+			}else if((!nuevo.getEmail().equals(antiguo.getEmail())) && (!nuevo.getUsername().equals(antiguo.getUsername()))) {
+				if(gU.existeUsername(nuevo.getUsername())) {
 					vista = new ModelAndView("modificarPerfil");
 					vista.addObject("mensaje", "El usuario ya existe.");
 					vista.addObject("usuario", antiguo);
-					nuevo.setNombreUsuario("");
+					nuevo.setUsername("");
 					vista.addObject("usuarioM", nuevo);
 				}else if(gU.existeEmail(nuevo.getEmail())) {
 					vista = new ModelAndView("modificarPerfil");
@@ -159,30 +158,30 @@ public class ControladorModificarPerfil {
 					nuevo.setEmail("");
 					vista.addObject("usuarioM", nuevo);
 				}else {
-					gU.eliminaCuenta(antiguo.getNombreUsuario());
+					gU.eliminaCuenta(antiguo.getUsername());
 					gU.registrarUsuario(nuevo);
 					request.getSession().removeAttribute("usuario");
 					request.getSession().setAttribute("usuario", nuevo);
 					vista = new ModelAndView("perfil");
 					try {
-						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getNombreUsuario()+"&perfil="+nuevo.getNombreUsuario());
+						response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsername()+"&perfil="+nuevo.getUsername());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
-			}else if((nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getNombreUsuario().equals(antiguo.getNombreUsuario()))) {
-				gU.eliminaCuenta(antiguo.getNombreUsuario());
+			}else if((nuevo.getEmail().equals(antiguo.getEmail())) && (nuevo.getUsername().equals(antiguo.getUsername()))) {
+				gU.eliminaCuenta(antiguo.getUsername());
 				gU.registrarUsuario(nuevo);
 				request.getSession().removeAttribute("usuario");
 				request.getSession().setAttribute("usuario", nuevo);
 				vista = new ModelAndView("perfil");
 				try {
-					response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getNombreUsuario()+"&perfil="+nuevo.getNombreUsuario());
+					response.sendRedirect("https://sistemaflashcards.herokuapp.com/miPerfil.html?usuario="+nuevo.getUsername()+"&perfil="+nuevo.getUsername());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 		return vista;
 	}
 }

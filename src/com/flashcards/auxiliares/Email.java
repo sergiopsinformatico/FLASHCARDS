@@ -30,7 +30,7 @@ public class Email {
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nSe ha creado correctamente una cuenta en Flashcards:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getNombreUsuario()+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
 		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
 		//Email de quien recibe el mensaje
@@ -40,7 +40,7 @@ public class Email {
 	
 	public boolean eliminarCuenta(UsuarioDTO user, String fecha) {
 		//Asunto
-		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getNombreUsuario()+") - 14 dias");
+		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getUsername()+") - 14 dias");
 		//Mensaje
 		setMensaje("Estimado "+user.getNombreApellidos()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+fecha+"."+
@@ -57,7 +57,7 @@ public class Email {
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nHa solicitado recuperación de sus datos de su cuenta en Flashcards:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getNombreUsuario()+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
 		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
 		//Email de quien recibe el mensaje
@@ -71,7 +71,7 @@ public class Email {
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no será borrada:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getNombreUsuario()+
+		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
 		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
 		//Email de quien recibe el mensaje

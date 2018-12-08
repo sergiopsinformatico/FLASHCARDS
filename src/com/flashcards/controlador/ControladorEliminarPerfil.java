@@ -21,7 +21,7 @@ public class ControladorEliminarPerfil {
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
 		Email em = new Email();
 		GestorUsuarios gU = new GestorUsuarios();
-		UsuarioDTO user = gU.leerUsuario(((UsuarioDTO)request.getSession().getAttribute("usuario")).getNombreUsuario());
+		UsuarioDTO user = gU.leerUsuario(((UsuarioDTO)request.getSession().getAttribute("usuario")).getUsername());
 		Eliminado pB = new Eliminado(user.getEmail());
 		GestionEliminados gE = new GestionEliminados();
 		gE.insertarEliminado(pB);
