@@ -59,17 +59,6 @@
   	</dependency>
   	<dependency>
   		<groupId>info.cukes</groupId>
-  		<artifactId>cucumber-junit</artifactId>
-  		<version>1.2.5</version>
-  		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>info.cukes</groupId>
-  		<artifactId>cucumber-java</artifactId>
-  		<version>1.2.5</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>info.cukes</groupId>
   		<artifactId>gherkin</artifactId>
   		<version>2.12.2</version>
   	</dependency>
@@ -92,6 +81,17 @@
   		<groupId>org.json</groupId>
   		<artifactId>json</artifactId>
   		<version>20180130</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>cucumber-junit</artifactId>
+  		<version>4.2.0</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>cucumber-java</artifactId>
+  		<version>4.2.0</version>
   	</dependency>
   </dependencies>
 </project>
