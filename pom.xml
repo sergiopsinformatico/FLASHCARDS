@@ -83,20 +83,15 @@
   		<version>20180130</version>
   	</dependency>
   	<dependency>
-  		<groupId>io.cucumber</groupId>
-  		<artifactId>cucumber-core</artifactId>
-  		<version>3.0.2</version>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>cucumber-java</artifactId>
+  		<version>1.2.5</version>
   	</dependency>
   	<dependency>
-  		<groupId>io.cucumber</groupId>
+  		<groupId>info.cukes</groupId>
   		<artifactId>cucumber-junit</artifactId>
-  		<version>3.0.2</version>
+  		<version>1.2.5</version>
   		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>io.cucumber</groupId>
-  		<artifactId>cucumber-spring</artifactId>
-  		<version>3.0.2</version>
   	</dependency>
   </dependencies>
 </project>
