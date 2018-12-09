@@ -1,5 +1,4 @@
 package tests.java;
-
 import com.flashcards.brokers.Broker;
 import com.flashcards.db.dao.InterfaceDAOUsuario;
 import com.flashcards.dto.UsuarioDTO;

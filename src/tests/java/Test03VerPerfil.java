@@ -1,6 +1,4 @@
 package tests.java;
-
-
 import com.flashcards.brokers.Broker;
 import com.flashcards.db.dao.InterfaceDAOUsuario;
 import com.flashcards.dto.UsuarioDTO;
@@ -23,8 +21,8 @@ public class Test03VerPerfil {
 	    assert(true);
 	}
 	
-	@When("^Se logueó con el username$")
-	public void se_logueó_con_el_username() throws Throwable {
+	@When("^Se ha logueado con el username$")
+	public void se_loguea_con_el_username() throws Throwable {
 	    assert(dBUsuario.login(user.getUsername(), user.getClave()));
 	}
 	
@@ -34,8 +32,8 @@ public class Test03VerPerfil {
 	    assert(user2.getClave().equals(user.getClave()));
 	}
 
-	@When("^Se logueó con el email$")
-	public void se_logueó_con_el_email() throws Throwable {
+	@When("^Se ha logueado con el email$")
+	public void se_loguea_con_el_email() throws Throwable {
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}
 	
