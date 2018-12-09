@@ -25,10 +25,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
-		<%@ page import="com.flashcards.modelo.UsuarioDTO" %>
+		<%@ page import="com.flashcards.dto.UsuarioDTO" %>
 		<% 
 			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user==null || user.getNombreUsuario().equals("")){
+			if(user==null || user.getUsername().equals("")){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
 			session.setAttribute("usuario", user);
