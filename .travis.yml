@@ -2,6 +2,8 @@ language: java
 jdk:
   - oraclejdk8
 
+script: 'bundle exec cucumber'
+
 deploy:
   provider: heroku
   api_key:
