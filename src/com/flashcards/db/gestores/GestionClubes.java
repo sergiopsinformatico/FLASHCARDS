@@ -2,11 +2,8 @@ package com.flashcards.db.gestores;
 
 import java.util.ArrayList;
 
-import com.flashcards.db.DBClubes;
-import com.flashcards.dto.Club;
-
 public class GestionClubes {
-	DBClubes dB;
+	/*DBClubes dB;
 	ArrayList<String> clubes, miembros;
 	String aux;
 	int indice;
@@ -36,7 +33,7 @@ public class GestionClubes {
 				aux = clubes.get(indice);
 			}else {
 				aux = aux + "///****nuevoCLUB****///" + clubes.get(indice);
-			}
+			/*}
 		}
 		return aux;
 	}
@@ -68,10 +65,10 @@ public class GestionClubes {
 		for(indice=0; indice<miembros.size(); indice++) {
 			if(indice==0) {
 				aux = gU.getNyA(miembros.get(indice)+"///****user****///"+miembros.get(indice));
-			}else {
+		/*	}else {
 				aux = aux + "///****nMiembro****///" + gU.getNyA(miembros.get(indice)+"///****user****///"+miembros.get(indice));
-			}
+		/*	}
 		}
 		return aux;
-	}
+	}*/
 }

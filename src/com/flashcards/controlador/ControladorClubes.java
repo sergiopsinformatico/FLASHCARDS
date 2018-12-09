@@ -1,27 +1,10 @@
 package com.flashcards.controlador;
 
-import java.io.IOException;
-import java.util.Random;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.flashcards.db.gestores.GestionAcceso;
-import com.flashcards.db.gestores.GestionClubes;
-import com.flashcards.db.gestores.GestorUsuarios;
-import com.flashcards.dto.Club;
-import com.flashcards.dto.SolicitudAcceso;
-import com.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorClubes {
-	GestorUsuarios gU = new GestorUsuarios();
+	/*GestorUsuarios gU = new GestorUsuarios();
 	String identificador;
 	Random r = new Random();
 	Club club;
@@ -163,5 +146,5 @@ public class ControladorClubes {
 			
 		}
 	}
-	
+	*/
 }

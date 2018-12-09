@@ -116,14 +116,14 @@ public class DBFlashcards {
 						break;
 					case "club":
 						gC = new GestionClubes();
-						if(gC.perteneceWithIdentificador(usuario, doc.getString("compartidoCon"))) {
+						/*if(gC.perteneceWithIdentificador(usuario, doc.getString("compartidoCon"))) {
 							if(indice==0) {
 								listJSON = doc.getString("coleccion")+"****////identificador////****"+doc.getString("identificador");
-								indice++;
-							}else {
-								listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
-							}
-						}
+							/*	indice++;
+							/*}else {
+							/*	listJSON = listJSON + "****////nCol////****" + doc.getString("coleccion")+ "****////identificador////****" +doc.getString("identificador");
+							/*}
+						}*/
 						break;
 					case "usuario":
 						gA = new GestionAmigos();

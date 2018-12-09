@@ -193,7 +193,7 @@ public class ControladorPrincipal {
 	@RequestMapping(value = "/clubes", method = RequestMethod.GET)
 	public ModelAndView clubes(@RequestParam("usuario") String usuario) {
 		ModelAndView clubes = new ModelAndView("vistaClubes");
-		
+		/*
 		clubes.addObject("usuario", gU.leerUsuario(usuario));
 		
 		GestionClubes gC = new GestionClubes();
@@ -207,7 +207,7 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				listaClubes = listaClubes + "///****nuevoCLUB****///" + lista.get(indice);
-			}
+			/*}
 		}
 		clubes.addObject("clubes", listaClubes);
 		
@@ -221,10 +221,10 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				listaMisClubes = listaMisClubes + "///****nuevoCLUB****///" + lista.get(indice);
-			}
+			/*}
 		}
 		
-		clubes.addObject("misClubes", listaMisClubes);
+		clubes.addObject("misClubes", listaMisClubes);*/
 		
 		return clubes;
 	}

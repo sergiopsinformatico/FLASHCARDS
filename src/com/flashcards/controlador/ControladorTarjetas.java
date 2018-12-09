@@ -53,7 +53,7 @@ public class ControladorTarjetas {
 		vista = new ModelAndView("creaColeccion");
 		tarjetas = new LinkedList<Tarjeta>();
 		user = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+		//vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
 		vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 		vista.addObject("usuario", user);
 		return vista;
@@ -134,7 +134,7 @@ public class ControladorTarjetas {
 					vista = new ModelAndView("creaColeccion");
 					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
-					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+					//vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
@@ -157,7 +157,7 @@ public class ControladorTarjetas {
 					vista = new ModelAndView("creaColeccion");
 					user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 					vista.addObject("usuario", user);
-					vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+					//vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
 					vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 					vista.addObject("crea", flash.getCreador());
 					vista.addObject("name", flash.getNombreColeccion());
@@ -176,7 +176,7 @@ public class ControladorTarjetas {
 			vista = new ModelAndView("creaColeccion");
 			user = (UsuarioDTO)request.getSession().getAttribute("usuario");
 			vista.addObject("usuario",user);
-			vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
+			//vista.addObject("clubes", gC.leerClubesUsuarioJSON(user.getUsername()));
 			vista.addObject("amigos", gA.getAmigosJSON(user.getUsername()));
 			vista.addObject("crea", flash.getCreador());
 			vista.addObject("name", flash.getNombreColeccion());
