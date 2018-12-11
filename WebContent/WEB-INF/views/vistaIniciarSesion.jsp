@@ -23,7 +23,7 @@
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
-    <style>
+    <!-- <style>
 	    body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}
 	
 	    .form-heading { color:#fff; font-size:23px;}
@@ -77,7 +77,7 @@
 	    }
 	    .back { text-align: left; margin-top:10px;}
 	    .back a {color: #444444; font-size: 13px;text-decoration: none;}
-    </style>
+    </style>-->
     
   </head>
 
@@ -108,8 +108,11 @@
       </div>
     </nav>
     <section>
-    	<div class="login-form">
-			<div class="main-div">
+    	<div class="row">
+    		<div class="col-md-4"></div>
+    		<div class="col-md-4">
+	    	<!-- <div class="login-form">-->
+				<!-- <div class="main-div">-->
 			    <form id="Login">
 			        <div class="form-group">
 			            <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
@@ -119,7 +122,10 @@
 			        </div>
 			        <button type="submit" class="btn btn-primary">Login</button>
 			    </form>
-			</div>
+				<!-- </div>
+				</div>-->
+    		</div>
+    		<div class="col-md-4"></div>
 		</div>
     </section>
     
