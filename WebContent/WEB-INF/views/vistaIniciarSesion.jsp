@@ -116,10 +116,10 @@
     		<div class="col-md-4">
     			<form action="loguear.html" method="post" id="Login" name="Login">
 			        <div class="form-group">
-			            <input type="text" class="form-control" id="inputUsernameEmail" placeholder="Username o Email">
+			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email">
 			        </div>
 			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputClave" placeholder="Clave">
+			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave">
 			        </div>
 			        <button type="submit" class="btn btn-primary">Login</button>
 			    </form>
