@@ -109,21 +109,20 @@
     </nav>
     <section>
     	<div class="row">
+    		<br><br>
+    	</div>
+    	<div class="row">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
-	    	<!-- <div class="login-form">-->
-				<!-- <div class="main-div">-->
-			    <form id="Login">
+    			<form action="loguear.html" method="post" id="Login" name="Login">
 			        <div class="form-group">
-			            <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+			            <input type="text" class="form-control" id="inputUsernameEmail" placeholder="Username o Email">
 			        </div>
 			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+			            <input type="password" class="form-control" id="inputClave" placeholder="Clave">
 			        </div>
 			        <button type="submit" class="btn btn-primary">Login</button>
 			    </form>
-				<!-- </div>
-				</div>-->
     		</div>
     		<div class="col-md-4"></div>
 		</div>

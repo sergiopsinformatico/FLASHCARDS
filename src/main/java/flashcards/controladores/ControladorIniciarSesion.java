@@ -1,30 +1,23 @@
 package main.java.flashcards.controladores;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import main.java.flashcards.auxiliares.Email;
-import main.java.flashcards.auxiliares.Fecha;
-import main.java.flashcards.db.gestores.GestionEliminados;
-import main.java.flashcards.db.gestores.GestorUsuarios;
-import main.java.flashcards.dto.Eliminado;
+import main.java.flashcards.brokers.Broker;
+import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorIniciarSesion {
 
 	//Variables Globales
-	
-	GestorUsuarios gU;
-	GestionEliminados gE;
+	Broker broker;
+	InterfaceDAOUsuario dBUsuario;
 	UsuarioDTO user;
 	ModelAndView vista;
 	
@@ -68,19 +61,33 @@ public class ControladorIniciarSesion {
 		return vista;
 	}*/
 	
+	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
+	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
+		broker = new Broker();
+		dBUsuario = broker.getInstanciaUsuario();
+		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
+			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
+			vista = new ModelAndView("principal");
+			vista.addObject("usuario", user);
+			request.getSession().setAttribute("usuario", user);
+			try {
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
+			} catch (IOException e) {
+				return vista;
+			}
+		}else {
+			vista = new ModelAndView("vistaIniciarSesion");
+			request.getSession().removeAttribute("usuario");
+			request.getSession().setAttribute("usuario", null);
+			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
+		}
+		return vista;
+	}
+	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaIniciarSesion");
 		return vista;
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("index");
-	}
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView loginPost(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("index");
 	}
 
 }
