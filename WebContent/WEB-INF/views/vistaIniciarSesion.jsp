@@ -24,7 +24,7 @@
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <style>
-	    .button {
+	    .btn-login {
 		  background-color: #FFD333;
 		  border: none;
 		  color: white;
