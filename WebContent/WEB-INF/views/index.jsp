@@ -25,7 +25,7 @@
   </head>
 
   <body id="page-top">
-  		<%@ page import="com.flashcards.dto.UsuarioDTO"%> 
+  		<%@ page import="main.java.flashcards.dto.UsuarioDTO"%> 
 		
 		<% 
 			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));

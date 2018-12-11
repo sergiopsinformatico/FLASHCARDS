@@ -19,7 +19,7 @@
 		
 	</head>
 	<body>
-		<%@ page import="com.flashcards.dto.UsuarioDTO" %>
+		<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
 		<% 
 			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 			if(user==null || user.getUsername().equals("")){
