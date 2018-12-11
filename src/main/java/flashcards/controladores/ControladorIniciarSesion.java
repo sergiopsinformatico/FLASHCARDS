@@ -70,14 +70,6 @@ public class ControladorIniciarSesion {
 	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		//vista = new ModelAndView("principal");
-		vista = new ModelAndView("vistaIniciarSesion");
-		return vista;
-	}
-	
-	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
-	public ModelAndView iniciarSesionPost(HttpServletRequest request, HttpServletResponse response) {
-		//vista = new ModelAndView("principal");
 		vista = new ModelAndView("vistaIniciarSesion");
 		return vista;
 	}
