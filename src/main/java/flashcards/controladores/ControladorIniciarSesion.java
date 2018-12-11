@@ -19,7 +19,7 @@ import main.java.flashcards.dto.Eliminado;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
-public class ControladorInicioSesionUsuarios {
+public class ControladorIniciarSesion {
 
 	//Variables Globales
 	
@@ -69,7 +69,8 @@ public class ControladorInicioSesionUsuarios {
 	}
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("principal");
+		//vista = new ModelAndView("principal");
+		vista = new ModelAndView("iniciarSesion");
 		return vista;
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
