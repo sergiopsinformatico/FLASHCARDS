@@ -29,8 +29,8 @@ public class ControladorIniciarSesion {
 	ModelAndView vista;
 	
 	//Controladores
-	
-	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
+	/*
+	@RequestMapping(value = "/logueando", method = RequestMethod.POST)
 	public ModelAndView loguear(HttpServletRequest request, HttpServletResponse response) {
 		
 		gU = new GestorUsuarios();
@@ -66,13 +66,22 @@ public class ControladorIniciarSesion {
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
 		return vista;
-	}
+	}*/
+	
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		//vista = new ModelAndView("principal");
-		vista = new ModelAndView("iniciarSesion");
+		vista = new ModelAndView("vistaIniciarSesion");
 		return vista;
 	}
+	
+	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.POST)
+	public ModelAndView iniciarSesionPost(HttpServletRequest request, HttpServletResponse response) {
+		//vista = new ModelAndView("principal");
+		vista = new ModelAndView("vistaIniciarSesion");
+		return vista;
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("index");
