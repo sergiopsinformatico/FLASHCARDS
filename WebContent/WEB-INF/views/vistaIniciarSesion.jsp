@@ -71,7 +71,7 @@
         </div>
       </div>
     </nav>
-    <!-- <section> -->
+    <section>
     	<div class="row">
     		<br><br>
     	</div>
@@ -96,7 +96,7 @@
     		</div>
     		<div class="col-md-4"></div>
 		</div>
-    <!-- </section> -->
+    </section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
