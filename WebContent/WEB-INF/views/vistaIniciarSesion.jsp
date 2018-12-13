@@ -28,7 +28,8 @@
 		  background-color: #FFD333;
 		  border: none;
 		  color: white;
-		  padding: 15px 32px;
+		  /*padding: 15px 32px;*/
+		  width: 100%;
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;

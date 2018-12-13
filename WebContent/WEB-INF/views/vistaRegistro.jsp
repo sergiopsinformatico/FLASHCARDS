@@ -28,7 +28,8 @@
 		  background-color: #FFD333;
 		  border: none;
 		  color: white;
-		  padding: 15px 32px;
+		  /*padding: 15px 32px;*/
+		  width: 100%;
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;
@@ -94,7 +95,7 @@
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
-			        		<button type="submit" class="btn-Registro">Registrar</button>
+			        		<button type="submit" class="btn-registro">Registrar</button>
 			        	</div>
 			        	<div class="col-md-3"></div>
 			        </div>
