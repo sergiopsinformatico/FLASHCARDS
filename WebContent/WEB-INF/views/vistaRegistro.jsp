@@ -30,7 +30,7 @@
 		  color: white;
 		  /*padding: 15px 32px;*/
 		  width: 100%;
-		  height: 15px;
+		  height: 50px;
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;
