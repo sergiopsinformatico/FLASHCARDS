@@ -8,20 +8,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.java.flashcards.db.gestores.GestorUsuarios;
+import main.java.flashcards.brokers.Broker;
+import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
 @Controller
-public class ControladorRegistroUsuarios {
+public class ControladorRegistro {
 
 	//Declaracion de Variables
-	GestorUsuarios gU;
 	UsuarioDTO user;
+	Broker broker;
+	InterfaceDAOUsuario dBUsuario;
 	ModelAndView vista;
-	String mensaje;
-		
-	//Controladores
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("vistaRegistro");
+	}
+	
+	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
+	public ModelAndView registrarUsuarioPost(HttpServletRequest request, HttpServletResponse response) {
+		broker = new Broker();
+		dBUsuario = broker.getInstanciaUsuario();
+		user = new UsuarioDTO(request.getParameter("inputUsername"), request.getParameter("inputClave"), request.getParameter("inputEmail"), true, false, false);
+		dBUsuario.insertUsuario(user);
+		vista = new ModelAndView("index");
+		return vista;
+	}
+	
+	
+	
+	
+	
+	
+	/*
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registro(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registro");
@@ -29,7 +50,7 @@ public class ControladorRegistroUsuarios {
 	@RequestMapping(value = "/registro", method = RequestMethod.POST)
 	public ModelAndView registre(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registro");
-	}
+	}*/
 	/*@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView crear(HttpServletRequest request, HttpServletResponse response) {
 		gU = new GestorUsuarios();
