@@ -94,6 +94,9 @@
 			            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 			        </div>
 			        <div class="row">
+			        	<div class="g-recaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw"></div>
+			        </div>
+			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
 			        		<button type="submit" class="btn-registro">Registrar</button>
@@ -105,6 +108,7 @@
     		<div class="col-md-4"></div>
 		</div>
     </section>
+
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
@@ -127,6 +131,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
+    
+    <!--Re captcha google-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
   </body>
 
