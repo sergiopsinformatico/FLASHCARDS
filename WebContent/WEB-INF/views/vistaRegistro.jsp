@@ -113,28 +113,31 @@
 			        	<br>
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
-			        <div class="row">
-			        	<div class="col-md-3"></div>
-			        	<div class="col-md-6">
-			        		<br>
-			        		<button type="submit" ng-click="check()" class="btn-registro" id="button1" disabled>Registrar</button>
-			        		<br>
-			        		<span style="text:red;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</span>
-			        	</div>
-			        	<div class="col-md-3"></div>
-			        </div>
 			        <script>
-			        	function enableBtn(){
-			        		document.getElementById("button1").disabled = false;
-			        	}
-			        	
-			        	$scope.add = function() {
+				        $scope.check = function() {
 		        		  if ($scope.regClave != $scope.regRepClave) {
 		        		    $scope.IsMatch=true;
 		        		    return false;
 		        		  }
 		        		  $scope.IsMatch=false;
 		        		}
+			        </script>
+			        <div class="row">
+			        	<div class="col-md-3"></div>
+			        	<div class="col-md-6">
+			        		<br>
+			        		<button type="submit" ng-click="check()" class="btn-registro" id="button1" disabled>Registrar</button>
+			        		<br>
+			        	</div>
+			        	<div class="col-md-3"></div>
+			        </div>
+			        <div class="row">
+			        	<span style="color:red;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</span>
+			        </div>
+			        <script>
+			        	function enableBtn(){
+			        		document.getElementById("button1").disabled = false;
+			        	}
 			        </script>
 			    </form>
     		</div>
