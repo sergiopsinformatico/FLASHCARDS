@@ -139,7 +139,7 @@
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
 				        		<br>
-				        		<button type="submit" ng-click="Check()" class="btn-registro" id="button1" disabled>Registrar</button>
+				        		
 				        		<br>
 				        	</div>
 				        	<div class="col-md-3"></div>
@@ -153,19 +153,23 @@
 				        	}
 				        </script>
 				    </form>
+				    <br>
+				    <button type="submit" ng-click="Check()" class="btn-registro" id="button1" disabled>Registrar</button>
+				    <h6 style="color:red;">$scope.clavePoner</h6>
 	    		</div>
 	    		<div class="col-md-4"></div>
 	    		<script>
 			        var app = angular.module('myApp', []);
 			        app.controller('CheckCtrl', function($scope, $http) {
-				        $scope.Check = function() {
+				        /*$scope.Check = function() {
 				          $scope.IsMatch=false;
 		        		  if ($scope.regClave != $scope.regRepClave) {
 		        		    $scope.IsMatch=true;
 		        		    return false;
 		        		  }
 		        		  return true;
-		        		}
+		        		}*/
+		        		$scope.clavePoner=$scope.regClave;
 			        });
 		        </script>
 			</div>
