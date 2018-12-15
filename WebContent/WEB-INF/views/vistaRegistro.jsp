@@ -97,7 +97,7 @@
     	<div class="row">
     		<br><br>
     	</div>
-    	<div class="row">
+    	<div class="row" ng-app="myApp" ng-controller="checkCtrl">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<form action="registrarUsuario.html" method="post" id="Registro" name="Registro">
@@ -117,15 +117,6 @@
 			        	<br>
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
-			        <script>
-				        $scope.check = function() {
-		        		  if ($scope.regClave != $scope.regRepClave) {
-		        		    $scope.IsMatch=true;
-		        		    return false;
-		        		  }
-		        		  $scope.IsMatch=false;
-		        		}
-			        </script>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
@@ -147,6 +138,18 @@
     		</div>
     		<div class="col-md-4"></div>
 		</div>
+		<script>
+	        var app = angular.module('myApp', []);
+	        app.controller('checkCtrl', function($scope, $http) {
+		        $scope.check = function() {
+        		  if ($scope.regClave != $scope.regRepClave) {
+        		    $scope.IsMatch=true;
+        		    return false;
+        		  }
+        		  $scope.IsMatch=false;
+        		}
+	        });
+        </script>
     </section>
 
 
