@@ -24,17 +24,28 @@
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <style>
+    	.btn-registro[disabled] {
+    		background-color: #00ff00;
+    		border: none;
+		  	color: white;
+		  	width: 100%;
+		  	height: 50px;
+		  	text-align: center;
+		  	text-decoration: none;
+		  	display: inline-block;
+		  	font-size: 16px;
+		}
+    
 	    .btn-registro {
-		  background-color: #FFD333;
-		  border: none;
-		  color: white;
-		  /*padding: 15px 32px;*/
-		  width: 100%;
-		  height: 50px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
+		  	background-color: #FFD333;
+		  	border: none;
+		  	color: white;
+		  	width: 100%;
+		  	height: 50px;
+		  	text-align: center;
+		  	text-decoration: none;
+		  	display: inline-block;
+		  	font-size: 16px;
 		}
     </style>
     
@@ -93,18 +104,17 @@
 			        <div class="form-group">
 			            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 			        </div>
-			        <div class="row center">
+			        <div class="row">
 			        	<div class="g-recaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
-			        		<button type="submit" class="btn-registro" id="button1">Registrar</button>
+			        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
 			        	</div>
 			        	<div class="col-md-3"></div>
 			        </div>
 			        <script>
-			        	document.getElementById("button1").disabled = true;
 			        	function enableBtn(){
 			        		document.getElementById("button1").disabled = false;
 			        	}
