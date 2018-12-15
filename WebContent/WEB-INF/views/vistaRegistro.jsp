@@ -56,7 +56,7 @@
     
   </head>
 
-  <body id="page-top">
+  <body ng-app="myApp" id="page-top">
   		<%@ page import="main.java.flashcards.dto.UsuarioDTO"%> 
 		
 		<% 
@@ -115,10 +115,10 @@
 	    	<div class="row">
 	    		<br><br>
 	    	</div>
-	    	<div class="row" ng-app="myApp" ng-controller="CheckCtrl">
+	    	<div class="row">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
-	    			<form action="registrarUsuario.html" method="post" id="Registro" name="Registro">
+	    			<form ng-submit="enviar()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -139,13 +139,13 @@
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
 				        		<br>
-				        		
+				        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
 				        		<br>
 				        	</div>
 				        	<div class="col-md-3"></div>
 				        </div>
 				        <div class="row">
-				        	<h6 style="color:red; visibility:hidden;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</h6>
+				        	<h6 style="color:red">{{error}}</h6>
 				        </div>
 				        <script>
 				        	function enableBtn(){
@@ -154,21 +154,18 @@
 				        </script>
 				    </form>
 				    <br>
-				    <button type="submit" ng-click="Check()" class="btn-registro" id="button1" disabled>Registrar</button>
-				    <h6 style="color:red;">{{regClave}}</h6>
 	    		</div>
 	    		<div class="col-md-4"></div>
 	    		<script>
 			        var app = angular.module('myApp', []);
-			        app.controller('CheckCtrl', function($scope, $http) {
-				        /*$scope.Check = function() {
-				          $scope.IsMatch=false;
-		        		  if ($scope.regClave != $scope.regRepClave) {
-		        		    $scope.IsMatch=true;
-		        		    return false;
-		        		  }
-		        		  return true;
-		        		}*/
+			        app.controller('RegistroCtrl', function($scope, $http) {
+			        	$scope.error = '';
+				        $scope.enviar = function(){
+				        	$scope.error = '';
+				        	if ($scope.regClave != $scope.regRepClave){
+				        		$scope.error = 'Error. Las claves no coinciden';
+				        	}
+				        }
 			        });
 		        </script>
 			</div>
