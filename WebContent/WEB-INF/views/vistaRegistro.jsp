@@ -114,6 +114,7 @@
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <script>
+			        	$scope.IsMatch=false;
 				        $scope.check = function() {
 		        		  if ($scope.regClave != $scope.regRepClave) {
 		        		    $scope.IsMatch=true;
