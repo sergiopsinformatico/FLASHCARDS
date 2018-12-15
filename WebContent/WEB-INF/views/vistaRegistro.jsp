@@ -47,6 +47,11 @@
 		  	display: inline-block;
 		  	font-size: 16px;
 		}
+		
+		.positionReCaptcha{
+			margin-left: auto;
+			margin-right: auto;
+		}
     </style>
     
   </head>
@@ -106,12 +111,12 @@
 			        </div>
 			        <div class="row">
 			        	<br>
-			        	<div class="g-recaptcha center" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			        	<br>
+			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
+			        		<br>
 			        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
 			        	</div>
 			        	<div class="col-md-3"></div>
