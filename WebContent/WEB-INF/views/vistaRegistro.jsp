@@ -122,12 +122,14 @@
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" required>
 				        </div>
+				        <h6 style="font-size:10px; color:#808080">El campo username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        <div class="form-group">
 				            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="regClave" name="inputClave" placeholder="Clave" required>
 				        </div>
+				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="regRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
