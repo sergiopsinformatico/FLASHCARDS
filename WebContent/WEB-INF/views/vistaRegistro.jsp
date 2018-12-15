@@ -155,7 +155,7 @@
 				    </form>
 				    <br>
 				    <button type="submit" ng-click="Check()" class="btn-registro" id="button1" disabled>Registrar</button>
-				    <h6 style="color:red;">$scope.clavePoner</h6>
+				    <h6 style="color:red;">{{regClave}}</h6>
 	    		</div>
 	    		<div class="col-md-4"></div>
 	    		<script>
@@ -169,7 +169,6 @@
 		        		  }
 		        		  return true;
 		        		}*/
-		        		$scope.clavePoner=$scope.regClave;
 			        });
 		        </script>
 			</div>
