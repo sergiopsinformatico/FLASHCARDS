@@ -114,7 +114,6 @@
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <script>
-			        	$scope.IsMatch=false;
 				        $scope.check = function() {
 		        		  if ($scope.regClave != $scope.regRepClave) {
 		        		    $scope.IsMatch=true;
@@ -133,7 +132,7 @@
 			        	<div class="col-md-3"></div>
 			        </div>
 			        <div class="row">
-			        	<span style="color:red;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</span>
+			        	<h6 style="color:red; visibility:hidden;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</h6>
 			        </div>
 			        <script>
 			        	function enableBtn(){
