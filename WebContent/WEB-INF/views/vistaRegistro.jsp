@@ -104,10 +104,10 @@
 			            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" required>
 			        </div>
 			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
+			            <input type="password" class="form-control" id="inputClave" ng-model="regClave" name="inputClave" placeholder="Clave" required>
 			        </div>
 			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
+			            <input type="password" class="form-control" id="inputRepiteClave" ng-model="regRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 			        </div>
 			        <div class="row">
 			        	<br>
@@ -117,7 +117,9 @@
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
 			        		<br>
-			        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
+			        		<button type="submit" ng-click="check()" class="btn-registro" id="button1" disabled>Registrar</button>
+			        		<br>
+			        		<span style="text:red;" ng-show="IsMatch">No se puede registrar. Las claves no coinciden</span>
 			        	</div>
 			        	<div class="col-md-3"></div>
 			        </div>
@@ -125,6 +127,14 @@
 			        	function enableBtn(){
 			        		document.getElementById("button1").disabled = false;
 			        	}
+			        	
+			        	$scope.add = function() {
+		        		  if ($scope.regClave != $scope.regRepClave) {
+		        		    $scope.IsMatch=true;
+		        		    return false;
+		        		  }
+		        		  $scope.IsMatch=false;
+		        		}
 			        </script>
 			    </form>
     		</div>
@@ -157,6 +167,9 @@
     
     <!--Re captcha google-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
   </body>
 
