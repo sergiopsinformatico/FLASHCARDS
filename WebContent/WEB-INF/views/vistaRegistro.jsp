@@ -25,7 +25,7 @@
     
     <style>
     	.btn-registro[disabled] {
-    		background-color: #00ff00;
+    		background-color: #ECECEC;
     		border: none;
 		  	color: white;
 		  	width: 100%;
@@ -37,7 +37,7 @@
 		}
     
 	    .btn-registro {
-		  	background-color: #FFD333;
+		  	background-color: #00ff00;
 		  	border: none;
 		  	color: white;
 		  	width: 100%;
@@ -105,7 +105,9 @@
 			            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 			        </div>
 			        <div class="row">
-			        	<div class="g-recaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			        	<br>
+			        	<div class="g-recaptcha center" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			        	<br>
 			        </div>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
