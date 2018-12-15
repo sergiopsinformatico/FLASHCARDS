@@ -93,16 +93,22 @@
 			        <div class="form-group">
 			            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 			        </div>
-			        <div class="row">
-			        	<div class="g-recaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw"></div>
+			        <div class="row center">
+			        	<div class="g-recaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
-			        		<button type="submit" class="btn-registro">Registrar</button>
+			        		<button type="submit" class="btn-registro" id="button1">Registrar</button>
 			        	</div>
 			        	<div class="col-md-3"></div>
 			        </div>
+			        <script>
+			        	document.getElementById("button1").disabled = true;
+			        	function enableBtn(){
+			        		document.getElementById("button1").disabled = false;
+			        	}
+			        </script>
 			    </form>
     		</div>
     		<div class="col-md-4"></div>
