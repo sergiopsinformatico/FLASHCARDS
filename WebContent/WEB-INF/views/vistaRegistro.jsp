@@ -272,11 +272,12 @@
 				        	
 				        	if(flagError == 0){
 				        		var dataJSON = {username:$scope.campUsername, email:$scope.campEmail, clave:$scope.campClave};
-				        	    $http({
-				        	      url: "https://sistemaflashcards.herokuapp.com/registrarUsuario.html",
-				        	      method: "POST",
-				        	      params: dataJSON
-				        	    })
+				        	    $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html',
+			        	    		{
+			        	    			username: $scope.campUsername,
+			        	    			email: $scope.campEmail,
+			        	    			clave: $scope.campClave
+			        	    		});
 				        	}
 				        }
 			        });
