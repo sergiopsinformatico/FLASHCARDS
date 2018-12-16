@@ -194,7 +194,7 @@
 				        	$scope.error = '';
 				        	/*
 				        	if (){
-				        		comparar nombre usuario si existe
+				        		comparar nombre usuario existe
 				        		
 				        	} else if(){
 				        		comparar nombre usuario adecuado
