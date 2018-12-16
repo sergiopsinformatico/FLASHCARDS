@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,10 +36,10 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuarioPost(@RequestParam("dataJSON") JSONObject nUsuario) {
+	public ModelAndView registrarUsuarioPost(@RequestBody String json) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
-		user = new UsuarioDTO(nUsuario.getString("username"), nUsuario.getString("clave"), nUsuario.getString("email"), true, false, false);
+		user = new UsuarioDTO(json, "123456789a", "email", true, false, false);
 		dBUsuario.insertUsuario(user);
 		vista = new ModelAndView("index");
 		return vista;
