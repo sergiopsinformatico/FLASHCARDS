@@ -120,18 +120,18 @@
 	    		<div class="col-md-4">
 	    			<form ng-submit="enviar()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="regClave" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="regRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
+				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <div class="row">
 				        	<br>
@@ -148,10 +148,6 @@
 				        </div>
 				        <div class="row">
 				        	<h6 style="color:red">{{error}}</h6>
-				        	<br>
-				        	<h6 style="color:red">{{arrayUsuarios}}</h6>
-				        	<br>
-				        	<h6 style="color:red">{{arrayEmail}}</h6>
 				        </div>
 				        <script>
 				        	function enableBtn(){
@@ -171,14 +167,14 @@
 			        	var objUsuarios = null;
 			        	var objEmail = null;
 			        	var longitud = 0;
-			        	$scope.arrayUsuarios = [];
-			        	$scope.arrayEmail = [];
+			        	var arrayUsuarios = [];
+			        	var arrayEmail = [];
 			        	
 			        	if(listaUsuarios != "empty"){
 			        		objUsuarios = JSON.parse(listaUsuarios);
 			        		longitud = Object.keys(objUsuarios.listUsername).length;
 			        		for(var i=0; i<longitud; i++) {
-			        			$scope.arrayUsuarios.push(objUsuarios.listUsername[i]);
+		        			   arrayUsuarios.push(objUsuarios.listUsername[i]);
 		        			}
 						}
 			        	
@@ -186,28 +182,64 @@
 			        		objEmail = JSON.parse(listaEmail);
 			        		longitud = Object.keys(objEmail.listEmail).length;
 			        		for(var i=0; i<longitud; i++) {
-			        			$scope.arrayEmail.push(objEmail.listEmail[i]);
+		        			   arrayEmail.push(objEmail.listEmail[i]);
 		        			}
 						}
 			        	
 				        $scope.enviar = function(){
 				        	$scope.error = '';
-				        	/*
-				        	if (){
-				        		comparar nombre usuario existe
+				        	var flagError = 0;
+				        	
+				        	
+				        	//check existe nombre de usuario
+				        	
+				        	if(arrayUsuarios.length > 0){
+				        		for(var indiceUsuarios = 0; indiceUsuarios<arrayUsuarios.length; indiceUsuarios++){
+				        			if(arrayUsuarios[indiceUsuarios] == $scope.campUsername){
+				        				flagError = 1;
+				        				$scope.error = 'Error. Username ya existe.';
+				        				indiceUsuarios = arrayUsuarios.length;
+				        			}
+				        		}
+				        	}
+				        	
+				        	//check nombre usuario adecuado
+				        	
+				        	if(flagError == 0){
 				        		
-				        	} else if(){
-				        		comparar nombre usuario adecuado
-				        	}else if(){
-				        		comprobar email existe
-				        	}else if(){
-				        		comprobar clave adecuada
-				        	}else if($scope.regClave != $scope.regRepClave){
-				        		comprobar clave y repite clave coinciden
-				        		$scope.error = 'Error. Las claves no coinciden';
-				        	}else{
-				        		registro correcto
-				        	}*/
+				        	}
+				        	
+				        	
+				        	//check email existe
+				        	
+				        	if(flagError == 0){
+				        		if(arrayEmail.length > 0){
+					        		for(var indiceEmail = 0; indiceEmail<arrayEmail.length; indiceEmail++){
+					        			if(arrayEmail[indiceEmail] == $scope.campEmail){
+					        				flagError = 1;
+					        				$scope.error = 'Error. Email ya existe.';
+					        			}
+					        		}
+					        	}
+				        	}
+				        	
+				        	//check clave adecuada
+				        	
+				        	
+				        	//check clave y rep clave coinciden
+				        		
+				        	if(flagError == 0){
+				        		if($scope.campClave != $scope.campRepClave){
+				        			flagError = 1;
+					        		$scope.error = 'Error. Las claves no coinciden';
+					        	}
+				        	}
+				        		
+				        	//registro correcto	
+				        	
+				        	if(flagError == 0){
+				        		
+				        	}
 				        }
 			        });
 		        </script>
