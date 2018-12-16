@@ -276,11 +276,11 @@
 				        	//registro correcto	
 				        	
 				        	if(flagError == 0){
-				        		var data = {username:$scope.campUsername, email:$scope.campEmail, clave:$scope.campClave};
+				        		var dataJSON = {username:$scope.campUsername, email:$scope.campEmail, clave:$scope.campClave};
 				        	    $http({
 				        	      url: "https://sistemaflashcards.herokuapp.com/registrarUsuario.html",
 				        	      method: "POST",
-				        	      params: data
+				        	      params: dataJSON
 				        	    })
 				        	}
 				        }

@@ -3,9 +3,11 @@ package main.java.flashcards.controladores;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.brokers.Broker;
@@ -33,16 +35,16 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuarioPost(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView registrarUsuarioPost(@RequestParam("dataJSON") JSONObject nUsuario) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
-		user = new UsuarioDTO(request.getParameter("inputUsername"), request.getParameter("inputClave"), request.getParameter("inputEmail"), true, false, false);
+		user = new UsuarioDTO(nUsuario.getString("username"), nUsuario.getString("clave"), nUsuario.getString("email"), true, false, false);
 		dBUsuario.insertUsuario(user);
 		vista = new ModelAndView("index");
 		return vista;
 	}
 	
-	
+	//@RequestParam("usuario") String usuario
 	
 	
 	
