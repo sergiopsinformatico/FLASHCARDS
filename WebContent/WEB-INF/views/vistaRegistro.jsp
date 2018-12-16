@@ -206,9 +206,22 @@
 				        	//check nombre usuario adecuado
 				        	
 				        	if(flagError == 0){
-				        		
+				        		var lengthUsername = $scope.campUsername.length;
+				        		if(lengthUsername<5 || lengthUsername>15){
+				        			flagError = 1;
+			        				$scope.error = 'Error. La longitud del campo username es erronea.';
+				        		}
+				        		if(flagError == 0){
+				        			for(var indiceUser = 0; indiceUser<lengthUsername; indiceUser++){
+				        				if((!($scope.campUsername.charAt(indiceUser)>='0' && $scope.campUsername.charAt(indiceUser)<='9'))||
+				        				   (!($scope.campUsername.charAt(indiceUser)>='a' && $scope.campUsername.charAt(indiceUser)<='z'))||
+				        				   (!($scope.campUsername.charAt(indiceUser)>='A' && $scope.campUsername.charAt(indiceUser)<='Z'))){
+				        					flagError = 1;
+					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campUsername.charAt(indiceUser)+' en el campo username.';
+				        				}
+				        			}
+				        		}
 				        	}
-				        	
 				        	
 				        	//check email existe
 				        	
@@ -224,7 +237,23 @@
 				        	}
 				        	
 				        	//check clave adecuada
-				        	
+				        	if(flagError == 0){
+				        		var lengthClave = $scope.campClave.length;
+				        		if(lengthClave<5 || lengthClave>20){
+				        			flagError = 1;
+			        				$scope.error = 'Error. La longitud del campo clave es erronea.';
+				        		}
+				        		if(flagError == 0){
+				        			for(var indiceClave = 0; indiceClave<lengthClave; indiceClave++){
+				        				if((!($scope.campClave.charAt(indiceClave)>='0' && $scope.campClave.charAt(indiceClave)<='9'))||
+				        				   (!($scope.campClave.charAt(indiceClave)>='a' && $scope.campClave.charAt(indiceClave)<='z'))||
+				        				   (!($scope.campClave.charAt(indiceClave)>='A' && $scope.campClave.charAt(indiceClave)<='Z'))){
+				        					flagError = 1;
+					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campClave.charAt(indiceClave)+' en el campo clave.';
+				        				}
+				        			}
+				        		}
+				        	}
 				        	
 				        	//check clave y rep clave coinciden
 				        		
@@ -238,7 +267,12 @@
 				        	//registro correcto	
 				        	
 				        	if(flagError == 0){
-				        		
+				        		var data = {username:$scope.campUsername, email:$scope.campEmail, clave:$scope.campClave};
+				        	    $http({
+				        	      url: "https://sistemaflashcards.herokuapp.com/registrarUsuario.html",
+				        	      method: "POST",
+				        	      params: data
+				        	    })
 				        	}
 				        }
 			        });
