@@ -123,16 +123,24 @@
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
+				        <br>
+				        <h6 style="font-size:10px; color:red">{{errorUsername}}</h6>
+				        <br>
 				        <div class="form-group">
 				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" name="inputEmail" placeholder="Email" required>
 				        </div>
+				        <h6 style="font-size:10px; color:red">{{errorEmail}}</h6>
+				        <br>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
 				        </div>
-				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
+				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
+				        <br>
+				        <h6 style="font-size:10px; color:red">{{errorClave}}</h6>
+				        <br>
 				        <div class="row">
 				        	<br>
 				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
@@ -146,9 +154,6 @@
 				        	</div>
 				        	<div class="col-md-3"></div>
 				        </div>
-				        <div class="row">
-				        	<h6 style="color:red">{{error}}</h6>
-				        </div>
 				        <script>
 				        	function enableBtn(){
 				        		document.getElementById("button1").disabled = false;
@@ -161,7 +166,9 @@
 	    		<script>
 			        var app = angular.module('myApp', []);
 			        app.controller('RegistroCtrl', function($scope, $http) {
-			        	$scope.error = '';
+			        	$scope.errorUsername = '';
+			        	$scope.errorEmail = '';
+			        	$scope.errorClave = '';
 			        	var listaUsuarios = "${listUsername}";
 			        	var listaEmail = "${listEmail}";
 			        	var objUsuarios = null;
@@ -187,7 +194,9 @@
 						}
 			        	
 				        $scope.enviar = function(){
-				        	$scope.error = '';
+				        	$scope.errorUsername = '';
+				        	$scope.errorEmail = '';
+				        	$scope.errorClave = '';
 				        	var flagError = 0;
 				        	
 				        	
@@ -197,7 +206,7 @@
 				        		for(var indiceUsuarios = 0; indiceUsuarios<arrayUsuarios.length; indiceUsuarios++){
 				        			if(arrayUsuarios[indiceUsuarios] == $scope.campUsername){
 				        				flagError = 1;
-				        				$scope.error = 'Error. Username ya existe.';
+				        				$scope.errorUsername = 'Error. Username ya existe.';
 				        				indiceUsuarios = arrayUsuarios.length;
 				        			}
 				        		}
@@ -209,7 +218,7 @@
 				        		var lengthUsername = $scope.campUsername.length;
 				        		if(lengthUsername<5 || lengthUsername>15){
 				        			flagError = 1;
-			        				$scope.error = 'Error. La longitud del campo username es erronea.';
+				        			$scope.errorUsername = 'Error. La longitud del campo username es erronea.';
 				        		}
 				        		if(flagError == 0){
 				        			for(var indiceUser = 0; indiceUser<lengthUsername; indiceUser++){
@@ -217,7 +226,7 @@
 						        			 ($scope.campUsername.charAt(indiceUser)>='a' && $scope.campUsername.charAt(indiceUser)<='z')||
 						        			 ($scope.campUsername.charAt(indiceUser)>='A' && $scope.campUsername.charAt(indiceUser)<='Z'))){
 				        					flagError = 1;
-					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campUsername.charAt(indiceUser)+' en el campo username.';
+				        					$scope.errorUsername = 'Error. No esta permitido el caracter '+$scope.campUsername.charAt(indiceUser)+' en el campo username.';
 				        				}
 				        			}
 				        		}
@@ -230,7 +239,7 @@
 					        		for(var indiceEmail = 0; indiceEmail<arrayEmail.length; indiceEmail++){
 					        			if(arrayEmail[indiceEmail] == $scope.campEmail){
 					        				flagError = 1;
-					        				$scope.error = 'Error. Email ya existe.';
+					        				$scope.errorEmail = 'Error. Email ya existe.';
 					        			}
 					        		}
 					        	}
@@ -249,7 +258,7 @@
 							        	     ($scope.campClave.charAt(indiceClave)>='a' && $scope.campClave.charAt(indiceClave)<='z')||
 							        		 ($scope.campClave.charAt(indiceClave)>='A' && $scope.campClave.charAt(indiceClave)<='Z'))){
 				        					flagError = 1;
-					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campClave.charAt(indiceClave)+' en el campo clave.';
+				        					$scope.errorClave = 'Error. No esta permitido el caracter '+$scope.campClave.charAt(indiceClave)+' en el campo clave.';
 				        				}
 				        			}
 				        		}
@@ -260,7 +269,7 @@
 				        	if(flagError == 0){
 				        		if($scope.campClave != $scope.campRepClave){
 				        			flagError = 1;
-					        		$scope.error = 'Error. Las claves no coinciden';
+				        			$scope.errorClave = 'Error. Las claves no coinciden';
 					        	}
 				        	}
 				        		
