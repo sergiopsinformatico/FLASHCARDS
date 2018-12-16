@@ -213,9 +213,9 @@
 				        		}
 				        		if(flagError == 0){
 				        			for(var indiceUser = 0; indiceUser<lengthUsername; indiceUser++){
-				        				if((!($scope.campUsername.charAt(indiceUser)>='0' && $scope.campUsername.charAt(indiceUser)<='9'))||
-				        				   (!($scope.campUsername.charAt(indiceUser)>='a' && $scope.campUsername.charAt(indiceUser)<='z'))||
-				        				   (!($scope.campUsername.charAt(indiceUser)>='A' && $scope.campUsername.charAt(indiceUser)<='Z'))){
+				        				if(!(($scope.campUsername.charAt(indiceUser)>='0' && $scope.campUsername.charAt(indiceUser)<='9')||
+						        			 ($scope.campUsername.charAt(indiceUser)>='a' && $scope.campUsername.charAt(indiceUser)<='z')||
+						        			 ($scope.campUsername.charAt(indiceUser)>='A' && $scope.campUsername.charAt(indiceUser)<='Z'))){
 				        					flagError = 1;
 					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campUsername.charAt(indiceUser)+' en el campo username.';
 				        				}
@@ -245,9 +245,9 @@
 				        		}
 				        		if(flagError == 0){
 				        			for(var indiceClave = 0; indiceClave<lengthClave; indiceClave++){
-				        				if((!($scope.campClave.charAt(indiceClave)>='0' && $scope.campClave.charAt(indiceClave)<='9'))||
-				        				   (!($scope.campClave.charAt(indiceClave)>='a' && $scope.campClave.charAt(indiceClave)<='z'))||
-				        				   (!($scope.campClave.charAt(indiceClave)>='A' && $scope.campClave.charAt(indiceClave)<='Z'))){
+				        				if(!(($scope.campClave.charAt(indiceClave)>='0' && $scope.campClave.charAt(indiceClave)<='9')||
+							        	     ($scope.campClave.charAt(indiceClave)>='a' && $scope.campClave.charAt(indiceClave)<='z')||
+							        		 ($scope.campClave.charAt(indiceClave)>='A' && $scope.campClave.charAt(indiceClave)<='Z'))){
 				        					flagError = 1;
 					        				$scope.error = 'Error. No esta permitido el caracter '+$scope.campClave.charAt(indiceClave)+' en el campo clave.';
 				        				}
