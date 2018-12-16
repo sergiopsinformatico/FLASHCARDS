@@ -24,7 +24,12 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("vistaRegistro");
+		vista = new ModelAndView("vistaRegistro");
+		broker = new Broker();
+		dBUsuario = broker.getInstanciaUsuario();
+		vista.addObject("listUsername", dBUsuario.getJSONArrayUsername());
+		vista.addObject("listEmail", dBUsuario.getJSONArrayEmail());
+		return vista;
 	}
 	
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)

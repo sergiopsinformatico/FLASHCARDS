@@ -12,4 +12,6 @@ public interface InterfaceDAOUsuario {
 	public UsuarioDTO getUsuarioDTO(String usernameEmail);
 	public boolean updateUsuario(UsuarioDTO userAntiguo, UsuarioDTO userNuevo);
 	public boolean deleteUsuario(UsuarioDTO user);
+	public String getJSONArrayUsername();
+	public String getJSONArrayEmail();
 }

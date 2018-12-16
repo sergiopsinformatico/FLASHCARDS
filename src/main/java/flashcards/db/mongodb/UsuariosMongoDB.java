@@ -10,6 +10,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
@@ -22,10 +23,12 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
     MongoClient client;
     MongoDatabase db;
     MongoCollection<Document> coleccionUsuarios;
+    MongoCursor<Document> iterator;
 	Document doc;
 	Bson criteriosBusqueda;
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
+	String json;
     
     //Constructor
     public UsuariosMongoDB() {
@@ -289,6 +292,48 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
+	public String getJSONArrayUsername() {
+		json = "{\"listUsername\" : [";
+		
+		resultadosBusqueda = readAll();
+		iterator = resultadosBusqueda.iterator();
+		
+		if(!(iterator.hasNext())) {
+			json = "empty";
+		}else {
+			while(iterator.hasNext()) {
+				doc = iterator.next();
+				json = json + "{ \"username\":\""+doc.getString("username")+"\" }";
+				if(iterator.hasNext()) {
+					json = json+",";
+				}
+			}
+			json = json + "]}";
+		}
+		return json;
+	}
+	
+	public String getJSONArrayEmail() {
+		json = "{\"listEmail\" : [";
+		
+		resultadosBusqueda = readAll();
+		iterator = resultadosBusqueda.iterator();
+		
+		if(!(iterator.hasNext())) {
+			json = "empty";
+		}else {
+			while(iterator.hasNext()) {
+				doc = iterator.next();
+				json = json + "{ \"email\":\""+doc.getString("email")+"\" }";
+				if(iterator.hasNext()) {
+					json = json+",";
+				}
+			}
+			json = json + "]}";
+		}
+		return json;
+	}
+	
 	public boolean deleteUsuario(UsuarioDTO user) {
 		try {
 			criteriosBusqueda = new BsonDocument().
@@ -313,6 +358,15 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	private FindIterable<Document> read(Bson criterios) {
 		try {
 			return coleccionUsuarios.find(criterios);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	private FindIterable<Document> readAll() {
+		try {
+			return coleccionUsuarios.find();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			return null;

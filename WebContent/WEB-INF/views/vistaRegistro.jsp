@@ -122,7 +122,7 @@
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" required>
 				        </div>
-				        <h6 style="font-size:10px; color:#808080">El campo username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
+				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        <div class="form-group">
 				            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" required>
 				        </div>
@@ -148,6 +148,10 @@
 				        </div>
 				        <div class="row">
 				        	<h6 style="color:red">{{error}}</h6>
+				        	<br>
+				        	<h6 style="color:red">{{arrayUsuarios}}</h6>
+				        	<br>
+				        	<h6 style="color:red">{{arrayEmail}}</h6>
 				        </div>
 				        <script>
 				        	function enableBtn(){
@@ -162,11 +166,48 @@
 			        var app = angular.module('myApp', []);
 			        app.controller('RegistroCtrl', function($scope, $http) {
 			        	$scope.error = '';
+			        	var listaUsuarios = "${listUsername}";
+			        	var listaEmail = "${listEmail}";
+			        	var objUsuarios = null;
+			        	var objEmail = null;
+			        	var longitud = 0;
+			        	$scope.arrayUsuarios = [];
+			        	$scope.arrayEmail = [];
+			        	
+			        	if(listaUsuarios != "empty"){
+			        		objUsuarios = JSON.parse(listaUsuarios);
+			        		longitud = Object.keys(objUsuarios.listUsername).length;
+			        		for(var i=0; i<longitud; i++) {
+			        			$scope.arrayUsuarios.push(objUsuarios.listUsername[i]);
+		        			}
+						}
+			        	
+			        	if(listaEmail != "empty"){
+			        		objEmail = JSON.parse(listaEmail);
+			        		longitud = Object.keys(objEmail.listEmail).length;
+			        		for(var i=0; i<longitud; i++) {
+			        			$scope.arrayEmail.push(objEmail.listEmail[i]);
+		        			}
+						}
+			        	
 				        $scope.enviar = function(){
 				        	$scope.error = '';
-				        	if ($scope.regClave != $scope.regRepClave){
+				        	/*
+				        	if (){
+				        		comparar nombre usuario existe
+				        		
+				        	} else if(){
+				        		comparar nombre usuario adecuado
+				        	}else if(){
+				        		comprobar email existe
+				        	}else if(){
+				        		comprobar clave adecuada
+				        	}else if($scope.regClave != $scope.regRepClave){
+				        		comprobar clave y repite clave coinciden
 				        		$scope.error = 'Error. Las claves no coinciden';
-				        	}
+				        	}else{
+				        		registro correcto
+				        	}*/
 				        }
 			        });
 		        </script>
