@@ -299,7 +299,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		iterator = resultadosBusqueda.iterator();
 		
 		if(!(iterator.hasNext())) {
-			json = "empty";
+			json = json+"]}";
 		}else {
 			while(iterator.hasNext()) {
 				doc = iterator.next();
@@ -320,7 +320,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		iterator = resultadosBusqueda.iterator();
 		
 		if(!(iterator.hasNext())) {
-			json = "empty";
+			json = json+"]}";
 		}else {
 			while(iterator.hasNext()) {
 				doc = iterator.next();
