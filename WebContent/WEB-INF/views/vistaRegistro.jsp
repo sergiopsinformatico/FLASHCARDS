@@ -132,21 +132,17 @@
 				        	var flagErrorUsername = 0;
 				        	var indiceUser = 0;
 				        	
-				        	if(listaUsuarios != "empty"){
-				        		objUsuarios = JSON.parse(listaUsuarios);
-				        		longitud = Object.keys(objUsuarios.listUsername).length;
-				        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
-				        			$scope.arrayUsuarios.push(objUsuarios.listUsername[indiceUser]);
-			        			}
-							}
-				        	
-				        	if(listaEmail != "empty"){
-				        		objEmail = JSON.parse(listaEmail);
-				        		longitud = Object.keys(objEmail.listEmail).length;
-				        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
-				        			$scope.arrayEmail.push(objEmail.listEmail[indiceUser]);
-			        			}
-							}
+			        		objUsuarios = JSON.parse(listaUsuarios);
+			        		longitud = Object.keys(objUsuarios.listUsername).length;
+			        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
+			        			$scope.arrayUsuarios.push(objUsuarios.listUsername[indiceUser]);
+		        			}
+			        	
+			        		objEmail = JSON.parse(listaEmail);
+			        		longitud = Object.keys(objEmail.listEmail).length;
+			        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
+			        			$scope.arrayEmail.push(objEmail.listEmail[indiceUser]);
+		        			}
 				        	
 				        	$scope.funcUsername = function(username){
 				        		flagErrorUsername = 0;
