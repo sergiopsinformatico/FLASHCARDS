@@ -150,19 +150,24 @@
 				        	
 				        	$scope.funcUsername = function(username){
 				        		flagErrorUsername = 0;
-				        		$scope.infoUsername = '';
+				        		$scope.longitudUsername = '';
+				        		$scope.caracterUsername = '';
 				        		
 				        		if(username.length<5 || username.length>15){
 				        			flagErrorUsername = 1;
-				        			$scope.infoUsername = $scope.infoUsername + '\nLa longitud del campo username es erronea. Debe tener entre 5 y 15 caracteres.';
+				        			$scope.longitudUsername = 'La longitud del campo username es erronea. Debe tener entre 5 y 15 caracteres.';
 				        		}
 				        		
 				        		for(indiceUser = 0; indiceUser<username.length; indiceUser++){
-			        				if(!((username.charAt(indiceUser)>='0' && username.charAt(indiceUser)<='9')||
+				        			if(username.charAt(indiceUser)==' '){
+				        				$scope.caracterUsername = 'El campo username no puede contener espacios';
+				        				flagErrorUsername = 1;
+				        				indiceUser = username.length;
+				        			}else if(!((username.charAt(indiceUser)>='0' && username.charAt(indiceUser)<='9')||
 					        			 (username.charAt(indiceUser)>='a' && username.charAt(indiceUser)<='z')||
 					        			 (username.charAt(indiceUser)>='A' && username.charAt(indiceUser)<='Z'))){
 			        					flagErrorUsername = 1;
-			        					$scope.infoUsername = $scope.infoUsername + '\nNo esta permitido el caracter '+username.charAt(indiceUser)+' en el campo username.';
+			        					$scope.caracterUsername = 'El campo username no puede contener el caracter '+username.charAt(indiceUser)+'.';
 			        					indiceUser = username.length;
 			        				}
 			        			}

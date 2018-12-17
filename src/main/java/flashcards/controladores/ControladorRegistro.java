@@ -24,14 +24,17 @@ public class ControladorRegistro {
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	ModelAndView vista;
+	JSONObject jsonUsername, jsonEmail;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaRegistro");
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
-		vista.addObject("listUsername", dBUsuario.getJSONArrayUsername());
-		vista.addObject("listEmail", dBUsuario.getJSONArrayEmail());
+		jsonUsername = new JSONObject(dBUsuario.getJSONArrayUsername());
+		vista.addObject("listUsername", jsonUsername);
+		jsonEmail = new JSONObject(dBUsuario.getJSONArrayEmail());
+		vista.addObject("listEmail", jsonEmail);
 		return vista;
 	}
 	
