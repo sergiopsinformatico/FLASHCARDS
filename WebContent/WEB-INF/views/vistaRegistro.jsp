@@ -270,8 +270,8 @@
 				        	<br>
 				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 				        </div>
-				        <h6>{{$scope.arrayUsuarios}}</h6>
-				        <h6>{{$scope.arrayEmail}}</h6>
+				        <h6>{{arrayUsuarios}}</h6>
+				        <h6>{{arrayEmail}}</h6>
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
