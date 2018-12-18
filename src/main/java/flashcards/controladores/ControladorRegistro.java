@@ -39,10 +39,10 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuarioPost(@RequestBody String json) {
+	public ModelAndView registrarUsuarioPost(@RequestBody JSONObject json) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
-		user = new UsuarioDTO(json, "123456789a", "email", true, false, false);
+		user = new UsuarioDTO(json.getString("username"), json.getString("clave"), json.getString("email"), true, false, false);
 		dBUsuario.insertUsuario(user);
 		vista = new ModelAndView("index");
 		return vista;

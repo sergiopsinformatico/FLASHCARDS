@@ -239,13 +239,29 @@
 					        		
 					        	//registro correcto	
 					        	
-					        	if(flagError == 0){
+					        	/*if(flagError == 0){
 					        	    $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', {
 			        	    			username: $scope.campUsername,
 			        	    			email: $scope.campEmail,
 			        	    			clave: $scope.campClave
 			        	    		});
-					        	}
+					        	}*/
+					        	
+					        	var nuevoUser = '{ "user" : [' +
+					        	'{ "username":"'+$scope.campUsername+'" , "email":"'+$scope.campEmail+'", "clave":"'+ $scope.campClave +'"}]}';
+					        	
+					        	this.http.post('/registrarUsuario', {
+				        	      title: 'registro',
+				        	      body: nuevoUser,
+				        	      userId: 1
+				        	    }).subscribe(
+				        	        res => {
+				        	          console.log(res);
+				        	        },
+				        	        err => {
+				        	          console.log("Error occured");
+				        	        }
+				        	      );
 					        }
 				        });
 			        </script>
