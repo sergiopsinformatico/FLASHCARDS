@@ -250,7 +250,7 @@
 					        	var nuevoUser = '{ "user" : [' +
 					        	'{ "username":"'+$scope.campUsername+'" , "email":"'+$scope.campEmail+'", "clave":"'+ $scope.campClave +'"}]}';
 					        	
-					        	this.http.post('/registrarUsuario', {
+					        	this.http.post('/registrarUsuario.html', {
 				        	      title: 'registro',
 				        	      body: nuevoUser,
 				        	      userId: 1
