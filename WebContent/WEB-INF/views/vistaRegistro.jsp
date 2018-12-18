@@ -204,7 +204,7 @@
 
 				        				//Call the services
 
-				        				$http.post('/registrarUsuario', JSON.stringify(data)).then(function (response) {
+				        				$http.post('/registrarUsuario.html', JSON.stringify(data)).then(function (response) {
 
 				        				if (response.data)
 
