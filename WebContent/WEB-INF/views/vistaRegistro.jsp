@@ -190,7 +190,39 @@
 				        	
 				        	
 				        	
-				        	
+				        	$scope.envioDatos = function(user,em,pass){
+				        		
+				        		var data = {
+
+				        				username: user,
+
+				        				email: em,
+
+				        				clave: pass
+
+				        				};
+
+				        				//Call the services
+
+				        				$http.post('/registrarUsuario', JSON.stringify(data)).then(function (response) {
+
+				        				if (response.data)
+
+				        				$scope.msg = "Post Data Submitted Successfully!";
+
+				        				}, function (response) {
+
+				        				$scope.msg = "Service not Exists";
+
+				        				$scope.statusval = response.status;
+
+				        				$scope.statustext = response.statusText;
+
+				        				$scope.headers = response.headers();
+
+				        				});
+				        		
+				        	}
 				        	
 				        	
 				        	
@@ -247,7 +279,7 @@
 			        	    		});
 					        	}*/
 					        	
-					        	var nuevoUser = '{ "user" : [' +
+					        	/*var nuevoUser = '{ "user" : [' +
 					        	'{ "username":"'+$scope.campUsername+'" , "email":"'+$scope.campEmail+'", "clave":"'+ $scope.campClave +'"}]}';
 					        	
 					        	this.http.post('/registrarUsuario.html', {
@@ -261,11 +293,13 @@
 				        	        err => {
 				        	          console.log("Error occured");
 				        	        }
-				        	      );
+				        	      );*/
+				        	      
+				        		
 					        }
 				        });
 			        </script>
-	    			<form ng-submit="enviar()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+	    			<form ng-submit="envioDatos(campUsername,campEmail,campClave)" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
 				        </div>
