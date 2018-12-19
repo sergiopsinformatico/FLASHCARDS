@@ -120,7 +120,7 @@
 	    		<div class="col-md-4">
 	    			<script>
 				        var app = angular.module('myApp', []);
-				        app.controller('RegistroCtrl', function($scope, $http) {
+				        
 				        	//Variables
 				        	/*var listaUsuarios = "${listUsername}";
 				        	var listaEmail = "${listEmail}";
@@ -183,31 +183,31 @@
 					        		document.getElementById("showUsername").style.color = "red";
 					        	}
 				        	}*/
-				        	
-				        	$scope.envioDatos = function(user,em,pass){
-				        		
-				        		var dataObj = {
-			    					"username" : user,
-			    					"clave" : pass,
-			    					"email" : em,
-			    					"nombreApellidos" : "",
-			    					"ciudad" : "",
-			    					"pais" : "",
-			    					"photo" : "",
-			    					"hasRolUsuario" : true,
-			    					"hasRolModerador" : false,
-			    					"hasRolAdministrador" : false				    					
-				    			};		
-				    			
-				    			var response = $http.post('registrarUsuario', dataObj);
-				    			response.success(function(data, status, headers, config) {
-				    				$scope.responseData = data;
-				    			});
-				    			response.error(function(data, status, headers, config) {
-				    				alert( "Exception details: " + JSON.stringify({data: data}));
-				    			});
-				        		
-				        	}
+				        	app.controller('RegistroCtrl', function($scope, $http) {
+					        	$scope.envioDatos = function(user,em,pass){
+					        		
+					        		var dataObj = {
+				    					"username" : user,
+				    					"clave" : pass,
+				    					"email" : em,
+				    					"nombreApellidos" : "",
+				    					"ciudad" : "",
+				    					"pais" : "",
+				    					"photo" : "",
+				    					"hasRolUsuario" : true,
+				    					"hasRolModerador" : false,
+				    					"hasRolAdministrador" : false				    					
+					    			};		
+					    			
+					    			var response = $http.post('registrarUsuario', dataObj);
+					    			response.success(function(data, status, headers, config) {
+					    				$scope.responseData = data;
+					    			});
+					    			response.error(function(data, status, headers, config) {
+					    				alert( "Exception details: " + JSON.stringify({data: data}));
+					    			});
+					        		
+					        	}});
 				        	
 				        	/*
 				        	
@@ -279,10 +279,6 @@
 				        	          console.log("Error occured");
 				        	        }
 				        	      );*/
-				        	      
-				        		
-					        }
-				        });
 			        </script>
 	    			<form ng-submit="envioDatos(campUsername,campEmail,campClave)" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <div class="form-group">
