@@ -182,7 +182,7 @@
 			    					"hasRolAdministrador" : false				    					
 				    			};		
 				    			
-				    			var response = $http.post('registrarUsuario.html', dataObj);
+				    			var response = $http.post('registrarUsuario', dataObj);
 				    			response.success(function(data, status, headers, config) {
 				    				$scope.responseData = data;
 				    			});
