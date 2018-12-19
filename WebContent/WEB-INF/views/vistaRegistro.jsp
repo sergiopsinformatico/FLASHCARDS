@@ -118,7 +118,53 @@
 	    	<div class="row">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
-	    			<script>
+	    			
+	    			<form ng-submit="envioDatos(campUsername,campEmail,campClave)" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+				        <div class="form-group">
+				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
+				        </div>
+				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
+				        <small id="showUsername" name="showUsername">{{infoUsername}}</small>
+				        <div class="form-group">
+				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" ng-change="funcEmail(campEmail)" name="inputEmail" placeholder="Email" required>
+				        </div>
+				        <h6 style="font-size:10px; color:red">{{errorEmail}}</h6>
+				        <div class="form-group">
+				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
+				        </div>
+				        <div class="form-group">
+				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
+				        </div>
+				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
+				        <h6 style="font-size:10px; color:red">{{errorClave}}</h6>
+				        <div class="row">
+				        	<br>
+				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+				        </div>
+				        <h6>{{arrayUsuarios}}</h6>
+				        <h6>{{arrayEmail}}</h6>
+				        <div class="row">
+				        	<div class="col-md-3"></div>
+				        	<div class="col-md-6">
+				        		<br>
+				        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
+				        		<br>
+				        	</div>
+				        	<div class="col-md-3"></div>
+				        </div>
+				        <script>
+				        	function enableBtn(){
+				        		document.getElementById("button1").disabled = false;
+				        	}
+				        </script>
+				    </form>
+				    <br>
+	    		</div>
+	    		<div class="col-md-4"></div>
+			</div>
+	    </section>
+	    
+	    <script>
 				        var app = angular.module('myApp', []);
 				        
 				        	//Variables
@@ -280,50 +326,6 @@
 				        	        }
 				        	      );*/
 			        </script>
-	    			<form ng-submit="envioDatos(campUsername,campEmail,campClave)" ng-controller="RegistroCtrl" id="Registro" name="Registro">
-				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
-				        </div>
-				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
-				        <small id="showUsername" name="showUsername">{{infoUsername}}</small>
-				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" ng-change="funcEmail(campEmail)" name="inputEmail" placeholder="Email" required>
-				        </div>
-				        <h6 style="font-size:10px; color:red">{{errorEmail}}</h6>
-				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
-				        </div>
-				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
-				        </div>
-				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
-				        <h6 style="font-size:10px; color:red">{{errorClave}}</h6>
-				        <div class="row">
-				        	<br>
-				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-				        </div>
-				        <h6>{{arrayUsuarios}}</h6>
-				        <h6>{{arrayEmail}}</h6>
-				        <div class="row">
-				        	<div class="col-md-3"></div>
-				        	<div class="col-md-6">
-				        		<br>
-				        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
-				        		<br>
-				        	</div>
-				        	<div class="col-md-3"></div>
-				        </div>
-				        <script>
-				        	function enableBtn(){
-				        		document.getElementById("button1").disabled = false;
-				        	}
-				        </script>
-				    </form>
-				    <br>
-	    		</div>
-	    		<div class="col-md-4"></div>
-			</div>
-	    </section>
 	
 	
 	    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
