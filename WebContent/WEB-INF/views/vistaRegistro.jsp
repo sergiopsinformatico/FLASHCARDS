@@ -192,35 +192,26 @@
 				        	
 				        	$scope.envioDatos = function(user,em,pass){
 				        		
-				        		var data = {
-
-				        				username: user,
-
-				        				email: em,
-
-				        				clave: pass
-
-				        				};
-
-				        				//Call the services
-
-				        				$http.post('/registrarUsuario.html', JSON.stringify(data)).then(function (response) {
-
-				        				if (response.data)
-
-				        				$scope.msg = "Post Data Submitted Successfully!";
-
-				        				}, function (response) {
-
-				        				$scope.msg = "Service not Exists";
-
-				        				$scope.statusval = response.status;
-
-				        				$scope.statustext = response.statusText;
-
-				        				$scope.headers = response.headers();
-
-				        				});
+				        		var dataObj = {
+				    					"username" : user,
+				    					"clave" : pass,
+				    					"email" : em,
+				    					"nombreApellidos" : "",
+				    					"ciudad" : "",
+				    					"pais" : "",
+				    					"photo" : "",
+				    					"hasRolUsuario" : true,
+				    					"hasRolModerador" : false,
+				    					"hasRolAdministrador" : false				    					
+				    			};		
+				    			
+				    			var response = $http.post('registrarUsuario', dataObj);
+				    			response.success(function(data, status, headers, config) {
+				    				$scope.responseData = data;
+				    			});
+				    			response.error(function(data, status, headers, config) {
+				    				alert( "Exception details: " + JSON.stringify({data: data}));
+				    			});
 				        		
 				        	}
 				        	

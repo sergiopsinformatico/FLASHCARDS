@@ -20,7 +20,6 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class ControladorRegistro {
 
 	//Declaracion de Variables
-	UsuarioDTO user;
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	ModelAndView vista;
@@ -39,10 +38,9 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuarioPost(@RequestBody JSONObject json) {
+	public ModelAndView registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
-		user = new UsuarioDTO(json.getString("username"), json.getString("clave"), json.getString("email"), true, false, false);
 		dBUsuario.insertUsuario(user);
 		vista = new ModelAndView("index");
 		return vista;
