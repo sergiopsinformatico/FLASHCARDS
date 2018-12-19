@@ -119,7 +119,7 @@
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
 	    			
-	    			<form ng-submit="envioDatos(campUsername,campEmail,campClave)" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+	    			<form ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -166,7 +166,32 @@
 	    
 	    <script>
 				        var app = angular.module('myApp', []);
-				        
+				        app.controller('RegistroCtrl', function($scope, $http) {
+				        	$scope.envioDatos = function(){
+				        		
+				        		var dataObj = {
+			    					"username" : $scope.campUsername,
+			    					"clave" : $scope.campClave,
+			    					"email" : $scope.campEmail,
+			    					"nombreApellidos" : "",
+			    					"ciudad" : "",
+			    					"pais" : "",
+			    					"photo" : "",
+			    					"hasRolUsuario" : true,
+			    					"hasRolModerador" : false,
+			    					"hasRolAdministrador" : false				    					
+				    			};		
+				    			
+				    			var response = $http.post('registrarUsuario.html', dataObj);
+				    			response.success(function(data, status, headers, config) {
+				    				$scope.responseData = data;
+				    			});
+				    			
+				    			response.error(function(data, status, headers, config) {
+				    				alert( "Exception details: " + JSON.stringify({data: data}));
+				    			});
+				        		
+				        	}});
 				        	//Variables
 				        	/*var listaUsuarios = "${listUsername}";
 				        	var listaEmail = "${listEmail}";
@@ -229,31 +254,7 @@
 					        		document.getElementById("showUsername").style.color = "red";
 					        	}
 				        	}*/
-				        	app.controller('RegistroCtrl', function($scope, $http) {
-					        	$scope.envioDatos = function(user,em,pass){
-					        		
-					        		var dataObj = {
-				    					"username" : user,
-				    					"clave" : pass,
-				    					"email" : em,
-				    					"nombreApellidos" : "",
-				    					"ciudad" : "",
-				    					"pais" : "",
-				    					"photo" : "",
-				    					"hasRolUsuario" : true,
-				    					"hasRolModerador" : false,
-				    					"hasRolAdministrador" : false				    					
-					    			};		
-					    			
-					    			var response = $http.post('registrarUsuario.html', dataObj);
-					    			response.success(function(data, status, headers, config) {
-					    				$scope.responseData = data;
-					    			});
-					    			response.error(function(data, status, headers, config) {
-					    				alert( "Exception details: " + JSON.stringify({data: data}));
-					    			});
-					        		
-					        	}});
+				        	
 				        	
 				        	/*
 				        	
