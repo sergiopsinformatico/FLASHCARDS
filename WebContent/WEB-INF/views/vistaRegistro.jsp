@@ -122,7 +122,7 @@
 				        var app = angular.module('myApp', []);
 				        app.controller('RegistroCtrl', function($scope, $http) {
 				        	//Variables
-				        	var listaUsuarios = "${listUsername}";
+				        	/*var listaUsuarios = "${listUsername}";
 				        	var listaEmail = "${listEmail}";
 				        	$scope.arrayUsuarios = [];
 				        	$scope.arrayEmail = [];
@@ -182,27 +182,21 @@
 					        	}else{
 					        		document.getElementById("showUsername").style.color = "red";
 					        	}
-				        	}
-				        	
-				        	
-				        	
-				        	
-				        	
-				        	
+				        	}*/
 				        	
 				        	$scope.envioDatos = function(user,em,pass){
 				        		
 				        		var dataObj = {
-				    					"username" : user,
-				    					"clave" : pass,
-				    					"email" : em,
-				    					"nombreApellidos" : "",
-				    					"ciudad" : "",
-				    					"pais" : "",
-				    					"photo" : "",
-				    					"hasRolUsuario" : true,
-				    					"hasRolModerador" : false,
-				    					"hasRolAdministrador" : false				    					
+			    					"username" : user,
+			    					"clave" : pass,
+			    					"email" : em,
+			    					"nombreApellidos" : "",
+			    					"ciudad" : "",
+			    					"pais" : "",
+			    					"photo" : "",
+			    					"hasRolUsuario" : true,
+			    					"hasRolModerador" : false,
+			    					"hasRolAdministrador" : false				    					
 				    			};		
 				    			
 				    			var response = $http.post('registrarUsuario', dataObj);
@@ -215,7 +209,7 @@
 				        		
 				        	}
 				        	
-				        	
+				        	/*
 				        	
 					        $scope.enviar = function(){
 					        	$scope.errorUsername = '';
