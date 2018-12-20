@@ -13,7 +13,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringControllerMVC</servlet-name>
-		<url-pattern>/*.html</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	<!-- Welcome File List -->
 	<welcome-file-list>
