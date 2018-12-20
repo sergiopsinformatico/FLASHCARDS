@@ -196,9 +196,9 @@
 				        			url: "registrarUsuario",
 				        			data: dataObj
 				        		}).then(function(response) {
-				        			$scope.message = response.data + ' success';
+				        			$scope.message = response.statusText + ' success';
 				        		}, function(response) {
-				        			$scope.message = ' failure';
+				        			$scope.message = response.statusText + ' failure';
 				        		});
 
 				        		
