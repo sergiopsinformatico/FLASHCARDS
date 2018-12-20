@@ -193,7 +193,7 @@
 				    			
 				        		 $http({
 				        		 	method: "POST",
-				        			url: '/registrarUsuario',
+				        			url: 'https://sistemaflashcards.herokuapp.com/registrarUsuario.html',
 				        			data: dataObj,
 				        		}).then(function(response) {
 				        			$scope.message = response.statusText + ' success';
