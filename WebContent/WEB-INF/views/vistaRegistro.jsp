@@ -193,8 +193,8 @@
 				    			
 				        		 $http({
 				        		 	method: "POST",
-				        			url: 'registrarUsuario',
-				        			data: dataObj
+				        			url: '/registrarUsuario',
+				        			data: dataObj,
 				        		}).then(function(response) {
 				        			$scope.message = response.statusText + ' success';
 				        		}, function(response) {
