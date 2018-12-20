@@ -3,7 +3,6 @@ package main.java.flashcards.controladores;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,17 +22,17 @@ public class ControladorRegistro {
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	ModelAndView vista;
-	JSONObject jsonUsername, jsonEmail;
+	//JSONObject jsonUsername, jsonEmail;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaRegistro");
-		broker = new Broker();
+		/*broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
 		jsonUsername = new JSONObject(dBUsuario.getJSONArrayUsername());
 		vista.addObject("listUsername", jsonUsername);
 		jsonEmail = new JSONObject(dBUsuario.getJSONArrayEmail());
-		vista.addObject("listEmail", jsonEmail);
+		vista.addObject("listEmail", jsonEmail);*/
 		return vista;
 	}
 	

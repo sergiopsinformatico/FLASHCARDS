@@ -7,7 +7,6 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +33,7 @@ public class ControladorTarjetas {
 	GestionAmigos gA = new GestionAmigos();
 	GestionFlashcards gF = new GestionFlashcards();
 	GestionSolicitudModerador gSM;
-	JSONObject parser;
+	//JSONObject parser;
 	ModelAndView vista;
 	Tarjeta t;
 	int i;
@@ -44,8 +43,9 @@ public class ControladorTarjetas {
 	Random r = new Random();
 	
 	public String readJSON(String json, String tag) {
-		parser = new JSONObject(json);
-		return parser.getString(tag);
+		/*parser = new JSONObject(json);
+		return parser.getString(tag);*/
+		return "";
 	}
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
