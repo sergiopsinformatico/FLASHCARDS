@@ -194,7 +194,7 @@
 				        		 $http({
 				        		 	method: "POST",
 				        			url: "registrarUsuario",
-				        			data: dataObj,
+				        			data: dataObj
 				        		}).then(function(response) {
 				        			$scope.message = response.data + ' success';
 				        		}, function(response) {
