@@ -120,6 +120,7 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+				        <h6>{{message}}</h6>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -141,8 +142,7 @@
 				        	<br>
 				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 				        </div>
-				        <h6>{{arrayUsuarios}}</h6>
-				        <h6>{{arrayEmail}}</h6>
+				        
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
@@ -181,7 +181,7 @@
 			    					"hasRolModerador" : false,
 			    					"hasRolAdministrador" : false				    					
 				    			};		
-				    			
+				    			/*
 				    			var response = $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', dataObj);
 				    			response.success(function(data, status, headers, config) {
 				    				$scope.responseData = data;
@@ -189,7 +189,18 @@
 				    			
 				    			response.error(function(data, status, headers, config) {
 				    				alert( "Exception details: " + JSON.stringify({data: data}));
-				    			});
+				    			});*/
+				    			
+				        		 $http({
+				        		 	method: "POST",
+				        			url: "registrarUsuario",
+				        			data: dataObj,
+				        		}).then(function(response) {
+				        			$scope.message = response.data + ' success';
+				        		}, function(response) {
+				        			$scope.message = ' failure';
+				        		});
+
 				        		
 				        	}});
 				        	//Variables
