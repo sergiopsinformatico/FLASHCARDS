@@ -120,16 +120,15 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
-				        <h6>{{msg}}</h6>
+				        <small>{{msg}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
-				        <small id="showUsername" name="showUsername">{{infoUsername}}</small>
+				        
 				        <div class="form-group">
 				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" ng-change="funcEmail(campEmail)" name="inputEmail" placeholder="Email" required>
 				        </div>
-				        <h6 style="font-size:10px; color:red">{{errorEmail}}</h6>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
 				        </div>
@@ -137,7 +136,6 @@
 				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
-				        <h6 style="font-size:10px; color:red">{{errorClave}}</h6>
 				        <div class="row">
 				        	<br>
 				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
@@ -164,178 +162,6 @@
 			</div>
 	    </section>
 	    
-	    <script>
-				        var app = angular.module('myApp', []);
-				        app.controller('RegistroCtrl', function($scope, $http) {
-				        	$scope.envioDatos = function(){			        		
-				        		
-			        			$http.post('/registrarUser', 
-			    					{
-				    					username : $scope.campUsername,
-				    					clave : $scope.campClave,
-				    					email : $scope.campEmail,
-				    					nombreApellidos : '',
-				    					ciudad : '',
-				    					pais : '',
-				    					photo : '',
-				    					hasRolUsuario : true,
-				    					hasRolModerador : false,
-				    					hasRolAdministrador : false				    					
-				    				}
-			    				).success(function(data) {
-			    					$scope.msg = 'Usuario creado correctamente';
-			    				}).error(function(data) {
-			    					$scope.msg = 'Error.';
-			    				});
-
-			        		}});
-				        
-				        /*
-		    			var response = $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', dataObj);
-		    			response.success(function(data, status, headers, config) {
-		    				$scope.responseData = data;
-		    			});
-		    			
-		    			response.error(function(data, status, headers, config) {
-		    				alert( "Exception details: " + JSON.stringify({data: data}));
-		    			});*/
-				        	//Variables
-				        	/*var listaUsuarios = "${listUsername}";
-				        	var listaEmail = "${listEmail}";
-				        	$scope.arrayUsuarios = [];
-				        	$scope.arrayEmail = [];
-				        	var objUsuarios = null;
-				        	var objEmail = null;
-				        	var longitud = 0;
-				        	var flagErrorUsername = 0;
-				        	var indiceUser = 0;
-				        	
-			        		objUsuarios = JSON.parse(listaUsuarios);
-			        		longitud = Object.keys(objUsuarios.listUsername).length;
-			        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
-			        			$scope.arrayUsuarios.push(objUsuarios.listUsername[indiceUser]);
-		        			}
-			        	
-			        		objEmail = JSON.parse(listaEmail);
-			        		longitud = Object.keys(objEmail.listEmail).length;
-			        		for(indiceUser=0; indiceUser<longitud; indiceUser++) {
-			        			$scope.arrayEmail.push(objEmail.listEmail[indiceUser]);
-		        			}
-				        	
-				        	$scope.funcUsername = function(username){
-				        		flagErrorUsername = 0;
-				        		$scope.longitudUsername = '';
-				        		$scope.caracterUsername = '';
-				        		
-				        		if(username.length<5 || username.length>15){
-				        			flagErrorUsername = 1;
-				        			$scope.longitudUsername = 'La longitud del campo username es erronea. Debe tener entre 5 y 15 caracteres.';
-				        		}
-				        		
-				        		for(indiceUser = 0; indiceUser<username.length; indiceUser++){
-				        			if(username.charAt(indiceUser)==' '){
-				        				$scope.caracterUsername = 'El campo username no puede contener espacios';
-				        				flagErrorUsername = 1;
-				        				indiceUser = username.length;
-				        			}else if(!((username.charAt(indiceUser)>='0' && username.charAt(indiceUser)<='9')||
-					        			 (username.charAt(indiceUser)>='a' && username.charAt(indiceUser)<='z')||
-					        			 (username.charAt(indiceUser)>='A' && username.charAt(indiceUser)<='Z'))){
-			        					flagErrorUsername = 1;
-			        					$scope.caracterUsername = 'El campo username no puede contener el caracter '+username.charAt(indiceUser)+'.';
-			        					indiceUser = username.length;
-			        				}
-			        			}
-					        	if(arrayUsuarios.length > 0){
-					        		for(indiceUser = 0; indiceUser<arrayUsuarios.length; indiceUser++){
-					        			if(arrayUsuarios[indiceUser] == username){
-					        				$scope.infoUsername = $scope.infoUsername + '\nEl username ya existe.';
-					        				indiceUser = arrayUsuarios.length;
-					        				flagErrorUsername = 1;
-					        			}
-					        		}
-					        	}
-					        	if(flagErrorUsername == 0){
-					        		$scope.infoUsername = 'El nombre de usuario '+username+' es valido.';
-					        		document.getElementById("showUsername").style.color = "#CDE436"
-					        	}else{
-					        		document.getElementById("showUsername").style.color = "red";
-					        	}
-				        	}*/
-				        	
-				        	
-				        	/*
-				        	
-					        $scope.enviar = function(){
-					        	$scope.errorUsername = '';
-					        	$scope.errorEmail = '';
-					        	$scope.errorClave = '';
-					        	var flagError = 0;
-	
-								//check email existe
-					        	
-				        		if(arrayEmail.length > 0){
-					        		for(var indiceEmail = 0; indiceEmail<arrayEmail.length; indiceEmail++){
-					        			if(arrayEmail[indiceEmail] == $scope.campEmail){
-					        				flagError = 1;
-					        				$scope.errorEmail = 'Error. Email ya existe.';
-					        				indiceEmail = arrayEmail.length;
-					        			}
-					        		}
-					        	}
-					        	
-					        	//check clave adecuada
-				        		var lengthClave = $scope.campClave.length;
-				        		if(lengthClave<5 || lengthClave>20){
-				        			flagError = 1;
-			        				$scope.errorClave = 'Error. La longitud del campo clave es erronea.';
-				        		}
-				        		if(flagError == 0){
-				        			for(var indiceClave = 0; indiceClave<lengthClave; indiceClave++){
-				        				if(!(($scope.campClave.charAt(indiceClave)>='0' && $scope.campClave.charAt(indiceClave)<='9')||
-							        	     ($scope.campClave.charAt(indiceClave)>='a' && $scope.campClave.charAt(indiceClave)<='z')||
-							        		 ($scope.campClave.charAt(indiceClave)>='A' && $scope.campClave.charAt(indiceClave)<='Z'))){
-				        					flagError = 1;
-				        					$scope.errorClave = 'Error. No esta permitido el caracter '+$scope.campClave.charAt(indiceClave)+' en el campo clave.';
-				        					indiceClave = lengthClave;
-				        				}
-				        			}
-				        		}
-					        	
-					        	//check clave y rep clave coinciden
-					        		
-				        		if($scope.campClave != $scope.campRepClave){
-				        			flagError = 1;
-				        			$scope.errorClave = 'Error. Las claves no coinciden';
-					        	}
-					        		
-					        	//registro correcto	
-					        	
-					        	/*if(flagError == 0){
-					        	    $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', {
-			        	    			username: $scope.campUsername,
-			        	    			email: $scope.campEmail,
-			        	    			clave: $scope.campClave
-			        	    		});
-					        	}*/
-					        	
-					        	/*var nuevoUser = '{ "user" : [' +
-					        	'{ "username":"'+$scope.campUsername+'" , "email":"'+$scope.campEmail+'", "clave":"'+ $scope.campClave +'"}]}';
-					        	
-					        	this.http.post('/registrarUsuario.html', {
-				        	      title: 'registro',
-				        	      body: nuevoUser,
-				        	      userId: 1
-				        	    }).subscribe(
-				        	        res => {
-				        	          console.log(res);
-				        	        },
-				        	        err => {
-				        	          console.log("Error occured");
-				        	        }
-				        	      );*/
-			        </script>
-	
-	
 	    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	    <div class="scroll-to-top d-lg-none position-fixed ">
 	      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
@@ -344,5 +170,28 @@
 	    </div>
 	
   </body>
-
+  <script>
+	    var app = angular.module('myApp', []);
+        app.controller('RegistroCtrl', function($scope, $http) {
+        	$scope.envioDatos = function(){			        		
+        		$http.post('/registrarUser', 
+					{
+    					username : $scope.campUsername,
+    					clave : $scope.campClave,
+    					email : $scope.campEmail,
+    					nombreApellidos : '',
+    					ciudad : '',
+    					pais : '',
+    					photo : '',
+    					hasRolUsuario : true,
+    					hasRolModerador : false,
+    					hasRolAdministrador : false				    					
+    				}
+				).success(function(data) {
+					$scope.msg = 'Usuario creado correctamente';
+				}).error(function(data) {
+					$scope.msg = 'Error.';
+				});
+			}});
+    </script>
 </html>
