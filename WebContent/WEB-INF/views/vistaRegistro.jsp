@@ -176,8 +176,8 @@
 				    					email : $scope.campEmail,
 				    					nombreApellidos : '',
 				    					ciudad : '',
-				    					pais : '';
-				    					photo : '';
+				    					pais : '',
+				    					photo : '',
 				    					hasRolUsuario : true,
 				    					hasRolModerador : false,
 				    					hasRolAdministrador : false				    					
