@@ -3,7 +3,9 @@ package main.java.flashcards.controladores;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,12 +40,11 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/registrarUser", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces={"application/json;charset=UTF-8"})
-	public ModelAndView registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
 		dBUsuario.insertUsuario(user);
-		vista = new ModelAndView("index");
-		return vista;
+		return new ResponseEntity<String>(HttpStatus.CREATED);
 	}
 	
 	//@RequestParam("usuario") String usuario
