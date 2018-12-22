@@ -179,7 +179,7 @@
 	    					email : $scope.campEmail,
 	    					nombreApellidos : " ",
 	    					ciudad : " ",
-	    					pais : " "
+	    					pais : " ",
 	    					photo : " ",
 	    					hasRolUsuario : true,
 	    					hasRolModerador : false,
