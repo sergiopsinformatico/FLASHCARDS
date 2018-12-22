@@ -173,20 +173,23 @@
   <script>
 	    var app = angular.module('myApp', []);
         app.controller('RegistroCtrl', function($scope, $http) {
-        	$scope.envioDatos = function(){			        		
-        		$http.post('/registrarUser', 
-					{
-    					username : $scope.campUsername,
-    					clave : $scope.campClave,
-    					email : $scope.campEmail,
-    					nombreApellidos : ' ',
-    					ciudad : ' ',
-    					pais : ' ',
-    					photo : ' ',
+        	$scope.envioDatos = function(){
+        		
+        		var data = {
+    					username : ""+$scope.campUsername,
+    					clave : ""+$scope.campClave,
+    					email : ""+$scope.campEmail,
+    					nombreApellidos : "",
+    					ciudad : "",
+    					pais : "",
+    					photo : "",
     					hasRolUsuario : true,
     					hasRolModerador : false,
     					hasRolAdministrador : false				    					
-    				}
+    				};
+        		
+        		$http.post('/registrarUser', data
+					
 				).success(function(data) {
 					$scope.msg = 'Usuario creado correctamente';
 				}).error(function(data) {
