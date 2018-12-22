@@ -189,7 +189,7 @@
 		        						        		
 		        		$http({
 			        		method: 'POST',
-			        		url: 'https://sistemaflashcards.herokuapp.com/registrarUser.html',
+			        		url: '/registrarUser.html',
 			        		data: form_data,
 			        		config: header_config
 		        		}).then(
@@ -197,7 +197,7 @@
 				        		$scope.msg = response.data.msg;
 			        		},
 			        		function(response) {
-				        		$scope.msg = "Service unavailable. Please try again.";
+				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
 		        		);
 
