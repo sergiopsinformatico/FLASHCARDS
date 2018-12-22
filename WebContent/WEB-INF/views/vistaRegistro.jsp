@@ -194,7 +194,7 @@
 			        		config: header_config
 		        		}).then(
 			        		function(response) {
-				        		$scope.msg = response.data.msg;
+				        		$scope.msg = "enviado " + response.data.msg;
 			        		},
 			        		function(response) {
 				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
