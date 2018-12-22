@@ -168,39 +168,36 @@
 				        var app = angular.module('myApp', []);
 				        app.controller('RegistroCtrl', function($scope, $http) {
 				        	$scope.envioDatos = function(){
-				        		
-				        			
-				    			/*
-				    			var response = $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', dataObj);
-				    			response.success(function(data, status, headers, config) {
-				    				$scope.responseData = data;
-				    			});
-				    			
-				    			response.error(function(data, status, headers, config) {
-				    				alert( "Exception details: " + JSON.stringify({data: data}));
-				    			});*/
-				    			
-				    				$http.post('/registrarUsuario', 
-				    					{
-					    					"username" : $scope.campUsername,
-					    					"clave" : $scope.campClave,
-					    					"email" : $scope.campEmail,
-					    					"nombreApellidos" : "",
-					    					"ciudad" : "",
-					    					"pais" : "",
-					    					"photo" : "",
-					    					"hasRolUsuario" : true,
-					    					"hasRolModerador" : false,
-					    					"hasRolAdministrador" : false				    					
-					    				}
-				    				).success(function(data) {
-				    					$scope.msg = 'Usuario creado correctamente';
-				    				}).error(function(data) {
-				    					$scope.msg = 'Error. Fallo al guardar ' + data;
-				    				});
+			        			$http.post('/registrarUser', 
+			    					{
+				    					"username" : $scope.campUsername,
+				    					"clave" : $scope.campClave,
+				    					"email" : $scope.campEmail,
+				    					"nombreApellidos" : "",
+				    					"ciudad" : "",
+				    					"pais" : "",
+				    					"photo" : "",
+				    					"hasRolUsuario" : true,
+				    					"hasRolModerador" : false,
+				    					"hasRolAdministrador" : false				    					
+				    				}
+			    				).success(function(data) {
+			    					$scope.msg = 'Usuario creado correctamente';
+			    				}).error(function(data) {
+			    					$scope.msg = 'Error.';
+			    				});
 
-				        		
-				        	}});
+			        		}});
+				        
+				        /*
+		    			var response = $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', dataObj);
+		    			response.success(function(data, status, headers, config) {
+		    				$scope.responseData = data;
+		    			});
+		    			
+		    			response.error(function(data, status, headers, config) {
+		    				alert( "Exception details: " + JSON.stringify({data: data}));
+		    			});*/
 				        	//Variables
 				        	/*var listaUsuarios = "${listUsername}";
 				        	var listaEmail = "${listEmail}";
