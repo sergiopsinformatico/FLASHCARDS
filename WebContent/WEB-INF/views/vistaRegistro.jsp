@@ -164,11 +164,6 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.nombreApellidos = 'u/k';
-		        	$scope.ciudad = 'u/k';
-		        	$scope.pais = 'u/k';
-		        	$scope.photo = 'u/k';
-		        	
 		        	$scope.msg = null;
 		        	var header_config = {
 	        			headers: {
@@ -182,10 +177,10 @@
 	    					username : $scope.campUsername,
 	    					clave : $scope.campClave,
 	    					email : $scope.campEmail,
-	    					nombreApellidos : $scope.nombreApellidos,
-	    					ciudad : $scope.ciudad,
-	    					pais : $scope.pais,
-	    					photo : $scope.photo,
+	    					nombreApellidos : " ",
+	    					ciudad : " ",
+	    					pais : " "
+	    					photo : " ",
 	    					hasRolUsuario : true,
 	    					hasRolModerador : false,
 	    					hasRolAdministrador : false				    					
