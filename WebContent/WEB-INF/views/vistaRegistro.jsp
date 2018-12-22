@@ -115,11 +115,11 @@
 	    	<div class="row">
 	    		<br><br>
 	    	</div>
-	    	<div class="row">
+	    	<div class="row" ng-app="myApp" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
 	    			
-	    			<form ng-app="myApp" ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <small>{{msg}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
@@ -156,37 +156,54 @@
 				        	}
 				        </script>
 				    </form>
-				    <script>
-					    var app = angular.module('myApp', []);
-				        app.controller('RegistroCtrl', function($scope, $http) {
-				        	$scope.envioDatos = function(){
-				        						        		
-				        		$http.post('/registrarUser', 
-					        		{
-				    					username : $scope.campUsername,
-				    					clave : $scope.campClave,
-				    					email : $scope.campEmail,
-				    					nombreApellidos : "",
-				    					ciudad : "",
-				    					pais : "",
-				    					photo : "",
-				    					hasRolUsuario : true,
-				    					hasRolModerador : false,
-				    					hasRolAdministrador : false				    					
-				    				}
-									
-								).success(function(data) {
-									$scope.msg = 'Usuario creado correctamente';
-								}).error(function(data) {
-									$scope.msg = 'Error.';
-								});
-							}
-				        });
-				    </script>
 				    <br>
 	    		</div>
 	    		<div class="col-md-4"></div>
 			</div>
+			<script>
+			    var app = angular.module('myApp', []);
+		        app.controller('RegistroCtrl', function($scope, $http) {
+		        	
+		        	$scope.msg = null;
+		        	var header_config = {
+	        			headers: {
+	        				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+	        			}
+        			};
+		        	
+		        	$scope.envioDatos = function(){
+		        		
+		        		var form_data = $.param({
+	    					username : $scope.campUsername,
+	    					clave : $scope.campClave,
+	    					email : $scope.campEmail,
+	    					nombreApellidos : "",
+	    					ciudad : "",
+	    					pais : "",
+	    					photo : "",
+	    					hasRolUsuario : true,
+	    					hasRolModerador : false,
+	    					hasRolAdministrador : false				    					
+	    				});
+		        			
+		        						        		
+		        		$http({
+			        		method: 'POST',
+			        		url: '/registrarUser',
+			        		data: form_data,
+			        		config: header_config
+		        		}).then(
+			        		function(response) {
+				        		$scope.msg = response.data.msg;
+			        		},
+			        		function(response) {
+				        		$scope.msg = "Service unavailable. Please try again.";
+			        		}
+		        		);
+
+					}
+		        });
+		    </script>
 	    </section>
 	    
 	    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
