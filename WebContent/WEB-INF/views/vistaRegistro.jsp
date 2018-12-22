@@ -179,10 +179,10 @@
     					username : $scope.campUsername,
     					clave : $scope.campClave,
     					email : $scope.campEmail,
-    					nombreApellidos : '',
-    					ciudad : '',
-    					pais : '',
-    					photo : '',
+    					nombreApellidos : ' ',
+    					ciudad : ' ',
+    					pais : ' ',
+    					photo : ' ',
     					hasRolUsuario : true,
     					hasRolModerador : false,
     					hasRolAdministrador : false				    					
@@ -192,6 +192,7 @@
 				}).error(function(data) {
 					$scope.msg = 'Error.';
 				});
-			}});
+			}
+        });
     </script>
 </html>
