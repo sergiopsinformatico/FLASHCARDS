@@ -56,7 +56,7 @@
     
   </head>
 
-  <body ng-app="myApp" id="page-top">
+  <body id="page-top">
   		<%@ page import="main.java.flashcards.dto.UsuarioDTO"%> 
 		
 		<% 
@@ -119,7 +119,7 @@
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
 	    			
-	    			<form ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
+	    			<form ng-app="myApp" ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
 				        <small>{{msg}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
@@ -156,6 +156,33 @@
 				        	}
 				        </script>
 				    </form>
+				    <script>
+					    var app = angular.module('myApp', []);
+				        app.controller('RegistroCtrl', function($scope, $http) {
+				        	$scope.envioDatos = function(){
+				        						        		
+				        		$http.post('/registrarUser', 
+					        		{
+				    					username : $scope.campUsername,
+				    					clave : $scope.campClave,
+				    					email : $scope.campEmail,
+				    					nombreApellidos : "",
+				    					ciudad : "",
+				    					pais : "",
+				    					photo : "",
+				    					hasRolUsuario : true,
+				    					hasRolModerador : false,
+				    					hasRolAdministrador : false				    					
+				    				}
+									
+								).success(function(data) {
+									$scope.msg = 'Usuario creado correctamente';
+								}).error(function(data) {
+									$scope.msg = 'Error.';
+								});
+							}
+				        });
+				    </script>
 				    <br>
 	    		</div>
 	    		<div class="col-md-4"></div>
@@ -170,32 +197,4 @@
 	    </div>
 	
   </body>
-  <script>
-	    var app = angular.module('myApp', []);
-        app.controller('RegistroCtrl', function($scope, $http) {
-        	$scope.envioDatos = function(){
-        		
-        		var data = {
-    					username : ""+$scope.campUsername,
-    					clave : ""+$scope.campClave,
-    					email : ""+$scope.campEmail,
-    					nombreApellidos : "",
-    					ciudad : "",
-    					pais : "",
-    					photo : "",
-    					hasRolUsuario : true,
-    					hasRolModerador : false,
-    					hasRolAdministrador : false				    					
-    				};
-        		
-        		$http.post('/registrarUser', data
-					
-				).success(function(data) {
-					$scope.msg = 'Usuario creado correctamente';
-				}).error(function(data) {
-					$scope.msg = 'Error.';
-				});
-			}
-        });
-    </script>
 </html>
