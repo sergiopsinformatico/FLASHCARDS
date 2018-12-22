@@ -120,7 +120,7 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" ng-controller="RegistroCtrl" id="Registro" name="Registro">
-				        <h6>{{message}}</h6>
+				        <h6>{{msg}}</h6>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -169,18 +169,7 @@
 				        app.controller('RegistroCtrl', function($scope, $http) {
 				        	$scope.envioDatos = function(){
 				        		
-				        		var dataObj = {
-			    					"username" : $scope.campUsername,
-			    					"clave" : $scope.campClave,
-			    					"email" : $scope.campEmail,
-			    					"nombreApellidos" : "",
-			    					"ciudad" : "",
-			    					"pais" : "",
-			    					"photo" : "",
-			    					"hasRolUsuario" : true,
-			    					"hasRolModerador" : false,
-			    					"hasRolAdministrador" : false				    					
-				    			};		
+				        			
 				    			/*
 				    			var response = $http.post('https://sistemaflashcards.herokuapp.com/registrarUsuario.html', dataObj);
 				    			response.success(function(data, status, headers, config) {
@@ -191,15 +180,24 @@
 				    				alert( "Exception details: " + JSON.stringify({data: data}));
 				    			});*/
 				    			
-				        		 $http({
-				        		 	method: "POST",
-				        			url: 'https://sistemaflashcards.herokuapp.com/registrarUsuario.html',
-				        			data: dataObj,
-				        		}).then(function(response) {
-				        			$scope.message = response.statusText + ' success';
-				        		}, function(response) {
-				        			$scope.message = response.statusText + ' failure';
-				        		});
+				    				$http.post('/registrarUsuario', 
+				    					{
+					    					"username" : $scope.campUsername,
+					    					"clave" : $scope.campClave,
+					    					"email" : $scope.campEmail,
+					    					"nombreApellidos" : "",
+					    					"ciudad" : "",
+					    					"pais" : "",
+					    					"photo" : "",
+					    					"hasRolUsuario" : true,
+					    					"hasRolModerador" : false,
+					    					"hasRolAdministrador" : false				    					
+					    				}
+				    				).success(function(data) {
+				    					$scope.msg = 'Usuario creado correctamente';
+				    				}).error(function(data) {
+				    					$scope.msg = 'Error. Fallo al guardar ' + data;
+				    				});
 
 				        		
 				        	}});
