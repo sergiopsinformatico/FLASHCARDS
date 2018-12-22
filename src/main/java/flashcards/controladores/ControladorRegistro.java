@@ -37,8 +37,7 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	/*@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)*/
-	@RequestMapping(value = "/registrarUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/registrarUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
