@@ -189,7 +189,7 @@
 		        						        		
 		        		$http({
 			        		method: 'POST',
-			        		url: '/registrarUser',
+			        		url: 'https://sistemaflashcards.herokuapp.com/registrarUser',
 			        		data: form_data,
 			        		config: header_config
 		        		}).then(
