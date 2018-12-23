@@ -15,7 +15,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ServletSpringMVC</servlet-name>
-		<url-pattern>/</url-pattern>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	
