@@ -43,17 +43,6 @@ public class ControladorPrincipal {
 	
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String inicio(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("session")==null) {
-			return "index";
-		}
-		return "index";
-	}
-	
-	
-	
-	
 	
 	
 	
