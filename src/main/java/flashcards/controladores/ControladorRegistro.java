@@ -27,7 +27,7 @@ public class ControladorRegistro {
 	ModelAndView vista;
 	//JSONObject jsonUsername, jsonEmail;
 	
-	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	@RequestMapping(value = "/registro.html", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaRegistro");
 		/*broker = new Broker();

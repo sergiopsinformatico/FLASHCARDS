@@ -3,16 +3,6 @@
 	
 	<display-name>Flashcards</display-name>
 	
-	<servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-      <url-pattern>*.html</url-pattern>
-    </servlet-mapping>
-	
 	<!-- Spring Configuration - Processes Application Requests -->
 	<servlet>
 		<servlet-name>SpringControllerMVC</servlet-name>
