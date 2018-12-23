@@ -189,7 +189,7 @@
 		        						        		
 		        		$http({
 			        		method: 'POST',
-			        		url: 'registrarUser',
+			        		url: '/registrarUser',
 			        		data: form_data,
 			        		config: header_config
 		        		}).then(
