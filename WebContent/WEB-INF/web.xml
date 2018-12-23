@@ -5,16 +5,20 @@
 	
 	<!-- Spring Configuration - Processes Application Requests -->
 	<servlet>
-		<servlet-name>SpringControllerMVC</servlet-name>
+		<servlet-name>ServletSpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring-servlet.xml</param-value>
 		</init-param>
-		<load-on-startup>2</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SpringControllerMVC</servlet-name>
+		<servlet-name>ServletSpringMVC</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletSpringMVC</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
