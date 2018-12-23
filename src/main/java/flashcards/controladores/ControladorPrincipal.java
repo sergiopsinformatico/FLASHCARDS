@@ -41,6 +41,27 @@ public class ControladorPrincipal {
 	int indice;
 	PeticionDeAmistad pA;
 	
+	
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String inicio(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getAttribute("session")==null) {
+			return "index";
+		}
+		return "index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	//Inicio (Logueado)
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
@@ -58,7 +79,7 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Ver Perfil
+	/*
 	
 	@RequestMapping(value = "/miPerfil", method = RequestMethod.GET)
 	public ModelAndView miperfil(@RequestParam("usuario") String usuario, @RequestParam("perfil") String perfil) {
@@ -83,7 +104,6 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Configuracion
 	
 	@RequestMapping(value = "/configuracion", method = RequestMethod.GET)
 	public ModelAndView configurcion(@RequestParam("usuario") String usuario) {
@@ -93,7 +113,6 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Modificar Mi Perfil
 	
 	@RequestMapping(value = "/modificarMiPerfil", method = RequestMethod.POST)
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
@@ -104,7 +123,6 @@ public class ControladorPrincipal {
 		return vista;
 	}
 	
-	//Flashcards
 	
 	@RequestMapping(value = "/flashcards", method = RequestMethod.GET)
 	public ModelAndView flashcards(@RequestParam("usuario") String usuario) {
@@ -115,7 +133,7 @@ public class ControladorPrincipal {
 		vista.addObject("usuario", user);
 		/*vista.addObject("solicitado", gSM.existeSolicitud(new SolicitudModerador(user.getUsuario())));
 		vista.addObject("listaFlashcards", gF.listaJSONFlashcards(user.getUsuario()));
-		vista.addObject("evaluarFlashcards", gF.evaluaJSONFlashcards(user.getUsuario()));*/
+		vista.addObject("evaluarFlashcards", gF.evaluaJSONFlashcards(user.getUsuario()));
 		return vista;
 	}
 	
@@ -138,7 +156,7 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				jsonAmigos = jsonAmigos+"///****nuevaP****///"+gU.getNyA(nUsuario)+"///-///"+nUsuario;
-			}
+			/*}
 		}
 		vista.addObject("friends", jsonAmigos);
 		
@@ -152,7 +170,7 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				jsonPdAEn = jsonPdAEn+"///****nuevaP****///"+gU.getNyA(pA.getRecibe())+"///-///"+pA.getRecibe();
-			}
+			/*}
 		}
 		vista.addObject("pDAe", jsonPdAEn);
 		
@@ -166,7 +184,7 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				jsonPdARe = jsonPdARe+"///****nuevaP****///"+gU.getNyA(pA.getEnvia())+"///-///"+pA.getEnvia();
-			}
+			/*}
 		}
 		vista.addObject("pDAr", jsonPdARe);
 		
@@ -180,7 +198,7 @@ public class ControladorPrincipal {
 				check++;
 			}else {
 				jsonBlo = jsonBlo+"///****nuevaP****///"+gU.getNyA(nUsuario)+"///-///"+nUsuario;
-			}
+			/*}
 		}
 		vista.addObject("bloq", jsonBlo);
 		
@@ -223,7 +241,7 @@ public class ControladorPrincipal {
 		}
 		
 		clubes.addObject("misClubes", listaMisClubes);*/
-		
+		/*
 		return clubes;
 	}
 	
@@ -248,5 +266,5 @@ public class ControladorPrincipal {
 		}
 		vista = new ModelAndView("index");
 		return vista;
-	}
+	}*/
 }
