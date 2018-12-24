@@ -186,12 +186,11 @@
 	    					hasRolAdministrador : false				    					
 	    				};
 		        			
-		        						        		
+		        		/*config: header_config*/	        		
 		        		$http({
 			        		method: 'POST',
 			        		url: '/createUser.do',
-			        		data: form_data,
-			        		config: header_config
+			        		data: form_data
 		        		}).then(
 			        		function(response) {
 				        		$scope.msg = "enviado " + response.data.msg;

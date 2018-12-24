@@ -41,7 +41,7 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/createUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
