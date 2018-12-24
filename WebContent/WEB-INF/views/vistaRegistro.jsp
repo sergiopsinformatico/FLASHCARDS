@@ -189,7 +189,7 @@
 		        						        		
 		        		$http({
 			        		method: 'POST',
-			        		url: '/createUser',
+			        		url: '/createUser.do',
 			        		data: form_data,
 			        		config: header_config
 		        		}).then(
