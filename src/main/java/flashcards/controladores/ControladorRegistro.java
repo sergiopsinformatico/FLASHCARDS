@@ -42,7 +42,7 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
 		dBUsuario.insertUsuario(user);
