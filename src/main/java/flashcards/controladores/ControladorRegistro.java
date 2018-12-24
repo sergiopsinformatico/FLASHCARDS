@@ -40,8 +40,7 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	/*@RequestMapping(value = "registrarUser", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces={"application/json;charset=UTF-8"})*/
-	@PostMapping(value = "/registrarUser")
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces={"application/json;charset=UTF-8"})
 	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
