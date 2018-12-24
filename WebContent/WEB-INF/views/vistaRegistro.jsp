@@ -167,7 +167,7 @@
 		        	$scope.msg = null;
 		        	var header_config = {
 	        			headers: {
-	        				'Content-Type': 'application/json'
+	        				'Content-Type' : 'application/json'
 	        			}
         			};
 		        	
