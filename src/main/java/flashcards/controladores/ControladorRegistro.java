@@ -24,10 +24,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class ControladorRegistro {
 
 	//Declaracion de Variables
-	Broker broker;
-	InterfaceDAOUsuario dBUsuario;
 	ModelAndView vista;
-	//JSONObject jsonUsername, jsonEmail;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
@@ -42,11 +39,8 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public ResponseEntity<String> registrarUsuarioPost(UsuarioDTO user) {
-		broker = new Broker();
-		dBUsuario = broker.getInstanciaUsuario();
-		dBUsuario.insertUsuario(user);
-		return new ResponseEntity<String>(HttpStatus.CREATED);
+	public void registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+		Broker.getInstanciaUsuario().insertUsuario(user);
 	}
 	
 	//@RequestParam("usuario") String usuario

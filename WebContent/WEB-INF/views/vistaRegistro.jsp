@@ -173,24 +173,24 @@
 		        	
 		        	$scope.envioDatos = function(){
 		        		
-		        		var form_data = {
-	    					username : $scope.campUsername,
-	    					clave : $scope.campClave,
-	    					email : $scope.campEmail,
-	    					nombreApellidos : ' ',
-	    					ciudad : ' ',
-	    					pais : ' ',
-	    					photo : ' ',
-	    					hasRolUsuario : true,
-	    					hasRolModerador : false,
-	    					hasRolAdministrador : false				    					
-	    				};
+		        		
 		        			
 		        		/*config: header_config*/	        		
 		        		$http({
 			        		method: 'POST',
 			        		url: '/createUser.do',
-			        		data: form_data
+			        		data: {
+		    					username : $scope.campUsername,
+		    					clave : $scope.campClave,
+		    					email : $scope.campEmail,
+		    					nombreApellidos : " ",
+		    					ciudad : " ",
+		    					pais : " ",
+		    					photo : " ",
+		    					hasRolUsuario : true,
+		    					hasRolModerador : false,
+		    					hasRolAdministrador : false				    					
+		    				}
 		        		}).then(
 			        		function(response) {
 				        		$scope.msg = "enviado " + response.data.msg;
