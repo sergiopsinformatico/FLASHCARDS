@@ -39,9 +39,8 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST,consumes = {"application/json;charset=UTF-8"}, produces={"application/json;charset=UTF-8"})
-	public @ResponseBody String registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public void registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		Broker.getInstanciaUsuario().insertUsuario(user);
-		return "keep";
 	}
 	
 	//@RequestParam("usuario") String usuario
