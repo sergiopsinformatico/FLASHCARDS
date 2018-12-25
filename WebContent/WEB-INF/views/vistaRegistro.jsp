@@ -165,6 +165,7 @@
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
 		        	$scope.msg = null;
+		        	$scope.vacioString = '';
 		        	
 		        	$scope.funcUsername = function(campUsername){
 		        		
@@ -186,10 +187,10 @@
 		    					username : $scope.campUsername,
 		    					clave : $scope.campClave,
 		    					email : $scope.campEmail,
-		    					nombreApellidos : " ",
-		    					ciudad : " ",
-		    					pais : " ",
-		    					photo : " ",
+		    					nombreApellidos : $scope.vacioString,
+		    					ciudad : $scope.vacioString,
+		    					pais : $scope.vacioString,
+		    					photo : $scope.vacioString,
 		    					hasRolUsuario : true,
 		    					hasRolModerador : false,
 		    					hasRolAdministrador : false				    					
