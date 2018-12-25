@@ -164,7 +164,16 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg = null;		        	
+		        	$scope.msg = null;
+		        	
+		        	$scope.funcUsername = function(campUsername){
+		        		
+		        	}
+		        	
+		        	$scope.funcEmail = function(campEmail){
+		        		
+		        	}
+		        	
 		        	$scope.envioDatos = function(){
 		        		
 		        		
@@ -177,16 +186,16 @@
 		    					username : $scope.campUsername,
 		    					clave : $scope.campClave,
 		    					email : $scope.campEmail,
-		    					nombreApellidos : ' ',
-		    					ciudad : ' ',
-		    					pais : ' ',
-		    					photo : ' ',
+		    					nombreApellidos : " ",
+		    					ciudad : " ",
+		    					pais : " ",
+		    					photo : " ",
 		    					hasRolUsuario : true,
 		    					hasRolModerador : false,
 		    					hasRolAdministrador : false				    					
 		    				},
 		    				headers:{
-		    					'Content-Type' : 'application/json;charset=UTF-8'
+		    					"Content-Type" : "application/json;charset=UTF-8"
 		    				}
 		        		}).then(
 			        		function(response) {
