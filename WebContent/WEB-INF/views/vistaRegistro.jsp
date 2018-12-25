@@ -190,7 +190,8 @@
 		    					hasRolUsuario : true,
 		    					hasRolModerador : false,
 		    					hasRolAdministrador : false				    					
-		    				}
+		    				},
+		    				config: {'Content-Type': 'application/json'}
 		        		}).then(
 			        		function(response) {
 				        		$scope.msg = "enviado " + response.data.msg;
