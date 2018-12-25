@@ -13,6 +13,19 @@ public class UsuarioDTO {
 	private boolean hasRolModerador;
 	private boolean hasRolAdministrador;
 	
+	public UsuarioDTO(String username, String clave, String email, String nombreApellidos, String ciudad, String pais, String photo, boolean hasRolUsuario, boolean hasRolModerador, boolean hasRolAdministrador) {
+		setUsername(username);
+		setClave(clave);
+		setEmail(email);
+		setNombreApellidos(nombreApellidos);
+		setCiudad(ciudad);
+		setPais(pais);
+		setPhoto(photo);
+		setRolUsuario(hasRolUsuario);
+		setRolModerador(hasRolModerador);
+		setRolAdministrador(hasRolAdministrador);
+	}
+	
 	public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsername(usuario);
 		setClave(clave);
