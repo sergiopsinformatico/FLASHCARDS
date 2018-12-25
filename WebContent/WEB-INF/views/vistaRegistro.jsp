@@ -174,16 +174,16 @@
 			        		method: 'POST',
 			        		url: '/createUser.do',
 			        		data: {
-		    					'username' : $scope.campUsername,
-		    					'clave' : $scope.campClave,
-		    					'email' : $scope.campEmail,
-		    					'nombreApellidos' : ' ',
-		    					'ciudad' : ' ',
-		    					'pais' : ' ',
-		    					'photo' : ' ',
-		    					'hasRolUsuario' : true,
-		    					'hasRolModerador' : false,
-		    					'hasRolAdministrador' : false				    					
+		    					username : $scope.campUsername,
+		    					clave : $scope.campClave,
+		    					email : $scope.campEmail,
+		    					nombreApellidos : ' ',
+		    					ciudad : ' ',
+		    					pais : ' ',
+		    					photo : ' ',
+		    					hasRolUsuario : true,
+		    					hasRolModerador : false,
+		    					hasRolAdministrador : false				    					
 		    				},
 		    				headers:{
 		    					'Content-Type' : 'application/json;charset=UTF-8'
