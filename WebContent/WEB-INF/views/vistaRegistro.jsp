@@ -164,13 +164,7 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg = null;
-		        	var header_config = {
-	        			headers: {
-	        				'Content-Type' : 'application/json'
-	        			}
-        			};
-		        	
+		        	$scope.msg = null;		        	
 		        	$scope.envioDatos = function(){
 		        		
 		        		
@@ -190,6 +184,9 @@
 		    					"hasRolUsuario" : true,
 		    					"hasRolModerador" : false,
 		    					"hasRolAdministrador" : false				    					
+		    				},
+		    				headers:{
+		    					'Content-Type' : 'application/json'
 		    				}
 		        		}).then(
 			        		function(response) {

@@ -2,16 +2,16 @@ package main.java.flashcards.dto;
 
 public class UsuarioDTO {
 	
-	private String username;
-	private String clave;
-	private String email;
-	private String nombreApellidos;
-	private String ciudad;
-	private String pais;
-	private String photo;
-	private boolean hasRolUsuario;
-	private boolean hasRolModerador;
-	private boolean hasRolAdministrador;
+	String username;
+	String clave;
+	String email;
+	String nombreApellidos;
+	String ciudad;
+	String pais;
+	String photo;
+	boolean hasRolUsuario;
+	boolean hasRolModerador;
+	boolean hasRolAdministrador;
 	
 	public UsuarioDTO(String username, String clave, String email, String nombreApellidos, String ciudad, String pais, String photo, boolean hasRolUsuario, boolean hasRolModerador, boolean hasRolAdministrador) {
 		setUsername(username);
