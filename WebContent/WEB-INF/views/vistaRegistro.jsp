@@ -196,7 +196,6 @@
 		    					nombreApellidos : $scope.vacioString,
 		    					ciudad : $scope.vacioString,
 		    					pais : $scope.vacioString,
-		    					photo : $scope.vacioString,
 		    					hasRolUsuario : $scope.verdad,
 		    					hasRolModerador : $scope.falso,
 		    					hasRolAdministrador : $scope.falso				    					
