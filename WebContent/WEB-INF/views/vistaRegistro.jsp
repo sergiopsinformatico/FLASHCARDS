@@ -164,9 +164,8 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg;
+		        	$scope.msg = " ";
 		        	
-		        	$scope.newUser;
 		        	$scope.newUser.nombreApellidos = " ";
 		        	$scope.newUser.ciudad = " ";
 		        	$scope.newUser.pais = " ";
