@@ -122,12 +122,13 @@
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <small>{{msg}}</small>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="newUser.username" ng-change="funcUsername(newUser.username)" name="inputUsername" placeholder="Username" required>
+				        	<!-- ng-change="funcUsername(newUser.username)" -->
+				            <input type="text" class="form-control" id="inputUsername" ng-model="newUser.username" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="newUser.email" ng-change="funcEmail(newUser.email)" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="newUser.email" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="newUser.clave" name="inputClave" placeholder="Clave" required>
@@ -173,48 +174,6 @@
 		        	$scope.newUser.hasRolUsuario = true;
 		        	$scope.newUser.hasRolModerador = false;
 		        	$scope.newUser.hasRolAdministrador = false;
-		        	
-		        	$scope.dataObj = {
-	    					username : $scope.campUsername,
-	    					clave : $scope.campClave,
-	    					email : $scope.campEmail,
-	    					nombreApellidos : ' ',
-	    					ciudad : ' ',
-	    					pais : ' ',
-	    					photo : ' ',
-	    					hasRolUsuario : true,
-	    					hasRolModerador : false,
-	    					hasRolAdministrador : false				    					
-	    				};
-		        	$scope.funcUsername = function(campUsername){
-		        		$scope.dataObj = {
-		    					username : $scope.campUsername,
-		    					clave : $scope.campClave,
-		    					email : $scope.campEmail,
-		    					nombreApellidos : ' ',
-		    					ciudad : ' ',
-		    					pais : ' ',
-		    					photo : ' ',
-		    					hasRolUsuario : true,
-		    					hasRolModerador : false,
-		    					hasRolAdministrador : false				    					
-		    				};
-		        	}
-		        	
-		        	$scope.funcEmail = function(campEmail){
-		        		$scope.dataObj = {
-	    					username : $scope.campUsername,
-	    					clave : $scope.campClave,
-	    					email : $scope.campEmail,
-	    					nombreApellidos : ' ',
-	    					ciudad : ' ',
-	    					pais : ' ',
-	    					photo : ' ',
-	    					hasRolUsuario : true,
-	    					hasRolModerador : false,
-	    					hasRolAdministrador : false				    					
-	    				};
-		        	}
 		        	
 		        	$scope.envioDatos = function(){
 		        			
