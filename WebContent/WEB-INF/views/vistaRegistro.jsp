@@ -252,7 +252,7 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post("/createUser.do", dataObj).then(
+		        		$http.post("/createUser.do", "hola").then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
