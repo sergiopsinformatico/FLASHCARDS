@@ -40,9 +40,10 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/createUser", method = RequestMethod.POST, consumes = MimeTypeUtils.APPLICATION_JSON_VALUE, produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public void registrarUsuarioPost(@RequestParam("username") String username, @RequestParam("clave") String clave, @RequestParam("email") String email) {
+		UsuarioDTO user = new UsuarioDTO(username, clave, email, true, false, false);
 		Broker.getInstanciaUsuario().insertUsuario(user);
 	}
 	

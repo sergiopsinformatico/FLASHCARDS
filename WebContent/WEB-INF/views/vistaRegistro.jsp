@@ -224,14 +224,7 @@
 		        		$http.post('/createUser.do',{
 		    					username : $scope.campUsername,
 		    					clave : $scope.campClave,
-		    					email : $scope.campEmail,
-		    					nombreApellidos : ' ',
-		    					ciudad : ' ',
-		    					pais : ' ',
-		    					photo : ' ',
-		    					hasRolUsuario : true,
-		    					hasRolModerador : false,
-		    					hasRolAdministrador : false				    					
+		    					email : $scope.campEmail			    					
 		    				}).then(
 				        		function(response) {
 					        		$scope.msg = 'enviado correctamente';
