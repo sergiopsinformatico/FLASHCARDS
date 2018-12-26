@@ -256,15 +256,14 @@
 		        			username: $scope.campUsername,
 			        	    clave: $scope.campClave,
 			        	    email: $scope.campEmail
-		        		});
-		        	    /*.then(
+		        		}).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
 			        		function (response) {
 				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
-		        		);*/
+		        		);
 
 					}
 		        });
