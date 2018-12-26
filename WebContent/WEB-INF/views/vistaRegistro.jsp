@@ -219,7 +219,7 @@
 		    				}
 		        		})*/
 		        		
-		        		var dataObj = new FormData();
+		        		/*var dataObj = new FormData();
 		        	    dataObj.append('username', $scope.campUsername);
 		        	    dataObj.append('clave', $scope.campClave);
 		        	    dataObj.append('email', $scope.campEmail);
@@ -229,7 +229,19 @@
 		        	    dataObj.append('photo', '');
 		        	    dataObj.append('hasRolUsuario', true);
 		        	    dataObj.append('hasRolModerador', false);
-		        	    dataObj.append('hasRolAdministrador', false);
+		        	    dataObj.append('hasRolAdministrador', false);*/
+		        	    
+		        	    var dataObj = {};
+		        	    dataObj.username = $scope.campUsername;
+		        	    dataObj.clave = $scope.campClave;
+		        	    dataObj.email = $scope.campEmail;
+		        	    dataObj.nombreApellidos = " ";
+		        	    dataObj.ciudad = " ";
+		        	    dataObj.pais = " ";
+		        	    dataObj.photo = " ";
+		        	    dataObj.hasRolUsuario = true;
+		        	    dataObj.hasRolModerador = false;
+		        	    dataObj.hasRolAdministrador = false;
 		        	    
 		        		$http.post("/createUser.do", dataObj, {
 		                    headers : {
@@ -237,10 +249,10 @@
 		                    	'Accept': 'text/plain'
 		                    }
 			            }).then(
-			        		function(response) {
+			        		function (response) {
 				        		$scope.msg = 'enviado correctamente';
 			        		},
-			        		function error(response) {
+			        		function (response) {
 				        		$scope.msg = 'Status Code= ' + response.status + ', Status Text= ' + response.statusText;
 			        		}
 		        		);
