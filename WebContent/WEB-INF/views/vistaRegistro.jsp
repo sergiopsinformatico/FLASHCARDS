@@ -193,14 +193,15 @@
 		    				};
 		        			
 		        		/*config: header_config*/	        		
-		        		$http({
+		        		/*$http({
 			        		method: "POST",
 			        		url: "/createUser.do",
 			        		data: datObj,
 		    				headers:{
 		    					"Content-Type" : "application/json"
 		    				}
-		        		}).then(
+		        		})*/
+		        		$http.post('/createUser.do', datObj).then(
 			        		function(response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
