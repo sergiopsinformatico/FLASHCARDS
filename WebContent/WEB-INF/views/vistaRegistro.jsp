@@ -179,13 +179,7 @@
 		        	
 		        	$scope.envioDatos = function(){
 		        		
-		        		
-		        			
-		        		/*config: header_config*/	        		
-		        		$http({
-			        		method: 'POST',
-			        		url: '/createUser.do',
-			        		data: {
+		        		var datObj = {
 		    					username : $scope.campUsername,
 		    					clave : $scope.campClave,
 		    					email : $scope.campEmail,
@@ -196,13 +190,19 @@
 		    					hasRolUsuario : $scope.verdad,
 		    					hasRolModerador : $scope.falso,
 		    					hasRolAdministrador : $scope.falso				    					
-		    				},
+		    				};
+		        			
+		        		/*config: header_config*/	        		
+		        		$http({
+			        		method: "POST",
+			        		url: "/createUser.do",
+			        		data: datObj,
 		    				headers:{
-		    					"Content-Type" : "application/json;charset=UTF-8"
+		    					"Content-Type" : "application/json"
 		    				}
 		        		}).then(
 			        		function(response) {
-				        		$scope.msg = "enviado " + response.data.msg;
+				        		$scope.msg = "enviado correctamente";
 			        		},
 			        		function(response) {
 				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
