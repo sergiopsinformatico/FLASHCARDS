@@ -136,6 +136,9 @@
 				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
+				        
+				        <h6 style="font-size:10px; color:#808080">{{dataObj}}</h6>
+				        				        
 				        <div class="row">
 				        	<br>
 				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
@@ -164,13 +167,47 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg = null;		        	
+		        	$scope.msg = null;
+		        	$scope.dataObj = {
+	    					username:$scope.campUsername,
+	    					clave:$scope.campClave,
+	    					email:$scope.campEmail,
+	    					nombreApellidos:' ',
+	    					ciudad:' ',
+	    					pais:' ',
+	    					photo:' ',
+	    					hasRolUsuario:true,
+	    					hasRolModerador:false,
+	    					hasRolAdministrador:false				    					
+	    				};
 		        	$scope.funcUsername = function(campUsername){
-		        		
+		        		$scope.dataObj = {
+		    					username:$scope.campUsername,
+		    					clave:$scope.campClave,
+		    					email:$scope.campEmail,
+		    					nombreApellidos:' ',
+		    					ciudad:' ',
+		    					pais:' ',
+		    					photo:' ',
+		    					hasRolUsuario:true,
+		    					hasRolModerador:false,
+		    					hasRolAdministrador:false				    					
+		    				};
 		        	}
 		        	
 		        	$scope.funcEmail = function(campEmail){
-		        		
+		        		$scope.dataObj = {
+		    					username:$scope.campUsername,
+		    					clave:$scope.campClave,
+		    					email:$scope.campEmail,
+		    					nombreApellidos:' ',
+		    					ciudad:' ',
+		    					pais:' ',
+		    					photo:' ',
+		    					hasRolUsuario:true,
+		    					hasRolModerador:false,
+		    					hasRolAdministrador:false				    					
+		    				};
 		        	}
 		        	
 		        	$scope.envioDatos = function(){
@@ -184,19 +221,7 @@
 		    					"Content-Type" : "application/json"
 		    				}
 		        		})*/
-		        		$http.post('/createUser.do',
-			        		{
-		    					username:$scope.campUsername,
-		    					clave:$scope.campClave,
-		    					email:$scope.campEmail,
-		    					nombreApellidos:' ',
-		    					ciudad:' ',
-		    					pais:' ',
-		    					photo:' ',
-		    					hasRolUsuario:true,
-		    					hasRolModerador:false,
-		    					hasRolAdministrador:false				    					
-		    				}).then(
+		        		$http.post('/createUser.do', $scope.dataObj).then(
 				        		function(response) {
 					        		$scope.msg = 'enviado correctamente';
 				        		},
