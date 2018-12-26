@@ -252,11 +252,11 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post('/createUser.do', {
+		        		$http.post('/createUser.do', JSON.stringify({
 		        			username: $scope.campUsername,
 			        	    clave: $scope.campClave,
 			        	    email: $scope.campEmail
-		        		}).then(
+		        		})).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
