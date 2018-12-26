@@ -252,7 +252,7 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post('createUser', JSON.stringify({
+		        		$http.post('/guardarUsuario.do', JSON.stringify({
 		        			username: $scope.campUsername,
 			        	    clave: $scope.campClave,
 			        	    email: $scope.campEmail
