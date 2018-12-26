@@ -235,10 +235,6 @@
 		        	    dataObj.username = $scope.campUsername;
 		        	    dataObj.clave = $scope.campClave;
 		        	    dataObj.email = $scope.campEmail;
-		        	    dataObj.nombreApellidos = " ";
-		        	    dataObj.ciudad = " ";
-		        	    dataObj.pais = " ";
-		        	    dataObj.photo = " ";
 		        	    dataObj.hasRolUsuario = true;
 		        	    dataObj.hasRolModerador = false;
 		        	    dataObj.hasRolAdministrador = false;
