@@ -252,7 +252,7 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post('/createUser.do', {
+		        		$http.post('/createUser', {
 		        			username: $scope.campUsername,
 			        	    clave: $scope.campClave,
 			        	    email: $scope.campEmail
