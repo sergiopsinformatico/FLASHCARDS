@@ -165,7 +165,9 @@
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
 		        	$scope.msg = null;
-		        	$scope.vacioString = '';
+		        	$scope.vacioString = " ";
+		        	$scope.verdad = true;
+		        	$scope.falso = false;
 		        	
 		        	$scope.funcUsername = function(campUsername){
 		        		
@@ -191,9 +193,9 @@
 		    					ciudad : $scope.vacioString,
 		    					pais : $scope.vacioString,
 		    					photo : $scope.vacioString,
-		    					hasRolUsuario : true,
-		    					hasRolModerador : false,
-		    					hasRolAdministrador : false				    					
+		    					hasRolUsuario : $scope.verdad,
+		    					hasRolModerador : $scope.falso,
+		    					hasRolAdministrador : $scope.falso				    					
 		    				},
 		    				headers:{
 		    					"Content-Type" : "application/json;charset=UTF-8"
