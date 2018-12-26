@@ -235,6 +235,10 @@
 		        	    dataObj.username = $scope.campUsername;
 		        	    dataObj.clave = $scope.campClave;
 		        	    dataObj.email = $scope.campEmail;
+		        	    dataObj.nombreApellidos = " ";
+		        	    dataObj.ciudad = " ";
+		        	    dataObj.pais = " ";
+		        	    dataObj.photo = " ";
 		        	    dataObj.hasRolUsuario = true;
 		        	    dataObj.hasRolModerador = false;
 		        	    dataObj.hasRolAdministrador = false;
@@ -248,7 +252,7 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post("/createUser.do", dataObj).then(
+		        		$http.post("/createUser.do", JSON.stringify(dataObj)).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
