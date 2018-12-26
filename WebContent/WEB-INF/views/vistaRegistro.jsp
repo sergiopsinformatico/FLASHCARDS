@@ -178,19 +178,6 @@
 		        	}
 		        	
 		        	$scope.envioDatos = function(){
-		        		
-		        		var datObj = {
-		    					username : $scope.campUsername,
-		    					clave : $scope.campClave,
-		    					email : $scope.campEmail,
-		    					nombreApellidos : $scope.vacioString,
-		    					ciudad : $scope.vacioString,
-		    					pais : $scope.vacioString,
-		    					photo : $scope.vacioString,
-		    					hasRolUsuario : $scope.verdad,
-		    					hasRolModerador : $scope.falso,
-		    					hasRolAdministrador : $scope.falso				    					
-		    				};
 		        			
 		        		/*config: header_config*/	        		
 		        		/*$http({
@@ -201,14 +188,26 @@
 		    					"Content-Type" : "application/json"
 		    				}
 		        		})*/
-		        		$http.post('/createUser.do', datObj).then(
-			        		function(response) {
-				        		$scope.msg = "enviado correctamente";
-			        		},
-			        		function(response) {
-				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
-			        		}
-		        		);
+		        		$http.post('/createUser.do',
+			        		{
+		    					username : $scope.campUsername,
+		    					clave : $scope.campClave,
+		    					email : $scope.campEmail,
+		    					nombreApellidos : $scope.vacioString,
+		    					ciudad : $scope.vacioString,
+		    					pais : $scope.vacioString,
+		    					photo : $scope.vacioString,
+		    					hasRolUsuario : $scope.verdad,
+		    					hasRolModerador : $scope.falso,
+		    					hasRolAdministrador : $scope.falso				    					
+		    				}).then(
+				        		function(response) {
+					        		$scope.msg = "enviado correctamente";
+				        		},
+				        		function(response) {
+					        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
+				        		}
+			        		);
 
 					}
 		        });
