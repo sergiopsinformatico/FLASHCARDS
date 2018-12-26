@@ -115,7 +115,7 @@
 	    	<div class="row">
 	    		<br><br>
 	    	</div>
-	    	<div class="row" ng-app="myApp" ng-controller="RegistroCtrl">
+	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
 	    			
@@ -162,18 +162,18 @@
 	    		<div class="col-md-4"></div>
 			</div>
 			<script>
-			    var app = angular.module('myApp', []);
+			    var app = angular.module('AppRegistro', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
 		        	$scope.msg = " ";
 		        	
-		        	$scope.newUser.nombreApellidos = " ";
+		        	/*$scope.newUser.nombreApellidos = " ";
 		        	$scope.newUser.ciudad = " ";
 		        	$scope.newUser.pais = " ";
 		        	$scope.newUser.photo = " ";
 		        	$scope.newUser.hasRolUsuario = true;
 		        	$scope.newUser.hasRolModerador = false;
-		        	$scope.newUser.hasRolAdministrador = false;
+		        	$scope.newUser.hasRolAdministrador = false;*/
 		        	
 		        	$scope.envioDatos = function(){
 		        			
