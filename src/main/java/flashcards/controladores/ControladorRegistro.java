@@ -43,15 +43,19 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public String registrarUsuarioPost(@RequestBody String user) {
+	public String registrarUsuarioPost(@RequestBody String json) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
 		}else {
 			return "Registro erroneo";
 		}*/
-		
-		return user;
+		UsuarioDTO user = new UsuarioDTO(json,"","",true,false,false);
+		if(Broker.getInstanciaUsuario().insertUsuario(user)) {
+			return "Registro OK!";
+		}else {
+			return "Registro erroneo";
+		}
 	}
 	
 	//@RequestParam("usuario") String usuario

@@ -219,7 +219,7 @@
 		    				}
 		        		})*/
 		        		
-		        		var dataObj = new FormData();
+		        		/*var dataObj = new FormData();
 		        	    dataObj.append('username', $scope.campUsername);
 		        	    dataObj.append('clave', $scope.campClave);
 		        	    dataObj.append('email', $scope.campEmail);
@@ -229,7 +229,7 @@
 		        	    dataObj.append('photo', '');
 		        	    dataObj.append('hasRolUsuario', true);
 		        	    dataObj.append('hasRolModerador', false);
-		        	    dataObj.append('hasRolAdministrador', false);
+		        	    dataObj.append('hasRolAdministrador', false);*/
 		        	    
 		        	    /*var dataObj = {};
 		        	    dataObj.username = $scope.campUsername;
@@ -252,14 +252,19 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post("/createUser.do", "hola").then(
+		        		$http.post('/createUser.do', {
+		        			username: $scope.campUsername,
+			        	    clave: $scope.campClave,
+			        	    email: $scope.campEmail
+		        		});
+		        	    /*.then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
 			        		function (response) {
 				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
-		        		);
+		        		);*/
 
 					}
 		        });
