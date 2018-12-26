@@ -168,15 +168,6 @@
 		        	$scope.msg = " ";
 		        	
 		        	$scope.envioDatos = function(){
-		        		
-		        		/*
-		        		{
-		                    headers : {
-		                    	'Content-Type': 'application/json',
-		                    	'Accept': 'text/plain'
-		                    }
-			            }
-		        		*/
 		        	    
 		        	    $scope.newUser.nombreApellidos = " ";
 			        	$scope.newUser.ciudad = " ";
@@ -187,7 +178,12 @@
 			        	$scope.newUser.hasRolAdministrador = false;
 		        	    
 		        	    
-		        		$http.post('/guardarUsuario.do', $scope.newUser).then(
+		        		$http.post('/guardarUsuario.do', $scope.newUser, {
+		                    headers : {
+		                    	'Content-Type': 'application/json',
+		                    	'Accept': 'text/plain'
+		                    }
+			            }).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
