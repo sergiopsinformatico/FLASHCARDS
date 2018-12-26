@@ -43,8 +43,7 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public void registrarUsuarioPost(@RequestBody JsonObject obj) {
-		UsuarioDTO user = new UsuarioDTO(obj.get("username").toString(), obj.get("clave").toString(), obj.get("email").toString(), true, false, false);
+	public void registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		Broker.getInstanciaUsuario().insertUsuario(user);
 	}
 	

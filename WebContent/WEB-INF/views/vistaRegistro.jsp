@@ -223,6 +223,13 @@
 		        	    dataObj.append('username', $scope.campUsername);
 		        	    dataObj.append('clave', $scope.campClave);
 		        	    dataObj.append('email', $scope.campEmail);
+		        	    dataObj.append('nombreApellidos', '');
+		        	    dataObj.append('ciudad', '');
+		        	    dataObj.append('pais', '');
+		        	    dataObj.append('photo', '');
+		        	    dataObj.append('hasRolUsuario', true);
+		        	    dataObj.append('hasRolModerador', false);
+		        	    dataObj.append('hasRolAdministrador', false);
 		        	    
 		        		$http.post('/createUser.do',dataObj).then(
 				        		function(response) {
