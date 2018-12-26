@@ -231,14 +231,19 @@
 		        	    dataObj.append('hasRolModerador', false);
 		        	    dataObj.append('hasRolAdministrador', false);
 		        	    
-		        		$http.post('https://sistemaflashcards.herokuapp.com/createUser.do',dataObj).then(
-				        		function(response) {
-					        		$scope.msg = 'enviado correctamente';
-				        		},
-				        		function(response) {
-					        		$scope.msg = 'Status Code= ' + response.status + ', Status Text= ' + response.statusText;
-				        		}
-			        		);
+		        		$http.post("/createUser.do", dataObj, {
+		                    headers : {
+		                    	'Content-Type': 'application/json',
+		                    	'Accept': 'text/plain'
+		                    }
+			            }).then(
+			        		function(response) {
+				        		$scope.msg = 'enviado correctamente';
+			        		},
+			        		function error(response) {
+				        		$scope.msg = 'Status Code= ' + response.status + ', Status Text= ' + response.statusText;
+			        		}
+		        		);
 
 					}
 		        });
