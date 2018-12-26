@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import gherkin.deps.com.google.gson.JsonObject;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
@@ -41,8 +42,8 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public void registrarUsuarioPost(@RequestParam("username") String username, @RequestParam("clave") String clave, @RequestParam("email") String email) {
-		UsuarioDTO user = new UsuarioDTO(username, clave, email, true, false, false);
+	public void registrarUsuarioPost(@RequestBody JsonObject obj) {
+		UsuarioDTO user = new UsuarioDTO(obj.get("username").toString(), obj.get("clave").toString(), obj.get("email").toString(), true, false, false);
 		Broker.getInstanciaUsuario().insertUsuario(user);
 	}
 	
