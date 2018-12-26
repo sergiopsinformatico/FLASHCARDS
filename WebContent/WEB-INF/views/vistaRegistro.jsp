@@ -244,15 +244,15 @@
 		        	    dataObj.hasRolAdministrador = false;*/
 		        	    
 		        	    /*
-		        	    
-		        	    */
-		        	    
-		        		$http.post("/createUser.do", dataObj, {
+		        	    {
 		                    headers : {
 		                    	'Content-Type': 'application/json',
 		                    	'Accept': 'text/plain'
 		                    }
-			            }).then(
+			            }
+		        	    */
+		        	    
+		        		$http.post("/createUser.do", dataObj).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
