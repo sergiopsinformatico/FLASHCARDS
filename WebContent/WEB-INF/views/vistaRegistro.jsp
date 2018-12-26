@@ -247,7 +247,7 @@
 		        	    
 		        	    */
 		        	    
-		        		$http.post("/createUser.do", JSON.stringify(dataObj), {
+		        		$http.post("/createUser.do", dataObj, {
 		                    headers : {
 		                    	'Content-Type': 'application/json',
 		                    	'Accept': 'text/plain'
