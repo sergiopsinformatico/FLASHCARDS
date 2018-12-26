@@ -50,12 +50,7 @@ public class ControladorRegistro {
 		}else {
 			return "Registro erroneo";
 		}*/
-		UsuarioDTO user = new UsuarioDTO(json,"","",true,false,false);
-		if(Broker.getInstanciaUsuario().insertUsuario(user)) {
-			return "Registro OK!";
-		}else {
-			return "Registro erroneo";
-		}
+		return "Registro OK!";
 	}
 	
 	//@RequestParam("usuario") String usuario
