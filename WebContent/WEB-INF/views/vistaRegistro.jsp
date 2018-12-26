@@ -122,18 +122,18 @@
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <small>{{msg}}</small>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="campUsername" ng-change="funcUsername(campUsername)" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="newUser.username" ng-change="funcUsername(newUser.username)" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="campEmail" ng-change="funcEmail(campEmail)" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="newUser.email" ng-change="funcEmail(newUser.email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="campClave" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="newUser.clave" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="campRepClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
+				            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
 				        <div class="row">
@@ -165,6 +165,16 @@
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
 		        	$scope.msg = null;
+		        	
+		        	$scope.newUser;
+		        	$scope.newUser.nombreApellidos = " ";
+		        	$scope.newUser.ciudad = " ";
+		        	$scope.newUser.pais = " ";
+		        	$scope.newUser.photo = " ";
+		        	$scope.newUser.hasRolUsuario = true;
+		        	$scope.newUser.hasRolModerador = false;
+		        	$scope.newUser.hasRolAdministrador = false;
+		        	
 		        	$scope.dataObj = {
 	    					username : $scope.campUsername,
 	    					clave : $scope.campClave,
@@ -252,11 +262,10 @@
 			            }
 		        	    */
 		        	    
-		        		$http.post('/guardarUsuario.do', JSON.stringify({
-		        			username: $scope.campUsername,
-			        	    clave: $scope.campClave,
-			        	    email: $scope.campEmail
-		        		})).then(
+		        	   
+		        	    
+		        	    
+		        		$http.post('/guardarUsuario.do', $scope.newUser).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
