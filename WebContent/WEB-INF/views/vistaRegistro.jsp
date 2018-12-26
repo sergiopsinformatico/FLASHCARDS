@@ -231,7 +231,7 @@
 		        	    dataObj.append('hasRolModerador', false);
 		        	    dataObj.append('hasRolAdministrador', false);
 		        	    
-		        		$http.post('/createUser.do',dataObj).then(
+		        		$http.post('https://sistemaflashcards.herokuapp.com/createUser.do',dataObj).then(
 				        		function(response) {
 					        		$scope.msg = 'enviado correctamente';
 				        		},
