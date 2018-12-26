@@ -169,45 +169,45 @@
 		        	
 		        	$scope.msg = null;
 		        	$scope.dataObj = {
-	    					username:$scope.campUsername,
-	    					clave:$scope.campClave,
-	    					email:$scope.campEmail,
-	    					nombreApellidos:' ',
-	    					ciudad:' ',
-	    					pais:' ',
-	    					photo:' ',
-	    					hasRolUsuario:true,
-	    					hasRolModerador:false,
-	    					hasRolAdministrador:false				    					
+	    					username : $scope.campUsername,
+	    					clave : $scope.campClave,
+	    					email : $scope.campEmail,
+	    					nombreApellidos : ' ',
+	    					ciudad : ' ',
+	    					pais : ' ',
+	    					photo : ' ',
+	    					hasRolUsuario : true,
+	    					hasRolModerador : false,
+	    					hasRolAdministrador : false				    					
 	    				};
 		        	$scope.funcUsername = function(campUsername){
 		        		$scope.dataObj = {
-		    					username:$scope.campUsername,
-		    					clave:$scope.campClave,
-		    					email:$scope.campEmail,
-		    					nombreApellidos:' ',
-		    					ciudad:' ',
-		    					pais:' ',
-		    					photo:' ',
-		    					hasRolUsuario:true,
-		    					hasRolModerador:false,
-		    					hasRolAdministrador:false				    					
+		    					username : $scope.campUsername,
+		    					clave : $scope.campClave,
+		    					email : $scope.campEmail,
+		    					nombreApellidos : ' ',
+		    					ciudad : ' ',
+		    					pais : ' ',
+		    					photo : ' ',
+		    					hasRolUsuario : true,
+		    					hasRolModerador : false,
+		    					hasRolAdministrador : false				    					
 		    				};
 		        	}
 		        	
 		        	$scope.funcEmail = function(campEmail){
 		        		$scope.dataObj = {
-		    					username:$scope.campUsername,
-		    					clave:$scope.campClave,
-		    					email:$scope.campEmail,
-		    					nombreApellidos:' ',
-		    					ciudad:' ',
-		    					pais:' ',
-		    					photo:' ',
-		    					hasRolUsuario:true,
-		    					hasRolModerador:false,
-		    					hasRolAdministrador:false				    					
-		    				};
+	    					username : $scope.campUsername,
+	    					clave : $scope.campClave,
+	    					email : $scope.campEmail,
+	    					nombreApellidos : ' ',
+	    					ciudad : ' ',
+	    					pais : ' ',
+	    					photo : ' ',
+	    					hasRolUsuario : true,
+	    					hasRolModerador : false,
+	    					hasRolAdministrador : false				    					
+	    				};
 		        	}
 		        	
 		        	$scope.envioDatos = function(){
