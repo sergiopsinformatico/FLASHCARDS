@@ -177,13 +177,16 @@
 			        	$scope.newUser.hasRolModerador = false;
 			        	$scope.newUser.hasRolAdministrador = false;
 		        	    
-		        	    
-		        		$http.post('/guardarUsuario.do', $scope.newUser, {
+			        	/*
+			        	{
 		                    headers : {
 		                    	'Content-Type': 'application/json',
 		                    	'Accept': 'text/plain'
 		                    }
-			            }).then(
+			            }
+			        	*/
+		        	    
+		        		$http.post('/guardarUsuario.do', $scope.newUser).then(
 			        		function (response) {
 				        		$scope.msg = "enviado correctamente";
 			        		},
