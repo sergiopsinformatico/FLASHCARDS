@@ -219,7 +219,7 @@
 		    				}
 		        		})*/
 		        		
-		        		/*var dataObj = new FormData();
+		        		var dataObj = new FormData();
 		        	    dataObj.append('username', $scope.campUsername);
 		        	    dataObj.append('clave', $scope.campClave);
 		        	    dataObj.append('email', $scope.campEmail);
@@ -229,13 +229,13 @@
 		        	    dataObj.append('photo', '');
 		        	    dataObj.append('hasRolUsuario', true);
 		        	    dataObj.append('hasRolModerador', false);
-		        	    dataObj.append('hasRolAdministrador', false);*/
+		        	    dataObj.append('hasRolAdministrador', false);
 		        	    
-		        	    var dataObj = {};
+		        	    /*var dataObj = {};
 		        	    dataObj.username = $scope.campUsername;
 		        	    dataObj.clave = $scope.campClave;
 		        	    dataObj.email = $scope.campEmail;
-		        	    /*dataObj.nombreApellidos = " ";
+		        	    dataObj.nombreApellidos = " ";
 		        	    dataObj.ciudad = " ";
 		        	    dataObj.pais = " ";
 		        	    dataObj.photo = " ";
