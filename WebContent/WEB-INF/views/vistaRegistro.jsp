@@ -164,11 +164,7 @@
 			    var app = angular.module('myApp', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg = null;
-		        	$scope.vacioString = " ";
-		        	$scope.verdad = true;
-		        	$scope.falso = false;
-		        	
+		        	$scope.msg = null;		        	
 		        	$scope.funcUsername = function(campUsername){
 		        		
 		        	}
@@ -193,18 +189,19 @@
 		    					username : $scope.campUsername,
 		    					clave : $scope.campClave,
 		    					email : $scope.campEmail,
-		    					nombreApellidos : $scope.vacioString,
-		    					ciudad : $scope.vacioString,
-		    					pais : $scope.vacioString,
-		    					hasRolUsuario : $scope.verdad,
-		    					hasRolModerador : $scope.falso,
-		    					hasRolAdministrador : $scope.falso				    					
+		    					nombreApellidos : ' ',
+		    					ciudad : ' ',
+		    					pais : ' ',
+		    					photo : ' ',
+		    					hasRolUsuario : true,
+		    					hasRolModerador : false,
+		    					hasRolAdministrador : false				    					
 		    				}).then(
 				        		function(response) {
-					        		$scope.msg = "enviado correctamente";
+					        		$scope.msg = 'enviado correctamente';
 				        		},
 				        		function(response) {
-					        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
+					        		$scope.msg = 'Status Code= ' + response.status + ', Status Text= ' + response.statusText;
 				        		}
 			        		);
 
