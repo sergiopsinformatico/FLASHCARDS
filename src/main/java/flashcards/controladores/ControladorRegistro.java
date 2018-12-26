@@ -42,7 +42,7 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = "application/json", produces="application/json")
 	public String registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {

@@ -168,49 +168,15 @@
 		        	$scope.msg = " ";
 		        	
 		        	$scope.envioDatos = function(){
-		        			
-		        		/*config: header_config*/	        		
-		        		/*$http({
-			        		method: "POST",
-			        		url: "/createUser.do",
-			        		data: datObj,
-		    				headers:{
-		    					"Content-Type" : "application/json"
-		    				}
-		        		})*/
 		        		
-		        		/*var dataObj = new FormData();
-		        	    dataObj.append('username', $scope.campUsername);
-		        	    dataObj.append('clave', $scope.campClave);
-		        	    dataObj.append('email', $scope.campEmail);
-		        	    dataObj.append('nombreApellidos', '');
-		        	    dataObj.append('ciudad', '');
-		        	    dataObj.append('pais', '');
-		        	    dataObj.append('photo', '');
-		        	    dataObj.append('hasRolUsuario', true);
-		        	    dataObj.append('hasRolModerador', false);
-		        	    dataObj.append('hasRolAdministrador', false);*/
-		        	    
-		        	    /*var dataObj = {};
-		        	    dataObj.username = $scope.campUsername;
-		        	    dataObj.clave = $scope.campClave;
-		        	    dataObj.email = $scope.campEmail;
-		        	    dataObj.nombreApellidos = " ";
-		        	    dataObj.ciudad = " ";
-		        	    dataObj.pais = " ";
-		        	    dataObj.photo = " ";
-		        	    dataObj.hasRolUsuario = true;
-		        	    dataObj.hasRolModerador = false;
-		        	    dataObj.hasRolAdministrador = false;*/
-		        	    
-		        	    /*
-		        	    {
+		        		/*
+		        		{
 		                    headers : {
 		                    	'Content-Type': 'application/json',
 		                    	'Accept': 'text/plain'
 		                    }
 			            }
-		        	    */
+		        		*/
 		        	    
 		        	    $scope.newUser.nombreApellidos = " ";
 			        	$scope.newUser.ciudad = " ";
