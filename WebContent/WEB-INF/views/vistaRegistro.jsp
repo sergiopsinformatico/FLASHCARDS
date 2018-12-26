@@ -167,14 +167,6 @@
 		        	
 		        	$scope.msg = " ";
 		        	
-		        	/*$scope.newUser.nombreApellidos = " ";
-		        	$scope.newUser.ciudad = " ";
-		        	$scope.newUser.pais = " ";
-		        	$scope.newUser.photo = " ";
-		        	$scope.newUser.hasRolUsuario = true;
-		        	$scope.newUser.hasRolModerador = false;
-		        	$scope.newUser.hasRolAdministrador = false;*/
-		        	
 		        	$scope.envioDatos = function(){
 		        			
 		        		/*config: header_config*/	        		
@@ -220,7 +212,13 @@
 			            }
 		        	    */
 		        	    
-		        	   
+		        	    $scope.newUser.nombreApellidos = " ";
+			        	$scope.newUser.ciudad = " ";
+			        	$scope.newUser.pais = " ";
+			        	$scope.newUser.photo = " ";
+			        	$scope.newUser.hasRolUsuario = true;
+			        	$scope.newUser.hasRolModerador = false;
+			        	$scope.newUser.hasRolAdministrador = false;
 		        	    
 		        	    
 		        		$http.post('/guardarUsuario.do', $scope.newUser).then(
