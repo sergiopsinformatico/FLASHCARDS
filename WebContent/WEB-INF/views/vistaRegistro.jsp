@@ -169,13 +169,13 @@
 		        	
 		        	$http({
 	        	        method: 'GET',
-	        	        url: 'ejemploGET.do',
+	        	        url: '/ejemploGET.do',
 	        	    }).then(
 		        		function (response) {
 			        		$scope.msg = response.data;
 		        		},
 		        		function (response) {
-			        		$scope.msg = "Error del GET";
+			        		$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
 		        		}
 	        		);
 		        	
