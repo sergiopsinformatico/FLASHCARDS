@@ -195,7 +195,7 @@
 			            }
 			        	*/
 			        	
-			        	/*$scope.msg = " "+angular.toJSON($scope.newUser)+" ";*/
+			        	$scope.msg = JSON.stringify($scope.newUser);
 		        	    
 		        		/*$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
 			        		function (response) {
@@ -209,7 +209,7 @@
 		        		$http({
 		        	        method: "POST",
 		        	        url: '/guardarUsuario.do',
-		        	        data: angular.toJSON($scope.newUser),
+		        	        data: JSON.stringify($scope.newUser),
 		        	        headers: {
 		                        'Content-Type': 'application/json'
 		                    }
