@@ -211,7 +211,7 @@
 		        		);*/
 		        		
 		        		$http({
-		        	        method: "POST",
+		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
 		        	        data: $scope.newUser,
 		        	        headers : {
