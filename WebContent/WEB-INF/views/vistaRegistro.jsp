@@ -167,6 +167,18 @@
 		        	
 		        	$scope.msg = " ";
 		        	
+		        	$http({
+	        	        method: 'GET',
+	        	        url: 'ejemploGET.do',
+	        	    }).then(
+		        		function (response) {
+			        		$scope.msg = response.data;
+		        		},
+		        		function (response) {
+			        		$scope.msg = "Error del GET";
+		        		}
+	        		);
+		        	
 		        	$scope.envioDatos = function(){
 		        	    
 		        	    $scope.newUser.nombreApellidos = '';
@@ -199,7 +211,7 @@
 		        		
 		        		$http({
 		        	        method: 'POST',
-		        	        url: '/guardarUsuario.do',
+		        	        url: 'guardarUsuario.do',
 		        	        data: $scope.newUser,
 		        	        headers: {
 		        	            'Content-type': 'application/json, charset=UTF-8'

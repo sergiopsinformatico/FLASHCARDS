@@ -55,6 +55,12 @@ public class ControladorRegistro {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/ejemploGET")
+	public String ejemploGet() {
+		
+		return "GET SUPERADO!!";
+	}
+	
 	//@RequestParam("usuario") String usuario
 	
 	
