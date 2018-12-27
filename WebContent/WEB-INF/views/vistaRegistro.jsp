@@ -171,7 +171,7 @@
 	        	        method: "GET",
 	        	        url: "/ejemploGET.do",
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.msg = "Llega";
+	        	    	$scope.msg = "Llega correctamente";
 	        	    }, function myError(response) {
 	        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
 	        	    });
