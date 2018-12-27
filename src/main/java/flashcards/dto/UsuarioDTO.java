@@ -3,6 +3,9 @@ package main.java.flashcards.dto;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.springframework.lang.Nullable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 
 
@@ -10,25 +13,23 @@ import javax.xml.bind.annotation.XmlAccessType;
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class UsuarioDTO {
-	@XmlAttribute
 	String username;
-	@XmlAttribute
 	String clave;
-	@XmlAttribute
 	String email;
-	@XmlAttribute
+	
+	@Nullable
 	String nombreApellidos;
-	@XmlAttribute
+	@Nullable
 	String ciudad;
-	@XmlAttribute
+	@Nullable
 	String pais;
-	@XmlAttribute
+	@Nullable
 	String photo;
-	@XmlAttribute
+	@Nullable
 	boolean hasRolUsuario;
-	@XmlAttribute
+	@Nullable
 	boolean hasRolModerador;
-	@XmlAttribute
+	@Nullable
 	boolean hasRolAdministrador;
 	
 	public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
