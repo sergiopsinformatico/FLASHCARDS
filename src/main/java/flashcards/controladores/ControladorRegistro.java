@@ -44,9 +44,9 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	@ResponseBody
-	public String registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public String registrarUsuarioPost(@RequestBody Gson user) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
@@ -57,7 +57,7 @@ public class ControladorRegistro {
 		return "Correct POST";
 	}
 	
-	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	@ResponseBody
 	public String ejemploGet() {
 		return "Get Superado";
