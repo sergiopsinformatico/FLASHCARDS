@@ -218,7 +218,7 @@
 				        		$scope.msg = $scope.msg + " - enviado correctamente";
 			        		},
 			        		function (response) {
-				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
+				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
