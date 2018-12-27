@@ -43,14 +43,15 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
-	public String registrarUsuarioPost(@RequestBody Gson json) {
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces={"application/json;charset=UTF-8"})
+	public String registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
 		}else {
 			return "Registro erroneo";
-		}*/		
+		}*/
+		
 		return "Registro OK!";
 	}
 	

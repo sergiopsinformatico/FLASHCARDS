@@ -188,7 +188,7 @@
 			        	
 			        	$scope.msg = $scope.newUser.username;
 		        	    
-		        		$http.post('/guardarUsuario.do', JSON.stringify($scope.newUser)).then(
+		        		$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
 			        		function (response) {
 				        		$scope.msg = $scope.msg + " - enviado correctamente";
 			        		},
