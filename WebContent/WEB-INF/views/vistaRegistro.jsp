@@ -170,14 +170,11 @@
 		        	$http({
 	        	        method: 'GET',
 	        	        url: '/ejemploGET.do',
-	        	    }).then(
-		        		function (response) {
-			        		$scope.msg = response.data;
-		        		},
-		        		function (response) {
-			        		$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
-		        		}
-	        		);
+	        	    }).then(function mySuccess(response) {
+	        	    	$scope.msg = response.data;
+	        	    }, function myError(response) {
+	        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
+	        	    });
 		        	
 		        	$scope.envioDatos = function(){
 		        	    
