@@ -169,7 +169,7 @@
 		        	
 		        	$http({
 	        	        method: "GET",
-	        	        url: "/ejemploGETo",
+	        	        url: "sistemaflashcards.herokuapp.com/ejemploGET",
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente";
 		        	    }, function myError(response) {
