@@ -169,9 +169,9 @@
 		        	
 		        	$http({
 	        	        method: "GET",
-	        	        url: "https://sistemaflashcards.herokuapp.com/ejemploGET.do",
+	        	        url: "/ejemploGET.do",
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.msg = response.data;
+	        	    	$scope.msg = "Llega";
 	        	    }, function myError(response) {
 	        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
 	        	    });

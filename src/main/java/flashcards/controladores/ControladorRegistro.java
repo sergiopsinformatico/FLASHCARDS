@@ -56,10 +56,10 @@ public class ControladorRegistro {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@GetMapping(value = "ejemploGET")
-	public ResponseEntity<String> ejemploGet() {
+	@RequestMapping(value = "ejemploGET", method = RequestMethod.GET, produces = { "application/json", "application/xml" }, consumes= {"text/html"})
+	public String ejemploGet() {
 		
-		return new ResponseEntity<String>("Get Superado", HttpStatus.CREATED);
+		return "Get Superado";
 	}
 	
 	//@RequestParam("usuario") String usuario
