@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import main.java.flashcards.brokers.Broker;
@@ -43,16 +44,13 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
-	public String registrarUsuarioPost(@RequestBody Object objeto) {
+	public String registrarUsuarioPost(@RequestBody Gson json) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
 		}else {
 			return "Registro erroneo";
-		}*/
-		
-		UsuarioDTO user = (UsuarioDTO) objeto;
-		
+		}*/		
 		return "Registro OK!";
 	}
 	
