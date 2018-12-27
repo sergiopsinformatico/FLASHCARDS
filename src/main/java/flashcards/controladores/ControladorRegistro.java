@@ -47,7 +47,7 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public String registrarUsuarioPost(@RequestBody String user) {
+	public void registrarUsuarioPost(@RequestBody UsuarioDTO user, HttpServletRequest request, HttpServletResponse response) {
 		
 		//Broker.getInstanciaUsuario().insertUsuario(user);
 		
@@ -58,7 +58,6 @@ public class ControladorRegistro {
 			return "Registro erroneo";
 		}*/
 		
-		return "Registro OK!";
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
