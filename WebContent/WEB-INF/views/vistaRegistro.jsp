@@ -169,7 +169,7 @@
 		        	
 		        	$http({
 	        	        method: 'GET',
-	        	        url: '/ejemploGET'
+	        	        url: '/ejemploGET.do'
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente - " + response.data;
 		        	    }, function myError(response) {
@@ -208,7 +208,7 @@
 		        		
 		        		$http({
 		        	        method: "POST",
-		        	        url: '/guardarUsuario',
+		        	        url: '/guardarUsuario.do',
 		        	        data: angular.toJson($scope.newUser),
 		        	        headers: {
 		                        'Content-Type': 'application/json'
