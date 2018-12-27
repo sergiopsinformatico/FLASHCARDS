@@ -169,10 +169,10 @@
 		        	
 		        	$scope.envioDatos = function(){
 		        	    
-		        	    $scope.newUser.nombreApellidos = " ";
-			        	$scope.newUser.ciudad = " ";
-			        	$scope.newUser.pais = " ";
-			        	$scope.newUser.photo = " ";
+		        	    $scope.newUser.nombreApellidos = '';
+			        	$scope.newUser.ciudad = '';
+			        	$scope.newUser.pais = '';
+			        	$scope.newUser.photo = '';
 			        	$scope.newUser.hasRolUsuario = true;
 			        	$scope.newUser.hasRolModerador = false;
 			        	$scope.newUser.hasRolAdministrador = false;
