@@ -60,7 +60,7 @@ public class ControladorRegistro {
 		
 	}
 	
-	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.TEXT_PLAIN_VALUE })
 	@ResponseBody
 	public String ejemploGet() {
 		return "Get Superado";

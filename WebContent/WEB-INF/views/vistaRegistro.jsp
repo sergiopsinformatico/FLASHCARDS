@@ -169,7 +169,12 @@
 		        	
 		        	$http({
 	        	        method: 'GET',
-	        	        url: '/ejemploGET.do'
+	        	        url: '/ejemploGET.do',{
+		                    headers : {
+		                    	'Content-Type': 'text/plain',
+		                    	'Accept': 'text/plain'
+		                    }
+			            }
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente - " + response.data;
 		        	    }, function myError(response) {
