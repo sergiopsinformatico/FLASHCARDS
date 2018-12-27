@@ -185,13 +185,15 @@
 		                    }
 			            }
 			        	*/
+			        	
+			        	$scope.msg = $scope.newUser;
 		        	    
 		        		$http.post('/guardarUsuario.do', $scope.newUser).then(
 			        		function (response) {
-				        		$scope.msg = "enviado correctamente";
+				        		$scope.msg = $scope.msg + " - enviado correctamente";
 			        		},
 			        		function (response) {
-				        		$scope.msg = "Status Code= " + response.status + ", Status Text= " + response.statusText;
+				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
 		        		);
 
