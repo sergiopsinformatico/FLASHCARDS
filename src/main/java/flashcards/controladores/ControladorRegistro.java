@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,9 +45,9 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.TEXT_PLAIN_VALUE})
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public String registrarUsuarioPost(@RequestBody Gson json) {
+	public String registrarUsuarioPost(@ModelAttribute @RequestBody UsuarioDTO user) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
