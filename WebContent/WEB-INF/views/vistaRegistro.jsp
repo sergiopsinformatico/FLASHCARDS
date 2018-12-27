@@ -169,12 +169,12 @@
 		        	
 		        	$http({
 	        	        method: "GET",
-	        	        url: "/ejemploGET.do",
+	        	        url: "/ejemploGET",
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente";
-	        	    }, function myError(response) {
-	        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
-	        	    });
+		        	    }, function myError(response) {
+		        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
+		        	    });
 		        	
 		        	$scope.envioDatos = function(){
 		        	    
