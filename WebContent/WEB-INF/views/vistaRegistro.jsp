@@ -209,7 +209,7 @@
 		        		$http({
 		        	        method: "POST",
 		        	        url: '/guardarUsuario.do',
-		        	        data: angular.toJson($scope.newUser),
+		        	        data: $scope.newUser,
 		        	        headers: {
 		                        'Content-Type': 'application/json'
 		                    }
