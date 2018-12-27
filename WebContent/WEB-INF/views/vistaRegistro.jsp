@@ -168,8 +168,8 @@
 		        	$scope.msg = " ";
 		        	
 		        	$http({
-	        	        method: 'GET',
-	        	        url: '/ejemploGET.do',
+	        	        method: "GET",
+	        	        url: "/ejemploGET.do",
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = response.data;
 	        	    }, function myError(response) {
