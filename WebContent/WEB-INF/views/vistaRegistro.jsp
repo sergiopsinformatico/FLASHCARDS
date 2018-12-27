@@ -168,12 +168,12 @@
 		        	$scope.msg = " ";
 		        	
 		        	$http({
-	        	        method: "GET",
-	        	        url: "sistemaflashcards.herokuapp.com/ejemploGET",
+	        	        method: 'GET',
+	        	        url: '/ejemploGET'
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.msg = "Llega correctamente";
+	        	    	$scope.msg = "Llega correctamente - " + response.data;
 		        	    }, function myError(response) {
-		        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText;
+		        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 		        	    });
 		        	
 		        	$scope.envioDatos = function(){
@@ -207,12 +207,12 @@
 		        		);*/
 		        		
 		        		$http({
-		        	        method: 'POST',
-		        	        url: 'guardarUsuario.do',
-		        	        data: $scope.newUser,
+		        	        method: "POST",
+		        	        url: '/guardarUsuario',
+		        	        data: angular.toJson($scope.newUser),
 		        	        headers: {
-		        	            'Content-type': 'application/json, charset=UTF-8'
-		        	        }
+		                        'Content-Type': 'application/json'
+		                    }
 		        	    }).then(
 			        		function (response) {
 				        		$scope.msg = $scope.msg + " - enviado correctamente";

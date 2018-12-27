@@ -44,8 +44,9 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {"application/json"}, produces={"application/json"})
-	public ResponseEntity<Void> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@ResponseBody
+	public String registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			return "Registro correcto";
@@ -53,12 +54,12 @@ public class ControladorRegistro {
 			return "Registro erroneo";
 		}*/
 		
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return "Correct POST";
 	}
 	
-	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { "application/json", "application/xml" }, consumes= {"text/html"})
+	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@ResponseBody
 	public String ejemploGet() {
-		
 		return "Get Superado";
 	}
 	
