@@ -188,7 +188,23 @@
 			        	
 			        	$scope.msg = $scope.newUser.username;
 		        	    
-		        		$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
+		        		/*$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
+			        		function (response) {
+				        		$scope.msg = $scope.msg + " - enviado correctamente";
+			        		},
+			        		function (response) {
+				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
+			        		}
+		        		);*/
+		        		
+		        		$http({
+		        	        method: 'POST',
+		        	        url: '/guardarUsuario.do',
+		        	        data: $scope.newUser,
+		        	        headers: {
+		        	            'Content-type': 'application/json, charset=UTF-8'
+		        	        }
+		        	    }).then(
 			        		function (response) {
 				        		$scope.msg = $scope.msg + " - enviado correctamente";
 			        		},
