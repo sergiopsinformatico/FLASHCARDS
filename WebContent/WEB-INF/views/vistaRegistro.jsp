@@ -195,7 +195,7 @@
 			            }
 			        	*/
 			        	
-			        	$scope.msg = " "+angular.toJSON($scope.newUser)+" ";
+			        	/*$scope.msg = " "+angular.toJSON($scope.newUser)+" ";*/
 		        	    
 		        		/*$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
 			        		function (response) {
