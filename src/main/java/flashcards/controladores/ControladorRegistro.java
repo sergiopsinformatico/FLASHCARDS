@@ -55,7 +55,7 @@ public class ControladorRegistro {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/ejemploGET")
+	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET)
 	public String ejemploGet() {
 		
 		return "GET SUPERADO!!";
