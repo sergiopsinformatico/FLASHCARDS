@@ -209,10 +209,10 @@
 		        		$http({
 		        	        method: "POST",
 		        	        url: '/guardarUsuario.do',
-		        	        data: $scope.newUser,
+		        	        data: $scope.newUser/*,
 		        	        headers: {
-		                        'Content-Type': 'application/json'
-		                    }
+		                        "Content-Type": "application/json"
+		                    }*/
 		        	    }).then(
 			        		function (response) {
 				        		$scope.msg = $scope.msg + " - enviado correctamente";
