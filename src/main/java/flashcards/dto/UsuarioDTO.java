@@ -1,7 +1,10 @@
 package main.java.flashcards.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class UsuarioDTO {
-	
+
 	String username;
 	String clave;
 	String email;
