@@ -169,7 +169,7 @@
 		        	
 		        	$http({
 	        	        method: "GET",
-	        	        url: "/ejemploGET",
+	        	        url: "/ejemploGETo",
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente";
 		        	    }, function myError(response) {
