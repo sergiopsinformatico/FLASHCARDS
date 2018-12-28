@@ -216,8 +216,7 @@
 		        	            "clave" : $scope.claveUser
 		        	        },
 		        	        headers : {
-		                    	'Content-Type': 'application/json; charset=utf-8',
-		                    	'Accept': 'text/plain'
+		                    	'Content-Type': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
