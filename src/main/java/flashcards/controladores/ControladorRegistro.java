@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
-@Controller
+@RestController
 public class ControladorRegistro {
-	
-	@Autowired UsuarioDTO user;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
