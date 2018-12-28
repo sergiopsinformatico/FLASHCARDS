@@ -212,8 +212,8 @@
 		        	        url: '/guardarUsuario.do',
 		        	        data: {
 		        	            "username" : $scope.usernameUser,
-		        	            "email" : $scope.emailUser,
-		        	            "clave" : $scope.claveUser
+		        	            "clave" : $scope.claveUser,
+		        	            "email" : $scope.emailUser
 		        	        },
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
