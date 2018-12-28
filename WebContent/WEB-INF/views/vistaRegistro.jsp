@@ -214,8 +214,8 @@
 		        	            username : $scope.usernameUser,
 		        	            clave : $scope.emailUser,
 		        	            email : $scope.claveUser
-		        	    	};
-		        	        /*,
+		        	    	}
+		        	        /*
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }*/
