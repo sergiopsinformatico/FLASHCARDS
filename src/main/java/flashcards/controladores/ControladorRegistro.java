@@ -34,7 +34,7 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public ResponseEntity<String> registrarUsuarioPost(@RequestBody String json) {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody JSONObject obj) {
 		//try {
 			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
@@ -53,7 +53,7 @@ public class ControladorRegistro {
 			user.setEmail("correo");
 			user.setClave("clave");
 			Broker.getInstanciaUsuario().insertUsuario(user);
-			return new ResponseEntity<String>(json, HttpStatus.OK);
+			return new ResponseEntity<String>(obj.toString(), HttpStatus.OK);
 			
 		/*} catch (Exception e) {
 			return "Registro erroneo";
