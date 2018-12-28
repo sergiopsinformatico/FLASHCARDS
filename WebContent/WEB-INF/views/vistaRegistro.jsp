@@ -206,7 +206,7 @@
 				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
 		        		);*/
-		        		var datoEnvia = {
+		        		var datoEnvia = [
 		        	            username : "uk",
 		        	            clave : "uk",
 		        	            email : "uk",
@@ -217,22 +217,22 @@
 		        	            hasRolUsuario : true,
 		        	            hasRolModerador : false,
 		        	            hasRolAdministrador : false
-		        	        };
+		        	        ];
 		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: datoEnvia
+		        	        data: JSON.stringify(datoEnvia)
 		        	        /*,
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }*/
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - enviado correctamente";
+				        		$scope.msg = JSON.stringify(datoEnvia) + " - enviado correctamente";
 			        		},
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = JSON.stringify(datoEnvia) + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
