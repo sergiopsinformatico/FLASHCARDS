@@ -45,11 +45,11 @@ public class ControladorRegistro {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.ALL_VALUE})
 	@ResponseBody
 	public void registrarUsuarioPost(@RequestBody UsuarioDTO user, HttpServletRequest request, HttpServletResponse response) {
 		
-		//Broker.getInstanciaUsuario().insertUsuario(user);
+		Broker.getInstanciaUsuario().insertUsuario(user);
 		
 		//Broker.getInstanciaUsuario().insertUsuario(user);
 		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
