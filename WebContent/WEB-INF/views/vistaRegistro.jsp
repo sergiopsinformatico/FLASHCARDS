@@ -211,9 +211,9 @@
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
 		        	        data: {
-		        	            {"username" : $scope.usernameUser,
-		        	            "clave" : $scope.claveUser,
-		        	            "email" : $scope.emailUser}
+		        	            username : $scope.usernameUser,
+		        	            clave : $scope.claveUser,
+		        	            email : $scope.emailUser
 		        	        },
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
