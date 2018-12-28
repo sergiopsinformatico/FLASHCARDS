@@ -123,15 +123,15 @@
 				        <small>{{msg}}</small>
 				        <div class="form-group">
 				        	<!-- ng-change="funcUsername(newUser.username)" -->
-				            <input type="text" class="form-control" id="inputUsername" ng-model="newUser.username" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="usernameUser" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="newUser.email" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="emailUser" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="newUser.clave" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="claveUser" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
@@ -197,10 +197,7 @@
 		                    	'Accept': 'text/plain'
 		                    }
 			            }
-			        	*/
-			        	
-			        	$scope.msg = JSON.stringify($scope.newUser);
-		        	    
+			        	*/		        	    
 		        		/*$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
 			        		function (response) {
 				        		$scope.msg = $scope.msg + " - enviado correctamente";
@@ -213,9 +210,13 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: $scope.newUser,
+		        	        data: {
+		        	            "username" : $scope.usernameUser,
+		        	            "email" : $scope.emailUser,
+		        	            "clave" : $scope.claveUser
+		        	        },
 		        	        headers : {
-		                    	'Content-Type': 'application/json',
+		                    	'Content-Type': 'application/json; charset=utf-8',
 		                    	'Accept': 'text/plain'
 		                    }
 		        	    }).then(
