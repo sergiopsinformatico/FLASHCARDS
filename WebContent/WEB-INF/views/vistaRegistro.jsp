@@ -206,23 +206,15 @@
 				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
 		        		);*/
-		        		var datoEnvia = [{
-		        	            username : "uk",
-		        	            clave : "uk",
-		        	            email : "uk",
-		        	            nombreApellidos : "uk",
-		        	            ciudad : "uk",
-		        	            pais : "uk",
-		        	            photo : "uk",
-		        	            hasRolUsuario : true,
-		        	            hasRolModerador : false,
-		        	            hasRolAdministrador : false
-		        	    }];
 		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: JSON.stringify(datoEnvia)
+		        	        data: {
+		        	            username : $scope.usernameUser,
+		        	            clave : $scope.emailUser,
+		        	            email : $scope.claveUser
+		        	    	};
 		        	        /*,
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
