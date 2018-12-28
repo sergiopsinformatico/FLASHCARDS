@@ -213,14 +213,7 @@
 		        	        data: {
 		        	            "username" : $scope.usernameUser,
 		        	            "clave" : $scope.claveUser,
-		        	            "email" : $scope.emailUser,
-		        	            "nombreApellidos" : null,
-		        	            "ciudad" : null,
-		        	            "pais" : null,
-		        	            "photo" : null,
-		        	            "hasRolUsuario" : null,
-		        	            "hasRolModerador" : null,
-		        	            "hasRolAdministrador" : null
+		        	            "email" : $scope.emailUser
 		        	        },
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
