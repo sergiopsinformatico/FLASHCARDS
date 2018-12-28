@@ -212,7 +212,14 @@
 		        		var datoEnvia = {
 	        				username : $scope.usernameUser,
 	        				clave : $scope.claveUser,
-	        				email : $scope.emailUser
+	        				email : $scope.emailUser,
+	        				nombreApellidos : $scope.emailUser,
+	        				ciudad : $scope.emailUser,
+	        				pais : $scope.emailUser,
+	        				photo : $scope.emailUser,
+	        				hasRolUsuario : true,
+	        				hasRolModerador : false,
+	        				hasRolAdministrador : false
 		        		};
 		        		
 		        		$http({
