@@ -206,7 +206,7 @@
 				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
 			        		}
 		        		);*/
-		        		var datoEnvia = [
+		        		var datoEnvia = [{
 		        	            username : "uk",
 		        	            clave : "uk",
 		        	            email : "uk",
@@ -217,7 +217,7 @@
 		        	            hasRolUsuario : true,
 		        	            hasRolModerador : false,
 		        	            hasRolAdministrador : false
-		        	        ];
+		        	    }];
 		        		
 		        		$http({
 		        	        method: 'POST',
