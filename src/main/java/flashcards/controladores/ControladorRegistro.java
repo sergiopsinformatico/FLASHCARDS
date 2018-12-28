@@ -34,18 +34,22 @@ public class ControladorRegistro {
 	@ResponseBody
 	public String registrarUsuarioPost(@RequestBody String json) {
 		try {
-			JSONObject obj = new JSONObject(json);
+			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
-			user.setUsername(obj.getString("username"));
-			user.setClave(obj.getString("clave"));
-			user.setEmail(obj.getString("email"));
+			user.setUsername(""+obj.getString("username"));
+			user.setClave(""+obj.getString("clave"));
+			user.setEmail(""+obj.getString("email"));
 			user.setNombreApellidos("");
 			user.setCiudad("");
 			user.setPais("");
 			user.setPhoto("");
 			user.setRolAdministrador(false);
 			user.setRolModerador(false);
-			user.setRolUsuario(true);
+			user.setRolUsuario(true);*/
+			UsuarioDTO user = new UsuarioDTO();
+			user.setUsername("prueba"+json+" - ");
+			user.setEmail("correo");
+			user.setClave("clave");
 			if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 				return "Registro correcto";
 			}else {
