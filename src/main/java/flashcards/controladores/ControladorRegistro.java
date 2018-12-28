@@ -47,7 +47,7 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public void registrarUsuarioPost(@RequestBody UsuarioDTO user, HttpServletRequest request, HttpServletResponse response) {
+	public void registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		
 		Broker.getInstanciaUsuario().insertUsuario(user);
 		
