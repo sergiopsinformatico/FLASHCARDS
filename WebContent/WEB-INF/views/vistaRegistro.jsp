@@ -207,16 +207,16 @@
 			        		}
 		        		);*/
 		        		var datoEnvia = {
-		        	            "username" : "uk",
-		        	            "clave" : "uk",
-		        	            "email" : "uk",
-		        	            "nombreApellidos" : "uk",
-		        	            "ciudad" : "uk",
-		        	            "pais" : "uk",
-		        	            "photo" : "uk",
-		        	            "hasRolUsuario" : true,
-		        	            "hasRolModerador" : false,
-		        	            "hasRolAdministrador" : false
+		        	            username : "uk",
+		        	            clave : "uk",
+		        	            email : "uk",
+		        	            nombreApellidos : "uk",
+		        	            ciudad : "uk",
+		        	            pais : "uk",
+		        	            photo : "uk",
+		        	            hasRolUsuario : true,
+		        	            hasRolModerador : false,
+		        	            hasRolAdministrador : false
 		        	        };
 		        		
 		        		$http({
@@ -229,10 +229,10 @@
 		                    }*/
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = $scope.msg + " - enviado correctamente";
+				        		$scope.msg = datoEnvia + " - enviado correctamente";
 			        		},
 			        		function (response) {
-				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
