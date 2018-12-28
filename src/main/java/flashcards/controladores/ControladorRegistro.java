@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +34,8 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public String registrarUsuarioPost(@RequestBody String json) {
-		try {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody String json) {
+		//try {
 			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
 			user.setUsername(""+obj.getString("username"));
@@ -47,18 +49,15 @@ public class ControladorRegistro {
 			user.setRolModerador(false);
 			user.setRolUsuario(true);*/
 			UsuarioDTO user = new UsuarioDTO();
-			user.setUsername("prueba"+json+" - ");
+			user.setUsername("prueba");
 			user.setEmail("correo");
 			user.setClave("clave");
-			if(Broker.getInstanciaUsuario().insertUsuario(user)) {
-				return "Registro correcto";
-			}else {
-				return "Registro erroneo";
-			}
+			Broker.getInstanciaUsuario().insertUsuario(user);
+			return new ResponseEntity<String>(json, HttpStatus.OK);
 			
-		} catch (Exception e) {
+		/*} catch (Exception e) {
 			return "Registro erroneo";
-		}
+		}*/
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.TEXT_PLAIN_VALUE })
