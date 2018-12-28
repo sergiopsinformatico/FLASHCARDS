@@ -218,10 +218,10 @@
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = JSON.stringify(datoEnvia) + " - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = datoEnvia + " - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = JSON.stringify(datoEnvia) + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
