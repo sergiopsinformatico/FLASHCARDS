@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,9 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorRegistro {
-
+	
+	@Autowired UsuarioDTO user;
+	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
 		/*broker = new Broker();
@@ -32,9 +35,9 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
-	public ResponseEntity<String> registrarUsuarioPost(@RequestBody JSONObject obj) {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		//try {
 			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
@@ -48,12 +51,12 @@ public class ControladorRegistro {
 			user.setRolAdministrador(false);
 			user.setRolModerador(false);
 			user.setRolUsuario(true);*/
-			UsuarioDTO user = new UsuarioDTO();
+			/*UsuarioDTO user = new UsuarioDTO();
 			user.setUsername("prueba");
 			user.setEmail("correo");
-			user.setClave("clave");
+			user.setClave("clave");*/
 			Broker.getInstanciaUsuario().insertUsuario(user);
-			return new ResponseEntity<String>(obj.toString(), HttpStatus.OK);
+			return new ResponseEntity<String>(user.getUsername(), HttpStatus.OK);
 			
 		/*} catch (Exception e) {
 			return "Registro erroneo";

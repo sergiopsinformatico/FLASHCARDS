@@ -1,5 +1,9 @@
 package main.java.flashcards.dto;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class UsuarioDTO {
 	String username;
 	String clave;
@@ -20,15 +24,17 @@ public class UsuarioDTO {
 		setRolModerador(isModerador);
 		setRolAdministrador(isAdministrador);
 	}*/
-
+	
+	@XmlAttribute
 	public String getUsername() {
 		return this.username;
 	}
-
+	
 	public void setUsername(String usuario) {
 		this.username = usuario;
 	}
-
+	
+	@XmlAttribute
 	public String getClave() {
 		return this.clave;
 	}
@@ -36,7 +42,8 @@ public class UsuarioDTO {
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
-
+	
+	@XmlAttribute
 	public String getEmail() {
 		return this.email;
 	}
@@ -44,7 +51,8 @@ public class UsuarioDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	@XmlAttribute
 	public String getNombreApellidos() {
 		return this.nombreApellidos;
 	}
@@ -52,7 +60,8 @@ public class UsuarioDTO {
 	public void setNombreApellidos(String nombreApellidos) {
 		this.nombreApellidos = nombreApellidos;
 	}
-
+	
+	@XmlAttribute
 	public String getCiudad() {
 		return this.ciudad;
 	}
@@ -60,7 +69,8 @@ public class UsuarioDTO {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-
+	
+	@XmlAttribute
 	public String getPais() {
 		return this.pais;
 	}
@@ -69,6 +79,7 @@ public class UsuarioDTO {
 		this.pais = pais;
 	}
 	
+	@XmlAttribute
 	public String getPhoto() {
 		return this.photo;
 	}
@@ -77,6 +88,7 @@ public class UsuarioDTO {
 		this.photo = photo;
 	}
 	
+	@XmlAttribute
 	public boolean isRolUsuario() {
 		return this.hasRolUsuario;
 	}
@@ -84,7 +96,8 @@ public class UsuarioDTO {
 	public void setRolUsuario(boolean isUsuario) {
 		this.hasRolUsuario = isUsuario;
 	}
-
+	
+	@XmlAttribute
 	public boolean isRolModerador() {
 		return this.hasRolModerador;
 	}
@@ -92,7 +105,8 @@ public class UsuarioDTO {
 	public void setRolModerador(boolean isModerador) {
 		this.hasRolModerador = isModerador;
 	}
-
+	
+	@XmlAttribute
 	public boolean isRolAdministrador() {
 		return this.hasRolAdministrador;
 	}

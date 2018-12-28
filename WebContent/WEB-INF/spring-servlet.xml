@@ -10,6 +10,8 @@
 
     <context:component-scan base-package="main.java.flashcards" />
     
+    <bean id="user" class="main.java.flashcards.dto.UsuarioDTO"/>
+    
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/views/" />
