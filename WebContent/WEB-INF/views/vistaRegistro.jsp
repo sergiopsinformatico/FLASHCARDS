@@ -214,11 +214,10 @@
 		        	            username : $scope.usernameUser,
 		        	            clave : $scope.emailUser,
 		        	            email : $scope.claveUser
-		        	    	}
-		        	        /*
+		        	    	},
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
-		                    }*/
+		                    }
 		        	    }).then(
 			        		function (response) {
 				        		$scope.msg = JSON.stringify(datoEnvia) + " - enviado correctamente";
