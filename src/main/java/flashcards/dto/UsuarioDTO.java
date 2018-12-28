@@ -8,9 +8,9 @@ import org.springframework.lang.Nullable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 
-
+/*
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)*/
 
 public class UsuarioDTO {
 	String username;
@@ -32,14 +32,14 @@ public class UsuarioDTO {
 	@Nullable
 	boolean hasRolAdministrador;
 	
-	public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
+	/*public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsername(usuario);
 		setClave(clave);
 		setEmail(email);
 		setRolUsuario(isUsuario);
 		setRolModerador(isModerador);
 		setRolAdministrador(isAdministrador);
-	}
+	}*/
 
 	public String getUsername() {
 		return this.username;

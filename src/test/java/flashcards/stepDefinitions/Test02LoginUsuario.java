@@ -10,15 +10,20 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class Test02LoginUsuario {
 	
 	UsuarioDTO user;
-	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	boolean loguea;
 	
 	@Given("^Una persona quiere loguearse$")
 	public void una_persona_quiere_loguearse() throws Throwable {
-		broker = new Broker();
-		dBUsuario = broker.getInstanciaUsuario();
-	    user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
+		dBUsuario = Broker.getInstanciaUsuario();
+		user = new UsuarioDTO();
+		user.setUsername("Sergio123");
+		user.setClave("sergio1");
+		user.setEmail("sergio13_yo@hotmail.com");
+		user.setRolUsuario(true);
+		user.setRolModerador(false);
+		user.setRolAdministrador(false);
+		//user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
 	    assert(true);
 	}
 

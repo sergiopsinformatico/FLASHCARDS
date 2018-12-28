@@ -11,14 +11,19 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class Test05EliminarPerfil {
 	
 	UsuarioDTO user;
-	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	
 	@Given("^Una persona quiere eliminar su perfil$")
 	public void una_persona_quiere_eliminar_su_perfil() throws Throwable {
-		broker = new Broker();
-		dBUsuario = broker.getInstanciaUsuario();
-		user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
+		dBUsuario = Broker.getInstanciaUsuario();
+		user = new UsuarioDTO();
+		user.setUsername("Sergio123");
+		user.setClave("sergio1");
+		user.setEmail("sergio13_yo@hotmail.com");
+		user.setRolUsuario(true);
+		user.setRolModerador(false);
+		user.setRolAdministrador(false);
+		//user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}
 
