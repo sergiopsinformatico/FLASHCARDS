@@ -2,23 +2,25 @@ package main.java.flashcards.dto;
 
 import org.springframework.lang.Nullable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UsuarioDTO {
 	String username;
 	String clave;
 	String email;
-	@Nullable
+	@JsonIgnore
 	String nombreApellidos;
-	@Nullable
+	@JsonIgnore
 	String ciudad;
-	@Nullable
+	@JsonIgnore
 	String pais;
-	@Nullable
+	@JsonIgnore
 	String photo;
-	@Nullable
+	@JsonIgnore
 	boolean hasRolUsuario;
-	@Nullable
+	@JsonIgnore
 	boolean hasRolModerador;
-	@Nullable
+	@JsonIgnore
 	boolean hasRolAdministrador;
 	
 	/*public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
