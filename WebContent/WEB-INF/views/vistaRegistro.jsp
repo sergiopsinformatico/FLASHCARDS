@@ -214,7 +214,7 @@
 		        	        url: '/guardarUsuario.do',
 		        	        data: datoEnvia,
 		        	        headers : {
-		                    	'Content-Type': 'application/json'
+		                    	'Content-Type': 'text/plain'
 		                    }
 		        	    }).then(
 			        		function (response) {
