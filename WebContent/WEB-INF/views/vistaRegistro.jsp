@@ -207,14 +207,20 @@
 			        		}
 		        		);*/
 		        		
-		        		var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
+		        		//var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
+		        		
+		        		var datoEnvia = {
+	        				username : $scope.usernameUser,
+	        				clave : $scope.claveUser,
+	        				email : $scope.emailUser
+		        		};
 		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
 		        	        data: datoEnvia,
 		        	        headers : {
-		                    	'Content-Type': 'text/plain'
+		                    	'Content-Type': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
