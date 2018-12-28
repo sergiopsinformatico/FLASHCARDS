@@ -216,7 +216,7 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: JSON.stringify(datoEnvia),
+		        	        data: datoEnvia,
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }
