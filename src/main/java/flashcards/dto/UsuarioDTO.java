@@ -1,15 +1,24 @@
 package main.java.flashcards.dto;
 
+import javax.annotation.Nullable;
+
 public class UsuarioDTO {
 	String username;
 	String clave;
 	String email;
+	@Nullable
 	String nombreApellidos;
+	@Nullable
 	String ciudad;
+	@Nullable
 	String pais;
+	@Nullable
 	String photo;
+	@Nullable
 	boolean hasRolUsuario;
+	@Nullable
 	boolean hasRolModerador;
+	@Nullable
 	boolean hasRolAdministrador;
 	
 	/*public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {

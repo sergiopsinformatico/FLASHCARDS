@@ -214,13 +214,13 @@
 		        	            "username" : $scope.usernameUser,
 		        	            "clave" : $scope.claveUser,
 		        	            "email" : $scope.emailUser,
-		        	            "nombreApellidos" : uk,
-		        	            "ciudad" : uk,
-		        	            "pais" : uk,
-		        	            "photo" : uk,
-		        	            "hasRolUsuario" : true,
-		        	            "hasRolModerador" : false,
-		        	            "hasRolAdministrador" : false
+		        	            "nombreApellidos" : null,
+		        	            "ciudad" : null,
+		        	            "pais" : null,
+		        	            "photo" : null,
+		        	            "hasRolUsuario" : null,
+		        	            "hasRolModerador" : null,
+		        	            "hasRolAdministrador" : null
 		        	        },
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
