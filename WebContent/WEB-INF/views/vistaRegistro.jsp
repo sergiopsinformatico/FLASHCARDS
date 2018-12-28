@@ -218,16 +218,16 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: datoEnvia,
+		        	        data: JSON.stringify(datoEnvia,null,"    "),
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = JSON.stringify(datoEnvia,null,"    ") + " - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = JSON.stringify(datoEnvia,null,"    ") + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
