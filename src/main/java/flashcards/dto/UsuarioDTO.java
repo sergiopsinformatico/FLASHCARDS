@@ -1,16 +1,33 @@
 package main.java.flashcards.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UsuarioDTO {
-	String username;
-	String clave;
-	String email;
-	String nombreApellidos;
-	String ciudad;
-	String pais;
-	String photo;
-	boolean hasRolUsuario;
-	boolean hasRolModerador;
-	boolean hasRolAdministrador;
+	@XmlAttribute
+	private String username;
+	@XmlAttribute
+	private String clave;
+	@XmlAttribute
+	private String email;
+	@XmlAttribute
+	private String nombreApellidos;
+	@XmlAttribute
+	private String ciudad;
+	@XmlAttribute
+	private String pais;
+	@XmlAttribute
+	private String photo;
+	@XmlAttribute
+	private boolean hasRolUsuario;
+	@XmlAttribute
+	private boolean hasRolModerador;
+	@XmlAttribute
+	private boolean hasRolAdministrador;
 	
 	/*public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsername(usuario);
