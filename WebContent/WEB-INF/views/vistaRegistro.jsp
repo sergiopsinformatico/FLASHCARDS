@@ -207,11 +207,7 @@
 			        		}
 		        		);*/
 		        		
-		        		var datoEnvia = {
-	        	            username : $scope.usernameUser,
-	        	            clave : $scope.emailUser,
-	        	            email : $scope.claveUser
-	        	    	};
+		        		var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
 		        		
 		        		$http({
 		        	        method: 'POST',

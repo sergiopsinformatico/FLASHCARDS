@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
-@RestController
+@Controller
 public class ControladorRegistro {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
@@ -34,9 +31,9 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
-	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody String user) {
 		//try {
 			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
@@ -54,8 +51,8 @@ public class ControladorRegistro {
 			user.setUsername("prueba");
 			user.setEmail("correo");
 			user.setClave("clave");*/
-			Broker.getInstanciaUsuario().insertUsuario(user);
-			return new ResponseEntity<String>(user.getUsername(), HttpStatus.OK);
+			//Broker.getInstanciaUsuario().insertUsuario(user);
+			return new ResponseEntity<String>(user, HttpStatus.OK);
 			
 		/*} catch (Exception e) {
 			return "Registro erroneo";
