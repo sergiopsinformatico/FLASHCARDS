@@ -207,14 +207,16 @@
 			        		}
 		        		);*/
 		        		
+		        		var datoEnvia = {
+	        	            username : $scope.usernameUser,
+	        	            clave : $scope.emailUser,
+	        	            email : $scope.claveUser
+	        	    	};
+		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: {
-		        	            username : $scope.usernameUser,
-		        	            clave : $scope.emailUser,
-		        	            email : $scope.claveUser
-		        	    	},
+		        	        data: JSON.stringify(datoEnvia),
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }

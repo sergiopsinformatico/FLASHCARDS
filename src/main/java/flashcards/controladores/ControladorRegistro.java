@@ -3,65 +3,58 @@ package main.java.flashcards.controladores;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.http.HttpStatus;
+import org.json.JSONObject;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MimeTypeUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
 import main.java.flashcards.brokers.Broker;
-import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
 @Controller
 public class ControladorRegistro {
 
-	//Declaracion de Variables
-	ModelAndView vista;
-	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaRegistro");
 		/*broker = new Broker();
 		dBUsuario = broker.getInstanciaUsuario();
 		jsonUsername = new JSONObject(dBUsuario.getJSONArrayUsername());
 		vista.addObject("listUsername", jsonUsername);
 		jsonEmail = new JSONObject(dBUsuario.getJSONArrayEmail());
 		vista.addObject("listEmail", jsonEmail);*/
-		return vista;
+		return new ModelAndView("vistaRegistro");
 	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public void registrarUsuarioPost(@RequestBody String json) {
-		
-		UsuarioDTO user = new UsuarioDTO();
-		user.setUsername("prueba");
-		user.setClave("sergio123");
-		user.setEmail("correo");
-		Broker.getInstanciaUsuario().insertUsuario(user);
-		
-		//Broker.getInstanciaUsuario().insertUsuario(user);
-		/*if(Broker.getInstanciaUsuario().insertUsuario(user)) {
-			return "Registro correcto";
-		}else {
+	public String registrarUsuarioPost(@RequestBody String json) {
+		try {
+			JSONObject obj = new JSONObject(json);
+			UsuarioDTO user = new UsuarioDTO();
+			user.setUsername(obj.getString("username"));
+			user.setClave(obj.getString("clave"));
+			user.setEmail(obj.getString("email"));
+			user.setNombreApellidos("");
+			user.setCiudad("");
+			user.setPais("");
+			user.setPhoto("");
+			user.setRolAdministrador(false);
+			user.setRolModerador(false);
+			user.setRolUsuario(true);
+			if(Broker.getInstanciaUsuario().insertUsuario(user)) {
+				return "Registro correcto";
+			}else {
+				return "Registro erroneo";
+			}
+			
+		} catch (Exception e) {
 			return "Registro erroneo";
-		}*/
-		
+		}
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.TEXT_PLAIN_VALUE })
