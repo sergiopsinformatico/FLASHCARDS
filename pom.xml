@@ -162,6 +162,11 @@
   		<artifactId>jackson-core</artifactId>
   		<version>2.9.8</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.json</groupId>
+  		<artifactId>json</artifactId>
+  		<version>20180813</version>
+  	</dependency>
   </dependencies>
   
 </project>
