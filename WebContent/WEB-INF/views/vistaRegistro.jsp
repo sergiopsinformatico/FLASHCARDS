@@ -194,7 +194,7 @@
 		        		
 		        		$http({
 		        	        method: 'POST',
-		        	        url: '/guardarUsuario.do',
+		        	        url: '/guardarUsuario',
 		        	        data: dataObj,
 		        	        headers : {
 		                    	'Content-Type': 'application/json',
