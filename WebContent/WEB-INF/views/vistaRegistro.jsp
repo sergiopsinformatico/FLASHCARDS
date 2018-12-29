@@ -198,7 +198,7 @@
 		        	        data: dataObj,
 		        	        headers : {
 		        	        	'Content-Type': 'application/json',
-		                    	'Accept': 'text/plain'
+		                    	'Accept': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
