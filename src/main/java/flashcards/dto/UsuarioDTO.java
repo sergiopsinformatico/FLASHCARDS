@@ -1,33 +1,28 @@
 package main.java.flashcards.dto;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.NotNull;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class UsuarioDTO {
-	@XmlAttribute
+	@NotNull
 	private String username;
-	@XmlAttribute
+	@NotNull
 	private String clave;
-	@XmlAttribute
+	@NotNull
 	private String email;
-	@XmlAttribute
+	@NotNull
 	private String nombreApellidos;
-	@XmlAttribute
+	@NotNull
 	private String ciudad;
-	@XmlAttribute
+	@NotNull
 	private String pais;
-	@XmlAttribute
+	@NotNull
 	private String photo;
-	@XmlAttribute
+	/*@XmlAttribute
 	private boolean hasRolUsuario;
 	@XmlAttribute
 	private boolean hasRolModerador;
 	@XmlAttribute
-	private boolean hasRolAdministrador;
+	private boolean hasRolAdministrador;*/
 	
 	/*public UsuarioDTO(String usuario, String clave, String email, boolean isUsuario, boolean isModerador, boolean isAdministrador) {
 		setUsername(usuario);
@@ -93,7 +88,7 @@ public class UsuarioDTO {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	
+	/*
 	public boolean isRolUsuario() {
 		return this.hasRolUsuario;
 	}
@@ -116,5 +111,5 @@ public class UsuarioDTO {
 
 	public void setRolAdministrador(boolean isAdministrador) {
 		this.hasRolAdministrador = isAdministrador;
-	}
+	}*/
 }

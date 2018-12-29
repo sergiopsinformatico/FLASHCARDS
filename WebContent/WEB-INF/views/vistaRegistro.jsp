@@ -216,25 +216,22 @@
 	        				nombreApellidos : $scope.emailUser,
 	        				ciudad : $scope.emailUser,
 	        				pais : $scope.emailUser,
-	        				photo : $scope.emailUser,
-	        				hasRolUsuario : true,
-	        				hasRolModerador : false,
-	        				hasRolAdministrador : false
+	        				photo : $scope.emailUser
 		        		};
 		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: angular.toJson(datoEnvia),
+		        	        data: datoEnvia,
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = angular.toJson(datoEnvia) + " - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = datoEnvia + " - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = angular.toJson(datoEnvia) + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 

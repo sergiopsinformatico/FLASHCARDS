@@ -32,7 +32,7 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
 		//try {
