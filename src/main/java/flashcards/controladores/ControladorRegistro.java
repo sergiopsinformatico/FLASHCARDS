@@ -38,7 +38,7 @@ public class ControladorRegistro {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public String registrarUsuarioPost(@Valid UsuarioDTO user) {
-		return "Respuesta: "+user.getUsername();
+		return "Respuesta: "+user.username;
 		
 	}
 	

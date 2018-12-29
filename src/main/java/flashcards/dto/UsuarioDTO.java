@@ -1,13 +1,13 @@
 package main.java.flashcards.dto;
 
 public class UsuarioDTO {
-	String username;
-	String clave;
-	String email;
-	String nombre;
-	String ciudad;
-	String pais;
-	String photo;
+	public String username;
+	public String clave;
+	public String email;
+	public String nombre;
+	public String ciudad;
+	public String pais;
+	public String photo;
 	
 	public String getUsername() {
 		return this.username;
