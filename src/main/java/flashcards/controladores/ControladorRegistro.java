@@ -37,7 +37,7 @@ public class ControladorRegistro {
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody String registrarUsuarioPost(@Valid UsuarioDTO user) {
-		return "Registro correcto";
+		return user.getUsername();
 		
 	}
 	
