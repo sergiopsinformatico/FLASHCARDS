@@ -186,10 +186,10 @@
 	        				username : $scope.usernameUser,
 	        				clave : $scope.claveUser,
 	        				email : $scope.emailUser,
-	        				nombre : 'nombre',
-	        				ciudad : 'apellidos',
-	        				pais : 'pais',
-	        				photo : 'ciudad'
+	        				nombre : $scope.claveUser,
+	        				ciudad : $scope.claveUser,
+	        				pais : $scope.claveUser,
+	        				photo : $scope.claveUser
 		        		};
 		        		
 		        		$http({
