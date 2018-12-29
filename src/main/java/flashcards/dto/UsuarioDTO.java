@@ -37,8 +37,8 @@ public class UsuarioDTO {
 		return this.nombre;
 	}
 
-	public void setNombreApellidos(String nombreApellidos) {
-		this.nombre = nombreApellidos;
+	public void setNombreApellidos(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	public String getCiudad() {
