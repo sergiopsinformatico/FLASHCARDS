@@ -103,8 +103,4 @@ public class UsuarioDTO {
 	public void setRolAdministrador(boolean isAdministrador) {
 		this.hasRolAdministrador = isAdministrador;
 	}*/
-	
-	public String toString() {
-		return "Username: "+this.getUsername()+" - Clave: "+this.getClave()+" - Email: "+this.getEmail()+" - Nombre: "+this.getNombreApellidos()+" - Ciudad: "+this.getCiudad()+" - Pais: "+this.getPais()+" - Photo: "+this.getPhoto();
-	}
 }
