@@ -12,15 +12,16 @@
 		
 	</head>
 	<body>
+		
 		<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
 		<% 
-			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
+			/*UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 			if(user==null || user.getUsername().equals("") || !user.isRolAdministrador()){
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
 			}
-			session.setAttribute("usuario", user);
+			session.setAttribute("usuario", user);*/
 		%>
-				
+			
 		<style>
 			div.center {
 			    text-align: center;
