@@ -32,9 +32,9 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public ResponseEntity<String> registrarUsuarioPost(@RequestBody String user) {
 		//try {
 			/*JSONObject obj = new JSONObject(json);
 			UsuarioDTO user = new UsuarioDTO();
@@ -53,7 +53,7 @@ public class ControladorRegistro {
 			user.setEmail("correo");
 			user.setClave("clave");*/
 			//Broker.getInstanciaUsuario().insertUsuario(user);
-			return new ResponseEntity<String>(user.getUsername(), HttpStatus.OK);
+			return new ResponseEntity<String>(user, HttpStatus.OK);
 			
 		/*} catch (Exception e) {
 			return "Registro erroneo";

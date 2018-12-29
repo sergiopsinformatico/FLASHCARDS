@@ -221,19 +221,21 @@
 			        		}
 		        		*/
 		        		
+		        		var cadena = angular.fromJson($scope.user);
+		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: $scope.user,
+		        	        data: ""+cadena,
 		        	        headers : {
-		                    	'Content-Type': 'application/json'
+		                    	'Content-Type': 'text/plain'
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = $scope.user+" - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = cadena+" - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = $scope.user+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = cadena+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
