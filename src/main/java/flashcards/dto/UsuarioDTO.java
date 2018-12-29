@@ -1,13 +1,13 @@
 package main.java.flashcards.dto;
 
 public class UsuarioDTO {
-	private String username;
-	private String clave;
-	private String email;
-	private String nombre;
-	private String ciudad;
-	private String pais;
-	private String photo;
+	String username;
+	String clave;
+	String email;
+	String nombre;
+	String ciudad;
+	String pais;
+	String photo;
 	/*@XmlAttribute
 	private boolean hasRolUsuario;
 	@XmlAttribute
