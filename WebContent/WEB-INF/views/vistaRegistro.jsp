@@ -188,7 +188,7 @@
 	        				email : "ejemplo",
 	        				nombre : "ejemplo",
 	        				ciudad : "ejemplo",
-	        				pais : "ejemplo"
+	        				pais : "ejemplo",
 	        				photo : "ejemplo"
 		        		};
 		        		
