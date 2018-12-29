@@ -228,7 +228,7 @@
 		        	        url: '/guardarUsuario.do',
 		        	        data: dataObj,
 		        	        headers : {
-		                    	'Content-Type': 'application/json;charset=UTF-8',
+		                    	'Content-Type': 'application/json;charset=UTF-8'
 		                    }
 		        	    }).then(
 			        		function (response) {
