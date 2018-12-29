@@ -161,6 +161,7 @@
 	    		<div class="col-md-4"></div>
 			</div>
 			<script>
+				'use strict'
 			    var app = angular.module('AppRegistro', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
