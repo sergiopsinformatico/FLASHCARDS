@@ -122,16 +122,15 @@
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <small>{{msg}}</small>
 				        <div class="form-group">
-				        	<!-- ng-change="funcUsername(newUser.username)" -->
-				            <input type="text" class="form-control" id="inputUsername" ng-model="user.username" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="usernameUser" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="user.email" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="emailUser" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="user.clave" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="claveUser" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
@@ -210,32 +209,29 @@
 		        		//var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
 		        		
 		        		/*
-		        		{
-		        				"username" : $scope.usernameUser,
-		        				"clave" : $scope.claveUser,
-		        				"email" : $scope.emailUser,
-		        				"nombreApellidos" : $scope.emailUser,
-		        				"ciudad" : $scope.emailUser,
-		        				"pais" : $scope.emailUser,
-		        				"photo" : $scope.emailUser
-			        		}
+		        		
 		        		*/
 		        		
-		        		var cadena = angular.fromJson($scope.user);
+		        		var dataObj = {
+	        				username : $scope.usernameUser,
+	        				clave : $scope.claveUser,
+	        				email : $scope.emailUser,
+	        				nombre : $scope.emailUser,
+	        				ciudad : $scope.emailUser,
+	        				pais : $scope.emailUser,
+	        				photo : $scope.emailUser
+		        		};
 		        		
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: "{}",
-		        	        headers : {
-		                    	'Content-Type': 'text/plain'
-		                    }
+		        	        data: dataObj
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = cadena+" - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = dataObj.username+" - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = cadena+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = dataObj.username+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 

@@ -32,32 +32,9 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
-	@ResponseBody
-	public ResponseEntity<String> registrarUsuarioPost(@RequestBody String user) {
-		//try {
-			/*JSONObject obj = new JSONObject(json);
-			UsuarioDTO user = new UsuarioDTO();
-			user.setUsername(""+obj.getString("username"));
-			user.setClave(""+obj.getString("clave"));
-			user.setEmail(""+obj.getString("email"));
-			user.setNombreApellidos("");
-			user.setCiudad("");
-			user.setPais("");
-			user.setPhoto("");
-			user.setRolAdministrador(false);
-			user.setRolModerador(false);
-			user.setRolUsuario(true);*/
-			/*UsuarioDTO user = new UsuarioDTO();
-			user.setUsername("prueba");
-			user.setEmail("correo");
-			user.setClave("clave");*/
-			//Broker.getInstanciaUsuario().insertUsuario(user);
-			return new ResponseEntity<String>(user, HttpStatus.OK);
-			
-		/*} catch (Exception e) {
-			return "Registro erroneo";
-		}*/
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+		return new ResponseEntity<String>(user.getUsername(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = { MediaType.TEXT_PLAIN_VALUE })

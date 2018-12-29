@@ -1,21 +1,12 @@
 package main.java.flashcards.dto;
 
-import javax.validation.constraints.NotNull;
-
 public class UsuarioDTO {
-	@NotNull
 	private String username;
-	@NotNull
 	private String clave;
-	@NotNull
 	private String email;
-	@NotNull
 	private String nombreApellidos;
-	@NotNull
 	private String ciudad;
-	@NotNull
 	private String pais;
-	@NotNull
 	private String photo;
 	/*@XmlAttribute
 	private boolean hasRolUsuario;
