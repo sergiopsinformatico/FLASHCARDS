@@ -20,9 +20,9 @@ public class Test05EliminarPerfil {
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
 		user.setEmail("sergio13_yo@hotmail.com");
-		user.setRolUsuario(true);
+		/*user.setRolUsuario(true);
 		user.setRolModerador(false);
-		user.setRolAdministrador(false);
+		user.setRolAdministrador(false);*/
 		//user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}

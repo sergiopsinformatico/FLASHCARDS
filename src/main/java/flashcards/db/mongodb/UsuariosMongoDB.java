@@ -94,9 +94,9 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 			
 		}
 		
-		doc = doc.append("rolUsuario", user.isRolUsuario()).
+		/*doc = doc.append("rolUsuario", user.isRolUsuario()).
 				append("rolModerador", user.isRolModerador()).
-				append("rolAdministrador", user.isRolAdministrador());
+				append("rolAdministrador", user.isRolAdministrador());*/
 		
 		return doc;
 	}
@@ -106,9 +106,9 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		usuarioDB.setUsername(doc.getString("username"));
 		usuarioDB.setClave(doc.getString("clave"));
 		usuarioDB.setEmail(doc.getString("email"));
-		usuarioDB.setRolUsuario(doc.getBoolean("rolUsuario"));
+		/*usuarioDB.setRolUsuario(doc.getBoolean("rolUsuario"));
 		usuarioDB.setRolModerador(doc.getBoolean("rolModerador"));
-		usuarioDB.setRolAdministrador(doc.getBoolean("rolAdministrador"));
+		usuarioDB.setRolAdministrador(doc.getBoolean("rolAdministrador"));*/
 		/*usuarioDB = new UsuarioDTO(doc.getString("username"),
                 doc.getString("clave"),
                 doc.getString("email"),

@@ -26,7 +26,7 @@ public class ControladorAdmin {
 	ModelAndView vista;
 	UsuarioDTO user;
 	String users, rol;
-	
+	/*
 	@RequestMapping(value = "/gestionar", method = RequestMethod.GET)
 	public ModelAndView gestionar(@RequestParam("usuario") String usuario) {
 		users = "";
@@ -39,9 +39,9 @@ public class ControladorAdmin {
 			
 			if(i==0) {
 				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
-			}else {
+			/*}else {
 				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
-			}
+			/*}
 		}
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", users);
@@ -68,9 +68,9 @@ public class ControladorAdmin {
 			
 			if(i==0) {
 				users = usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
-			}else {
+			/*}else {
 				users = users + "///****nuevoUsuario****///" + usuarios.get(i).getNombreApellidos() + "///****elem****///"+ usuarios.get(i).getUsername() + "///****elem****///" + rol;
-			}
+			/*}
 		}
 		vista = new ModelAndView("administrador");
 		vista.addObject("usuarios", users);
@@ -114,5 +114,5 @@ public class ControladorAdmin {
 		vista.addObject("admin", request.getParameter("admin"));
 		return vista;
 	}
-	
+	*/
 }
