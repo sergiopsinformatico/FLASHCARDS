@@ -40,7 +40,7 @@ public class ControladorRegistro {
 		}else {
 			return new ResponseEntity<String>("Regitro erroneo. Vuelva a intentarlo mas tarde.", HttpStatus.OK);
 		}*/
-		return new ResponseEntity<String>("Regitrado correctamente: "+user.toString(), HttpStatus.OK);
+		return new ResponseEntity<String>("Regitrado correctamente: ", HttpStatus.OK);
 		
 	}
 	
