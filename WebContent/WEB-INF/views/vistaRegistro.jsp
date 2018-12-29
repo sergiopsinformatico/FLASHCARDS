@@ -181,46 +181,15 @@
 		        	    });
 		        	
 		        	$scope.envioDatos = function(){
-		        	    
-		        	    /*$scope.newUser.nombreApellidos = '';
-			        	$scope.newUser.ciudad = '';
-			        	$scope.newUser.pais = '';
-			        	$scope.newUser.photo = '';
-			        	$scope.newUser.hasRolUsuario = true;
-			        	$scope.newUser.hasRolModerador = false;
-			        	$scope.newUser.hasRolAdministrador = false;*/
-		        	    
-			        	/*
-			        	{
-		                    headers : {
-		                    	'Content-Type': 'application/json;charset=UTF-8',
-		                    	'Accept': 'text/plain'
-		                    }
-			            }
-			        	*/		        	    
-		        		/*$http.post('/guardarUsuario.do', $scope.newUser, {'Content-Type': 'application/json'}).then(
-			        		function (response) {
-				        		$scope.msg = $scope.msg + " - enviado correctamente";
-			        		},
-			        		function (response) {
-				        		$scope.msg = $scope.msg + " - Status Code= " + response.status + ", Status Text= " + response.statusText;
-			        		}
-		        		);*/
-		        		
-		        		//var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
-		        		
-		        		/*
-		        		
-		        		*/
 		        		
 		        		var dataObj = {
 	        				username : $scope.usernameUser,
 	        				clave : $scope.claveUser,
 	        				email : $scope.emailUser,
-	        				nombre : $scope.emailUser,
-	        				ciudad : $scope.emailUser,
-	        				pais : $scope.emailUser,
-	        				photo : $scope.emailUser
+	        				nombre : "",
+	        				ciudad : "",
+	        				pais : "",
+	        				photo : ""
 		        		};
 		        		
 		        		$http({
