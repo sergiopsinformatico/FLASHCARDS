@@ -209,20 +209,18 @@
 		        		
 		        		//var datoEnvia = '{' + '"username":"' + $scope.usernameUser + '","clave":"'+$scope.claveUser+'","email":"'+$scope.emailUser+'"}';
 		        		
-		        		var datoEnvia = {
-	        				username : $scope.usernameUser,
-	        				clave : $scope.claveUser,
-	        				email : $scope.emailUser,
-	        				nombreApellidos : $scope.emailUser,
-	        				ciudad : $scope.emailUser,
-	        				pais : $scope.emailUser,
-	        				photo : $scope.emailUser
-		        		};
-		        		
 		        		$http({
 		        	        method: 'POST',
-		        	        url: '/guardarUsuario',
-		        	        data: datoEnvia,
+		        	        url: '/guardarUsuario.do',
+		        	        data: {
+		        				"username" : $scope.usernameUser,
+		        				"clave" : $scope.claveUser,
+		        				"email" : $scope.emailUser,
+		        				"nombreApellidos" : $scope.emailUser,
+		        				"ciudad" : $scope.emailUser,
+		        				"pais" : $scope.emailUser,
+		        				"photo" : $scope.emailUser
+			        		},
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }
