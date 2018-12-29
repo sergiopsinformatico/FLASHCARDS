@@ -202,7 +202,7 @@
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = dataObj.username+" - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = dataObj.username+" - enviado correctamente. Response: "+response;
 			        		},
 			        		function (response) {
 				        		$scope.msg = dataObj.username+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
