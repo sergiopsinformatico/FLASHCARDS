@@ -4,7 +4,7 @@ public class UsuarioDTO {
 	private String username;
 	private String clave;
 	private String email;
-	private String nombreApellidos;
+	private String nombre;
 	private String ciudad;
 	private String pais;
 	private String photo;
@@ -49,11 +49,11 @@ public class UsuarioDTO {
 	}
 	
 	public String getNombreApellidos() {
-		return this.nombreApellidos;
+		return this.nombre;
 	}
 
 	public void setNombreApellidos(String nombreApellidos) {
-		this.nombreApellidos = nombreApellidos;
+		this.nombre = nombreApellidos;
 	}
 	
 	public String getCiudad() {
