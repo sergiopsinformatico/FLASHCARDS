@@ -222,16 +222,16 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: datoEnvia,
+		        	        data: angular.toJson(datoEnvia),
 		        	        headers : {
 		                    	'Content-Type': 'application/json'
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - enviado correctamente. Response: "+response.data;
+				        		$scope.msg = angular.toJson(datoEnvia) + " - enviado correctamente. Response: "+response.data;
 			        		},
 			        		function (response) {
-				        		$scope.msg = datoEnvia + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msg = angular.toJson(datoEnvia) + " - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
 			        		}
 		        		);
 
