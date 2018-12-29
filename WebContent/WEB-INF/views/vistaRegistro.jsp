@@ -186,15 +186,15 @@
 	        				username : $scope.usernameUser,
 	        				clave : $scope.claveUser,
 	        				email : $scope.emailUser,
-	        				nombre : $scope.emailUser,
-	        				ciudad : $scope.emailUser,
-	        				pais : $scope.emailUser,
-	        				photo : $scope.emailUser
+	        				nombre : 'nombre',
+	        				ciudad : 'apellidos',
+	        				pais : 'pais',
+	        				photo : 'ciudad'
 		        		};
 		        		
 		        		$http({
 		        	        method: 'POST',
-		        	        url: '/guardarUsuario',
+		        	        url: '/guardarUsuario.do',
 		        	        data: dataObj,
 		        	        headers : {
 		                    	'Content-Type': 'application/json',
