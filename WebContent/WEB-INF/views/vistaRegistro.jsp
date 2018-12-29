@@ -192,7 +192,7 @@
 			        	/*
 			        	{
 		                    headers : {
-		                    	'Content-Type': 'application/json',
+		                    	'Content-Type': 'application/json;charset=UTF-8',
 		                    	'Accept': 'text/plain'
 		                    }
 			            }
@@ -225,7 +225,10 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: dataObj
+		        	        data: dataObj,
+		        	        headers : {
+		                    	'Content-Type': 'application/json;charset=UTF-8',
+		                    }
 		        	    }).then(
 			        		function (response) {
 				        		$scope.msg = dataObj.username+" - enviado correctamente. Response: "+response.data;
