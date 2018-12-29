@@ -2,6 +2,7 @@ package main.java.flashcards.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody UsuarioDTO user) {
+	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@RequestBody @Valid UsuarioDTO user) {
 		return new ResponseEntity<String>(user.getUsername(), HttpStatus.OK);
 	}
 	
