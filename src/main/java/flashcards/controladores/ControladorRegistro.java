@@ -34,8 +34,8 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Void> registrarUsuarioPost(@Valid UsuarioDTO user) {
-		return new ResponseEntity<Void>(HttpStatus.OK);
+	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@Valid UsuarioDTO user) {
+		return new ResponseEntity<String>("Llega correctamente", HttpStatus.OK);
 		
 	}
 	
