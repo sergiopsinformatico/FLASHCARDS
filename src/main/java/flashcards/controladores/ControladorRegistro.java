@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import main.java.flashcards.brokers.Broker;
@@ -34,8 +35,9 @@ public class ControladorRegistro {
 	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<String> registrarUsuarioPost(@Valid UsuarioDTO user) {
-		return new ResponseEntity<String>("Registro correcto",HttpStatus.OK);
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody String registrarUsuarioPost(@Valid UsuarioDTO user) {
+		return "Registro correcto";
 		
 	}
 	
