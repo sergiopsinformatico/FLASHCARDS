@@ -183,13 +183,13 @@
 		        	$scope.envioDatos = function(){
 		        		
 		        		var dataObj = {
-	        				username : $scope.usernameUser,
-	        				clave : $scope.claveUser,
-	        				email : $scope.emailUser,
-	        				nombre : $scope.claveUser,
-	        				ciudad : $scope.claveUser,
-	        				pais : $scope.claveUser,
-	        				photo : $scope.claveUser
+	        				username : "ejemplo",
+	        				clave : "ejemplo",
+	        				email : "ejemplo",
+	        				nombre : "ejemplo",
+	        				ciudad : "ejemplo",
+	        				pais : "ejemplo"
+	        				photo : "ejemplo"
 		        		};
 		        		
 		        		$http({
