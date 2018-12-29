@@ -226,7 +226,7 @@
 		        		$http({
 		        	        method: 'POST',
 		        	        url: '/guardarUsuario.do',
-		        	        data: ""+cadena,
+		        	        data: "{}",
 		        	        headers : {
 		                    	'Content-Type': 'text/plain'
 		                    }
