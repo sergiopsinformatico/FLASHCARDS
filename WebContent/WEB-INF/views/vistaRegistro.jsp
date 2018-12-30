@@ -93,6 +93,9 @@
 	    
 	    <!-- Angular JS -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	    
+	    <!-- Alert de Bootbox -->
+	    <script src="resources/js/bootbox.min.js"></script>
 	
 	    <!-- Navigation -->
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -198,11 +201,11 @@
 		        	    }).then(
 			        		function (response) {
 				        		if (response.data){
-				        			if(window.confirm('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email)){
+				        			if(bootbox.alert('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email)){
 				        				window.location.replace("https://sistemaflashcards.herokuapp.com");
 				        			}
 				        		}else{
-				        			window.confirm('Fallo en el registro. Por favor, intentelo más tarde.')
+				        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.')
 				        		}
 			        		},
 			        		function (response) {
