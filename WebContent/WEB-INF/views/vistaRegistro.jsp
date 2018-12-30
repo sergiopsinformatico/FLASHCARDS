@@ -123,8 +123,8 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
-	    				<small>{{listUsers}}</small>
-	    				<small>{{listEmails}}</small>
+	    				<small>Lista usuarios: {{listUsers}}</small>
+	    				<small>Lista emails: {{listEmails}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -181,9 +181,9 @@
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	listaUsernames = response.data;
+	        	    	$scope.listUsers = response.data.length;
 	        	    }, function myError(response) {
-	        	    	listaUsernames = [];
+	        	    	$scope.listUsers = 0;
 	        	    });
 		        	
 							        	
@@ -194,13 +194,14 @@
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	listaEmails = response.data;
+	        	    	//listaEmails = response.data.length;
+	        	    	$scope.listEmails = response.data.length;
 	        	    }, function myError(response) {
-	        	    	listaEmails = [];
-	        	    	$scope.listEmails = "";
+	        	    	//listaEmails = [];
+	        	    	$scope.listEmails = 0;
 	        	    });
 		        	
-		        	$scope.listUsers = "";
+		        	/*$scope.listUsers = "";
 		        	for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
 		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
 		        	}
@@ -208,7 +209,7 @@
 		        	$scope.listEmails = "";
 		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
 		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
-		        	}
+		        	}*/
 		        	
 		        	
 		        	$scope.envioDatos = function(){
