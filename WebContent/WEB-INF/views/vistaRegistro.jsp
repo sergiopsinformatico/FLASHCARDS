@@ -201,7 +201,7 @@
 		        	    }).then(
 			        		function (response) {
 				        		if (response.data){
-				        			bootbox.alert('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
+				        			bootbox.alert('Su cuenta ha sido creada. Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
 				        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
 				        			});
 				        		}else{
