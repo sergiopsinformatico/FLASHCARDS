@@ -37,9 +37,15 @@ public class ControladorRegistro {
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public String registrarUsuarioPost(@RequestBody @Valid UsuarioDTO user) {
-		return "Respuesta: "+user.getUsername();
-		
+	public boolean registrarUsuarioPost(@RequestBody @Valid UsuarioDTO user) {
+		user.setNombreApellidos("");
+		user.setCiudad("");
+		user.setPais("");
+		user.setPhoto("");
+		user.setHasRolAdministrador(false);
+		user.setHasRolModerador(false);
+		user.setHasRolUsuario(true);
+		return Broker.getInstanciaUsuario().insertUsuario(user);		
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

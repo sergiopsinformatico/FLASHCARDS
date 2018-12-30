@@ -183,12 +183,8 @@
 		        		
 		        		var dataObj = {
 	        				"username" : $scope.username,
-	        				"clave" : $scope.username,
-	        				"email" : $scope.username,
-	        				"nombre" : $scope.username,
-	        				"ciudad" : $scope.username,
-	        				"pais" : $scope.username,
-	        				"photo" : $scope.username
+	        				"clave" : $scope.clave,
+	        				"email" : $scope.email
 		        		};
 		        		
 		        		$http({
@@ -201,12 +197,20 @@
 		                    }
 		        	    }).then(
 			        		function (response) {
-				        		$scope.msg = dataObj.username+" - enviado correctamente. Response: "+response.data;
+				        		if (response.data){
+				        			if(window.confirm('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email)){
+				        				window.location.replace("https://sistemaflashcards.herokuapp.com");
+				        			}
+				        		}else{
+				        			window.confirm('Fallo en el registro. Por favor, intentelo más tarde.')
+				        		}
 			        		},
 			        		function (response) {
-				        		$scope.msg = dataObj.username+" - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
+				        		$scope.msgAlert = response.data;
 			        		}
 		        		);
+		        		
+		        		
 
 					}
 		        });

@@ -16,13 +16,19 @@ public class UsuarioDTO {
 	@XmlAttribute
 	String email;
 	@XmlAttribute
-	String nombre;
+	String nombreApellidos;
 	@XmlAttribute
 	String ciudad;
 	@XmlAttribute
 	String pais;
 	@XmlAttribute
 	String photo;
+	@XmlAttribute
+	boolean hasRolUsuario;
+	@XmlAttribute
+	boolean hasRolModerador;
+	@XmlAttribute
+	boolean hasRolAdministrador;
 	
 	public String getUsername() {
 		return this.username;
@@ -49,11 +55,11 @@ public class UsuarioDTO {
 	}
 	
 	public String getNombreApellidos() {
-		return this.nombre;
+		return this.nombreApellidos;
 	}
 
 	public void setNombreApellidos(String nombre) {
-		this.nombre = nombre;
+		this.nombreApellidos = nombre;
 	}
 	
 	public String getCiudad() {
@@ -78,5 +84,29 @@ public class UsuarioDTO {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	
+	public boolean isHasRolUsuario() {
+		return hasRolUsuario;
+	}
+
+	public void setHasRolUsuario(boolean hasRolUsuario) {
+		this.hasRolUsuario = hasRolUsuario;
+	}
+
+	public boolean isHasRolModerador() {
+		return hasRolModerador;
+	}
+
+	public void setHasRolModerador(boolean hasRolModerador) {
+		this.hasRolModerador = hasRolModerador;
+	}
+
+	public boolean isHasRolAdministrador() {
+		return hasRolAdministrador;
+	}
+
+	public void setHasRolAdministrador(boolean hasRolAdministrador) {
+		this.hasRolAdministrador = hasRolAdministrador;
 	}
 }
