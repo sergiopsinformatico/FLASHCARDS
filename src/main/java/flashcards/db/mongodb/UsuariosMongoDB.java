@@ -1,7 +1,6 @@
 package main.java.flashcards.db.mongodb;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import org.bson.BsonDocument;
 import org.bson.BsonString;
@@ -296,7 +295,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public List<String> getListUsername() {		
+	public LinkedList<String> getListUsername() {		
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
@@ -312,7 +311,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		return lista;
 	}
 	
-	public List<String> getListEmail() {
+	public LinkedList<String> getListEmail() {
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
