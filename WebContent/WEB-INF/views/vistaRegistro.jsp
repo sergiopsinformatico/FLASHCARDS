@@ -201,9 +201,9 @@
 		        	    }).then(
 			        		function (response) {
 				        		if (response.data){
-				        			if(bootbox.alert('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email)){
-				        				window.location.replace("https://sistemaflashcards.herokuapp.com");
-				        			}
+				        			bootbox.alert('Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
+				        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
+				        			});
 				        		}else{
 				        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.')
 				        		}
