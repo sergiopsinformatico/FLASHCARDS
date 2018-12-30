@@ -205,7 +205,7 @@
 		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
 		        	}
 		        	
-		        	
+		        	$scope.listEmails = "";
 		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
 		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
 		        	}
