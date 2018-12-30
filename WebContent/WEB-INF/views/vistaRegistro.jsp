@@ -123,28 +123,21 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
-	    				<small>Lista usuarios: {{listUsers}}</small>
-	    				<small>Lista emails: {{listEmails}}</small>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="username" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername(username)" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres</h6>
 				        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="email" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail(email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="clave" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave(clave, repClave)" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" name="inputRepiteClave" placeholder="Repetir Clave" required>
+				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave(clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave. Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres</h6>
-				        <div class="row">
-				        	<br>
-				        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-				        </div>
-				        
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
@@ -154,11 +147,6 @@
 				        	</div>
 				        	<div class="col-md-3"></div>
 				        </div>
-				        <script>
-				        	function enableBtn(){
-				        		document.getElementById("button1").disabled = false;
-				        	}
-				        </script>
 				    </form>
 				    <br>
 	    		</div>
@@ -171,8 +159,17 @@
 		        	
 		        	var listaUsernames = [];
 		        	var listaEmails = [];
-		        	var indiceUsernames = 0;
-		        	var indiceEmails = 0;
+		        	var indice = 0;
+		        	
+		        	var checkUsername = false;
+		        	
+		        	var checkEmail = false;
+		        	
+		        	var checkClave = false;
+		        	var checkLongClave = false;
+		        	var checkCaracter = false;
+		        	
+		        	var checkRepClave = false;
 		        	
 		        	$http({
 	        	        method: 'GET',
@@ -181,9 +178,11 @@
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.listUsers = response.data[0];
+	        	    	for(indice=0; indice<response.data.length; indice++){
+	        	    		listaUsernames.push(response.data[indice]);
+	        	    	}
 	        	    }, function myError(response) {
-	        	    	$scope.listUsers = 0;
+	        	    	listaUsernames = [];
 	        	    });
 		        	
 							        	
@@ -194,23 +193,74 @@
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	//listaEmails = response.data.length;
-	        	    	$scope.listEmails = response.data[0];
+	        	    	for(indice=0; indice<response.data.length; indice++){
+	        	    		listaEmails.push(response.data[indice]);
+	        	    	}
 	        	    }, function myError(response) {
-	        	    	//listaEmails = [];
-	        	    	$scope.listEmails = 0;
+	        	    	listaEmails = [];
 	        	    });
 		        	
-		        	/*$scope.listUsers = "";
-		        	for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
-		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
+		        	
+		        	function enableBtnRegistro(){
+		        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
+		        			document.getElementById("button1").disabled = false;
+		        		}
 		        	}
 		        	
-		        	$scope.listEmails = "";
-		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
-		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
-		        	}*/
+		        	function validateUsername(username){
+		        		checkUsername = false;
+			        	
+		        	}
 		        	
+		        	function validateEmail(email){
+		        		checkEmail = true;
+		        		for(indice=0; indice<listaEmails.length; indice++){
+		        			if(email == listaEmails[indice]){
+		        				checkEmail = false;
+		        				/*Mensaje Error*/
+		        				break;
+		        			}
+		        		}
+		        		enableBtnRegistro();
+			        }
+		        	
+		        	function validateClave(clave, repClave){
+		        		
+		        		checkClave = false;
+		        		checkLongClave = false;
+		        		checkCaracter = true;
+		        		
+		        		if(clave.length>=5 && clave.length<=20){
+		        			checkLongClave = true;
+		        			for(indice=0; indice<clave.length; indice++){
+		        				if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
+		        				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
+		        				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
+		        					checkCaracter=false;
+		        					/*Mensaje en rojo de error -->Caracter inesperado*/
+		        					break;
+		        				}
+		        			}
+		        		}else{
+		        			/*Mensaje en rojo --> Error en el size*/
+		        		}
+		        		
+		        		if(checkLongClave==true && checkCaracter==true){
+		        			checkClave = true;
+		        		}
+		        		
+		        		validateRepClave(clave, repClave);
+		        	}
+		        	
+		        	function validateRepClave(clave, repClave){
+		        		checkRepClave = false;
+		        		if(clave==repClave){
+		        			checkRepClave = true;
+		        		}else{
+		        			/*Mensaje de error en rojo --> Las claves no coinciden*/
+		        		}
+		        		enableBtnRegistro();
+		        	}
 		        	
 		        	$scope.envioDatos = function(){
 		        		
