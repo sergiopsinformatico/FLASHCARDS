@@ -34,10 +34,10 @@ public class ControladorRegistro {
 		return new ModelAndView("vistaRegistro");
 	}
 	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public String registrarUsuarioPost(@Valid UsuarioDTO user) {
+	public String registrarUsuarioPost(@RequestBody @Valid UsuarioDTO user) {
 		return "Respuesta: "+user.getUsername();
 		
 	}
