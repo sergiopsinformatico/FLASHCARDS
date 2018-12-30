@@ -169,10 +169,10 @@
 			    var app = angular.module('AppRegistro', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	var listaUsernames;
-		        	var listaEmails;
-		        	var indiceUsernames;
-		        	var indiceEmails;
+		        	var listaUsernames = [];
+		        	var listaEmails = [];
+		        	var indiceUsernames = 0;
+		        	var indiceEmails = 0;
 		        	
 		        	$http({
 	        	        method: 'GET',
@@ -197,17 +197,18 @@
 	        	    	listaEmails = response.data;
 	        	    }, function myError(response) {
 	        	    	listaEmails = [];
+	        	    	$scope.listEmails = "";
 	        	    });
 		        	
 		        	$scope.listUsers = "";
-		        	/*for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
+		        	for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
 		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
-		        	}*/
+		        	}
 		        	
-		        	$scope.listEmails = "";
-		        	/*for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
+		        	
+		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
 		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
-		        	}*/
+		        	}
 		        	
 		        	
 		        	$scope.envioDatos = function(){
