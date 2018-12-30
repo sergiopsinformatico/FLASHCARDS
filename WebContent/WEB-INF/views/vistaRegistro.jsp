@@ -171,8 +171,8 @@
 	        	        method: 'GET',
 	        	        url: '/ejemploGET.do',
 	                    headers : {
-	                    	'Content-Type': 'text/plain',
-	                    	'Accept': 'text/plain'
+	                    	'Content-Type': 'application/json',
+	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
 	        	    	$scope.msg = "Llega correctamente - " + response.data;
