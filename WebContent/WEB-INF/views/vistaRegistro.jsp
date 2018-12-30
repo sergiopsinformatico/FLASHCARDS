@@ -199,9 +199,15 @@
 	        	    	listaEmails = [];
 	        	    });
 		        	
-		        	$scope.listUsers = listaUsernames;
-		        	$scope.listEmails = listaEmails;
+		        	$scope.listUsers = "";
+		        	for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
+		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
+		        	}
 		        	
+		        	$scope.listEmails = "";
+		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
+		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
+		        	}
 		        	
 		        	
 		        	$scope.envioDatos = function(){
