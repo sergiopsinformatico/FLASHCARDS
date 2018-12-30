@@ -200,14 +200,14 @@
 	        	    });
 		        	
 		        	$scope.listUsers = "";
-		        	for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
+		        	/*for (indiceUsernames=0;indiceUsernames<listaUsernames.length;indiceUsernames++){
 		        		$scope.listUsers = $scope.listUsers + " - " + listaUsernames[indiceUsernames];
-		        	}
+		        	}*/
 		        	
 		        	$scope.listEmails = "";
-		        	for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
+		        	/*for (indiceEmails=0;indiceEmails<listaEmails.length;indiceEmails++){
 		        		$scope.listEmails = $scope.listEmails + " - " + listaEmails[indiceEmails];
-		        	}
+		        	}*/
 		        	
 		        	
 		        	$scope.envioDatos = function(){
