@@ -1,5 +1,6 @@
 package main.java.flashcards.auxiliares;
 
+import java.net.URL;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -25,15 +26,15 @@ public class Email {
 		setEnvia("sistemaflashcards@gmail.com");
 	}
 	
-	public boolean crearCuenta(UsuarioDTO user) {
+	public boolean confirmaCreaCuenta(UsuarioDTO user) {
 		//Asunto
-		setAsunto("[Sistema Flashcards] Creación de la cuenta "+user.getEmail());
+		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		//Mensaje
-		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
-		"\nSe ha creado correctamente una cuenta en Flashcards:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
-		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		setMensaje("Bienvenido a la Aplicaci�n Flashcards!!"+
+		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
+		"\n www.google.es"+
+		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que usted nos ha proporcionado (email)"+
+		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();

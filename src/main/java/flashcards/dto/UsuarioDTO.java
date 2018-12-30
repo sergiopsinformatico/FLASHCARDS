@@ -29,6 +29,8 @@ public class UsuarioDTO {
 	boolean hasRolModerador;
 	@XmlAttribute
 	boolean hasRolAdministrador;
+	@XmlAttribute
+	boolean activadaCuenta;
 	
 	public String getUsername() {
 		return this.username;
@@ -108,5 +110,13 @@ public class UsuarioDTO {
 
 	public void setHasRolAdministrador(boolean hasRolAdministrador) {
 		this.hasRolAdministrador = hasRolAdministrador;
+	}
+
+	public boolean isActivadaCuenta() {
+		return activadaCuenta;
+	}
+
+	public void setActivadaCuenta(boolean activadaCuenta) {
+		this.activadaCuenta = activadaCuenta;
 	}
 }

@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
 @RestController
 public class ControladorRegistro {
+	
+	Email correo;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
@@ -45,7 +49,14 @@ public class ControladorRegistro {
 		user.setHasRolAdministrador(false);
 		user.setHasRolModerador(false);
 		user.setHasRolUsuario(true);
-		return Broker.getInstanciaUsuario().insertUsuario(user);		
+		user.setActivadaCuenta(false);
+		if(Broker.getInstanciaUsuario().insertUsuario(user)) {
+			correo = new Email();
+			correo.confirmaCreaCuenta(user);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
