@@ -181,7 +181,7 @@
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.listUsers = response.data.length;
+	        	    	$scope.listUsers = response.data[0];
 	        	    }, function myError(response) {
 	        	    	$scope.listUsers = 0;
 	        	    });
@@ -195,7 +195,7 @@
 	                    }
 	        	    }).then(function mySuccess(response) {
 	        	    	//listaEmails = response.data.length;
-	        	    	$scope.listEmails = response.data.length;
+	        	    	$scope.listEmails = response.data[0];
 	        	    }, function myError(response) {
 	        	    	//listaEmails = [];
 	        	    	$scope.listEmails = 0;
