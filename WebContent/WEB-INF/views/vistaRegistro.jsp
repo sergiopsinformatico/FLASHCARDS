@@ -197,7 +197,7 @@
 		        	        url: '/guardarUsuario.do',
 		        	        data: dataObj,
 		        	        headers : {
-		        	        	'Content-type': 'application/json'
+		        	        	'Content-type': 'application/json',
 		                    	'Accept': 'application/json'
 		                    }
 		        	    }).then(
