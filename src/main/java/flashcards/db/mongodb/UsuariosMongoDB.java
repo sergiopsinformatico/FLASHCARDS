@@ -1,5 +1,8 @@
 package main.java.flashcards.db.mongodb;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.bson.BsonDocument;
 import org.bson.BsonString;
 import org.bson.Document;
@@ -28,7 +31,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	Bson criteriosBusqueda;
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
-	String json;
+	LinkedList<String> lista;
     
     //Constructor
     public UsuariosMongoDB() {
@@ -293,46 +296,36 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public String getJSONArrayUsername() {
-		json = "{\"listUsername\" : [";
-		
+	public List<String> getListUsername() {		
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
 		if(!(iterator.hasNext())) {
-			json = json+"]}";
+			lista = new LinkedList<String>();
 		}else {
+			lista = new LinkedList<String>();
 			while(iterator.hasNext()) {
 				doc = iterator.next();
-				json = json + "{ \"username\":\""+doc.getString("username")+"\" }";
-				if(iterator.hasNext()) {
-					json = json+",";
-				}
+				lista.add(doc.getString("username"));
 			}
-			json = json + "]}";
 		}
-		return json;
+		return lista;
 	}
 	
-	public String getJSONArrayEmail() {
-		json = "{\"listEmail\" : [";
-		
+	public List<String> getListEmail() {
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
 		if(!(iterator.hasNext())) {
-			json = json+"]}";
+			lista = new LinkedList<String>();
 		}else {
+			lista = new LinkedList<String>();
 			while(iterator.hasNext()) {
 				doc = iterator.next();
-				json = json + "{ \"email\":\""+doc.getString("email")+"\" }";
-				if(iterator.hasNext()) {
-					json = json+",";
-				}
+				lista.add(doc.getString("email"));
 			}
-			json = json + "]}";
 		}
-		return json;
+		return lista;
 	}
 	
 	public boolean deleteUsuario(UsuarioDTO user) {

@@ -1,5 +1,8 @@
 package main.java.flashcards.controladores;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -29,12 +32,6 @@ public class ControladorRegistro {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		/*broker = new Broker();
-		dBUsuario = broker.getInstanciaUsuario();
-		jsonUsername = new JSONObject(dBUsuario.getJSONArrayUsername());
-		vista.addObject("listUsername", jsonUsername);
-		jsonEmail = new JSONObject(dBUsuario.getJSONArrayEmail());
-		vista.addObject("listEmail", jsonEmail);*/
 		return new ModelAndView("vistaRegistro");
 	}
 	
@@ -59,15 +56,19 @@ public class ControladorRegistro {
 		}
 	}
 	
-	@RequestMapping(value = "/ejemploGET", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/getUsernames", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public String ejemploGet() {
-		return "Get Superado";
-	}
+	public List<String> listUsernames(){
+		return Broker.getInstanciaUsuario().getListUsername();
+	}	
 	
-	//@RequestParam("usuario") String usuario
-	
+	@RequestMapping(value = "/getEmails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public List<String> listEmails(){
+		return Broker.getInstanciaUsuario().getListEmail();
+	}	
 	
 	
 	

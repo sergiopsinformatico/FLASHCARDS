@@ -123,7 +123,8 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
-				        <small>{{msg}}</small>
+	    				<small>{{listUsers}}</small>
+	    				<small>{{listEmails}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -168,19 +169,40 @@
 			    var app = angular.module('AppRegistro', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
 		        	
-		        	$scope.msg = " ";
+		        	var listaUsernames;
+		        	var listaEmails;
+		        	var indiceUsernames;
+		        	var indiceEmails;
 		        	
 		        	$http({
 	        	        method: 'GET',
-	        	        url: '/ejemploGET.do',
+	        	        url: '/getUsernames.do',
 	                    headers : {
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
-	        	    	$scope.msg = "Llega correctamente - " + response.data;
-		        	    }, function myError(response) {
-		        	    	$scope.msg = "Error del GET - Status Code= " + response.status + ", Status Text= " + response.statusText + ", Data= " + response.data;
-		        	    });
+	        	    	listaUsernames = response.data;
+	        	    }, function myError(response) {
+	        	    	listaUsernames = [];
+	        	    });
+		        	
+							        	
+		        	$http({
+	        	        method: 'GET',
+	        	        url: '/getEmails.do',
+	                    headers : {
+	                    	'Accept': 'application/json'
+	                    }
+	        	    }).then(function mySuccess(response) {
+	        	    	listaEmails = response.data;
+	        	    }, function myError(response) {
+	        	    	listaEmails = [];
+	        	    });
+		        	
+		        	$scope.listUsers = listaUsernames;
+		        	$scope.listEmails = listaEmails;
+		        	
+		        	
 		        	
 		        	$scope.envioDatos = function(){
 		        		
@@ -201,7 +223,7 @@
 		        	    }).then(
 			        		function (response) {
 				        		if (response.data){
-				        			bootbox.alert('Su cuenta ha sido creada. Para completar el registro, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
+				        			bootbox.alert('Cuenta creada. Para activarla, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
 				        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
 				        			});
 				        		}else{

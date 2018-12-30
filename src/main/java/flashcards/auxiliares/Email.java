@@ -33,7 +33,7 @@ public class Email {
 		setMensaje("Bienvenido a la Aplicación Flashcards!!"+
 		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
 		"\n www.google.es"+
-		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que usted nos ha proporcionado (email)"+
+		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
 		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());

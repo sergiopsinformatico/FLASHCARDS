@@ -1,5 +1,6 @@
 package main.java.flashcards.db.dao;
 
+import java.util.List;
 import main.java.flashcards.dto.UsuarioDTO;
 
 public interface InterfaceDAOUsuario {
@@ -12,6 +13,6 @@ public interface InterfaceDAOUsuario {
 	public UsuarioDTO getUsuarioDTO(String usernameEmail);
 	public boolean updateUsuario(UsuarioDTO userAntiguo, UsuarioDTO userNuevo);
 	public boolean deleteUsuario(UsuarioDTO user);
-	public String getJSONArrayUsername();
-	public String getJSONArrayEmail();
+	public List<String> getListUsername();
+	public List<String> getListEmail();
 }
