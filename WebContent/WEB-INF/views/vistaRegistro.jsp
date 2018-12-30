@@ -171,7 +171,6 @@
 	        	        method: 'GET',
 	        	        url: '/ejemploGET.do',
 	                    headers : {
-	                    	'Content-Type': 'application/json',
 	                    	'Accept': 'application/json'
 	                    }
 	        	    }).then(function mySuccess(response) {
