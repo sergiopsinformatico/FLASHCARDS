@@ -128,25 +128,29 @@
 				        </div>
 				        <small id="msgUsername">{{messageUsername}}</small>	
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres.</h6>			        
+				        <br>
 				        <div class="form-group">
 				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <small id="msgEmail">{{messageEmail}}</small>
+				        <br>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <small id="msgClave">{{messageClave}}</small>
 				        <h6 style="font-size:10px; color:#808080">Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres.</h6>
+				        <br>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
-				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
 				        <small id="msgRepClave">{{messageRepClave}}</small>
+				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
+				        <br>
+				        <small id="msgError">{{messageError}}</small>
+				        <br>
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
-				        		<br>
-				        		<small id="msgError">{{messageError}}</small>
 				        		<br>
 				        		<button type="submit" class="btn-registro" id="button1" name="button1" disabled>Registrar</button>
 				        		<br>
