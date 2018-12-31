@@ -123,8 +123,6 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
-	    				<small>{{nEmails}}</small>
-	    				<small>{{nUsernames}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -148,6 +146,8 @@
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
 				        		<br>
+				        		<small id="msgError">{{messageError}}</small>
+				        		<br>
 				        		<button type="submit" class="btn-registro" id="button1" name="button1" disabled>Registrar</button>
 				        		<br>
 				        	</div>
@@ -167,6 +167,7 @@
 		        	$scope.messageEmail = "";
 		        	$scope.messageClave = "";
 		        	$scope.messageRepClave = "";
+		        	$scope.messageError = "";
 		        	
 		        	var listaUsernames = [];
 		        	var listaEmails = [];
@@ -197,7 +198,6 @@
 	        	    	for(indice=0; indice<response.data.length; indice++){
 	        	    		listaUsernames.push(response.data[indice]);
 	        	    	}
-	        	    	$scope.nUsernames = listaUsernames.length;
 	        	    }, function myError(response) {
 	        	    	listaUsernames = [];
 	        	    });
@@ -213,7 +213,6 @@
 	        	    	for(indice=0; indice<response.data.length; indice++){
 	        	    		listaEmails.push(response.data[indice]);
 	        	    	}
-	        	    	$scope.nEmails = listaEmails.length;
 	        	    }, function myError(response) {
 	        	    	listaEmails = [];
 	        	    });
@@ -221,9 +220,18 @@
 		        	
 		        	function enableBtnRegistro(){
 		        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
-		        			document.getElementById("button1").disabled = false;
+		        			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
+		        				document.getElementById("button1").disabled = true;
+		        				document.getElementById("msgError").style.color="#E33A3A"
+		        				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
+		        			}else{
+		        				$scope.messageError="";
+		        				document.getElementById("button1").disabled = false;
+		        			}
 		        		}else{
 		        			document.getElementById("button1").disabled = true;
+		        			document.getElementById("msgError").style.color="#E33A3A"
+		        			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
 		        		}
 		        	}
 		        	
