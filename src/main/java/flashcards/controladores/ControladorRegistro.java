@@ -1,17 +1,13 @@
 package main.java.flashcards.controladores;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +25,6 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class ControladorRegistro {
 	
 	Email correo;
-	List<String>lista;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
@@ -61,18 +56,14 @@ public class ControladorRegistro {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listUsernames(){
-		lista = Broker.getInstanciaUsuario().getListUsername();
-		lista.add("Sergio123");
-		return lista;
+		return Broker.getInstanciaUsuario().getListUsernameRegistro();
 	}	
 	
 	@RequestMapping(value = "/getEmails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listEmails(){
-		lista = Broker.getInstanciaUsuario().getListEmail();
-		lista.add("sergio13_yo@hotmail.com");
-		return lista;
+		return Broker.getInstanciaUsuario().getListEmailRegistro();
 	}	
 	
 	
