@@ -133,7 +133,7 @@
 				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <small id="msgEmail">{{messageEmail}}</small>
-				        <br>
+				        <br><br>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required>
 				        </div>
