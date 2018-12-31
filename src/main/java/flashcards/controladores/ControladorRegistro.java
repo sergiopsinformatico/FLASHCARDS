@@ -29,6 +29,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class ControladorRegistro {
 	
 	Email correo;
+	List<String>lista;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
@@ -60,14 +61,18 @@ public class ControladorRegistro {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listUsernames(){
-		return Broker.getInstanciaUsuario().getListUsername();
+		lista = Broker.getInstanciaUsuario().getListUsername();
+		lista.add("Sergio123");
+		return lista;
 	}	
 	
 	@RequestMapping(value = "/getEmails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listEmails(){
-		return Broker.getInstanciaUsuario().getListEmail();
+		lista = Broker.getInstanciaUsuario().getListEmail();
+		lista.add("sergio13_yo@hotmail.com");
+		return lista;
 	}	
 	
 	

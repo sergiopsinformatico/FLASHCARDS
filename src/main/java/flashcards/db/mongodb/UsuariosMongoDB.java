@@ -1,6 +1,7 @@
 package main.java.flashcards.db.mongodb;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.bson.BsonDocument;
 import org.bson.BsonString;
@@ -183,7 +184,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		return true;
 	}
 	
-	//Comprobar si es correcta la restricción de la clave
+	//Comprobar si es correcta la restriccion de la clave
 	public boolean claveIsCorrect(String clave) {
 		if(!(clave.length()>=5 && clave.length()<=20)) {
 			return false;
@@ -295,7 +296,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public LinkedList<String> getListUsername() {		
+	public List<String> getListUsername() {		
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
@@ -311,7 +312,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		return lista;
 	}
 	
-	public LinkedList<String> getListEmail() {
+	public List<String> getListEmail() {
 		resultadosBusqueda = readAll();
 		iterator = resultadosBusqueda.iterator();
 		
