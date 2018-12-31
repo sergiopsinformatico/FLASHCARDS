@@ -197,6 +197,7 @@
 	        	    	for(indice=0; indice<response.data.length; indice++){
 	        	    		listaUsernames.push(response.data[indice]);
 	        	    	}
+	        	    	$scope.nUsernames = listaUsernames.length;
 	        	    }, function myError(response) {
 	        	    	listaUsernames = [];
 	        	    });
@@ -212,12 +213,11 @@
 	        	    	for(indice=0; indice<response.data.length; indice++){
 	        	    		listaEmails.push(response.data[indice]);
 	        	    	}
+	        	    	$scope.nEmails = listaEmails.length;
 	        	    }, function myError(response) {
 	        	    	listaEmails = [];
 	        	    });
 		        	
-		        	$scope.nEmails = listaEmails.length;
-		        	$scope.nUsernames = listaUsernames.length;
 		        	
 		        	function enableBtnRegistro(){
 		        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
