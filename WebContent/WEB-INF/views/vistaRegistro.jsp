@@ -123,6 +123,8 @@
 	    		<div class="col-md-4">
 	    			
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
+	    				<small>{{nEmails}}</small>
+	    				<small>{{nUsernames}}</small>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername(username)" name="inputUsername" placeholder="Username" required>
 				        </div>
@@ -214,6 +216,8 @@
 	        	    	listaEmails = [];
 	        	    });
 		        	
+		        	$scope.nEmails = listaEmails.length;
+		        	$scope.nUsernames = listaUsernames.length;
 		        	
 		        	function enableBtnRegistro(){
 		        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
