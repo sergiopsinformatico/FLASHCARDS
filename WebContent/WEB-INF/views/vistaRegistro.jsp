@@ -146,7 +146,7 @@
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
 				        		<br>
-				        		<button type="submit" class="btn-registro" id="button1" disabled>Registrar</button>
+				        		<button type="submit" class="btn-registro" id="button1" name="button1" disabled>Registrar</button>
 				        		<br>
 				        	</div>
 				        	<div class="col-md-3"></div>
@@ -224,7 +224,8 @@
 		        	}
 		        	
 		        	function validateUsername(username){
-		        		checkUsername = false;
+		        		$scope.messageUsername="Se escribe username";
+		        		/*checkUsername = false;
 		        		checkExistUsername = false;
 		        		checkLongUsername = false;
 		        		checkCaracterUsername = true;
@@ -274,11 +275,12 @@
 		        			checkUsername = true;
 		        		}
 		        		
-		        		enableBtnRegistro();
+		        		enableBtnRegistro();*/
 		        	}
 		        	
 		        	function validateEmail(email){
-		        		checkEmail = false;
+		        		$scope.messageEmail = "Se escribe email";
+		        		/*checkEmail = false;
 		        		existEmail = false;
 			        	checkCaracterEmail = true;
 		        		
@@ -308,11 +310,12 @@
 		        			checkEmail = true;
 		        		}
 		        		
-		        		enableBtnRegistro();
+		        		enableBtnRegistro();*/
 			        }
 		        	
 		        	function validateClave(clave, repClave){
-		        		
+		        		$scope.messageClave = "Se escribe clave";
+		        		/*
 		        		checkClave = false;
 		        		checkLongClave = false;
 		        		checkCaracterClave = true;
@@ -345,11 +348,12 @@
 		        			checkClave = true;
 		        		}
 		        		
-		        		validateRepClave(clave, repClave);
+		        		validateRepClave(clave, repClave);*/
 		        	}
 		        	
 		        	function validateRepClave(clave, repClave){
-		        		checkRepClave = false;
+		        		$scope.messageRepClave = "Se escribe repClave";
+		        		/*checkRepClave = false;
 		        		if(clave==repClave){
 		        			checkRepClave = true;
 		        			document.getElementById("msgRepClave").style.color="#5CC300"
@@ -358,7 +362,7 @@
 		        			document.getElementById("msgRepClave").style.color="#E33A3A"
 			        		$scope.messageRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
 		        		}
-		        		enableBtnRegistro();
+		        		enableBtnRegistro();*/
 		        	}
 		        	
 		        	$scope.envioDatos = function(){
