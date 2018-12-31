@@ -126,21 +126,21 @@
 	    				<small>{{nEmails}}</small>
 	    				<small>{{nUsernames}}</small>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername(username)" name="inputUsername" placeholder="Username" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-keydown="validateUsername(username)" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <small id="msgUsername">{{messageUsername}}</small>	
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres.</h6>			        
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail(email)" name="inputEmail" placeholder="Email" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-keydown="validateEmail(email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <small id="msgEmail">{{messageEmail}}</small>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave(clave, repClave)" name="inputClave" placeholder="Clave" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-keydown="validateClave(clave, repClave)" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <small id="msgClave">{{messageClave}}</small>
 				        <h6 style="font-size:10px; color:#808080">Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres.</h6>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave(clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
+				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-keydown="validateRepClave(clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
 				        <small id="msgRepClave">{{messageRepClave}}</small>
@@ -349,7 +349,7 @@
 		        			checkClave = true;
 		        		}
 		        		
-		        		validateRepClave(clave, repClave);
+		        		$scope.validateRepClave(clave, repClave);
 		        	}
 		        	
 		        	$scope.validateRepClave = function(clave, repClave){
