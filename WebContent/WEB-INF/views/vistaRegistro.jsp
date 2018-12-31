@@ -223,9 +223,8 @@
 		        		}
 		        	}
 		        	
-		        	function validateUsername(username){
-		        		$scope.messageUsername="Se escribe username";
-		        		/*checkUsername = false;
+		        	$scope.validateUsername = function(username){
+		        		checkUsername = false;
 		        		checkExistUsername = false;
 		        		checkLongUsername = false;
 		        		checkCaracterUsername = true;
@@ -275,12 +274,11 @@
 		        			checkUsername = true;
 		        		}
 		        		
-		        		enableBtnRegistro();*/
+		        		enableBtnRegistro();
 		        	}
 		        	
-		        	function validateEmail(email){
-		        		$scope.messageEmail = "Se escribe email";
-		        		/*checkEmail = false;
+		        	$scope.validateEmail = function(email){
+		        		checkEmail = false;
 		        		existEmail = false;
 			        	checkCaracterEmail = true;
 		        		
@@ -310,12 +308,11 @@
 		        			checkEmail = true;
 		        		}
 		        		
-		        		enableBtnRegistro();*/
+		        		enableBtnRegistro();
 			        }
 		        	
-		        	function validateClave(clave, repClave){
-		        		$scope.messageClave = "Se escribe clave";
-		        		/*
+		        	$scope.validateClave = function(clave, repClave){
+		        		
 		        		checkClave = false;
 		        		checkLongClave = false;
 		        		checkCaracterClave = true;
@@ -348,12 +345,11 @@
 		        			checkClave = true;
 		        		}
 		        		
-		        		validateRepClave(clave, repClave);*/
+		        		validateRepClave(clave, repClave);
 		        	}
 		        	
-		        	function validateRepClave(clave, repClave){
-		        		$scope.messageRepClave = "Se escribe repClave";
-		        		/*checkRepClave = false;
+		        	$scope.validateRepClave = function(clave, repClave){
+		        		checkRepClave = false;
 		        		if(clave==repClave){
 		        			checkRepClave = true;
 		        			document.getElementById("msgRepClave").style.color="#5CC300"
@@ -362,7 +358,7 @@
 		        			document.getElementById("msgRepClave").style.color="#E33A3A"
 			        		$scope.messageRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
 		        		}
-		        		enableBtnRegistro();*/
+		        		enableBtnRegistro();
 		        	}
 		        	
 		        	$scope.envioDatos = function(){
