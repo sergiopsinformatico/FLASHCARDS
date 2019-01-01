@@ -77,13 +77,13 @@
 			        <div class="form-group">
 			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
 			        </div>
-			        <div class="row">
-			        	<div class="g-recaptcha positionReCaptcha" align="center" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			        <div class="row" align="center">
+			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
-			        		<button type="submit" id="button2" name="button2" class="btn-login">Iniciar Sesion</button>
+			        		<button type="submit" id="buttonIS" name="buttonIS" class="btn-login">Iniciar Sesion</button>
 			        	</div>
 			        	<script>
 			        		document.getElementById("button2").disabled = true;
@@ -92,8 +92,8 @@
 			        </div>
 			        <script>
 			        	function enableBtn(){
-			        		document.getEñementById("button2").style.background = "#61E900";
-			        		document.getElementById("button2").disabled = false;
+			        		document.getElementById("buttonIS").style.background = "#61E900";
+			        		document.getElementById("buttonIS").disabled = false;
 			        	}
 			        </script>
 			    </form>
