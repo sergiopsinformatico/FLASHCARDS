@@ -92,7 +92,7 @@
 			        </div>
 			        <script>
 			        	function enableBtn(){
-			        		document.getEñementById("button2").style.color = "#61E900";
+			        		document.getEñementById("button2").style.background = "#61E900";
 			        		document.getElementById("button2").disabled = false;
 			        	}
 			        </script>
