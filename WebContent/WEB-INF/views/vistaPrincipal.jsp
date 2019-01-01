@@ -18,14 +18,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	</head>
 	<body>
-		<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
-		<% 
-			UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user==null || user.getUsername().equals("")){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com");
-			}
-			session.setAttribute("usuario", user);
-		%>
+		
 		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
 				alert("${mensaje}");

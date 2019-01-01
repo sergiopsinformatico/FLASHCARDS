@@ -42,7 +42,14 @@ public class ControladorPrincipal {
 	PeticionDeAmistad pA;
 	
 	
-	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")==null) {
+			return new ModelAndView("index");
+		}else {
+			return new ModelAndView("vistaPrincipal");
+		}
+	}
 	
 	
 	
