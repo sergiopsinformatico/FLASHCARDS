@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +31,8 @@ public class Controlador01RegistroUsuarios {
 	//Devuelve la vista para registrar a los usuarios
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("usuario")==null) {
+	public ModelAndView registroGet(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(userRegister==null) {
 			return new ModelAndView("vistaRegistro");
 		}else {
 			return new ModelAndView("redirect:/");

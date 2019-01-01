@@ -3,6 +3,7 @@ package main.java.flashcards.controladores;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,8 @@ public class Controlador02IniciarSesion {
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("usuario")==null) {
+	public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(userRegister==null) {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
 			return new ModelAndView("redirect:/");
@@ -35,19 +36,18 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			request.setAttribute("usuario", user);
-			vista = new ModelAndView("redirect:/");			
+			vista = new ModelAndView("redirect:/");
+			vista.addObject("usuario", user);
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
-			request.removeAttribute("usuario");
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
 		return vista;
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("usuario")==null) {
+	public ModelAndView modificar(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(userRegister==null) {
 			return new ModelAndView("index");
 		}else {
 			return new ModelAndView("vistaPrincipal");
