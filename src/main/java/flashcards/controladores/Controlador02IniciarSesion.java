@@ -22,7 +22,7 @@ public class Controlador02IniciarSesion {
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")==null) {
+		if(request.getAttribute("usuario")==null) {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
 			return new ModelAndView("redirect:/");
@@ -35,11 +35,11 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			request.getSession().setAttribute("usuario", user);
+			request.setAttribute("usuario", user);
 			vista = new ModelAndView("redirect:/");			
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
-			request.getSession().removeAttribute("usuario");
+			request.removeAttribute("usuario");
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
 		return vista;
@@ -47,7 +47,7 @@ public class Controlador02IniciarSesion {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")==null) {
+		if(request.getAttribute("usuario")==null) {
 			return new ModelAndView("index");
 		}else {
 			return new ModelAndView("vistaPrincipal");

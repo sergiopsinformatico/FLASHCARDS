@@ -31,7 +31,7 @@ public class Controlador01RegistroUsuarios {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")==null) {
+		if(request.getAttribute("usuario")==null) {
 			return new ModelAndView("vistaRegistro");
 		}else {
 			return new ModelAndView("redirect:/");
