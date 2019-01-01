@@ -162,12 +162,7 @@
 	</head>
 	<body>
 		<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
-		<% 
-		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-			if(user!=null && (!user.getUsername().equals(""))){
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+((UsuarioDTO)(session.getAttribute("usuario"))).getUsername());
-			}
-		%>
+
 		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
 				alert("${mensaje}");
