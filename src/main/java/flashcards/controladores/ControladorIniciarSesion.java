@@ -66,16 +66,16 @@ public class ControladorIniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("principal");
+			vista = new ModelAndView("vistaPrincipal");
 			vista.addObject("usuario", user.getUsername());
 			
 			request.getSession().setAttribute("usuario", user);
 			
-			try {
+			/*try {
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
 			} catch (IOException e) {
 				return vista;
-			}
+			}*/
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
 			request.getSession().removeAttribute("usuario");

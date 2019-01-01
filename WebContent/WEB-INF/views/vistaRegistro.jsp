@@ -88,9 +88,6 @@
 	    <!-- Custom scripts for this template -->
 	    <script src="resources/js/freelancer.min.js"></script>
 	    
-	    <!--Re captcha google-->
-	    <script src='https://www.google.com/recaptcha/api.js'></script>
-	    
 	    <!-- Angular JS -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	    

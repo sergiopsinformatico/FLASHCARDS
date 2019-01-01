@@ -130,6 +130,10 @@
 
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
+    
+    <!--Re captcha google-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+	    
 
   </body>
 
