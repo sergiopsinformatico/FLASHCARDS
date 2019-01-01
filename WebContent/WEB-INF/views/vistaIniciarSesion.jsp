@@ -84,12 +84,14 @@
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">
-			        		<button type="submit" id="button2" class="btn-login">Iniciar Sesion</button>
+			        		<button type="submit" id="button2" name="button2" class="btn-login">Iniciar Sesion</button>
 			        	</div>
+			        	<script>
+			        		document.getElementById("button2").disabled = true;
+			        	</script>
 			        	<div class="col-md-3"></div>
 			        </div>
 			        <script>
-			        	document.getElementById("button2").disabled = true;
 			        	function enableBtn(){
 			        		document.getElementById("button2").disabled = false;
 			        	}
