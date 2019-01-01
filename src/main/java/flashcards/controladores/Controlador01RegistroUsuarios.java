@@ -35,7 +35,11 @@ public class Controlador01RegistroUsuarios {
 		if(userRegister==null) {
 			return new ModelAndView("vistaRegistro");
 		}else {
-			return new ModelAndView("redirect:/");
+			if(userRegister.getUsername()==null || userRegister.getUsername()=="") {
+				return new ModelAndView("vistaRegistro");
+			}else {
+				return new ModelAndView("redirect:/");
+			}	
 		}
 	}
 	

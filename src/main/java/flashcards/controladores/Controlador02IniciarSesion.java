@@ -26,7 +26,11 @@ public class Controlador02IniciarSesion {
 		if(userRegister==null) {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
-			return new ModelAndView("redirect:/");
+			if(userRegister.getUsername()==null ||userRegister.getUsername()=="") {
+				return new ModelAndView("vistaIniciarSesion");
+			}else {
+				return new ModelAndView("redirect:/");
+			}
 		}
 	}
 	
@@ -50,7 +54,11 @@ public class Controlador02IniciarSesion {
 		if(userRegister==null) {
 			return new ModelAndView("index");
 		}else {
-			return new ModelAndView("vistaPrincipal");
+			if(userRegister.getUsername()==null || user.getUsername()=="") {
+				return new ModelAndView("index");
+			}else {
+				return new ModelAndView("vistaPrincipal");
+			}
 		}
 	}
 
