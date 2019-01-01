@@ -42,11 +42,12 @@ public class ControladorTarjetas {
 	String identificador;
 	Random r = new Random();
 	
+	
 	public String readJSON(String json, String tag) {
-		/*parser = new JSONObject(json);
-		return parser.getString(tag);*/
+		
 		return "";
 	}
+	/*
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
 	public ModelAndView crearColeccion(HttpServletRequest request, HttpServletResponse response) {
@@ -243,6 +244,4 @@ public class ControladorTarjetas {
 				}
 			}
 		}*/
-	}
-	
 }

@@ -16,7 +16,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 public class ControladorEliminarPerfil {
-	
+	/*
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
 	public ModelAndView eliminarGet(HttpServletRequest request, HttpServletResponse response) {
 		Email em = new Email();
@@ -28,5 +28,5 @@ public class ControladorEliminarPerfil {
 		request.getSession().removeAttribute("usuario");
 		em.eliminarCuenta(user,  pB.getFecha());
 		return new ModelAndView("index");
-	}
+	}*/
 }

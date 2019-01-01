@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorModificarPerfil {
-	
+	/*
 	@RequestMapping(value = "/mPerfil", method = RequestMethod.POST)
 	public ModelAndView mPerfil(HttpServletRequest request, HttpServletResponse response) {
 		/*GestorUsuarios gU = new GestorUsuarios();
@@ -26,7 +26,7 @@ public class ControladorModificarPerfil {
 			nuevo.setPhoto("resources/img/profileHombre.jpg");
 		}else {
 			nuevo.setPhoto("resources/img/profileMujer.jpg");
-		}*/
+		}
 		
 		ModelAndView vista = new ModelAndView();
 		/*
@@ -179,7 +179,7 @@ public class ControladorModificarPerfil {
 					e.printStackTrace();
 				}
 			}
-		}*/
+		}
 		return vista;
-	}
+	}*/
 }

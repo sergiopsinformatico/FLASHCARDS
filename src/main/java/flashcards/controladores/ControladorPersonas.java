@@ -41,6 +41,7 @@ public class ControladorPersonas {
 	LinkedList<UsuarioDTO>pendientesUsuario, amigosUsuario, bloqueados;
 	LinkedList<String>amigosLeidos, bloqueadosLeidos;
 	
+	/*
 	@RequestMapping(value = "/people", method = RequestMethod.GET)
 	public String people() {
 		return "hola";
@@ -84,7 +85,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;	*/
+		return gente;	
 	}
 
 	
@@ -125,7 +126,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);		
-		return gente;	*/
+		return gente;	
 	}
 	
 	@RequestMapping(value = "/aceptar", method = RequestMethod.POST)
@@ -166,7 +167,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	
@@ -208,7 +209,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	@RequestMapping(value = "/bloquearPeticion", method = RequestMethod.POST)
@@ -223,7 +224,7 @@ public class ControladorPersonas {
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/gente.html?usuario="+request.getParameter("usuario"));
 		} catch (IOException e) {
 			
-		}/*
+		}
 		gente = new ModelAndView("personas");
 		LinkedList<PeticionDeAmistad>enviadas = gP.leerPeticionEnviada(request.getParameter("usuario"));
 		gente.addObject("enviadas", enviadas);
@@ -249,7 +250,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	@RequestMapping(value = "/eliminarAmigo", method = RequestMethod.POST)
@@ -289,7 +290,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	@RequestMapping(value = "/bloquearAmigo", method = RequestMethod.POST)
@@ -332,7 +333,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	@RequestMapping(value = "/desbloquear", method = RequestMethod.POST)
@@ -372,7 +373,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
 	
 	@RequestMapping(value = "/eliminarPeticion", method = RequestMethod.POST)
@@ -412,7 +413,7 @@ public class ControladorPersonas {
 			bloqueados.add(gU.leerUsuario(bloqueadosLeidos.get(i)));
 		}
 		gente.addObject("bloqueados", bloqueados);
-		return gente;*/
+		return gente;
 	}
-	
+	*/
 }

@@ -21,6 +21,7 @@ public class ControladorRecuperarCredenciales {
 	ModelAndView vista;
 	
 	//Controlador
+	/*
 	@RequestMapping(value = "/recovery", method = RequestMethod.POST)
 	public ModelAndView recoveryPass(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("recoveryPassword");
@@ -50,5 +51,5 @@ public class ControladorRecuperarCredenciales {
 			vista.addObject("mensaje", "El nombre de usuario o email introducido, no existe en el sistema.");
 		}
 		return vista;
-	}
+	}*/
 }

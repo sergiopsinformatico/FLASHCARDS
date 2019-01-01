@@ -87,8 +87,7 @@
 			        <div class="form-group">
 			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
 			        </div>
-			        <div class="row">
-			        	<br>
+			        <div class="row center">
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
 			        <div class="row">
@@ -99,6 +98,7 @@
 			        	<div class="col-md-3"></div>
 			        </div>
 			        <script>
+			        	document.getElementById("button2").disabled = true;
 			        	function enableBtn(){
 			        		document.getElementById("button2").disabled = false;
 			        	}
