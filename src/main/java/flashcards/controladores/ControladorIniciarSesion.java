@@ -63,13 +63,14 @@ public class ControladorIniciarSesion {
 	
 	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
 	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
-		broker = new Broker();
-		dBUsuario = broker.getInstanciaUsuario();
+		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 			vista = new ModelAndView("principal");
-			vista.addObject("usuario", user);
+			vista.addObject("usuario", user.getUsername());
+			
 			request.getSession().setAttribute("usuario", user);
+			
 			try {
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
 			} catch (IOException e) {
@@ -79,7 +80,7 @@ public class ControladorIniciarSesion {
 			vista = new ModelAndView("vistaIniciarSesion");
 			request.getSession().removeAttribute("usuario");
 			request.getSession().setAttribute("usuario", null);
-			vista.addObject("mensaje", "El usuario y/o la contraseÃ±a son incorrectos.");
+			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
 		return vista;
 	}
