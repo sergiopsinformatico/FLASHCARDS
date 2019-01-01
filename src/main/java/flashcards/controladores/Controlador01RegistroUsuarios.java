@@ -31,7 +31,7 @@ public class Controlador01RegistroUsuarios {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public String registroGet(HttpServletRequest request, HttpServletResponse response) {
-		return "vistaRegistro";
+		return "redirect:/loguear.do";
 	}
 	
 	//Guardar a los nuevos usuarios
