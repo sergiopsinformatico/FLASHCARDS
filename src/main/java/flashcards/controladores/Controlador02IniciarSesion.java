@@ -13,13 +13,63 @@ import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
-public class ControladorIniciarSesion {
+public class Controlador02IniciarSesion {
 
 	//Variables Globales
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	UsuarioDTO user;
 	ModelAndView vista;
+	
+	//Devuelve la vista para Iniciar Sesion
+	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
+	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
+		vista = new ModelAndView("vistaIniciarSesion");
+		return vista;
+	}
+	
+	//Iniciar Sesion	
+	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
+	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
+		dBUsuario = Broker.getInstanciaUsuario();
+		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
+			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
+			vista = new ModelAndView("vistaPrincipal");
+			vista.addObject("usuario", user.getUsername());
+			
+			request.getSession().setAttribute("usuario", user);
+			
+			/*try {
+				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
+			} catch (IOException e) {
+				return vista;
+			}*/
+		}else {
+			vista = new ModelAndView("vistaIniciarSesion");
+			request.getSession().removeAttribute("usuario");
+			request.getSession().setAttribute("usuario", null);
+			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
+		}
+		return vista;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//Controladores
 	/*
@@ -61,34 +111,6 @@ public class ControladorIniciarSesion {
 		return vista;
 	}*/
 	
-	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
-	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
-		dBUsuario = Broker.getInstanciaUsuario();
-		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
-			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("vistaPrincipal");
-			vista.addObject("usuario", user.getUsername());
-			
-			request.getSession().setAttribute("usuario", user);
-			
-			/*try {
-				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
-			} catch (IOException e) {
-				return vista;
-			}*/
-		}else {
-			vista = new ModelAndView("vistaIniciarSesion");
-			request.getSession().removeAttribute("usuario");
-			request.getSession().setAttribute("usuario", null);
-			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
-		}
-		return vista;
-	}
-	
-	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaIniciarSesion");
-		return vista;
-	}
+
 
 }

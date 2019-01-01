@@ -22,15 +22,19 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 
 @RestController
-public class ControladorRegistro {
+public class Controlador01RegistroUsuarios {
 	
 	Email correo;
 	List<String> listaUsernames, listaEmails;
 	
+	//Devuelve la vista para registrar a los usuarios
+	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("vistaRegistro");
+	public String registroGet(HttpServletRequest request, HttpServletResponse response) {
+		return "vistaRegistro";
 	}
+	
+	//Guardar a los nuevos usuarios
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
