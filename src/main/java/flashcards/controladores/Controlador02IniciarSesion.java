@@ -1,7 +1,5 @@
 package main.java.flashcards.controladores;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -24,8 +22,11 @@ public class Controlador02IniciarSesion {
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaIniciarSesion");
-		return vista;
+		if(request.getSession().getAttribute("usuario")==null) {
+			return new ModelAndView("vistaIniciarSesion");
+		}else {
+			return new ModelAndView("redirect:/");
+		}
 	}
 	
 	//Iniciar Sesion	
@@ -34,10 +35,9 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("vistaPrincipal");
-			vista.addObject("usuario", user.getUsername());
-			
 			request.getSession().setAttribute("usuario", user);
+			vista = new ModelAndView("redirect:/");			
+			
 			
 			/*try {
 				response.sendRedirect("https://sistemaflashcards.herokuapp.com/inicio.html?usuario="+user.getUsername());
@@ -47,10 +47,19 @@ public class Controlador02IniciarSesion {
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
 			request.getSession().removeAttribute("usuario");
-			request.getSession().setAttribute("usuario", null);
+			//request.getSession().setAttribute("usuario", null);
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
 		}
 		return vista;
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")==null) {
+			return new ModelAndView("index");
+		}else {
+			return new ModelAndView("vistaPrincipal");
+		}
 	}
 	
 	

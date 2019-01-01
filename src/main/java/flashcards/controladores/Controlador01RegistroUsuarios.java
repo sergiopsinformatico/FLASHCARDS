@@ -30,8 +30,12 @@ public class Controlador01RegistroUsuarios {
 	//Devuelve la vista para registrar a los usuarios
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public String registroGet(HttpServletRequest request, HttpServletResponse response) {
-		return "redirect:/loguear.do";
+	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")==null) {
+			return new ModelAndView("vistaRegistro");
+		}else {
+			return new ModelAndView("redirect:/");
+		}
 	}
 	
 	//Guardar a los nuevos usuarios
@@ -61,7 +65,6 @@ public class Controlador01RegistroUsuarios {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listUsernames(){
-		//return Broker.getInstanciaUsuario().getListUsernameRegistro();
 		listaUsernames = Broker.getInstanciaUsuario().getListUsername();
 		listaUsernames.add("Sergio123");
 		return listaUsernames;
@@ -71,7 +74,6 @@ public class Controlador01RegistroUsuarios {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listEmails(){
-		//return Broker.getInstanciaUsuario().getListEmailRegistro();
 		listaEmails = Broker.getInstanciaUsuario().getListEmail();
 		listaEmails.add("sergio13_yo@hotmail.com");
 		return listaEmails;

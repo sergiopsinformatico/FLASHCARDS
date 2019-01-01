@@ -328,40 +328,6 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		return lista;
 	}
 	
-	public List<String> getListUsernameRegistro() {		
-		resultadosBusqueda = readAll();
-		iterator = resultadosBusqueda.iterator();
-		
-		if(!(iterator.hasNext())) {
-			lista = new LinkedList<String>();
-		}else {
-			lista = new LinkedList<String>();
-			while(iterator.hasNext()) {
-				doc = iterator.next();
-				lista.add(doc.getString("email"));
-			}
-		}
-		lista.add("Sergio123");
-		return lista;
-	}
-	
-	public List<String> getListEmailRegistro() {
-		resultadosBusqueda = readAll();
-		iterator = resultadosBusqueda.iterator();
-		
-		if(!(iterator.hasNext())) {
-			lista = new LinkedList<String>();
-		}else {
-			lista = new LinkedList<String>();
-			while(iterator.hasNext()) {
-				doc = iterator.next();
-				lista.add(doc.getString("email"));
-			}
-		}
-		lista.add("sergio13_yo@hotmail.com");
-		return lista;
-	}
-	
 	public boolean deleteUsuario(UsuarioDTO user) {
 		try {
 			criteriosBusqueda = new BsonDocument().

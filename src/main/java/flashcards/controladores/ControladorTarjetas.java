@@ -43,10 +43,6 @@ public class ControladorTarjetas {
 	Random r = new Random();
 	
 	
-	public String readJSON(String json, String tag) {
-		
-		return "";
-	}
 	/*
 	
 	@RequestMapping(value = "/crearColeccion", method = RequestMethod.GET)
