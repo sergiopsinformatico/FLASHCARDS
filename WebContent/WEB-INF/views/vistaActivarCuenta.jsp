@@ -97,7 +97,7 @@
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
-				        		<button type="submit" id="buttonSiguiente" name="buttonSiguiente" class="btn-login">Siguiente</button>
+				        		<button type="button" class="btn btn-success">Siguiente</button>
 				        	</div>
 				        	<div class="col-md-3"></div>
 				        </div>
