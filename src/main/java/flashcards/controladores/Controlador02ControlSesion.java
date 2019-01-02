@@ -6,13 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
-public class Controlador02IniciarSesion {
+@SessionAttributes("usuario")
+public class Controlador02ControlSesion {
 
 	//Variables Globales
 	Broker broker;
@@ -22,15 +24,12 @@ public class Controlador02IniciarSesion {
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(userRegister==null) {
+	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
+	//public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(request.getAttribute("usuario")==null || ((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
-			if(userRegister.getUsername()==null ||userRegister.getUsername()=="") {
-				return new ModelAndView("vistaIniciarSesion");
-			}else {
-				return new ModelAndView("redirect:/");
-			}
+			return new ModelAndView("redirect:/principal.html");
 		}
 	}
 	
@@ -50,21 +49,12 @@ public class Controlador02IniciarSesion {
 	}
 	
 	@RequestMapping(value = "/principal", method = RequestMethod.GET)
-	public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(userRegister==null) {
-			vista = new ModelAndView("index");
-			vista.addObject("usuario", userRegister);
-			return vista;
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
+	//public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(request.getAttribute("usuario")==null || ((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()=="") {
+			return new ModelAndView("index");
 		}else {
-			if(userRegister.getUsername()==null || userRegister.getUsername()=="") {
-				vista = new ModelAndView("index");
-				vista.addObject("usuario", userRegister);
-				return vista;
-			}else {
-				vista = new ModelAndView("vistaPrincipal");
-				vista.addObject("usuario", userRegister);
-				return vista;
-			}
+			return new ModelAndView("vistaPrincipal");
 		}
 	}
 

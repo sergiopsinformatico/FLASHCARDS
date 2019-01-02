@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
@@ -23,6 +24,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 
 @RestController
+@SessionAttributes("usuario")
 public class Controlador01RegistroUsuarios {
 	
 	Email correo;
