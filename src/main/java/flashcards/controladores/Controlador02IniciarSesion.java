@@ -51,7 +51,7 @@ public class Controlador02IniciarSesion {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(userRegister==null) {
+		/*if(userRegister==null) {
 			vista = new ModelAndView("index");
 			vista.addObject("usuario", userRegister);
 			return vista;
@@ -65,7 +65,10 @@ public class Controlador02IniciarSesion {
 				vista.addObject("usuario", userRegister);
 				return vista;
 			}
-		}
+		}*/
+		vista = new ModelAndView("vistaPrincipal");
+		vista.addObject("usuario", userRegister);
+		return vista;
 	}
 
 }
