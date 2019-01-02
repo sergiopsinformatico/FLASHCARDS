@@ -49,13 +49,20 @@ public class Controlador02ControlSesion {
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
 	//public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("index");
 		}else {
 			return new ModelAndView("vistaPrincipal");
 		}
+	}
+	
+	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
+	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
+		vista = new ModelAndView("index");
+		vista.addObject("usuario", null);
+		return vista;
 	}
 
 }
