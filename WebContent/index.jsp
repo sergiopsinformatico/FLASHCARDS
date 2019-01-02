@@ -25,6 +25,15 @@
   </head>
 
   <body id="page-top">
+  
+  	<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
+	<% 
+		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
+		if(user!=null && (!(user.getUsername().equals("")))){
+			response.sendRedirect("https://sistemaflashcards.herokuapp.com/principal.html");
+		}
+		session.setAttribute("usuario", user);
+	%>
 		
 		<script language="JavaScript" type="text/javascript">
 			if("${mensaje}" != ""){
@@ -62,8 +71,7 @@
     <!-- Portfolio Grid Section -->
     <section class="portfolio" id="portfolio">
       <div class="container">
-      	Usuario: ${usuario.getUsername()}
-      	<input type="submit" value="Cerrar Sesion" formaction="cerrarSesion.do">
+
       </div>
     </section>
 
