@@ -33,15 +33,12 @@ public class Controlador01RegistroUsuarios {
 	//Devuelve la vista para registrar a los usuarios
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registroGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(userRegister==null) {
+	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
+	//public ModelAndView registroGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("vistaRegistro");
 		}else {
-			if(userRegister.getUsername()==null || userRegister.getUsername()=="") {
-				return new ModelAndView("vistaRegistro");
-			}else {
-				return new ModelAndView("redirect:/");
-			}	
+			return new ModelAndView("redirect:/");
 		}
 	}
 	

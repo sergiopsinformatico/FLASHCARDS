@@ -26,7 +26,7 @@ public class Controlador02ControlSesion {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
 	//public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("usuario")==null || ((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()=="") {
+		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
 			return new ModelAndView("redirect:/principal.html");
@@ -39,7 +39,7 @@ public class Controlador02ControlSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("redirect:/principal.html");
+			vista = new ModelAndView("redirect:/");
 			vista.addObject("usuario", user);
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
@@ -48,10 +48,10 @@ public class Controlador02ControlSesion {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/principal", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response) {
 	//public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		if(request.getAttribute("usuario")==null || ((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getAttribute("usuario"))).getUsername()=="") {
+		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("index");
 		}else {
 			return new ModelAndView("vistaPrincipal");
