@@ -54,7 +54,7 @@ public class Controlador02IniciarSesion {
 		if(userRegister==null) {
 			return new ModelAndView("index");
 		}else {
-			if(userRegister.getUsername()==null || user.getUsername()=="") {
+			if(userRegister.getUsername()==null || userRegister.getUsername()=="") {
 				return new ModelAndView("index");
 			}else {
 				return new ModelAndView("vistaPrincipal");
