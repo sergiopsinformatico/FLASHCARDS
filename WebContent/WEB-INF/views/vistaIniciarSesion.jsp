@@ -35,6 +35,11 @@
 		  display: inline-block;
 		  font-size: 16px;
 		}
+		
+		.positionReCaptcha{
+			margin-left: auto;
+			margin-right: auto;
+		}
     </style>
     
   </head>
@@ -86,7 +91,7 @@
 			        		<button type="submit" id="buttonIS" name="buttonIS" class="btn-login">Iniciar Sesion</button>
 			        	</div>
 			        	<script>
-			        		document.getElementById("button2").disabled = true;
+			        		document.getElementById("buttonIS").disabled = true;
 			        	</script>
 			        	<div class="col-md-3"></div>
 			        </div>

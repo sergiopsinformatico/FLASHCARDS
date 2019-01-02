@@ -40,7 +40,7 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("redirect:/");
+			vista = new ModelAndView("redirect:/"+user.getUsername());
 			vista.addObject("usuario", user);
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
