@@ -40,7 +40,7 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("redirect:/");
+			vista = new ModelAndView("redirect:/principal");
 			vista.addObject("usuario", user);
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
@@ -49,9 +49,9 @@ public class Controlador02IniciarSesion {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/principal", method = RequestMethod.GET)
 	public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
-		/*if(userRegister==null) {
+		if(userRegister==null) {
 			vista = new ModelAndView("index");
 			vista.addObject("usuario", userRegister);
 			return vista;
@@ -65,10 +65,7 @@ public class Controlador02IniciarSesion {
 				vista.addObject("usuario", userRegister);
 				return vista;
 			}
-		}*/
-		vista = new ModelAndView("vistaPrincipal");
-		vista.addObject("usuario", userRegister);
-		return vista;
+		}
 	}
 
 }
