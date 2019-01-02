@@ -281,6 +281,7 @@
 		        		checkEmail = false;
 		        		existEmail = false;
 			        	checkCaracterEmail = true;
+			        	email = email.toLowerCase();
 		        		
 		        		for(indice=0; indice<listaEmails.length; indice++){
 		        			if(email == listaEmails[indice]){
@@ -363,10 +364,12 @@
 		        	
 		        	$scope.envioDatos = function(){
 		        		
+		        		var emailN = $scope.email;
+		        		
 		        		var dataObj = {
 	        				"username" : $scope.username,
 	        				"clave" : $scope.clave,
-	        				"email" : $scope.email
+	        				"email" : emailN.toLowerCase()
 		        		};
 		        		
 		        		$http({
