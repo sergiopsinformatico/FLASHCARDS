@@ -82,9 +82,11 @@
 			        <div class="form-group">
 			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
 			        </div>
+			        <br>
 			        <div class="row" align="center">
 			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			        </div>
+			        <br>
 			        <div class="row">
 			        	<div class="col-md-3"></div>
 			        	<div class="col-md-6">

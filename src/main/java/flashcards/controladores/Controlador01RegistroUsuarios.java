@@ -31,7 +31,7 @@ public class Controlador01RegistroUsuarios {
 	//Devuelve la vista para registrar a los usuarios
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
-	public ModelAndView registroGet(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView registroGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
 		if(userRegister==null) {
 			return new ModelAndView("vistaRegistro");
 		}else {

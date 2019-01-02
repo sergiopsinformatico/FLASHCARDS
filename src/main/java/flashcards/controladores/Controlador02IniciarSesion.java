@@ -22,7 +22,7 @@ public class Controlador02IniciarSesion {
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView iniciarSesionGet(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
 		if(userRegister==null) {
 			return new ModelAndView("vistaIniciarSesion");
 		}else {
@@ -40,7 +40,7 @@ public class Controlador02IniciarSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("redirect:/"+user.getUsername());
+			vista = new ModelAndView("redirect:/");
 			vista.addObject("usuario", user);
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
@@ -50,7 +50,7 @@ public class Controlador02IniciarSesion {
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView modificar(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView modificar(@ModelAttribute("usuario") UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
 		if(userRegister==null) {
 			vista = new ModelAndView("index");
 			vista.addObject("usuario", userRegister);
