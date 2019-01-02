@@ -94,27 +94,27 @@
 	      <div class="navbar-collapse collapse" id="navbarsExample03" style="width: 100%;">
 	        <ul class="navbar-nav mr-auto">
 	          <li class="nav-item active">
-	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getNombreUsuario()}">
+	    		<a class="nav-link" href="inicio.html?usuario=${usuario.getUsername()}">
 					Inicio
 				</a>
 	          </li>
 	          <li class="nav-item">
-				<a class="nav-link" href="flashcards.html?usuario=${usuario.getNombreUsuario()}">
+				<a class="nav-link" href="flashcards.html?usuario=${usuario.getUsername()}">
 					Flashcards
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gente.html?usuario=${usuario.getNombreUsuario()}">
+			  	<a class="nav-link" href="gente.html?usuario=${usuario.getUsername()}">
 					Gente
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getNombreUsuario()}">
+			  	<a class="nav-link" href="clubes.html?usuario=${usuario.getUsername()}">
 					Clubes
 				</a>
 			  </li>
 			  <li class="nav-item">
-			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getNombreUsuario()}" id="btn-Gestion">
+			  	<a class="nav-link" href="gestionar.html?usuario=${usuario.getUsername()}" id="btn-Gestion">
 					Gestionar Cuentas
 				</a>
 			  </li>
@@ -123,8 +123,8 @@
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bienvenido ${usuario.getNombreApellidos()} </a>
 	            <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown03">
-	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil=${usuario.getNombreUsuario()}">Mi Perfil</a>
-	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getNombreUsuario()}">Configuración</a>
+	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsername()}&perfil=${usuario.getUsername()}">Mi Perfil</a>
+	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsername()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
@@ -160,7 +160,7 @@
 					<h6 align="center">${usuario.getNombreApellidos()}</h6>
 					<p class="title" align="center">${rol}</p>
 					<div style="margin: 24px 0;">
-						<h6 align="center"><a href="miPerfil.html?usuario=${usuario.getNombreUsuario()}&perfil=${usuario.getNombreUsuario()}">Mi Perfil<i class="fa fa-dribbble"></i></a></h6> 
+						<h6 align="center"><a href="miPerfil.html?usuario=${usuario.getUsername()}&perfil=${usuario.getUsername()}">Mi Perfil<i class="fa fa-dribbble"></i></a></h6> 
 					</div>
 				</div>
 			</div>
