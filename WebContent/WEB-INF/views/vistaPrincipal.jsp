@@ -126,7 +126,7 @@
 	              <a class="dropdown-item" href="miPerfil.html?usuario=${usuario.getUsername()}&perfil=${usuario.getUsername()}">Mi Perfil</a>
 	              <a class="dropdown-item" href="configuracion.html?usuario=${usuario.getUsername()}">Configuración</a>
 	              <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="cerrarSesion.html" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
+				  <a class="dropdown-item" href="/cerrarSesion.do" onclick="return confirm('¿Desea Cerrar Sesión?');">Cerrar Sesión</a>
 	            </div>
 	            <script>
 	            	$('.dropdown-toggle').dropdown();
