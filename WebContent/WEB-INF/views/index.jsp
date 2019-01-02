@@ -63,8 +63,9 @@
     <section class="portfolio" id="portfolio">
       <div class="container">
       	Usuario: ${usuario.getUsername()}
-      	<input type="submit" formaction="cerrarSesion.do" value="Cerrar Sesion">
-      	
+      	<form action="cerrarSesion.do">
+      		<input type="submit" value="Cerrar Sesion">
+      	</form>
       </div>
     </section>
 
