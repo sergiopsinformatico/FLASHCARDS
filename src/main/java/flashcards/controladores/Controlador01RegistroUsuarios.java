@@ -49,10 +49,10 @@ public class Controlador01RegistroUsuarios {
 		user.setNombreApellidos("");
 		user.setCiudad("");
 		user.setPais("");
-		user.setPhoto("");
-		user.setHasRolAdministrador(false);
-		user.setHasRolModerador(false);
-		user.setHasRolUsuario(true);
+		user.setFoto("");
+		user.setRolAdministrador(false);
+		user.setRolModerador(false);
+		user.setRolUsuario(true);
 		user.setActivadaCuenta(false);
 		if(Broker.getInstanciaUsuario().insertUsuario(user)) {
 			correo = new Email();

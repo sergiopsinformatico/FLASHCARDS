@@ -20,10 +20,9 @@ public class Test04ActualizarPerfil {
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
 		user.setEmail("sergio13_yo@hotmail.com");
-		/*user.setRolUsuario(true);
+		user.setRolUsuario(true);
 		user.setRolModerador(false);
-		user.setRolAdministrador(false);*/
-		//user = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", true, false, false);
+		user.setRolAdministrador(false);
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}
 	
@@ -33,10 +32,9 @@ public class Test04ActualizarPerfil {
 		user2.setUsername("Sergio123");
 		user2.setClave("sergio1");
 		user2.setEmail("sergio13_yo@hotmail.com");
-		/*user2.setRolUsuario(false);
+		user2.setRolUsuario(false);
 		user2.setRolModerador(true);
-		user2.setRolAdministrador(false);*/
-		//user2 = new UsuarioDTO("Sergio123", "sergio1", "sergio13_yo@hotmail.com", false, true, false);
+		user2.setRolAdministrador(false);
 		assert(true);
 	}
 
@@ -44,8 +42,7 @@ public class Test04ActualizarPerfil {
 	public void se_actualiza_el_perfil_correctamente() throws Throwable {
 	    dBUsuario.updateUsuario(user, user2);
 	    user = dBUsuario.getUsuarioDTO(user2.getUsername());
-	    assert(true);
-	    //assert(!user.isRolUsuario() && user.isRolModerador() && !user.isRolAdministrador());
+	    assert(!user.isRolUsuario() && user.isRolModerador() && !user.isRolAdministrador());
 	}
 
 }

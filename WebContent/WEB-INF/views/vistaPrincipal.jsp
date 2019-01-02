@@ -1,4 +1,250 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Flashcards - Pagina Principal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="resources/css/freelancer.min.css" rel="stylesheet">
+    
+    <style>
+    	body {
+		  background: #F1F3FA;
+		}
+		
+		/* Profile container */
+		.profile {
+		  margin: 20px 0;
+		}
+		
+		/* Profile sidebar */
+		.profile-sidebar {
+		  padding: 20px 0 10px 0;
+		  background: #fff;
+		}
+		
+		.profile-userpic img {
+		  float: none;
+		  margin: 0 auto;
+		  width: 50%;
+		  height: 50%;
+		  -webkit-border-radius: 50% !important;
+		  -moz-border-radius: 50% !important;
+		  border-radius: 50% !important;
+		}
+		
+		.profile-usertitle {
+		  text-align: center;
+		  margin-top: 20px;
+		}
+		
+		.profile-usertitle-username {
+		  color: #5a7391;
+		  font-size: 16px;
+		  font-weight: 600;
+		  margin-bottom: 7px;
+		}
+		
+		.profile-usertitle-email {
+		  text-transform: uppercase;
+		  color: #5b9bd1;
+		  font-size: 12px;
+		  font-weight: 600;
+		  margin-bottom: 15px;
+		}
+		
+		.profile-userbuttons {
+		  text-align: center;
+		  margin-top: 10px;
+		}
+		
+		.profile-userbuttons .btn {
+		  text-transform: uppercase;
+		  font-size: 11px;
+		  font-weight: 600;
+		  padding: 6px 15px;
+		  margin-right: 5px;
+		}
+		
+		.profile-userbuttons .btn:last-child {
+		  margin-right: 0px;
+		}
+
+    </style>
+    
+  </head>
+
+  <body id="page-top">
+		
+		<script language="JavaScript" type="text/javascript">
+			if("${mensaje}" != ""){
+				alert("${mensaje}");
+			}
+		</script>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/iniciarSesion.html">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/registro.html">Registrarse</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<div class="profile-userpic">
+					<img src="${usuario.getFoto()}" class="img-responsive" alt="">
+				</div>
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-username">
+						${usuario.getUsername()}
+					</div>
+					<div class="profile-usertitle-email">
+						${usuario.getEmail()}
+					</div>
+				</div>
+
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+            
+            
+            <!-- NextSprint -->
+            
+            
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="resources/vendor/jquery/jquery.min.js"></script>
+    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="resources/js/jqBootstrapValidation.js"></script>
+    <script src="resources/js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="resources/js/freelancer.min.js"></script>
+
+  </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html>
 	<head>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -217,6 +463,6 @@
 			            $scope.notificaciones.splice(index, 1);
 			        };
 				});
-			</script>-->
+			</script>
 	</body>
-</html>
+</html>-->

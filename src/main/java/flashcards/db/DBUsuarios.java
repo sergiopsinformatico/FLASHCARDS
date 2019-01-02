@@ -52,7 +52,7 @@ public class DBUsuarios{
 				  .append("nombreApellidos", user.getNombreApellidos())
 				  .append("ciudad", user.getCiudad())
 				  .append("pais", user.getPais())
-				  .append("photo", user.getPhoto());/*
+				  .append("photo", user.getFoto());/*
 				  .append("isUsuario", user.isRolUsuario())
 				  .append("isModerador", user.isRolModerador())
 				  .append("isAdministrador", user.isRolAdministrador());*/

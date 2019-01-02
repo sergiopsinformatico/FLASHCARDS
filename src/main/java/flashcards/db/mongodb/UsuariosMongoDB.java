@@ -90,16 +90,16 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 		
 		try {
-			if(user.getPhoto()!=null || !user.getPhoto().equalsIgnoreCase("")) {
-				doc = doc.append("photo", user.getPhoto());
+			if(user.getFoto()!=null || !user.getFoto().equalsIgnoreCase("")) {
+				doc = doc.append("photo", user.getFoto());
 			}
 		}catch(Exception ex) {
 			
 		}
 		
-		doc = doc.append("rolUsuario", user.isHasRolUsuario()).
-				append("rolModerador", user.isHasRolModerador()).
-				append("rolAdministrador", user.isHasRolAdministrador());
+		doc = doc.append("rolUsuario", user.isRolUsuario()).
+				append("rolModerador", user.isRolModerador()).
+				append("rolAdministrador", user.isRolAdministrador());
 		
 		return doc;
 	}
@@ -109,9 +109,9 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		usuarioDB.setUsername(doc.getString("username"));
 		usuarioDB.setClave(doc.getString("clave"));
 		usuarioDB.setEmail(doc.getString("email"));
-		usuarioDB.setHasRolUsuario(doc.getBoolean("rolUsuario"));
-		usuarioDB.setHasRolModerador(doc.getBoolean("rolModerador"));
-		usuarioDB.setHasRolAdministrador(doc.getBoolean("rolAdministrador"));
+		usuarioDB.setRolUsuario(doc.getBoolean("rolUsuario"));
+		usuarioDB.setRolModerador(doc.getBoolean("rolModerador"));
+		usuarioDB.setRolAdministrador(doc.getBoolean("rolAdministrador"));
 		try {
 			if(doc.getString("nombreApellidos")!=null || (!doc.getString("nombreApellidos").equalsIgnoreCase(""))) {
 				usuarioDB.setNombreApellidos(doc.getString("nombreApellidos"));
@@ -138,7 +138,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		
 		try {
 			if(doc.getString("photo")!=null || (!doc.getString("photo").equalsIgnoreCase(""))) {
-				usuarioDB.setPhoto(doc.getString("photo"));
+				usuarioDB.setFoto(doc.getString("photo"));
 			}
 		}catch(Exception ex) {
 		

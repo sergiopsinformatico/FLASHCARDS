@@ -37,8 +37,13 @@ public class Controlador02ControlSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			vista = new ModelAndView("redirect:/");
-			vista.addObject("usuario", user);
+			if(user.isActivadaCuenta()) {
+				vista = new ModelAndView("redirect:/");
+				vista.addObject("usuario", user);
+			}else {
+				vista = new ModelAndView("vistaIniciarSesion");
+				vista.addObject("mensaje", "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
+			}
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
 			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");

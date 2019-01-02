@@ -22,13 +22,13 @@ public class UsuarioDTO {
 	@XmlAttribute
 	String pais;
 	@XmlAttribute
-	String photo;
+	String foto;
 	@XmlAttribute
-	boolean hasRolUsuario;
+	boolean rolUsuario;
 	@XmlAttribute
-	boolean hasRolModerador;
+	boolean rolModerador;
 	@XmlAttribute
-	boolean hasRolAdministrador;
+	boolean rolAdministrador;
 	@XmlAttribute
 	boolean activadaCuenta;
 	
@@ -80,36 +80,36 @@ public class UsuarioDTO {
 		this.pais = pais;
 	}
 	
-	public String getPhoto() {
-		return this.photo;
+	public String getFoto() {
+		return this.foto;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
-	public boolean isHasRolUsuario() {
-		return hasRolUsuario;
+	public boolean isRolUsuario() {
+		return rolUsuario;
 	}
 
-	public void setHasRolUsuario(boolean hasRolUsuario) {
-		this.hasRolUsuario = hasRolUsuario;
+	public void setRolUsuario(boolean rolUsuario) {
+		this.rolUsuario = rolUsuario;
 	}
 
-	public boolean isHasRolModerador() {
-		return hasRolModerador;
+	public boolean isRolModerador() {
+		return rolModerador;
 	}
 
-	public void setHasRolModerador(boolean hasRolModerador) {
-		this.hasRolModerador = hasRolModerador;
+	public void setRolModerador(boolean rolModerador) {
+		this.rolModerador = rolModerador;
 	}
 
-	public boolean isHasRolAdministrador() {
-		return hasRolAdministrador;
+	public boolean isRolAdministrador() {
+		return rolAdministrador;
 	}
 
-	public void setHasRolAdministrador(boolean hasRolAdministrador) {
-		this.hasRolAdministrador = hasRolAdministrador;
+	public void setRolAdministrador(boolean rolAdministrador) {
+		this.rolAdministrador = rolAdministrador;
 	}
 
 	public boolean isActivadaCuenta() {
