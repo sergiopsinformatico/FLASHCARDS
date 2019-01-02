@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Activación Cuenta "${usuario.getUsername()}</title>
+    <title>Flashcards - Activación Cuenta "${activa.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<div class="row" style="text-align: center;">
-    				<span style="width: 40px;" class="badge badge-pill badge-success">¡Enhorabuena ${usuario.getUsername()}! Su cuenta ha sido activada correctamente.</span>
+    				<span style="width: 40px;" class="badge badge-pill badge-success">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</span>
     			</div>
     			<div class="row">
     				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
@@ -92,7 +92,7 @@
 							  </tr>
 				        	</table>
 						</div>
-						<input type="hidden" id="username" name="username" value="${usuario.getUsername()}">
+						<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
 				        <br>
 				        <div class="row">
 				        	<div class="col-md-3"></div>

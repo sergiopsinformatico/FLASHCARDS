@@ -37,7 +37,7 @@ public class Controlador01RegistroUsuarios {
 	String codActivacion;
 	Fecha fecha;
 	ModelAndView vista;
-	UsuarioDTO user;
+	UsuarioDTO user, user2;
 	
 	//Devuelve la vista para registrar a los usuarios
 	
@@ -100,21 +100,23 @@ public class Controlador01RegistroUsuarios {
 	@RequestMapping(value = "/activaCuenta", method = RequestMethod.GET)
 	public ModelAndView activaCuenta(@RequestParam("username") String username, @RequestParam("codigo") String codigo){
 		if(Broker.getInstanciaActivaCuenta().activacionCuenta(new ActivaCuentaDTO(username, codigo))) {
-			//poner a true la activacion
-			//llamar a la vista para que acabe de rellenar los campos que faltan
+			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
+			user2 = Broker.getInstanciaUsuario().getUsuarioDTO(username);
+			user2.setActivadaCuenta(true);
+			Broker.getInstanciaUsuario().updateUsuario(user, user2);
+			Broker.getInstanciaActivaCuenta().eliminaAC(new ActivaCuentaDTO(username, codigo));
+			vista = new ModelAndView("vistaActivarCuenta");
+			vista.addObject("activa", user2);
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {
-				//Mensaje --> Su cuenta ya fue activada
+				vista = new ModelAndView("index");
+				vista.addObject("mensaje", "Su cuenta ya fue activada");
 			}else {
-				//Mensaje --> Esta cuenta no existe o expiró la activación. Es necesario que se vuelva a registrar (un boton a registrar)
+				vista = new ModelAndView("index");
+				vista.addObject("mensaje", "Expiró la activación de su cuenta. Es necesario que se vuelva a registrar.");
 			}
 		}
-		
-		
-		vista = new ModelAndView("vistaActivarCuenta");
-		
-		//añadir a la vista el usuario a activar para guardar lo que seleccione en la vista
 		return vista;
 	}
 	
