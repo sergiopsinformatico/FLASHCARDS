@@ -62,6 +62,7 @@
     <!-- Portfolio Grid Section -->
     <section class="portfolio" id="portfolio">
       <div class="container">
+      	Usuario: {{usuario.getUsername()}}
       </div>
     </section>
 
