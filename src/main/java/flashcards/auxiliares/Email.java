@@ -26,13 +26,13 @@ public class Email {
 		setEnvia("sistemaflashcards@gmail.com");
 	}
 	
-	public boolean confirmaCreaCuenta(UsuarioDTO user) {
+	public boolean confirmaCreaCuenta(UsuarioDTO user, String url) {
 		//Asunto
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		//Mensaje
 		setMensaje("Bienvenido a la Aplicacion Flashcards!!"+
 		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
-		"\n www.google.es"+
+		"\n"+url+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
 		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje

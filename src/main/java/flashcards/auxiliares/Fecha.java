@@ -12,6 +12,9 @@ public class Fecha {
 	Date date1, date2;
 	
 	public String compararFechas(String fecha1, String fecha2) {
+		/* Devuelve 0 si fecha1 == fecha2
+		 * Devuelve <0 si fecha1<fecha2 (fecha1 antes fecha2)
+		 * Devuelve >0 si fecha1>fecha2 (fecha1 despues fecha2) */
 		try {
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 			date1 = sdf.parse(fecha1);
@@ -27,6 +30,24 @@ public class Fecha {
 	public String fechaHoy() {
 		dia = "";
 		fecha = Calendar.getInstance();
+		dia = Integer.toString(fecha.get(Calendar.YEAR))+"-";
+		if((fecha.get(Calendar.MONTH)+1)>=1 && (fecha.get(Calendar.MONTH)+1)<=9){
+			dia = dia+"0"+(fecha.get(Calendar.MONTH)+1)+"-";
+		}else {
+			dia = dia+(fecha.get(Calendar.MONTH)+1)+"-";
+		}
+		if( fecha.get(Calendar.DATE)>=1 && fecha.get(Calendar.DATE)<=9){
+			dia = dia+"0"+(fecha.get(Calendar.DATE));
+		}else {
+			dia = dia+(fecha.get(Calendar.DATE));
+		}
+		return dia;
+	}
+	
+	public String fechaActivarCuenta() {
+		dia = "";
+		fecha = Calendar.getInstance();
+		fecha.add(Calendar.DAY_OF_YEAR, 1);
 		dia = Integer.toString(fecha.get(Calendar.YEAR))+"-";
 		if((fecha.get(Calendar.MONTH)+1)>=1 && (fecha.get(Calendar.MONTH)+1)<=9){
 			dia = dia+"0"+(fecha.get(Calendar.MONTH)+1)+"-";
