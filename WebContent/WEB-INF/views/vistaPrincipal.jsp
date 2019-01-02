@@ -137,7 +137,7 @@
 	    </nav>
 		
 		<script language="JavaScript" type="text/javascript">
-			var comp = ${usuario.isAdministrador()};
+			var comp = ${usuario.isHasRolAdministrador()};
 			if (comp){
 				document.getElementById("btn-Gestion").style.visibility="visible";
 			}else{
