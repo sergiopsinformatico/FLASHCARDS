@@ -59,7 +59,7 @@
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<div class="row" style="text-align: center;">
-    				<span style="width: 40px;" class="badge badge-pill badge-success">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</span>
+    				<span class = "label label-success" style="width:40px;">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</span>
     			</div>
     			<div class="row">
     				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
