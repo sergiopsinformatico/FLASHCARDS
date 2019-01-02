@@ -53,15 +53,17 @@ public class Controlador02IniciarSesion {
 	public ModelAndView modificar(@ModelAttribute("usuario") final UsuarioDTO userRegister, HttpServletRequest request, HttpServletResponse response) {
 		if(userRegister==null) {
 			vista = new ModelAndView("index");
-			vista.addObject("user", user);
+			vista.addObject("usuario", userRegister);
 			return vista;
 		}else {
 			if(userRegister.getUsername()==null || userRegister.getUsername()=="") {
 				vista = new ModelAndView("index");
-				vista.addObject("user", user);
+				vista.addObject("usuario", userRegister);
 				return vista;
 			}else {
-				return new ModelAndView("vistaPrincipal");
+				vista = new ModelAndView("vistaPrincipal");
+				vista.addObject("usuario", userRegister);
+				return vista;
 			}
 		}
 	}
