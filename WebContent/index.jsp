@@ -38,7 +38,9 @@
 		
 		<script>
 			if("${mensaje}" != ""){
-				botbox.alert("${mensaje}");
+				bootbox.alert("Hello world!", function() {
+				  alert("Hola Mundo callback");
+				});
 			}
 		</script>
 
