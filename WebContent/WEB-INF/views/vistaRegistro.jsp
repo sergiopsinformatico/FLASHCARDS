@@ -390,7 +390,7 @@
 				        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
 				        			});
 				        		}else{
-				        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.')
+				        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
 				        		}
 			        		},
 			        		function (response) {

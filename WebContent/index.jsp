@@ -38,9 +38,7 @@
 		
 		<script>
 			if("${mensaje}" != ""){
-				bootbox.alert("Hello world!", function() {
-				  alert("Hola Mundo callback");
-				});
+				bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
 			}
 		</script>
 
