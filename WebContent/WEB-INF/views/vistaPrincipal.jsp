@@ -92,11 +92,14 @@
 
   <body id="page-top">
 		
-		<script language="JavaScript" type="text/javascript">
-			if("${mensaje}" != ""){
-				alert("${mensaje}");
-			}
-		</script>
+	<!-- Alert de Bootbox -->
+    <script src="resources/js/bootbox.min.js"></script>
+	
+	<script>
+		if("${mensaje}" != ""){
+			botbox.alert("${mensaje}");
+		}
+	</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">

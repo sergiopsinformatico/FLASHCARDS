@@ -29,15 +29,16 @@
   	<%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
 	<% 
 		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
-		if(user!=null && (!(user.getUsername().equals("")))){
+		if(user!=null && user.getUsername()!=null && (!(user.getUsername().equals("")))){
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/principal.html");
 		}
-		session.setAttribute("usuario", user);
 	%>
+		<!-- Alert de Bootbox -->
+	    <script src="resources/js/bootbox.min.js"></script>
 		
-		<script language="JavaScript" type="text/javascript">
+		<script>
 			if("${mensaje}" != ""){
-				alert("${mensaje}");
+				botbox.alert("${mensaje}");
 			}
 		</script>
 

@@ -53,9 +53,12 @@
 
   <body id="page-top">
 		
-		<script language="JavaScript" type="text/javascript">
+		<!-- Alert de Bootbox -->
+	    <script src="resources/js/bootbox.min.js"></script>
+		
+		<script>
 			if("${mensaje}" != ""){
-				alert("${mensaje}");
+				botbox.alert("${mensaje}");
 			}
 		</script>
 		

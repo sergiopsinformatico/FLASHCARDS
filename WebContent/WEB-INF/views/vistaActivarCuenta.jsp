@@ -33,15 +33,28 @@
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
 		}
+		.recuadroActivaCuenta {
+		     border: ridge #108CA6 1px;
+		     font-size: 10px;
+		     background-color: "#16E40D";
+		     color : "#0B6507";
+		}
+		.infoFinRegistro {
+		     font-size: 8px;
+		     color : "#1962EE";
+		}
     </style>
     
   </head>
 
   <body id="page-top">		
   
-	<script language="JavaScript" type="text/javascript">
+	<!-- Alert de Bootbox -->
+    <script src="resources/js/bootbox.min.js"></script>
+	
+	<script>
 		if("${mensaje}" != ""){
-			alert("${mensaje}");
+			botbox.alert("${mensaje}");
 		}
 	</script>
 
@@ -59,11 +72,11 @@
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<div class="row" style="text-align: center;">
-    				<span class = "label label-success" style="width:40px;">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</span>
+    				<p class="recuadroActivaCuenta">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
     			</div>
     			<div class="row">
     				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
-    					De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:
+    					<p class="infoFinRegistro">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos" required>
 				        </div>
@@ -79,12 +92,8 @@
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto
 							    </th>
-							  </tr>
-							  <tr>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
-							    </th> 
-							    <th>
 							    	<div class="profile-userpic">
 				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
 									</div>

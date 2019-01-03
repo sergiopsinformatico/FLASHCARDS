@@ -33,10 +33,12 @@
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/principal.html");
 		}
 	%>
+		<!-- Alert de Bootbox -->
+	    <script src="resources/js/bootbox.min.js"></script>
 		
-		<script language="JavaScript" type="text/javascript">
+		<script>
 			if("${mensaje}" != ""){
-				alert("${mensaje}");
+				botbox.alert("${mensaje}");
 			}
 		</script>
 
