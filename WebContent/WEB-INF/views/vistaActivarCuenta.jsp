@@ -35,13 +35,13 @@
 		}
 		.recuadroActivaCuenta {
 		     border: ridge #108CA6 1px;
-		     font-size: 10px;
-		     background-color: "#16E40D";
-		     color : "#0B6507";
+		     font-size: 20px;
+		     background-color: #16E40D;
+		     color : #0B6507;
 		}
 		.infoFinRegistro {
-		     font-size: 8px;
-		     color : "#1962EE";
+		     font-size: 15px;
+		     color : #1962EE;
 		}
     </style>
     
@@ -87,7 +87,8 @@
 				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais" required>
 				        </div>
 				        <div class="form-group">
-				        	<table align="center" style="width:50%">
+				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
+				        	<table align="center">
 							  <tr>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto
