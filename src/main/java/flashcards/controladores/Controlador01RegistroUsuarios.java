@@ -114,7 +114,7 @@ public class Controlador01RegistroUsuarios {
 				vista.addObject("mensaje", "Su cuenta ya fue activada");
 			}else {
 				vista = new ModelAndView("index");
-				vista.addObject("mensaje", "Expiró la activación de su cuenta. Es necesario que se vuelva a registrar.");
+				vista.addObject("mensaje", "Ha expirado la activacion de su cuenta. Es necesario que se vuelva a registrar.");
 			}
 		}
 		return vista;
@@ -123,17 +123,21 @@ public class Controlador01RegistroUsuarios {
 	@RequestMapping(value = "/activar", method = RequestMethod.POST)
 	public ModelAndView activar(HttpServletRequest request, HttpServletResponse response){
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
-		user.setFoto(request.getParameter("foto"));
+		user2 = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
+		user2.setFoto(request.getParameter("foto"));
 		if(request.getParameter("inputNyA")!=null && request.getParameter("inputNyA")!="") {
-			user.setNombreApellidos(request.getParameter("inputNyA"));
+			user2.setNombreApellidos(request.getParameter("inputNyA"));
 		}
 		if(request.getParameter("inputCiudad")!=null && request.getParameter("inputCiudad")!="") {
-			user.setCiudad(request.getParameter("inputCiudad"));
+			user2.setCiudad(request.getParameter("inputCiudad"));
 		}
 		if(request.getParameter("inputPais")!=null && request.getParameter("inputPais")!="") {
-			user.setPais(request.getParameter("inputPais"));
+			user2.setPais(request.getParameter("inputPais"));
 		}
-		return new ModelAndView("redirect:/");
+		Broker.getInstanciaUsuario().updateUsuario(user, user2);
+		vista = new ModelAndView("index");
+		vista.addObject("mensaje", "Registro completado con exito.");
+		return vista;
 	}
 	
 }
