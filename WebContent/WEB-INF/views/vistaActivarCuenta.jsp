@@ -36,8 +36,8 @@
 		.profile-userpic-forbidden img {
 		  float: none;
 		  margin: 0 auto;
-		  width: 40%;
-		  height: 40%;
+		  width: 35%;
+		  height: 35%;
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
@@ -87,13 +87,13 @@
     				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
     					<p class="infoFinRegistro">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos" required>
+				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad" required>
+				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais" required>
+				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
