@@ -24,11 +24,20 @@
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <style>
-	    .profile-userpic img {
+	    .profile-userpic-avatar img {
 		  float: none;
 		  margin: 0 auto;
 		  width: 50%;
 		  height: 50%;
+		  -webkit-border-radius: 50% !important;
+		  -moz-border-radius: 50% !important;
+		  border-radius: 50% !important;
+		}
+		.profile-userpic-forbidden img {
+		  float: none;
+		  margin: 0 auto;
+		  width: 40%;
+		  height: 40%;
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
@@ -93,14 +102,14 @@
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto
 							    	<br>
-							    	<div class="profile-userpic">
+							    	<div class="profile-userpic-forbidden">
 				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
 									</div>
 							    </th>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
 							    	<br>
-							    	<div class="profile-userpic">
+							    	<div class="profile-userpic-avatar">
 				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
 									</div>
 							    </th>

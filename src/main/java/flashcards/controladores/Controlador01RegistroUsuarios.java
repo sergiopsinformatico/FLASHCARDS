@@ -59,7 +59,7 @@ public class Controlador01RegistroUsuarios {
 		user.setNombreApellidos("");
 		user.setCiudad("");
 		user.setPais("");
-		user.setFoto("");
+		user.setFoto("/resources/img/avatarNone.png");
 		user.setRolAdministrador(false);
 		user.setRolModerador(false);
 		user.setRolUsuario(true);
