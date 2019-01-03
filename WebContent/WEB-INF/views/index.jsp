@@ -37,6 +37,7 @@
 	    <script src="resources/js/bootbox.min.js"></script>
 		
 		<script>
+		bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
 			if("${mensaje}" != ""){
 				bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
 			}
