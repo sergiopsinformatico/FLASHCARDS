@@ -92,6 +92,7 @@
 							  <tr>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto
+							    	<br>
 							    	<div class="profile-userpic">
 				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
 									</div>
