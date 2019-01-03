@@ -33,7 +33,7 @@
 			response.sendRedirect("https://sistemaflashcards.herokuapp.com/principal.html");
 		}
 	%>
-
+		
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -109,16 +109,15 @@
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
     
-   	<!-- Alert de Bootbox -->
+    <!-- Alert de Bootbox -->
     <script src="resources/js/bootbox.min.js"></script>
 	
 	<script>
-		bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
 		if("${mensaje}" != ""){
-			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
+			bootbox.alert("${mensaje}");
 		}
 	</script>
-    
+		
   </body>
 
 </html>

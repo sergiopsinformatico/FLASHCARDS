@@ -92,9 +92,13 @@
 							  <tr>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto
+							    	<div class="profile-userpic">
+				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
+									</div>
 							    </th>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
+							    	<br>
 							    	<div class="profile-userpic">
 				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
 									</div>
@@ -107,7 +111,7 @@
 				        <div class="row">
 				        	<div class="col-md-3"></div>
 				        	<div class="col-md-6">
-				        		<button type="button" class="btn btn-success">Siguiente</button>
+				        		<button type="submit" class="btn btn-success">Siguiente</button>
 				        	</div>
 				        	<div class="col-md-3"></div>
 				        </div>
