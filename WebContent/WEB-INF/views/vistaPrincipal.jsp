@@ -58,21 +58,19 @@
 		  margin-top: 20px;
 		}
 		
-		.profile-usertitle-personal {
+		.profile-usertitle-username {
 		  color: #5a7391;
 		  font-size: 14px;
 		  font-weight: 600;
 		  margin-bottom: 7px;
-		  text-align: left;
 		}
 		
-		.profile-usertitle-infoUser {
-		  color: #5a7391;
-		  font-size: 12px;
-		  font-weight: 600;
-		  margin-bottom: 7px;
-		  text-align: left;
+		.btn-principal{
+			width: 70%;
+			text-align:center;
+			margin:auto;
 		}
+
 
     </style>
     
@@ -128,46 +126,34 @@
 							<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 						</div>
 						<div class="profile-usertitle">
-							<div class="profile-usertitle-personal">
-								${usuario.getUsername()}
-							</div>
-							<div class="profile-usertitle-personal">
-								${usuario.getEmail()}
-							</div>
-							<div class="profile-usertitle-infoUser">
-								{{nombreApellidos}}
-							</div>
-							<div class="profile-usertitle-infoUser">
-								{{ciudad}}
-							</div>
-							<div class="profile-usertitle-infoUser">
-								{{pais}}
+							<div class="profile-usertitle-username">
+								¡Hola ${usuario.getUsername()}!
 							</div>
 						</div>
 						<br>
 						<br>
 						<div>
 							<form action="" method="GET">
-								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success">Ver Mi Perfil</button>
+								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">Ver Mi Perfil</button>
 							</form>
 						</div>
 						<br>
 						<div>
 							<form action="" method="GET">
-								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info" >Modificar Mi Perfil</button>
+								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >Modificar Mi Perfil</button>
 							</form>
 						</div>
 						<br>
 						<br>
 						<div>
 							<form action="/cerrarSesion.html" method="POST">
-								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning">Cerrar Sesión</button>
+								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">Cerrar Sesión</button>
 							</form>
 						</div>
 						<br>
 						<div>
 							<form action="" method="POST">
-								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger">Eliminar Cuenta</button>
+								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">Eliminar Cuenta</button>
 							</form>
 						</div>
 					</div>
