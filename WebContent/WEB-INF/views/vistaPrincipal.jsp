@@ -43,6 +43,7 @@
 		
 		.profile-userpic img {
 		  float: none;
+		  display: block; 
 		  margin: 0 auto;
 		  width: 50%;
 		  height: 50%;
@@ -69,6 +70,8 @@
 			width: 70%;
 			text-align:center;
 			margin:auto;
+			display: flex; 
+			justify-content: center;
 		}
 
 
