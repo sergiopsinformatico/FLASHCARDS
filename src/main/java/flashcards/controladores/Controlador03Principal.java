@@ -13,6 +13,8 @@ import main.java.flashcards.dto.UsuarioDTO;
 @Controller
 public class Controlador03Principal {
 	
+	ModelAndView vista;
+	
 	@RequestMapping(value = "/principal", method = RequestMethod.GET)
 	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
@@ -21,5 +23,18 @@ public class Controlador03Principal {
 			return new ModelAndView("redirect:/");
 		}
 	}
+	
+	@RequestMapping(value = "/verPerfil", method = RequestMethod.GET)
+	public ModelAndView verPerfil(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
+			vista = new ModelAndView("vistaPerfil");
+			vista.addObject("perfil", request.getSession().getAttribute("usuario"));
+		}else {
+			vista = new ModelAndView("redirect:/");
+		}
+		return vista;
+	}
+	
+	
 	
 }
