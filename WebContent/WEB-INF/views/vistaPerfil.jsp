@@ -33,7 +33,7 @@
 		
 		div.infoPersonal{
 			width: 100%;
-			height: 50px;
+			height: 150px;
 		}
 		
 		.profile-userpic img {
@@ -78,11 +78,10 @@
         <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
       </div>
     </nav>
-    
+    <br>
     <section ng-app="AppPerfil" ng-controller="PerfilCtrl">
-    	<br>
-	    <div class="container">
-		    <div class="row profile">
+    	<div class="container">
+		    <div class="row">
 				<div class="col-md-12">		            
 		            <div class="row rounded border border-warning infoPersonal">
 		            	<div class="col-md-3">
@@ -91,6 +90,7 @@
 							</div>
 		            	</div>
 		            	<div class="col-md-9">
+		            		<br><br>
 		            		<div class="form-group">
 					            <p>Username: {{perfil.getUsername()}}</p>
 					        </div>

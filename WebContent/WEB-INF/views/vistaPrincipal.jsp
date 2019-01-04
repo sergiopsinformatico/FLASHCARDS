@@ -158,11 +158,9 @@
 						<br>
 						<br>
 						<div>
-							<form action="/cerrarSesion.html" method="GET">
-								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" onclick="dialogCS()" class="btn btn-outline-warning btn-principal">
-									Cerrar Sesión
-								</button>
-							</form>
+							<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" onclick="dialogCS()" class="btn btn-outline-warning btn-principal">
+								Cerrar Sesión
+							</button>
 						</div>
 						<br>
 						<div>
@@ -200,7 +198,15 @@
 	    });
 	    
 	    function dialogCS(){
-	    	bootbox.alert("¿Desea salir del sistema?");
+	    	bootbox.confirm({ 
+    		  size: "small",
+    		  message: "¿Desea salir del sistema?", 
+    		  callback: function(result){ 
+    			if(result){
+    				window.location.href = "/cerrarSesion.html";
+    			}  
+    		  }
+    		})
 	    }
 	</script>
 
