@@ -147,20 +147,28 @@
 						<br>
 						<br>
 						<div>
-							<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-success" formaction="">Ver Mi Perfil</button>
+							<form action="" method="GET">
+								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success">Ver Mi Perfil</button>
+							</form>
 						</div>
 						<br>
 						<div>
-							<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-info" formaction="">Modificar Mi Perfil</button>
+							<form action="" method="GET">
+								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info" >Modificar Mi Perfil</button>
+							</form>
 						</div>
 						<br>
 						<br>
 						<div>
-							<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-warning" formaction="/cerrarSesion.html">Cerrar Sesión</button>
+							<form action="/cerrarSesion.html" method="POST">
+								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning">Cerrar Sesión</button>
+							</form>
 						</div>
 						<br>
 						<div>
-							<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-danger" formaction="">Eliminar Cuenta</button>
+							<form action="" method="POST">
+								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger">Eliminar Cuenta</button>
+							</form>
 						</div>
 					</div>
 				</div>
