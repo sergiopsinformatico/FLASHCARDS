@@ -56,6 +56,11 @@
 		     font-size: 15px;
 		     color : #1962EE;
 		}
+		table.center {
+	      margin-left:auto; 
+	      margin-right:auto;
+	      text-align:center;
+	    }
     </style>
     
   </head>
@@ -101,7 +106,7 @@
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
-				        	<table align="center">
+				        	<table class="center">
 							  <tr>
 							    <th>
 							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto" checked>Sin foto

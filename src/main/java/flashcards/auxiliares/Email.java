@@ -1,8 +1,6 @@
 package main.java.flashcards.auxiliares;
 
-import java.net.URL;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -33,6 +31,7 @@ public class Email {
 		setMensaje("Bienvenido a la Aplicacion Flashcards!!"+
 		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
 		"\n"+url+
+		"\nDispone de 24 horas para activar la cuenta. En caso de que no lo haga, debe de volverse a registrar."+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
 		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
@@ -55,13 +54,13 @@ public class Email {
 	
 	public boolean recuperarClave(UsuarioDTO user) {
 		//Asunto
-		setAsunto("[Sistema Flashcards] Recuperación de la clave de "+user.getEmail());
+		setAsunto("[Sistema Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
-		"\nHa solicitado recuperación de sus datos de su cuenta en Flashcards:"+
+		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -72,10 +71,10 @@ public class Email {
 		setAsunto("[Sistema Flashcards] Reactivacion de la cuenta de "+user.getEmail());
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
-		"\nSu cuenta en Flashcards, se ha reactivado y no será borrada:"+
+		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Gestión de Sistema Flashcards.");
+		"\nAtentamente, Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
