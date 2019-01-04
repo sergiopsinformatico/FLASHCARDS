@@ -31,6 +31,8 @@
 		/* Profile container */
 		.profile {
 		  margin: 20px 0;
+		  min-width: 100%;
+		  min-height: 100%;
 		}
 		
 		/* Profile sidebar */
@@ -44,6 +46,8 @@
 		  margin: 0 auto;
 		  width: 50%;
 		  height: 50%;
+		  margin-left: auto;
+  		  margin-right: auto;
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
@@ -61,29 +65,12 @@
 		  margin-bottom: 7px;
 		}
 		
-		.profile-usertitle-email {
-		  text-transform: uppercase;
-		  color: #5b9bd1;
-		  font-size: 12px;
+		.profile-usertitle-infoUser {
+		  color: #5a7391;
+		  font-size: 16px;
 		  font-weight: 600;
-		  margin-bottom: 15px;
-		}
-		
-		.profile-userbuttons {
-		  text-align: center;
-		  margin-top: 10px;
-		}
-		
-		.profile-userbuttons .btn {
-		  text-transform: uppercase;
-		  font-size: 11px;
-		  font-weight: 600;
-		  padding: 6px 15px;
-		  margin-right: 5px;
-		}
-		
-		.profile-userbuttons .btn:last-child {
-		  margin-right: 0px;
+		  margin-bottom: 7px;
+		  text-align: left;
 		}
 
     </style>
@@ -96,7 +83,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
         </button>
@@ -109,11 +96,11 @@
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/registro.html">Registrarse</a>
             </li>
           </ul>
-        </div>
+        </div>-->
       </div>
     </nav>
     
-    <section>
+    <section ng-app="AppPrincipal" ng-controller="PrincipalCtrl">
 	    <div class="container">
 		    <div class="row profile">
 				<div class="col-md-3">
@@ -123,37 +110,45 @@
 						</div>
 						<div class="profile-usertitle">
 							<div class="profile-usertitle-username">
-								${usuario.getUsername()}
+								Username: ${usuario.getUsername()}
 							</div>
-							<div class="profile-usertitle-email">
-								${usuario.getEmail()}
+							<div class="profile-usertitle-infoUser">
+								{{nombreApellidos}}
 							</div>
-						</div>
-		
-						<div class="profile-userbuttons">
-							<button type="button" class="btn btn-success btn-sm">Follow</button>
-							<button type="button" class="btn btn-danger btn-sm">Message</button>
+							<div class="profile-usertitle-infoUser">
+								{{ciudad}}
+							</div>
+							<div class="profile-usertitle-infoUser">
+								{{pais}}
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9">
-		            
-		            
-		            <!-- NextSprint -->
-		            
+				<div class="col-md-9">		            
 		            
 				</div>
 			</div>
 		</div>
 	</section>
-
-
-
-
-
-
-
-
+	
+	<script>
+		'use strict'
+	    var app = angular.module('AppPrincipal', []);
+	    app.controller('PrincipalCtrl', function($scope, $http) {
+	    	$scope.nombreApellidos="";
+	    	$scope.ciudad="";
+	    	$scope.pais="";
+	    	if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
+	    		$scope.nombreApellidos="Nombre y Apellidos: "+"${usuario.getNombreApellidos()}";
+	    	}
+	    	if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
+	    		$scope.ciudad="Ciudad: "+"${usuario.getCiudad()}";
+	    	}
+	    	if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
+	    		$scope.pais="Pais: "+"${usuario.getPais()}";
+	    	}
+	    }
+	</script>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
@@ -193,63 +188,6 @@
   </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
