@@ -149,7 +149,7 @@
 						<br>
 						<br>
 						<div>
-							<form action="/cerrarSesion.html" method="POST">
+							<form action="/cerrarSesion.html" method="GET">
 								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">Cerrar Sesión</button>
 							</form>
 						</div>
