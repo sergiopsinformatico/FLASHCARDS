@@ -142,7 +142,7 @@
 						<div>
 							<form action="" method="GET">
 								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
-									Ver Mi Perfil <span class="glyphicon glyphicon-user"></span>
+									<span class="glyphicon glyphicon-user"></span> Ver Mi Perfil
 								</button>
 							</form>
 						</div>
@@ -150,7 +150,7 @@
 						<div>
 							<form action="" method="GET">
 								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
-									Modificar Mi Perfil <span class="glyphicon glyphicon-pencil"></span>
+									<span class="glyphicon glyphicon-pencil"></span> Modificar Mi Perfil
 								</button>
 							</form>
 						</div>
@@ -159,7 +159,7 @@
 						<div>
 							<form action="/cerrarSesion.html" method="GET">
 								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">
-									Cerrar Sesión <span class="glyphicon glyphicon-off"></span>
+									<span class="glyphicon glyphicon-off"></span> Cerrar Sesión
 								</button>
 							</form>
 						</div>
@@ -167,7 +167,7 @@
 						<div>
 							<form action="" method="POST">
 								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">
-									Eliminar Cuenta <span class="glyphicon glyphicon-trash"></span>
+									<span class="glyphicon glyphicon-trash"></span> Eliminar Cuenta
 								</button>
 							</form>
 						</div>
