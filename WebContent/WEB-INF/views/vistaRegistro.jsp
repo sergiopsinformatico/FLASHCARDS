@@ -120,6 +120,7 @@
 				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <small id="msgEmail">{{messageEmail}}</small>
+				        <h6 style="font-size:10px; color:#808080">Dirección de email peteneciente al usuario.</h6>			        
 				        <br>
 				        <div class="form-group">
 				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required>

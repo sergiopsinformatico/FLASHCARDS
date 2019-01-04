@@ -135,7 +135,7 @@ public class Controlador01RegistroUsuarios {
 			user2.setPais(request.getParameter("inputPais"));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		vista = new ModelAndView("index");
+		vista = new ModelAndView("redirect:/");
 		vista.addObject("mensaje", "Registro completado con exito.");
 		return vista;
 	}
