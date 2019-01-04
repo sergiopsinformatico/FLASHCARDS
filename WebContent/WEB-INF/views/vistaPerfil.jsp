@@ -31,17 +31,9 @@
 		  background: #F1F3FA;
 		}
 		
-		/* Profile container */
-		.profile {
-		  margin: 20px 0;
-		  min-width: 100%;
-		  min-height: 100%;
-		}
-		
-		/* Profile sidebar */
-		.profile-sidebar {
-		  padding: 20px 0 10px 0;
-		  background: #fff;
+		div.infoPersonal{
+			width: 100%;
+			height: 50px;
 		}
 		
 		.profile-userpic img {
@@ -56,28 +48,6 @@
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
 		}
-		
-		.profile-usertitle {
-		  text-align: center;
-		  margin-top: 20px;
-		}
-		
-		.profile-usertitle-username {
-		  color: #5a7391;
-		  font-size: 14px;
-		  font-weight: 600;
-		  margin-bottom: 7px;
-		}
-		
-		.btn-principal{
-			width: 70%;
-			text-align:center;
-			margin:auto;
-			display: flex; 
-			justify-content: center;
-		}
-
-
     </style>
     
   </head>
@@ -106,29 +76,33 @@
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
-        <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/iniciarSesion.html">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/registro.html">Registrarse</a>
-            </li>
-          </ul>
-        </div>-->
       </div>
     </nav>
     
-    <section ng-app="AppPrincipal" ng-controller="PrincipalCtrl">
+    <section ng-app="AppPerfil" ng-controller="PerfilCtrl">
 	    <div class="container">
 		    <div class="row profile">
 				<div class="col-md-12">		            
-		            <div class="row">
-		            	Informacion Personal
+		            <div class="row rounded border border-warning infoPersonal">
+		            	<div class="col-md-3">
+		            		<div class="profile-userpic">
+								<img src="${perfil.getFoto()}" class="img-responsive" alt="">
+							</div>
+		            	</div>
+		            	<div class="col-md-9">
+		            		<div class="form-group">
+					            <p>Username: {{perfil.getUsername()}}</p>
+					        </div>
+					        <div class="form-group">
+					            <p>{{nombreApellidos}}</p>
+					        </div>
+					        <div class="form-group">
+					            <p>{{ciudad}}</p>
+					        </div>
+					        <div class="form-group">
+					            <p>{{pais}}</p>
+					        </div>		            		
+		            	</div>
 		            </div>
 				</div>
 			</div>
@@ -137,19 +111,19 @@
 	
 	<script>
 		'use strict'
-	    var app = angular.module('AppPrincipal', []);
-	    app.controller('PrincipalCtrl', function($scope, $http) {
+	    var app = angular.module('AppPerfil', []);
+	    app.controller('PerfilCtrl', function($scope, $http) {
 	    	$scope.nombreApellidos="";
 	    	$scope.ciudad="";
 	    	$scope.pais="";
-	    	if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
-	    		$scope.nombreApellidos="Nombre y Apellidos: "+"${usuario.getNombreApellidos()}";
+	    	if("${perfil.getNombreApellidos()}"!=null && "${perfil.getNombreApellidos()}"!=""){
+	    		$scope.nombreApellidos="Nombre y Apellidos: "+"${perfil.getNombreApellidos()}";
 	    	}
-	    	if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
-	    		$scope.ciudad="Ciudad: "+"${usuario.getCiudad()}";
+	    	if("${perfil.getCiudad()}"!=null && "${perfil.getCiudad()}"!=""){
+	    		$scope.ciudad="Ciudad: "+"${perfil.getCiudad()}";
 	    	}
-	    	if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
-	    		$scope.pais="Pais: "+"${usuario.getPais()}";
+	    	if("${perfil.getPais()}"!=null && "${perfil.getPais()}"!=""){
+	    		$scope.pais="Pais: "+"${perfil.getPais()}";
 	    	}
 	    });
 	</script>
