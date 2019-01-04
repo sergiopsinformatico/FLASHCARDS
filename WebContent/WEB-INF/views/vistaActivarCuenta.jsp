@@ -32,6 +32,8 @@
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
+		  border-style: solid;
+  		  border-width: 5px;
 		}
 		.profile-userpic-forbidden img {
 		  float: none;
@@ -41,6 +43,8 @@
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
+		  border-style: solid;
+  		  border-width: 5px;
 		}
 		.recuadroActivaCuenta {
 		     border: ridge #108CA6 1px;
