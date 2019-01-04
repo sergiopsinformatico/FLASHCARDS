@@ -39,6 +39,9 @@
 		.profile-sidebar {
 		  padding: 20px 0 10px 0;
 		  background: #fff;
+		  height: 100%;
+		  min-height: 100%;
+		  
 		}
 		
 		.profile-userpic img {
@@ -67,7 +70,7 @@
 		}
 		
 		.btn-principal{
-			width: 70%;
+			width: 80%;
 			text-align:center;
 			margin:auto;
 			display: flex; 
@@ -137,26 +140,34 @@
 						<br>
 						<div>
 							<form action="" method="GET">
-								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">Ver Mi Perfil</button>
+								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
+									<span class="glyphicon glyphicon-user"></span>Ver Mi Perfil
+								</button>
 							</form>
 						</div>
 						<br>
 						<div>
 							<form action="" method="GET">
-								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >Modificar Mi Perfil</button>
+								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
+									<span class="glyphicon glyphicon-pencil"></span>Modificar Mi Perfil
+								</button>
 							</form>
 						</div>
 						<br>
 						<br>
 						<div>
 							<form action="/cerrarSesion.html" method="GET">
-								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">Cerrar Sesión</button>
+								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">
+									<span class="glyphicon glyphicon-off"></span>Cerrar Sesión
+								</button>
 							</form>
 						</div>
 						<br>
 						<div>
 							<form action="" method="POST">
-								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">Eliminar Cuenta</button>
+								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">
+									<span class="glyphicon glyphicon-trash"></span>Eliminar Cuenta
+								</button>
 							</form>
 						</div>
 					</div>
