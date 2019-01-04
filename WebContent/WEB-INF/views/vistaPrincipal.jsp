@@ -13,7 +13,6 @@
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
     <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -27,7 +26,7 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    
+    <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
     <style>
     	body {
 		  background: #F1F3FA;
@@ -143,7 +142,7 @@
 						<div>
 							<form action="" method="GET">
 								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
-									<p><span class="glyphicon glyphicon-user"></span>Ver Mi Perfil</p>
+									Ver Mi Perfil <span class="glyphicon glyphicon-user"></span>
 								</button>
 							</form>
 						</div>
@@ -151,7 +150,7 @@
 						<div>
 							<form action="" method="GET">
 								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
-									<p><span class="glyphicon glyphicon-pencil"></span>Modificar Mi Perfil</p>
+									Modificar Mi Perfil <span class="glyphicon glyphicon-pencil"></span>
 								</button>
 							</form>
 						</div>
@@ -160,7 +159,7 @@
 						<div>
 							<form action="/cerrarSesion.html" method="GET">
 								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">
-									<p><span class="glyphicon glyphicon-off"></span>Cerrar Sesión</p>
+									Cerrar Sesión <span class="glyphicon glyphicon-off"></span>
 								</button>
 							</form>
 						</div>
@@ -168,7 +167,7 @@
 						<div>
 							<form action="" method="POST">
 								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">
-									<p><span class="glyphicon glyphicon-trash"></span>Eliminar Cuenta</p>
+									Eliminar Cuenta <span class="glyphicon glyphicon-trash"></span>
 								</button>
 							</form>
 						</div>
