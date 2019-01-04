@@ -141,7 +141,7 @@
 						<br>
 						<br>
 						<div>
-							<form action="" method="GET">
+							<form action="/verPerfil.html" method="GET">
 								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
 									Ver Mi Perfil
 								</button>
@@ -159,7 +159,7 @@
 						<br>
 						<div>
 							<form action="/cerrarSesion.html" method="GET">
-								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-outline-warning btn-principal">
+								<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" onclick="dialogCS()" class="btn btn-outline-warning btn-principal">
 									Cerrar Sesión
 								</button>
 							</form>
@@ -198,6 +198,10 @@
 	    		$scope.pais="Pais: "+"${usuario.getPais()}";
 	    	}
 	    });
+	    
+	    function dialogCS(){
+	    	bootbox.alert("¿Desea salir del sistema?");
+	    }
 	</script>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
