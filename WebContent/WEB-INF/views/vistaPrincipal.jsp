@@ -58,7 +58,7 @@
 		  margin-top: 20px;
 		}
 		
-		.profile-usertitle-username {
+		.profile-usertitle-personal {
 		  color: #5a7391;
 		  font-size: 16px;
 		  font-weight: 600;
@@ -109,8 +109,11 @@
 							<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 						</div>
 						<div class="profile-usertitle">
-							<div class="profile-usertitle-username">
-								Username: ${usuario.getUsername()}
+							<div class="profile-usertitle-personal">
+								${usuario.getUsername()}
+							</div>
+							<div class="profile-usertitle-personal">
+								${usuario.getEmail()}
 							</div>
 							<div class="profile-usertitle-infoUser">
 								{{nombreApellidos}}
@@ -122,6 +125,24 @@
 								{{pais}}
 							</div>
 						</div>
+					</div>
+					<br>
+					<br>
+					<div>
+						<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-success" formaction="">Ver Mi Perfil</button>
+					</div>
+					<br>
+					<div>
+						<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-info" formaction="">Modificar Mi Perfil</button>
+					</div>
+					<br>
+					<br>
+					<div>
+						<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-warning" formaction="/cerrarSesion.html">Cerrar Sesión</button>
+					</div>
+					<br>
+					<div>
+						<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-danger" formaction="">Eliminar Cuenta</button>
 					</div>
 				</div>
 				<div class="col-md-9">		            
@@ -147,7 +168,7 @@
 	    	if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
 	    		$scope.pais="Pais: "+"${usuario.getPais()}";
 	    	}
-	    }
+	    });
 	</script>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
