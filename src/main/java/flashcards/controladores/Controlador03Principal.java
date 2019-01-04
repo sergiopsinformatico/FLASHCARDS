@@ -28,7 +28,7 @@ public class Controlador03Principal {
 	public ModelAndView verPerfil(HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
 			vista = new ModelAndView("vistaPerfil");
-			vista.addObject("perfil", request.getSession().getAttribute("usuario"));
+			vista.addObject("perfil", (UsuarioDTO)(request.getSession().getAttribute("usuario")));
 		}else {
 			vista = new ModelAndView("redirect:/");
 		}
