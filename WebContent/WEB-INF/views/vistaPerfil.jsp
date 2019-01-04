@@ -92,7 +92,7 @@
 		            	<div class="col-md-9">
 		            		<br><br>
 		            		<div class="form-group">
-					            <p>Username: {{perfil.getUsername()}}</p>
+					            <p>Username: ${perfil.getUsername()}</p>
 					        </div>
 					        <div class="form-group">
 					            <p>{{nombreApellidos}}</p>
