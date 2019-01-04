@@ -32,7 +32,7 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <link href="resources/css/freelancer.min.css" rel="stylesheet">
+    
     <style>
     	body {
 		  background: #F1F3FA;
