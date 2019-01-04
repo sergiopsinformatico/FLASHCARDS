@@ -24,6 +24,9 @@
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <style>
+    	body {
+		  background: #F1F3FA;
+		}
 	    .btn-login {
 		  background-color: #BAC1B5;
 		  border: none;
@@ -45,15 +48,7 @@
   </head>
 
   <body id="page-top">		
-	<!-- Alert de Bootbox -->
-    <script src="resources/js/bootbox.min.js"></script>
-	
-	<script>
-		if("${mensaje}" != ""){
-			botbox.alert("${mensaje}");
-		}
-	</script>
-
+  
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
@@ -136,7 +131,15 @@
     
     <!--Re captcha google-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-	    
+    
+    <!-- Alert de Bootbox -->
+    <script src="resources/js/bootbox.min.js"></script>
+	
+	<script>
+		if("${mensaje}" != ""){
+			bootbox.alert("${mensaje}");
+		}
+	</script>
 
   </body>
 

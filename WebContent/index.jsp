@@ -22,6 +22,11 @@
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
+    <style>
+    	body {
+		  background: #F1F3FA;
+		}
+    </style>
   </head>
 
   <body id="page-top">

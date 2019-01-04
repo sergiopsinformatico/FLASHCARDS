@@ -91,15 +91,6 @@
   </head>
 
   <body id="page-top">
-		
-	<!-- Alert de Bootbox -->
-    <script src="resources/js/bootbox.min.js"></script>
-	
-	<script>
-		if("${mensaje}" != ""){
-			botbox.alert("${mensaje}");
-		}
-	</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -121,38 +112,40 @@
         </div>
       </div>
     </nav>
-
-    <div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
-				<div class="profile-userpic">
-					<img src="${usuario.getFoto()}" class="img-responsive" alt="">
-				</div>
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-username">
-						${usuario.getUsername()}
+    
+    <section>
+	    <div class="container">
+		    <div class="row profile">
+				<div class="col-md-3">
+					<div class="profile-sidebar">
+						<div class="profile-userpic">
+							<img src="${usuario.getFoto()}" class="img-responsive" alt="">
+						</div>
+						<div class="profile-usertitle">
+							<div class="profile-usertitle-username">
+								${usuario.getUsername()}
+							</div>
+							<div class="profile-usertitle-email">
+								${usuario.getEmail()}
+							</div>
+						</div>
+		
+						<div class="profile-userbuttons">
+							<button type="button" class="btn btn-success btn-sm">Follow</button>
+							<button type="button" class="btn btn-danger btn-sm">Message</button>
+						</div>
 					</div>
-					<div class="profile-usertitle-email">
-						${usuario.getEmail()}
-					</div>
 				</div>
-
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				<div class="col-md-9">
+		            
+		            
+		            <!-- NextSprint -->
+		            
+		            
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9">
-            
-            
-            <!-- NextSprint -->
-            
-            
-		</div>
-	</div>
-</div>
+	</section>
 
 
 
@@ -162,8 +155,12 @@
 
 
 
-
-
+	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
 
 
 
@@ -183,6 +180,15 @@
 
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
+    
+    <!-- Alert de Bootbox -->
+    <script src="resources/js/bootbox.min.js"></script>
+	
+	<script>
+		if("${mensaje}" != ""){
+			bootbox.alert("${mensaje}");
+		}
+	</script>
 
   </body>
 

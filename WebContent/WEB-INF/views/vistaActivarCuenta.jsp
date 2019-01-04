@@ -61,20 +61,14 @@
 	      margin-right:auto;
 	      text-align:center;
 	    }
+	    body {
+		  background: #F1F3FA;
+		}
     </style>
     
   </head>
 
   <body id="page-top">		
-  
-	<!-- Alert de Bootbox -->
-    <script src="resources/js/bootbox.min.js"></script>
-	
-	<script>
-		if("${mensaje}" != ""){
-			botbox.alert("${mensaje}");
-		}
-	</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -165,7 +159,15 @@
     
     <!--Re captcha google-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-	    
+	
+	<!-- Alert de Bootbox -->
+    <script src="resources/js/bootbox.min.js"></script>
+	
+	<script>
+		if("${mensaje}" != ""){
+			bootbox.alert("${mensaje}");
+		}
+	</script>
 
   </body>
 

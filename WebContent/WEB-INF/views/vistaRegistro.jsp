@@ -47,21 +47,15 @@
 		  	display: inline-block;
 		  	font-size: 16px;
 		}
+		
+		body {
+		  background: #F1F3FA;
+		}
     </style>
     
   </head>
 
-  <body id="page-top">
-		
-		<!-- Alert de Bootbox -->
-	    <script src="resources/js/bootbox.min.js"></script>
-		
-		<script>
-			if("${mensaje}" != ""){
-				botbox.alert("${mensaje}");
-			}
-		</script>
-		
+  <body id="page-top">		
 		
 		<!-- Bootstrap core JavaScript -->
 	    <script src="resources/vendor/jquery/jquery.min.js"></script>
@@ -412,6 +406,15 @@
 	        <i class="fa fa-chevron-up"></i>
 	      </a>
 	    </div>
+	    
+	    <!-- Alert de Bootbox -->
+	    <script src="resources/js/bootbox.min.js"></script>
+		
+		<script>
+			if("${mensaje}" != ""){
+				bootbox.alert("${mensaje}");
+			}
+		</script>
 	
   </body>
 </html>
