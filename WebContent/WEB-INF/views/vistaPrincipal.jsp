@@ -60,14 +60,15 @@
 		
 		.profile-usertitle-personal {
 		  color: #5a7391;
-		  font-size: 16px;
+		  font-size: 14px;
 		  font-weight: 600;
 		  margin-bottom: 7px;
+		  text-align: left;
 		}
 		
 		.profile-usertitle-infoUser {
 		  color: #5a7391;
-		  font-size: 16px;
+		  font-size: 12px;
 		  font-weight: 600;
 		  margin-bottom: 7px;
 		  text-align: left;
@@ -78,6 +79,24 @@
   </head>
 
   <body id="page-top">
+  
+ 	<!-- Bootstrap core JavaScript -->
+    <script src="resources/vendor/jquery/jquery.min.js"></script>
+    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="resources/js/jqBootstrapValidation.js"></script>
+    <script src="resources/js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="resources/js/freelancer.min.js"></script>
+    
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -125,24 +144,24 @@
 								{{pais}}
 							</div>
 						</div>
-					</div>
-					<br>
-					<br>
-					<div>
-						<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-success" formaction="">Ver Mi Perfil</button>
-					</div>
-					<br>
-					<div>
-						<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-info" formaction="">Modificar Mi Perfil</button>
-					</div>
-					<br>
-					<br>
-					<div>
-						<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-warning" formaction="/cerrarSesion.html">Cerrar Sesión</button>
-					</div>
-					<br>
-					<div>
-						<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-danger" formaction="">Eliminar Cuenta</button>
+						<br>
+						<br>
+						<div>
+							<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-success" formaction="">Ver Mi Perfil</button>
+						</div>
+						<br>
+						<div>
+							<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-info" formaction="">Modificar Mi Perfil</button>
+						</div>
+						<br>
+						<br>
+						<div>
+							<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" class="btn btn-warning" formaction="/cerrarSesion.html">Cerrar Sesión</button>
+						</div>
+						<br>
+						<div>
+							<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-danger" formaction="">Eliminar Cuenta</button>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-9">		            
