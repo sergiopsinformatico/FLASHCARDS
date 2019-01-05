@@ -162,26 +162,24 @@
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
-				        	<form name="selectionFotos">
-					        	<table class="center">
-								  <tr>
-								    <th>
-								    	<input type="radio" value="/resources/img/avatarNone.png" name="foto">Sin foto
-								    	<br>
-								    	<div class="profile-userpic-forbidden">
-					            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
-										</div>
-								    </th>
-								    <th>
-								    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
-								    	<br>
-								    	<div class="profile-userpic-avatar">
-					            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
-										</div>
-								    </th>
-								  </tr>
-					        	</table>
-					        </form>
+				        	<table class="center">
+							  <tr>
+							    <th>
+							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto">Sin foto
+							    	<br>
+							    	<div class="profile-userpic-forbidden">
+				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
+									</div>
+							    </th>
+							    <th>
+							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
+							    	<br>
+							    	<div class="profile-userpic-avatar">
+				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
+									</div>
+							    </th>
+							  </tr>
+				        	</table>
 						</div>
 				        <small id="msgError">{{messageError}}</small>
 				        <br>
@@ -260,9 +258,9 @@
         	
         	
         	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
-        		document.selectionFotos.foto[0].checked=true;
+        		document.getElementById("foto")[0].checked=true;
         	}else{
-        		document.selectionFotos.foto[1].checked=true;
+        		document.getElementById("foto")[1].checked=true;
         	}
         	
         	
