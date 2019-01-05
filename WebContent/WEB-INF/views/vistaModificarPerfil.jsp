@@ -257,11 +257,11 @@
     	    });
         	
         	
-        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
         		document.getElementById("foto")[0].checked=true;
         	}else{
         		document.getElementById("foto")[1].checked=true;
-        	}
+        	}*/
         	
         	
         	function enableBtnRegistro(){
@@ -457,7 +457,10 @@
 	        		}
         		);
         	}
-	    });
+        	
+        	enableBtnRegistro();
+        	
+        });
 	</script>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
