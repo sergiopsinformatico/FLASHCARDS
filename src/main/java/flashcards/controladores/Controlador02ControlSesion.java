@@ -76,10 +76,11 @@ public class Controlador02ControlSesion {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());
+				vista = new ModelAndView("redirect:/");
 				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
 					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
+					vista.addObject("mensaje", "Su cuenta ha sido reactivada");
 				}
-				vista = new ModelAndView("redirect:/");
 				vista.addObject("usuario", user);
 			}else {
 				vista = new ModelAndView("vistaIniciarSesion");
