@@ -8,6 +8,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import main.java.flashcards.dto.EliminarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
@@ -39,16 +40,16 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean eliminarCuenta(UsuarioDTO user, String fecha) {
+	public boolean eliminarCuenta(EliminarCuentaDTO elimina, String email) {
 		//Asunto
-		setAsunto("[Flashcards] Cuenta Eliminada ("+user.getUsername()+") - 14 dias");
+		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
 		//Mensaje
-		setMensaje("Estimado "+user.getNombreApellidos()+","+
-        "\nSu cuenta va a proceder a eliminarse por completo el "+fecha+"."+
-		 "\nSi accede antes al sistema con su cuenta, su cuenta no será eliminada."+
+		setMensaje("Hola "+elimina.getUsername()+","+
+        "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
+		"\nSi accede antes al sistema con su cuenta, su cuenta no se va a eliminar."+
         "\nUn saludo. Equipo de Flashcards.");
 		//Email de quien recibe el mensaje
-		setRecibe(user.getEmail());
+		setRecibe(email);
 		return enviarMensaje();
 	}
 	

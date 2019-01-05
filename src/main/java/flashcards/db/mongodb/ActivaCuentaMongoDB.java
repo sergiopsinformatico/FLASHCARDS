@@ -24,7 +24,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	MongoClientURI uri; 
     MongoClient client;
     MongoDatabase db;
-    MongoCollection<Document> coleccionUsuarios;
+    MongoCollection<Document> coleccionActivaCuenta;
     Document doc;
     Bson criteriosBusqueda;
     FindIterable<Document> resultadosBusqueda;
@@ -41,7 +41,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionUsuarios = db.getCollection("ActivaCuenta");
+	        coleccionActivaCuenta = db.getCollection("ActivaCuenta");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	public boolean activacionCuenta(ActivaCuentaDTO activaCuenta) {
 		try{
 			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername())).append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
-			resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
+			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
 			if(resultadosBusqueda.iterator().hasNext()) {
 				return true;
 			}else {
@@ -64,7 +64,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta) {
 		try{
 			doc = new Document().append("username", activaCuenta.getUsername()).append("codigo", activaCuenta.getCodigoActivacion()).append("fecha",activaCuenta.getFecha());
-			coleccionUsuarios.insertOne(doc);
+			coleccionActivaCuenta.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
 			return false;
@@ -74,7 +74,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	public boolean eliminaAC(ActivaCuentaDTO activaCuenta) {
 		try{
 			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername())).append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
-			coleccionUsuarios.deleteOne(criteriosBusqueda);
+			coleccionActivaCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
 			return false;
@@ -83,7 +83,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public List<ActivaCuentaDTO> leerTodas(){
 		lista = new LinkedList<ActivaCuentaDTO>();
-		resultadosBusqueda = coleccionUsuarios.find();
+		resultadosBusqueda = coleccionActivaCuenta.find();
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();

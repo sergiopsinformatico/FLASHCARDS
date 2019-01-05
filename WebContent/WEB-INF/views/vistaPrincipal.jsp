@@ -164,7 +164,7 @@
 						</div>
 						<br>
 						<div>
-							<form action="" method="POST">
+							<form action="/eliminarCuenta.html" method="GET">
 								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">
 									Eliminar Cuenta
 								</button>

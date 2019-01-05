@@ -24,6 +24,7 @@ import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
+import main.java.flashcards.dto.EliminarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
@@ -38,11 +39,38 @@ public class Controlador01RegistroUsuarios {
 	Fecha fecha;
 	ModelAndView vista;
 	UsuarioDTO user, user2;
+	List<ActivaCuentaDTO> listaAC;
+	List<EliminarCuentaDTO> listaEl;
+	int indice;
+	String compara;
 	
 	//Devuelve la vista para registrar a los usuarios
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
+		
+		//Eliminar cuentas no activadas
+		listaAC = Broker.getInstanciaActivaCuenta().leerTodas();
+		fecha = new Fecha();
+		for(indice=0; indice<listaAC.size(); indice++) {
+			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
+			if(compara!=null && Integer.parseInt(compara)<0) {
+				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
+			}
+		}
+		
+		//Eliminar cuentas pasados 14 dias
+		listaEl = Broker.getInstanciaEliminarCuenta().leerTodos();
+		fecha = new Fecha();
+		for(indice=0; indice<listaEl.size(); indice++) {
+			compara = fecha.compararFechas(listaEl.get(indice).getFecha(), fecha.fechaHoy());
+			if(compara!=null && Integer.parseInt(compara)<0) {
+				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
+				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());
+				Broker.getInstanciaUsuario().deleteUsuario(user);
+			}
+		}
+		
 		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			return new ModelAndView("vistaRegistro");
 		}else {

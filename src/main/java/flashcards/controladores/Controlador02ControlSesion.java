@@ -14,6 +14,7 @@ import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.ActivaCuentaDTO;
+import main.java.flashcards.dto.EliminarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
@@ -26,6 +27,7 @@ public class Controlador02ControlSesion {
 	UsuarioDTO user;
 	ModelAndView vista;
 	List<ActivaCuentaDTO> listaAC;
+	List<EliminarCuentaDTO> listaEl;
 	int indice;
 	Fecha fecha;
 	String compara;
@@ -41,6 +43,18 @@ public class Controlador02ControlSesion {
 			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
 			if(compara!=null && Integer.parseInt(compara)<0) {
 				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
+			}
+		}
+		
+		//Eliminar cuentas pasados 14 dias
+		listaEl = Broker.getInstanciaEliminarCuenta().leerTodos();
+		fecha = new Fecha();
+		for(indice=0; indice<listaEl.size(); indice++) {
+			compara = fecha.compararFechas(listaEl.get(indice).getFecha(), fecha.fechaHoy());
+			if(compara!=null && Integer.parseInt(compara)<0) {
+				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
+				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());
+				Broker.getInstanciaUsuario().deleteUsuario(user);
 			}
 		}
 		
