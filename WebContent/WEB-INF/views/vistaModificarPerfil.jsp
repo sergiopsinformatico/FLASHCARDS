@@ -152,13 +152,13 @@
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
 				        <br>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" ng-model="nombreApellidos" placeholder="Nombre y Apellidos">
+				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" ng-model="nombreApellidos" placeholder="Nombre y Apellidos" value="${usuario.getNombreApellidos()}">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" ng-model="ciudad" placeholder="Ciudad">
+				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" ng-model="ciudad" placeholder="Ciudad" value="${usuario.getCiudad()}">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais">
+				            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais" value="${usuario.getPais()}">
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
@@ -257,11 +257,11 @@
     	    });
         	
         	
-        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
         		document.getElementById("foto")[0].checked=true;
         	}else{
         		document.getElementById("foto")[1].checked=true;
-        	}
+        	}*/
         	
         	
         	/*function enableBtnRegistro(){
