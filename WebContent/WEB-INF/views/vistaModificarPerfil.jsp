@@ -281,7 +281,7 @@
         		}
         	}
         	
-        	/*$scope.validateUsername = function(event, username){
+        	$scope.validateUsername = function(event, username){
         		checkUsername = false;
         		checkExistUsername = false;
         		checkLongUsername = false;
@@ -457,7 +457,8 @@
 	        		}
         		);
         	}
-        	*/
+        	
+        	
         	enableBtnModificar();
         	
         });
