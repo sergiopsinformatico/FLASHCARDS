@@ -128,37 +128,37 @@
 					<form ng-submit="envioDatos()" id="Registro" name="Registro">            
 		           		<br>
 		           		<div class="form-group">
-				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" value="${usuario.getUsername()}" required>
+				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
 				        </div>
 				        <small id="msgUsername">{{messageUsername}}</small>	
 				        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres.</h6>			        
 				        <br>
 				        <div class="form-group">
-				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" value="${usuario.getEmail()}" required>
+				            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
 				        </div>
 				        <small id="msgEmail">{{messageEmail}}</small>
 				        <h6 style="font-size:10px; color:#808080">Dirección de email peteneciente al usuario.</h6>			        
 				        <br>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" value="${usuario.getClave()}" required>
+				            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required>
 				        </div>
 				        <small id="msgClave">{{messageClave}}</small>
 				        <h6 style="font-size:10px; color:#808080">Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres.</h6>
 				        <br>
 				        <div class="form-group">
-				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" value="${usuario.getClave()}" required>
+				            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
 				        </div>
 				        <small id="msgRepClave">{{messageRepClave}}</small>
 				        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
 				        <br>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" ng-model="nombreApellidos" placeholder="Nombre y Apellidos" value="${usuario.getNombreApellidos()}">
+				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" ng-model="nombreApellidos" placeholder="Nombre y Apellidos">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" ng-model="ciudad" placeholder="Ciudad" value="${usuario.getCiudad()}">
+				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" ng-model="ciudad" placeholder="Ciudad">
 				        </div>
 				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais" value="${usuario.getPais()}">
+				            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais">
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
@@ -254,15 +254,7 @@
     	    	}
     	    }, function myError(response) {
     	    	listaEmails = [];
-    	    });
-        	
-        	
-        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
-        		document.getElementsById("foto")[0].checked=true;
-        	}else{
-        		document.getElementsById("foto")[1].checked=true;
-        	}
-        	
+    	    });        	
         	
         	function enableBtnModificar(){
         		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
@@ -458,6 +450,19 @@
         		);
         	}
         	
+        	document.getElementById("inputUsername").value = "hola";
+        	document.getElementById("inputEmail").value = "correo@hola.co";
+        	document.getElementById("inputClave").value = "hola";
+        	document.getElementById("inputRepiteClave").value = "hola";
+        	document.getElementById("inputNyA").value = "hola";
+        	document.getElementById("inputCiudad").value = "hola";
+        	document.getElementById("inputPais").value = "hola";
+        	
+        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        		document.getElementsByTagName("foto")[0].checked=true;
+        	}else{
+        		document.getElementsByTagName("foto")[1].checked=true;
+        	}
         	
         	enableBtnModificar();
         	
