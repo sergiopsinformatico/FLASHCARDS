@@ -121,8 +121,12 @@
       </div>
     </nav>
     <br>
+    
     <section ng-app="AppModPerfil" ng-controller="ModPerfilCtrl">
     	<div class="container">
+    		<div class="row">
+    			<h1 align="center">Modificar Perfil</h1>
+    		</div>
 		    <div class="row">
 				<div class="col-md-12">
 					<form ng-submit="envioDatos()" id="Registro" name="Registro">            
@@ -437,11 +441,11 @@
         	    }).then(
 	        		function (response) {
 		        		if (response.data){
-		        			bootbox.alert('Cuenta creada. Para activarla, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
+		        			bootbox.alert('Datos modificados correctamente', function(){
 		        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
 		        			});
 		        		}else{
-		        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');
+		        			bootbox.alert('Hubo un fallo en el servidor. Intentelo de nuevo mas tarde.');
 		        		}
 	        		},
 	        		function (response) {
@@ -449,14 +453,6 @@
 	        		}
         		);
         	}
-        	
-        	/*document.getElementById("inputUsername").value = "${usuario.getUsername()}";
-        	document.getElementById("inputEmail").value = "${usuario.getEmail()}";
-        	document.getElementById("inputClave").value = "${usuario.getClave()}";
-        	document.getElementById("inputRepiteClave").value = "${usuario.getClave()}";
-        	document.getElementById("inputNyA").value = "${usuario.getNombreApellidos()}";
-        	document.getElementById("inputCiudad").value = "${usuario.getCiudad()}";
-        	document.getElementById("inputPais").value = "${usuario.getPais()}";*/
         	
         	$scope.username = "${usuario.getUsername()}";
 			$scope.clave = "${usuario.getClave()}";
@@ -466,12 +462,6 @@
 			$scope.ciudad = "${usuario.getCiudad()}";
 			$scope.pais= "${usuario.getPais()}";
 			$scope.fotoPerfil = "${usuario.getFoto()}";
-        	
-        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
-        		document.getElementsByTagName("foto")[0].checked=true;
-        	}else{
-        		document.getElementsByTagName("foto")[1].checked=true;
-        	}*/
         	
         	enableBtnModificar();
         	

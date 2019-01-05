@@ -35,6 +35,12 @@ public class Controlador04ModificarPerfil {
 	@RequestMapping(value = "/modificaUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView modificaUsuario(@RequestBody @Valid UsuarioDTO userNuevo, HttpServletRequest request, HttpServletResponse response) {
 		userAntiguo = (UsuarioDTO)request.getSession().getAttribute("usuario");
+		
+		userNuevo.setRolAdministrador(userAntiguo.isRolAdministrador());
+		userNuevo.setRolModerador(userAntiguo.isRolModerador());
+		userNuevo.setRolUsuario(userAntiguo.isRolUsuario());
+		userNuevo.setActivadaCuenta(userAntiguo.isActivadaCuenta());
+		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");
 			vista.addObject("usuario", userNuevo);
