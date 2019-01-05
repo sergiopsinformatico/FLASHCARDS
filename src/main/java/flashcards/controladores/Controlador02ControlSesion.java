@@ -68,7 +68,7 @@ public class Controlador02ControlSesion {
 			}
 		}else {
 			vista = new ModelAndView("vistaIniciarSesion");
-			vista.addObject("mensaje", "El usuario y/o la contraseña son incorrectos.");
+			vista.addObject("mensaje", "El usuario y/o la clave son incorrectos.");
 		}
 		return vista;
 	}

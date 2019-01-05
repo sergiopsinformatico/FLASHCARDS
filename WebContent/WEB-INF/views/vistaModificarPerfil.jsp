@@ -169,7 +169,7 @@
 				        	<table class="center">
 							  <tr>
 							    <th>
-							    	<input type="radio" value="/resources/img/avatarNone.png" ng-model="fotoPerfil" name="foto">Sin foto
+							    	<input type="radio" value="/resources/img/avatarNone.jpg" ng-model="fotoPerfil" name="foto">Sin foto
 							    	<br>
 							    	<div class="profile-userpic-forbidden">
 				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">

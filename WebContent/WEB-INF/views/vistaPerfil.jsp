@@ -33,7 +33,7 @@
 		
 		div.infoPersonal{
 			width: 100%;
-			height: 150px;
+			height: 200px;
 		}
 		
 		.profile-userpic img {
@@ -85,6 +85,7 @@
 				<div class="col-md-12">		            
 		            <div class="row rounded border border-warning infoPersonal">
 		            	<div class="col-md-3">
+		            		<br>
 		            		<div class="profile-userpic">
 								<img src="${perfil.getFoto()}" class="img-responsive" alt="">
 							</div>
