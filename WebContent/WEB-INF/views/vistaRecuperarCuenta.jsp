@@ -51,6 +51,9 @@
  	<!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!--Re captcha google-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <!-- Plugin JavaScript -->
     <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -86,7 +89,9 @@
     
     <section>
     	<div class="row">
-    		<h1 align="center">Recuperar la Clave</h1>
+    		<br>
+    			<h1 style="text-align:center;">Recuperar la Clave</h1>
+    		<br>
     	</div>
     	<div class="row">
     		<div class="col-md-4"></div>
