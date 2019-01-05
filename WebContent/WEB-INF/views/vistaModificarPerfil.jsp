@@ -264,24 +264,24 @@
         	}*/
         	
         	
-        	/*function enableBtnRegistro(){
+        	function enableBtnModificar(){
         		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
         			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
-        				document.getElementById("button1").disabled = true;
+        				document.getElementById("btnGuardaCambios").disabled = true;
         				document.getElementById("msgError").style.color="#E33A3A"
         				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
         			}else{
         				$scope.messageError="";
-        				document.getElementById("button1").disabled = false;
+        				document.getElementById("btnGuardaCambios").disabled = false;
         			}
         		}else{
-        			document.getElementById("button1").disabled = true;
+        			document.getElementById("btnGuardaCambios").disabled = true;
         			document.getElementById("msgError").style.color="#E33A3A"
         			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
         		}
         	}
         	
-        	$scope.validateUsername = function(event, username){
+        	/*$scope.validateUsername = function(event, username){
         		checkUsername = false;
         		checkExistUsername = false;
         		checkLongUsername = false;
@@ -332,7 +332,7 @@
         			checkUsername = true;
         		}
         		
-        		enableBtnRegistro();
+        		enableBtnModificar();
         	}
         	
         	$scope.validateEmail = function(event, email){
@@ -367,7 +367,7 @@
         			checkEmail = true;
         		}
         		
-        		enableBtnRegistro();
+        		enableBtnModificar();
 	        }
         	
         	$scope.validateClave = function(event, clave, repClave){
@@ -417,7 +417,7 @@
         			document.getElementById("msgRepClave").style.color="#E33A3A"
 	        		$scope.messageRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
         		}
-        		enableBtnRegistro();
+        		enableBtnModificar();
         	}
         	
         	$scope.envioDatos = function(){
@@ -458,7 +458,7 @@
         		);
         	}
         	*/
-        	enableBtnRegistro();
+        	enableBtnModificar();
         	
         });
 	</script>
