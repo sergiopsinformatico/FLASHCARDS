@@ -257,14 +257,14 @@
     	    });
         	
         	
-        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
         		document.getElementById("foto")[0].checked=true;
         	}else{
         		document.getElementById("foto")[1].checked=true;
-        	}*/
+        	}
         	
         	
-        	function enableBtnRegistro(){
+        	/*function enableBtnRegistro(){
         		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
         			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
         				document.getElementById("button1").disabled = true;
@@ -457,7 +457,7 @@
 	        		}
         		);
         	}
-        	
+        	*/
         	enableBtnRegistro();
         	
         });
