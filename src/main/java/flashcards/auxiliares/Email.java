@@ -55,9 +55,9 @@ public class Email {
 	
 	public boolean recuperarClave(UsuarioDTO user) {
 		//Asunto
-		setAsunto("[Sistema Flashcards] Recuperacion de la clave de "+user.getEmail());
+		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
-		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
+		setMensaje("Hola "+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards:"+
 		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
 		"\nClave: "+user.getClave()+
@@ -69,7 +69,7 @@ public class Email {
 	
 	public boolean reactivacionCuenta(UsuarioDTO user) {
 		//Asunto
-		setAsunto("[Sistema Flashcards] Reactivacion de la cuenta de "+user.getEmail());
+		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
 		//Mensaje
 		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+

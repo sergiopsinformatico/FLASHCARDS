@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
@@ -32,6 +33,7 @@ public class Controlador02ControlSesion {
 	Fecha fecha;
 	String compara;
 	EliminarCuentaDTO eliminado;
+	Email email;
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
@@ -80,6 +82,8 @@ public class Controlador02ControlSesion {
 				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
 					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
 					vista.addObject("mensaje", "Su cuenta ha sido reactivada");
+					email = new Email();
+					email.reactivacionCuenta(user);
 				}
 				vista.addObject("usuario", user);
 			}else {
