@@ -57,7 +57,11 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	}
 	public boolean leerEliminado(EliminarCuentaDTO cuenta) {
 		try {
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername())).append("fecha", new BsonString(cuenta.getFecha()));
+			if(cuenta.getFecha()=="") {
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
+			}else {
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername())).append("fecha", new BsonString(cuenta.getFecha()));
+			}
 			resultadosBusqueda = coleccionEliminados.find(criteriosBusqueda);
 			if(resultadosBusqueda.iterator().hasNext()) {
 				return true;
@@ -70,7 +74,11 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	}
 	public boolean eliminarEliminado(EliminarCuentaDTO cuenta) {
 		try {
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername())).append("fecha", new BsonString(cuenta.getFecha()));
+			if(cuenta.getFecha()=="") {
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
+			}else {
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername())).append("fecha", new BsonString(cuenta.getFecha()));
+			}
 			coleccionEliminados.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {

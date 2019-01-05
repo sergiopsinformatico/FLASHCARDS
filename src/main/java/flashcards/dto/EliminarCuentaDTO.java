@@ -10,6 +10,11 @@ public class EliminarCuentaDTO {
 		setFecha(fecha);
 	}
 	
+	public EliminarCuentaDTO(String username) {
+		setUsername(username);
+		setFecha("");
+	}
+	
 	public String getUsername() {
 		return username;
 	}

@@ -164,12 +164,14 @@
 						</div>
 						<br>
 						<div>
-							<form action="/eliminarCuenta.html" method="GET">
-								<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" class="btn btn-outline-danger btn-principal">
-									Eliminar Cuenta
-								</button>
-							</form>
+							<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" onclick="dialogElimina()" class="btn btn-outline-danger btn-principal">
+								Eliminar Cuenta
+							</button>
 						</div>
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 				<div class="col-md-9">		            
@@ -208,6 +210,19 @@
     		  }
     		})
 	    }
+	    
+	    function dialogElimina(){
+	    	bootbox.confirm({ 
+    		  size: "small",
+    		  message: "¿Desea eliminar la cuenta? Dispone de 14 dias para recuperarla, siguiendo las instrucciones enviadas a su email.", 
+    		  callback: function(result){ 
+    			if(result){
+    				window.location.href = "/eliminarCuenta.html";
+    			}  
+    		  }
+    		})
+	    }
+	    
 	</script>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->

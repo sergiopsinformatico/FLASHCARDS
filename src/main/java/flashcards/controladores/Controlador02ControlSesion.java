@@ -31,6 +31,7 @@ public class Controlador02ControlSesion {
 	int indice;
 	Fecha fecha;
 	String compara;
+	EliminarCuentaDTO eliminado;
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
@@ -74,6 +75,10 @@ public class Controlador02ControlSesion {
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 			if(user.isActivadaCuenta()) {
+				eliminado = new EliminarCuentaDTO(user.getUsername());
+				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
+					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
+				}
 				vista = new ModelAndView("redirect:/");
 				vista.addObject("usuario", user);
 			}else {
