@@ -257,11 +257,11 @@
     	    });
         	
         	
-        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
-        		document.getElementById("foto")[0].checked=true;
+        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        		document.getElementsById("foto")[0].checked=true;
         	}else{
-        		document.getElementById("foto")[1].checked=true;
-        	}*/
+        		document.getElementsById("foto")[1].checked=true;
+        	}
         	
         	
         	function enableBtnModificar(){
