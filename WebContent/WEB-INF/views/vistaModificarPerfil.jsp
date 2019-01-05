@@ -212,20 +212,20 @@
         	var listaEmails = [];
         	var indice = 0;
         	
-        	var checkUsername = false;
+        	var checkUsername = true;
         	var checkExistUsername = false;
         	var checkLongUsername = false;
     		var checkCaracterUsername = true;
         	
-        	var checkEmail = false;
+        	var checkEmail = true;
         	var existEmail = false;
         	var checkCaracterEmail = false;
         	
-        	var checkClave = false;
+        	var checkClave = true;
         	var checkLongClave = false;
         	var checkCaracterClave = false;
         	
-        	var checkRepClave = false;
+        	var checkRepClave = true;
         	
         	$http({
     	        method: 'GET',
@@ -450,19 +450,19 @@
         		);
         	}
         	
-        	document.getElementById("inputUsername").value = "hola";
-        	document.getElementById("inputEmail").value = "correo@hola.co";
-        	document.getElementById("inputClave").value = "hola";
-        	document.getElementById("inputRepiteClave").value = "hola";
-        	document.getElementById("inputNyA").value = "hola";
-        	document.getElementById("inputCiudad").value = "hola";
-        	document.getElementById("inputPais").value = "hola";
+        	document.getElementById("inputUsername").value = "${usuario.getUsername()}";
+        	document.getElementById("inputEmail").value = "${usuario.getEmail()}";
+        	document.getElementById("inputClave").value = "${usuario.getClave()}";
+        	document.getElementById("inputRepiteClave").value = "${usuario.getClave()}";
+        	document.getElementById("inputNyA").value = "${usuario.getNombreApellidos()}";
+        	document.getElementById("inputCiudad").value = "${usuario.getCiudad()}";
+        	document.getElementById("inputPais").value = "${usuario.getPais()}";
         	
-        	if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
+        	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
         		document.getElementsByTagName("foto")[0].checked=true;
         	}else{
         		document.getElementsByTagName("foto")[1].checked=true;
-        	}
+        	}*/
         	
         	enableBtnModificar();
         	
