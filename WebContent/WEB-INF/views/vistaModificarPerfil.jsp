@@ -165,14 +165,14 @@
 				        	<table class="center">
 							  <tr>
 							    <th>
-							    	<input type="radio" value="/resources/img/avatarNone.png" name="foto">Sin foto
+							    	<input type="radio" value="/resources/img/avatarNone.png" ng-model="fotoPerfil" name="foto">Sin foto
 							    	<br>
 							    	<div class="profile-userpic-forbidden">
 				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
 									</div>
 							    </th>
 							    <th>
-							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
+							    	<input type="radio" value="/resources/img/avatarGeneral.png" ng-model="fotoPerfil" name="foto">Avatar
 							    	<br>
 							    	<div class="profile-userpic-avatar">
 				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
@@ -423,7 +423,7 @@
     				"nombreApellidos" : $scope.nombreApellidos,
     				"ciudad" : $scope.ciudad,
     				"pais" : $scope.pais,
-    				"foto" : document.getElementById("foto").value
+    				"foto" : $scope.fotoPerfil
         		};
         		
         		$http({
@@ -450,13 +450,22 @@
         		);
         	}
         	
-        	document.getElementById("inputUsername").value = "${usuario.getUsername()}";
+        	/*document.getElementById("inputUsername").value = "${usuario.getUsername()}";
         	document.getElementById("inputEmail").value = "${usuario.getEmail()}";
         	document.getElementById("inputClave").value = "${usuario.getClave()}";
         	document.getElementById("inputRepiteClave").value = "${usuario.getClave()}";
         	document.getElementById("inputNyA").value = "${usuario.getNombreApellidos()}";
         	document.getElementById("inputCiudad").value = "${usuario.getCiudad()}";
-        	document.getElementById("inputPais").value = "${usuario.getPais()}";
+        	document.getElementById("inputPais").value = "${usuario.getPais()}";*/
+        	
+        	$scope.username = "${usuario.getUsername()}";
+			$scope.clave = "${usuario.getClave()}";
+			$scope.repClave = "${usuario.getClave()}";
+			$scope.email = "${usuario.getEmail()}";
+			$scope.nombreApellidos = "${usuario.getNombreApellidos()}";
+			$scope.ciudad = "${usuario.getCiudad()}";
+			$scope.pais= "${usuario.getPais()}";
+			$scope.fotoPerfil = "${usuario.getFoto()}";
         	
         	/*if("${usuario.getFoto()}"=="/resources/img/avatarNone.png"){
         		document.getElementsByTagName("foto")[0].checked=true;
