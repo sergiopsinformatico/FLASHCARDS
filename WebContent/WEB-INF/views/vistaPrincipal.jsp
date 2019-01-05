@@ -149,7 +149,7 @@
 						</div>
 						<br>
 						<div>
-							<form action="" method="GET">
+							<form action="/modificarPerfil.html" method="GET">
 								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
 									Modificar Mi Perfil
 								</button>

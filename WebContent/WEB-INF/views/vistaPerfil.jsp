@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Pagina Principal</title>
+    <title>Flashcards - Perfil ${perfil.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +90,7 @@
 							</div>
 		            	</div>
 		            	<div class="col-md-9">
-		            		<br><br>
+		            		<br>
 		            		<div class="form-group">
 					            <p>Username: ${perfil.getUsername()}</p>
 					        </div>
