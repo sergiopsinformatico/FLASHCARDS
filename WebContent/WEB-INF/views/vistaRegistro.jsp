@@ -99,11 +99,11 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row">
-    		<br>
-    			<h1 align="center">Registro</h1>
-    		<br>
-    	</div>
+	    	<div class="row" style="text-align: center;">
+	    		<br>
+	    			<h>Registro</h1>
+	    		<br>
+	    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
