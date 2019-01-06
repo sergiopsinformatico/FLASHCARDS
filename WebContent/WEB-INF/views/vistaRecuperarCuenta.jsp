@@ -98,7 +98,7 @@
     		<div class="col-md-4">
     			<form action="recuperaClave.html" method="post" id="Login" name="Login">
 			        <div class="form-group">
-			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required>
+			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Introducir username o email" required>
 			        </div>
 			       <br>
 			        <div class="row" align="center">
