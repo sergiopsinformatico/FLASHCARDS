@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Registro</title>
+    <title>Flashcards - Registro de Usuarios</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -100,8 +100,10 @@
 	    </nav>
 	    <section>
 	    	<div class="row">
-	    		<br><br>
-	    	</div>
+    		<br>
+    			<h1 align="center">Registro</h1>
+    		<br>
+    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">

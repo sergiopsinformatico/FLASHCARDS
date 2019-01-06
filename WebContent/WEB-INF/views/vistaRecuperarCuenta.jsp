@@ -90,7 +90,7 @@
     <section>
     	<div class="row">
     		<br>
-    			<h1 class="center" style="text-align:center;">Recuperar la Clave</h1>
+    			<h1 align="center">Recuperar la Clave</h1>
     		<br>
     	</div>
     	<div class="row">

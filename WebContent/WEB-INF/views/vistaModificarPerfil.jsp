@@ -123,6 +123,11 @@
     <br>
     
     <section ng-app="AppModPerfil" ng-controller="ModPerfilCtrl">
+    	<div class="row">
+    		<br>
+    			<h1 align="center">Modificar Perfil</h1>
+    		<br>
+    	</div>
     	<div class="container">
     		<div class="row">
     			<h1 align="center">Modificar Perfil</h1>

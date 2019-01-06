@@ -74,7 +74,9 @@
     </nav>
     <section>
     	<div class="row">
-    		<br><br>
+    		<br>
+    			<h1 align="center">Iniciar Sesión</h1>
+    		<br>
     	</div>
     	<div class="row">
     		<div class="col-md-4"></div>
