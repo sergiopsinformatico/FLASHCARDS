@@ -99,9 +99,9 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row" style="text-align: center;">
+	    	<div class="row center;">
 	    		<br>
-	    			<h>Registro</h1>
+	    			<h1>Registro</h1>
 	    		<br>
 	    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
