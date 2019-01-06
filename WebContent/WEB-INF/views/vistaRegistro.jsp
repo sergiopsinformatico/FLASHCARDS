@@ -99,13 +99,10 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row" style="text-align:center;">
-	    		<br>Registro de Usuarios<br>
-	    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
-	    			
+	    			<br>Registro de Usuarios<br>
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
