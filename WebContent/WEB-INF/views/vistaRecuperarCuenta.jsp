@@ -42,8 +42,9 @@
 		}
 		
 		h1 {
-		    text-align:center;
-		    margin: auto 0;
+			text-align: center;
+			margin: 0px 50px 0 50px;
+			padding-top: -60px;
 		}
 		
 		.positionReCaptcha{
