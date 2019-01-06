@@ -28,15 +28,15 @@
     
     <style>
     	.btn-registro[disabled] {
-    		background-color: #ECECEC;
-    		border: none;
-		  	color: white;
-		  	width: 100%;
-		  	height: 50px;
-		  	text-align: center;
-		  	text-decoration: none;
-		  	display: inline-block;
-		  	font-size: 16px;
+    		  background-color: #BAC1B5;
+			  border: none;
+			  color: white;
+			  width: 100%;
+			  height: 50px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
 		}
     
 	    .btn-registro {

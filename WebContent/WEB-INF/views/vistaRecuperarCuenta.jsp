@@ -34,11 +34,15 @@
 		}
 		
 		.btn-recCuenta{
-			width: 80%;
-			text-align:center;
-			margin:auto;
-			display: flex; 
-			justify-content: center;
+		  background-color: #BAC1B5;
+		  border: none;
+		  color: white;
+		  width: 100%;
+		  height: 50px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
 		}
 		
 		.positionReCaptcha{
