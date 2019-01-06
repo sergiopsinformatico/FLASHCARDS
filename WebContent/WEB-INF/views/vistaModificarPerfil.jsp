@@ -123,15 +123,12 @@
     <br>
     
     <section ng-app="AppModPerfil" ng-controller="ModPerfilCtrl">
-    	<div class="row center">
-    		<br>Modificar Mi Perfil<br>
-    	</div>
     	<div class="container">
-    		<div class="row" style="text-align:center;">
-    			<h1 align="center">Modificar Perfil</h1>
-    		</div>
 		    <div class="row">
 				<div class="col-md-12">
+					<br>
+	    			<h1 align="center">Modificar Mi Perfil</h1>
+	    			<br> 
 					<form ng-submit="envioDatos()" id="Registro" name="Registro">            
 		           		<br>
 		           		<div class="form-group">

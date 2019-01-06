@@ -80,12 +80,12 @@
       </div>
     </nav>
     <section>
-    	<div class="row" style="text-align:center;">
-    		<br>Activar Cuenta: ${activa.getUsername()}<br>
-    	</div>
     	<div class="row">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
+    			<br>
+    			<h1 align="center">Activar Cuenta: ${activa.getUsername()}</h1>
+    			<br> 
     			<div class="row" style="text-align: center;">
     				<p class="recuadroActivaCuenta">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
     			</div>

@@ -73,12 +73,12 @@
       </div>
     </nav>
     <section>
-    	<div class="row" style="text-align:center;">
-    		<br>Iniciar Sesión<br>
-    	</div>
     	<div class="row">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
+    			<br>
+    			<h1 align="center">Iniciar Sesión</h1>
+    			<br> 
     			<form action="loguear.html" method="post" id="Login" name="Login">
 			        <div class="form-group">
 			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required>

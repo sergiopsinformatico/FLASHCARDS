@@ -92,12 +92,12 @@
     </nav>
     
     <section>
-    	<div class="row" style="text-align:center;">
-    		<br>Recuperar la Clave<br>
-    	</div>
     	<div class="row">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
+    			<br>
+    			<h1 align="center">Recuperar la Clave</h1>
+    			<br>
     			<form action="recuperaClave.html" method="post" id="Login" name="Login">
 			        <div class="form-group">
 			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Introducir username o email" required>

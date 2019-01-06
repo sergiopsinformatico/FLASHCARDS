@@ -102,7 +102,9 @@
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
+	    			<br>
 	    			<h1 align="center">Registro de Usuarios</h1>
+	    			<br>
 	    			<form ng-submit="envioDatos()" id="Registro" name="Registro">
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
