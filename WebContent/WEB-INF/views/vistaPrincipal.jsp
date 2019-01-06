@@ -83,7 +83,7 @@
 		}
 		
 		.botonImg{
-			width: 60%;
+			width: 70%;
 			height: 60%;
 		}
 
