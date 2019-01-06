@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Activación Cuenta "${activa.getUsername()}</title>
+    <title>Flashcards - Activación Cuenta ${activa.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

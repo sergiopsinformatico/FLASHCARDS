@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Pagina Principal</title>
+    <title>Flashcards - Gente</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -175,22 +175,7 @@
 					</div>
 				</div>
 				<div class="col-md-9">		            
-		            <table class="table" align="center">
-		            	<tr>
-		            		<td>
-		            			<img src="/resources/img/personas.png" class="img-responsive" alt="">
-		            			<br>
-		            			<br>
-		            			<h6 align="center">Gente</h6>
-		            		</td>
-		            		<td>
-		            			<img src="/resources/img/clubes.png" class="img-responsive" alt="">
-		            			<br>
-		            			<br>
-		            			<h6 align="center">Clubes</h6>
-		            		</td>
-		            	</tr>
-		            </table>
+		            
 				</div>
 			</div>
 		</div>
@@ -200,7 +185,18 @@
 		'use strict'
 	    var app = angular.module('AppPrincipal', []);
 	    app.controller('PrincipalCtrl', function($scope, $http) {
-	    	
+	    	$scope.nombreApellidos="";
+	    	$scope.ciudad="";
+	    	$scope.pais="";
+	    	if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
+	    		$scope.nombreApellidos="Nombre y Apellidos: "+"${usuario.getNombreApellidos()}";
+	    	}
+	    	if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
+	    		$scope.ciudad="Ciudad: "+"${usuario.getCiudad()}";
+	    	}
+	    	if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
+	    		$scope.pais="Pais: "+"${usuario.getPais()}";
+	    	}
 	    });
 	    
 	    function dialogCS(){
