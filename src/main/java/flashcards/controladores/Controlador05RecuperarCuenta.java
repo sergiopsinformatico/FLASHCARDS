@@ -68,15 +68,17 @@ public class Controlador05RecuperarCuenta {
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.POST)
 	public ModelAndView recuperaClave(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/");
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 		if(user==null || user.getUsername()==null || user.getUsername()=="") {
+			vista = new ModelAndView("index");
 			vista.addObject("mensaje", "No existe dicha cuenta.");
+			return vista;
 		}else {
 			email = new Email();
 			email.recuperarClave(user);
+			vista = new ModelAndView("index");
 			vista.addObject("mensaje", "Se ha enviado un email a " + user.getEmail() +" con la clave");
+			return vista;
 		}
-		return vista;
 	}
 }
