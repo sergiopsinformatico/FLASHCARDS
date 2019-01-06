@@ -67,8 +67,6 @@ public class Controlador05RecuperarCuenta {
 	}
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.POST)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView recuperaClave(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("redirect:/");
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
