@@ -51,10 +51,6 @@
 		  	font-size: 16px;
 		}
 		
-		h1 {
-		    text-align:center;
-		}
-		
 		body {
 		  background: #F1F3FA;
 		}
@@ -103,10 +99,8 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row">
-	    		<br>
-	    			<h1>Registro</h1>
-	    		<br>
+	    	<div class="row center">
+	    		<br>Registro de Usuarios<br>
 	    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>

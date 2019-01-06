@@ -41,12 +41,6 @@
 			justify-content: center;
 		}
 		
-		h1 {
-			text-align: center;
-			margin: 0px 50px 0 50px;
-			padding-top: -60px;
-		}
-		
 		.positionReCaptcha{
 			margin-left: auto;
 			margin-right: auto;
@@ -98,10 +92,8 @@
     </nav>
     
     <section>
-    	<div class="row">
-    		<br>
-    			<h1>Recuperar la Clave</h1>
-    		<br>
+    	<div class="row center">
+    		<br>Recuperar la Clave<br>
     	</div>
     	<div class="row">
     		<div class="col-md-4"></div>

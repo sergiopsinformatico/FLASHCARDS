@@ -67,9 +67,6 @@
 	    body {
 		  background: #F1F3FA;
 		}
-		h1 {
-		    text-align:center;
-		}
     </style>
     
   </head>
@@ -83,10 +80,8 @@
       </div>
     </nav>
     <section>
-    	<div class="row">
-    		<br>
-    			<h1>Activar Cuenta: ${activa.getUsername()}</h1>
-    		<br>
+    	<div class="row center">
+    		<br>Activar Cuenta: ${activa.getUsername()}<br>
     	</div>
     	<div class="row">
     		<div class="col-md-4"></div>

@@ -46,10 +46,6 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
-		
-		h1 {
-		    text-align:center;
-		}
     </style>
     
   </head>
@@ -77,10 +73,8 @@
       </div>
     </nav>
     <section>
-    	<div class="row">
-    		<br>
-    			<h1>Iniciar Sesión</h1>
-    		<br>
+    	<div class="row center">
+    		<br>Iniciar Sesión<br>
     	</div>
     	<div class="row">
     		<div class="col-md-4"></div>

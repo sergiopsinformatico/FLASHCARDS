@@ -48,10 +48,6 @@
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
 		}
-		
-		h1 {
-		    text-align:center;
-		}
     </style>
     
   </head>
@@ -84,10 +80,8 @@
     </nav>
     <br>
     <section ng-app="AppPerfil" ng-controller="PerfilCtrl">
-    	<div class="row">
-    		<br>
-    			<h1>Ver Perfil: ${perfil.getUsername()}</h1>
-    		<br>
+    	<div class="row center">
+    		<br>Ver Perfil: ${perfil.getUsername()}<br>
     	</div>
     	<div class="container">
 		    <div class="row">
