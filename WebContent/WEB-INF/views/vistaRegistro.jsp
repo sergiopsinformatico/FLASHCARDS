@@ -99,7 +99,7 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row center">
+	    	<div class="row" style="text-align:center;">
 	    		<br>Registro de Usuarios<br>
 	    	</div>
 	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">

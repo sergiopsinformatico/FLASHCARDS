@@ -92,7 +92,7 @@
     </nav>
     
     <section>
-    	<div class="row center">
+    	<div class="row" style="text-align:center;">
     		<br>Recuperar la Clave<br>
     	</div>
     	<div class="row">

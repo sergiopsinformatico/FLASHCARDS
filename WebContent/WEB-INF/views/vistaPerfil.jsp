@@ -80,7 +80,7 @@
     </nav>
     <br>
     <section ng-app="AppPerfil" ng-controller="PerfilCtrl">
-    	<div class="row center">
+    	<div class="row" style="text-align:center;">
     		<br>Ver Perfil: ${perfil.getUsername()}<br>
     	</div>
     	<div class="container">

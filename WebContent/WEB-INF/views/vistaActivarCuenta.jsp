@@ -80,7 +80,7 @@
       </div>
     </nav>
     <section>
-    	<div class="row center">
+    	<div class="row" style="text-align:center;">
     		<br>Activar Cuenta: ${activa.getUsername()}<br>
     	</div>
     	<div class="row">

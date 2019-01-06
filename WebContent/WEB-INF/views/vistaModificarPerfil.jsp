@@ -127,7 +127,7 @@
     		<br>Modificar Mi Perfil<br>
     	</div>
     	<div class="container">
-    		<div class="row">
+    		<div class="row" style="text-align:center;">
     			<h1 align="center">Modificar Perfil</h1>
     		</div>
 		    <div class="row">
