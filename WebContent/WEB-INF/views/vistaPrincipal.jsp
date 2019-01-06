@@ -81,7 +81,11 @@
 			display: flex; 
 			justify-content: center;
 		}
-
+		
+		.botonImg{
+			width: 60%;
+			height: 60%;
+		}
 
     </style>
     
@@ -178,13 +182,13 @@
 		            <table class="table" align="center">
 		            	<tr>
 		            		<td>
-		            			<img src="/resources/img/personas.png" class="img-responsive" alt="">
+		            			<img src="/resources/img/personas.png" class="img-responsive botonImg" alt="">
 		            			<br>
 		            			<br>
 		            			<h6 align="center">Gente</h6>
 		            		</td>
 		            		<td>
-		            			<img src="/resources/img/clubes.png" class="img-responsive" alt="">
+		            			<img src="/resources/img/clubes.png" class="img-responsive botonImg" alt="">
 		            			<br>
 		            			<br>
 		            			<h6 align="center">Clubes</h6>
