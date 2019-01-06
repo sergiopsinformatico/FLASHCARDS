@@ -43,6 +43,7 @@
 		
 		h1 {
 		    text-align:center;
+		    margin: auto 0;
 		}
 		
 		.positionReCaptcha{
