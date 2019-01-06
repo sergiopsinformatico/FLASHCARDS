@@ -97,18 +97,17 @@ public class Controlador02ControlSesion {
 		return vista;
 	}
 	
+	@RequestMapping(value = "/loguear", method = RequestMethod.GET)
+	public ModelAndView loguearGet(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/iniciarSesion.html");
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			vista = new ModelAndView("index");
-			/*if(request.getAttribute("mensaje")!=null && request.getAttribute("mensaje").toString()!="") {
-				vista.addObject("mensaje", request.getAttribute("mensaje").toString());
-			}*/
 		}else {
 			vista =  new ModelAndView("vistaPrincipal");
-			/*if(request.getAttribute("mensaje")!=null && request.getAttribute("mensaje").toString()!="") {
-				vista.addObject("mensaje", request.getAttribute("mensaje").toString());
-			}*/
 		}
 		return vista;
 	}
