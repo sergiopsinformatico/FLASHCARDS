@@ -40,7 +40,15 @@
 			display: flex; 
 			justify-content: center;
 		}
-
+		
+		h1 {
+		    text-align:center;
+		}
+		
+		.positionReCaptcha{
+			margin-left: auto;
+			margin-right: auto;
+		}
 
     </style>
     
@@ -90,7 +98,7 @@
     <section>
     	<div class="row">
     		<br>
-    			<h1 align="center">Recuperar la Clave</h1>
+    			<h1>Recuperar la Clave</h1>
     		<br>
     	</div>
     	<div class="row">

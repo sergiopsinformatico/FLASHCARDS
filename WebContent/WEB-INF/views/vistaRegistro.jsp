@@ -51,6 +51,10 @@
 		  	font-size: 16px;
 		}
 		
+		h1 {
+		    text-align:center;
+		}
+		
 		body {
 		  background: #F1F3FA;
 		}
@@ -99,7 +103,7 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row center;">
+	    	<div class="row">
 	    		<br>
 	    			<h1>Registro</h1>
 	    		<br>

@@ -46,6 +46,10 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
+		
+		h1 {
+		    text-align:center;
+		}
     </style>
     
   </head>
@@ -75,7 +79,7 @@
     <section>
     	<div class="row">
     		<br>
-    			<h1 align="center">Iniciar Sesión</h1>
+    			<h1>Iniciar Sesión</h1>
     		<br>
     	</div>
     	<div class="row">

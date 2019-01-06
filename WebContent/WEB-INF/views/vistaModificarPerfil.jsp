@@ -90,6 +90,9 @@
 	      margin-right:auto;
 	      text-align:center;
 	    }
+	    h1 {
+		    text-align:center;
+		}
     </style>
     
   </head>
@@ -125,7 +128,7 @@
     <section ng-app="AppModPerfil" ng-controller="ModPerfilCtrl">
     	<div class="row">
     		<br>
-    			<h1 align="center">Modificar Perfil</h1>
+    			<h1>Modificar Perfil</h1>
     		<br>
     	</div>
     	<div class="container">

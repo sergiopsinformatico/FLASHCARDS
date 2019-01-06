@@ -67,6 +67,9 @@
 	    body {
 		  background: #F1F3FA;
 		}
+		h1 {
+		    text-align:center;
+		}
     </style>
     
   </head>
@@ -82,7 +85,7 @@
     <section>
     	<div class="row">
     		<br>
-    			<h1 align="center">Activar Cuenta: ${activa.getUsername()}</h1>
+    			<h1>Activar Cuenta: ${activa.getUsername()}</h1>
     		<br>
     	</div>
     	<div class="row">
