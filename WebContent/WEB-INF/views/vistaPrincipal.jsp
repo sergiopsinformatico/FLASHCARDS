@@ -112,24 +112,21 @@
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
-        <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/iniciarSesion.html">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/registro.html">Registrarse</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/administrador.html">Opciones de Administrador</a>
             </li>
           </ul>
-        </div>-->
+        </div>
       </div>
     </nav>
     
-    <section ng-app="AppPrincipal" ng-controller="PrincipalCtrl">
+    <section>
 	    <div class="container">
 		    <div class="row profile">
 				<div class="col-md-3">
@@ -182,16 +179,20 @@
 		            <table class="table" align="center">
 		            	<tr>
 		            		<td>
-		            			<img src="/resources/img/personas.png" class="img-responsive botonImg" alt="">
+		            			<a href="/gente.html">
+		            				<img src="/resources/img/personas.png" class="img-responsive botonImg" alt="">
+		            			</a>
 		            			<br>
 		            			<br>
-		            			<h6 align="left">Gente</h6>
+		            			<h6 align="left"><a href="/gente.html">Gente</a></h6>
 		            		</td>
 		            		<td>
-		            			<img src="/resources/img/clubes.png" class="img-responsive botonImg" alt="">
+		            			<a href="/clubes.html">
+		            				<img src="/resources/img/clubes.png" class="img-responsive botonImg" alt="">
+		            			</a>
 		            			<br>
 		            			<br>
-		            			<h6 align="left">Clubes</h6>
+		            			<h6 align="left"><a href="/clubes.html">Clubes</a></h6>
 		            		</td>
 		            	</tr>
 		            </table>
