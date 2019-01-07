@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -127,7 +128,7 @@
     </nav>
     
     <script>
-    	if(${usuario.isRolAdministrador()}){
+    	if("${usuario.isRolAdministrador()}"){
     		document.getElementById("adminOption").style.visibility = "visible";
     	}else{
     		document.getElementById("adminOption").style.visibility = "hidden";
