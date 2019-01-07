@@ -202,10 +202,6 @@
 	
 	<script>
 		'use strict'
-	    var app = angular.module('AppPrincipal', []);
-	    app.controller('PrincipalCtrl', function($scope, $http) {
-	    	
-	    });
 	    
 	    function dialogCS(){
 	    	bootbox.confirm({ 
