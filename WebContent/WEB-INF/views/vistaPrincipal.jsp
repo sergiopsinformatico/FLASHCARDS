@@ -83,9 +83,44 @@
 			justify-content: center;
 		}
 		
-		.botonImg{
-			width: 70%;
-			height: 60%;
+		.container {
+		  position: relative;
+		  width: 50%;
+		}
+		
+		.image {
+		  opacity: 1;
+		  display: block;
+		  width: 60%;
+		  height: auto;
+		  transition: .5s ease;
+		  backface-visibility: hidden;
+		}
+		
+		.middle {
+		  transition: .5s ease;
+		  opacity: 0;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  -ms-transform: translate(-50%, -50%);
+		  text-align: center;
+		}
+		
+		.container:hover .image {
+		  opacity: 0.3;
+		}
+		
+		.container:hover .middle {
+		  opacity: 1;
+		}
+		
+		.text {
+		  background-color: #97BBFF;
+		  color: white;
+		  font-size: 16px;
+		  padding: 16px 32px;
 		}
 
     </style>
@@ -113,7 +148,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
         </button>
@@ -123,19 +158,9 @@
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/administrador.html">Opciones de Administrador</a>
             </li>
           </ul>
-        </div>
+        </div>-->
       </div>
     </nav>
-    
-    <script>
-    	if("${usuario.isRolAdministrador()}"==true){
-    		document.getElementById("adminOption").style.visibility = "visible";
-    	}else{
-    		document.getElementById("adminOption").style.visibility = "hidden";
-    	}
-    	
-    	
-    </script>
     
     <section>
 	    <div class="container">
@@ -186,8 +211,39 @@
 						<br>
 					</div>
 				</div>
-				<div class="col-md-9">		            
-		            <table class="table" align="center">
+				<div class="col-md-9">	
+					
+					
+					<div id="panelAdmin">
+						
+						
+						
+					</div>
+					<div id="panelUsuario">
+						
+						<div class="container">
+						  <img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
+						  <div class="middle">
+						    <div class="text"><a href="/gente.html">Gente</a></div>
+						  </div>
+						</div>
+												
+						<div class="container">
+						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
+						  <div class="middle">
+						    <div class="text"><a href="/clubes.html">Clubes</a></div>
+						  </div>
+						</div>
+						
+						<!-- Gente <img src="/resources/img/personas.png" class="img-responsive" alt="">
+						<td>
+						Clubes <img src="/resources/img/clubes.png" class="img-responsive" alt="">-->
+					
+					</div>
+					
+					
+									            
+		            <!-- <table class="table" align="center">
 		            	<tr>
 		            		<td>
 		            			<a href="/gente.html">
@@ -206,7 +262,7 @@
 		            			<h6 align="left"><a href="/clubes.html">Clubes</a></h6>
 		            		</td>
 		            	</tr>
-		            </table>
+		            </table>-->
 				</div>
 			</div>
 		</div>
