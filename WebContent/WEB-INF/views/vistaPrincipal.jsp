@@ -83,7 +83,7 @@
 			justify-content: center;
 		}
 		
-		.container {
+		.container-Paneles {
 		  position: relative;
 		  width: 50%;
 		}
@@ -108,11 +108,11 @@
 		  text-align: center;
 		}
 		
-		.container:hover .image {
+		.container-Paneles:hover .image {
 		  opacity: 0.3;
 		}
 		
-		.container:hover .middle {
+		.container-Paneles:hover .middle {
 		  opacity: 1;
 		}
 		
@@ -221,13 +221,15 @@
 					</div>
 					<div id="panelUsuario">
 						
-						<div class="container">
+						<div class="container-Paneles">
 						  <img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
 						  <div class="middle">
 						    <div class="text"><a href="/gente.html">Gente</a></div>
 						  </div>
 						</div>
-												
+						
+						<td>
+											
 						<div class="container">
 						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
 						  <div class="middle">
