@@ -216,14 +216,38 @@
 					</div>
 				</div>
 				<div class="col-md-9">	
-					
-					
-					<div id="panelAdmin">
-						
-						
-						
-					</div>
-					<div id="panelUsuario">
+				
+					<div id="panelAdmin" class="panel panel-default">
+				      <div class="panel-heading">Panel Administrador</div>
+				      <div class="panel-body">
+				      	Panel Content
+				      </div>
+				    </div>
+				    
+				    <div id="panelUsuario" class="panel panel-default">
+				      <div class="panel-heading">Panel Usuario</div>
+				      <div class="panel-body">
+				      	<div class="table-responsive">          
+						  <table class="table">
+						    <tbody>
+						      <tr>
+						        <td>
+						        	<img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
+						        	<br>
+						        	<a href="/gente.html">Gente</a>
+						        </td>
+						        <td>
+						        	<img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
+						        	<br>
+						        	<a href="/clubes.html">Clubes</a>								
+								</td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</div>
+				      </div>
+				    </div>
+					<!-- <div id="panelUsuario">
 						
 						<div id="panelUsuarioGente" class="container-Paneles">
 						  <img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
@@ -239,7 +263,7 @@
 						  </div>
 						</div>
 					
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
