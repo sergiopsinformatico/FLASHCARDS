@@ -227,17 +227,13 @@
 						    <div class="text"><a href="/gente.html">Gente</a></div>
 						  </div>
 						</div>
-																	
+						
 						<div class="container-Paneles">
 						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
 						  <div class="middle">
 						    <div class="text"><a href="/clubes.html">Clubes</a></div>
 						  </div>
 						</div>
-						
-						<!-- Gente <img src="/resources/img/personas.png" class="img-responsive" alt="">
-						<td>
-						Clubes <img src="/resources/img/clubes.png" class="img-responsive" alt="">-->
 					
 					</div>
 					
