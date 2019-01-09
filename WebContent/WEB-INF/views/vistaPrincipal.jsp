@@ -227,10 +227,8 @@
 						    <div class="text"><a href="/gente.html">Gente</a></div>
 						  </div>
 						</div>
-						
-						<td>
-											
-						<div class="container">
+																	
+						<div class="container-Paneles">
 						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
 						  <div class="middle">
 						    <div class="text"><a href="/clubes.html">Clubes</a></div>
