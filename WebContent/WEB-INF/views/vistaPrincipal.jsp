@@ -122,6 +122,10 @@
 		  font-size: 16px;
 		  padding: 16px 32px;
 		}
+		
+		#panelUsuarioGente, #panelUsuarioClubes{
+			display:inline,
+		}
 
     </style>
     
@@ -221,14 +225,14 @@
 					</div>
 					<div id="panelUsuario">
 						
-						<div class="container-Paneles">
+						<div id="panelUsuarioGente" class="container-Paneles">
 						  <img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
 						  <div class="middle">
 						    <div class="text"><a href="/gente.html">Gente</a></div>
 						  </div>
 						</div>
-						
-						<div class="container-Paneles">
+												
+						<div id="panelUsuarioClubes" class="container-Paneles">
 						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
 						  <div class="middle">
 						    <div class="text"><a href="/clubes.html">Clubes</a></div>
