@@ -238,14 +238,22 @@
 						    <tbody>
 						      <tr>
 						        <td>
-						        	<img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
+						        	<a href="/gente.html" style="text-align: center;">
+						        		<img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
+						        	</a>
 						        	<br>
-						        	<a href="/gente.html">Gente</a>
+						        	<h2>
+						        		<a href="/gente.html" style="text-align: center;">Gente</a>
+						        	</h2>
 						        </td>
 						        <td>
-						        	<img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
+						        	<a href="/clubes.html" style="text-align: center;">
+						        		<img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
+						        	</a>
 						        	<br>
-						        	<a href="/clubes.html">Clubes</a>								
+						        	<h2>
+						        		<a href="/clubes.html" style="text-align: center;">Clubes</a>
+						        	</h2>								
 								</td>
 						      </tr>
 						    </tbody>
