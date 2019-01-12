@@ -226,6 +226,8 @@
 				      </div>
 				    </div>
 				    
+				    <br>
+				    
 				    <div id="panelUsuario" class="panel panel-default">
 				      <div class="panel-heading">
 				      	<h4>Panel Usuario</h4>
@@ -253,10 +255,10 @@
 				    </div>
 				    
 				    <script>
-				    	var divAdmin = document.getElementById("panelAdmin");
-				    	if("${usuario.isRolAdministrador()}"){
+				    	/*var divAdmin = document.getElementById("panelAdmin");
+				    	if("${usuario.isRolAdministrador()}"==true){
 				    		divAdmin.style.display = "block";
-				    	}
+				    	}*/
 				    </script>
 				    
 				    
