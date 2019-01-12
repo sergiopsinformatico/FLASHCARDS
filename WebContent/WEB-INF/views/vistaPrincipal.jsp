@@ -261,7 +261,12 @@
 						</div>
 				      </div>
 				    </div>
-				    
+				    <br>
+				    ${usuario.isRolUsuario()}
+				    <br>
+				    ${usuario.isRolModerador()}
+				    <br>
+				    ${usuario.isRolAdministrador()}
 				    <script>
 				    	var divAdmin = document.getElementById("panelAdmin");
 				    	if("${usuario.isRolAdministrador()}"==true){
