@@ -100,7 +100,7 @@ public class Controlador01RegistroUsuarios {
 		if(Broker.getInstanciaUsuario().insertUsuario(user) &&
 		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta()))) {
 			correo = new Email();
-			correo.confirmaCreaCuenta(user,"https://sistemaflashcards.herokuapp.com/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
+			correo.activarCuenta(user,"https://sistemaflashcards.herokuapp.com/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
 			return true;
 		}else {
 			return false;
@@ -163,8 +163,16 @@ public class Controlador01RegistroUsuarios {
 			user2.setPais(request.getParameter("inputPais"));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		vista = new ModelAndView("redirect:/");
+		correo = new Email();
+		correo.confirmaCuentaCreada(user2);
+		vista = new ModelAndView("index");
 		vista.addObject("mensaje", "Registro completado con exito.");
+		return vista;
+	}
+	
+	@RequestMapping(value = "/activar", method = RequestMethod.GET)
+	public ModelAndView activarGet(HttpServletRequest request, HttpServletResponse response){
+		vista = new ModelAndView("redirect:/");
 		return vista;
 	}
 	
