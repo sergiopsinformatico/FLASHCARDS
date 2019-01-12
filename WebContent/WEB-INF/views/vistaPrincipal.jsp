@@ -198,6 +198,10 @@
 						</div>
 						<br>
 						<br>
+						<br>
+						<br>
+						<br>
+						<br>
 						<div>
 							<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" onclick="dialogCS()" class="btn btn-outline-warning btn-principal">
 								Cerrar Sesión
@@ -216,7 +220,8 @@
 					</div>
 				</div>
 				<div class="col-md-9">	
-				
+					<br>
+					
 					<div id="panelAdmin" class="panel panel-default" style="display: none;">
 				      <div class="panel-heading">
 				      	<h4>Panel Administrador</h4>
