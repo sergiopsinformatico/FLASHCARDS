@@ -243,7 +243,7 @@
 						        	</a>
 						        	<br>
 						        	<h6 align="center" style="color:#C9EA24;">
-						        		<a href="/gente.html">Gente</a>
+						        		<a style="color:#C9EA24;" href="/gente.html">Gente</a>
 						        	</h6>
 						        </td>
 						        <td>
@@ -252,7 +252,7 @@
 						        	</a>
 						        	<br>
 						        	<h6 align="center" style="color:#65C362;">
-						        		<a href="/clubes.html">Clubes</a>
+						        		<a style="color:#65C362;" href="/clubes.html">Clubes</a>
 						        	</h6>								
 								</td>
 						      </tr>
