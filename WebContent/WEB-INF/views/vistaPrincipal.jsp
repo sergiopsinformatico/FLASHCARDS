@@ -217,15 +217,19 @@
 				</div>
 				<div class="col-md-9">	
 				
-					<div id="panelAdmin" class="panel panel-default">
-				      <div class="panel-heading">Panel Administrador</div>
+					<div id="panelAdmin" class="panel panel-default" style="display: none;">
+				      <div class="panel-heading">
+				      	<h4>Panel Administrador</h4>
+				      </div>
 				      <div class="panel-body">
 				      	Panel Content
 				      </div>
 				    </div>
 				    
 				    <div id="panelUsuario" class="panel panel-default">
-				      <div class="panel-heading">Panel Usuario</div>
+				      <div class="panel-heading">
+				      	<h4>Panel Usuario</h4>
+				      </div>
 				      <div class="panel-body">
 				      	<div class="table-responsive">          
 						  <table class="table">
@@ -247,6 +251,15 @@
 						</div>
 				      </div>
 				    </div>
+				    
+				    <script>
+				    	var divAdmin = document.getElementById("panelAdmin");
+				    	if("${usuario.isRolAdministrador()}"){
+				    		divAdmin.style.display = "block";
+				    	}
+				    </script>
+				    
+				    
 					<!-- <div id="panelUsuario">
 						
 						<div id="panelUsuarioGente" class="container-Paneles">
