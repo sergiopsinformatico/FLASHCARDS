@@ -255,10 +255,10 @@
 				    </div>
 				    
 				    <script>
-				    	/*var divAdmin = document.getElementById("panelAdmin");
+				    	var divAdmin = document.getElementById("panelAdmin");
 				    	if("${usuario.isRolAdministrador()}"==true){
 				    		divAdmin.style.display = "block";
-				    	}*/
+				    	}
 				    </script>
 				    
 				    
