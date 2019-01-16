@@ -41,8 +41,8 @@
 		.profile-userpic-forbidden img {
 		  float: none;
 		  margin: 0 auto;
-		  width: 35%;
-		  height: 35%;
+		  width: 20%;
+		  height: auto;
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
@@ -80,7 +80,7 @@
       </div>
     </nav>
     <section>
-    	<div class="row">
+    	<div class="row" ng-App="AppActivaCuenta" ng-controller="ActivarCuentaCtrl">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<br>
@@ -106,18 +106,16 @@
 				        	<table class="center">
 							  <tr>
 							    <th>
-							    	<input type="radio" value="/resources/img/avatarNone.jpg" name="foto" checked>Sin foto
-							    	<br>
-							    	<div class="profile-userpic-forbidden">
-				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
-									</div>
+							    	<img src="/resources/img/forbidden.png" class="profile-userpic-forbidden img-responsive" alt="">
+							    	<input type="radio" value="no_foto" name="foto" ng-model="value" ng-change="optionFoto(value)" checked>Sin foto
 							    </th>
 							    <th>
-							    	<input type="radio" value="/resources/img/avatarGeneral.png" name="foto">Avatar
-							    	<br>
-							    	<div class="profile-userpic-avatar">
-				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
-									</div>
+							    	<input type="radio" value="gravatar" name="foto" ng-model="value" ng-change="optionFoto(value)">Elige tu avatar con GRAVATAR
+							    	<div id="eligeGravatar" style="display: none;">
+							    		<h6>GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Introduce a continuación tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/">aquí</a> para registrarte.</h6>
+							    		<br>
+							    		<input type="text" class="form-control" id="inputAvatar" name="inputAvatar" placeholder="">
+							    	</div>
 							    </th>
 							  </tr>
 				        	</table>
@@ -137,6 +135,25 @@
     		<div class="col-md-4"></div>
 		</div>
     </section>
+    
+    <script>
+    	'use strict'
+    	
+	    var app = angular.module('AppActivaCuenta',[]);
+	
+	    app.controller('ActivarCuentaCtrl', function($scope, $http) {
+	    	
+	    	$scope.optionFoto = function(value){
+	    		var divGravatar = document.getElementById("eligeGravatar");
+				if(value=="gravatar"){
+	    			divGravatar.style.display = "block";
+	    		}else{
+	    			divGravatar.style.display = "none";
+	    		}
+	    	}
+	    
+	    });
+    </script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
