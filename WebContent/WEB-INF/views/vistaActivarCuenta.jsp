@@ -103,11 +103,11 @@
 				        </div>
 				        <div class="form-group">
 				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
-				        	<table class="center">
+				        	<table>
 							  <tr>
 							    <th>
 							    	<img src="/resources/img/forbidden.png" class="img-responsive" style="width: 20%; height: auto;" alt="">
-							    	<input type="radio" value="no_foto" name="foto" ng-model="value" ng-change="optionFoto(value)" checked>Sin foto
+							    	<input type="radio" value="no_foto" name="foto" ng-model="value" ng-change="optionFoto(value)" checked><h6 align="justify">Sin foto</h6>
 							    </th>
 							  </tr>
 							  <tr>
@@ -115,7 +115,7 @@
 							    	<input type="radio" value="gravatar" name="foto" ng-model="value" ng-change="optionFoto(value)">
 							    	<h6>Elige tu avatar con GRAVATAR</h6>
 							    	<div id="eligeGravatar" style="display: none;">
-							    		<h6 align="center">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Introduce a continuación tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte.</h6>
+							    		<h6 align="justify">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Introduce a continuación tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte.</h6>
 							    		<br>
 							    		<input type="text" class="form-control" id="inputAvatar" name="inputAvatar" placeholder="">
 							    	</div>
