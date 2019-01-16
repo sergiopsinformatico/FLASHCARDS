@@ -42,7 +42,7 @@
 		  float: none;
 		  margin: 0 auto;
 		  width: 20%;
-		  height: auto;
+		  height: 20%;
 		  -webkit-border-radius: 50% !important;
 		  -moz-border-radius: 50% !important;
 		  border-radius: 50% !important;
@@ -106,7 +106,7 @@
 				        	<table class="center">
 							  <tr>
 							    <th>
-							    	<img src="/resources/img/forbidden.png" class="profile-userpic-forbidden img-responsive" alt="">
+							    	<img src="/resources/img/forbidden.png" class="img-responsive" style="width: 20%; height: auto;" alt="">
 							    	<input type="radio" value="no_foto" name="foto" ng-model="value" ng-change="optionFoto(value)" checked>Sin foto
 							    </th>
 							    <th>
