@@ -92,6 +92,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(user.getFoto()!=null || !user.getFoto().equalsIgnoreCase("")) {
 				doc = doc.append("foto", user.getFoto());
+				doc = doc.append("emailFoto", user.getEmailFoto());
 			}
 		}catch(Exception ex) {
 			
@@ -141,6 +142,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(doc.getString("foto")!=null || (!doc.getString("foto").equalsIgnoreCase(""))) {
 				usuarioDB.setFoto(doc.getString("foto"));
+				usuarioDB.setEmailFoto(doc.getString("emailFoto"));
 			}
 		}catch(Exception ex) {
 		
