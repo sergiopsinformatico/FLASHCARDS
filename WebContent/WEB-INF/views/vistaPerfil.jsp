@@ -80,11 +80,15 @@
     </nav>
     <br>
     <section ng-app="AppPerfil" ng-controller="PerfilCtrl">
-    	<div class="container">
-		    <div class="row">
-				<div class="col-md-12">
-					<br>
-	    			<h1 align="center">Ver Perfil: ${perfil.getUsername()}</h1>
+    	<div class="row">
+    		<div class="col-md-12">
+    			<br>
+    			<h1 align="center">Ver Perfil: ${perfil.getUsername()}</h1>
+    		</div>
+    	</div>
+	    <div class="row">
+			<div class="col-md-12">
+				<div class="container">
 	    			<br>            
 		            <div class="row rounded border border-warning infoPersonal">
 		            	<div class="col-md-3">

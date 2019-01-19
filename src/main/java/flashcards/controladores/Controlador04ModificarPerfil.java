@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.java.flashcards.auxiliares.MD5Gravatar;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -40,6 +41,8 @@ public class Controlador04ModificarPerfil {
 		userNuevo.setRolModerador(userAntiguo.isRolModerador());
 		userNuevo.setRolUsuario(userAntiguo.isRolUsuario());
 		userNuevo.setActivadaCuenta(userAntiguo.isActivadaCuenta());
+		
+		userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getFoto())+".jpg");
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");

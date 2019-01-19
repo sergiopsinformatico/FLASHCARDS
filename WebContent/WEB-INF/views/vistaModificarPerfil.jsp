@@ -81,7 +81,7 @@
 		     background-color: #16E40D;
 		     color : #0B6507;
 		}
-		.infoFinRegistro {
+		.infoFotoPerfil {
 		     font-size: 15px;
 		     color : #1962EE;
 		}
@@ -165,25 +165,13 @@
 				            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais">
 				        </div>
 				        <div class="form-group">
-				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
-				        	<table class="center">
-							  <tr>
-							    <th>
-							    	<input type="radio" value="/resources/img/avatarNone.jpg" ng-model="fotoPerfil" name="foto">Sin foto
-							    	<br>
-							    	<div class="profile-userpic-forbidden">
-				            			<img src="/resources/img/forbidden.png" class="img-responsive" alt="">
-									</div>
-							    </th>
-							    <th>
-							    	<input type="radio" value="/resources/img/avatarGeneral.png" ng-model="fotoPerfil" name="foto">Avatar
-							    	<br>
-							    	<div class="profile-userpic-avatar">
-				            			<img src="/resources/img/avatarGeneral.png" class="img-responsive" alt="">
-									</div>
-							    </th>
-							  </tr>
-				        	</table>
+				        	<p class="infoFotoPerfil">Foto de Perfil (con GRAVATAR)</p>
+				        	<br>
+				        	<label style="text-align:justify;">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que te has registrado.</label>
+							<br>
+							<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" ng-model="fotoPerfil" value="" placeholder="">
+							<br>
+							<label style="text-align:justify;">Si no deseas incluir una foto de perfil, se te asignará una foto de perfil por defecto.</label>
 						</div>
 				        <small id="msgError">{{messageError}}</small>
 				        <br>

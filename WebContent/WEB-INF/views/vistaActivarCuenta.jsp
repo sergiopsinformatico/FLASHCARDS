@@ -80,7 +80,7 @@
       </div>
     </nav>
     <section>
-    	<div class="row" ng-App="AppActivaCuenta" ng-controller="ActivarCuentaCtrl">
+    	<div class="row">
     		<div class="col-md-4"></div>
     		<div class="col-md-4">
     			<br>
@@ -102,27 +102,13 @@
 				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
 				        </div>
 				        <div class="form-group">
-				        	<p class="infoFinRegistro">Elija una de las siguientes opciones:</p>
-				        	<table>
-							  <tr>
-							    <th>
-							    	<input type="radio" value="no_foto" name="foto" id="sf" ng-model="value" ng-change="optionFoto(value)" checked="checked">
-							    	<label for="sf">Sin foto de perfil</label>
-							    </th>
-							  </tr>
-							  <tr>
-							    <th>
-							    	<input type="radio" value="gravatar" name="foto" id="cf" ng-model="value" ng-change="optionFoto(value)">
-							    	<label for="cf">Elige tu avatar con GRAVATAR</label>
-							    	<div id="eligeGravatar" style="display: none;">
-							    		<br>
-							    		<label style="text-align:justify;">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Introduce a continuación tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte.</label>
-							    		<br>
-							    		<input type="text" class="form-control" id="inputAvatar" name="inputAvatar" placeholder="">
-							    	</div>
-							    </th>
-							  </tr>
-				        	</table>
+				        	<p class="infoFinRegistro">Foto de Perfil (con GRAVATAR)</p>
+				        	<br>
+				        	<label style="text-align:justify;">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que te has registrado.</label>
+							<br>
+							<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
+							<br>
+							<label style="text-align:justify;">Si no deseas incluir una foto de perfil, se te asignará una foto de perfil por defecto.</label>
 						</div>
 						<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
 				        <br>
@@ -139,25 +125,6 @@
     		<div class="col-md-4"></div>
 		</div>
     </section>
-    
-    <script>
-    	'use strict'
-    	
-	    var app = angular.module('AppActivaCuenta',[]);
-	
-	    app.controller('ActivarCuentaCtrl', function($scope, $http) {
-	    	
-	    	$scope.optionFoto = function(value){
-	    		var divGravatar = document.getElementById("eligeGravatar");
-				if(value=="gravatar"){
-	    			divGravatar.style.display = "block";
-	    		}else{
-	    			divGravatar.style.display = "none";
-	    		}
-	    	}
-	    
-	    });
-    </script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">

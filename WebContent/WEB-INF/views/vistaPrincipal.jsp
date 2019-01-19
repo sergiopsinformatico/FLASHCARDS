@@ -222,7 +222,7 @@
 				<div class="col-md-9">	
 					<br>
 					
-					<div id="panelAdmin" class="panel panel-default" style="display: none;">
+					<!-- <div id="panelAdmin" class="panel panel-default" style="display: none;">
 				      <div class="panel-heading">
 				      	<h4>Panel Administrador</h4>
 				      </div>
@@ -271,7 +271,7 @@
 				    	if(${usuario.isRolAdministrador()}==true){
 				    		divAdmin.style.display = "block";
 				    	}
-				    </script>
+				    </script>-->
 				    
 				    
 					<!-- <div id="panelUsuario">
