@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.auxiliares.MD5Gravatar;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
@@ -113,6 +114,7 @@ public class Controlador01RegistroUsuarios {
 	public List<String> listUsernames(){
 		listaUsernames = Broker.getInstanciaUsuario().getListUsername();
 		listaUsernames.add("Sergio123");
+		listaUsernames.add("Sergio1232");
 		return listaUsernames;
 	}	
 	
@@ -121,7 +123,8 @@ public class Controlador01RegistroUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listEmails(){
 		listaEmails = Broker.getInstanciaUsuario().getListEmail();
-		listaEmails.add("sergio13_yo@hotmail.com");
+		listaEmails.add("correoInventado@email.com");
+		listaEmails.add("correoInventado2@email.com");
 		return listaEmails;
 	}
 	
@@ -135,6 +138,8 @@ public class Controlador01RegistroUsuarios {
 			Broker.getInstanciaActivaCuenta().eliminaAC(new ActivaCuentaDTO(username, codigo));
 			vista = new ModelAndView("vistaActivarCuenta");
 			vista.addObject("activa", user2);
+			correo = new Email();
+			correo.confirmaCuentaCreada(user2);
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {
@@ -152,7 +157,14 @@ public class Controlador01RegistroUsuarios {
 	public ModelAndView activar(HttpServletRequest request, HttpServletResponse response){
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
 		user2 = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
-		user2.setFoto(request.getParameter("foto"));
+
+		//Eleccion foto perfil
+		if(request.getParameter("inputEmailAvatar")!=null && request.getParameter("inputEmailAvatar")!="") {
+			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter("inputEmailAvatar"))+".jpg");
+		}else {
+			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");
+		}
+		
 		if(request.getParameter("inputNyA")!=null && request.getParameter("inputNyA")!="") {
 			user2.setNombreApellidos(request.getParameter("inputNyA"));
 		}
@@ -163,8 +175,6 @@ public class Controlador01RegistroUsuarios {
 			user2.setPais(request.getParameter("inputPais"));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		correo = new Email();
-		correo.confirmaCuentaCreada(user2);
 		vista = new ModelAndView("index");
 		vista.addObject("mensaje", "Registro completado con exito.");
 		return vista;

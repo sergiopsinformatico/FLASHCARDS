@@ -91,6 +91,7 @@
     			</div>
     			<div class="row">
     				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
+    					<br>
     					<p class="infoFinRegistro">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos">
@@ -101,14 +102,14 @@
 				        <div class="form-group">
 				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
 				        </div>
+				        <br>
+				        <p class="infoFinRegistro">Foto de Perfil (con GRAVATAR)</p>
 				        <div class="form-group">
-				        	<p class="infoFinRegistro">Foto de Perfil (con GRAVATAR)</p>
-				        	<br>
-				        	<label style="text-align:justify;">GRAVATAR es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que te has registrado.</label>
+				        	<label style="text-align:justify;"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</label>
 							<br>
 							<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
 							<br>
-							<label style="text-align:justify;">Si no deseas incluir una foto de perfil, se te asignará una foto de perfil por defecto.</label>
+							<label style="text-align:justify;">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</label>
 						</div>
 						<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
 				        <br>
