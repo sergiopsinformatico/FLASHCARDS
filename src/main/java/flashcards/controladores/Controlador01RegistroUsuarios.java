@@ -55,7 +55,7 @@ public class Controlador01RegistroUsuarios {
 		fecha = new Fecha();
 		for(indice=0; indice<listaAC.size(); indice++) {
 			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<0) {
+			if(compara!=null && Integer.parseInt(compara)<=0) {
 				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
 			}
 		}
@@ -65,7 +65,7 @@ public class Controlador01RegistroUsuarios {
 		fecha = new Fecha();
 		for(indice=0; indice<listaEl.size(); indice++) {
 			compara = fecha.compararFechas(listaEl.get(indice).getFecha(), fecha.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<0) {
+			if(compara!=null && Integer.parseInt(compara)<=0) {
 				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
 				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());
 				Broker.getInstanciaUsuario().deleteUsuario(user);

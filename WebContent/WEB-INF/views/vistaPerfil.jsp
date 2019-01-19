@@ -63,68 +63,11 @@
 		  border-radius: 50% !important;
 		}
 		
-		.profile-usertitle {
-		  text-align: center;
-		  margin-top: 20px;
-		}
-		
-		.profile-usertitle-username {
-		  color: #5a7391;
-		  font-size: 14px;
-		  font-weight: 600;
-		  margin-bottom: 7px;
-		}
-		
-		.btn-principal{
-			width: 80%;
-			text-align:center;
-			margin:auto;
-			display: flex; 
-			justify-content: center;
-		}
-		
-		.container-Paneles {
-		  position: relative;
-		  width: 50%;
-		}
-		
-		.image {
-		  opacity: 1;
-		  display: block;
-		  width: 40%;
-		  height: auto;
-		  transition: .5s ease;
-		  backface-visibility: hidden;
-		}
-		
-		.middle {
-		  transition: .5s ease;
-		  opacity: 0;
-		  position: absolute;
-		  top: 50%;
-		  left: 50%;
-		  transform: translate(-50%, -50%);
-		  -ms-transform: translate(-50%, -50%);
-		  text-align: center;
-		}
-		
-		.container-Paneles:hover .image {
-		  opacity: 0.3;
-		}
-		
-		.container-Paneles:hover .middle {
-		  opacity: 1;
-		}
-		
 		.text {
 		  background-color: #97BBFF;
 		  color: white;
 		  font-size: 16px;
 		  padding: 16px 32px;
-		}
-		
-		#panelUsuarioGente, #panelUsuarioClubes{
-			display:inline,
 		}
 
     </style>
@@ -170,23 +113,28 @@
 	    <div class="container">
 		    <div class="row profile">
 				<div class="col-md-3">
-					<div class="profile-sidebar">
+					<div class="profile-sidebar" style="height:100%;">
 						<div class="profile-userpic">
 							<img src="${perfil.getFoto()}" class="img-responsive" alt="">
 						</div>
 						<br>
-						<div class="form-group">
-				            <p><b>Username:</b> ${perfil.getUsername()}</p>
-				        </div>
-				        <div class="form-group">
-				            <p id="textNyA" style="visibility:hidden;"><b>Nombre y Apellidos:</b>${perfil.getNombreApellidos()}</p>
-				        </div>
-				        <div class="form-group">
-				            <p id="textCiudad" style="visibility:hidden;"><b>Ciudad:</b>${perfil.getCiudad()}</p>
-				        </div>
-				        <div class="form-group">
-				            <p id="textPais" style="visibility:hidden;"><b>País:</b>${perfil.getPais()}</p>
-				        </div>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-11">
+								<div class="form-group">
+						            <p align="justify"><b>Username:</b> ${perfil.getUsername()}</p>
+						        </div>
+						        <div class="form-group">
+						            <p align="justify" id="textNyA" style="visibility:hidden;"><b>Nombre y Apellidos:</b>${perfil.getNombreApellidos()}</p>
+						        </div>
+						        <div class="form-group">
+						            <p align="justify" id="textCiudad" style="visibility:hidden;"><b>Ciudad:</b>${perfil.getCiudad()}</p>
+						        </div>
+						        <div class="form-group">
+						            <p align="justify" id="textPais" style="visibility:hidden;"><b>País:</b>${perfil.getPais()}</p>
+						        </div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-9"></div>
@@ -241,42 +189,3 @@
   </body>
 
 </html>
-						<!-- 
-		            	<div class="col-md-9">
-		            		<br>
-		            		<div class="form-group">
-					            <p><b>Username:</b> ${perfil.getUsername()}</p>
-					        </div>
-					        <div class="form-group">
-					            <p>{{nombreApellidos}}</p>
-					        </div>
-					        <div class="form-group">
-					            <p>{{ciudad}}</p>
-					        </div>
-					        <div class="form-group">
-					            <p>{{pais}}</p>
-					        </div>		            		
-		            	</div>
-		            	 -->
-
-	
-	
-	
-	<!-- <script>
-		'use strict'
-	    var app = angular.module('AppPerfil', []);
-	    app.controller('PerfilCtrl', function($scope, $http) {
-	    	$scope.nombreApellidos="";
-	    	$scope.ciudad="";
-	    	$scope.pais="";
-	    	if("${perfil.getNombreApellidos()}"!=null && "${perfil.getNombreApellidos()}"!=""){
-	    		$scope.nombreApellidos="Nombre y Apellidos: "+"${perfil.getNombreApellidos()}";
-	    	}
-	    	if("${perfil.getCiudad()}"!=null && "${perfil.getCiudad()}"!=""){
-	    		$scope.ciudad="Ciudad: "+"${perfil.getCiudad()}";
-	    	}
-	    	if("${perfil.getPais()}"!=null && "${perfil.getPais()}"!=""){
-	    		$scope.pais="Pais: "+"${perfil.getPais()}";
-	    	}
-	    });
-	</script>-->
