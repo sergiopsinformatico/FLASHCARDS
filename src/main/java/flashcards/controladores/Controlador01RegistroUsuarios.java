@@ -88,7 +88,8 @@ public class Controlador01RegistroUsuarios {
 		user.setNombreApellidos("");
 		user.setCiudad("");
 		user.setPais("");
-		user.setFoto("/resources/img/avatarNone.png");
+		user.setFoto("");
+		user.setEmailFoto("");
 		user.setRolAdministrador(false);
 		user.setRolModerador(false);
 		user.setRolUsuario(true);
@@ -160,8 +161,10 @@ public class Controlador01RegistroUsuarios {
 
 		//Eleccion foto perfil
 		if(request.getParameter("inputEmailAvatar")!=null && request.getParameter("inputEmailAvatar")!="") {
+			user2.setEmailFoto(request.getParameter("inputEmailAvatar"));
 			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter("inputEmailAvatar"))+".jpg");
 		}else {
+			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");
 		}
 		

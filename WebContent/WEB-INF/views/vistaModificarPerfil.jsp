@@ -415,7 +415,7 @@
     				"nombreApellidos" : $scope.nombreApellidos,
     				"ciudad" : $scope.ciudad,
     				"pais" : $scope.pais,
-    				"foto" : $scope.fotoPerfil
+    				"emailFoto" : $scope.fotoPerfil
         		};
         		
         		$http({
@@ -449,7 +449,7 @@
 			$scope.nombreApellidos = "${usuario.getNombreApellidos()}";
 			$scope.ciudad = "${usuario.getCiudad()}";
 			$scope.pais= "${usuario.getPais()}";
-			$scope.fotoPerfil = "${usuario.getFoto()}";
+			$scope.fotoPerfil = "${usuario.getEmailFoto()}";
         	
         	enableBtnModificar();
         	

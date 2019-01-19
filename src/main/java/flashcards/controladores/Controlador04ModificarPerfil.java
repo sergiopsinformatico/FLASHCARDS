@@ -41,8 +41,11 @@ public class Controlador04ModificarPerfil {
 		userNuevo.setRolModerador(userAntiguo.isRolModerador());
 		userNuevo.setRolUsuario(userAntiguo.isRolUsuario());
 		userNuevo.setActivadaCuenta(userAntiguo.isActivadaCuenta());
-		
-		userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getFoto())+".jpg");
+		if(userNuevo.getEmailFoto()=="") {
+			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
+		}else {
+			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getEmailFoto())+".jpg");
+		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");

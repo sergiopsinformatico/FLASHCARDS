@@ -8,6 +8,7 @@ public class UsuarioDTO {
 	String ciudad;
 	String pais;
 	String foto;
+	String emailFoto;
 	boolean rolUsuario;
 	boolean rolModerador;
 	boolean rolAdministrador;
@@ -67,6 +68,14 @@ public class UsuarioDTO {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	public String getEmailFoto() {
+		return emailFoto;
+	}
+
+	public void setEmailFoto(String emailFoto) {
+		this.emailFoto = emailFoto;
 	}
 	
 	public boolean isRolUsuario() {
