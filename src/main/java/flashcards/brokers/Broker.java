@@ -8,6 +8,11 @@ import main.java.flashcards.db.mongodb.EliminarCuentaMongoDB;
 import main.java.flashcards.db.mongodb.UsuariosMongoDB;
 
 public class Broker {
+	
+	private Broker() {
+		throw new IllegalStateException("Broker no se instancia");
+	}
+	
 	public static InterfaceDAOUsuario getInstanciaUsuario() {
 		return new UsuariosMongoDB();
 	}
@@ -17,4 +22,5 @@ public class Broker {
 	public static InterfaceDAOEliminarCuenta getInstanciaEliminarCuenta() {
 		return new EliminarCuentaMongoDB();
 	}
+
 }

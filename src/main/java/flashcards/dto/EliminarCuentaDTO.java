@@ -2,8 +2,8 @@ package main.java.flashcards.dto;
 
 public class EliminarCuentaDTO {
 	
-	public String username;
-	public String fecha;
+	private String username;
+	private String fecha;
 	
 	public EliminarCuentaDTO(String username, String fecha) {
 		setUsername(username);

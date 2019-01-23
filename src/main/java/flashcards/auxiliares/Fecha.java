@@ -3,13 +3,17 @@ package main.java.flashcards.auxiliares;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Fecha {
 	
 	String dia;
-	Calendar fecha;
+	Calendar hoy;
 	SimpleDateFormat sdf;
-	Date date1, date2;
+	Date date1;
+	Date date2;
+	private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.auxiliares.Fecha");
 	
 	public String compararFechas(String fecha1, String fecha2) {
 		/* Devuelve 0 si fecha1 == fecha2
@@ -21,62 +25,40 @@ public class Fecha {
 			date2 = sdf.parse(fecha2);
 			return date1.compareTo(date2)+"";
 		}catch(Exception ex) {
-			ex.printStackTrace();
+			LOGGER.log(Level.INFO, ex.getMessage());
 			return null;
 		}
 		
 	}
 	
 	public String fechaHoy() {
-		dia = "";
-		fecha = Calendar.getInstance();
-		dia = Integer.toString(fecha.get(Calendar.YEAR))+"-";
-		if((fecha.get(Calendar.MONTH)+1)>=1 && (fecha.get(Calendar.MONTH)+1)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.MONTH)+1)+"-";
-		}else {
-			dia = dia+(fecha.get(Calendar.MONTH)+1)+"-";
-		}
-		if( fecha.get(Calendar.DATE)>=1 && fecha.get(Calendar.DATE)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.DATE));
-		}else {
-			dia = dia+(fecha.get(Calendar.DATE));
-		}
-		return dia;
+		return generateDate(0);
 	}
 	
 	public String fechaActivarCuenta() {
+		return generateDate(1);
+	}
+	
+	public String fechaEliminarCuenta() {
+		return generateDate(14);
+	}
+	
+	private String generateDate(int dias) {
 		dia = "";
-		fecha = Calendar.getInstance();
-		fecha.add(Calendar.DAY_OF_YEAR, 1);
-		dia = Integer.toString(fecha.get(Calendar.YEAR))+"-";
-		if((fecha.get(Calendar.MONTH)+1)>=1 && (fecha.get(Calendar.MONTH)+1)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.MONTH)+1)+"-";
+		hoy = Calendar.getInstance();
+		hoy.add(Calendar.DAY_OF_YEAR, dias);
+		dia = Integer.toString(hoy.get(Calendar.YEAR))+"-";
+		if((hoy.get(Calendar.MONTH)+1)>=1 && (hoy.get(Calendar.MONTH)+1)<=9){
+			dia = dia+"0"+(hoy.get(Calendar.MONTH)+1)+"-";
 		}else {
-			dia = dia+(fecha.get(Calendar.MONTH)+1)+"-";
+			dia = dia+(hoy.get(Calendar.MONTH)+1)+"-";
 		}
-		if( fecha.get(Calendar.DATE)>=1 && fecha.get(Calendar.DATE)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.DATE));
+		if( hoy.get(Calendar.DATE)>=1 && hoy.get(Calendar.DATE)<=9){
+			dia = dia+"0"+(hoy.get(Calendar.DATE));
 		}else {
-			dia = dia+(fecha.get(Calendar.DATE));
+			dia = dia+(hoy.get(Calendar.DATE));
 		}
 		return dia;
 	}
 	
-	public String fechaEliminarCuenta() {
-		dia = "";
-		fecha = Calendar.getInstance();
-		fecha.add(Calendar.DAY_OF_YEAR, 14);
-		dia = Integer.toString(fecha.get(Calendar.YEAR))+"-";
-		if((fecha.get(Calendar.MONTH)+1)>=1 && (fecha.get(Calendar.MONTH)+1)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.MONTH)+1)+"-";
-		}else {
-			dia = dia+(fecha.get(Calendar.MONTH)+1)+"-";
-		}
-		if( fecha.get(Calendar.DATE)>=1 && fecha.get(Calendar.DATE)<=9){
-			dia = dia+"0"+(fecha.get(Calendar.DATE));
-		}else {
-			dia = dia+(fecha.get(Calendar.DATE));
-		}
-		return dia;
-	}
 }

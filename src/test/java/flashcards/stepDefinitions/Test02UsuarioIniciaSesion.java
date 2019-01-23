@@ -7,7 +7,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
-public class Test02LoginUsuario {
+public class Test02UsuarioIniciaSesion {
 	
 	UsuarioDTO user;
 	InterfaceDAOUsuario dBUsuario;
@@ -19,7 +19,7 @@ public class Test02LoginUsuario {
 		user = new UsuarioDTO();
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
-		user.setEmail("sergio13_yo@hotmail.com");
+		user.setEmail("correoInventado@email.com");
 		user.setRolUsuario(true);
 		user.setRolModerador(false);
 		user.setRolAdministrador(false);

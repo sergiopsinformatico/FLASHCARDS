@@ -5,12 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,33 +30,18 @@ public class Controlador05RecuperarCuenta {
 	int indice;
 	String compara;
 	Email email;
+	final String usuario = "usuario";
 	
 	@RequestMapping(value = "/recuperarCuenta", method = RequestMethod.GET)
 	public ModelAndView recuperarCuenta(HttpServletRequest request, HttpServletResponse response) {
 		
-		//Eliminar cuentas no activadas
-		listaAC = Broker.getInstanciaActivaCuenta().leerTodas();
-		fecha = new Fecha();
-		for(indice=0; indice<listaAC.size(); indice++) {
-			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<0) {
-				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
-			}
-		}
+		//Comprobar activaciones caducadas
+		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
 		
 		//Eliminar cuentas pasados 14 dias
-		listaEl = Broker.getInstanciaEliminarCuenta().leerTodos();
-		fecha = new Fecha();
-		for(indice=0; indice<listaEl.size(); indice++) {
-			compara = fecha.compararFechas(listaEl.get(indice).getFecha(), fecha.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<0) {
-				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
-				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());
-				Broker.getInstanciaUsuario().deleteUsuario(user);
-			}
-		}
+		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
 		
-		if(request.getSession().getAttribute("usuario")==null || ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
+		if(request.getSession().getAttribute(usuario)==null || ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()=="") {
 			return new ModelAndView("vistaRecuperarCuenta");
 		}else {
 			return new ModelAndView("redirect:/");

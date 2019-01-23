@@ -8,7 +8,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
-public class Test04ActualizarPerfil {
+public class Test04UsuarioActualizaPerfil {
 	
 	UsuarioDTO user, user2;
 	InterfaceDAOUsuario dBUsuario;
@@ -19,7 +19,7 @@ public class Test04ActualizarPerfil {
 		user = new UsuarioDTO();
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
-		user.setEmail("sergio13_yo@hotmail.com");
+		user.setEmail("correoInventado@email.com");
 		user.setRolUsuario(true);
 		user.setRolModerador(false);
 		user.setRolAdministrador(false);
@@ -31,10 +31,11 @@ public class Test04ActualizarPerfil {
 		user2 = new UsuarioDTO();
 		user2.setUsername("Sergio123");
 		user2.setClave("sergio1");
-		user2.setEmail("sergio13_yo@hotmail.com");
-		user2.setRolUsuario(false);
-		user2.setRolModerador(true);
+		user2.setEmail("correoInventado@email.com");
+		user2.setRolUsuario(true);
+		user2.setRolModerador(false);
 		user2.setRolAdministrador(false);
+		user2.setNombreApellidos("Pepito");
 		assert(true);
 	}
 
@@ -42,7 +43,7 @@ public class Test04ActualizarPerfil {
 	public void se_actualiza_el_perfil_correctamente() throws Throwable {
 	    dBUsuario.updateUsuario(user, user2);
 	    user = dBUsuario.getUsuarioDTO(user2.getUsername());
-	    assert(!user.isRolUsuario() && user.isRolModerador() && !user.isRolAdministrador());
+	    assert(user.getNombreApellidos().equals("Pepito"));
 	}
 
 }

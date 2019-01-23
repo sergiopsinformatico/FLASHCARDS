@@ -13,13 +13,17 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 
 public class Email {
-	String envia, recibe, asunto, mensaje;
+	private String envia;
+	private String recibe;
+	private String asunto;
+	private String mensaje;
 	boolean enviado;
-
-	private Properties properties;
-	private Session session;
-	private MimeMessage message;
-	private Transport t;
+	
+	final String saludo = "Hola ";
+	final String cierre = "\nAtentamente, Equipo de Flashcards.";
+	final String usuario = "\nUsuario: ";
+	final String clave = "\nClave: ";
+	final String claveDB = "SistemaFlashcardsSergio";
 	
 	public Email() {
 		setEnvia("sistemaflashcards@gmail.com");
@@ -34,7 +38,7 @@ public class Email {
 		"\n"+url+
 		"\nDispone de 24 horas para activar la cuenta. En caso de que no lo haga, debe de volverse a registrar."+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
-		"\nAtentamente, Equipo de Flashcards.");
+		cierre);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -45,10 +49,10 @@ public class Email {
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		//Mensaje
 		setMensaje("Su cuenta ha sido creada satisfactoriamente. Sus datos de registro son los siguientes:"+
-		"\nUsuario: "+user.getUsername()+
+		usuario+user.getUsername()+
 		"\nEmail: "+user.getEmail()+
-		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Flashcards.");
+		clave+user.getClave()+
+		cierre);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
@@ -57,10 +61,10 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
 		//Mensaje
-		setMensaje("Hola "+elimina.getUsername()+","+
+		setMensaje(saludo+elimina.getUsername()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
 		"\nSi accede antes al sistema con su cuenta, su cuenta no se va a eliminar."+
-        "\nUn saludo. Equipo de Flashcards.");
+        cierre);
 		//Email de quien recibe el mensaje
 		setRecibe(email);
 		return enviarMensaje();
@@ -70,11 +74,11 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
-		setMensaje("Hola "+user.getUsername()+"!!"+
+		setMensaje(saludo+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
-		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Flashcards.");
+		usuario+user.getEmail()+" o "+user.getUsername()+
+		clave+user.getClave()+
+		cierre);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -84,11 +88,11 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
 		//Mensaje
-		setMensaje("Hola "+user.getNombreApellidos()+"!!"+
+		setMensaje(saludo+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
-		"\nUsuario: "+user.getEmail()+" o "+user.getUsername()+
-		"\nClave: "+user.getClave()+
-		"\nAtentamente, Equipo de Flashcards.");
+		usuario+user.getEmail()+" o "+user.getUsername()+
+		clave+user.getClave()+
+		cierre);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -96,24 +100,24 @@ public class Email {
 	
 	public boolean enviarMensaje() {
 		enviado = false;
-		try{		
-			properties = System.getProperties();
+		try{
+			Properties properties = System.getProperties();
 			properties.put("mail.smtp.port", "587");
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 			
-			session = Session.getDefaultInstance(properties, null);
+			Session session = Session.getDefaultInstance(properties, null);
 			
-			message = new MimeMessage(session);
+			MimeMessage message = new MimeMessage(session);
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(getRecibe()));
 			message.setSubject(getAsunto());
 			message.setContent(getMensaje(), "text/plain");
 			
-			t = session.getTransport("smtp");
-			t.connect("smtp.gmail.com", getEnvia(), getClave());
-			t.sendMessage(message, message.getAllRecipients());
-			t.close();
+			Transport transporte = session.getTransport("smtp");
+			transporte.connect("smtp.gmail.com", getEnvia(), getClave());
+			transporte.sendMessage(message, message.getAllRecipients());
+			transporte.close();
 			
 			enviado = true;
 		}catch (MessagingException me){
@@ -157,7 +161,7 @@ public class Email {
 	}
 	
 	private String getClave() {
-		return "SistemaFlashcardsSergio";
+		return claveDB;
 	}
 	
 }

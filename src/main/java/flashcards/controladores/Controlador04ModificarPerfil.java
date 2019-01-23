@@ -22,10 +22,11 @@ public class Controlador04ModificarPerfil {
 	
 	ModelAndView vista;
 	UsuarioDTO userAntiguo;
+	final String usuario = "usuario";
 	
 	@RequestMapping(value = "/modificarPerfil", method = RequestMethod.GET)
 	public ModelAndView modificarPerfil(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
+		if(request.getSession().getAttribute(usuario)!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!="") {
 			vista = new ModelAndView("vistaModificarPerfil");
 		}else {
 			vista = new ModelAndView("redirect:/");
@@ -35,7 +36,7 @@ public class Controlador04ModificarPerfil {
 	
 	@RequestMapping(value = "/modificaUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView modificaUsuario(@RequestBody @Valid UsuarioDTO userNuevo, HttpServletRequest request, HttpServletResponse response) {
-		userAntiguo = (UsuarioDTO)request.getSession().getAttribute("usuario");
+		userAntiguo = (UsuarioDTO)request.getSession().getAttribute(usuario);
 		
 		userNuevo.setRolAdministrador(userAntiguo.isRolAdministrador());
 		userNuevo.setRolModerador(userAntiguo.isRolModerador());
@@ -49,7 +50,7 @@ public class Controlador04ModificarPerfil {
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");
-			vista.addObject("usuario", userNuevo);
+			vista.addObject(usuario, userNuevo);
 		}else {
 			vista = new ModelAndView("redirect:/verPerfil.html");
 			vista.addObject("mensaje", "Hubo un fallo y no se pudo modificar el perfil");

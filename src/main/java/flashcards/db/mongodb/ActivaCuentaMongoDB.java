@@ -2,6 +2,8 @@ package main.java.flashcards.db.mongodb;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.bson.BsonDocument;
 import org.bson.BsonString;
@@ -15,6 +17,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
+import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOActivaCuenta;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 
@@ -30,6 +34,10 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
     FindIterable<Document> resultadosBusqueda;
     LinkedList<ActivaCuentaDTO> lista;
     MongoCursor<Document> iterador;
+    final String codigo = "codigo";
+    final String username = "username";
+    
+    private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivaCuentaMongoDB");
 	
 	public ActivaCuentaMongoDB() {
 		connection();
@@ -43,19 +51,15 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	        db = client.getDatabase(uri.getDatabase());
 	        coleccionActivaCuenta = db.getCollection("ActivaCuenta");
 		}catch(Exception ex) {
-			ex.printStackTrace();
+			LOGGER.log(Level.INFO, ex.getMessage());
 		}
     }
 	
 	public boolean activacionCuenta(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername())).append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(username, new BsonString(activaCuenta.getUsername())).append(codigo, new BsonString(activaCuenta.getCodigoActivacion()));
 			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
-			if(resultadosBusqueda.iterator().hasNext()) {
-				return true;
-			}else {
-				return false;
-			}
+			return resultadosBusqueda.iterator().hasNext();
 		}catch(Exception ex) {
 			return false;
 		}
@@ -63,7 +67,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			doc = new Document().append("username", activaCuenta.getUsername()).append("codigo", activaCuenta.getCodigoActivacion()).append("fecha",activaCuenta.getFecha());
+			doc = new Document().append(username, activaCuenta.getUsername()).append(codigo, activaCuenta.getCodigoActivacion()).append("fecha",activaCuenta.getFecha());
 			coleccionActivaCuenta.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -73,7 +77,7 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean eliminaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername())).append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(username, new BsonString(activaCuenta.getUsername())).append(codigo, new BsonString(activaCuenta.getCodigoActivacion()));
 			coleccionActivaCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
@@ -82,13 +86,25 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	}
 	
 	public List<ActivaCuentaDTO> leerTodas(){
-		lista = new LinkedList<ActivaCuentaDTO>();
+		lista = new LinkedList<>();
 		resultadosBusqueda = coleccionActivaCuenta.find();
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			lista.add(new ActivaCuentaDTO(doc.getString("username"), doc.getString("codigo"), doc.getString("fecha")));
+			lista.add(new ActivaCuentaDTO(doc.getString(username), doc.getString(codigo), doc.getString("fecha")));
 		}
 		return lista;
+	}
+	
+	public void comprobarActivacionesCaducadas() {
+		List<ActivaCuentaDTO> listaAC = leerTodas();
+		String compara;
+	    Fecha fecha = new Fecha();
+		for(int indice=0; indice<listaAC.size(); indice++) {
+			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
+			if(compara!=null && Integer.parseInt(compara)<=0) {
+				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
+			}
+		}
 	}
 }
