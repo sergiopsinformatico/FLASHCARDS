@@ -34,10 +34,10 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
     FindIterable<Document> resultadosBusqueda;
     LinkedList<ActivaCuentaDTO> lista;
     MongoCursor<Document> iterador;
-    final String codigo = "codigo";
-    final String username = "username";
+    static final String codigo = "codigo";
+    static final String username = "username";
     
-    private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivaCuentaMongoDB");
+    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivaCuentaMongoDB");
 	
 	public ActivaCuentaMongoDB() {
 		connection();

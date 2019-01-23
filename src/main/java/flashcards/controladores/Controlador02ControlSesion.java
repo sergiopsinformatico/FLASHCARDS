@@ -34,9 +34,9 @@ public class Controlador02ControlSesion {
 	String compara;
 	EliminarCuentaDTO eliminado;
 	Email email;
-	final String usuario = "usuario";
-	final String vistaIniciarSesion="vistaIniciarSesion";
-	final String mensaje="mensaje";
+	static final String usuario = "usuario";
+	static final String vistaIniciarSesion="vistaIniciarSesion";
+	static final String mensaje="mensaje";
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)

@@ -46,13 +46,13 @@ public class Controlador01RegistroUsuarios {
 	List<EliminarCuentaDTO> listaEl;
 	int indice;
 	String compara;
-	final String usuario = "usuario";
-	final String index = "index";
-	final String mensaje = "mensaje";
-	final String inputEmailAvatar = "inputEmailAvatar";
-	final String inputNyA = "inputNyA";
-	final String inputCiudad = "inputCiudad";
-	final String inputPais = "inputPais";
+	static final String usuario = "usuario";
+	static final String index = "index";
+	static final String mensaje = "mensaje";
+	static final String inputEmailAvatar = "inputEmailAvatar";
+	static final String inputNyA = "inputNyA";
+	static final String inputCiudad = "inputCiudad";
+	static final String inputPais = "inputPais";
 	
 	//Devuelve la vista para registrar a los usuarios
 	
@@ -155,7 +155,8 @@ public class Controlador01RegistroUsuarios {
 		//Eleccion foto perfil
 		if(request.getParameter(inputEmailAvatar)!=null && request.getParameter(inputEmailAvatar)!="") {
 			user2.setEmailFoto(request.getParameter(inputEmailAvatar));
-			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter(inputEmailAvatar))+".jpg");
+			random = new SecureRandom();
+			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter(inputEmailAvatar), new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");

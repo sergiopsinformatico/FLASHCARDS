@@ -23,8 +23,8 @@ public class Controlador03Principal {
 	EliminarCuentaDTO elimina;
 	Fecha fecha;
 	Email email;
-	final String usuario = "usuario";
-	final String redirect = "redirect:/";
+	static final String usuario = "usuario";
+	static final String redirect = "redirect:/";
 	
 	//Pagina Principal
 	

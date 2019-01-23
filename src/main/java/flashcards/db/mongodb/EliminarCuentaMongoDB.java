@@ -34,10 +34,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
     FindIterable<Document> resultadosBusqueda;
     MongoCursor<Document>iterador;
     LinkedList<EliminarCuentaDTO> lista;
-    final String username = "username";
-    final String fecha = "fecha";
+    static final String username = "username";
+    static final String fecha = "fecha";
     
-    private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.EliminarCuentaMongoDB");
+    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.EliminarCuentaMongoDB");
 	
 	public EliminarCuentaMongoDB() {
 		connection();
@@ -103,11 +103,11 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	
 	public void comprobarCuentasAEliminar() {
 		List<EliminarCuentaDTO>listaEl = leerTodos();
-		Fecha fecha = new Fecha();
+		Fecha date = new Fecha();
 		String compara;
 		UsuarioDTO user;
 		for(int indice=0; indice<listaEl.size(); indice++) {
-			compara = fecha.compararFechas(listaEl.get(indice).getFecha(), fecha.fechaHoy());
+			compara = date.compararFechas(listaEl.get(indice).getFecha(), date.fechaHoy());
 			if(compara!=null && Integer.parseInt(compara)<=0) {
 				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
 				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());

@@ -30,7 +30,7 @@ public class Controlador05RecuperarCuenta {
 	int indice;
 	String compara;
 	Email email;
-	final String usuario = "usuario";
+	static final String usuario = "usuario";
 	
 	@RequestMapping(value = "/recuperarCuenta", method = RequestMethod.GET)
 	public ModelAndView recuperarCuenta(HttpServletRequest request, HttpServletResponse response) {

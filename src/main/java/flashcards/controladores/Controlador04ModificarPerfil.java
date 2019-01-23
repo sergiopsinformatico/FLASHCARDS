@@ -1,5 +1,8 @@
 package main.java.flashcards.controladores;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -22,7 +25,7 @@ public class Controlador04ModificarPerfil {
 	
 	ModelAndView vista;
 	UsuarioDTO userAntiguo;
-	final String usuario = "usuario";
+	static final String usuario = "usuario";
 	
 	@RequestMapping(value = "/modificarPerfil", method = RequestMethod.GET)
 	public ModelAndView modificarPerfil(HttpServletRequest request, HttpServletResponse response) {
@@ -45,7 +48,8 @@ public class Controlador04ModificarPerfil {
 		if(userNuevo.getEmailFoto()=="") {
 			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
 		}else {
-			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getEmailFoto())+".jpg");
+			SecureRandom random = new SecureRandom();
+			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getEmailFoto(),new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
 		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {

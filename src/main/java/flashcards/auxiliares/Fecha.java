@@ -13,7 +13,7 @@ public class Fecha {
 	SimpleDateFormat sdf;
 	Date date1;
 	Date date2;
-	private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.auxiliares.Fecha");
+	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.auxiliares.Fecha");
 	
 	public String compararFechas(String fecha1, String fecha2) {
 		/* Devuelve 0 si fecha1 == fecha2

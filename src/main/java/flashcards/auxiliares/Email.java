@@ -19,11 +19,11 @@ public class Email {
 	private String mensaje;
 	boolean enviado;
 	
-	final String saludo = "Hola ";
-	final String cierre = "\nAtentamente, Equipo de Flashcards.";
-	final String usuario = "\nUsuario: ";
-	final String clave = "\nClave: ";
-	final String claveDB = "SistemaFlashcardsSergio";
+	static final String saludo = "Hola ";
+	static final String cierre = "\nAtentamente, Equipo de Flashcards.";
+	static final String usuario = "\nUsuario: ";
+	static final String clave = "\nClave: ";
+	static final String claveDB = "SistemaFlashcardsSergio";
 	
 	public Email() {
 		setEnvia("sistemaflashcards@gmail.com");

@@ -34,12 +34,13 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
 	LinkedList<String> lista;
-	private final static Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.UsuariosMongoDB");
-	final String usernameConstante = "username";
-	final String emailConstante = "email";
-	final String claveConstante = "clave";
-	final String nombreApellidosConstante = "nombreApellidos";
-	final String ciudadConstante = "ciudad";
+	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.UsuariosMongoDB");
+	static final String usernameConstante = "username";
+	static final String emailConstante = "email";
+	static final String claveConstante = "clave";
+	static final String nombreApellidosConstante = "nombreApellidos";
+	static final String ciudadConstante = "ciudad";
+	static final String emailFoto = "emailFoto";
     
     //Constructor
     public UsuariosMongoDB() {
@@ -100,11 +101,11 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(user.getFoto()!=null || !user.getFoto().equalsIgnoreCase("")) {
 				doc = doc.append("foto", user.getFoto());
-				doc = doc.append("emailFoto", user.getEmailFoto());
+				doc = doc.append(emailFoto, user.getEmailFoto());
 			}
 		}catch(Exception ex) {
 			doc = doc.append("foto", "");
-			doc = doc.append("emailFoto", "");
+			doc = doc.append(emailFoto, "");
 		}
 		
 		doc = doc.append("rolUsuario", user.isRolUsuario()).
@@ -151,7 +152,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(doc.getString("foto")!=null || (!doc.getString("foto").equalsIgnoreCase(""))) {
 				usuarioDB.setFoto(doc.getString("foto"));
-				usuarioDB.setEmailFoto(doc.getString("emailFoto"));
+				usuarioDB.setEmailFoto(doc.getString(emailFoto));
 			}
 		}catch(Exception ex) {
 			usuarioDB.setFoto("");
@@ -261,56 +262,6 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 		
 		return false;
-
-		/*if(userAntiguo.getUsername().equals(userNuevo.getUsername())) {
-			if(userAntiguo.getEmail().equals(userNuevo.getEmail())) {
-				criteriosBusqueda = new BsonDocument().
-			            append(emailConstante, new BsonString(userAntiguo.getEmail()));
-				if(deleteOne(criteriosBusqueda)) {
-					return insert(usuarioDTOToDocument(userNuevo));
-				}else {
-					return false;
-				}
-			}else {
-				if(!existEmail(userNuevo.getEmail())) {
-					criteriosBusqueda = new BsonDocument().
-				            append(emailConstante, new BsonString(userAntiguo.getEmail()));
-					if(deleteOne(criteriosBusqueda)) {
-						return insert(usuarioDTOToDocument(userNuevo));
-					}else {
-						return false;
-					}
-				}else {
-					return false;
-				}
-			}
-		}else {
-			if(userAntiguo.getEmail().equals(userNuevo.getEmail())) {
-				if(!existUsername(userNuevo.getUsername())) {
-					criteriosBusqueda = new BsonDocument().
-				            append(emailConstante, new BsonString(userAntiguo.getEmail()));
-					if(deleteOne(criteriosBusqueda)) {
-						return insert(usuarioDTOToDocument(userNuevo));
-					}else {
-						return false;
-					}
-				}else {
-					return false;
-				}
-			}else {
-				if(!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail())) {
-					criteriosBusqueda = new BsonDocument().
-				            append(emailConstante, new BsonString(userAntiguo.getEmail()));
-					if(deleteOne(criteriosBusqueda)) {
-						return insert(usuarioDTOToDocument(userNuevo));
-					}else {
-						return false;
-					}
-				}else {
-					return false;
-				}
-			}
-		}*/
 	}
 	
 	public List<String> getListUsername() {		
@@ -322,17 +273,17 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	}
 	
 	private List<String> getListByField(String field){
-		try {
-			resultadosBusqueda = readAll();
-			iterator = resultadosBusqueda.iterator();
-			lista = new LinkedList<>();
+		resultadosBusqueda = readAll();
+		iterator = resultadosBusqueda.iterator();
+		lista = new LinkedList<>();
+		
+		if(iterator!=null) {
 			while(iterator.hasNext()) {
 				doc = iterator.next();
 				lista.add(doc.getString(field));
 			}
-		}catch(Exception ex) {
-			lista = new LinkedList<>();
 		}
+		
 		return lista;
 	}
 	
