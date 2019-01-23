@@ -19,11 +19,11 @@ public class Email {
 	private String mensaje;
 	boolean enviado;
 	
-	static final String saludo = "Hola ";
-	static final String cierre = "\nAtentamente, Equipo de Flashcards.";
-	static final String usuario = "\nUsuario: ";
-	static final String clave = "\nClave: ";
-	static final String claveDB = "SistemaFlashcardsSergio";
+	static final String SALUDO = "Hola ";
+	static final String CIERRE = "\nAtentamente, Equipo de Flashcards.";
+	static final String USUARIO = "\nUsuario: ";
+	static final String CLAVE = "\nClave: ";
+	static final String CLAVEDB = "SistemaFlashcardsSergio";
 	
 	public Email() {
 		setEnvia("sistemaflashcards@gmail.com");
@@ -38,7 +38,7 @@ public class Email {
 		"\n"+url+
 		"\nDispone de 24 horas para activar la cuenta. En caso de que no lo haga, debe de volverse a registrar."+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
-		cierre);
+		CIERRE);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -49,10 +49,10 @@ public class Email {
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		//Mensaje
 		setMensaje("Su cuenta ha sido creada satisfactoriamente. Sus datos de registro son los siguientes:"+
-		usuario+user.getUsername()+
+		USUARIO+user.getUsername()+
 		"\nEmail: "+user.getEmail()+
-		clave+user.getClave()+
-		cierre);
+		CLAVE+user.getClave()+
+		CIERRE);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
@@ -61,10 +61,10 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
 		//Mensaje
-		setMensaje(saludo+elimina.getUsername()+","+
+		setMensaje(SALUDO+elimina.getUsername()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
 		"\nSi accede antes al sistema con su cuenta, su cuenta no se va a eliminar."+
-        cierre);
+        CIERRE);
 		//Email de quien recibe el mensaje
 		setRecibe(email);
 		return enviarMensaje();
@@ -74,11 +74,11 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
-		setMensaje(saludo+user.getUsername()+"!!"+
+		setMensaje(SALUDO+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards:"+
-		usuario+user.getEmail()+" o "+user.getUsername()+
-		clave+user.getClave()+
-		cierre);
+		USUARIO+user.getEmail()+" o "+user.getUsername()+
+		CLAVE+user.getClave()+
+		CIERRE);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -88,11 +88,11 @@ public class Email {
 		//Asunto
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
 		//Mensaje
-		setMensaje(saludo+user.getNombreApellidos()+"!!"+
+		setMensaje(SALUDO+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
-		usuario+user.getEmail()+" o "+user.getUsername()+
-		clave+user.getClave()+
-		cierre);
+		USUARIO+user.getEmail()+" o "+user.getUsername()+
+		CLAVE+user.getClave()+
+		CIERRE);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
@@ -161,7 +161,7 @@ public class Email {
 	}
 	
 	private String getClave() {
-		return claveDB;
+		return CLAVEDB;
 	}
 	
 }

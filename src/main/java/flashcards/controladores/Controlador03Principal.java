@@ -23,17 +23,17 @@ public class Controlador03Principal {
 	EliminarCuentaDTO elimina;
 	Fecha fecha;
 	Email email;
-	static final String usuario = "usuario";
-	static final String redirect = "redirect:/";
+	static final String USUARIO = "usuario";
+	static final String REDIRECT = "redirect:/";
 	
 	//Pagina Principal
 	
 	@RequestMapping(value = "/principal", method = RequestMethod.GET)
 	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute(usuario)!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!="") {
+		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			return new ModelAndView("vistaPrincipal");
 		}else {
-			return new ModelAndView(redirect);
+			return new ModelAndView(REDIRECT);
 		}
 	}
 	
@@ -41,11 +41,11 @@ public class Controlador03Principal {
 	
 	@RequestMapping(value = "/verPerfil", method = RequestMethod.GET)
 	public ModelAndView verPerfil(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute(usuario)!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!="") {
+		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			vista = new ModelAndView("vistaPerfil");
-			vista.addObject("perfil", ((UsuarioDTO)(request.getSession().getAttribute(usuario))));
+			vista.addObject("perfil", ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))));
 		}else {
-			vista = new ModelAndView(redirect);
+			vista = new ModelAndView(REDIRECT);
 		}
 		return vista;
 	}
@@ -54,21 +54,21 @@ public class Controlador03Principal {
 	
 	@RequestMapping(value = "/eliminarCuenta", method = RequestMethod.GET)
 	public ModelAndView eliminarCuenta(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute(usuario)!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()!="") {
+		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			
 			fecha = new Fecha();
-			elimina = new EliminarCuentaDTO(((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername(), fecha.fechaEliminarCuenta());
+			elimina = new EliminarCuentaDTO(((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername(), fecha.fechaEliminarCuenta());
 			
 			Broker.getInstanciaEliminarCuenta().insertaEliminado(elimina);
 			
 			email = new Email();
-			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getEmail());
+			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getEmail());
 			
-			vista = new ModelAndView(redirect);
-			vista.addObject(usuario,new UsuarioDTO());
+			vista = new ModelAndView(REDIRECT);
+			vista.addObject(USUARIO,new UsuarioDTO());
 			
 		}else {
-			vista = new ModelAndView(redirect);
+			vista = new ModelAndView(REDIRECT);
 		}
 		return vista;
 	}

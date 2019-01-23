@@ -35,12 +35,12 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	UsuarioDTO usuarioDB;
 	LinkedList<String> lista;
 	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.UsuariosMongoDB");
-	static final String usernameConstante = "username";
-	static final String emailConstante = "email";
-	static final String claveConstante = "clave";
-	static final String nombreApellidosConstante = "nombreApellidos";
-	static final String ciudadConstante = "ciudad";
-	static final String emailFoto = "emailFoto";
+	static final String USERNAME = "username";
+	static final String EMAIL = "email";
+	static final String CLAVE = "clave";
+	static final String NYA = "nombreApellidos";
+	static final String CIUDAD = "ciudad";
+	static final String EMAILFOTO = "emailFoto";
     
     //Constructor
     public UsuariosMongoDB() {
@@ -70,24 +70,24 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	
 	private Document usuarioDTOToDocument(UsuarioDTO user) {
 		doc = new Document().
-				append(usernameConstante, user.getUsername()).
-				append(emailConstante, user.getEmail()).
-				append(claveConstante, user.getClave());
+				append(USERNAME, user.getUsername()).
+				append(EMAIL, user.getEmail()).
+				append(CLAVE, user.getClave());
 		
 		try {
 			if(user.getNombreApellidos()!=null || !user.getNombreApellidos().equalsIgnoreCase("")) {
-				doc = doc.append(nombreApellidosConstante, user.getNombreApellidos());
+				doc = doc.append(NYA, user.getNombreApellidos());
 			}
 		}catch(Exception ex) {
-			doc = doc.append(nombreApellidosConstante, "");
+			doc = doc.append(NYA, "");
 		}
 		
 		try {
 			if(user.getCiudad()!=null || !user.getCiudad().equalsIgnoreCase("")) {
-				doc = doc.append(ciudadConstante, user.getCiudad());
+				doc = doc.append(CIUDAD, user.getCiudad());
 			}
 		}catch(Exception ex) {
-			doc = doc.append(ciudadConstante, "");
+			doc = doc.append(CIUDAD, "");
 		}
 		
 		try {
@@ -101,11 +101,11 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(user.getFoto()!=null || !user.getFoto().equalsIgnoreCase("")) {
 				doc = doc.append("foto", user.getFoto());
-				doc = doc.append(emailFoto, user.getEmailFoto());
+				doc = doc.append(EMAILFOTO, user.getEmailFoto());
 			}
 		}catch(Exception ex) {
 			doc = doc.append("foto", "");
-			doc = doc.append(emailFoto, "");
+			doc = doc.append(EMAILFOTO, "");
 		}
 		
 		doc = doc.append("rolUsuario", user.isRolUsuario()).
@@ -118,24 +118,24 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	
 	private UsuarioDTO documentToUsuarioDTO(Document doc) {
 		usuarioDB = new UsuarioDTO();
-		usuarioDB.setUsername(doc.getString(usernameConstante));
-		usuarioDB.setClave(doc.getString(claveConstante));
-		usuarioDB.setEmail(doc.getString(emailConstante));
+		usuarioDB.setUsername(doc.getString(USERNAME));
+		usuarioDB.setClave(doc.getString(CLAVE));
+		usuarioDB.setEmail(doc.getString(EMAIL));
 		usuarioDB.setRolUsuario(doc.getBoolean("rolUsuario"));
 		usuarioDB.setRolModerador(doc.getBoolean("rolModerador"));
 		usuarioDB.setRolAdministrador(doc.getBoolean("rolAdministrador"));
 		usuarioDB.setActivadaCuenta(doc.getBoolean("cuentaActivada"));
 		try {
-			if(doc.getString(nombreApellidosConstante)!=null || (!doc.getString(nombreApellidosConstante).equalsIgnoreCase(""))) {
-				usuarioDB.setNombreApellidos(doc.getString(nombreApellidosConstante));
+			if(doc.getString(NYA)!=null || (!doc.getString(NYA).equalsIgnoreCase(""))) {
+				usuarioDB.setNombreApellidos(doc.getString(NYA));
 			}
 		}catch(Exception ex) {
 			usuarioDB.setNombreApellidos("");
 		}
 		
 		try {
-			if(doc.getString(ciudadConstante)!=null || (!doc.getString(ciudadConstante).equalsIgnoreCase(""))) {
-				usuarioDB.setCiudad(doc.getString(ciudadConstante));
+			if(doc.getString(CIUDAD)!=null || (!doc.getString(CIUDAD).equalsIgnoreCase(""))) {
+				usuarioDB.setCiudad(doc.getString(CIUDAD));
 			}
 		}catch(Exception ex) {
 			usuarioDB.setCiudad("");
@@ -152,7 +152,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		try {
 			if(doc.getString("foto")!=null || (!doc.getString("foto").equalsIgnoreCase(""))) {
 				usuarioDB.setFoto(doc.getString("foto"));
-				usuarioDB.setEmailFoto(doc.getString(emailFoto));
+				usuarioDB.setEmailFoto(doc.getString(EMAILFOTO));
 			}
 		}catch(Exception ex) {
 			usuarioDB.setFoto("");
@@ -164,14 +164,14 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	
 	//Comprobar si existe el email
 	public boolean existEmail (String email) {
-		criteriosBusqueda = new BsonDocument().append(emailConstante, new BsonString(email));
+		criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(email));
 		resultadosBusqueda = read(criteriosBusqueda);
 		return resultadosBusqueda.iterator().hasNext();
 	}
 	
 	//Comprobar si existe el nombre de usuario
 	public boolean existUsername (String username) {
-		criteriosBusqueda = new BsonDocument().append(usernameConstante, new BsonString(username));
+		criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(username));
 		resultadosBusqueda = read(criteriosBusqueda);
 		return resultadosBusqueda.iterator().hasNext();
 	}
@@ -209,15 +209,15 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	//Login Usuario
 	public boolean login(String usernameEmail, String clave) {
 		criteriosBusqueda = new BsonDocument().
-				            append(usernameConstante, new BsonString(usernameEmail)).
-				            append(claveConstante, new BsonString(clave));
+				            append(USERNAME, new BsonString(usernameEmail)).
+				            append(CLAVE, new BsonString(clave));
 		resultadosBusqueda = read(criteriosBusqueda);
 		if(resultadosBusqueda.iterator().hasNext()) {
 			return true;
 		}else {
 			criteriosBusqueda = new BsonDocument().
-		            append(emailConstante, new BsonString(usernameEmail)).
-		            append(claveConstante, new BsonString(clave));
+		            append(EMAIL, new BsonString(usernameEmail)).
+		            append(CLAVE, new BsonString(clave));
 			resultadosBusqueda = read(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
 		}
@@ -227,12 +227,12 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	//Get usuario
 	public UsuarioDTO getUsuarioDTO(String usernameEmail) {
 		criteriosBusqueda = new BsonDocument().
-	            append(usernameConstante, new BsonString(usernameEmail));
+	            append(USERNAME, new BsonString(usernameEmail));
 		resultadosBusqueda = read(criteriosBusqueda);
 		
 		if(!(resultadosBusqueda.iterator().hasNext())) {
 			criteriosBusqueda = new BsonDocument().
-		            append(emailConstante, new BsonString(usernameEmail));
+		            append(EMAIL, new BsonString(usernameEmail));
 			resultadosBusqueda = read(criteriosBusqueda);
 		}
 		
@@ -254,7 +254,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		   (userAntiguo.getEmail().equals(userNuevo.getEmail()) && (!existUsername(userNuevo.getUsername()))) ||
 		   (!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail()))) {
 			
-			criteriosBusqueda = new BsonDocument().append(emailConstante, new BsonString(userAntiguo.getEmail()));
+			criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(userAntiguo.getEmail()));
 			if(deleteOne(criteriosBusqueda)) {
 				return insert(usuarioDTOToDocument(userNuevo));
 			}
@@ -265,11 +265,11 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	}
 	
 	public List<String> getListUsername() {		
-		return getListByField(usernameConstante);
+		return getListByField(USERNAME);
 	}
 	
 	public List<String> getListEmail() {
-		return getListByField(emailConstante);
+		return getListByField(EMAIL);
 	}
 	
 	private List<String> getListByField(String field){
@@ -290,7 +290,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	public boolean deleteUsuario(UsuarioDTO user) {
 		try {
 			criteriosBusqueda = new BsonDocument().
-		            append(emailConstante, new BsonString(user.getEmail()));
+		            append(EMAIL, new BsonString(user.getEmail()));
 			return deleteOne(criteriosBusqueda);
 		}catch(Exception ex) {
 			LOGGER.log(Level.INFO, ex.getMessage());

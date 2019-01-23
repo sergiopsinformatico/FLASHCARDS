@@ -46,13 +46,13 @@ public class Controlador01RegistroUsuarios {
 	List<EliminarCuentaDTO> listaEl;
 	int indice;
 	String compara;
-	static final String usuario = "usuario";
-	static final String index = "index";
-	static final String mensaje = "mensaje";
-	static final String inputEmailAvatar = "inputEmailAvatar";
-	static final String inputNyA = "inputNyA";
-	static final String inputCiudad = "inputCiudad";
-	static final String inputPais = "inputPais";
+	static final String USUARIO = "usuario";
+	static final String INDEX = "index";
+	static final String MENSAJE = "mensaje";
+	static final String INPEMAILAVATAR = "inputEmailAvatar";
+	static final String INPNYA = "inputNyA";
+	static final String INPCIUDAD = "inputCiudad";
+	static final String INPPAIS = "inputPais";
 	
 	//Devuelve la vista para registrar a los usuarios
 	
@@ -65,7 +65,7 @@ public class Controlador01RegistroUsuarios {
 		//Eliminar cuentas pasados 14 dias
 		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
 		
-		if(request.getSession().getAttribute(usuario)==null || ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()=="") {
+		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
 			return new ModelAndView("vistaRegistro");
 		}else {
 			return new ModelAndView("redirect:/");
@@ -137,11 +137,11 @@ public class Controlador01RegistroUsuarios {
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {
-				vista = new ModelAndView(index);
-				vista.addObject(mensaje, "Su cuenta ya fue activada");
+				vista = new ModelAndView(INDEX);
+				vista.addObject(MENSAJE, "Su cuenta ya fue activada");
 			}else {
-				vista = new ModelAndView(index);
-				vista.addObject(mensaje, "Ha expirado la activacion de su cuenta. Es necesario que se vuelva a registrar.");
+				vista = new ModelAndView(INDEX);
+				vista.addObject(MENSAJE, "Ha expirado la activacion de su cuenta. Es necesario que se vuelva a registrar.");
 			}
 		}
 		return vista;
@@ -153,27 +153,27 @@ public class Controlador01RegistroUsuarios {
 		user2 = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
 
 		//Eleccion foto perfil
-		if(request.getParameter(inputEmailAvatar)!=null && request.getParameter(inputEmailAvatar)!="") {
-			user2.setEmailFoto(request.getParameter(inputEmailAvatar));
+		if(request.getParameter(INPEMAILAVATAR)!=null && request.getParameter(INPEMAILAVATAR)!="") {
+			user2.setEmailFoto(request.getParameter(INPEMAILAVATAR));
 			random = new SecureRandom();
-			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter(inputEmailAvatar), new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
+			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter(INPEMAILAVATAR), new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");
 		}
 		
-		if(request.getParameter(inputNyA)!=null && request.getParameter(inputNyA)!="") {
-			user2.setNombreApellidos(request.getParameter(inputNyA));
+		if(request.getParameter(INPNYA)!=null && request.getParameter(INPNYA)!="") {
+			user2.setNombreApellidos(request.getParameter(INPNYA));
 		}
-		if(request.getParameter(inputCiudad)!=null && request.getParameter(inputCiudad)!="") {
-			user2.setCiudad(request.getParameter(inputCiudad));
+		if(request.getParameter(INPCIUDAD)!=null && request.getParameter(INPCIUDAD)!="") {
+			user2.setCiudad(request.getParameter(INPCIUDAD));
 		}
-		if(request.getParameter(inputPais)!=null && request.getParameter(inputPais)!="") {
-			user2.setPais(request.getParameter(inputPais));
+		if(request.getParameter(INPPAIS)!=null && request.getParameter(INPPAIS)!="") {
+			user2.setPais(request.getParameter(INPPAIS));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		vista = new ModelAndView(index);
-		vista.addObject(mensaje, "Registro completado con exito.");
+		vista = new ModelAndView(INDEX);
+		vista.addObject(MENSAJE, "Registro completado con exito.");
 		return vista;
 	}
 	

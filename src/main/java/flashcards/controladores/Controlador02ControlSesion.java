@@ -34,9 +34,9 @@ public class Controlador02ControlSesion {
 	String compara;
 	EliminarCuentaDTO eliminado;
 	Email email;
-	static final String usuario = "usuario";
-	static final String vistaIniciarSesion="vistaIniciarSesion";
-	static final String mensaje="mensaje";
+	static final String USUARIO = "usuario";
+	static final String VIEWLOGIN="vistaIniciarSesion";
+	static final String MENSAJE="mensaje";
 	
 	//Devuelve la vista para Iniciar Sesion
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
@@ -50,8 +50,8 @@ public class Controlador02ControlSesion {
 		
 		//Vista Iniciar Sesion
 		
-		if(request.getSession().getAttribute(usuario)==null || ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()=="") {
-			return new ModelAndView(vistaIniciarSesion);
+		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
+			return new ModelAndView(VIEWLOGIN);
 		}else {
 			return new ModelAndView("redirect:/principal.html");
 		}
@@ -68,18 +68,18 @@ public class Controlador02ControlSesion {
 				vista = new ModelAndView("redirect:/");
 				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
 					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
-					vista.addObject(mensaje, "Su cuenta ha sido reactivada");
+					vista.addObject(MENSAJE, "Su cuenta ha sido reactivada");
 					email = new Email();
 					email.reactivacionCuenta(user);
 				}
-				vista.addObject(usuario, user);
+				vista.addObject(USUARIO, user);
 			}else {
-				vista = new ModelAndView(vistaIniciarSesion);
-				vista.addObject(mensaje, "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
+				vista = new ModelAndView(VIEWLOGIN);
+				vista.addObject(MENSAJE, "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
 			}
 		}else {
-			vista = new ModelAndView(vistaIniciarSesion);
-			vista.addObject(mensaje, "El "+usuario+" y/o la clave son incorrectos.");
+			vista = new ModelAndView(VIEWLOGIN);
+			vista.addObject(MENSAJE, "El "+USUARIO+" y/o la clave son incorrectos.");
 		}
 		return vista;
 	}
@@ -91,7 +91,7 @@ public class Controlador02ControlSesion {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute(usuario)==null || ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()=="") {
+		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
 			vista = new ModelAndView("index");
 		}else {
 			vista =  new ModelAndView("vistaPrincipal");
@@ -102,7 +102,7 @@ public class Controlador02ControlSesion {
 	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("redirect:/");
-		vista.addObject(usuario,new UsuarioDTO());
+		vista.addObject(USUARIO,new UsuarioDTO());
 		return vista;
 	}
 

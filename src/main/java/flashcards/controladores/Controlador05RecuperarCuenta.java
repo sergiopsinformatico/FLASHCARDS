@@ -30,7 +30,7 @@ public class Controlador05RecuperarCuenta {
 	int indice;
 	String compara;
 	Email email;
-	static final String usuario = "usuario";
+	static final String USUARIO = "usuario";
 	
 	@RequestMapping(value = "/recuperarCuenta", method = RequestMethod.GET)
 	public ModelAndView recuperarCuenta(HttpServletRequest request, HttpServletResponse response) {
@@ -41,7 +41,7 @@ public class Controlador05RecuperarCuenta {
 		//Eliminar cuentas pasados 14 dias
 		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
 		
-		if(request.getSession().getAttribute(usuario)==null || ((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(usuario))).getUsername()=="") {
+		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
 			return new ModelAndView("vistaRecuperarCuenta");
 		}else {
 			return new ModelAndView("redirect:/");
