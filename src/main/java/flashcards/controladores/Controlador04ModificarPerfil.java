@@ -1,8 +1,5 @@
 package main.java.flashcards.controladores;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -48,8 +45,7 @@ public class Controlador04ModificarPerfil {
 		if(userNuevo.getEmailFoto()=="") {
 			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
 		}else {
-			SecureRandom random = new SecureRandom();
-			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5.md5Hex(userNuevo.getEmailFoto(),new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
+			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(userNuevo.getEmailFoto())+".jpg");
 		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
