@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
-import main.java.flashcards.auxiliares.MD5Gravatar;
+import main.java.flashcards.auxiliares.MD5;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
@@ -156,7 +156,7 @@ public class Controlador01RegistroUsuarios {
 		if(request.getParameter(INPEMAILAVATAR)!=null && request.getParameter(INPEMAILAVATAR)!="") {
 			user2.setEmailFoto(request.getParameter(INPEMAILAVATAR));
 			random = new SecureRandom();
-			user2.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(request.getParameter(INPEMAILAVATAR), new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
+			user2.setFoto("https://www.gravatar.com/avatar/"+MD5.md5Hex(request.getParameter(INPEMAILAVATAR), new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");

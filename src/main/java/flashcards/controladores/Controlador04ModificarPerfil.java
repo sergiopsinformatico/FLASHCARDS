@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.java.flashcards.auxiliares.MD5Gravatar;
+import main.java.flashcards.auxiliares.MD5;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -49,7 +49,7 @@ public class Controlador04ModificarPerfil {
 			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
 		}else {
 			SecureRandom random = new SecureRandom();
-			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5Gravatar.md5Hex(userNuevo.getEmailFoto(),new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
+			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5.md5Hex(userNuevo.getEmailFoto(),new BigInteger(130, random).toString(32) + "\nMD5\nCP1252\n" + new BigInteger(130, random).toString(32))+".jpg");
 		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {

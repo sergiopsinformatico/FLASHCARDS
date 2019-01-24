@@ -62,7 +62,8 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	//Insertar Usuario
 	public boolean insertUsuario(UsuarioDTO user) {
 		if((!existEmail(user.getEmail())) && (!existUsername(user.getUsername())) && claveIsCorrect(user.getClave()) && usernameIsCorrect(user.getUsername())) {
-			return insert(usuarioDTOToDocument(user));
+			coleccionUsuarios.insertOne(usuarioDTOToDocument(user));
+			return true;
 		}else {
 			return false;
 		}
@@ -165,14 +166,14 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	//Comprobar si existe el email
 	public boolean existEmail (String email) {
 		criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(email));
-		resultadosBusqueda = read(criteriosBusqueda);
+		resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 		return resultadosBusqueda.iterator().hasNext();
 	}
 	
 	//Comprobar si existe el nombre de usuario
 	public boolean existUsername (String username) {
 		criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(username));
-		resultadosBusqueda = read(criteriosBusqueda);
+		resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 		return resultadosBusqueda.iterator().hasNext();
 	}
 	
@@ -211,14 +212,14 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		criteriosBusqueda = new BsonDocument().
 				            append(USERNAME, new BsonString(usernameEmail)).
 				            append(CLAVE, new BsonString(clave));
-		resultadosBusqueda = read(criteriosBusqueda);
+		resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 		if(resultadosBusqueda.iterator().hasNext()) {
 			return true;
 		}else {
 			criteriosBusqueda = new BsonDocument().
 		            append(EMAIL, new BsonString(usernameEmail)).
 		            append(CLAVE, new BsonString(clave));
-			resultadosBusqueda = read(criteriosBusqueda);
+			resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
 		}
 		
@@ -228,12 +229,12 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	public UsuarioDTO getUsuarioDTO(String usernameEmail) {
 		criteriosBusqueda = new BsonDocument().
 	            append(USERNAME, new BsonString(usernameEmail));
-		resultadosBusqueda = read(criteriosBusqueda);
+		resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 		
 		if(!(resultadosBusqueda.iterator().hasNext())) {
 			criteriosBusqueda = new BsonDocument().
 		            append(EMAIL, new BsonString(usernameEmail));
-			resultadosBusqueda = read(criteriosBusqueda);
+			resultadosBusqueda = coleccionUsuarios.find(criteriosBusqueda);
 		}
 		
 		if(!(resultadosBusqueda.iterator().hasNext())) {
@@ -255,9 +256,8 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		   (!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail()))) {
 			
 			criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(userAntiguo.getEmail()));
-			if(deleteOne(criteriosBusqueda)) {
-				return insert(usuarioDTOToDocument(userNuevo));
-			}
+			coleccionUsuarios.deleteOne(criteriosBusqueda);
+			coleccionUsuarios.insertOne(usuarioDTOToDocument(userNuevo));
 			
 		}
 		
@@ -273,8 +273,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	}
 	
 	private List<String> getListByField(String field){
-		resultadosBusqueda = readAll();
-		iterator = resultadosBusqueda.iterator();
+		iterator = coleccionUsuarios.find().iterator();
 		lista = new LinkedList<>();
 		
 		if(iterator!=null) {
@@ -289,50 +288,13 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	
 	public boolean deleteUsuario(UsuarioDTO user) {
 		try {
-			criteriosBusqueda = new BsonDocument().
-		            append(EMAIL, new BsonString(user.getEmail()));
-			return deleteOne(criteriosBusqueda);
-		}catch(Exception ex) {
-			LOGGER.log(Level.INFO, ex.getMessage());
-			return false;
-		}
-	}
-	
-	private boolean insert(Document doc) {
-		try {
-			coleccionUsuarios.insertOne(doc);
+			criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(user.getEmail()));
+			coleccionUsuarios.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
 			LOGGER.log(Level.INFO, ex.getMessage());
 			return false;
 		}
 	}
-	
-	private FindIterable<Document> read(Bson criterios) {
-		try {
-			return coleccionUsuarios.find(criterios);
-		}catch(Exception ex) {
-			LOGGER.log(Level.INFO, ex.getMessage());
-			return null;
-		}
-	}
-	
-	private FindIterable<Document> readAll() {
-		try {
-			return coleccionUsuarios.find();
-		}catch(Exception ex) {
-			LOGGER.log(Level.INFO, ex.getMessage());
-			return null;
-		}
-	}
-	
-	private boolean deleteOne(Bson criterios) {
-		try {
-			coleccionUsuarios.deleteOne(criterios);
-			return true;
-		}catch(Exception ex) {
-			LOGGER.log(Level.INFO, ex.getMessage());
-			return false;
-		}
-	}
+
 }
