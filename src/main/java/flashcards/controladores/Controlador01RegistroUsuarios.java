@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
-import main.java.flashcards.auxiliares.MD5;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
@@ -155,7 +155,7 @@ public class Controlador01RegistroUsuarios {
 		//Eleccion foto perfil
 		if(request.getParameter(INPEMAILAVATAR)!=null && request.getParameter(INPEMAILAVATAR)!="") {
 			user2.setEmailFoto(request.getParameter(INPEMAILAVATAR));
-			user2.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(request.getParameter(INPEMAILAVATAR), "MD5", "CP1252")+".jpg");
+			user2.setFoto("https://www.gravatar.com/avatar/"+DigestUtils.md5Hex(request.getParameter(INPEMAILAVATAR))+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");
