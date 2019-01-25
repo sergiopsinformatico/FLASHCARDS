@@ -155,7 +155,7 @@ public class Controlador01RegistroUsuarios {
 		//Eleccion foto perfil
 		if(request.getParameter(INPEMAILAVATAR)!=null && request.getParameter(INPEMAILAVATAR)!="") {
 			user2.setEmailFoto(request.getParameter(INPEMAILAVATAR));
-			user2.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(request.getParameter(INPEMAILAVATAR))+".jpg");
+			user2.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(request.getParameter(INPEMAILAVATAR), "MD5", "CP1252")+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
 			user2.setFoto("https://www.gravatar.com/avatar/hashNoDisponible.jpg");

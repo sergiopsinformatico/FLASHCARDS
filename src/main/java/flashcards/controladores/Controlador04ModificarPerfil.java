@@ -45,7 +45,7 @@ public class Controlador04ModificarPerfil {
 		if(userNuevo.getEmailFoto()=="") {
 			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
 		}else {
-			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(userNuevo.getEmailFoto())+".jpg");
+			userNuevo.setFoto("https://www.gravatar.com/avatar/"+MD5.getMD5Encryption(userNuevo.getEmailFoto(), "MD5", "CP1252")+".jpg");
 		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
