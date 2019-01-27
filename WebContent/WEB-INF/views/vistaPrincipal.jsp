@@ -29,6 +29,10 @@
     
     <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
     
+    <!-- Glyphicons -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    
+    
     <style>
     	body {
 		  background: #F1F3FA;
@@ -184,7 +188,7 @@
 						<div>
 							<form action="/verPerfil.html" method="GET">
 								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
-									Ver Mi Perfil
+									<span class="glyphicon glyphicon-user"></span>Ver Mi Perfil
 								</button>
 							</form>
 						</div>
@@ -192,7 +196,7 @@
 						<div>
 							<form action="/modificarPerfil.html" method="GET">
 								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
-									Modificar Mi Perfil
+									<span class="glyphicon glyphicon-pencil"></span>Modificar Mi Perfil
 								</button>
 							</form>
 						</div>
@@ -204,13 +208,13 @@
 						<br>
 						<div>
 							<button type="submit" id="buttonCerrarSesion" name="buttonCerrarSesion" onclick="dialogCS()" class="btn btn-outline-warning btn-principal">
-								Cerrar Sesión
+								<span class="glyphicon glyphicon-off"></span>Cerrar Sesión
 							</button>
 						</div>
 						<br>
 						<div>
 							<button type="submit" id="buttonEliminarCuenta" name="buttonEliminarCuenta" onclick="dialogElimina()" class="btn btn-outline-danger btn-principal">
-								Eliminar Cuenta
+								<span class="glyphicon glyphicon-trash"></span>Eliminar Cuenta
 							</button>
 						</div>
 						<br>
