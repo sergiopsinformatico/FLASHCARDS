@@ -19,10 +19,13 @@ import main.java.flashcards.dto.UsuarioDTO;
 @SessionAttributes("usuario")
 public class Controlador03Principal {
 	
+	//Variables
 	ModelAndView vista;
 	EliminarCuentaDTO elimina;
 	Fecha fecha;
 	Email email;
+	
+	//Constantes
 	static final String USUARIO = "usuario";
 	static final String REDIRECT = "redirect:/";
 	

@@ -22,7 +22,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 @SessionAttributes("usuario")
 public class Controlador02ControlSesion {
 
-	//Variables Globales
+	//Variables
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
 	UsuarioDTO user;
@@ -34,6 +34,8 @@ public class Controlador02ControlSesion {
 	String compara;
 	EliminarCuentaDTO eliminado;
 	Email email;
+	
+	//Constantes
 	static final String USUARIO = "usuario";
 	static final String VIEWLOGIN="vistaIniciarSesion";
 	static final String MENSAJE="mensaje";

@@ -26,6 +26,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	
+	//Variables
 	MongoClientURI uri; 
     MongoClient client;
     MongoDatabase db;
@@ -35,9 +36,12 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
     FindIterable<Document> resultadosBusqueda;
     MongoCursor<Document>iterador;
     LinkedList<EliminarCuentaDTO> lista;
+    
+    //Constantes
     static final String USERNAME = "username";
     static final String FECHA = "fecha";
     
+    //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.EliminarCuentaMongoDB");
 	
 	public EliminarCuentaMongoDB() {

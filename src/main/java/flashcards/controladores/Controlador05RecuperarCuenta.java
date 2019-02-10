@@ -22,6 +22,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 @SessionAttributes("usuario")
 public class Controlador05RecuperarCuenta {
 	
+	//Variables
 	Fecha fecha;
 	ModelAndView vista;
 	UsuarioDTO user;
@@ -30,6 +31,8 @@ public class Controlador05RecuperarCuenta {
 	int indice;
 	String compara;
 	Email email;
+	
+	//Constantes
 	static final String USUARIO = "usuario";
 	
 	@RequestMapping(value = "/recuperarCuenta", method = RequestMethod.GET)

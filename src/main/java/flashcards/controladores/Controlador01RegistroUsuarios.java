@@ -33,6 +33,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 @SessionAttributes("usuario")
 public class Controlador01RegistroUsuarios {
 	
+	//Variables
 	Email correo;
 	List<String> listaUsernames;
 	List<String> listaEmails;
@@ -46,6 +47,8 @@ public class Controlador01RegistroUsuarios {
 	List<EliminarCuentaDTO> listaEl;
 	int indice;
 	String compara;
+	
+	//Constantes
 	static final String USUARIO = "usuario";
 	static final String INDEX = "index";
 	static final String MENSAJE = "mensaje";

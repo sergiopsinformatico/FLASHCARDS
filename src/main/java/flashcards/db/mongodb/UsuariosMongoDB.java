@@ -35,13 +35,18 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
 	LinkedList<String> lista;
-	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.UsuariosMongoDB");
+	
+	//Constantes
 	static final String USERNAME = "username";
 	static final String EMAIL = "email";
 	static final String CLAVE = "clave";
 	static final String NYA = "nombreApellidos";
 	static final String CIUDAD = "ciudad";
 	static final String EMAILFOTO = "emailFoto";
+	
+	//Logger
+	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.UsuariosMongoDB");
+	
     
     //Constructor
     public UsuariosMongoDB() {
@@ -251,15 +256,35 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	
 	public boolean updateUsuario(UsuarioDTO userAntiguo, UsuarioDTO userNuevo) {
 		
-		if((userAntiguo.getUsername().equals(userNuevo.getUsername()) && userAntiguo.getEmail().equals(userNuevo.getEmail())) ||
-		   (userAntiguo.getUsername().equals(userNuevo.getUsername()) && (!existEmail(userNuevo.getEmail()))) ||
-		   (userAntiguo.getEmail().equals(userNuevo.getEmail()) && (!existUsername(userNuevo.getUsername()))) ||
-		   (!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail()))) {
-			
-			criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(userAntiguo.getEmail()));
-			coleccionUsuarios.deleteOne(criteriosBusqueda);
-			coleccionUsuarios.insertOne(usuarioDTOToDocument(userNuevo));
-			
+		boolean actualiza = false;
+		
+		if(userAntiguo.getUsername().equals(userNuevo.getUsername())) {
+			if(userAntiguo.getEmail().equals(userNuevo.getEmail())) {
+				actualiza = true;
+			}else if(!existEmail(userNuevo.getEmail())){
+				actualiza = true;
+			}
+		}else {
+			if(userAntiguo.getEmail().equals(userNuevo.getEmail())){
+				if(!existUsername(userNuevo.getUsername())) {
+					actualiza = true;
+				}
+			}else {
+				if(!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail())) {
+					actualiza = true;
+				}
+			}
+		}
+		
+		if(actualiza) {
+			try {
+				criteriosBusqueda = new BsonDocument().append("email", new BsonString(userAntiguo.getEmail()));
+				coleccionUsuarios.deleteOne(criteriosBusqueda);
+				coleccionUsuarios.insertOne(usuarioDTOToDocument(userNuevo));
+				return true;
+			}catch(Exception ex) {
+				return false;
+			}
 		}
 		
 		return false;

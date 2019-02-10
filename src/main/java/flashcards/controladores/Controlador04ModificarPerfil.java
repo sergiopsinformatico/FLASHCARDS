@@ -20,8 +20,11 @@ import main.java.flashcards.dto.UsuarioDTO;
 @SessionAttributes("usuario")
 public class Controlador04ModificarPerfil {
 	
+	//Variables
 	ModelAndView vista;
 	UsuarioDTO userAntiguo;
+	
+	//Constantes
 	static final String USUARIO = "usuario";
 	
 	@RequestMapping(value = "/modificarPerfil", method = RequestMethod.GET)
