@@ -81,7 +81,7 @@
 	    <!-- Navigation -->
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
-	        <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
+	        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
 	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          Menu
 	          <i class="fas fa-bars"></i>
@@ -89,10 +89,10 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/iniciarSesion.html">Iniciar Sesión</a>
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/iniciarSesion.html">Iniciar Sesión</a>
 	            </li>
 	            <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com/recuperarCuenta.html">¿Has olvidado la clave?</a>
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
 	            </li>
 	          </ul>
 	        </div>
@@ -384,7 +384,7 @@
 			        		function (response) {
 				        		if (response.data){
 				        			bootbox.alert('Cuenta creada. Para activarla, siga las instrucciones que se han enviado a su email: '+dataObj.email, function(){
-				        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
+				        			    window.open('/', '_self');
 				        			});
 				        		}else{
 				        			bootbox.alert('Fallo en el registro. Por favor, intentelo más tarde.');

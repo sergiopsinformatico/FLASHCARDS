@@ -117,7 +117,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
+        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
       </div>
     </nav>
     <br>
@@ -430,7 +430,7 @@
 	        		function (response) {
 		        		if (response.data){
 		        			bootbox.alert('Datos modificados correctamente', function(){
-		        			    window.open('https://sistemaflashcards.herokuapp.com', '_self');
+		        			    window.open('/', '_self');
 		        			});
 		        		}else{
 		        			bootbox.alert('Hubo un fallo en el servidor. Intentelo de nuevo mas tarde.');

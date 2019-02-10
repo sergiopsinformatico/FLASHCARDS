@@ -76,7 +76,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="https://sistemaflashcards.herokuapp.com">FLASHCARDS</a>
+        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
       </div>
     </nav>
     <section>
