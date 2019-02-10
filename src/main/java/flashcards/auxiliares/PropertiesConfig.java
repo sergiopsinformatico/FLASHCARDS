@@ -11,7 +11,7 @@ public class PropertiesConfig {
 	private PropertiesConfig() {}
 	
 	@Value("file")
-	public static String filePath="filePath";
+	final private static String filePath="filePath";
 	
 	public static String getProperties(String name) {
 		return getValue(name);
