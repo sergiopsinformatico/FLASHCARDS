@@ -258,27 +258,17 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		
 		boolean actualiza = false;
 		
-		if(userAntiguo.getUsername().equals(userNuevo.getUsername())) {
-			if(userAntiguo.getEmail().equals(userNuevo.getEmail())) {
-				actualiza = true;
-			}else if(!existEmail(userNuevo.getEmail())){
-				actualiza = true;
-			}
-		}else {
-			if(userAntiguo.getEmail().equals(userNuevo.getEmail())){
-				if(!existUsername(userNuevo.getUsername())) {
-					actualiza = true;
-				}
-			}else {
-				if(!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail())) {
-					actualiza = true;
-				}
-			}
+		if(userAntiguo.getUsername().equals(userNuevo.getUsername()) && (userAntiguo.getEmail().equals(userNuevo.getEmail()) || (!existEmail(userNuevo.getEmail())))) {
+			actualiza = true;
+		}else if(userAntiguo.getEmail().equals(userNuevo.getEmail()) && (!existUsername(userNuevo.getUsername()))) {
+			actualiza = true;
+		}else if(!existUsername(userNuevo.getUsername()) && !existEmail(userNuevo.getEmail())) {
+			actualiza = true;
 		}
 		
 		if(actualiza) {
 			try {
-				criteriosBusqueda = new BsonDocument().append("email", new BsonString(userAntiguo.getEmail()));
+				criteriosBusqueda = new BsonDocument().append(EMAIL, new BsonString(userAntiguo.getEmail()));
 				coleccionUsuarios.deleteOne(criteriosBusqueda);
 				coleccionUsuarios.insertOne(usuarioDTOToDocument(userNuevo));
 				return true;
