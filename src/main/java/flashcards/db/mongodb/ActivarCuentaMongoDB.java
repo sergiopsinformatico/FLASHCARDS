@@ -18,11 +18,12 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOActivaCuenta;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 
-public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
+public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	//Variables
 	MongoClientURI uri; 
@@ -37,19 +38,19 @@ public class ActivaCuentaMongoDB implements InterfaceDAOActivaCuenta{
     static final String CODIGO = "codigo";
     static final String USERNAME = "username";
     
-    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivaCuentaMongoDB");
+    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivarCuentaMongoDB");
 	
-	public ActivaCuentaMongoDB() {
+	public ActivarCuentaMongoDB() {
 		connection();
 	}
 	
 	//Conexion con la BD
     private void connection() {
     	try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(PropertiesConfig.getProperties("conexionMongoDB")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionActivaCuenta = db.getCollection("ActivaCuenta");
+	        coleccionActivaCuenta = db.getCollection(PropertiesConfig.getProperties("colActivarCuenta"));
 		}catch(Exception ex) {
 			LOGGER.log(Level.INFO, ex.getMessage());
 		}

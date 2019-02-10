@@ -18,6 +18,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOEliminarCuenta;
 import main.java.flashcards.dto.EliminarCuentaDTO;
@@ -46,10 +47,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	//Conexion con la BD
     private void connection() {
     	try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(PropertiesConfig.getProperties("conexionMongoDB")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionEliminados = db.getCollection("SolicitudEliminarCuenta");
+	        coleccionEliminados = db.getCollection(PropertiesConfig.getProperties("colEliminarCuenta"));
 		}catch(Exception ex) {
 			LOGGER.log(Level.INFO, ex.getMessage());
 		}

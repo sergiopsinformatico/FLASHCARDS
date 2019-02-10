@@ -18,6 +18,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
+import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -50,10 +51,10 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
     //Conexion con la BD
     private void connection() {
     	try {
-			uri  = new MongoClientURI("mongodb://sistemaflashcards:sistemaflashcards@ds119969.mlab.com:19969/sistemaflashcards"); 
+			uri  = new MongoClientURI(PropertiesConfig.getProperties("conexionMongoDB")); 
 	        client = new MongoClient(uri);
 	        db = client.getDatabase(uri.getDatabase());
-	        coleccionUsuarios = db.getCollection("Usuarios");
+	        coleccionUsuarios = db.getCollection(PropertiesConfig.getProperties("colUsuarios"));
 		}catch(Exception ex) {
 			LOGGER.log(Level.INFO, ex.getMessage());
 		}
