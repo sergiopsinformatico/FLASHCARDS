@@ -28,9 +28,4 @@
             </list>
         </property>
     </bean>
-    
-    <bean class="main.java.flashcards.auxiliares.PropertiesConfig">
-    	<property name="file" value="src/main/resources/conexionDB.properties"/>
-    </bean>
-
 </beans>
