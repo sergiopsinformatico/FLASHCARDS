@@ -23,11 +23,11 @@ public class Email {
 	static final String CIERRE = "\nAtentamente, Equipo de Flashcards.";
 	static final String USUARIO = "\nUsuario: ";
 	static final String CLAVE = "\nClave: ";
-	static final String ENVIA = "envia";
+	static final String ENVIA_CONST = "envia";
 	
 	public boolean activarCuenta(UsuarioDTO user, String url) {
 		//Envia
-		setEnvia(PropertiesConfig.getProperties(ENVIA));
+		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Activacion Cuenta: "+user.getUsername());
 		//Mensaje
@@ -44,7 +44,7 @@ public class Email {
 	
 	public boolean confirmaCuentaCreada(UsuarioDTO user) {
 		//Envia
-		setEnvia(PropertiesConfig.getProperties(ENVIA));
+		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		//Mensaje
@@ -59,7 +59,7 @@ public class Email {
 	
 	public boolean eliminarCuenta(EliminarCuentaDTO elimina, String email) {
 		//Envia
-		setEnvia(PropertiesConfig.getProperties(ENVIA));
+		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
 		//Mensaje
@@ -74,7 +74,7 @@ public class Email {
 	
 	public boolean recuperarClave(UsuarioDTO user) {
 		//Envia
-		setEnvia(PropertiesConfig.getProperties(ENVIA));
+		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
@@ -90,7 +90,7 @@ public class Email {
 	
 	public boolean reactivacionCuenta(UsuarioDTO user) {
 		//Envia
-		setEnvia(PropertiesConfig.getProperties(ENVIA));
+		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
 		//Mensaje
