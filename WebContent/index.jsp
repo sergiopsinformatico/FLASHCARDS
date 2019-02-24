@@ -39,7 +39,7 @@
 	<% 
 		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 		if(user!=null && user.getUsername()!=null && (!(user.getUsername().equals("")))){
-			response.sendRedirect("/principal.html");
+			response.sendRedirect("principal.html");
 		}
 	%>
 		
@@ -55,13 +55,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/iniciarSesion.html">Iniciar Sesión</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">Registrarse</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="recuperarCuenta.html">¿Has olvidado la clave?</a>
             </li>
           </ul>
         </div>
