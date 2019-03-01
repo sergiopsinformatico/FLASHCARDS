@@ -130,11 +130,14 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				
-				$http.get("/usersAdmin.do").then(
-					function (response) {
-						$scope.users = response.data;
-					}
-				);
+				$http({
+				    url: 'usersAdmin.do', 
+				    method: "GET"
+				}).then(function successCallback(response) {
+				    $scope.users=response;
+				  }, function errorCallback(response) {
+					  $scope.users=response;
+					  });
 				
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
