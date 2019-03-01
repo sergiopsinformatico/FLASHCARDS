@@ -130,7 +130,7 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				
-				$http.get("usersAdmin.do").then(
+				$http.get("/usersAdmin.do").then(
 					function (response) {
 						$scope.users = response.data;
 					}
