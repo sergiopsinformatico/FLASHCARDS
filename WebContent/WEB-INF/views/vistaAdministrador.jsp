@@ -140,7 +140,7 @@
 			app.controller('adminCtrl', function($scope, $http) {
 				
 				$http({
-				    url: '/usersAdmin.do', 
+				    url: 'usersAdmin.do', 
 				    method: "GET"
 				}).then(function successCallback(response) {
 				    $scope.users=response;
