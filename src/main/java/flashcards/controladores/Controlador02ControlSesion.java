@@ -104,7 +104,8 @@ public class Controlador02ControlSesion {
 	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("redirect:/");
-		vista.addObject(USUARIO,new UsuarioDTO());
+		request.getSession().setAttribute(USUARIO, null);
+		vista.addObject(USUARIO,null);
 		return vista;
 	}
 

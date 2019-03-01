@@ -15,4 +15,5 @@ public interface InterfaceDAOUsuario {
 	public boolean deleteUsuario(UsuarioDTO user);
 	public List<String> getListUsername();
 	public List<String> getListEmail();
+	public List<String> getUsuariosAdmin(String admin);
 }

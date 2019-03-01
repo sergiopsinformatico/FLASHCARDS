@@ -33,11 +33,15 @@ public class Controlador03Principal {
 	
 	@RequestMapping(value = "/principal", method = RequestMethod.GET)
 	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
+		
 		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
-			return new ModelAndView("vistaPrincipal");
+			vista = new ModelAndView("vistaPrincipal");
+			vista.addObject("isAdmin", ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).isRolAdministrador());
 		}else {
-			return new ModelAndView(REDIRECT);
+			vista = new ModelAndView(REDIRECT);
 		}
+		
+		return vista;
 	}
 	
 	//Ver Perfil

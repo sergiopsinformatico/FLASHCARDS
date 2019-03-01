@@ -186,7 +186,7 @@
 						<br>
 						<br>
 						<div>
-							<form action="/verPerfil.html" method="GET">
+							<form action="verPerfil.html" method="GET">
 								<button type="submit" id="buttonVerPefil" name="buttonVerPefil" class="btn btn-outline-success btn-principal">
 									<span class="glyphicon glyphicon-user"></span>Ver Mi Perfil
 								</button>
@@ -194,7 +194,7 @@
 						</div>
 						<br>
 						<div>
-							<form action="/modificarPerfil.html" method="GET">
+							<form action="modificarPerfil.html" method="GET">
 								<button type="submit" id="buttonModificarPefil" name="buttonModificarPefil" class="btn btn-outline-info btn-principal" >
 									<span class="glyphicon glyphicon-pencil"></span>Modificar Mi Perfil
 								</button>
@@ -225,17 +225,22 @@
 				</div>
 				<div class="col-md-9">	
 					<br>
+					<div id="panelAdmin" name="panelAdmin" class="panel panel-default" style="display: none;">
+						<div class="panel-heading">
+							<h4>Panel Administrador</h4>
+						</div>
+						<div class="panel-body">
+							<h6><a href="panelAdministrador.html">Panel Admin</a></h6>
+						</div>
+					</div>
 					
-					<!-- <div id="panelAdmin" class="panel panel-default" style="display: none;">
-				      <div class="panel-heading">
-				      	<h4>Panel Administrador</h4>
-				      </div>
-				      <div class="panel-body">
-				      	Panel Content
-				      </div>
-				    </div>
+					<script>
+						if(${isAdmin} == true){
+							document.getElementById("panelAdmin").style.display = "block";
+						}
+					</script>
 				    
-				    <br>
+				    <!-- <br>
 				    
 				    <div id="panelUsuario" class="panel panel-default">
 				      <div class="panel-heading">
@@ -307,7 +312,7 @@
     		  message: "¿Desea salir del sistema?", 
     		  callback: function(result){ 
     			if(result){
-    				window.location.href = "/cerrarSesion.html";
+    				window.location.href = "cerrarSesion.html";
     			}  
     		  }
     		})
@@ -319,7 +324,7 @@
     		  message: "¿Desea eliminar la cuenta? Dispone de 14 dias para recuperarla, siguiendo las instrucciones enviadas a su email.", 
     		  callback: function(result){ 
     			if(result){
-    				window.location.href = "/eliminarCuenta.html";
+    				window.location.href = "eliminarCuenta.html";
     			}  
     		  }
     		})
