@@ -100,9 +100,9 @@
     
     <section>
     	<br>
-    	<h6>Response: {{ users }}</h6>
     	<br>
     	<div ng-app="adminApp" ng-controller="adminCtrl">
+    		<h6>Response: {{ users }}</h6>
 		    <div class="container">
 		    	<table style="width:100%">
 		    		<tr>
