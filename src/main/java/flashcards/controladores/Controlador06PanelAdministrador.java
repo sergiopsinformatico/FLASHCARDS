@@ -39,7 +39,7 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET)
-	public List<String> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
+	public List<UsuarioDTO> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
 		administrador =  (UsuarioDTO)request.getSession().getAttribute("usuario");
 		return Broker.getInstanciaUsuario().getUsuariosAdmin(administrador.getUsername());
 	}

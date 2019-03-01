@@ -35,6 +35,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
 	LinkedList<String> lista;
+	LinkedList<UsuarioDTO> listaUsers;
 	
 	//Constantes
 	static final String USERNAME = "username";
@@ -311,20 +312,20 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public List<String> getUsuariosAdmin(String admin){
-		lista = new LinkedList<>();
+	public List<UsuarioDTO> getUsuariosAdmin(String admin){
+		listaUsers = new LinkedList<>();
 		iterator = coleccionUsuarios.find().iterator();
 		
 		if(iterator!=null) {
 			while(iterator.hasNext()) {
 				doc = iterator.next();
 				if(!(doc.getString(USERNAME).equals(admin))) {
-					lista.add(doc.getString(USERNAME));
+					listaUsers.add(getUsuarioDTO(doc.getString(USERNAME)));
 				}
 			}
 		}
 		
-		return lista;
+		return listaUsers;
 	}
 
 }
