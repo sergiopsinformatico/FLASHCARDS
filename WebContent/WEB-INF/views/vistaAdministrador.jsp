@@ -99,6 +99,9 @@
     </nav>
     
     <section>
+    	<br>
+    	<h6>Response: {{ users }}</h6>
+    	<br>
     	<div ng-app="adminApp" ng-controller="adminCtrl">
 		    <div class="container">
 		    	<table style="width:100%">
@@ -127,7 +130,7 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				
-				$http.get("/usersAdmin.do").then(
+				$http.get("usersAdmin.do").then(
 					function (response) {
 						$scope.users = response.data;
 					}
@@ -136,7 +139,7 @@
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
 	        	        method: 'POST',
-	        	        url: '/adminDeleteUser.do',
+	        	        url: 'adminDeleteUser.do',
 	        	        data: nombreUsuario,
 	        	        headers : {
 	        	        	'Content-type': 'application/json',

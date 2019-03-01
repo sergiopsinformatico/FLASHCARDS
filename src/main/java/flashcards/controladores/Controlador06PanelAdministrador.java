@@ -18,7 +18,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 @SessionAttributes("usuario")
-public class Controlador05PanelAdministrador {
+public class Controlador06PanelAdministrador {
 	
 	//Variables
 	ModelAndView vista;
