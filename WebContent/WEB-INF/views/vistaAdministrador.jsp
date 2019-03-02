@@ -154,7 +154,7 @@
                     	'Accept': 'application/json'
                     }
 				}).then(function mySuccess(response) {
-					$scope.users = [];
+					$scope.users = response.data;
         	    }, function myError(response) {
         	    	$scope.users = [];
         	    });
