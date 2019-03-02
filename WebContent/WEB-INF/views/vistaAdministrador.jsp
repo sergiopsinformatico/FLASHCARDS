@@ -153,7 +153,6 @@
 				    method: "GET",
 				    data: "${usuario.getUsername()}",
 				    headers : {
-				    	'Content-type': 'application/json',
                     	'Accept': 'text/plain'
                     }
 				}).then(function mySuccess(response) {
