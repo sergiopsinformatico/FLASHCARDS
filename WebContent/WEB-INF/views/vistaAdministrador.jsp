@@ -139,10 +139,12 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				
+				var jsonAdmin = {'usernameAdmin' : "${usuario.getUsername()}"};
+				
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: "${usuario.getUsername()}",
+				    data: jsonAdmin,
 				    headers : {
                     	'Accept': 'application/json'
                     }
