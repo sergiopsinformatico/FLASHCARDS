@@ -153,12 +153,13 @@
 				    method: "GET",
 				    data: "${usuario.getUsername()}",
 				    headers : {
+				    	'Content-type': 'application/json',
                     	'Accept': 'text/plain'
                     }
 				}).then(function mySuccess(response) {
 					$scope.users = response.data;
         	    }, function myError(response) {
-        	    	$scope.users = [];
+        	    	$scope.users = response;
         	    });
 				
 				$scope.deleteUser = function(nombreUsuario){

@@ -42,7 +42,7 @@ public class Controlador06PanelAdministrador {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET, consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> getUsuarios(String usernameAdmin) {
