@@ -102,35 +102,39 @@
     	<br>
     	<br>
     	<div ng-app="adminApp" ng-controller="adminCtrl">
-    		<h6>Response: {{ users }}</h6>
 		    <div class="container">
-		    	<table style="width:100%">
-		    		<tr>
-		    			<th>Usuario</th>
-		    			<th>Rol</th>
-		    			<th>Eliminar Usuario</th>
-		    		</tr>
-		    		<tr ng-repeat="user in users">
-		    			<td>{{ user.getUsername() }}</td>
-		    			<td>
-		    				<input type="radio" id="rol{{user.getUsername()}}_usuario" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
-		    				<input type="radio" id="rol{{user.getUsername()}}_moderador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="moderador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Moderador
-		    				<input type="radio" id="rol{{user.getUsername()}}_administrador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="administrador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Administrador
-		    				<script>
-		    					if(user.isRolUsuario()){
-		    						document.getElementById("rol{{user.getUsername()}}_usuario").checked = true;
-		    					}else if(user.isRolModerador()){
-		    						document.getElementById("rol{{user.getUsername()}}_moderador").checked = true;
-		    					}else{
-		    						document.getElementById("rol{{user.getUsername()}}_administrador").checked = true;
-		    					}
-		    				</script>
-		    			</td>
-		    			<td>
-		    				<input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})">
-		    			</td>
-		    		</tr>
-		    	</table>
+		    	<div ng-if="users.count == 0">
+					<p>No hay usuarios en la aplicación</p>
+				</div>
+				<div ng-if="users.count > 0">
+					<table style="width:100%">
+			    		<tr>
+			    			<th>Usuario</th>
+			    			<th>Rol</th>
+			    			<th>Eliminar Usuario</th>
+			    		</tr>
+			    		<tr ng-repeat="user in users">
+			    			<td>{{ user.getUsername() }}</td>
+			    			<td>
+			    				<input type="radio" id="rol{{user.getUsername()}}_usuario" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
+			    				<input type="radio" id="rol{{user.getUsername()}}_moderador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="moderador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Moderador
+			    				<input type="radio" id="rol{{user.getUsername()}}_administrador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="administrador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Administrador
+			    				<script>
+			    					if(user.isRolUsuario()){
+			    						document.getElementById("rol{{user.getUsername()}}_usuario").checked = true;
+			    					}else if(user.isRolModerador()){
+			    						document.getElementById("rol{{user.getUsername()}}_moderador").checked = true;
+			    					}else{
+			    						document.getElementById("rol{{user.getUsername()}}_administrador").checked = true;
+			    					}
+			    				</script>
+			    			</td>
+			    			<td>
+			    				<input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})">
+			    			</td>
+			    		</tr>
+			    	</table>
+				</div>
 			</div>
 		</div>
 		
@@ -149,9 +153,9 @@
                     	'Accept': 'application/json'
                     }
 				}).then(function mySuccess(response) {
-        	    	$scope.users = response;
+					$scope.users = [];
         	    }, function myError(response) {
-        	    	$scope.users = response;
+        	    	$scope.users = [];
         	    });
 				
 				$scope.deleteUser = function(nombreUsuario){
