@@ -120,10 +120,10 @@
 			    			<td>{{user.username}}</td>
 			    			
 			    			<td>
-			    				<input type="radio" id="rol_{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="usuario" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Usuario
-			    				<input type="radio" id="rol_{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="moderador" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Moderador
-			    				<input type="radio" id="rol_{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="administrador" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Administrador
-			    				<script>
+			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
+			    				<br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
+			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador
+			    				<!-- <script>
 			    					if(user.rolUsuario == true){
 			    						document.getElementById("rol_{{user.username}}_usuario").checked = true;
 			    					}else if(user.rolModerador == true){
@@ -131,7 +131,7 @@
 			    					}else{
 			    						document.getElementById("rol_{{user.username}}_administrador").checked = true;
 			    					}
-			    				</script>
+			    				</script>-->
 			    			</td>
 			    			<td>
 			    				<!-- <input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})"> -->
@@ -151,7 +151,7 @@
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: "${usuario.getUsername()}",
+				    data: {"usernameAdmin" : "${usuario.getUsername()}"},
 				    headers : {
                     	'Accept': 'application/json'
                     }
