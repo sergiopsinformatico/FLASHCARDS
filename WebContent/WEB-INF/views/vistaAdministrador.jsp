@@ -153,8 +153,7 @@
 				    method: "GET",
 				    data: "${usuario.getUsername()}",
 				    headers : {
-				    	'Content-type': 'text/plain',
-                    	'Accept': 'text/plain'
+				    	'Content-type': 'text/plain'
                     }
 				}).then(function mySuccess(response) {
 					$scope.users = response.data;
