@@ -39,19 +39,19 @@ public class Controlador06PanelAdministrador {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/panelAdministrador/usersAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UsuarioDTO> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
 		administrador = (UsuarioDTO)request.getSession().getAttribute("usuario");
 		return Broker.getInstanciaUsuario().getUsuariosAdmin(administrador.getUsername());
 	}
 	
-	@RequestMapping(value = "/panelAdministrador/adminDeleteUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
 	public void administradorEliminaUsuario(@RequestBody @Valid String nombreUsuario) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 	}
 	
-	@RequestMapping(value = "/panelAdministrador/adminCambiaRolUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
 	public void administradorModificaRol(@RequestBody @Valid String usuario, String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);

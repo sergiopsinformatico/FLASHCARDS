@@ -140,12 +140,16 @@
 			app.controller('adminCtrl', function($scope, $http) {
 				
 				$http({
-				    url: 'usersAdmin.do', 
-				    method: "GET"
+				    url: '/usersAdmin.do', 
+				    method: "GET",
+        	        headers : {
+        	        	'Content-type': 'application/json',
+                    	'Accept': 'application/json'
+                    }
 				}).then(function successCallback(response) {
-				    $scope.users="Accept: "+response;
+				    $scope.users = response;
 				  }, function errorCallback(response) {
-					  $scope.users="Error: "+response;
+					  $scope.users = response;
 					  });
 				
 				$scope.deleteUser = function(nombreUsuario){
