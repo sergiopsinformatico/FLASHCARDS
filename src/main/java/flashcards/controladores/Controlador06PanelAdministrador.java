@@ -46,7 +46,11 @@ public class Controlador06PanelAdministrador {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> getUsuarios(String usernameAdmin) {
-		return Broker.getInstanciaUsuario().getUsuariosAdmin(usernameAdmin);
+		nuevo = new UsuarioDTO();
+		nuevo.setUsername(usernameAdmin);
+		List<UsuarioDTO> listaUsers = Broker.getInstanciaUsuario().getUsuariosAdmin(usernameAdmin);
+		listaUsers.add(nuevo);
+		return listaUsers;
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)

@@ -120,19 +120,18 @@
 			    			<td>{{user.username}}</td>
 			    			
 			    			<td>
-			    				<!-- <input type="radio" id="rol_user.getUsername()_usuario" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
-			    				<input type="radio" id="rol_user.getUsername()_moderador" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="moderador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Moderador
-			    				<input type="radio" id="rol_user.getUsername()_administrador" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="administrador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Administrador
+			    				<input type="radio" id="rol_{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="usuario" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Usuario
+			    				<input type="radio" id="rol_{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="moderador" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Moderador
+			    				<input type="radio" id="rol_{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="value{{user.username}}" value="administrador" ng-change='cambioRol({{user.username}}, value{{user.username}})'> Administrador
 			    				<script>
-			    					if(user.isRolUsuario()){
-			    						document.getElementById("rol{{user.getUsername()}}_usuario").checked = true;
-			    					}else if(user.isRolModerador()){
-			    						document.getElementById("rol{{user.getUsername()}}_moderador").checked = true;
+			    					if(user.rolUsuario == true){
+			    						document.getElementById("rol_{{user.username}}_usuario").checked = true;
+			    					}else if(user.rolModerador == true){
+			    						document.getElementById("rol_{{user.username}}_moderador").checked = true;
 			    					}else{
-			    						document.getElementById("rol{{user.getUsername()}}_administrador").checked = true;
+			    						document.getElementById("rol_{{user.username}}_administrador").checked = true;
 			    					}
-			    				</script>-->
-			    				prueba1
+			    				</script>
 			    			</td>
 			    			<td>
 			    				<!-- <input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})"> -->
