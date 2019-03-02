@@ -103,7 +103,9 @@
     	<br>
     	<div ng-app="adminApp" ng-controller="adminCtrl">
 		    <div class="container">
-		    	<br><br>
+		    	<br>
+		    	{{users.length}}
+		    	<br>
 		    	<div ng-if="users.length == 0">
 					<p>No hay usuarios en la aplicación</p>
 				</div>
@@ -115,11 +117,11 @@
 			    			<th>Eliminar Usuario</th>
 			    		</tr>
 			    		<tr ng-repeat="user in users">
-			    			<td>{{ user.getUsername() }}</td>
+			    			<td>user.getUsername()</td>
 			    			<td>
-			    				<input type="radio" id="rol{{user.getUsername()}}_usuario" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
-			    				<input type="radio" id="rol{{user.getUsername()}}_moderador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="moderador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Moderador
-			    				<input type="radio" id="rol{{user.getUsername()}}_administrador" name="rol{{user.getUsername()}}" ng-model="value{{user.getUsername()}}" value="administrador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Administrador
+			    				<input type="radio" id="rol_user.getUsername()_usuario" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
+			    				<input type="radio" id="rol_user.getUsername()_moderador" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="moderador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Moderador
+			    				<input type="radio" id="rol_user.getUsername()_administrador" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="administrador" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Administrador
 			    				<script>
 			    					if(user.isRolUsuario()){
 			    						document.getElementById("rol{{user.getUsername()}}_usuario").checked = true;
