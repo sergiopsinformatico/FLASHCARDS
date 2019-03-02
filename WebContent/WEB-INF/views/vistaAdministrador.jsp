@@ -143,14 +143,13 @@
 				    url: '/usersAdmin.do', 
 				    method: "GET",
 				    headers : {
-        	        	'Content-type': 'application/json',
                     	'Accept': 'application/json'
                     }
-				}).then(function successCallback(response) {
-				    $scope.users = response;
-				  }, function errorCallback(response) {
-					  $scope.users = response;
-					  });
+				}).then(function mySuccess(response) {
+        	    	$scope.users = response.data;
+        	    }, function myError(response) {
+        	    	$scope.users = response;
+        	    });
 				
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
