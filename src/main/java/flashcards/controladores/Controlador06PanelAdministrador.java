@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class Controlador06PanelAdministrador {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET)
+	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> getUsuarios(String usernameAdmin) {

@@ -151,7 +151,10 @@
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: "${usuario.getUsername()}"
+				    data: "${usuario.getUsername()}"},
+				    headers : {
+                    	'Accept': 'text/plain'
+                    }
 				}).then(function mySuccess(response) {
 					$scope.users = response.data;
         	    }, function myError(response) {
