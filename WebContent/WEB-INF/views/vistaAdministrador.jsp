@@ -103,10 +103,11 @@
     	<br>
     	<div ng-app="adminApp" ng-controller="adminCtrl">
 		    <div class="container">
-		    	<div ng-if="users.count == 0">
+		    	<br><br>
+		    	<div ng-if="users.length == 0">
 					<p>No hay usuarios en la aplicación</p>
 				</div>
-				<div ng-if="users.count > 0">
+				<div ng-if="users.length > 0">
 					<table style="width:100%">
 			    		<tr>
 			    			<th>Usuario</th>
