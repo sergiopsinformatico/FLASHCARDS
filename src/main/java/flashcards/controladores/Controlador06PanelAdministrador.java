@@ -39,7 +39,7 @@ public class Controlador06PanelAdministrador {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UsuarioDTO> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
 		administrador = (UsuarioDTO)request.getSession().getAttribute("usuario");
 		return Broker.getInstanciaUsuario().getUsuariosAdmin(administrador.getUsername());
