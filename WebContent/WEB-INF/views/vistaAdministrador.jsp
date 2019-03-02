@@ -117,7 +117,7 @@
 			    			<th>Eliminar Usuario</th>
 			    		</tr>
 			    		<tr ng-repeat="user in users">
-			    			<td>{{user.getUsername()}}</td>
+			    			<td>{{user.username}}</td>
 			    			
 			    			<td>
 			    				<!-- <input type="radio" id="rol_user.getUsername()_usuario" name="rol_user.getUsername()" ng-model="value{{user.getUsername()}}" value="usuario" ng-change='cambioRol({{user}}, value{{user.getUsername()}})'> Usuario
@@ -149,12 +149,10 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				
-				var jsonAdmin = {'usernameAdmin' : "${usuario.getUsername()}"};
-				
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: jsonAdmin,
+				    data: "${usuario.getUsername()}",
 				    headers : {
                     	'Accept': 'application/json'
                     }
