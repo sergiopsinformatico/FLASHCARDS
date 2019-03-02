@@ -45,7 +45,7 @@ public class Controlador06PanelAdministrador {
 	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<UsuarioDTO> getUsuarios(@RequestBody @Valid String usernameAdmin) {
+	public List<UsuarioDTO> getUsuarios(String usernameAdmin) {
 		return Broker.getInstanciaUsuario().getUsuariosAdmin(usernameAdmin);
 	}
 	
