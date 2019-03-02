@@ -140,7 +140,7 @@
 			app.controller('adminCtrl', function($scope, $http) {
 				
 				$http({
-				    url: '/usersAdmin.do', 
+				    url: 'getUsersAdmin.do', 
 				    method: "GET",
 				    headers : {
                     	'Accept': 'application/json'
