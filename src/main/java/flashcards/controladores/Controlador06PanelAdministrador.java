@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class Controlador06PanelAdministrador {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET)
+	@RequestMapping(value = "/usersAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UsuarioDTO> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
 		administrador =  (UsuarioDTO)request.getSession().getAttribute("usuario");
 		return Broker.getInstanciaUsuario().getUsuariosAdmin(administrador.getUsername());

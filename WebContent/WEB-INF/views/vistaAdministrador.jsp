@@ -141,7 +141,11 @@
 				
 				$http({
 				    url: 'usersAdmin.do', 
-				    method: "GET"
+				    method: "GET",
+        	        headers : {
+        	        	'Content-type': 'application/json',
+                    	'Accept': 'application/json'
+                    }
 				}).then(function successCallback(response) {
 				    $scope.users=response;
 				  }, function errorCallback(response) {
