@@ -6,11 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,9 +43,10 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/getUsersAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<UsuarioDTO> getUsuarios(HttpServletRequest request, HttpServletResponse response) {
-		administrador = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		return Broker.getInstanciaUsuario().getUsuariosAdmin(administrador.getUsername());
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public List<UsuarioDTO> getUsuarios(@RequestBody @Valid String usernameAdmin) {
+		return Broker.getInstanciaUsuario().getUsuariosAdmin(usernameAdmin);
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
