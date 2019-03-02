@@ -151,7 +151,7 @@
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: "${usuario.getUsername()}"},
+				    data: "${usuario.getUsername()}",
 				    headers : {
                     	'Accept': 'text/plain'
                     }
