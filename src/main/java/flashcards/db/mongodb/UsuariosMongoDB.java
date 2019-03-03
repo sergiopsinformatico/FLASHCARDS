@@ -312,19 +312,15 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public List<UsuarioDTO> getUsuariosAdmin(String admin){
+	public List<UsuarioDTO> getAllUsersSystem(){
 		listaUsers = new LinkedList<>();
 		iterator = coleccionUsuarios.find().iterator();
-		
 		if(iterator!=null) {
 			while(iterator.hasNext()) {
 				doc = iterator.next();
-				if(!(doc.getString(USERNAME).equals(admin))) {
-					listaUsers.add(getUsuarioDTO(doc.getString(USERNAME)));
-				}
+				listaUsers.add(getUsuarioDTO(doc.getString(USERNAME)));
 			}
 		}
-		
 		return listaUsers;
 	}
 

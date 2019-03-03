@@ -117,13 +117,14 @@
 			    			<th>Eliminar Usuario</th>
 			    		</tr>
 			    		<tr ng-repeat="user in users">
-			    			<td>{{user.username}}</td>
-			    			
 			    			<td>
-			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
+			    				{{user.username}}
+			    			</td>
+			    			<td>
+			    				<!-- <input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
 			    				<br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
 			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador
-			    				<!-- <script>
+			    				<script>
 			    					if(user.rolUsuario == true){
 			    						document.getElementById("rol_{{user.username}}_usuario").checked = true;
 			    					}else if(user.rolModerador == true){
@@ -151,13 +152,26 @@
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
-				    data: {"usernameAdmin" : "${usuario.getUsername()}"},
 				    headers : {
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
 				}).then(function mySuccess(response) {
-					$scope.users = response.data;
+					
+					var administrador = "${usuario.getUsername()}";
+					
+					$scope.users = [];
+					
+					var usuarios = response.data;
+					var indice = 0;
+					
+					while (indice<usuarios.length){
+						if((usuarios[indice]).username != administrador){
+							$scope.users.add(usuarios[indice]);
+						}
+						indice = indice + 1;
+					}
+					
         	    }, function myError(response) {
         	    	$scope.users = response;
         	    });
