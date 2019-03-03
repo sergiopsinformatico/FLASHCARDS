@@ -104,7 +104,9 @@
     	<div ng-app="adminApp" ng-controller="adminCtrl">
 		    <div class="container">
 		    	<br>
-		    	{{users}}
+		    	Original: {{originalArray}}
+		    	<br>
+		    	Modificado: {{users}}
 		    	<br>
 		    	<div ng-if="users.length == 0">
 					<p>No hay usuarios en la aplicación</p>
@@ -156,20 +158,16 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				}).then(function mySuccess(response) {
-					
-					var administrador = "${usuario.getUsername()}";
+				}).then(function mySuccess(response) {					
 					
 					$scope.users = [];
-					
-					var usuarios = response.data;
+					$scope.originalArray = response.data;
 					var indice = 0;
 					
-					while (indice<usuarios.length){
-						if((usuarios[indice]).username != administrador){
-							$scope.users.add(usuarios[indice]);
+					for(indice=0;indice<$scope.originalArray.length;indice++){
+						if(!(($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))){
+							$scope.users.add($scope.originalArray[indice]);
 						}
-						indice = indice + 1;
 					}
 					
         	    }, function myError(response) {
