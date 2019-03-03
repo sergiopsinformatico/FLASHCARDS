@@ -109,33 +109,20 @@
 					<p>No hay usuarios en la aplicación</p>
 				</div>
 				<div ng-if="users.length > 0">
-					<table style="width:100%">
-			    		<tr>
-			    			<th>Usuario</th>
-			    			<th>Rol</th>
-			    			<th>Eliminar Usuario</th>
-			    		</tr>
+					<table align="center" style="width:100%">
 			    		<tr ng-repeat="user in users">
 			    			<td>
 			    				<div class="profile-userpic">
 									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 								</div>
 								<br>
-			    				{{user.username}}
+			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
 			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
 			    				<br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
 			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador
-			    				<script>
-			    					if(user.rolUsuario == true){
-			    						document.getElementById("rol_{{user.username}}_usuario").checked = true;
-			    					}else if(user.rolModerador == true){
-			    						document.getElementById("rol_{{user.username}}_moderador").checked = true;
-			    					}else{
-			    						document.getElementById("rol_{{user.username}}_administrador").checked = true;
-			    					}
-			    				</script>-->
+			    				{{ checkRadio({{ user }}) }}
 			    			</td>
 			    			<td>
 			    				<!-- <input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})"> -->
@@ -174,6 +161,18 @@
         	    }, function myError(response) {
         	    	$scope.users = response;
         	    });
+				
+				
+				$scope.checkRadio = function(user){
+					if(user.rolUsuario == true){
+						document.getElementById("rol_"+user.username+"_usuario").checked = true;
+					}else if(user.rolModerador == true){
+						document.getElementById("rol_"+user.username+"_moderador").checked = true;
+					}else{
+						document.getElementById("rol_"+user.username+"_administrador").checked = true;
+					}
+				}
+				
 				
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
