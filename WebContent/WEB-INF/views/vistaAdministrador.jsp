@@ -154,7 +154,7 @@
 				    data: "${usuario.getUsername()}",
 				    headers : {
 				    	'Content-Type': 'text/plain',
-				    	'Accept': 'text/plain'
+				    	'Accept': 'application/json'
                     }
 				}).then(function mySuccess(response) {
 					$scope.users = response.data;
