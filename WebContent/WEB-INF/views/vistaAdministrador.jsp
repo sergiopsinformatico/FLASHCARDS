@@ -54,8 +54,8 @@
 		  float: none;
 		  display: block; 
 		  margin: 0 auto;
-		  width: 50%;
-		  height: 50%;
+		  width: 20px;
+		  height: auto;
 		  margin-left: auto;
   		  margin-right: auto;
 		  -webkit-border-radius: 50% !important;
@@ -104,9 +104,6 @@
     	<div ng-app="adminApp" ng-controller="adminCtrl">
 		    <div class="container">
 		    	<br>
-		    	Original: {{originalArray}}
-		    	<br>
-		    	Modificado: {{users}}
 		    	<br>
 		    	<div ng-if="users.length == 0">
 					<p>No hay usuarios en la aplicación</p>
@@ -120,10 +117,13 @@
 			    		</tr>
 			    		<tr ng-repeat="user in users">
 			    			<td>
+			    				<div class="profile-userpic">
+									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
+								</div>
 			    				{{user.username}}
 			    			</td>
 			    			<td>
-			    				<!-- <input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
+			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
 			    				<br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
 			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador
 			    				<script>
@@ -169,10 +169,6 @@
 							$scope.users.push($scope.originalArray[indice]);
 						}
 					}
-					
-					/*for(indice=0;indice<$scope.originalArray.length;indice++){
-						$scope.users.push(($scope.originalArray[indice]).username);
-					}*/
 					
         	    }, function myError(response) {
         	    	$scope.users = response;
