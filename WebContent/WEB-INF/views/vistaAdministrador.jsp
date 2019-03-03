@@ -165,7 +165,7 @@
 					var indice = 0;
 					
 					for(indice=0;indice<$scope.originalArray.length;indice++){
-						if(!(($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))){
+						if(((($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))!=0)){
 							$scope.users.push($scope.originalArray[indice]);
 						}
 					}
