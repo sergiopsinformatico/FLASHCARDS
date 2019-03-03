@@ -122,11 +122,9 @@
 			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
 			    				<br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
 			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador
-			    				{{ checkRadio({{ user }}) }}
 			    			</td>
 			    			<td>
-			    				<!-- <input type="button" value="Eliminar {{user.getUsername()}}" id="btnDelete{{user.getUsername()}}" name="btnDelete{{user.getUsername()}}" ng-click="deleteUser({{user.getUsername()}})"> -->
-			    				prueba2
+			    				<input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})">
 			    			</td>
 			    		</tr>
 			    	</table>
@@ -177,7 +175,7 @@
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
 	        	        method: 'POST',
-	        	        url: 'adminDeleteUser.do',
+	        	        url: '/adminDeleteUser.do',
 	        	        data: nombreUsuario,
 	        	        headers : {
 	        	        	'Content-type': 'application/json',
