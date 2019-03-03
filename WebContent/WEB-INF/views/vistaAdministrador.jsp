@@ -164,15 +164,15 @@
 					$scope.originalArray = response.data;
 					var indice = 0;
 					
-					/*for(indice=0;indice<$scope.originalArray.length;indice++){
-						if(!(($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))){
-							$scope.users.add($scope.originalArray[indice]);
-						}
-					}*/
-					
 					for(indice=0;indice<$scope.originalArray.length;indice++){
-						$scope.users.add(($scope.originalArray[indice]).username);
+						if(!(($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))){
+							$scope.users.push($scope.originalArray[indice]);
+						}
 					}
+					
+					/*for(indice=0;indice<$scope.originalArray.length;indice++){
+						$scope.users.push(($scope.originalArray[indice]).username);
+					}*/
 					
         	    }, function myError(response) {
         	    	$scope.users = response;
