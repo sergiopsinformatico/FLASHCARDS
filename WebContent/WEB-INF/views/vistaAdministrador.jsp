@@ -54,7 +54,7 @@
 		  float: none;
 		  display: block; 
 		  margin: 0 auto;
-		  width: 20px;
+		  width: 60px;
 		  height: auto;
 		  margin-left: auto;
   		  margin-right: auto;
@@ -120,6 +120,7 @@
 			    				<div class="profile-userpic">
 									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 								</div>
+								<br>
 			    				{{user.username}}
 			    			</td>
 			    			<td>
