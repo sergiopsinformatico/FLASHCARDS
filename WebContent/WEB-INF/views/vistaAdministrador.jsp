@@ -118,13 +118,12 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<input type="radio" id="{{user.username}}_usuario" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Usuario
-			    				<!-- <br><input type="radio" id="{{user.username}}_moderador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Moderador
-			    				<br><input type="radio" id="{{user.username}}_administrador" name="rol_{{user.username}}" ng-model="rol_{{user.username}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{user.username}})"> Administrador-->
+			    				<input type="radio" id="usuario_{{$index}}" name="rol_{{$index}}" ng-model="rol_{{$index}}" value="usuario" ng-change="cambioRol({{user.username}}, rol_{{$index}})"> Usuario
+			    				<br><input type="radio" id="moderador_{{$index}}" name="rol_{{$index}}" ng-model="rol_{{$index}}" value="moderador" ng-change="cambioRol({{user.username}}, rol_{{$index}})"> Moderador
+			    				<br><input type="radio" id="administrador_{{$index}}" name="rol_{{$index}}" ng-model="rol_{{$index}}" value="administrador" ng-change="cambioRol({{user.username}}, rol_{{$index}})"> Administrador
 			    			</td>
 			    			<td>
-			    				<!-- <input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})"> -->
-			    				Eliminar usuario
+			    				<input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})">
 			    			</td>
 			    		</tr>
 			    	</table>
