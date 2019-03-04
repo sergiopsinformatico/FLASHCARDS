@@ -118,11 +118,10 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<div ng-init="user.rolUsuario==true ? rol_$index=usuario : rol_$index=moderador">
-				    				<input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="usuario"> Usuario
-				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="moderador"> Moderador
-				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="administrador"> Administrador
-			    				</div>
+			    				<input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
+				    			<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
+				    			<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador
+				    			{{defaultRadio({{$index}},{{user}})}}
 			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
 
 			    			</td>
@@ -164,6 +163,15 @@
         	    	$scope.users = response;
         	    });
 				
+				$scope.defaultRadio = function(indice,usuario){
+					if(usuario.rolUsuario == true){
+						document.getElementById("usuario_"+indice).checked=true;
+					}else if(usuario.rolModerador == true){
+						document.getElementById("moderador_"+indice).checked=true;
+					}else{
+						document.getElementById("administrador_"+indice).checked=true;
+					}
+				}
 				
 				$scope.deleteUser = function(nombreUsuario){
 					$http({
