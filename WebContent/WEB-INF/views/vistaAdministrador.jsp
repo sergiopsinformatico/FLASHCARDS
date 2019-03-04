@@ -118,10 +118,13 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<input type="radio" name="rol_{{$index}}" value="usuario" ng-change="cambioRol({{$index}}, rol_{{$index}})"> Usuario
-			    				<br><input type="radio" name="rol_{{$index}}" value="moderador" ng-change="cambioRol({{$index}}, rol_{{$index}})"> Moderador
-			    				<br><input type="radio" name="rol_{{$index}}" value="administrador" ng-change="cambioRol({{$index}}, rol_{{$index}})"> Administrador
+			    				<div ng-init="user.rolUsuario ? rol_$index=usuario : user.rolModerador ? rol_$index=moderador : rol_$index=administrador">
+				    				<input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="usuario"> Usuario
+				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="moderador"> Moderador
+				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="administrador"> Administrador
+			    				</div>
 			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
+
 			    			</td>
 			    			<td>
 			    				<!-- <input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})"> -->
@@ -160,17 +163,6 @@
         	    }, function myError(response) {
         	    	$scope.users = response;
         	    });
-				
-				
-				$scope.checkRadio = function(user){
-					if(user.rolUsuario == true){
-						document.getElementById("rol_"+user.username+"_usuario").checked = true;
-					}else if(user.rolModerador == true){
-						document.getElementById("rol_"+user.username+"_moderador").checked = true;
-					}else{
-						document.getElementById("rol_"+user.username+"_administrador").checked = true;
-					}
-				}
 				
 				
 				$scope.deleteUser = function(nombreUsuario){
