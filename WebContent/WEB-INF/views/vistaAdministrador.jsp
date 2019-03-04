@@ -118,7 +118,7 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<div ng-init="user.rolUsuario ? rol_$index=usuario : user.rolModerador ? rol_$index=moderador : rol_$index=administrador">
+			    				<div ng-init="user.rolUsuario ? rol_$index=usuario : rol_$index=moderador">
 				    				<input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="usuario"> Usuario
 				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="moderador"> Moderador
 				    				<br><input type="radio" name="rol_{{$index}}" ng-model="rol_$index" value="administrador"> Administrador
