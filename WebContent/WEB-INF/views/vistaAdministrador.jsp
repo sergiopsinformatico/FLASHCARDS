@@ -118,9 +118,9 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<input type="radio" name="rol_{{$index}}" value="usuario"> Usuario
-			    				<br><input type="radio" name="rol_{{$index}}" value="moderador"> Moderador
-			    				<br><input type="radio" name="rol_{{$index}}" value="administrador"> Administrador
+			    				<input type="radio" name="rol_" value="usuario"> Usuario
+			    				<br><input type="radio" name="rol_" value="moderador"> Moderador
+			    				<br><input type="radio" name="rol_" value="administrador"> Administrador
 			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
 			    			</td>
 			    			<td>
