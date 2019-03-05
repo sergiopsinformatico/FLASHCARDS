@@ -122,7 +122,7 @@
 			    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
 			    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador
 			    				<script>
-			    					$('input:radio[name=rol_'+$index+']')[0].checked = true;
+			    					$('input:radio[name=rol_'+{{$index}}+']')[0].checked = true;
 				    			</script>
 			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
 
