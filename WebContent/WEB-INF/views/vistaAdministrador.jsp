@@ -118,13 +118,13 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<div ng-class="{{checked : user.rolUsuario == true}}">
+			    				<div ng-class="{{checked : user.rolUsuario}}">
 			    					<input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
 			    				</div>
-			    				<div ng-class="{{checked : user.rolModerador == true}}">
+			    				<div ng-class="{{checked : user.rolModerador}}">
 				    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
 				    			</div>
-				    			<div ng-class="{{checked : user.rolAdministrador == true}}">
+				    			<div ng-class="{{checked : user.rolAdministrador}}">
 				    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador
 				    			</div>
 			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
