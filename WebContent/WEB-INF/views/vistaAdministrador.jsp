@@ -118,7 +118,12 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
+			    				{{$index}}
+			    				<br>
 			    				<input type="hidden" name="nombreVariable" id="nombreVariable" value="rol_$index">
+			    				<br>
+			    				{{nombreVariable}}
+			    				<br>
 		    					<input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
 			    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
 			    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador
