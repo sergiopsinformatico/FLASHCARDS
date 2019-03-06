@@ -118,25 +118,22 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<select name="select_{user.username}}">
-								  <option value="usuario_{{user.username}}">Usuario</option>
-								  <option value="moderador_{{user.username}}">Moderador</option>
-								  <option value="administrador_{{user.username}}">Administrador</option>
+			    				<select id="select_{user.username}}">
+								  <option value="usuario">Usuario</option>
+								  <option value="moderador">Moderador</option>
+								  <option value="administrador">Administrador</option>
 								</select>
+								
+								<script>
+									$("#select_{user.username}}").val("administrador");
+								</script>
+								
 							</td>
-			    			<td>
-			    				boton eliminar
-			    			</td>
 			    		</tr>
 			    	</table>
 				</div>
 			</div>
 		</div>
-		<!-- <input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
-			    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
-			    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador-->
-			    		<!-- <input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})"> -->
-			    						
 		<script>
 			
 			var app = angular.module('adminApp', []);
