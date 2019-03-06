@@ -125,7 +125,7 @@
 								</select>
 								
 								<script>
-									$("#select_{user.username}}").val("administrador");
+									$("#select_{{user.username}}").val("administrador");
 								</script>
 								
 							</td>
