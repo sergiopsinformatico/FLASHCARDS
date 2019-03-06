@@ -118,7 +118,7 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<select id="select_{{user.username}}">
+			    				<select id="select_user.username">
 								  <option value="usuario">Usuario</option>
 								  <option value="moderador">Moderador</option>
 								  <option value="administrador">Administrador</option>
