@@ -118,17 +118,13 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
-			    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
-			    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador
-			    				<script>
-			    					$('input:radio[name=rol_'+{{$index}}+']')[0].checked = true;
-				    			</script>
-			    				<!-- ng-change="cambioRol({{user.username}}, rol_{{$index}})" -->
-
-			    			</td>
+			    				<select name="select_{user.username}}">
+								  <option value="usuario_{{user.username}}">Usuario</option>
+								  <option value="moderador_{{user.username}}">Moderador</option>
+								  <option value="administrador_{{user.username}}">Administrador</option>
+								</select>
+							</td>
 			    			<td>
-			    				<!-- <input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})"> -->
 			    				boton eliminar
 			    			</td>
 			    		</tr>
@@ -136,7 +132,11 @@
 				</div>
 			</div>
 		</div>
-		
+		<!-- <input type="radio" name="rol_{{$index}}" id="usuario_{{$index}}" value="usuario"> Usuario
+			    				<br><input type="radio" name="rol_{{$index}}" id="moderador_{{$index}}" value="moderador"> Moderador
+			    				<br><input type="radio" name="rol_{{$index}}" id="administrador_{{$index}}" value="administrador"> Administrador-->
+			    		<!-- <input type="button" value="Eliminar {{user.username)}}" id="btnDelete{{user.username}}" name="btnDelete{{user.username}}" ng-click="deleteUser({{user.username}})"> -->
+			    						
 		<script>
 			
 			var app = angular.module('adminApp', []);
