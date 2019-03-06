@@ -118,14 +118,14 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<select id="ejemplo_$index">
+			    				<select id="select_{{user.username}}">
 								  <option value="usuario">Usuario</option>
 								  <option value="moderador">Moderador</option>
 								  <option value="administrador">Administrador</option>
 								</select>
 								
 								<script>
-									$("#ejemplo_$index").val("administrador");
+									$("#select_{{user.username}}").val("administrador");
 								</script>
 								
 							</td>
