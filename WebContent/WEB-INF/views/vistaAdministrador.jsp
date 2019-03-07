@@ -75,7 +75,8 @@
   </head>
 
   <body id="page-top">
-  
+    <%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
+    
  	<!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -118,14 +119,14 @@
 			    				<p align="center">{{user.username}}</p>
 			    			</td>
 			    			<td>
-			    				<select name="select_user.username" id="select_user.username">
+			    				<select name="select_{{user.username}}" id="select_{{user.username}}">
 								  <option value="usuario">Usuario</option>
 								  <option value="moderador">Moderador</option>
 								  <option value="administrador">Administrador</option>
 								</select>
 								
 								<script>
-									$("#select_user.username").val(2);
+									$("#select_{{user.username}}").val(2);
 								</script>
 								
 							</td>
