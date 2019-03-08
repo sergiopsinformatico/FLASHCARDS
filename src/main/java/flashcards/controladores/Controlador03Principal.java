@@ -24,6 +24,7 @@ public class Controlador03Principal {
 	EliminarCuentaDTO elimina;
 	Fecha fecha;
 	Email email;
+	UsuarioDTO user;
 	
 	//Constantes
 	static final String USUARIO = "usuario";
@@ -36,7 +37,12 @@ public class Controlador03Principal {
 		
 		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			vista = new ModelAndView("vistaPrincipal");
-			vista.addObject("isAdmin", ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).isRolAdministrador());
+			user = (UsuarioDTO)(request.getSession().getAttribute(USUARIO));
+			if(user.getRol().equals("Administrador")) {
+				vista.addObject("isAdmin",true);
+			}else {
+				vista.addObject("isAdmin",false);
+			}
 		}else {
 			vista = new ModelAndView(REDIRECT);
 		}

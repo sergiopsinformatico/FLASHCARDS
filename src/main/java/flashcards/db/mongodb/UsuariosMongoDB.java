@@ -80,7 +80,9 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		doc = new Document().
 				append(USERNAME, user.getUsername()).
 				append(EMAIL, user.getEmail()).
-				append(CLAVE, user.getClave());
+				append(CLAVE, user.getClave()).
+				append("rol", user.getRol()).
+				append("cuentaActivada", user.isActivadaCuenta());
 		
 		try {
 			if(user.getNombreApellidos()!=null || !user.getNombreApellidos().equalsIgnoreCase("")) {
@@ -116,11 +118,6 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 			doc = doc.append(EMAILFOTO, "");
 		}
 		
-		doc = doc.append("rolUsuario", user.isRolUsuario()).
-				append("rolModerador", user.isRolModerador()).
-				append("rolAdministrador", user.isRolAdministrador()).
-				append("cuentaActivada", user.isActivadaCuenta());
-		
 		return doc;
 	}
 	
@@ -129,9 +126,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		usuarioDB.setUsername(doc.getString(USERNAME));
 		usuarioDB.setClave(doc.getString(CLAVE));
 		usuarioDB.setEmail(doc.getString(EMAIL));
-		usuarioDB.setRolUsuario(doc.getBoolean("rolUsuario"));
-		usuarioDB.setRolModerador(doc.getBoolean("rolModerador"));
-		usuarioDB.setRolAdministrador(doc.getBoolean("rolAdministrador"));
+		usuarioDB.setRol(doc.getString("rol"));
 		usuarioDB.setActivadaCuenta(doc.getBoolean("cuentaActivada"));
 		try {
 			if(doc.getString(NYA)!=null || (!doc.getString(NYA).equalsIgnoreCase(""))) {

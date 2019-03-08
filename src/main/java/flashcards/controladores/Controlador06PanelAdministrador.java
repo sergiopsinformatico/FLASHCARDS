@@ -34,7 +34,7 @@ public class Controlador06PanelAdministrador {
 	@RequestMapping(value = "/panelAdministrador", method = RequestMethod.GET)
 	public ModelAndView modificarPerfil(HttpServletRequest request, HttpServletResponse response) {
 		administrador = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		if(administrador.isRolAdministrador()) {
+		if(administrador.getRol().equals("Administrador")) {
 			vista = new ModelAndView("vistaAdministrador");
 		}else {
 			vista = new ModelAndView("redirect:/");
@@ -49,7 +49,9 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public void administradorEliminaUsuario(@RequestBody @Valid String nombreUsuario) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
@@ -61,19 +63,13 @@ public class Controlador06PanelAdministrador {
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
 		switch(rol){
 			case "usuario":
-				nuevo.setRolUsuario(true);
-				nuevo.setRolModerador(false);
-				nuevo.setRolAdministrador(false);
+				nuevo.setRol("Usuario");
 				break;
 			case "moderador":
-				nuevo.setRolUsuario(false);
-				nuevo.setRolModerador(true);
-				nuevo.setRolAdministrador(false);
+				nuevo.setRol("Moderador");
 				break;
-			case "administrador":
-				nuevo.setRolUsuario(false);
-				nuevo.setRolModerador(false);
-				nuevo.setRolAdministrador(true);
+			case "default":
+				nuevo.setRol("Administrador");
 				break;
 		}
 		Broker.getInstanciaUsuario().updateUsuario(antiguo, nuevo);

@@ -9,9 +9,7 @@ public class UsuarioDTO {
 	String pais;
 	String foto;
 	String emailFoto;
-	boolean rolUsuario;
-	boolean rolModerador;
-	boolean rolAdministrador;
+	String rol;
 	boolean activadaCuenta;
 	
 	public String getUsername() {
@@ -78,28 +76,12 @@ public class UsuarioDTO {
 		this.emailFoto = emailFoto;
 	}
 	
-	public boolean isRolUsuario() {
-		return rolUsuario;
+	public String getRol() {
+		return rol;
 	}
 
-	public void setRolUsuario(boolean rolUsuario) {
-		this.rolUsuario = rolUsuario;
-	}
-
-	public boolean isRolModerador() {
-		return rolModerador;
-	}
-
-	public void setRolModerador(boolean rolModerador) {
-		this.rolModerador = rolModerador;
-	}
-
-	public boolean isRolAdministrador() {
-		return rolAdministrador;
-	}
-
-	public void setRolAdministrador(boolean rolAdministrador) {
-		this.rolAdministrador = rolAdministrador;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	public boolean isActivadaCuenta() {

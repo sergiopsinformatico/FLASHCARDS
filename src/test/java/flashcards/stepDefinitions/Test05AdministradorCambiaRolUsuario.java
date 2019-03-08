@@ -17,7 +17,7 @@ public class Test05AdministradorCambiaRolUsuario {
 	public void un_administrador_va_a_cambiar_el_rol_de_un_usuario() throws Throwable {
 		usuariosDB = Broker.getInstanciaUsuario();
 	    administrador = usuariosDB.getUsuarioDTO("sergio1993");
-	    assert(administrador.isRolAdministrador());
+	    assert(administrador.getRol().equals("Administrador"));
 	}
 
 	@When("^Localiza al usuario$")
@@ -34,12 +34,10 @@ public class Test05AdministradorCambiaRolUsuario {
 	public void cambia_el_rol_de_este() throws Throwable {
 	    usuario = usuariosDB.getUsuarioDTO("ejemploUsuario");
 	    usuarioNuevo = usuariosDB.getUsuarioDTO("ejemploUsuario");
-	    usuarioNuevo.setRolUsuario(false);
-	    usuarioNuevo.setRolModerador(true);
-	    usuarioNuevo.setRolAdministrador(false);
+	    usuarioNuevo.setRol("Moderador");
 	    usuariosDB.updateUsuario(usuario, usuarioNuevo);
 	    usuario = usuariosDB.getUsuarioDTO("ejemploUsuario");
-	    assert((!usuario.isRolUsuario()) && usuario.isRolModerador() && (!usuario.isRolAdministrador()));
+	    assert(usuario.getRol().equals("Moderador"));
 	}
 
 }

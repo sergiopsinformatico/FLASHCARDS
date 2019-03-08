@@ -19,9 +19,7 @@ public class Test03UsuarioVePerfil {
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
 		user.setEmail("correoInventado@email.com");
-		user.setRolUsuario(true);
-		user.setRolModerador(false);
-		user.setRolAdministrador(false);
+		user.setRol("Usuario");
 	    assert(true);
 	}
 	

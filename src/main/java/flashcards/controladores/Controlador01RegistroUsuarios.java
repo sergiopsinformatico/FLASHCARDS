@@ -86,9 +86,7 @@ public class Controlador01RegistroUsuarios {
 		user.setPais("");
 		user.setFoto("");
 		user.setEmailFoto("");
-		user.setRolAdministrador(false);
-		user.setRolModerador(false);
-		user.setRolUsuario(true);
+		user.setRol("Usuario");
 		user.setActivadaCuenta(false);
 		
 		random = new SecureRandom();

@@ -20,9 +20,7 @@ public class Test04UsuarioActualizaPerfil {
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
 		user.setEmail("correoInventado@email.com");
-		user.setRolUsuario(true);
-		user.setRolModerador(false);
-		user.setRolAdministrador(false);
+		user.setRol("Usuario");
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}
 	
@@ -32,9 +30,7 @@ public class Test04UsuarioActualizaPerfil {
 		user2.setUsername("Sergio123");
 		user2.setClave("sergio1");
 		user2.setEmail("correoInventado@email.com");
-		user2.setRolUsuario(true);
-		user2.setRolModerador(false);
-		user2.setRolAdministrador(false);
+		user2.setRol("Usuario");
 		user2.setNombreApellidos("Pepito");
 		assert(true);
 	}

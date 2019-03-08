@@ -110,25 +110,32 @@
 					<p>No hay usuarios en la aplicación</p>
 				</div>
 				<div ng-if="users.length > 0">
+					<div class="panel-heading">
+						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
+					</div>
 					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in users">
+			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
 			    			<td>
 			    				<div class="profile-userpic">
 									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 								</div>
-			    				<p align="center">{{user.username}}</p>
+			    				<p align="center">Usuario: {{user.username}}</p>
+			    				<p align="center">Rol: {{user.rol}}</p>
 			    			</td>
 			    			<td>
-			    				<select name="select_{{user.username}}" id="select_{{user.username}}">
-								  <option value="usuario">Usuario</option>
-								  <option value="moderador">Moderador</option>
-								  <option value="administrador">Administrador</option>
-								</select>
-								
-								<script>
-									$("#select_{{user.username}}").val(2);
-								</script>
-								
+			    				<form action="adminCambiaRolUser.do" method="POST" id="cambia" name="cambia">
+									<input type="radio" name="rol" id="{{ usuario.username }}usuarioCheck" value="usuario"> Usuario <br>
+									<input type="radio" name="rol" id="{{ usuario.username }}moderadorCheck" value="moderador"> Moderador <br>
+									<input type="radio" name="rol" id="{{ usuario.username }}administradorCheck" value="administrador"> Administrador
+									<input id="usuario" name="usuario" type="hidden" value="{{ usuario.username }}">
+									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
+								</form>
+							</td>
+							<td>
+								<form action="adminDeleteUser.do" id="eliminaForm" method="POST">
+						    		<input id="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ usuario.username }}">
+								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
+								</form>
 							</td>
 			    		</tr>
 			    	</table>
@@ -162,45 +169,6 @@
         	    }, function myError(response) {
         	    	$scope.users = response;
         	    });
-				
-				$scope.defaultRadio = function(indice,usuario){
-					if(usuario.rolUsuario == true){
-						document.getElementById("usuario_"+indice).checked=true;
-					}else if(usuario.rolModerador == true){
-						document.getElementById("moderador_"+indice).checked=true;
-					}else{
-						document.getElementById("administrador_"+indice).checked=true;
-					}
-				}
-				
-				$scope.deleteUser = function(nombreUsuario){
-					$http({
-	        	        method: 'POST',
-	        	        url: '/adminDeleteUser.do',
-	        	        data: nombreUsuario,
-	        	        headers : {
-	        	        	'Content-type': 'application/json',
-	                    	'Accept': 'application/json'
-	                    }
-	        	    });
-				}
-				
-				$scope.cambioRol = function(usuario, rol){
-					var jsonRol={
-						"usuario" : usuario,
-						"rol" : rol
-					}
-					
-					$http({
-	        	        method: 'POST',
-	        	        url: '/adminCambiaRolUser.do',
-	        	        data: jsonRol,
-	        	        headers : {
-	        	        	'Content-type': 'application/json',
-	                    	'Accept': 'application/json'
-	                    }
-	        	    });
-				}	
 				
 			});
 				

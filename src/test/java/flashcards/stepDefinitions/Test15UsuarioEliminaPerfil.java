@@ -1,3 +1,4 @@
+
 package test.java.flashcards.stepDefinitions;
 
 
@@ -20,9 +21,7 @@ public class Test15UsuarioEliminaPerfil {
 		user.setUsername("Sergio123");
 		user.setClave("sergio1");
 		user.setEmail("correoInventado@email.com");
-		user.setRolUsuario(true);
-		user.setRolModerador(false);
-		user.setRolAdministrador(false);
+		user.setRol("Usuario");
 		user.setNombreApellidos("Pepito");
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}

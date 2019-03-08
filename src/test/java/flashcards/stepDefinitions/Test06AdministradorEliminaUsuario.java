@@ -17,7 +17,7 @@ public class Test06AdministradorEliminaUsuario {
 	public void el_administrador_va_a_eliminar_un_usuario() throws Throwable {
 	    usuariosDB = Broker.getInstanciaUsuario();
 	    administrador = usuariosDB.getUsuarioDTO("sergio1993");
-	    assert(administrador.isRolAdministrador());
+	    assert(administrador.getRol().equals("Administrador"));
 	}
 
 	@When("^Encuentra al usuario$")
