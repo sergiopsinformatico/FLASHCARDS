@@ -110,6 +110,8 @@
 					<p>No hay usuarios en la aplicación</p>
 				</div>
 				<div ng-if="users.length > 0">
+					{{mensajeControl}}
+					<br>
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
@@ -151,7 +153,7 @@
 			
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
-				
+				$scope.mensajeControl = '';
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
@@ -189,7 +191,11 @@
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
 	                    }
-					});
+					}).then(function mySuccess(response) {					
+						$scope.mensajeControl = response;
+	        	    }, function myError(response) {
+	        	    	$scope.mensajeControl = response;
+	        	    });
 				};
 				
 				$scope.deleteUser = function() {
@@ -205,7 +211,11 @@
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
 	                    }
-					});
+					}).then(function mySuccess(response) {					
+						$scope.mensajeControl = response;
+	        	    }, function myError(response) {
+	        	    	$scope.mensajeControl = response;
+	        	    });
 				};
 				
 			});
