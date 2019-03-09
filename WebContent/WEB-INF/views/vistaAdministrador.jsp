@@ -117,17 +117,18 @@
 					<table align="center" border="5" style="width:100%">
 			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
 			    			<td>
+			    				<br>
 			    				<div class="profile-userpic">
 									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
 								</div>
-								<br>
 			    				<p align="center">
 			    					Usuario: {{user.username}}
 			    					<br>Rol: {{user.rol}}
 			    				</p>
+			    				<br>
 			    			</td>
 			    			<td>
-			    				<form action="adminCambiaRolUser.do" method="POST" id="cambia" name="cambia">
+			    				<form action="adminCambiaRolUser.do" method="POST" id="cambia" name="cambia" align="center">
 									<input type="radio" name="rol" id="{{ usuario.username }}usuarioCheck" value="usuario"> Usuario <br>
 									<input type="radio" name="rol" id="{{ usuario.username }}moderadorCheck" value="moderador"> Moderador <br>
 									<input type="radio" name="rol" id="{{ usuario.username }}administradorCheck" value="administrador"> Administrador
@@ -136,7 +137,7 @@
 								</form>
 							</td>
 							<td>
-								<form action="adminDeleteUser.do" id="eliminaForm" method="POST">
+								<form action="adminDeleteUser.do" id="eliminaForm" method="POST" align="center">
 						    		<input id="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ usuario.username }}">
 								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 								</form>

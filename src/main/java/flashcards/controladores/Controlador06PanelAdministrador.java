@@ -49,21 +49,17 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public void administradorEliminaUsuario(@RequestBody @Valid String nombreUsuario) {
-		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
+	public void administradorEliminaUsuario(HttpServletRequest request, HttpServletResponse response) {
+		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("nombreUsuario"));
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 	}
 	
-	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public void administradorModificaRol(@RequestBody @Valid String usuario, String rol) {
-		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
-		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
-		switch(rol){
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
+	public void administradorModificaRol(HttpServletRequest request, HttpServletResponse response) {
+		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("usuario"));
+		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("usuario"));
+		switch(request.getParameter("rol")){
 			case "usuario":
 				nuevo.setRol("Usuario");
 				break;

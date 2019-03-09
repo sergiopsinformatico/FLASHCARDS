@@ -239,67 +239,6 @@
 							document.getElementById("panelAdmin").style.display = "block";
 						}
 					</script>
-				    
-				    <!-- <br>
-				    
-				    <div id="panelUsuario" class="panel panel-default">
-				      <div class="panel-heading">
-				      	<h4>Panel Usuario</h4>
-				      </div>
-				      <div class="panel-body">
-				      	<div class="table-responsive">          
-						  <table class="table">
-						    <tbody>
-						      <tr>
-						        <td>
-						        	<a href="/gente.html" style="text-align: center;">
-						        		<img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
-						        	</a>
-						        	<br>
-						        	<h6 align="center" style="color:#C9EA24;">
-						        		<a style="color:#C9EA24;" href="/gente.html">Gente</a>
-						        	</h6>
-						        </td>
-						        <td>
-						        	<a href="/clubes.html" style="text-align: center;">
-						        		<img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
-						        	</a>
-						        	<br>
-						        	<h6 align="center" style="color:#65C362;">
-						        		<a style="color:#65C362;" href="/clubes.html">Clubes</a>
-						        	</h6>								
-								</td>
-						      </tr>
-						    </tbody>
-						  </table>
-						</div>
-				      </div>
-				    </div>
-				    <script>
-				    	var divAdmin = document.getElementById("panelAdmin");
-				    	if(${usuario.isRolAdministrador()}==true){
-				    		divAdmin.style.display = "block";
-				    	}
-				    </script>-->
-				    
-				    
-					<!-- <div id="panelUsuario">
-						
-						<div id="panelUsuarioGente" class="container-Paneles">
-						  <img src="/resources/img/personas.png" alt="Gente" class="image" style="width:100%">
-						  <div class="middle">
-						    <div class="text"><a href="/gente.html">Gente</a></div>
-						  </div>
-						</div>
-												
-						<div id="panelUsuarioClubes" class="container-Paneles">
-						  <img src="/resources/img/clubes.png" alt="Clubes" class="image" style="width:100%">
-						  <div class="middle">
-						    <div class="text"><a href="/clubes.html">Clubes</a></div>
-						  </div>
-						</div>
-					
-					</div>-->
 				</div>
 			</div>
 		</div>
