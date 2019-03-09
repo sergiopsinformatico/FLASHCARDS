@@ -121,7 +121,7 @@
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
-									<img src="${usuario.getFoto()}" class="img-responsive" alt="">
+									<img src="${user.getFoto()}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
 			    					Usuario: {{user.username}}
@@ -131,16 +131,16 @@
 			    			</td>
 			    			<td>
 			    				<form ng-submit="changeRol()">
-									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}usuarioCheck" value="usuario"> Usuario <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}moderadorCheck" value="moderador"> Moderador <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}administradorCheck" value="administrador"> Administrador
-									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ usuario.username }}">
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}usuarioCheck" value="usuario"> Usuario <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}moderadorCheck" value="moderador"> Moderador <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}administradorCheck" value="administrador"> Administrador
+									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.username }}">
 									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 								</form>
 							</td>
 							<td>
 								<form ng-submit="deleteUser()">
-						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ usuario.username }}">
+						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.username }}">
 								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 								</form>
 							</td>
