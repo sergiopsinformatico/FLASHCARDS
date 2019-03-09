@@ -199,7 +199,7 @@
 					    method: "POST",
 					    data:{
 					    	'username' : user.username
-					    }
+					    },
 					    headers : {
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
