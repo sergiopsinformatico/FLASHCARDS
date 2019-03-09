@@ -200,13 +200,11 @@
 				$scope.deleteUser = function() {
 
 					$http({
-					    url: '/adminCambiaRolUser.do', 
+					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: {
-							'nombreUsuario' : $scope.nombreUsuario
-						},
+					    data: $scope.nombreUsuario,
 					    headers : {
-					    	'Content-Type': 'application/json'
+					    	'Content-Type': 'text/plain'
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
