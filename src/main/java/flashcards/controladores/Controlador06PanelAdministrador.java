@@ -4,10 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -49,18 +47,15 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public boolean administradorEliminaUsuario(@RequestBody String nombreUsuario) {
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> administradorEliminaUsuario(@RequestBody String nombreUsuario) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
-		return Broker.getInstanciaUsuario().deleteUsuario(usuario);
+		Broker.getInstanciaUsuario().deleteUsuario(usuario);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public boolean administradorModificaRol(@RequestBody String usuario, String rol) {
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> administradorModificaRol(@RequestBody String usuario, String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
 		switch(rol){
@@ -74,7 +69,8 @@ public class Controlador06PanelAdministrador {
 				nuevo.setRol("Administrador");
 				break;
 		}
-		return Broker.getInstanciaUsuario().updateUsuario(antiguo, nuevo);
+		Broker.getInstanciaUsuario().updateUsuario(antiguo, nuevo);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 }

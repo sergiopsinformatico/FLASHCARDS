@@ -199,7 +199,7 @@
 					    method: "POST",
 					    data:user.username,
 					    headers : {
-					    	'Content-Type': 'text/plain',
+					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
