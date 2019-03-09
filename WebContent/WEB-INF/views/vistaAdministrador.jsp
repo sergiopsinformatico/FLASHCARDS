@@ -102,58 +102,14 @@
     <section>
     	<br>
     	<br>
-    	<div ng-app="adminApp" ng-controller="adminCtrl">
-		    <div class="container">
-		    	<br>
-		    	<br>
-		    	<div ng-if="users.length == 0">
-					<p>No hay usuarios en la aplicación</p>
-				</div>
-				<div ng-if="users.length > 0">
-					{{mensajeControl}}
-					<br>
-					<div class="panel-heading">
-						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
-					</div>
-					<br>
-					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
-			    			<td>
-			    				<br>
-			    				<div class="profile-userpic">
-									<img src="{{user.foto}}" class="img-responsive" alt="">
-								</div>
-			    				<p align="center">
-			    					Usuario: {{user.username}}
-			    					<br>Rol: {{user.rol}}
-			    				</p>
-			    				<br>
-			    			</td>
-			    			<td>
-			    				<form ng-submit="changeRol()">
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}usuarioCheck" value="usuario"> Usuario <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}moderadorCheck" value="moderador"> Moderador <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}administradorCheck" value="administrador"> Administrador
-									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.username }}">
-									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
-								</form>
-							</td>
-							<td>
-								<form ng-submit="deleteUser()">
-						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.username }}">
-								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
-								</form>
-							</td>
-			    		</tr>
-			    	</table>
-				</div>
-			</div>
-		</div>
-		<script>
+    	<script>
 			
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				$scope.mensajeControl = '';
+				$socpe.rol = '';
+				$scope.usuario = '';
+				$scope.nombreUsuario = '';
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
@@ -212,6 +168,53 @@
 			});
 				
 		</script>
+    	<div ng-app="adminApp" ng-controller="adminCtrl">
+		    <div class="container">
+		    	<br>
+		    	<br>
+		    	<div ng-if="users.length == 0">
+					<p>No hay usuarios en la aplicación</p>
+				</div>
+				<div ng-if="users.length > 0">
+					{{mensajeControl}}
+					<br>
+					<div class="panel-heading">
+						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
+					</div>
+					<br>
+					<table align="center" border="5" style="width:100%">
+			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
+			    			<td>
+			    				<br>
+			    				<div class="profile-userpic">
+									<img src="{{user.foto}}" class="img-responsive" alt="">
+								</div>
+			    				<p align="center">
+			    					Usuario: {{user.username}}
+			    					<br>Rol: {{user.rol}}
+			    				</p>
+			    				<br>
+			    			</td>
+			    			<td>
+			    				<form ng-submit="changeRol()">
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}usuarioCheck" value="usuario"> Usuario <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}moderadorCheck" value="moderador"> Moderador <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}administradorCheck" value="administrador"> Administrador
+									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.username }}">
+									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
+								</form>
+							</td>
+							<td>
+								<form ng-submit="deleteUser()">
+						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.username }}">
+								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
+								</form>
+							</td>
+			    		</tr>
+			    	</table>
+				</div>
+			</div>
+		</div>
 		
 	</section>
 	
