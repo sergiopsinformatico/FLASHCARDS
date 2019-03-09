@@ -74,9 +74,7 @@
     
   </head>
 
-  <body id="page-top">
-    <%@ page import="main.java.flashcards.dto.UsuarioDTO" %>
-    
+  <body id="page-top">    
  	<!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -130,18 +128,14 @@
 			    				<br>
 			    			</td>
 			    			<td>
-			    				<form ng-submit="changeRol()">
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}usuarioCheck" value="usuario"> Usuario <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}moderadorCheck" value="moderador"> Moderador <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}administradorCheck" value="administrador"> Administrador
-									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.username }}">
-									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
-								</form>
+									<input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
+									<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
+									<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
+									<br><input type="button" ng-click="changeRol(user)" value="Guardar Cambio Rol"/>
 							</td>
 							<td>
 								<form ng-submit="deleteUser()">
-						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.username }}">
-								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
+									<input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
 								</form>
 							</td>
 			    		</tr>
@@ -154,9 +148,6 @@
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
 				$scope.mensajeControl = '';
-				$socpe.rol = '';
-				$scope.usuario = '';
-				$scope.nombreUsuario = '';
 				$http({
 				    url: '/getUsersAdmin.do', 
 				    method: "GET",
@@ -180,14 +171,14 @@
         	    	$scope.users = response;
         	    });
 				
-				$scope.changeRol = function() {
+				$scope.changeRol = function(user) {
 					
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
 					    data: {
-							'usuario' : $scope.usuario,
-							'rol' : $scope.rol
+							'usuario' : user.username,
+							'rol' : user.nuevoRol
 						}
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
@@ -197,13 +188,13 @@
 					
 				};
 				
-				$scope.deleteUser = function() {
+				$scope.deleteUser = function(user) {
 
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
 					    data:{ 
-					    	'nombreUsuario' : $scope.nombreUsuario
+					    	'nombreUsuario' : user.username
 					    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
