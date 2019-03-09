@@ -128,10 +128,10 @@
 			    				<br>
 			    			</td>
 			    			<td>
-									<input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
-									<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
-									<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
-									<br><input type="button" ng-click="changeRol(user)" value="Guardar Cambio Rol"/>
+								<input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
+								<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
+								<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
+								<br><input type="button" ng-click="changeRol(user)" value="Guardar Cambio Rol"/>
 							</td>
 							<td>
 								<form ng-submit="deleteUser()">
@@ -197,7 +197,9 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data:user.username,
+					    data:{
+					    	'username' : user.username,
+					    }
 					    headers : {
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'

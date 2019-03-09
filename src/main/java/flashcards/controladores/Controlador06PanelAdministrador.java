@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -48,8 +50,8 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> administradorEliminaUsuario(@RequestBody String nombreUsuario) {
-		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
+	public ResponseEntity<Void> administradorEliminaUsuario(@Value("username") String username) {
+		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
