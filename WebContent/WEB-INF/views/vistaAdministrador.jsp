@@ -128,17 +128,17 @@
 			    				<br>
 			    			</td>
 			    			<td>
-			    				<form action="adminCambiaRolUser.do" method="POST" id="cambia" name="cambia" align="center">
-									<input type="radio" name="rol" id="{{ usuario.username }}usuarioCheck" value="usuario"> Usuario <br>
-									<input type="radio" name="rol" id="{{ usuario.username }}moderadorCheck" value="moderador"> Moderador <br>
-									<input type="radio" name="rol" id="{{ usuario.username }}administradorCheck" value="administrador"> Administrador
-									<input id="usuario" name="usuario" type="hidden" value="{{ usuario.username }}">
+			    				<form ng-submit="changeRol()">
+									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}usuarioCheck" value="usuario"> Usuario <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}moderadorCheck" value="moderador"> Moderador <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ usuario.username }}administradorCheck" value="administrador"> Administrador
+									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ usuario.username }}">
 									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 								</form>
 							</td>
 							<td>
-								<form action="adminDeleteUser.do" id="eliminaForm" method="POST" align="center">
-						    		<input id="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ usuario.username }}">
+								<form ng-submit="deleteUser()">
+						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ usuario.username }}">
 								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 								</form>
 							</td>
@@ -174,6 +174,39 @@
         	    }, function myError(response) {
         	    	$scope.users = response;
         	    });
+				
+				$scope.changeRol = function() {
+					var jsonChange = {
+						'usuario' : $scope.usuario,
+						'rol' : $scope.rol
+					};
+			        
+					$http({
+					    url: '/adminCambiaRolUser.do', 
+					    method: "POST",
+					    data: jsonChange,
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					});
+				};
+				
+				$scope.deleteUser = function() {
+					var jsonDelete = {
+						'nombreUsuario' : $scope.nombreUsuario
+					};
+			        
+					$http({
+					    url: '/adminCambiaRolUser.do', 
+					    method: "POST",
+					    data: jsonDelete,
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					});
+				};
 				
 			});
 				
