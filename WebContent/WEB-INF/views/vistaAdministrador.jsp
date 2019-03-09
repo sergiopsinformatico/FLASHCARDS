@@ -178,15 +178,14 @@
         	    });
 				
 				$scope.changeRol = function() {
-					var jsonChange = {
-						'usuario' : $scope.usuario,
-						'rol' : $scope.rol
-					};
-			        
+					
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: jsonChange,
+					    data: {
+							'usuario' : $scope.usuario,
+							'rol' : $scope.rol
+						},
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
@@ -195,17 +194,17 @@
 	        	    }, function myError(response) {
 	        	    	$scope.mensajeControl = response;
 	        	    });
+					
 				};
 				
 				$scope.deleteUser = function() {
-					var jsonDelete = {
-						'nombreUsuario' : $scope.nombreUsuario
-					};
-			        
+
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: jsonDelete,
+					    data: {
+							'nombreUsuario' : $scope.nombreUsuario
+						},
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
