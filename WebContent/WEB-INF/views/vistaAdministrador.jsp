@@ -199,7 +199,8 @@
 					    method: "POST",
 					    data:user.username,
 					    headers : {
-					    	'Content-Type': 'text/plain'
+					    	'Content-Type': 'text/plain',
+					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
