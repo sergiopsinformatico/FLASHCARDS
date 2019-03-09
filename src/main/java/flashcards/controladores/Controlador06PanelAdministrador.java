@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -47,15 +48,15 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String administradorEliminaUsuario(@RequestBody String username) {
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
+	public ResponseEntity<Void> administradorEliminaUsuario(@RequestParam(value="username", required=true) String username) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
-		return "Eliminado: "+username;
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public@ResponseBody String administradorModificaRol(@RequestBody String username, @RequestBody String rol) {
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
+	public ResponseEntity<Void> administradorModificaRol(@RequestParam(value="username", required=true) String username, @RequestParam(value="rol", required=true) String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		switch(rol){
@@ -70,7 +71,7 @@ public class Controlador06PanelAdministrador {
 				break;
 		}
 		Broker.getInstanciaUsuario().updateUsuario(antiguo, nuevo);
-		return "Actualizado: "+username+" a -> "+rol;
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 }
