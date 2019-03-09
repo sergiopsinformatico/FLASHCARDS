@@ -57,9 +57,9 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> administradorModificaRol(@RequestBody String usuario, String rol) {
-		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
-		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
+	public ResponseEntity<Void> administradorModificaRol(@Value("username") String username, @Value("rol") String rol) {
+		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
+		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		switch(rol){
 			case "usuario":
 				nuevo.setRol("Usuario");

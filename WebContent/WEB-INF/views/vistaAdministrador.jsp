@@ -177,7 +177,7 @@
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
 					    data: {
-							'usuario' : user.username,
+							'username' : user.username,
 							'rol' : user.nuevoRol
 						},
 						headers : {
@@ -198,7 +198,7 @@
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
 					    data:{
-					    	'username' : user.username,
+					    	'username' : user.username
 					    }
 					    headers : {
 					    	'Content-Type': 'application/json',
