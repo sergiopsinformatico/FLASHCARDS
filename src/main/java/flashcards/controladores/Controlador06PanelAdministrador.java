@@ -9,7 +9,6 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,16 +49,16 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
-	public void administradorEliminaUsuario(HttpServletRequest request, HttpServletResponse response) {
-		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("nombreUsuario"));
+	public void administradorEliminaUsuario(@Valid String nombreUsuario) {
+		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(nombreUsuario);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 	}
 	
 	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
-	public void administradorModificaRol(HttpServletRequest request, HttpServletResponse response) {
-		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("usuario"));
-		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("usuario"));
-		switch(request.getParameter("rol")){
+	public void administradorModificaRol(@Valid String usuario, String rol) {
+		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
+		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(usuario);
+		switch(rol){
 			case "usuario":
 				nuevo.setRol("Usuario");
 				break;
