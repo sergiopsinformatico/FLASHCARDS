@@ -121,26 +121,26 @@
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
-									<img src="${user.getFoto()}" class="img-responsive" alt="">
+									<img src="{{user.getFoto()}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.username}}
-			    					<br>Rol: {{user.rol}}
+			    					Usuario: {{user.getUsername()}}
+			    					<br>Rol: {{user.getRol()}}
 			    				</p>
 			    				<br>
 			    			</td>
 			    			<td>
 			    				<form ng-submit="changeRol()">
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}usuarioCheck" value="usuario"> Usuario <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}moderadorCheck" value="moderador"> Moderador <br>
-									<input type="radio" ng-model="rol" name="rol" id="{{ user.username }}administradorCheck" value="administrador"> Administrador
-									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.username }}">
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.getUsername() }}usuarioCheck" value="usuario"> Usuario <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.getUsername() }}moderadorCheck" value="moderador"> Moderador <br>
+									<input type="radio" ng-model="rol" name="rol" id="{{ user.getUsername() }}administradorCheck" value="administrador"> Administrador
+									<input id="usuario" ng-model="usuario" name="usuario" type="hidden" value="{{ user.getUsername() }}">
 									<br><input type="submit" name="action" value="Guardar Cambio Rol" />
 								</form>
 							</td>
 							<td>
 								<form ng-submit="deleteUser()">
-						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.username }}">
+						    		<input id="nombreUsuario" ng-model="nombreUsuario" name="nombreUsuario" type="hidden" value="{{ user.getUsername() }}">
 								    <input type="submit" name="action" value="Eliminar Cuenta de Usuario" />
 								</form>
 							</td>
