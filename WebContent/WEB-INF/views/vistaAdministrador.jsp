@@ -196,9 +196,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data:{
-					    	'username' : user.username
-					    },
+					    data: user.username,
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
