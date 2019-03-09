@@ -179,10 +179,7 @@
 					    data: {
 							'username' : user.username,
 							'rol' : user.nuevoRol
-						},
-						headers : {
-					    	'Content-Type': 'application/json'
-	                    }
+						}
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -198,10 +195,7 @@
 					    method: "POST",
 					    data: {
 					    	'username' : user.username
-					    },
-					    headers : {
-					    	'Content-Type': 'application/json'
-	                    }
+					    }
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
