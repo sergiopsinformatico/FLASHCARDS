@@ -181,8 +181,7 @@
 							'rol' : user.nuevoRol
 						},
 						headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
+					    	'Content-Type': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
@@ -201,8 +200,7 @@
 					    	'username' : user.username
 					    },
 					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
+					    	'Content-Type': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
