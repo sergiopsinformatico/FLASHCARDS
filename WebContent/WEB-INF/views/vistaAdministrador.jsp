@@ -185,10 +185,7 @@
 					    data: {
 							'usuario' : $scope.usuario,
 							'rol' : $scope.rol
-						},
-					    headers : {
-					    	'Content-Type': 'application/json'
-	                    }
+						}
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -202,10 +199,9 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: $scope.nombreUsuario,
-					    headers : {
-					    	'Content-Type': 'text/plain'
-	                    }
+					    data:{ 
+					    	'nombreUsuario' : $scope.nombreUsuario
+					    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {

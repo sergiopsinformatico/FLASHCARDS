@@ -49,7 +49,7 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void administradorEliminaUsuario(@RequestBody @Valid String nombreUsuario) {
