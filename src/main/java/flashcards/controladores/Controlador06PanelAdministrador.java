@@ -50,10 +50,10 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> administradorEliminaUsuario(@Value("username") String username) {
+	public ResponseEntity<String> administradorEliminaUsuario(@Value("username") String username) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return new ResponseEntity<String>("Eliminado: "+username, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
