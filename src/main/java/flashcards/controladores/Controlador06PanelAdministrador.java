@@ -5,10 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,15 +47,15 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> administradorEliminaUsuario(@Value("username") String username) {
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
+	public @ResponseBody String administradorEliminaUsuario(@RequestBody String username) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
-		return new ResponseEntity<String>("Eliminado: "+username, HttpStatus.OK);
+		return "Eliminado: "+username;
 	}
 	
-	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> administradorModificaRol(@Value("username") String username, @Value("rol") String rol) {
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
+	public@ResponseBody String administradorModificaRol(@RequestBody String username, @RequestBody String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		switch(rol){
@@ -72,7 +70,7 @@ public class Controlador06PanelAdministrador {
 				break;
 		}
 		Broker.getInstanciaUsuario().updateUsuario(antiguo, nuevo);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return "Actualizado: "+username+" a -> "+rol;
 	}
 	
 }
