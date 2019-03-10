@@ -177,7 +177,7 @@
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: JSON.stringify(dataSend),
+					    data: dataSend,
 					    headers : {
 					    	'Content-Type': 'application/json'
 					    }
@@ -196,7 +196,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: JSON.stringify(dataSend),
+					    data: dataSend,
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
