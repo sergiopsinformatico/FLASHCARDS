@@ -171,9 +171,7 @@
 				
 				$scope.changeRol = function(user) {
 					
-					var dataSend = new FormData();
-					dataSend.append('username',user.username);
-					dataSend.append('rol',user.nuevoRol);
+					var dataSend = 'username=' + user.username + '&amp;rol=' + user.nuevoRol;
 					
 					$http({
 					    url: '/adminCambiaRolUser.do', 
@@ -193,8 +191,7 @@
 				
 				$scope.deleteUser = function(user) {
 					
-					var dataSend = new FormData();
-					dataSend.append('username',user.username);
+					var dataSend = 'username=' + user.username;
 					
 					$http({
 					    url: '/adminDeleteUser.do', 
