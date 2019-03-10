@@ -177,7 +177,7 @@
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: dataSend
+					    params: dataSend
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -193,7 +193,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: dataSend
+					    params: dataSend
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
