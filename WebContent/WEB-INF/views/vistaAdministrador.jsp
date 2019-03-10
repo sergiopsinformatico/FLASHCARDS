@@ -181,9 +181,27 @@
 					    headers : {
 					    	'Content-Type': 'application/json'
 					    }
-					});
-					
-					$scope.reloadUsers();
+					}).then(function mySuccess(response) {					
+						
+						$scope.users = [];
+						$scope.originalArray = response.data;
+						var indice = 0;
+						
+						for(indice=0;indice<$scope.originalArray.length;indice++){
+							if(((($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))!=0)){
+								$scope.users.push($scope.originalArray[indice]);
+							}
+						}
+						
+	        	    }, function myError(response) {
+	        	    	$scope.users = response;
+	        	    }).then(function mySuccess(response) {
+						bootbox.alert("Cambiado el rol de "+ user.username + " a " + user.nuevoRol);
+						$scope.reloadUsers();
+	        	    }, function myError(response) {
+	        	    	bootbox.alert("Hubo un fallo y no se pudo cambiar el rol de "+user.username);
+	        	    	$scope.reloadUsers();
+	        	    });
 					
 				};
 				
@@ -197,9 +215,15 @@
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
-					});
+					}).then(function mySuccess(response) {
+						bootbox.alert(user.username+" eliminado");
+						$scope.reloadUsers();
+	        	    }, function myError(response) {
+	        	    	bootbox.alert("Hubo un fallo y no se pudo eliminar a "+user.username);
+	        	    	$scope.reloadUsers();
+	        	    });
 					
-					$scope.reloadUsers();
+					
 				};
 				
 			});
