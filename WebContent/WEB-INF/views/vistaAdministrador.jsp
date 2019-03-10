@@ -171,10 +171,18 @@
 				
 				$scope.changeRol = function(user) {
 					
+					var dataSend = new FormData();
+					dataSend.append('username',user.username);
+					dataSend.append('rol',user.nuevoRol);
+					
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: 'username=' + user.username + '&amp;rol=' + user.nuevoRol
+					    data: dataSend,
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -184,11 +192,18 @@
 				};
 				
 				$scope.deleteUser = function(user) {
-
+					
+					var dataSend = new FormData();
+					dataSend.append('username',user.username);
+					
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: 'username=' + user.username
+					    data: dataSend,
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
