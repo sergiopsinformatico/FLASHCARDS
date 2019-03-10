@@ -171,7 +171,7 @@
 				
 				$scope.changeRol = function(user) {
 					
-					/*$http({
+					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
 					    data: 'username=' + user.username + '&amp;rol=' + user.nuevoRol
@@ -179,21 +179,13 @@
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
 	        	    	$scope.mensajeControl = response;
-	        	    });*/
-	        	    var data = 'username=' + user.username + '&amp;rol=' + user.nuevoRol;
-					$http.post('/adminCambiaRolUser.do', data)
-					.success(function(data, status, headers, config) {
-						$scope.mensajeControl = headers;
-					})
-					.error(function(data, status, headers, config) {
-						$scope.mensajeControl = "failure message: " + headers;
-					});
+	        	    });
 					
 				};
 				
 				$scope.deleteUser = function(user) {
 
-					/*$http({
+					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
 					    data: 'username=' + user.username
@@ -201,15 +193,7 @@
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
 	        	    	$scope.mensajeControl = response;
-	        	    });*/
-					var data = 'username=' + user.username;
-					$http.post('/adminDeleteUser.do', data)
-					.success(function(data, status, headers, config) {
-						$scope.mensajeControl = headers;
-					})
-					.error(function(data, status, headers, config) {
-						$scope.mensajeControl = "failure message: " + headers;
-					});
+	        	    });
 				};
 				
 			});
