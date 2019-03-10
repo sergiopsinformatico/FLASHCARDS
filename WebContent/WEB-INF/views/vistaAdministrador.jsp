@@ -175,9 +175,8 @@
 					var dataSend = 'username=' + user.username + '&rol=' + user.nuevoRol;
 					
 					$http({
-					    url: '/adminCambiaRolUser.do', 
+					    url: '/adminCambiaRolUser.do?'+dataSend, 
 					    method: "POST",
-					    data: dataSend,
 					    headers : {
 					    	'Content-Type': 'application/json'
 					    }
@@ -194,9 +193,8 @@
 					var dataSend = 'username=' + user.username;
 					
 					$http({
-					    url: '/adminDeleteUser.do', 
+					    url: '/adminDeleteUser.do?'+dataSend, 
 					    method: "POST",
-					    data: dataSend,
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
