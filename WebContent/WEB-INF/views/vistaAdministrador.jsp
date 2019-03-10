@@ -181,12 +181,12 @@
 	        	    	$scope.mensajeControl = response;
 	        	    });*/
 	        	    var data = 'username=' + user.username + '&amp;rol=' + user.nuevoRol;
-					$http.post('/adminCambiaRolUser.do', data )
+					$http.post('/adminCambiaRolUser.do', data)
 					.success(function(data, status, headers, config) {
-						$scope.mensajeControl = data;
+						$scope.mensajeControl = headers;
 					})
 					.error(function(data, status, headers, config) {
-						$scope.mensajeControl = "failure message: " + JSON.stringify({data: data});
+						$scope.mensajeControl = "failure message: " + headers;
 					});
 					
 				};
@@ -203,7 +203,7 @@
 	        	    	$scope.mensajeControl = response;
 	        	    });*/
 					var data = 'username=' + user.username;
-					$http.post('/adminDeleteUser.do', data )
+					$http.post('/adminDeleteUser.do', data)
 					.success(function(data, status, headers, config) {
 						$scope.mensajeControl = headers;
 					})
