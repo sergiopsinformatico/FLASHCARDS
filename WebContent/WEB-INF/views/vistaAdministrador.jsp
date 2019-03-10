@@ -26,6 +26,7 @@
     
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
     
     <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
     
@@ -171,15 +172,12 @@
 				
 				$scope.changeRol = function(user) {
 					
-					var dataSend = 'username=' + user.username + '&amp;rol=' + user.nuevoRol;
+					var dataSend = 'username=' + user.username + '&rol=' + user.nuevoRol;
 					
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    params: dataSend,
-					    headers : {
-					    	'Content-Type': 'application/json'
-	                    }
+					    data: dataSend
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -195,7 +193,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    params: dataSend
+					    data: dataSend
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
