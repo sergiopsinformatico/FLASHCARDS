@@ -176,10 +176,7 @@
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    data: {
-							'username' : user.username,
-							'rol' : user.nuevoRol
-						}
+					    data: 'username=' + user.username + '&amp;rol=' + user.nuevoRol
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -193,9 +190,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    data: {
-					    	'username' : user.username
-					    }
+					    data: 'username=' + user.username
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
