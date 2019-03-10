@@ -195,10 +195,7 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    params: dataSend,
-					    headers : {
-					    	'Content-Type': 'application/json'
-	                    }
+					    params: dataSend
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
