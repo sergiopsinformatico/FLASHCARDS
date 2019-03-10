@@ -177,7 +177,10 @@
 					$http({
 					    url: '/adminCambiaRolUser.do', 
 					    method: "POST",
-					    params: dataSend
+					    data: JSON.stringify(dataSend),
+					    headers : {
+					    	'Content-Type': 'application/json'
+					    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
@@ -193,7 +196,10 @@
 					$http({
 					    url: '/adminDeleteUser.do', 
 					    method: "POST",
-					    params: dataSend
+					    data: JSON.stringify(dataSend),
+					    headers : {
+					    	'Content-Type': 'application/json'
+	                    }
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
 	        	    }, function myError(response) {
