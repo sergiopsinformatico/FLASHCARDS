@@ -131,12 +131,10 @@
 								<input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
 								<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
 								<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
-								<br><input type="button" ng-click="changeRol(user)" value="Guardar Cambio Rol"/>
+								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>
 							</td>
 							<td>
-								<form ng-submit="deleteUser()">
-									<input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
-								</form>
+								<input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
 							</td>
 			    		</tr>
 			    	</table>
@@ -207,10 +205,10 @@
 					var data = 'username=' + user.username;
 					$http.post('/adminDeleteUser.do', data )
 					.success(function(data, status, headers, config) {
-						$scope.mensajeControl = data;
+						$scope.mensajeControl = headers;
 					})
 					.error(function(data, status, headers, config) {
-						$scope.mensajeControl = "failure message: " + JSON.stringify({data: data});
+						$scope.mensajeControl = "failure message: " + headers;
 					});
 				};
 				
