@@ -48,13 +48,13 @@ public class Controlador06PanelAdministrador {
 		return Broker.getInstanciaUsuario().getAllUsersSystem();
 	}
 	
-	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody void administradorEliminaUsuario(@RequestParam("username") String username) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 	}
 	
-	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody void administradorModificaRol(@RequestParam("username") String username, @RequestParam("rol") String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
