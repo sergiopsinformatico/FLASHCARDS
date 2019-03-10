@@ -26,7 +26,6 @@
     
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
     
     <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
     
@@ -109,8 +108,6 @@
 					<p>No hay usuarios en la aplicación</p>
 				</div>
 				<div ng-if="users.length > 0">
-					{{mensajeControl}}
-					<br>
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
@@ -146,29 +143,33 @@
 			
 			var app = angular.module('adminApp', []);
 			app.controller('adminCtrl', function($scope, $http) {
-				$scope.mensajeControl = '';
-				$http({
-				    url: '/getUsersAdmin.do', 
-				    method: "GET",
-				    headers : {
-				    	'Content-Type': 'application/json',
-				    	'Accept': 'application/json'
-                    }
-				}).then(function mySuccess(response) {					
-					
-					$scope.users = [];
-					$scope.originalArray = response.data;
-					var indice = 0;
-					
-					for(indice=0;indice<$scope.originalArray.length;indice++){
-						if(((($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))!=0)){
-							$scope.users.push($scope.originalArray[indice]);
+				
+				$scope.reloadUsers = function(){
+					$http({
+					    url: '/getUsersAdmin.do', 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						
+						$scope.users = [];
+						$scope.originalArray = response.data;
+						var indice = 0;
+						
+						for(indice=0;indice<$scope.originalArray.length;indice++){
+							if(((($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))!=0)){
+								$scope.users.push($scope.originalArray[indice]);
+							}
 						}
-					}
-					
-        	    }, function myError(response) {
-        	    	$scope.users = response;
-        	    });
+						
+	        	    }, function myError(response) {
+	        	    	$scope.users = response;
+	        	    });
+				}
+				
+				$scope.reloadUsers();
 				
 				$scope.changeRol = function(user) {
 					
@@ -180,11 +181,9 @@
 					    headers : {
 					    	'Content-Type': 'application/json'
 					    }
-					}).then(function mySuccess(response) {					
-						$scope.mensajeControl = response;
-	        	    }, function myError(response) {
-	        	    	$scope.mensajeControl = response;
-	        	    });
+					});
+					
+					$scope.reloadUsers();
 					
 				};
 				
@@ -198,11 +197,9 @@
 					    headers : {
 					    	'Content-Type': 'application/json'
 	                    }
-					}).then(function mySuccess(response) {
-						$scope.mensajeControl = response;
-	        	    }, function myError(response) {
-	        	    	$scope.mensajeControl = response;
-	        	    });
+					});
+					
+					$scope.reloadUsers();
 				};
 				
 			});

@@ -65,7 +65,7 @@ public class Controlador06PanelAdministrador {
 			case "moderador":
 				nuevo.setRol("Moderador");
 				break;
-			case "default":
+			default:
 				nuevo.setRol("Administrador");
 				break;
 		}
