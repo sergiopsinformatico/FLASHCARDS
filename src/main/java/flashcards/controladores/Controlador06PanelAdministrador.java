@@ -49,14 +49,14 @@ public class Controlador06PanelAdministrador {
 	}
 	
 	@RequestMapping(value = "/adminDeleteUser", method = RequestMethod.POST)
-	public ResponseEntity<Void> administradorEliminaUsuario(@RequestParam(value="username") String username) {
+	public ResponseEntity<Void> administradorEliminaUsuario(@RequestParam("username") String username) {
 		usuario = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		Broker.getInstanciaUsuario().deleteUsuario(usuario);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/adminCambiaRolUser", method = RequestMethod.POST)
-	public ResponseEntity<Void> administradorModificaRol(@RequestParam(value="username") String username, @RequestParam(value="rol") String rol) {
+	public ResponseEntity<Void> administradorModificaRol(@RequestParam("username") String username, @RequestParam("rol") String rol) {
 		antiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		nuevo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 		switch(rol){
