@@ -178,8 +178,7 @@
 					    method: "POST",
 					    data: dataSend,
 					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
+					    	'Content-Type': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.mensajeControl = response;
@@ -198,8 +197,7 @@
 					    method: "POST",
 					    data: dataSend,
 					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
+					    	'Content-Type': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {
 						$scope.mensajeControl = response;
