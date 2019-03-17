@@ -27,6 +27,7 @@ public class Test08UsuarioEnviaPeticionDeAmistad {
 	@When("^Envia una peticion de amistad$")
 	public void envia_una_peticion_de_amistad() throws Throwable {
 	    dBRelacion = Broker.getInstanciaRelacion();
+	    dBRelacion.insertarRelacionUsuario(new RelacionDTO("Sergio123"));
 	    relacion = dBRelacion.leerRelacionUsuario("Sergio123");
 	    relacion.getPeticionesEnviadas().add("sergio1995");
 	    assert(dBRelacion.modificaRelacionUsuario(relacion));

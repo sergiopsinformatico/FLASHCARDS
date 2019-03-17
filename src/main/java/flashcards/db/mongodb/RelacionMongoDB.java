@@ -1,5 +1,6 @@
 package main.java.flashcards.db.mongodb;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,9 +76,9 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
     		cursor = coleccionRelaciones.find(criterios).iterator();
     		if(cursor.hasNext()) {
     			doc = cursor.next();
-    			return new RelacionDTO(doc.getString("usuario"), (LinkedList<String>)doc.get("peticionesEnviadas"),
-    					               (LinkedList<String>)doc.get("peticionesRecibidas"), (LinkedList<String>)doc.get("amigos"),
-    					               (LinkedList<String>)doc.get("usuariosBloqueados"), (LinkedList<String>)doc.get("usuariosBloqueadores"));
+    			return new RelacionDTO(doc.getString("usuario"), (ArrayList<String>)doc.get("peticionesEnviadas"),
+    								   (ArrayList<String>)doc.get("peticionesRecibidas"), (ArrayList<String>)doc.get("amigos"),
+    					               (ArrayList<String>)doc.get("usuariosBloqueados"), (ArrayList<String>)doc.get("usuariosBloqueadores"));
     		}else {
     			return null;
     		}

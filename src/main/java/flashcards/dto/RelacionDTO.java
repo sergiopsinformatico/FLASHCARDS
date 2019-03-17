@@ -1,31 +1,31 @@
 package main.java.flashcards.dto;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class RelacionDTO {
 	
 	String usuario;
-	LinkedList<String> peticionesEnviadas;
-	LinkedList<String> peticionesRecibidas;
-	LinkedList<String> amigos;
-	LinkedList<String> bloqueados;
-	LinkedList<String> bloqueadoPor;
+	ArrayList<String> peticionesEnviadas;
+	ArrayList<String> peticionesRecibidas;
+	ArrayList<String> amigos;
+	ArrayList<String> bloqueados;
+	ArrayList<String> bloqueadoPor;
 	
 	public RelacionDTO(String usuario) {
 		setUsuario(usuario);
-		setPeticionesEnviadas(new LinkedList<String>());
-		setPeticionesRecibidas(new LinkedList<String>());
-		setAmigos(new LinkedList<String>());
-		setBloqueados(new LinkedList<String>());
-		setBloqueadoPor(new LinkedList<String>());
+		setPeticionesEnviadas(new ArrayList<String>());
+		setPeticionesRecibidas(new ArrayList<String>());
+		setAmigos(new ArrayList<String>());
+		setBloqueados(new ArrayList<String>());
+		setBloqueadoPor(new ArrayList<String>());
 	}
 	
 	public RelacionDTO(String usuario,
-					   LinkedList<String> peticionesEnviadas, 
-			           LinkedList<String> peticionesRecibidas, 
-			           LinkedList<String> amigos,
-			           LinkedList<String> bloqueados, 
-			           LinkedList<String> bloqueadoPor) {
+					   ArrayList<String> peticionesEnviadas, 
+					   ArrayList<String> peticionesRecibidas, 
+					   ArrayList<String> amigos,
+					   ArrayList<String> bloqueados, 
+					   ArrayList<String> bloqueadoPor) {
 		
 		setUsuario(usuario);
 		setPeticionesEnviadas(peticionesEnviadas);
@@ -44,43 +44,43 @@ public class RelacionDTO {
 		this.usuario = usuario;
 	}
 
-	public LinkedList<String> getPeticionesEnviadas() {
+	public ArrayList<String> getPeticionesEnviadas() {
 		return peticionesEnviadas;
 	}
 
-	public void setPeticionesEnviadas(LinkedList<String> peticionesEnviadas) {
+	public void setPeticionesEnviadas(ArrayList<String> peticionesEnviadas) {
 		this.peticionesEnviadas = peticionesEnviadas;
 	}
 
-	public LinkedList<String> getPeticionesRecibidas() {
+	public ArrayList<String> getPeticionesRecibidas() {
 		return peticionesRecibidas;
 	}
 
-	public void setPeticionesRecibidas(LinkedList<String> peticionesRecibidas) {
+	public void setPeticionesRecibidas(ArrayList<String> peticionesRecibidas) {
 		this.peticionesRecibidas = peticionesRecibidas;
 	}
 
-	public LinkedList<String> getAmigos() {
+	public ArrayList<String> getAmigos() {
 		return amigos;
 	}
 
-	public void setAmigos(LinkedList<String> amigos) {
+	public void setAmigos(ArrayList<String> amigos) {
 		this.amigos = amigos;
 	}
 
-	public LinkedList<String> getBloqueados() {
+	public ArrayList<String> getBloqueados() {
 		return bloqueados;
 	}
 
-	public void setBloqueados(LinkedList<String> bloqueados) {
+	public void setBloqueados(ArrayList<String> bloqueados) {
 		this.bloqueados = bloqueados;
 	}
 
-	public LinkedList<String> getBloqueadoPor() {
+	public ArrayList<String> getBloqueadoPor() {
 		return bloqueadoPor;
 	}
 
-	public void setBloqueadoPor(LinkedList<String> bloqueadoPor) {
+	public void setBloqueadoPor(ArrayList<String> bloqueadoPor) {
 		this.bloqueadoPor = bloqueadoPor;
 	}
 	

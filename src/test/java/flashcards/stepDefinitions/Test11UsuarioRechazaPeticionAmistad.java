@@ -1,7 +1,6 @@
 package test.java.flashcards.stepDefinitions;
 
-import java.util.LinkedList;
-
+import java.util.ArrayList;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -13,7 +12,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	
 	InterfaceDAORelacion dBRelacion;
 	RelacionDTO relacion;
-	LinkedList<String> lista;
+	ArrayList<String> lista;
 	int indice;
 	boolean am1;
 	boolean am2;

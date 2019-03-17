@@ -1,6 +1,6 @@
 package test.java.flashcards.stepDefinitions;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,7 +15,7 @@ public class Test09UsuarioRecibePeticionAmistad {
 	InterfaceDAORelacion dBRelacion;
 	RelacionDTO relacion;
 	boolean encontrado;
-	LinkedList<String> recibidas;
+	ArrayList<String> recibidas;
 	int indice;
 	
 	@Given("^Un usuario conectado a la aplicacion$")
