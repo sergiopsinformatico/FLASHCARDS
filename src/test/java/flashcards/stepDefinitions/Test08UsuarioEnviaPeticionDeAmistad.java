@@ -27,21 +27,16 @@ public class Test08UsuarioEnviaPeticionDeAmistad {
 	@When("^Envia una peticion de amistad$")
 	public void envia_una_peticion_de_amistad() throws Throwable {
 	    dBRelacion = Broker.getInstanciaRelacion();
-	    relacion = new RelacionDTO("Sergio123", "sergio1995", "envia");
-	    assert(dBRelacion.insertarRelacion(relacion));
+	    relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+	    relacion.getPeticionesEnviadas().add("sergio1995");
+	    assert(dBRelacion.modificaRelacionUsuario(relacion));
 	}
 
 	@Then("^Otro usuario recibe esa invitacion$")
 	public void otro_usuario_recibe_esa_invitacion() throws Throwable {
-		encontrado = false;
-	    lista = dBRelacion.getPeticionesEnviadas("Sergio123");
-	    for(int indice=0; indice<lista.size(); indice++) {
-	    	if(lista.get(indice).getUsername2().equals("Sergio123")) {
-	    		encontrado = true;
-	    		break;
-	    	}
-	    }
-	    assert (encontrado);
+		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+	    relacion.getPeticionesRecibidas().add("Sergio123");
+	    assert(dBRelacion.modificaRelacionUsuario(relacion));
 	}
 	
 }

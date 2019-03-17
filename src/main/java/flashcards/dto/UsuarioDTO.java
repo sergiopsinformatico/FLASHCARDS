@@ -11,6 +11,13 @@ public class UsuarioDTO {
 	String emailFoto;
 	String rol;
 	boolean activadaCuenta;
+	RelacionDTO relacion;
+	
+	public UsuarioDTO(String username, String email, String clave) {
+		setUsername(username);
+		setEmail(email);
+		setClave(clave);
+	}
 	
 	public String getUsername() {
 		return this.username;
@@ -90,5 +97,13 @@ public class UsuarioDTO {
 
 	public void setActivadaCuenta(boolean activadaCuenta) {
 		this.activadaCuenta = activadaCuenta;
+	}
+
+	public RelacionDTO getRelacion() {
+		return relacion;
+	}
+
+	public void setRelacion(RelacionDTO relacion) {
+		this.relacion = relacion;
 	}
 }

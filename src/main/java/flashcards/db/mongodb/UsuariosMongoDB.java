@@ -122,10 +122,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	}
 	
 	private UsuarioDTO documentToUsuarioDTO(Document doc) {
-		usuarioDB = new UsuarioDTO();
-		usuarioDB.setUsername(doc.getString(USERNAME));
-		usuarioDB.setClave(doc.getString(CLAVE));
-		usuarioDB.setEmail(doc.getString(EMAIL));
+		usuarioDB = new UsuarioDTO(doc.getString(USERNAME), doc.getString(EMAIL), doc.getString(CLAVE));
 		usuarioDB.setRol(doc.getString("rol"));
 		usuarioDB.setActivadaCuenta(doc.getBoolean("cuentaActivada"));
 		try {

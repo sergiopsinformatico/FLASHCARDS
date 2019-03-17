@@ -1,7 +1,6 @@
 package main.java.flashcards.db.mongodb;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,12 +51,16 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}
     }
 	
-	public boolean insertarRelacion(RelacionDTO relacion) {
+    public boolean insertarRelacionUsuario(RelacionDTO relacion) {
 		try {
 			doc = new Document().
-				  append("username1", relacion.getUsername1()).
-				  append("username2", relacion.getUsername2()).
-				  append("tipo", relacion.getTipoRelacion());
+				  append("usuario", relacion.getUsuario()).
+				  append("peticionesEnviadas", relacion.getPeticionesEnviadas()).
+				  append("peticionesRecibidas", relacion.getPeticionesRecibidas()).
+				  append("amigos", relacion.getAmigos()).
+				  append("usuariosBloqueados", relacion.getBloqueados()).
+				  append("usuariosBloqueadores",relacion.getBloqueadoPor());
+			
 			coleccionRelaciones.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -65,16 +68,38 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}
 	}
 	
-	public List<RelacionDTO> getPeticionesEnviadas(String username){
-		relaciones = new LinkedList<>();
-		criterios = new BsonDocument().
-				    append("username1", new BsonString(username)).
-				    append("tipo", new BsonString("envia"));
-		cursor = coleccionRelaciones.find(criterios).iterator();
-		while(cursor.hasNext()) {
-			doc = cursor.next();
-			relaciones.add(new RelacionDTO(doc.getString("username1"), doc.getString("username2"), doc.getString("tipo")));
-		}
-		return relaciones;
+    public RelacionDTO leerRelacionUsuario(String usuario) {
+    	try {
+    		criterios = new BsonDocument().
+    				    append("usuario", new BsonString(usuario));
+    		cursor = coleccionRelaciones.find(criterios).iterator();
+    		if(cursor.hasNext()) {
+    			doc = cursor.next();
+    			return new RelacionDTO(doc.getString("usuario"), (LinkedList<String>)doc.get("peticionesEnviadas"),
+    					               (LinkedList<String>)doc.get("peticionesRecibidas"), (LinkedList<String>)doc.get("amigos"),
+    					               (LinkedList<String>)doc.get("usuariosBloqueados"), (LinkedList<String>)doc.get("usuariosBloqueadores"));
+    		}else {
+    			return null;
+    		}
+    	}catch(Exception ex) {
+    		return null;
+    	}
+    }
+    
+	public boolean modificaRelacionUsuario(RelacionDTO relacion) {
+		return (eliminarRelacionUsuario(relacion.getUsuario()) &&
+				insertarRelacionUsuario(relacion));
 	}
+	
+	public boolean eliminarRelacionUsuario(String usuario) {
+		try {
+			criterios = new BsonDocument().
+				    append("usuario", new BsonString(usuario));
+			coleccionRelaciones.deleteOne(criterios);
+    		return true;
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
 }

@@ -15,10 +15,7 @@ public class Test03UsuarioVePerfil {
 	@Given("^Una persona quiere ver su perfil$")
 	public void una_persona_quiere_ver_su_perfil() throws Throwable {
 	    dBUsuario = Broker.getInstanciaUsuario();
-	    user = new UsuarioDTO();
-		user.setUsername("Sergio123");
-		user.setClave("sergio1");
-		user.setEmail("correoInventado@email.com");
+	    user = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
 		user.setRol("Usuario");
 	    assert(true);
 	}

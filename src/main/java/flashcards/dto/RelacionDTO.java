@@ -1,39 +1,87 @@
 package main.java.flashcards.dto;
 
+import java.util.LinkedList;
+
 public class RelacionDTO {
 	
-	String username1;
-	String username2;
-	String tipoRelacion;
+	String usuario;
+	LinkedList<String> peticionesEnviadas;
+	LinkedList<String> peticionesRecibidas;
+	LinkedList<String> amigos;
+	LinkedList<String> bloqueados;
+	LinkedList<String> bloqueadoPor;
 	
-	public RelacionDTO(String user1, String user2, String relacion) {
-		setUsername1(user1);
-		setUsername2(user2);
-		setTipoRelacion(relacion);
+	public RelacionDTO(String usuario) {
+		setUsuario(usuario);
+		setPeticionesEnviadas(new LinkedList<String>());
+		setPeticionesRecibidas(new LinkedList<String>());
+		setAmigos(new LinkedList<String>());
+		setBloqueados(new LinkedList<String>());
+		setBloqueadoPor(new LinkedList<String>());
 	}
 	
-	public String getUsername1() {
-		return username1;
+	public RelacionDTO(String usuario,
+					   LinkedList<String> peticionesEnviadas, 
+			           LinkedList<String> peticionesRecibidas, 
+			           LinkedList<String> amigos,
+			           LinkedList<String> bloqueados, 
+			           LinkedList<String> bloqueadoPor) {
+		
+		setUsuario(usuario);
+		setPeticionesEnviadas(peticionesEnviadas);
+		setPeticionesRecibidas(peticionesRecibidas);
+		setAmigos(amigos);
+		setBloqueados(bloqueados);
+		setBloqueadoPor(bloqueadoPor);
+		
 	}
 	
-	public void setUsername1(String usernamePersona1) {
-		this.username1 = usernamePersona1;
+	public String getUsuario() {
+		return usuario;
 	}
-	
-	public String getUsername2() {
-		return username2;
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
-	
-	public void setUsername2(String usernamePersona2) {
-		this.username2 = usernamePersona2;
+
+	public LinkedList<String> getPeticionesEnviadas() {
+		return peticionesEnviadas;
 	}
-	
-	public String getTipoRelacion() {
-		return tipoRelacion;
+
+	public void setPeticionesEnviadas(LinkedList<String> peticionesEnviadas) {
+		this.peticionesEnviadas = peticionesEnviadas;
 	}
-	
-	public void setTipoRelacion(String tipoRelacion) {
-		this.tipoRelacion = tipoRelacion;
+
+	public LinkedList<String> getPeticionesRecibidas() {
+		return peticionesRecibidas;
+	}
+
+	public void setPeticionesRecibidas(LinkedList<String> peticionesRecibidas) {
+		this.peticionesRecibidas = peticionesRecibidas;
+	}
+
+	public LinkedList<String> getAmigos() {
+		return amigos;
+	}
+
+	public void setAmigos(LinkedList<String> amigos) {
+		this.amigos = amigos;
+	}
+
+	public LinkedList<String> getBloqueados() {
+		return bloqueados;
+	}
+
+	public void setBloqueados(LinkedList<String> bloqueados) {
+		this.bloqueados = bloqueados;
+	}
+
+	public LinkedList<String> getBloqueadoPor() {
+		return bloqueadoPor;
+	}
+
+	public void setBloqueadoPor(LinkedList<String> bloqueadoPor) {
+		this.bloqueadoPor = bloqueadoPor;
 	}
 	
 }

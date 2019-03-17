@@ -22,10 +22,7 @@ public class Test05AdministradorCambiaRolUsuario {
 
 	@When("^Localiza al usuario$")
 	public void localiza_al_usuario() throws Throwable {
-		usuario = new UsuarioDTO();
-	    usuario.setEmail("emailInventado@sfs.co");
-	    usuario.setUsername("ejemploUsuario");
-	    usuario.setClave("clave");
+		usuario = new UsuarioDTO("ejemploUsuario", "emailInventado@sfs.co", "clave");
 	    usuariosDB.insertUsuario(usuario);
 	    assert(usuariosDB.login(usuario.getUsername(), usuario.getClave()));
 	}
