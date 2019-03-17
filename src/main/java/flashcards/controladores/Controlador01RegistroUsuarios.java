@@ -26,6 +26,7 @@ import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
+import main.java.flashcards.dto.RelacionDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
@@ -88,13 +89,13 @@ public class Controlador01RegistroUsuarios {
 		user.setEmailFoto("");
 		user.setRol("Usuario");
 		user.setActivadaCuenta(false);
-		
 		random = new SecureRandom();
 		codActivacion = new BigInteger(130, random).toString(32);
 		fecha = new Fecha();
 		
 		if(Broker.getInstanciaUsuario().insertUsuario(user) &&
-		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta()))) {
+		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta())) &&
+		   Broker.getInstanciaRelacion().insertarRelacionUsuario(new RelacionDTO(user.getUsername()))) {
 			correo = new Email();
 			correo.activarCuenta(user,"https://sistemaflashcards.herokuapp.com/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
 			return true;

@@ -78,7 +78,7 @@ public class Controlador03Principal {
 			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getEmail());
 			
 			vista = new ModelAndView(REDIRECT);
-			vista.addObject(USUARIO,new UsuarioDTO());
+			vista.addObject(USUARIO, null);
 			
 		}else {
 			vista = new ModelAndView(REDIRECT);
