@@ -49,7 +49,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	    dBRelacion.modificaRelacionUsuario(relacion);
 	    
 	    relacion = dBRelacion.leerRelacionUsuario("sergio1993");
-	    lista = relacion.getPeticionesEnviadas();
+	    lista = relacion.getPeticionesRecibidas();
 	    if(lista.size()==0) { assert(false);}
 	    for(indice=0; indice<lista.size(); indice++) {
 	    	if(lista.get(indice).equals("Sergio123")) {

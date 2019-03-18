@@ -44,6 +44,13 @@ public class Test10UsuarioAceptaPeticion {
 		dBRelacion.modificaRelacionUsuario(relacion);
 		
 		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		lista = relacion.getPeticionesEnviadas();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals("sergio1995")) {
+				lista.remove(indice);
+				break;
+			}
+		}
 	    relacion.getAmigos().add("sergio1995");
 	    dBRelacion.modificaRelacionUsuario(relacion);
 	    

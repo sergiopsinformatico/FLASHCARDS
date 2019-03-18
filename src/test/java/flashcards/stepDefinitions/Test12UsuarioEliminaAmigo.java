@@ -40,6 +40,8 @@ public class Test12UsuarioEliminaAmigo {
 				break;
 			}
 		}
+		dBRelacion.modificaRelacionUsuario(relacion);
+		
 		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("Sergio123")) {
@@ -47,6 +49,8 @@ public class Test12UsuarioEliminaAmigo {
 				break;
 			}
 		}
+		dBRelacion.modificaRelacionUsuario(relacion);
+		
 		assert (true);
 	}
 
