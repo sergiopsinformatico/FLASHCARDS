@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Administrador</title>
+    <title>Flashcards - Gente</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -100,39 +100,37 @@
     <section>
     	<br>
     	<br>
-    	<div ng-app="adminApp" ng-controller="adminCtrl">
+    	<div ng-app="personasApp" ng-controller="personasCtrl">
 		    <div class="container">
 		    	<br>
 		    	<br>
-		    	<div ng-if="users.length == 0">
-					<p>No hay usuarios en la aplicación</p>
+		    	<div ng-if="listaFinal.length == 0">
+					<p>No hay más usuarios en la aplicación</p>
 				</div>
-				<div ng-if="users.length > 0">
+				<div ng-if="listaFinal.length > 0">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
 					<br>
 					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
+			    		<tr ng-repeat="user in listaFinal | filter:searchUserAdmin">
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
 									<img src="{{user.foto}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.username}}
-			    					<br>Rol: {{user.rol}}
+			    					Usuario: {{user.usuario.username}}
+			    					<br>Rol: {{user.usuario.rol}}
 			    				</p>
 			    				<br>
 			    			</td>
 			    			<td>
-								<input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
+								<!-- <input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
 								<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
 								<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
-								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>
-							</td>
-							<td>
-								<input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
+								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>-->
+								{{user.relacion}}
 							</td>
 			    		</tr>
 			    	</table>
@@ -141,80 +139,146 @@
 		</div>
 		<script>
 			
-			var app = angular.module('adminApp', []);
-			app.controller('adminCtrl', function($scope, $http) {
+			var app = angular.module('personasApp', []);
+			app.controller('personasCtrl', function($scope, $http) {
 				
-				$scope.reloadUsers = function(){
+				/*
+				-------------------------------
+				| - GetAllPeople()            |
+				-------------------------------
+				| - GetAmigos()               |
+				| - GetPetEnviadas()          |
+				| - GetPetRecibidas()         |
+				| - GetBloqueados()           |
+				| - GetEliminarBloqueadores() |
+				-------------------------------
+				*/
+				
+				//Variables
+				
+				$scope.listaFinal = [];
+				
+				$scope.listaPeople = [];
+				$scope.listaAmigos = [];
+				$scope.peticionesEnv = [];
+				$scope.peticionesRec = [];
+				$scope.listaBloqueados = [];
+				$scope.listaBloqueadores = [];
+				
+				
+				$scope.fillTable();
+				
+				$scope.fillTable() = function(){
+					$scope.getAllPeople();
+					$scope.getAmigos();
+					$scope.getPdAEnviadas();
+					$scope.getPdARecibidas();
+					$scope.getBloqueados();
+					$scope.getBloqueadores();
 					
-					var dataSend = 'username=' + "${usuario.getUsername()}";
+					//Rellenar listaFinal
 					
+					var indice = 0;
+					
+					for(indice=0;indice<$scope.listaPeople.length;indice++){
+						$scope.listaFinal.push({
+							'usuario': $scope.listaPeople[indice],
+							'relacion': 'none'
+						});
+					}
+					
+				};
+				
+				//Get Data
+				
+				$scope.getAllPeople() = function(){
 					$http({
-					    url: '/getUsersAdmin.do?'+dataSend, 
+					    url: '/allPeople.do?username='+"${usuario.getUsername()}", 
 					    method: "GET",
 					    headers : {
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.users = response.data;
-						
-						/*$scope.users = [];
-						$scope.originalArray = response.data;
-						var indice = 0;
-						
-						for(indice=0;indice<$scope.originalArray.length;indice++){
-							if(((($scope.originalArray[indice]).username.localeCompare("${usuario.getUsername()}"))!=0)){
-								$scope.users.push($scope.originalArray[indice]);
-							}
-						}*/
-						
+						$scope.listaPeople = response.data;						
 	        	    }, function myError(response) {
-	        	    	$scope.users = response;
+	        	    	$scope.listaPeople = [];
 	        	    });
-				}
-				
-				$scope.reloadUsers();
-				
-				$scope.changeRol = function(user) {
-					bootbox.confirm("¿Está seguro de cambiar el rol de "+user.username+" de " + user.rol + " a " + user.nuevoRol + "?", function(result){
-						if(result == true){
-							var dataSend = 'username=' + user.username + '&rol=' + user.nuevoRol;
-							$http({
-							    url: '/adminCambiaRolUser.do?'+dataSend, 
-							    method: "POST",
-							    headers : {
-							    	'Content-Type': 'application/json'
-							    }
-							}).then(function mySuccess(response) {
-								bootbox.alert("Cambiado el rol de "+ user.username + " a " + user.nuevoRol);
-								$scope.reloadUsers();
-			        	    }, function myError(response) {
-			        	    	bootbox.alert("Hubo un fallo y no se pudo cambiar el rol de "+user.username);
-			        	    	$scope.reloadUsers();
-			        	    });
-						}
-					});
 				};
 				
-				$scope.deleteUser = function(user) {
-					bootbox.confirm("¿Está seguro de eliminar a "+user.username+"?", function(result){
-						if(result == true){
-							var dataSend = 'username=' + user.username;
-							$http({
-							    url: '/adminDeleteUser.do?'+dataSend, 
-							    method: "POST",
-							    headers : {
-							    	'Content-Type': 'application/json'
-			                    }
-							}).then(function mySuccess(response) {
-								bootbox.alert(user.username+" eliminado");
-								$scope.reloadUsers();
-			        	    }, function myError(response) {
-			        	    	bootbox.alert("Hubo un fallo y no se pudo eliminar a "+user.username);
-			        	    	$scope.reloadUsers();
-			        	    });
-						}
-					});					
+				$scope.getAmigos() = function(){
+					$http({
+					    url: '/amigos.do?username='+"${usuario.getUsername()}", 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.listaAmigos = response.data;						
+	        	    }, function myError(response) {
+	        	    	$scope.listaAmigos = [];
+	        	    });
+				};
+				
+				$scope.getPdAEnviadas() = function(){
+					$http({
+					    url: '/pdaEnv.do?username='+"${usuario.getUsername()}", 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.peticionesEnv = response.data;						
+	        	    }, function myError(response) {
+	        	    	$scope.peticionesEnv = [];
+	        	    });
+				};
+				
+				$scope.getPdARecibidas() = function(){
+					$http({
+					    url: '/pdaRec.do?username='+"${usuario.getUsername()}", 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.peticionesRec = response.data;						
+	        	    }, function myError(response) {
+	        	    	$scope.peticionesRec = [];
+	        	    });
+				};
+				
+				$scope.getBloqueados() = function(){
+					$http({
+					    url: '/bloqueados.do?username='+"${usuario.getUsername()}", 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.listaBloqueados = response.data;						
+	        	    }, function myError(response) {
+	        	    	$scope.listaBloqueados = [];
+	        	    });
+				};
+				
+				$scope.getBloqueadores() = function(){
+					$http({
+					    url: '/bloqueadores.do?username='+"${usuario.getUsername()}", 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.listaBloqueadores = response.data;						
+	        	    }, function myError(response) {
+	        	    	$scope.listaBloqueadores = [];
+	        	    });
 				};
 				
 			});

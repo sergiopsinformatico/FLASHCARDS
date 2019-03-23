@@ -201,6 +201,14 @@
 							</form>
 						</div>
 						<br>
+						<div>
+							<form action="personas.html" method="GET">
+								<button type="submit" id="buttonGetPersonas" name="buttonGetPersonas" class="btn btn-outline-info btn-principal" >
+									<span class="glyphicon glyphicon-pencil"></span>Buscar Personas
+								</button>
+							</form>
+						</div>
+						<br>
 						<br>
 						<br>
 						<br>
