@@ -100,14 +100,14 @@
     <section>
     	<br>
     	<br>
-    	<div ng-app="personasApp" ng-controller="personasCtrl">
-    		Lista final: {{listaFinal}}
-    		<br>Lista people: {{listaPeople}}
-    		<br>Lista amigos: {{listaAmigos}}
-    		<br>Lista pda env: {{peticionesEnv}}
-    		<br>Lista pda rec: {{peticionesRec}}
-    		<br>Lista bloqueados: {{listaBloqueados}}
-    		<br>Lista bloqueadores: {{listaBloqueadores}}
+    	<div ng-app="peopleApp" ng-controller="peopleCtrl">
+    		Lista final: {{ listaFinal }}
+    		<br>Lista people: {{ listaPeople }}
+    		<br>Lista amigos: {{ listaAmigos }}
+    		<br>Lista pda env: {{ peticionesEnv }}
+    		<br>Lista pda rec: {{ peticionesRec }}
+    		<br>Lista bloqueados: {{ listaBloqueados }}
+    		<br>Lista bloqueadores: {{ listaBloqueadores }}
 			<div class="container">
 		    	<br>
 		    	<br>
@@ -146,8 +146,8 @@
 		</div>
 		<script>
 			
-			var app = angular.module('personasApp', []);
-			app.controller('personasCtrl', function($scope, $http) {
+			var app = angular.module('peopleApp', []);
+			app.controller('peopleCtrl', function($scope, $http) {
 				
 				//Variables
 				
