@@ -101,7 +101,14 @@
     	<br>
     	<br>
     	<div ng-app="personasApp" ng-controller="personasCtrl">
-		    <div class="container">
+    		Lista final: {{listaFinal}}
+    		Lista people: {{listaPeople}}
+    		Lista amigos: {{listaAmigos}}
+    		Lista pda env: {{peticionesEnv}}
+    		Lista pda rec: {{peticionesRec}}
+    		Lista bloqueados: {{listaBloqueados}}
+    		Lista bloqueadores: {{listaBloqueadores}}
+			<div class="container">
 		    	<br>
 		    	<br>
 		    	<div ng-if="listaFinal.length == 0">
@@ -141,18 +148,6 @@
 			
 			var app = angular.module('personasApp', []);
 			app.controller('personasCtrl', function($scope, $http) {
-				
-				/*
-				-------------------------------
-				| - GetAllPeople()            |
-				-------------------------------
-				| - GetAmigos()               |
-				| - GetPetEnviadas()          |
-				| - GetPetRecibidas()         |
-				| - GetBloqueados()           |
-				| - GetEliminarBloqueadores() |
-				-------------------------------
-				*/
 				
 				//Variables
 				
