@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Gente</title>
+    <title>Flashcards - Personas</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -74,10 +74,7 @@
     
   </head>
 
-  <body id="page-top">
-  	 <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    
+  <body id="page-top">    
  	<!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -103,205 +100,121 @@
     <section>
     	<br>
     	<br>
-    	<div ng-app="peopleApp" ng-controller="peopleCtrl">
-			<div class="container">
-				<br>MsgPeople: {{msgPeople}}
-				<br>MsgAm: {{msgAmigos}}
-				<br>MsgPdAe: {{msgPdAe}}
-				<br>MsgPdAr: {{msgPdAr}}
-				<br>MsgBloq: {{msgBloq}}
-				<br>MsgBloc: {{msgBloc}}
-		    	<br>Lista final: {{listaFinal}}
-	    		<br>Lista people: {{listaPeople}}
-	    		<br>Lista amigos: {{listaAmigos}}
-	    		<br>Lista pda env: {{peticionesEnv}}
-	    		<br>Lista pda rec: {{peticionesRec}}
-	    		<br>Lista bloqueados: {{listaBloqueados}}
-	    		<br>Lista bloqueadores: {{listaBloqueadores}}
+    	<div ng-app="personasApp" ng-controller="personasCtrl">
+		    <div class="container">
+		    	Array Users: {{arrayUsers}}
+		    	<!-- 
 		    	<br>
-		    	<div ng-if="listaFinal.length == 0">
-					<p>No hay más usuarios en la aplicación</p>
+		    	<br>
+		    	<div ng-if="users.length == 0">
+					<p>No hay usuarios en la aplicación</p>
 				</div>
-				<div ng-if="listaFinal.length > 0">
+				<div ng-if="users.length > 0">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
 					<br>
 					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in listaFinal | filter:searchUserAdmin">
+			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
 									<img src="{{user.foto}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.usuario.username}}
-			    					<br>Rol: {{user.usuario.rol}}
+			    					Usuario: {{user.username}}
+			    					<br>Rol: {{user.rol}}
 			    				</p>
 			    				<br>
 			    			</td>
 			    			<td>
+			    				prueba
 								<!-- <input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
 								<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
 								<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
-								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>-->
-								{{user.relacion}}
+								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>
+							</td>
+							<td>
+								prueba
+								<!-- <input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
 							</td>
 			    		</tr>
 			    	</table>
-				</div>
+				</div>-->
 			</div>
 		</div>
 		<script>
-			var app = angular.module('peopleApp', []);
-			app.controller('peopleCtrl', function($scope, $http) {
+			
+			var app = angular.module('personasApp', []);
+			app.controller('personasCtrl', function($scope, $http) {
 				
-				//Variables
+				$scope.arrayUsers = '';
 				
-				$scope.listaFinal = [];
-				
-				$scope.listaPeople = [];
-				$scope.msgPeople = '';
-				
-				$scope.listaAmigos = [];
-				$scope.msgAmigos='';
-				
-				$scope.peticionesEnv = [];
-				$scope.msgPdAe = '';
-				
-				$scope.peticionesRec = [];
-				$scope.msgPdAr = '';
-				
-				$scope.listaBloqueados = [];
-				$scope.msgBloq = '';
-				
-				$scope.listaBloqueadores = [];
-				$scope.msgBloc = '';
-				
-				//Get Data
-				
-				$scope.getAllPeople() = function(){
+				$scope.getArrayPeople = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
 					$http({
-					    url: '/allPeople.do?username='+"${usuario.getUsername()}", 
+					    url: '/allPeople.do?'+dataSend, 
 					    method: "GET",
 					    headers : {
 					    	'Content-Type': 'application/json',
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						//$scope.listaPeople = response.data;
-						$scope.msgPeople = response;
+						$scope.arrayUsers = response;
+						
 	        	    }, function myError(response) {
-	        	    	//$scope.listaPeople = [];
-	        	    	$scope.msgPeople = response;
+	        	    	$scope.arrayUsers = response;
 	        	    });
 				}
 				
-				$scope.getAmigos() = function(){
-					$http({
-					    url: '/amigos.do?username='+"${usuario.getUsername()}", 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						//$scope.listaAmigos = response.data;
-						$scope.msgAmigos = response;
-	        	    }, function myError(response) {
-	        	    	//$scope.listaAmigos = [];
-	        	    	$scope.msgAmigos = response;
-	        	    });
-				}
 				
-				$scope.getPdAEnviadas() = function(){
-					$http({
-					    url: '/pdaEnv.do?username='+"${usuario.getUsername()}", 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						//$scope.peticionesEnv = response.data;
-						$scope.msgPdAe = response;
-	        	    }, function myError(response) {
-	        	    	//$scope.peticionesEnv = [];
-	        	    	$scope.msgPdAe = response;
-	        	    });
-				}
-				
-				$scope.getPdARecibidas() = function(){
-					$http({
-					    url: '/pdaRec.do?username='+"${usuario.getUsername()}", 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						//$scope.peticionesRec = response.data;
-						$scope.msgPdAr = response;
-	        	    }, function myError(response) {
-	        	    	//$scope.peticionesRec = [];
-	        	    	$scope.msgPdAr = response;
-	        	    });
-				}
-				
-				$scope.getBloqueados() = function(){
-					$http({
-					    url: '/bloqueados.do?username='+"${usuario.getUsername()}", 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						//$scope.listaBloqueados = response.data;
-						$scope.msgBloq = response;
-	        	    }, function myError(response) {
-	        	    	//$scope.listaBloqueados = [];
-	        	    	$scope.msgBloq = response;
-	        	    });
-				}
-				
-				$scope.getBloqueadores() = function(){
-					$http({
-					    url: '/bloqueadores.do?username='+"${usuario.getUsername()}", 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						//$scope.listaBloqueadores = response.data;
-						$scope.msgBloc = response;
-	        	    }, function myError(response) {
-	        	    	//$scope.listaBloqueadores = [];
-	        	    	$scope.msgBloc = response;
-	        	    });
-				}
-				
-				$scope.fillTable() = function(){
-					$scope.getAllPeople();
-					$scope.getAmigos();
-					$scope.getPdAEnviadas();
-					$scope.getPdARecibidas();
-					$scope.getBloqueados();
-					$scope.getBloqueadores();
-					
-					var indice = 0;
-					
-					for(indice=0;indice<$scope.listaPeople.length;indice++){
-						$scope.listaFinal.push({
-							'usuario': $scope.listaPeople[indice],
-							'relacion': 'none'
-						});
-					}
-					
+				$scope.fillTable = function(){
+					$scope.getArrayPeople();
 				}
 				
 				$scope.fillTable();
+				
+				/*$scope.changeRol = function(user) {
+					bootbox.confirm("¿Está seguro de cambiar el rol de "+user.username+" de " + user.rol + " a " + user.nuevoRol + "?", function(result){
+						if(result == true){
+							var dataSend = 'username=' + user.username + '&rol=' + user.nuevoRol;
+							$http({
+							    url: '/adminCambiaRolUser.do?'+dataSend, 
+							    method: "POST",
+							    headers : {
+							    	'Content-Type': 'application/json'
+							    }
+							}).then(function mySuccess(response) {
+								bootbox.alert("Cambiado el rol de "+ user.username + " a " + user.nuevoRol);
+								$scope.reloadUsers();
+			        	    }, function myError(response) {
+			        	    	bootbox.alert("Hubo un fallo y no se pudo cambiar el rol de "+user.username);
+			        	    	$scope.reloadUsers();
+			        	    });
+						}
+					});
+				};
+				
+				$scope.deleteUser = function(user) {
+					bootbox.confirm("¿Está seguro de eliminar a "+user.username+"?", function(result){
+						if(result == true){
+							var dataSend = 'username=' + user.username;
+							$http({
+							    url: '/adminDeleteUser.do?'+dataSend, 
+							    method: "POST",
+							    headers : {
+							    	'Content-Type': 'application/json'
+			                    }
+							}).then(function mySuccess(response) {
+								bootbox.alert(user.username+" eliminado");
+								$scope.reloadUsers();
+			        	    }, function myError(response) {
+			        	    	bootbox.alert("Hubo un fallo y no se pudo eliminar a "+user.username);
+			        	    	$scope.reloadUsers();
+			        	    });
+						}
+					});					
+				};*/
 				
 			});
 				
