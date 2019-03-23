@@ -102,12 +102,12 @@
     	<br>
     	<div ng-app="personasApp" ng-controller="personasCtrl">
     		Lista final: {{listaFinal}}
-    		Lista people: {{listaPeople}}
-    		Lista amigos: {{listaAmigos}}
-    		Lista pda env: {{peticionesEnv}}
-    		Lista pda rec: {{peticionesRec}}
-    		Lista bloqueados: {{listaBloqueados}}
-    		Lista bloqueadores: {{listaBloqueadores}}
+    		<br>Lista people: {{listaPeople}}
+    		<br>Lista amigos: {{listaAmigos}}
+    		<br>Lista pda env: {{peticionesEnv}}
+    		<br>Lista pda rec: {{peticionesRec}}
+    		<br>Lista bloqueados: {{listaBloqueados}}
+    		<br>Lista bloqueadores: {{listaBloqueadores}}
 			<div class="container">
 		    	<br>
 		    	<br>
@@ -182,7 +182,7 @@
 						});
 					}
 					
-				};
+				}
 				
 				//Get Data
 				
@@ -199,7 +199,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.listaPeople = [];
 	        	    });
-				};
+				}
 				
 				$scope.getAmigos() = function(){
 					$http({
@@ -214,7 +214,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.listaAmigos = [];
 	        	    });
-				};
+				}
 				
 				$scope.getPdAEnviadas() = function(){
 					$http({
@@ -229,7 +229,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.peticionesEnv = [];
 	        	    });
-				};
+				}
 				
 				$scope.getPdARecibidas() = function(){
 					$http({
@@ -244,7 +244,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.peticionesRec = [];
 	        	    });
-				};
+				}
 				
 				$scope.getBloqueados() = function(){
 					$http({
@@ -259,7 +259,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.listaBloqueados = [];
 	        	    });
-				};
+				}
 				
 				$scope.getBloqueadores() = function(){
 					$http({
@@ -274,7 +274,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.listaBloqueadores = [];
 	        	    });
-				};
+				}
 				
 			});
 				
