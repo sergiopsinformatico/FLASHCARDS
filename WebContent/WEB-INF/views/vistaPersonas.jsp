@@ -74,7 +74,10 @@
     
   </head>
 
-  <body id="page-top">    
+  <body id="page-top">
+  	 <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
  	<!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -101,15 +104,14 @@
     	<br>
     	<br>
     	<div ng-app="peopleApp" ng-controller="peopleCtrl">
-    		Lista final: {{ listaFinal }}
-    		<br>Lista people: {{ listaPeople }}
-    		<br>Lista amigos: {{ listaAmigos }}
-    		<br>Lista pda env: {{ peticionesEnv }}
-    		<br>Lista pda rec: {{ peticionesRec }}
-    		<br>Lista bloqueados: {{ listaBloqueados }}
-    		<br>Lista bloqueadores: {{ listaBloqueadores }}
 			<div class="container">
-		    	<br>
+		    	<br>Lista final: {{listaFinal}}
+	    		<br>Lista people: {{listaPeople}}
+	    		<br>Lista amigos: {{listaAmigos}}
+	    		<br>Lista pda env: {{peticionesEnv}}
+	    		<br>Lista pda rec: {{peticionesRec}}
+	    		<br>Lista bloqueados: {{listaBloqueados}}
+	    		<br>Lista bloqueadores: {{listaBloqueadores}}
 		    	<br>
 		    	<div ng-if="listaFinal.length == 0">
 					<p>No hay más usuarios en la aplicación</p>
@@ -145,7 +147,6 @@
 			</div>
 		</div>
 		<script>
-			
 			var app = angular.module('peopleApp', []);
 			app.controller('peopleCtrl', function($scope, $http) {
 				
