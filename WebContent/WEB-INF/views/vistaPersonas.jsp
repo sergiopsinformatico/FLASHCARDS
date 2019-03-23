@@ -153,7 +153,7 @@
 				$scope.getArrayPeople = function(){
 					var dataSend = 'username=' + "${usuario.getUsername()}";
 					$http({
-					    url: '/allPeople.do?'+dataSend, 
+					    url: 'allPeople.do?'+dataSend, 
 					    method: "GET"
 					}).then(function mySuccess(response) {					
 						$scope.arrayUsers = response;
