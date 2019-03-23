@@ -154,11 +154,7 @@
 					var dataSend = 'username=' + "${usuario.getUsername()}";
 					$http({
 					    url: '/allPeople.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
+					    method: "GET"
 					}).then(function mySuccess(response) {					
 						$scope.arrayUsers = response;
 						
@@ -167,6 +163,13 @@
 	        	    });
 				}
 				
+				/*
+				,
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+				*/
 				
 				$scope.fillTable = function(){
 					$scope.getArrayPeople();
