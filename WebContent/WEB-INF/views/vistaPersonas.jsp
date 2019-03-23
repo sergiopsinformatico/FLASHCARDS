@@ -105,6 +105,12 @@
     	<br>
     	<div ng-app="peopleApp" ng-controller="peopleCtrl">
 			<div class="container">
+				<br>MsgPeople: {{msgPeople}}
+				<br>MsgAm: {{msgAmigos}}
+				<br>MsgPdAe: {{msgPdAe}}
+				<br>MsgPdAr: {{msgPdAr}}
+				<br>MsgBloq: {{msgBloq}}
+				<br>MsgBloc: {{msgBloc}}
 		    	<br>Lista final: {{listaFinal}}
 	    		<br>Lista people: {{listaPeople}}
 	    		<br>Lista amigos: {{listaAmigos}}
@@ -155,11 +161,22 @@
 				$scope.listaFinal = [];
 				
 				$scope.listaPeople = [];
+				$scope.msgPeople = '';
+				
 				$scope.listaAmigos = [];
+				$scope.msgAmigos='';
+				
 				$scope.peticionesEnv = [];
+				$scope.msgPdAe = '';
+				
 				$scope.peticionesRec = [];
+				$scope.msgPdAr = '';
+				
 				$scope.listaBloqueados = [];
+				$scope.msgBloq = '';
+				
 				$scope.listaBloqueadores = [];
+				$scope.msgBloc = '';
 				
 				//Get Data
 				
@@ -172,9 +189,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.listaPeople = response.data;						
+						//$scope.listaPeople = response.data;
+						$scope.msgPeople = response;
 	        	    }, function myError(response) {
-	        	    	$scope.listaPeople = [];
+	        	    	//$scope.listaPeople = [];
+	        	    	$scope.msgPeople = response;
 	        	    });
 				}
 				
@@ -187,9 +206,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.listaAmigos = response.data;						
+						//$scope.listaAmigos = response.data;
+						$scope.msgAmigos = response;
 	        	    }, function myError(response) {
-	        	    	$scope.listaAmigos = [];
+	        	    	//$scope.listaAmigos = [];
+	        	    	$scope.msgAmigos = response;
 	        	    });
 				}
 				
@@ -202,9 +223,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.peticionesEnv = response.data;						
+						//$scope.peticionesEnv = response.data;
+						$scope.msgPdAe = response;
 	        	    }, function myError(response) {
-	        	    	$scope.peticionesEnv = [];
+	        	    	//$scope.peticionesEnv = [];
+	        	    	$scope.msgPdAe = response;
 	        	    });
 				}
 				
@@ -217,9 +240,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.peticionesRec = response.data;						
+						//$scope.peticionesRec = response.data;
+						$scope.msgPdAr = response;
 	        	    }, function myError(response) {
-	        	    	$scope.peticionesRec = [];
+	        	    	//$scope.peticionesRec = [];
+	        	    	$scope.msgPdAr = response;
 	        	    });
 				}
 				
@@ -232,9 +257,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.listaBloqueados = response.data;						
+						//$scope.listaBloqueados = response.data;
+						$scope.msgBloq = response;
 	        	    }, function myError(response) {
-	        	    	$scope.listaBloqueados = [];
+	        	    	//$scope.listaBloqueados = [];
+	        	    	$scope.msgBloq = response;
 	        	    });
 				}
 				
@@ -247,9 +274,11 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.listaBloqueadores = response.data;						
+						//$scope.listaBloqueadores = response.data;
+						$scope.msgBloc = response;
 	        	    }, function myError(response) {
-	        	    	$scope.listaBloqueadores = [];
+	        	    	//$scope.listaBloqueadores = [];
+	        	    	$scope.msgBloc = response;
 	        	    });
 				}
 				
