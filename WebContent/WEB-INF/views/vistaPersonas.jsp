@@ -161,30 +161,6 @@
 				$scope.listaBloqueados = [];
 				$scope.listaBloqueadores = [];
 				
-				
-				$scope.fillTable();
-				
-				$scope.fillTable() = function(){
-					$scope.getAllPeople();
-					$scope.getAmigos();
-					$scope.getPdAEnviadas();
-					$scope.getPdARecibidas();
-					$scope.getBloqueados();
-					$scope.getBloqueadores();
-					
-					//Rellenar listaFinal
-					
-					var indice = 0;
-					
-					for(indice=0;indice<$scope.listaPeople.length;indice++){
-						$scope.listaFinal.push({
-							'usuario': $scope.listaPeople[indice],
-							'relacion': 'none'
-						});
-					}
-					
-				}
-				
 				//Get Data
 				
 				$scope.getAllPeople() = function(){
@@ -276,6 +252,27 @@
 	        	    	$scope.listaBloqueadores = [];
 	        	    });
 				}
+				
+				$scope.fillTable() = function(){
+					$scope.getAllPeople();
+					$scope.getAmigos();
+					$scope.getPdAEnviadas();
+					$scope.getPdARecibidas();
+					$scope.getBloqueados();
+					$scope.getBloqueadores();
+					
+					var indice = 0;
+					
+					for(indice=0;indice<$scope.listaPeople.length;indice++){
+						$scope.listaFinal.push({
+							'usuario': $scope.listaPeople[indice],
+							'relacion': 'none'
+						});
+					}
+					
+				}
+				
+				$scope.fillTable();
 				
 			});
 				
