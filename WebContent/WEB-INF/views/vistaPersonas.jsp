@@ -172,10 +172,11 @@
 				
 				$scope.fillTable = function(){
 					$scope.getArrayPeople();
-					$scope.finalArray.push('hola');
 					var indice = 0;
 					for(indice=0; indice<5; indice++){
-						$scope.finalArray.push('hola');
+						$scope.finalArray.push({
+							'ejemplo' : 'hola'
+						});
 					}
 					
 				}
