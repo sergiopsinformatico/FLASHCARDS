@@ -128,9 +128,6 @@
 			    			<td>
 			    				{{user.relation}}
 							</td>
-							<td>
-								prueba
-							</td>
 			    		</tr>
 			    	</table>
 				</div>
@@ -142,6 +139,10 @@
 			app.controller('personasCtrl', function($scope, $http) {
 				
 				$scope.finalArray = [];
+				
+				$scope.intermedioUno = [];
+				$scope.intermedioDos = [];
+				
 				$scope.arrayUsers = '';
 				$scope.arrayAmigos = '';
 				$scope.arrayPdAEnv = '';
@@ -151,11 +152,40 @@
 				$scope.fillTable = function(){
 					var indice = 0;
 					for(indice=0; indice<$scope.arrayUsers.length; indice++){
-						$scope.finalArray.push({
+						$scope.intermedioUno.push({
 							'user' : $scope.arrayUsers[indice],
 							'relation' : 'none'
 						});
 					}
+					
+					var indiceSub = 0;
+					var elemento;
+					
+					for(indice=0; indice<$scope.intermedioUno.length; indice++){
+						for(indiceSub=0; indiceSub<$scope.arrayAmigos.length; indiceSub++){
+							elemento = $scope.intermedioUno[indice];
+							if(($scope.arrayAmigos[indiceSub]).localeCompare(elemento.user.username)){
+								elemento.relation = 'amigos';
+							}
+							$scope.intermedioDos.push(elemento);
+						}
+					}
+					
+					$scope.intermedioUno = [];
+					
+					
+					
+					//Rellenar amigos
+					
+					
+					//Rellenar pda enviadas
+					
+					//Rellenar pda recibidas
+					
+					//Rellenar bloqueados
+					
+					//Eliminar a los que nos han bloqueado
+					
 				}
 				
 				$scope.getBloqueadores = function(){
