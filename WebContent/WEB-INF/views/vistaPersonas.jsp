@@ -173,6 +173,8 @@
 					
 					$scope.intermedioUno = [];
 					
+					$scope.finalArray = $scope.intermedioDos;
+					
 					
 					
 					//Rellenar amigos
