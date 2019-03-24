@@ -4,10 +4,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,37 +34,49 @@ public class Controlador07RelacionesUsuarios {
 	}	
 	
 	
-	@RequestMapping(value = "/allPeople", method = RequestMethod.GET)
+	@RequestMapping(value = "/allPeople", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> allPeople(@RequestParam("username") String username) {
 		dBUsuario = Broker.getInstanciaUsuario();
 		return dBUsuario.getAllUsersSystem(username);
 	}
 	
-	@RequestMapping(value = "/amigos", method = RequestMethod.GET)
+	@RequestMapping(value = "/amigos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<String> getAmigos(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getAmigos();
 	}
 	
-	@RequestMapping(value = "/pdaEnv", method = RequestMethod.GET)
+	@RequestMapping(value = "/pdaEnv", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<String> getPdAEnv(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getPeticionesEnviadas();
 	}
 	
-	@RequestMapping(value = "/pdaRec", method = RequestMethod.GET)
+	@RequestMapping(value = "/pdaRec", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<String> getPdARec(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getPeticionesRecibidas();
 	}
 	
-	@RequestMapping(value = "/bloqueados", method = RequestMethod.GET)
+	@RequestMapping(value = "/bloqueados", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<String> getBloqueados(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getBloqueados();
 	}
 	
-	@RequestMapping(value = "/bloqueadores", method = RequestMethod.GET)
+	@RequestMapping(value = "/bloqueadores", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
 	public List<String> getBloqueadores(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getBloqueadoPor();
