@@ -164,17 +164,18 @@
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.arrayUsers = response.data;
+						var indice = 0;
+						for(indice=0; indice<5; indice++){
+							$scope.finalArray.push({
+								'ejemplo' : $scope.arrayUsers.length
+							});
+						}
 						
 	        	    }, function myError(response) {
 	        	    	$scope.arrayUsers = [];
 	        	    });
 					
-					var indice = 0;
-					for(indice=0; indice<5; indice++){
-						$scope.finalArray.push({
-							'ejemplo' : $scope.arrayUsers.length
-						});
-					}
+					
 					
 				}
 				
