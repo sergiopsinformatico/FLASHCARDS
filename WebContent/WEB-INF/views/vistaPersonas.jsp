@@ -103,6 +103,8 @@
     	<div ng-app="personasApp" ng-controller="personasCtrl">
 		    <div class="container">
 		    	Array Users: {{arrayUsers}}
+		    	<br>
+		    	Array Final: {{finalArray}}
 		    	<!-- 
 		    	<br>
 		    	<br>
@@ -148,6 +150,7 @@
 			var app = angular.module('personasApp', []);
 			app.controller('personasCtrl', function($scope, $http) {
 				
+				$scope.finalArray = [];
 				$scope.arrayUsers = '';
 				
 				$scope.getArrayPeople = function(){
@@ -160,15 +163,27 @@
 					    	'Accept': 'application/json'
 	                    }
 					}).then(function mySuccess(response) {					
-						$scope.arrayUsers = response;
+						$scope.arrayUsers = response.data;
 						
 	        	    }, function myError(response) {
-	        	    	$scope.arrayUsers = response;
+	        	    	$scope.arrayUsers = [];
 	        	    });
 				}
 				
 				$scope.fillTable = function(){
 					$scope.getArrayPeople();
+					
+					
+					
+					var indice = 0;
+					
+					for(indice=0;indice<$scope.arrayUsers.length;indice++){
+						$scope.finalArray.push({
+							'user' : $scope.arrayUsers[indice],
+							'relation' : 'none'
+						});
+					}
+					
 				}
 				
 				$scope.fillTable();
