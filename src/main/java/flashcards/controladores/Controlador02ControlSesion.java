@@ -73,9 +73,6 @@ public class Controlador02ControlSesion {
 			relacion = dBRelacion.leerRelacionUsuario(user.getUsername());
 			if(relacion==null) {
 				dBRelacion.insertarRelacionUsuario(new RelacionDTO(user.getUsername()));
-				user.setRelacion(dBRelacion.leerRelacionUsuario(user.getUsername()));
-			}else {
-				user.setRelacion(relacion);
 			}
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());
