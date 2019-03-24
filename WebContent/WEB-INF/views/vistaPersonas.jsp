@@ -178,10 +178,7 @@
 					var indice = 0;
 					
 					for(indice=0;indice<$scope.arrayUsers.length;indice++){
-						$scope.finalArray.push({
-							'user' : $scope.arrayUsers[indice],
-							'relation' : 'none'
-						});
+						$scope.finalArray.push($scope.arrayUsers[indice]);
 					}
 					
 				}
