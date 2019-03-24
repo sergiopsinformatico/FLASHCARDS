@@ -101,48 +101,39 @@
     	<br>
     	<br>
     	<div ng-app="personasApp" ng-controller="personasCtrl">
-		    <div class="container">
-		    	Array Users: {{arrayUsers}}
-		    	<br>
-		    	Array Final: {{finalArray}}
-		    	<!-- 
+		    <div class="container"> 
 		    	<br>
 		    	<br>
-		    	<div ng-if="users.length == 0">
+		    	<div ng-if="finalArray.length == 0">
 					<p>No hay usuarios en la aplicación</p>
 				</div>
-				<div ng-if="users.length > 0">
+				<div ng-if="finalArray.length > 0">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
 					<br>
 					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in users | filter:searchUserAdmin">
+			    		<tr ng-repeat="user in finalArray | filter:searchUserAdmin">
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
-									<img src="{{user.foto}}" class="img-responsive" alt="">
+									<img src="{{user.user.foto}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.username}}
-			    					<br>Rol: {{user.rol}}
+			    					Usuario: {{user.user.username}}
+			    					<br>Rol: {{user.user.rol}}
 			    				</p>
 			    				<br>
 			    			</td>
 			    			<td>
-			    				prueba
-								<!-- <input type="radio" ng-model="user.nuevoRol" value="usuario"> Usuario <br>
-								<input type="radio" ng-model="user.nuevoRol" value="moderador"> Moderador <br>
-								<input type="radio" ng-model="user.nuevoRol" value="administrador"> Administrador
-								<br><input type="button" ng-click="changeRol(user)" value="Cambiar Rol"/>
+			    				{{user.relation}}
 							</td>
 							<td>
 								prueba
-								<!-- <input type="button" ng-click="deleteUser(user)" value="Eliminar Cuenta de Usuario"/>
 							</td>
 			    		</tr>
 			    	</table>
-				</div>-->
+				</div>
 			</div>
 		</div>
 		<script>
@@ -278,49 +269,6 @@
 				}
 				
 				$scope.getArrayPeople();
-				
-				/*$scope.changeRol = function(user) {
-					bootbox.confirm("¿Está seguro de cambiar el rol de "+user.username+" de " + user.rol + " a " + user.nuevoRol + "?", function(result){
-						if(result == true){
-							var dataSend = 'username=' + user.username + '&rol=' + user.nuevoRol;
-							$http({
-							    url: '/adminCambiaRolUser.do?'+dataSend, 
-							    method: "POST",
-							    headers : {
-							    	'Content-Type': 'application/json'
-							    }
-							}).then(function mySuccess(response) {
-								bootbox.alert("Cambiado el rol de "+ user.username + " a " + user.nuevoRol);
-								$scope.reloadUsers();
-			        	    }, function myError(response) {
-			        	    	bootbox.alert("Hubo un fallo y no se pudo cambiar el rol de "+user.username);
-			        	    	$scope.reloadUsers();
-			        	    });
-						}
-					});
-				};
-				
-				$scope.deleteUser = function(user) {
-					bootbox.confirm("¿Está seguro de eliminar a "+user.username+"?", function(result){
-						if(result == true){
-							var dataSend = 'username=' + user.username;
-							$http({
-							    url: '/adminDeleteUser.do?'+dataSend, 
-							    method: "POST",
-							    headers : {
-							    	'Content-Type': 'application/json'
-			                    }
-							}).then(function mySuccess(response) {
-								bootbox.alert(user.username+" eliminado");
-								$scope.reloadUsers();
-			        	    }, function myError(response) {
-			        	    	bootbox.alert("Hubo un fallo y no se pudo eliminar a "+user.username);
-			        	    	$scope.reloadUsers();
-			        	    });
-						}
-					});					
-				};*/
-				
 			});
 				
 		</script>
