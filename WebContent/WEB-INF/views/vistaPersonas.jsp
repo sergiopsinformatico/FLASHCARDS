@@ -172,10 +172,14 @@
 				
 				$scope.fillTable = function(){
 					$scope.getArrayPeople();
-										
+					
+					var arrayFinal = [];
+					
 					$scope.arrayUsers.forEach( function(valor, indice, array) {
-						$scope.finalArray.push(valor);
+						arrayFinal.push(valor);
 					});
+					
+					$scope.finalArray = arrayFinal;
 					
 				}
 				
