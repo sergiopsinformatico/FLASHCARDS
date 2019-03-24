@@ -152,6 +152,111 @@
 				
 				$scope.finalArray = [];
 				$scope.arrayUsers = '';
+				$scope.arrayAmigos = '';
+				$scope.arrayPdAEnv = '';
+				$scope.arrayPdARec = '';
+				$scope.arrayBloqueados = '';
+				
+				$scope.fillTable = function(){
+					var indice = 0;
+					for(indice=0; indice<$scope.arrayUsers.length; indice++){
+						$scope.finalArray.push({
+							'user' : $scope.arrayUsers[indice],
+							'relation' : 'none'
+						});
+					}
+				}
+				
+				$scope.getBloqueadores = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
+					$http({
+					    url: 'bloqueados.do?'+dataSend, 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.arrayBloqueados = response.data;
+						$scope.fillTable();						
+	        	    }, function myError(response) {
+	        	    	$scope.arrayBloqueados  = [];
+	        	    	$scope.fillTable();
+	        	    });					
+				}
+				
+				$scope.getBloqueados = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
+					$http({
+					    url: 'bloqueados.do?'+dataSend, 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.arrayBloqueados = response.data;
+						$scope.getBloqueadores();
+						
+	        	    }, function myError(response) {
+	        	    	$scope.arrayBloqueados  = [];
+	        	    	$scope.getBloqueadores();
+	        	    });					
+				}
+				
+				$scope.getPDArec = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
+					$http({
+					    url: 'pdaRec.do?'+dataSend, 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.arrayPdARec = response.data;
+						$scope.getBloqueados();
+	        	    }, function myError(response) {
+	        	    	$scope.arrayPdARec  = [];
+	        	    	$scope.getBloqueados();
+	        	    });					
+				}
+				
+				$scope.getPDAenv = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
+					$http({
+					    url: 'pdaEnv.do?'+dataSend, 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.arrayPdAEnv = response.data;
+						$scope.getPDArec();
+	        	    }, function myError(response) {
+	        	    	$scope.arrayPdAEnv  = [];
+	        	    	$scope.getPDArec();
+	        	    });					
+				}
+				
+				$scope.getArrayAmigos = function(){
+					var dataSend = 'username=' + "${usuario.getUsername()}";
+					$http({
+					    url: 'amigos.do?'+dataSend, 
+					    method: "GET",
+					    headers : {
+					    	'Content-Type': 'application/json',
+					    	'Accept': 'application/json'
+	                    }
+					}).then(function mySuccess(response) {					
+						$scope.arrayAmigos = response.data;
+						$scope.getPDAenv();
+	        	    }, function myError(response) {
+	        	    	$scope.arrayAmigos = [];
+	        	    	$scope.getPDAenv();
+	        	    });					
+				}
 				
 				$scope.getArrayPeople = function(){
 					var dataSend = 'username=' + "${usuario.getUsername()}";
@@ -164,26 +269,15 @@
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.arrayUsers = response.data;
-						var indice = 0;
-						for(indice=0; indice<5; indice++){
-							$scope.finalArray.push({
-								'ejemplo' : $scope.arrayUsers.length
-							});
-						}
+						$scope.getArrayAmigos();
 						
 	        	    }, function myError(response) {
 	        	    	$scope.arrayUsers = [];
-	        	    });
-					
-					
-					
+	        	    	$scope.getArrayAmigos();
+	        	    });					
 				}
 				
-				$scope.fillTable = function(){
-					$scope.getArrayPeople();
-				}
-				
-				$scope.fillTable();
+				$scope.getArrayPeople();
 				
 				/*$scope.changeRol = function(user) {
 					bootbox.confirm("¿Está seguro de cambiar el rol de "+user.username+" de " + user.rol + " a " + user.nuevoRol + "?", function(result){
