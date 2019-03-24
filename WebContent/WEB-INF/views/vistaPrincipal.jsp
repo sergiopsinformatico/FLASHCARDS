@@ -203,7 +203,7 @@
 						<br>
 						<div>
 							<form action="personas.html" method="GET">
-								<button type="submit" id="buttonGetPersonas" name="buttonGetPersonas" class="btn btn-outline-primary btn-principal" >
+								<button type="submit" id="buttonGetPersonas" name="buttonGetPersonas" class="btn btn-outline-warning btn-principal" >
 									<span class="glyphicon glyphicon-search"></span>Buscar Personas
 								</button>
 							</form>

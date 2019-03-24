@@ -173,14 +173,11 @@
 				$scope.fillTable = function(){
 					$scope.getArrayPeople();
 					
-					var arrayFinal = [];
+					var indice = 0;
 					
-					$scope.arrayUsers.forEach( function(valor, indice, array) {
-						arrayFinal.push(valor);
-					});
-					
-					$scope.finalArray = arrayFinal;
-					
+					for(indice=0; indice<$scope.arrayUsers.length; indice++){
+						$scope.finalArray.push('hola');
+					}
 				}
 				
 				$scope.fillTable();
