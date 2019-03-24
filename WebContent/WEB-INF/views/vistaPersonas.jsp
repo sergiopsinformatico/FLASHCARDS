@@ -175,7 +175,7 @@
 					var indice = 0;
 					for(indice=0; indice<5; indice++){
 						$scope.finalArray.push({
-							'ejemplo' : 'hola'
+							'ejemplo' : $scope.arrayUsers.length
 						});
 					}
 					
