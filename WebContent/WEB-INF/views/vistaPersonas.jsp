@@ -168,10 +168,7 @@
 	        	    }, function myError(response) {
 	        	    	$scope.arrayUsers = [];
 	        	    });
-				}
-				
-				$scope.fillTable = function(){
-					$scope.getArrayPeople();
+					
 					var indice = 0;
 					for(indice=0; indice<5; indice++){
 						$scope.finalArray.push({
@@ -179,6 +176,10 @@
 						});
 					}
 					
+				}
+				
+				$scope.fillTable = function(){
+					$scope.getArrayPeople();
 				}
 				
 				$scope.fillTable();
