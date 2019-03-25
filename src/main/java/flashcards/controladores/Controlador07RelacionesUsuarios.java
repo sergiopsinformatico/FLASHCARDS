@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,8 @@ public class Controlador07RelacionesUsuarios {
 	
 	InterfaceDAOUsuario dBUsuario;
 	InterfaceDAORelacion dBRelacion;
-	
+	JSONArray jsonArray;
+	String json;
 	
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public ModelAndView personas(HttpServletRequest request, HttpServletResponse response) {
@@ -42,7 +44,7 @@ public class Controlador07RelacionesUsuarios {
 		return dBUsuario.getAllUsersSystem(username);
 	}
 	
-	@RequestMapping(value = "/amigos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	/*@RequestMapping(value = "/amigos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> getAmigos(@RequestParam("username") String username) {
@@ -80,6 +82,6 @@ public class Controlador07RelacionesUsuarios {
 	public List<String> getBloqueadores(@RequestParam("username") String username) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		return dBRelacion.leerRelacionUsuario(username).getBloqueadoPor();
-	}
+	}*/
 	
 }

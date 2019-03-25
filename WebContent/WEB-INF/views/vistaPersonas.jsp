@@ -104,30 +104,27 @@
 		    <div class="container"> 
 		    	<br>
 		    	<br>
-		    	<div ng-if="finalArray.length == 0">
+		    	<div ng-if="arrayUsers.length == 0">
 					<p>No hay usuarios en la aplicación</p>
 				</div>
-				<div ng-if="finalArray.length > 0">
+				<div ng-if="arrayUsers.length > 0">
 					<div class="panel-heading">
 						<input class="form-control" ng-model="searchUserAdmin" placeholder="Buscar Usuario..." />
 					</div>
 					<br>
 					<table align="center" border="5" style="width:100%">
-			    		<tr ng-repeat="user in finalArray | filter:searchUserAdmin">
+			    		<tr ng-repeat="user in arrayUsers | filter:searchUserAdmin">
 			    			<td>
 			    				<br>
 			    				<div class="profile-userpic">
-									<img src="{{user.user.foto}}" class="img-responsive" alt="">
+									<img src="{{user.foto}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.user.username}}
-			    					<br>Rol: {{user.user.rol}}
+			    					Usuario: {{user.username}}
+			    					<br>Rol: {{user.rol}}
 			    				</p>
 			    				<br>
 			    			</td>
-			    			<td>
-			    				{{user.relation}}
-							</td>
 			    		</tr>
 			    	</table>
 				</div>
@@ -138,148 +135,7 @@
 			var app = angular.module('personasApp', []);
 			app.controller('personasCtrl', function($scope, $http) {
 				
-				$scope.finalArray = [];
-				
-				$scope.intermedioUno = [];
-				$scope.intermedioDos = [];
-				
 				$scope.arrayUsers = '';
-				$scope.arrayAmigos = '';
-				$scope.arrayPdAEnv = '';
-				$scope.arrayPdARec = '';
-				$scope.arrayBloqueados = '';
-				
-				$scope.fillTable = function(){
-					var indice = 0;
-					for(indice=0; indice<$scope.arrayUsers.length; indice++){
-						$scope.intermedioUno.push({
-							'user' : $scope.arrayUsers[indice],
-							'relation' : 'none'
-						});
-					}
-					
-					var indiceSub = 0;
-					var elemento;
-					
-					for(indice=0; indice<$scope.intermedioUno.length; indice++){
-						for(indiceSub=0; indiceSub<$scope.arrayAmigos.length; indiceSub++){
-							elemento = $scope.intermedioUno[indice];
-							if(($scope.arrayAmigos[indiceSub]).localeCompare(elemento.user.username)){
-								elemento.relation = 'amigos';
-							}
-							$scope.intermedioDos.push(elemento);
-						}
-					}
-					
-					$scope.intermedioUno = [];
-					
-					$scope.finalArray = $scope.intermedioDos;
-					
-					
-					
-					//Rellenar amigos
-					
-					
-					//Rellenar pda enviadas
-					
-					//Rellenar pda recibidas
-					
-					//Rellenar bloqueados
-					
-					//Eliminar a los que nos han bloqueado
-					
-				}
-				
-				$scope.getBloqueadores = function(){
-					var dataSend = 'username=' + "${usuario.getUsername()}";
-					$http({
-					    url: 'bloqueados.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						$scope.arrayBloqueados = response.data;
-						$scope.fillTable();						
-	        	    }, function myError(response) {
-	        	    	$scope.arrayBloqueados  = [];
-	        	    	$scope.fillTable();
-	        	    });					
-				}
-				
-				$scope.getBloqueados = function(){
-					var dataSend = 'username=' + "${usuario.getUsername()}";
-					$http({
-					    url: 'bloqueados.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						$scope.arrayBloqueados = response.data;
-						$scope.getBloqueadores();
-						
-	        	    }, function myError(response) {
-	        	    	$scope.arrayBloqueados  = [];
-	        	    	$scope.getBloqueadores();
-	        	    });					
-				}
-				
-				$scope.getPDArec = function(){
-					var dataSend = 'username=' + "${usuario.getUsername()}";
-					$http({
-					    url: 'pdaRec.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						$scope.arrayPdARec = response.data;
-						$scope.getBloqueados();
-	        	    }, function myError(response) {
-	        	    	$scope.arrayPdARec  = [];
-	        	    	$scope.getBloqueados();
-	        	    });					
-				}
-				
-				$scope.getPDAenv = function(){
-					var dataSend = 'username=' + "${usuario.getUsername()}";
-					$http({
-					    url: 'pdaEnv.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						$scope.arrayPdAEnv = response.data;
-						$scope.getPDArec();
-	        	    }, function myError(response) {
-	        	    	$scope.arrayPdAEnv  = [];
-	        	    	$scope.getPDArec();
-	        	    });					
-				}
-				
-				$scope.getArrayAmigos = function(){
-					var dataSend = 'username=' + "${usuario.getUsername()}";
-					$http({
-					    url: 'amigos.do?'+dataSend, 
-					    method: "GET",
-					    headers : {
-					    	'Content-Type': 'application/json',
-					    	'Accept': 'application/json'
-	                    }
-					}).then(function mySuccess(response) {					
-						$scope.arrayAmigos = response.data;
-						$scope.getPDAenv();
-	        	    }, function myError(response) {
-	        	    	$scope.arrayAmigos = [];
-	        	    	$scope.getPDAenv();
-	        	    });					
-				}
 				
 				$scope.getArrayPeople = function(){
 					var dataSend = 'username=' + "${usuario.getUsername()}";
@@ -292,11 +148,8 @@
 	                    }
 					}).then(function mySuccess(response) {					
 						$scope.arrayUsers = response.data;
-						$scope.getArrayAmigos();
-						
-	        	    }, function myError(response) {
+					}, function myError(response) {
 	        	    	$scope.arrayUsers = [];
-	        	    	$scope.getArrayAmigos();
 	        	    });					
 				}
 				
