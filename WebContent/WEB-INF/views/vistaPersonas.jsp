@@ -120,7 +120,7 @@
 									<img src="{{user.foto}}" class="img-responsive" alt="">
 								</div>
 			    				<p align="center">
-			    					Usuario: {{user.username}}
+			    					Usuario: <a href="verUsuario.html?username={{user.username}}">{{user.username}}</a>
 			    					<br>Rol: {{user.rol}}
 			    				</p>
 			    				<br>

@@ -1,4 +1,5 @@
 package main.java.flashcards.controladores;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +20,25 @@ import org.springframework.web.servlet.ModelAndView;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAORelacion;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
+import main.java.flashcards.dto.RelacionDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 @SessionAttributes("usuario")
 public class Controlador07RelacionesUsuarios {
 	
+	ModelAndView vista;
 	InterfaceDAOUsuario dBUsuario;
 	InterfaceDAORelacion dBRelacion;
 	JSONArray jsonArray;
 	String json;
+	RelacionDTO relacion;
+	ArrayList<String> lista;
 	
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public ModelAndView personas(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("vistaPersonas");
+		vista = new ModelAndView("vistaPersonas");
+		return vista;
 	}	
 	
 	
@@ -41,7 +47,25 @@ public class Controlador07RelacionesUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> allPeople(@RequestParam("username") String username) {
 		dBUsuario = Broker.getInstanciaUsuario();
+		dBRelacion = Broker.getInstanciaRelacion();
+		relacion = dBRelacion.leerRelacionUsuario(username);
+		relacion.getBloqueadoPor();
 		return dBUsuario.getAllUsersSystem(username);
+	}
+	
+	@RequestMapping(value = "/verUsuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView verUsuario(@RequestParam("username") String username) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		relacion = dBRelacion.leerRelacionUsuario(username);
+		
+		vista = new ModelAndView("vistaPerfil");
+		relacion.getAmigos();
+		relacion.getBloqueados();
+		relacion.getPeticionesEnviadas();
+		relacion.getPeticionesRecibidas();
+		return vista;
 	}
 	
 	/*@RequestMapping(value = "/amigos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
