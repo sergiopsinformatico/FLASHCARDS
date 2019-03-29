@@ -135,6 +135,7 @@
 						        </div>
 							</div>
 						</div>
+						<br>Relacion: ${relacion}
 						<div class="row" id="amigos" style="display:none">
 							<form action="/eliminaAmigo.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
 								<input type="submit" class="btn btn-primary" value="Eliminar a ${perfil.getUsername()} como amigo">
