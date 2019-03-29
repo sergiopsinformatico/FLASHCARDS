@@ -47,7 +47,7 @@ public class Controlador07RelacionesUsuarios {
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public ModelAndView personas(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaPersonas");
-		vista.addObject("logueado", ((UsuarioDTO)request.getSession().getAttribute("Usuario")).getUsername());
+		vista.addObject("logueado", ((UsuarioDTO)request.getSession().getAttribute("usuario")).getUsername());
 		return vista;
 	}	
 	
