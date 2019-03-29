@@ -189,15 +189,15 @@
 		}
 		if("${relacion}"!=null && ("${relacion}").localeCompare("")!=0){
 			if(("${relacion}").localeCompare("amigos")==0){
-				document.getElementById("amigos").style.visibility="visible";
+				document.getElementById("amigos").style.display = "block";
 			}else if(("${relacion}").localeCompare("bloqueado")==0){
-				document.getElementById("bloqueado").style.visibility="visible";
+				document.getElementById("bloqueado").style.display = "block";
 			}else if(("${relacion}").localeCompare("pdaEnvia")==0){
-				document.getElementById("pdaEnvia").style.visibility="visible";
+				document.getElementById("pdaEnvia").style.display = "block";
 			}else if(("${relacion}").localeCompare("pdaRecibe")==0){
-				document.getElementById("pdaRecibe").style.visibility="visible";
+				document.getElementById("pdaRecibe").style.display = "block";
 			}else if(("${relacion}").localeCompare("none")==0){
-				document.getElementById("none").style.visibility="visible";
+				document.getElementById("none").style.display = "block";
 			}
 		}
 	</script>
