@@ -34,9 +34,11 @@ public class Controlador07RelacionesUsuarios {
 	JSONArray jsonArray;
 	String json;
 	RelacionDTO relacion;
+	RelacionDTO relacionUsername;
+	RelacionDTO relacionLogueado;
 	ArrayList<String> lista;
-	List<UsuarioDTO> listaBas;
-	List<UsuarioDTO> listaDef;
+	List<UsuarioDTO> listaInicial;
+	List<UsuarioDTO> listaDefinitiva;
 	UsuarioDTO user;
 	int indice;
 	int indiceDos;
@@ -45,6 +47,7 @@ public class Controlador07RelacionesUsuarios {
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public ModelAndView personas(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaPersonas");
+		vista.addObject("logueado", ((UsuarioDTO)request.getSession().getAttribute("Usuario")).getUsername());
 		return vista;
 	}	
 	
@@ -56,29 +59,33 @@ public class Controlador07RelacionesUsuarios {
 		dBUsuario = Broker.getInstanciaUsuario();
 		dBRelacion = Broker.getInstanciaRelacion();
 		
-		listaBas = dBUsuario.getAllUsersSystem(username);
+		listaInicial = dBUsuario.getAllUsersSystem(username);
 		
 		relacion = dBRelacion.leerRelacionUsuario(username);
 		lista = relacion.getBloqueadoPor();
 		
-		listaDef = new LinkedList<UsuarioDTO>();
+		listaDefinitiva = new LinkedList<UsuarioDTO>();
 		
-		for(indice=0; indice<listaBas.size(); indice++) {
-			user = listaBas.get(indice);
+		for(indice=0; indice<listaInicial.size(); indice++) {
+			user = listaInicial.get(indice);
 			encontrado = false;
 			for(indiceDos=0; indiceDos<lista.size(); indiceDos++) {
 				if(lista.get(indiceDos).equals(user.getUsername())) {
 					encontrado = true;
+					break;
 				}
 			}
+			if(!encontrado) {
+				listaDefinitiva.add(user);
+			}
 		}
-		return listaDef;
+		return listaDefinitiva;
 	}
 	
 	@RequestMapping(value = "/verUsuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ModelAndView verUsuario(@RequestParam("username") String username) {
+	public ModelAndView verUsuario(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
 		dBRelacion = Broker.getInstanciaRelacion();
 		dBUsuario = Broker.getInstanciaUsuario();
 		
@@ -86,6 +93,7 @@ public class Controlador07RelacionesUsuarios {
 		
 		vista = new ModelAndView("vistaPerfil");
 		vista.addObject("perfil", dBUsuario.getUsuarioDTO(username));
+		vista.addObject("logueado", logueado);
 		
 		encontrado = false;
 		
@@ -134,50 +142,21 @@ public class Controlador07RelacionesUsuarios {
 				}
 			}
 		}
-		
-		
-		
 		return vista;
 	}
 	
-	/*@RequestMapping(value = "/amigos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public List<String> getAmigos(@RequestParam("username") String username) {
+	@RequestMapping(value = "/eliminaAmigo", method = RequestMethod.POST)
+	public ModelAndView eliminaAmigo(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
 		dBRelacion = Broker.getInstanciaRelacion();
-		return dBRelacion.leerRelacionUsuario(username).getAmigos();
+		dBUsuario = Broker.getInstanciaUsuario();
+		
+		relacion = dBRelacion.leerRelacionUsuario(username);
+		
+		vista = new ModelAndView("vistaPerfil");
+		vista.addObject("perfil", dBUsuario.getUsuarioDTO(username));
+		vista.addObject("logueado", logueado);
+		
+		return vista;
 	}
-	
-	@RequestMapping(value = "/pdaEnv", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public List<String> getPdAEnv(@RequestParam("username") String username) {
-		dBRelacion = Broker.getInstanciaRelacion();
-		return dBRelacion.leerRelacionUsuario(username).getPeticionesEnviadas();
-	}
-	
-	@RequestMapping(value = "/pdaRec", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public List<String> getPdARec(@RequestParam("username") String username) {
-		dBRelacion = Broker.getInstanciaRelacion();
-		return dBRelacion.leerRelacionUsuario(username).getPeticionesRecibidas();
-	}
-	
-	@RequestMapping(value = "/bloqueados", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public List<String> getBloqueados(@RequestParam("username") String username) {
-		dBRelacion = Broker.getInstanciaRelacion();
-		return dBRelacion.leerRelacionUsuario(username).getBloqueados();
-	}
-	
-	@RequestMapping(value = "/bloqueadores", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public List<String> getBloqueadores(@RequestParam("username") String username) {
-		dBRelacion = Broker.getInstanciaRelacion();
-		return dBRelacion.leerRelacionUsuario(username).getBloqueadoPor();
-	}*/
 	
 }
