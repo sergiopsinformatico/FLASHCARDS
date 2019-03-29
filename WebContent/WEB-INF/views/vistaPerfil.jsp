@@ -135,7 +135,6 @@
 						        </div>
 							</div>
 						</div>
-						<br>Relacion: ${relacion}
 						<div class="row" id="amigos" style="display:none">
 							<form action="/eliminaAmigo.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
 								<input type="submit" class="btn btn-primary" value="Eliminar a ${perfil.getUsername()} como amigo">
@@ -188,7 +187,7 @@
 		if("${perfil.getPais()}"!=null && "${perfil.getPais()}"!=""){
 			document.getElementById("textPais").style.visibility="visible";
 		}
-		if("${relacion}"!=null && "${relacion}"!=""){
+		if("${relacion}"!=null && ("${relacion}").localeCompare("")!=0){
 			if(("${relacion}").localeCompare("amigos")==0){
 				document.getElementById("amigos").style.visibility="visible";
 			}else if(("${relacion}").localeCompare("bloqueado")==0){
