@@ -189,15 +189,15 @@
 			document.getElementById("textPais").style.visibility="visible";
 		}
 		if("${relacion}"!=null && "${relacion}"!=""){
-			if("${relacion}" == "amigos"){
+			if(("${relacion}").localeCompare("amigos")==0){
 				document.getElementById("amigos").style.visibility="visible";
-			}else if("${relacion}" == "bloqueado"){
+			}else if(("${relacion}").localeCompare("bloqueado")==0){
 				document.getElementById("bloqueado").style.visibility="visible";
-			}else if("${relacion}" == "pdaEnvia"){
+			}else if(("${relacion}").localeCompare("pdaEnvia")==0){
 				document.getElementById("pdaEnvia").style.visibility="visible";
-			}else if("${relacion}" == "pdaRecibe"){
+			}else if(("${relacion}").localeCompare("pdaRecibe")==0){
 				document.getElementById("pdaRecibe").style.visibility="visible";
-			}else if("${relacion}" == "none"){
+			}else if(("${relacion}").localeCompare("none")==0){
 				document.getElementById("none").style.visibility="visible";
 			}
 		}
