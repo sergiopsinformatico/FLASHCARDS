@@ -23,13 +23,13 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	    am1 = true;
 	    am2 = true;
 	    
-	    relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+	    relacion = dBRelacion.readRelacionUsuario("Sergio123");
 	    relacion.getPeticionesEnviadas().add("sergio1993");
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    
-	    relacion = dBRelacion.leerRelacionUsuario("sergio1993");
+	    relacion = dBRelacion.readRelacionUsuario("sergio1993");
 	    relacion.getPeticionesRecibidas().add("Sergio123");
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    
 	    assert(true);
 	    
@@ -37,7 +37,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 
 	@When("^Rechaza la peticion$")
 	public void no_quiere_conectar() throws Throwable {
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 	    lista = relacion.getPeticionesEnviadas();
 	    if(lista.size()==0) { assert(false);}
 	    for(indice=0; indice<lista.size(); indice++) {
@@ -46,9 +46,9 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	    		break;
 	    	}
 	    }
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    
-	    relacion = dBRelacion.leerRelacionUsuario("sergio1993");
+	    relacion = dBRelacion.readRelacionUsuario("sergio1993");
 	    lista = relacion.getPeticionesRecibidas();
 	    if(lista.size()==0) { assert(false);}
 	    for(indice=0; indice<lista.size(); indice++) {
@@ -57,7 +57,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	    		break;
 	    	}
 	    }
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    
 	    assert(true);
 	}
@@ -65,7 +65,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	@Then("^No son amigos$")
 	public void rechaza_la_peticion() throws Throwable {
 	    
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 	    lista = relacion.getAmigos();
 	    for(indice=0; indice<lista.size(); indice++) {
 	    	if(lista.get(indice).equals("sergio1993")) {
@@ -74,7 +74,7 @@ public class Test11UsuarioRechazaPeticionAmistad {
 	    	}
 	    }
 	    
-	    relacion = dBRelacion.leerRelacionUsuario("sergio1993");
+	    relacion = dBRelacion.readRelacionUsuario("sergio1993");
 	    lista = relacion.getAmigos();
 	    for(indice=0; indice<lista.size(); indice++) {
 	    	if(lista.get(indice).equals("Sergio123")) {

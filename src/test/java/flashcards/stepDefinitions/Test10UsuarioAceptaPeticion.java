@@ -27,7 +27,7 @@ public class Test10UsuarioAceptaPeticion {
 	    am2 = false;
 		dBUsuario = Broker.getInstanciaUsuario();
 		dBRelacion = Broker.getInstanciaRelacion();
-		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+		relacion = dBRelacion.readRelacionUsuario("sergio1995");
 	    assert(dBUsuario.login("sergio1995", "sergio1995") && relacion.getPeticionesRecibidas().size()>=1);
 	}
 
@@ -41,9 +41,9 @@ public class Test10UsuarioAceptaPeticion {
 			}
 		}
 		relacion.getAmigos().add("Sergio123");
-		dBRelacion.modificaRelacionUsuario(relacion);
+		dBRelacion.updateRelacionUsuario(relacion);
 		
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 		lista = relacion.getPeticionesEnviadas();
 		for(indice=0; indice<lista.size(); indice++) {
 			if(lista.get(indice).equals("sergio1995")) {
@@ -52,7 +52,7 @@ public class Test10UsuarioAceptaPeticion {
 			}
 		}
 	    relacion.getAmigos().add("sergio1995");
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    
 	    assert(true);
 	}
@@ -60,7 +60,7 @@ public class Test10UsuarioAceptaPeticion {
 	@Then("^Son amigos$")
 	public void son_amigos() throws Throwable {
 		
-		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+		relacion = dBRelacion.readRelacionUsuario("sergio1995");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("Sergio123")) {
 				am1 = true;
@@ -68,7 +68,7 @@ public class Test10UsuarioAceptaPeticion {
 			}
 		}
 		
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("sergio1995")) {
 				am2 = true;

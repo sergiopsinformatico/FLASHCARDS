@@ -22,7 +22,7 @@ public class Test07UsuarioBuscaUsuarios {
 
 	@When("^Lista a los usuarios$")
 	public void lista_a_los_usuarios() throws Throwable {
-	    listaUsuarios = dBUsuario.getAllUsersSystem("Sergio123");
+	    listaUsuarios = dBUsuario.getAllUsuarios("Sergio123");
 	    for(int indice=0; indice<listaUsuarios.size();indice++) {
 	    	if(listaUsuarios.get(indice).getUsername().equals("Sergio123")) {
 	    		listaUsuarios.remove(indice);

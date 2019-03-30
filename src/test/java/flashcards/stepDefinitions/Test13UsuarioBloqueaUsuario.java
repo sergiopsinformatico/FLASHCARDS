@@ -23,16 +23,16 @@ public class Test13UsuarioBloqueaUsuario {
 
 	@When("^Bloquea al usuario$")
 	public void bloquea_al_usuario() throws Throwable {
-	    relacion = dBRelacion.leerRelacionUsuario("sergio1993");
+	    relacion = dBRelacion.readRelacionUsuario("sergio1993");
 	    relacion.getBloqueados().add("Sergio123");
-	    assert(dBRelacion.modificaRelacionUsuario(relacion));
+	    assert(dBRelacion.updateRelacionUsuario(relacion));
 	}
 
 	@Then("^No pueden ser amigos$")
 	public void no_pueden_ser_amigos() throws Throwable {
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 	    relacion.getBloqueadoPor().add("sergio1993");
-	    assert(dBRelacion.modificaRelacionUsuario(relacion));
+	    assert(dBRelacion.updateRelacionUsuario(relacion));
 	}
 	
 }

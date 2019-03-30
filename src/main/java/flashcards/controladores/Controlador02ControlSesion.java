@@ -70,9 +70,9 @@ public class Controlador02ControlSesion {
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 			dBRelacion = Broker.getInstanciaRelacion();
-			relacion = dBRelacion.leerRelacionUsuario(user.getUsername());
+			relacion = dBRelacion.readRelacionUsuario(user.getUsername());
 			if(relacion==null) {
-				dBRelacion.insertarRelacionUsuario(new RelacionDTO(user.getUsername()));
+				dBRelacion.createRelacionUsuario(new RelacionDTO(user.getUsername()));
 			}
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());

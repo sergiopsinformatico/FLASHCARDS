@@ -20,7 +20,7 @@ public class Test12UsuarioEliminaAmigo {
 	public void un_usuario_tiene_un_amigo() throws Throwable {
 		encontrado = false;
 		dBRelacion = Broker.getInstanciaRelacion();
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("sergio1995")) {
 				encontrado = true;
@@ -33,23 +33,23 @@ public class Test12UsuarioEliminaAmigo {
 
 	@When("^No quiere conectar mas$")
 	public void no_quiere_conectar_mas() throws Throwable {
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("sergio1995")) {
 				relacion.getAmigos().remove(indice);
 				break;
 			}
 		}
-		dBRelacion.modificaRelacionUsuario(relacion);
+		dBRelacion.updateRelacionUsuario(relacion);
 		
-		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+		relacion = dBRelacion.readRelacionUsuario("sergio1995");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("Sergio123")) {
 				relacion.getAmigos().remove(indice);
 				break;
 			}
 		}
-		dBRelacion.modificaRelacionUsuario(relacion);
+		dBRelacion.updateRelacionUsuario(relacion);
 		
 		assert (true);
 	}
@@ -59,14 +59,14 @@ public class Test12UsuarioEliminaAmigo {
 	    am1 = true;
 	    am2 = true;
 	    
-	    relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+	    relacion = dBRelacion.readRelacionUsuario("Sergio123");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("sergio1995")) {
 				am1 = false;
 				break;
 			}
 		}
-		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+		relacion = dBRelacion.readRelacionUsuario("sergio1995");
 		for(indice=0; indice<relacion.getAmigos().size(); indice++) {
 			if(relacion.getAmigos().get(indice).equals("Sergio123")) {
 				am2 = false;

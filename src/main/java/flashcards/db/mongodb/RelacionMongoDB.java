@@ -31,6 +31,11 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
     LinkedList<RelacionDTO> relaciones;
     Bson criterios;
     MongoCursor<Document> cursor;
+    RelacionDTO relacion;
+    String tipoRelacion;
+    boolean encontrado;
+    ArrayList<String> lista;
+    int indice;
     
   //Logger
   	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.RelacionMongoDB");
@@ -52,7 +57,7 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}
     }
 	
-    public boolean insertarRelacionUsuario(RelacionDTO relacion) {
+    public boolean createRelacionUsuario(RelacionDTO relacion) {
 		try {
 			doc = new Document().
 				  append("usuario", relacion.getUsuario()).
@@ -69,7 +74,7 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}
 	}
 	
-    public RelacionDTO leerRelacionUsuario(String usuario) {
+    public RelacionDTO readRelacionUsuario(String usuario) {
     	try {
     		criterios = new BsonDocument().
     				    append("usuario", new BsonString(usuario));
@@ -87,12 +92,12 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
     	}
     }
     
-	public boolean modificaRelacionUsuario(RelacionDTO relacion) {
-		return (eliminarRelacionUsuario(relacion.getUsuario()) &&
-				insertarRelacionUsuario(relacion));
+	public boolean updateRelacionUsuario(RelacionDTO relacion) {
+		return (deleteRelacionUsuario(relacion.getUsuario()) &&
+				createRelacionUsuario(relacion));
 	}
 	
-	public boolean eliminarRelacionUsuario(String usuario) {
+	public boolean deleteRelacionUsuario(String usuario) {
 		try {
 			criterios = new BsonDocument().
 				    append("usuario", new BsonString(usuario));
@@ -101,6 +106,86 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}catch(Exception ex) {
 			return false;
 		}
+	}
+	
+	public String getTipoRelacion(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		encontrado = false;
+		tipoRelacion = "";
+		
+		lista = relacion.getAmigos();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user2)) {
+				encontrado = true;
+				tipoRelacion = "amigos";
+				break;
+			}
+		}
+		
+		if(!encontrado) {
+			lista = relacion.getBloqueados();
+			for(indice=0; indice<lista.size(); indice++) {
+				if(lista.get(indice).equals(user2)) {
+					encontrado = true;
+					tipoRelacion = "bloqueado";
+					break;
+				}
+			}
+			if(!encontrado) {
+				
+				lista = relacion.getPeticionesEnviadas();
+				for(indice=0; indice<lista.size(); indice++) {
+					if(lista.get(indice).equals(user2)) {
+						encontrado = true;
+						tipoRelacion = "pdaEnvia";
+						break;
+					}
+				}
+				
+				if(!encontrado) {
+					lista = relacion.getPeticionesRecibidas();
+					for(indice=0; indice<lista.size(); indice++) {
+						if(lista.get(indice).equals(user2)) {
+							encontrado = true;
+							tipoRelacion = "pdaRecibe";
+							break;
+						}
+					}
+					
+					if(!encontrado) {
+						tipoRelacion = "none";
+					}
+				}
+			}
+		}
+		
+		return tipoRelacion;
+	}
+	
+	public boolean eliminarAmigo(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		lista = relacion.getAmigos();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user2)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setAmigos(lista);
+		updateRelacionUsuario(relacion);
+		
+		relacion = readRelacionUsuario(user2);
+		lista = relacion.getAmigos();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user1)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setAmigos(lista);
+		updateRelacionUsuario(relacion);
+		
+		return true;
 	}
 	
 }

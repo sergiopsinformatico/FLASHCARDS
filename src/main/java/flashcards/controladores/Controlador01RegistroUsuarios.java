@@ -95,7 +95,7 @@ public class Controlador01RegistroUsuarios {
 		
 		if(Broker.getInstanciaUsuario().insertUsuario(user) &&
 		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta())) &&
-		   Broker.getInstanciaRelacion().insertarRelacionUsuario(new RelacionDTO(user.getUsername()))) {
+		   Broker.getInstanciaRelacion().createRelacionUsuario(new RelacionDTO(user.getUsername()))) {
 			correo = new Email();
 			correo.activarCuenta(user,"https://sistemaflashcards.herokuapp.com/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
 			return true;

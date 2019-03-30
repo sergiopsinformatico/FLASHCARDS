@@ -1,6 +1,5 @@
 package main.java.flashcards.controladores;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,10 +38,6 @@ public class Controlador07RelacionesUsuarios {
 	ArrayList<String> lista;
 	List<UsuarioDTO> listaInicial;
 	List<UsuarioDTO> listaDefinitiva;
-	UsuarioDTO user;
-	int indice;
-	int indiceDos;
-	boolean encontrado;
 	
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public ModelAndView personas(HttpServletRequest request, HttpServletResponse response) {
@@ -57,29 +52,7 @@ public class Controlador07RelacionesUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioDTO> allPeople(@RequestParam("username") String username) {
 		dBUsuario = Broker.getInstanciaUsuario();
-		dBRelacion = Broker.getInstanciaRelacion();
-		
-		listaInicial = dBUsuario.getAllUsersSystem(username);
-		
-		relacion = dBRelacion.leerRelacionUsuario(username);
-		lista = relacion.getBloqueadoPor();
-		
-		listaDefinitiva = new LinkedList<UsuarioDTO>();
-		
-		for(indice=0; indice<listaInicial.size(); indice++) {
-			user = listaInicial.get(indice);
-			encontrado = false;
-			for(indiceDos=0; indiceDos<lista.size(); indiceDos++) {
-				if(lista.get(indiceDos).equals(user.getUsername())) {
-					encontrado = true;
-					break;
-				}
-			}
-			if(!encontrado) {
-				listaDefinitiva.add(user);
-			}
-		}
-		return listaDefinitiva;
+		return dBUsuario.getUsuariosRelacion(username);
 	}
 	
 	@RequestMapping(value = "/verUsuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -87,76 +60,24 @@ public class Controlador07RelacionesUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView verUsuario(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
 		dBRelacion = Broker.getInstanciaRelacion();
-		dBUsuario = Broker.getInstanciaUsuario();
-		
-		relacion = dBRelacion.leerRelacionUsuario(username);
-		
-		vista = new ModelAndView("vistaPerfil");
+		vista = new ModelAndView("verUsuario");
 		vista.addObject("perfil", dBUsuario.getUsuarioDTO(username));
-		vista.addObject("logueado", logueado);
-		
-		encontrado = false;
-		
-		lista = relacion.getAmigos();
-		for(indice=0; indice<lista.size(); indice++) {
-			if(lista.get(indice).equals(username)) {
-				encontrado = true;
-				vista.addObject("relacion", "amigos");
-				break;
-			}
-		}
-		
-		if(!encontrado) {
-			lista = relacion.getBloqueados();
-			for(indice=0; indice<lista.size(); indice++) {
-				if(lista.get(indice).equals(username)) {
-					encontrado = true;
-					vista.addObject("relacion", "bloqueado");
-					break;
-				}
-			}
-			if(!encontrado) {
-				
-				lista = relacion.getPeticionesEnviadas();
-				for(indice=0; indice<lista.size(); indice++) {
-					if(lista.get(indice).equals(username)) {
-						encontrado = true;
-						vista.addObject("relacion", "pdaEnvia");
-						break;
-					}
-				}
-				
-				if(!encontrado) {
-					lista = relacion.getPeticionesRecibidas();
-					for(indice=0; indice<lista.size(); indice++) {
-						if(lista.get(indice).equals(username)) {
-							encontrado = true;
-							vista.addObject("relacion", "pdaRecibe");
-							break;
-						}
-					}
-					
-					if(!encontrado) {
-						vista.addObject("relacion", "none");
-					}
-				}
-			}
-		}
+		vista.addObject("logueado", logueado);		
 		return vista;
 	}
 	
-	@RequestMapping(value = "/eliminaAmigo", method = RequestMethod.POST)
-	public ModelAndView eliminaAmigo(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+	@RequestMapping(value = "/relacion", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public String relacion(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
 		dBRelacion = Broker.getInstanciaRelacion();
-		dBUsuario = Broker.getInstanciaUsuario();
-		
-		relacion = dBRelacion.leerRelacionUsuario(username);
-		
-		vista = new ModelAndView("vistaPerfil");
-		vista.addObject("perfil", dBUsuario.getUsuarioDTO(username));
-		vista.addObject("logueado", logueado);
-		
-		return vista;
+		return dBRelacion.getTipoRelacion(logueado, username);
+	}
+	
+	@RequestMapping(value = "/eliminaAmigo", method = RequestMethod.POST)
+	public boolean eliminaAmigo(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.eliminarAmigo(logueado, username);
 	}
 	
 }

@@ -30,7 +30,7 @@ public class Test14UsuarioDesbloqueaBloqueado {
 
 	@When("^Quiere desbloquearlo$")
 	public void quiere_desbloquearlo() throws Throwable {
-		relacion = dBRelacion.leerRelacionUsuario("sergio1993");
+		relacion = dBRelacion.readRelacionUsuario("sergio1993");
 	    lista = relacion.getBloqueados();
 	    
 	    for(indice=0; indice<lista.size(); indice++) {
@@ -41,12 +41,12 @@ public class Test14UsuarioDesbloqueaBloqueado {
 	    	}
 	    }
 	    
-	    assert(dBRelacion.modificaRelacionUsuario(relacion));
+	    assert(dBRelacion.updateRelacionUsuario(relacion));
 	}
 
 	@Then("^Desbloquea al usuario$")
 	public void desbloquea_al_usuario() throws Throwable {
-		relacion = dBRelacion.leerRelacionUsuario("Sergio123");
+		relacion = dBRelacion.readRelacionUsuario("Sergio123");
 	    lista = relacion.getBloqueadoPor();
 	    
 	    for(indice=0; indice<lista.size(); indice++) {
@@ -57,7 +57,7 @@ public class Test14UsuarioDesbloqueaBloqueado {
 	    	}
 	    }
 	    
-	    dBRelacion.modificaRelacionUsuario(relacion);
+	    dBRelacion.updateRelacionUsuario(relacion);
 	    assert(desb1 && desb2);
 	}
 	

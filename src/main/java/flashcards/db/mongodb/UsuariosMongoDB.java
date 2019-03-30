@@ -1,5 +1,6 @@
 package main.java.flashcards.db.mongodb;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,6 +20,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.auxiliares.PropertiesConfig;
+import main.java.flashcards.brokers.Broker;
+import main.java.flashcards.db.dao.InterfaceDAORelacion;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -35,7 +38,11 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	FindIterable<Document> resultadosBusqueda;
 	UsuarioDTO usuarioDB;
 	LinkedList<String> lista;
+	List<UsuarioDTO> listaInicial;
 	LinkedList<UsuarioDTO> listaUsers;
+	LinkedList<UsuarioDTO> listaUsersRelacion;
+	InterfaceDAORelacion dBRelacion;
+	ArrayList<String> bloqueados;
 	
 	//Constantes
 	static final String USERNAME = "username";
@@ -304,7 +311,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 	}
 	
-	public List<UsuarioDTO> getAllUsersSystem(String username){
+	public List<UsuarioDTO> getAllUsuarios(String username){
 		listaUsers = new LinkedList<>();
 		iterator = coleccionUsuarios.find().iterator();
 		if(iterator!=null) {
@@ -317,5 +324,31 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		}
 		return listaUsers;
 	}
-
+	
+	public List<UsuarioDTO> getUsuariosRelacion(String username){
+		listaInicial = getAllUsuarios(username);
+		
+		dBRelacion = Broker.getInstanciaRelacion();
+		bloqueados = dBRelacion.readRelacionUsuario(username).getBloqueados();
+		
+		
+		listaUsersRelacion = new LinkedList<UsuarioDTO>();
+		
+		boolean encontrado;
+		for(int indice=0; indice<listaInicial.size(); indice++) {
+			encontrado = false;
+			for(int indiceDos=0; indiceDos<bloqueados.size(); indiceDos++) {
+				if(listaInicial.get(indice).getUsername().equals(bloqueados.get(indiceDos))) {
+					encontrado = true;
+					break;
+				}
+			}
+			if(!encontrado) {
+				listaUsersRelacion.add(listaInicial.get(indice));
+			}
+		}
+		
+		return listaUsersRelacion;
+	}
+	
 }

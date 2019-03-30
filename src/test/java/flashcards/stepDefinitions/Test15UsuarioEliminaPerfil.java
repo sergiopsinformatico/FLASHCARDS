@@ -28,7 +28,7 @@ public class Test15UsuarioEliminaPerfil {
 
 	@When("^Da a eliminar$")
 	public void da_a_eliminar() throws Throwable {
-	    assert(dBUsuario.deleteUsuario(user) && dBRelacion.eliminarRelacionUsuario(user.getUsername()));
+	    assert(dBUsuario.deleteUsuario(user) && dBRelacion.deleteRelacionUsuario(user.getUsername()));
 	}
 
 	@Then("^Elimina su perfil$")

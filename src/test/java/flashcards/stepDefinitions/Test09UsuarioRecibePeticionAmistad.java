@@ -27,7 +27,7 @@ public class Test09UsuarioRecibePeticionAmistad {
 	@When("^Consulta las peticiones recibidas$")
 	public void consulta_las_peticiones_recibidas() throws Throwable {
 		dBRelacion = Broker.getInstanciaRelacion();
-		relacion = dBRelacion.leerRelacionUsuario("sergio1995");
+		relacion = dBRelacion.readRelacionUsuario("sergio1995");
 		assert(true);
 	}
 

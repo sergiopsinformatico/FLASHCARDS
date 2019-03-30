@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Mi Perfil</title>
+    <title>Flashcards - Usuario ${perfil.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -135,6 +135,41 @@
 						        </div>
 							</div>
 						</div>
+						<div class="row" id="amigos" style="display:none">
+							<form action="/eliminaAmigo.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-primary" value="Eliminar a ${perfil.getUsername()} como amigo">
+							</form>
+							<form action="/bloqueaUsuario.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
+							</form>
+						</div>
+						<div class="row" id="bloqueado" style="display:none">
+							<form action="/desbloqueaUsuario.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-success" value="Desbloquear a ${perfil.getUsername()}">
+							</form>
+						</div>
+						<div class="row" id="pdaEnvia" style="display:none">
+							Solicitud de amistad enviada a ${perfil.getUsername()}.
+						</div>
+						<div class="row" id="pdaRecibe" style="display:none">
+							<form action="/aceptaPdA.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-success" value="Aceptar peticion de ${perfil.getUsername()}">
+							</form>
+							<form action="/rechazaPdA.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-danger" value="Rechazar peticion de ${perfil.getUsername()}">
+							</form>
+							<form action="/bloqueaUsuario.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
+							</form>
+						</div>
+						<div class="row" id="none" style="display:none">
+							<form action="/enviarPdA.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-success" value="Enviar peticion a ${perfil.getUsername()}">
+							</form>
+							<form action="/bloqueaUsuario.do?username=${perfil.getUsername()}&logueado=${logueado}" method="post">
+								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
+							</form>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-9"></div>
@@ -151,6 +186,19 @@
 		}
 		if("${perfil.getPais()}"!=null && "${perfil.getPais()}"!=""){
 			document.getElementById("textPais").style.visibility="visible";
+		}
+		if("${relacion}"!=null && ("${relacion}").localeCompare("")!=0){
+			if(("${relacion}").localeCompare("amigos")==0){
+				document.getElementById("amigos").style.display = "block";
+			}else if(("${relacion}").localeCompare("bloqueado")==0){
+				document.getElementById("bloqueado").style.display = "block";
+			}else if(("${relacion}").localeCompare("pdaEnvia")==0){
+				document.getElementById("pdaEnvia").style.display = "block";
+			}else if(("${relacion}").localeCompare("pdaRecibe")==0){
+				document.getElementById("pdaRecibe").style.display = "block";
+			}else if(("${relacion}").localeCompare("none")==0){
+				document.getElementById("none").style.display = "block";
+			}
 		}
 	</script>
 	
