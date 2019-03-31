@@ -42,7 +42,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	LinkedList<UsuarioDTO> listaUsers;
 	LinkedList<UsuarioDTO> listaUsersRelacion;
 	InterfaceDAORelacion dBRelacion;
-	ArrayList<String> bloqueados;
+	ArrayList<String> bloqueadores;
 	
 	//Constantes
 	static final String USERNAME = "username";
@@ -329,7 +329,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		listaInicial = getAllUsuarios(username);
 		
 		dBRelacion = Broker.getInstanciaRelacion();
-		bloqueados = dBRelacion.readRelacionUsuario(username).getBloqueados();
+		bloqueadores = dBRelacion.readRelacionUsuario(username).getBloqueadoPor();
 		
 		
 		listaUsersRelacion = new LinkedList<UsuarioDTO>();
@@ -337,8 +337,8 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		boolean encontrado;
 		for(int indice=0; indice<listaInicial.size(); indice++) {
 			encontrado = false;
-			for(int indiceDos=0; indiceDos<bloqueados.size(); indiceDos++) {
-				if(listaInicial.get(indice).getUsername().equals(bloqueados.get(indiceDos))) {
+			for(int indiceDos=0; indiceDos<bloqueadores.size(); indiceDos++) {
+				if(listaInicial.get(indice).getUsername().equals(bloqueadores.get(indiceDos))) {
 					encontrado = true;
 					break;
 				}

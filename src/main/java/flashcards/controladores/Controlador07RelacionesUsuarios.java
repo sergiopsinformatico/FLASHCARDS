@@ -60,7 +60,7 @@ public class Controlador07RelacionesUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView verUsuario(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
 		dBRelacion = Broker.getInstanciaRelacion();
-		vista = new ModelAndView("verUsuario");
+		vista = new ModelAndView("vistaUsuario");
 		vista.addObject("perfil", dBUsuario.getUsuarioDTO(username));
 		vista.addObject("logueado", logueado);		
 		return vista;

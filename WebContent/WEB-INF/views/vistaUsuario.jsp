@@ -194,6 +194,12 @@
 			
 			$scope.tipoRelacion = function(){
 				
+				document.getElementById("amigos").style.display = "none";
+				document.getElementById("bloqueado").style.display = "none";
+				document.getElementById("pdaEnvia").style.display = "none";
+				document.getElementById("pdaRecibe").style.display = "none";
+				document.getElementById("none").style.display = "none";
+				
 				$http({
 				    url: '/relacion.do?username=${perfil.getUsername()}&logueado=${logueado}', 
 				    method: "GET",
