@@ -233,8 +233,12 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
+				
 			}
 			
 			$scope.actionBloqueaUsuario = function(){
@@ -245,8 +249,11 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
 			}
 			
 			$scope.actionDesbloqueaUsuario = function(){
@@ -257,8 +264,11 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
 			}
 			
 			$scope.actionAceptaPeticion = function(){
@@ -269,8 +279,11 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
 			}
 			
 			$scope.actionRechazaPeticion = function(){
@@ -281,8 +294,11 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
 			}
 			
 			$scope.actionEnviaPeticion = function(){
@@ -293,8 +309,11 @@
 				    	'Content-Type': 'application/json',
 				    	'Accept': 'application/json'
                     }
-				});
-				$scope.tipoRelacion();
+				}).then(function mySuccess(response) {					
+					$scope.tipoRelacion();
+        	    }, function myError(response) {					
+        	    	$scope.tipoRelacion();
+        	    });
 			}
 			
 		});
