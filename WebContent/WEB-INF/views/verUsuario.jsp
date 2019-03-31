@@ -110,7 +110,7 @@
     </nav>
     
     <section>
-	    <div class="container">
+	    <div class="container" ng-app="amigoApp" ng-controller="amigoCtrl">
 		    <div class="row profile">
 				<div class="col-md-3">
 					<div class="profile-sidebar" style="height:100%;">
@@ -175,9 +175,8 @@
 				<div class="col-md-9"></div>
 			</div>
 		</div>
-	</section>
-	
-	<script>
+		<script>
+		
 		if("${perfil.getNombreApellidos()}"!=null && "${perfil.getNombreApellidos()}"!=""){
 			document.getElementById("textNyA").style.visibility="visible";
 		}
@@ -187,7 +186,7 @@
 		if("${perfil.getPais()}"!=null && "${perfil.getPais()}"!=""){
 			document.getElementById("textPais").style.visibility="visible";
 		}
-		if("${relacion}"!=null && ("${relacion}").localeCompare("")!=0){
+		/*if("${relacion}"!=null && ("${relacion}").localeCompare("")!=0){
 			if(("${relacion}").localeCompare("amigos")==0){
 				document.getElementById("amigos").style.display = "block";
 			}else if(("${relacion}").localeCompare("bloqueado")==0){
@@ -199,8 +198,44 @@
 			}else if(("${relacion}").localeCompare("none")==0){
 				document.getElementById("none").style.display = "block";
 			}
-		}
-	</script>
+		}*/
+		
+		var app = angular.module('amigoApp', []);
+		app.controller('amigoCtrl', function($scope, $http) {
+			
+			$scope.relacion='';
+			
+			$scope.tipoRelacion = function(){
+				
+				$http({
+				    url: '/relacion.do?username=${perfil.getUsername()}&logueado=${logueado}', 
+				    method: "GET",
+				    headers : {
+				    	'Content-Type': 'application/json',
+				    	'Accept': 'application/json'
+                    }
+				}).then(function mySuccess(response) {					
+					$scope.relacion = response.data;
+					if(($scope.relacion).localeCompare("amigos")==0){
+						document.getElementById("amigos").style.display = "block";
+					}else if(($scope.relacion).localeCompare("bloqueado")==0){
+						document.getElementById("bloqueado").style.display = "block";
+					}else if(($scope.relacion).localeCompare("pdaEnvia")==0){
+						document.getElementById("pdaEnvia").style.display = "block";
+					}else if(($scope.relacion).localeCompare("pdaRecibe")==0){
+						document.getElementById("pdaRecibe").style.display = "block";
+					}else if(($scope.relacion).localeCompare("none")==0){
+						document.getElementById("none").style.display = "block";
+					}
+        	    });
+			}
+			
+			$scope.tipoRelacion();
+			
+		});
+		
+		</script>
+	</section>
 	
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">

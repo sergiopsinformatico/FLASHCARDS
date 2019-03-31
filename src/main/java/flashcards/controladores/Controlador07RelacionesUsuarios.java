@@ -80,4 +80,34 @@ public class Controlador07RelacionesUsuarios {
 		return dBRelacion.eliminarAmigo(logueado, username);
 	}
 	
+	@RequestMapping(value = "/bloqueaUsuario", method = RequestMethod.POST)
+	public boolean bloqueaUsuario(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.bloqueaUsuario(logueado, username);
+	}
+	
+	@RequestMapping(value = "/desbloqueaUsuario", method = RequestMethod.POST)
+	public boolean desbloqueaUsuario(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.desbloqueaUsuario(logueado, username);
+	}
+	
+	@RequestMapping(value = "/aceptaPdA", method = RequestMethod.POST)
+	public boolean aceptaPdA(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.aceptaPdA(logueado, username);
+	}
+	
+	@RequestMapping(value = "/rechazaPdA", method = RequestMethod.POST)
+	public boolean rechazaPdA(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.rechazaPdA(logueado, username);
+	}
+	
+	@RequestMapping(value = "/enviarPdA", method = RequestMethod.POST)
+	public boolean enviarPdA(@RequestParam("username") String username, @RequestParam("logueado") String logueado) {
+		dBRelacion = Broker.getInstanciaRelacion();
+		return dBRelacion.enviarPdA(logueado, username);
+	}
+	
 }

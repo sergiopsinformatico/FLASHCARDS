@@ -188,4 +188,136 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		return true;
 	}
 	
+	public boolean bloqueaUsuario(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		lista = relacion.getBloqueados();
+		lista.add(user2);
+		relacion.setBloqueados(lista);
+		updateRelacionUsuario(relacion);
+		
+		relacion = readRelacionUsuario(user2);
+		lista = relacion.getBloqueadoPor();
+		lista.add(user1);
+		relacion.setBloqueadoPor(lista);
+		updateRelacionUsuario(relacion);
+		
+		return true;
+	}
+	
+	public boolean desbloqueaUsuario(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		lista = relacion.getBloqueados();
+		
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user2)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		
+		relacion.setBloqueados(lista);
+		updateRelacionUsuario(relacion);
+		
+		relacion = readRelacionUsuario(user2);
+		lista = relacion.getBloqueadoPor();
+		
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user1)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		
+		relacion.setBloqueadoPor(lista);
+		updateRelacionUsuario(relacion);
+		
+		return true;
+	}
+	
+	public boolean aceptaPdA(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		
+		lista = relacion.getPeticionesRecibidas();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user2)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setPeticionesRecibidas(lista);
+		
+		lista = relacion.getAmigos();
+		lista.add(user2);
+		relacion.setAmigos(lista);
+		
+		updateRelacionUsuario(relacion);
+		
+		
+		relacion = readRelacionUsuario(user2);
+		
+		lista = relacion.getPeticionesEnviadas();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user1)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setPeticionesEnviadas(lista);
+		
+		lista = relacion.getAmigos();
+		lista.add(user1);
+		relacion.setAmigos(lista);
+		
+		updateRelacionUsuario(relacion);
+		
+		return true;
+		
+	}
+	
+	public boolean rechazaPdA(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		
+		lista = relacion.getPeticionesRecibidas();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user2)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setPeticionesRecibidas(lista);
+		
+		updateRelacionUsuario(relacion);
+		
+		relacion = readRelacionUsuario(user2);
+		
+		lista = relacion.getPeticionesEnviadas();
+		for(indice=0; indice<lista.size(); indice++) {
+			if(lista.get(indice).equals(user1)) {
+				lista.remove(indice);
+				break;
+			}
+		}
+		relacion.setPeticionesEnviadas(lista);
+		
+		updateRelacionUsuario(relacion);
+		
+		return true;
+	}
+	
+	public boolean enviarPdA(String user1, String user2) {
+		relacion = readRelacionUsuario(user1);
+		lista = relacion.getPeticionesEnviadas();
+		lista.add(user2);
+		relacion.setPeticionesEnviadas(lista);
+		updateRelacionUsuario(relacion);
+		
+		relacion = readRelacionUsuario(user2);
+		lista = relacion.getPeticionesRecibidas();
+		lista.add(user1);
+		relacion.setPeticionesRecibidas(lista);
+		updateRelacionUsuario(relacion);
+		
+		return true;
+	}
+	
 }
