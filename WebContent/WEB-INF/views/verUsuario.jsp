@@ -136,15 +136,15 @@
 							</div>
 						</div>
 						<div class="row" id="amigos" style="display:none">
-							<form ng-submit="actionEliminaAmigo" method="post">
+							<form ng-submit="actionEliminaAmigo()" method="post">
 								<input type="submit" class="btn btn-primary" value="Eliminar a ${perfil.getUsername()} como amigo">
 							</form>
-							<form ng-submit="actionBloqueaUsuario" method="post">
+							<form ng-submit="actionBloqueaUsuario()" method="post">
 								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
 							</form>
 						</div>
 						<div class="row" id="bloqueado" style="display:none">
-							<form ng-submit="actionDesbloqueaUsuario" method="post">
+							<form ng-submit="actionDesbloqueaUsuario()" method="post">
 								<input type="submit" class="btn btn-success" value="Desbloquear a ${perfil.getUsername()}">
 							</form>
 						</div>
@@ -152,21 +152,21 @@
 							Solicitud de amistad enviada a ${perfil.getUsername()}.
 						</div>
 						<div class="row" id="pdaRecibe" style="display:none">
-							<form ng-submit="actionAceptaPeticion" method="post">
+							<form ng-submit="actionAceptaPeticion()" method="post">
 								<input type="submit" class="btn btn-success" value="Aceptar peticion de ${perfil.getUsername()}">
 							</form>
-							<form ng-submit="actionRechazaPeticion" method="post">
+							<form ng-submit="actionRechazaPeticion()" method="post">
 								<input type="submit" class="btn btn-danger" value="Rechazar peticion de ${perfil.getUsername()}">
 							</form>
-							<form ng-submit="actionBloqueaUsuario" method="post">
+							<form ng-submit="actionBloqueaUsuario()" method="post">
 								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
 							</form>
 						</div>
 						<div class="row" id="none" style="display:none">
-							<form ng-submit="actionEnviaPeticion" method="post">
+							<form ng-submit="actionEnviaPeticion()" method="post">
 								<input type="submit" class="btn btn-success" value="Enviar peticion a ${perfil.getUsername()}">
 							</form>
-							<form ng-submit="actionBloqueaUsuario" method="post">
+							<form ng-submit="actionBloqueaUsuario()" method="post">
 								<input type="submit" class="btn btn-primary" value="Bloquear a ${perfil.getUsername()}">
 							</form>
 						</div>
