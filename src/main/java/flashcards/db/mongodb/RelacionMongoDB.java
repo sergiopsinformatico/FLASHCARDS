@@ -128,55 +128,6 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		}else {
 			tipoRelacion = "none";
 		}
-		
-		/*lista = relacion.getAmigos();
-		for(indice=0; indice<lista.size(); indice++) {
-			if(lista.get(indice).equals(user2)) {
-				encontrado = true;
-				tipoRelacion = AMIGOS;
-				break;
-			}
-		}
-		
-		if(!encontrado) {
-			lista = relacion.getBloqueados();
-			for(indice=0; indice<lista.size(); indice++) {
-				if(lista.get(indice).equals(user2)) {
-					encontrado = true;
-					tipoRelacion = "bloqueado";
-					break;
-				}
-			}
-			if(!encontrado) {
-				
-				lista = relacion.getPeticionesEnviadas();
-				for(indice=0; indice<lista.size(); indice++) {
-					if(lista.get(indice).equals(user2)) {
-						encontrado = true;
-						tipoRelacion = "pdaEnvia";
-						break;
-					}
-				}
-				
-				if(!encontrado) {
-					lista = relacion.getPeticionesRecibidas();
-					for(indice=0; indice<lista.size(); indice++) {
-						if(lista.get(indice).equals(user2)) {
-							encontrado = true;
-							tipoRelacion = "pdaRecibe";
-							break;
-						}
-					}
-					
-					if(!encontrado) {
-						tipoRelacion = "none";
-					}
-				}
-			}
-		}*/
-		
-		
-		
 		return tipoRelacion;
 	}
 	
@@ -208,31 +159,6 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 	
 	public boolean bloqueaUsuario(String user1, String user2) {
 		relacion = readRelacionUsuario(user1);
-		/*lista = relacion.getAmigos();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user2)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setAmigos(lista);
-		lista = relacion.getPeticionesEnviadas();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user2)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setPeticionesEnviadas(lista);
-		lista = relacion.getPeticionesRecibidas();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user2)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setPeticionesRecibidas(lista);*/
-		
 		if(relacion.getAmigos().contains(user2)) {
 			lista = relacion.getAmigos();
 			lista.remove(user2);
@@ -253,30 +179,6 @@ public class RelacionMongoDB implements InterfaceDAORelacion{
 		updateRelacionUsuario(relacion);
 		
 		relacion = readRelacionUsuario(user2);
-		/*lista = relacion.getAmigos();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user1)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setAmigos(lista);
-		lista = relacion.getPeticionesEnviadas();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user1)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setPeticionesEnviadas(lista);
-		lista = relacion.getPeticionesRecibidas();
-		for(indice=0;indice<lista.size();indice++) {
-			if(lista.get(indice).equals(user1)) {
-				lista.remove(indice);
-				break;
-			}
-		}
-		relacion.setPeticionesRecibidas(lista);*/
 		
 		if(relacion.getAmigos().contains(user1)) {
 			lista = relacion.getAmigos();
