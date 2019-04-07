@@ -1,6 +1,5 @@
 package main.java.flashcards.db.mongodb;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,7 +41,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	LinkedList<UsuarioDTO> listaUsers;
 	LinkedList<UsuarioDTO> listaUsersRelacion;
 	InterfaceDAORelacion dBRelacion;
-	ArrayList<String> bloqueadores;
+	List<String> bloqueadores;
 	
 	//Constantes
 	static final String USERNAME = "username";
@@ -332,7 +331,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 		bloqueadores = dBRelacion.readRelacionUsuario(username).getBloqueadoPor();
 		
 		
-		listaUsersRelacion = new LinkedList<UsuarioDTO>();
+		listaUsersRelacion = new LinkedList<>();
 		
 		boolean encontrado;
 		for(int indice=0; indice<listaInicial.size(); indice++) {

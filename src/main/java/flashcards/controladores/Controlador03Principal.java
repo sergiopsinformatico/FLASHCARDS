@@ -38,11 +38,7 @@ public class Controlador03Principal {
 		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			vista = new ModelAndView("vistaPrincipal");
 			user = (UsuarioDTO)(request.getSession().getAttribute(USUARIO));
-			if(user.getRol().equals("Administrador")) {
-				vista.addObject("isAdmin",true);
-			}else {
-				vista.addObject("isAdmin",false);
-			}
+			vista.addObject("isAdmin",user.getRol().equals("Administrador"));
 		}else {
 			vista = new ModelAndView(REDIRECT);
 		}
