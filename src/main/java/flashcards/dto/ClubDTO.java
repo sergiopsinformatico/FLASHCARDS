@@ -56,13 +56,4 @@ public class ClubDTO {
 	public void setNombreClub(String nombreClub) {
 		this.nombreClub = nombreClub;
 	}
-	/*public void generateDate() {
-		date = Calendar.getInstance().getTime();
-		formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		setFechaCreacion(formatter.format(date));
-	}
-	
-	public void generateArrayMiembros() {
-		setMiembros(new ArrayList<String>());
-	}*/	
 }

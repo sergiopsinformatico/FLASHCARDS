@@ -33,6 +33,8 @@ public class ClubMongoDB implements InterfaceDAOClub{
     MongoCursor<Document> cursor;
     List<String> lista;
     
+    static final String IDCLUB = "idClub";
+    
     //Logger
   	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ClubMongoDB");
 	
@@ -56,7 +58,7 @@ public class ClubMongoDB implements InterfaceDAOClub{
 	public boolean crearClub(ClubDTO club) {
 		try {
 			docClub = new Document().
-					append("idClub", club.getIdClub()).
+					append(IDCLUB, club.getIdClub()).
 					append("nombreClub", club.getNombreClub()).
 					append("administrador", club.getAdministrador()).
 					append("fecha", club.getFechaCreacion()).
@@ -69,22 +71,22 @@ public class ClubMongoDB implements InterfaceDAOClub{
 	}
 	
 	public List<String> getIdClubes(){
-		lista = new ArrayList<String>();
+		lista = new ArrayList<>();
 		filtros = new BsonDocument();
 		cursor = coleccionClubes.find(filtros).iterator();
 		while(cursor.hasNext()) {
-			lista.add(cursor.next().getString("idClub"));
+			lista.add(cursor.next().getString(IDCLUB));
 		}
 		return lista;
 	}
 	
 	public ClubDTO leerClub(String idClub) {
 		try {
-			filtros = new BsonDocument().append("idClub", new BsonString(idClub));
+			filtros = new BsonDocument().append(IDCLUB, new BsonString(idClub));
 			cursor = coleccionClubes.find(filtros).iterator();
 			if(cursor.hasNext()) {
 				docClub = cursor.next();
-				club = new ClubDTO(docClub.getString("idClub"), docClub.getString("nombreClub"), docClub.getString("administrador"), (List<String>) docClub.get("miembros"), docClub.getString("fecha"));
+				club = new ClubDTO(docClub.getString(IDCLUB), docClub.getString("nombreClub"), docClub.getString("administrador"), (List<String>) docClub.get("miembros"), docClub.getString("fecha"));
 				return club;
 			}else {
 				return null;
