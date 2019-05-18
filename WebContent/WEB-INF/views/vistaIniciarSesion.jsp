@@ -97,7 +97,7 @@
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
 			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-			                <div class="g-recaptcha positionReCaptcha form-control" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			                <div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
 			                <script>
 			                	document.getElementById("buttonIS").disabled = true;
