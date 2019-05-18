@@ -19,34 +19,13 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/inicioSesion.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    
-    <style>
-    	body {
-		  background: #F1F3FA;
-		}
-	    .btn-login {
-		  background-color: #BAC1B5;
-		  border: none;
-		  color: white;
-		  width: 100%;
-		  height: 50px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
-		}
-		
-		.positionReCaptcha{
-			margin-left: auto;
-			margin-right: auto;
-		}
-    </style>
     
   </head>
 
@@ -75,7 +54,7 @@
     <section>
     	<div class="row">
     		<div class="col-md-4"></div>
-    		<div class="col-md-4">
+    		<!-- <div class="col-md-4">
     			<br>
     			<h1 align="center">Iniciar Sesión</h1>
     			<br> 
@@ -108,6 +87,20 @@
 			        	}
 			        </script>
 			    </form>
+			</div>-->
+			<div class="col-md-4">
+				<div class="container">
+			        <div class="card card-container">
+			            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+			            <p id="profile-name" class="profile-name-card"></p>
+			            <form class="form-signin">
+			                <span id="reauth-email" class="reauth-email"></span>
+			                <input type="email" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
+			                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
+			            </form>
+			        </div>
+			    </div>
 			</div>
     		<div class="col-md-4"></div>
 		</div>
