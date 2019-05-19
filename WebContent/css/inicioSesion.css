@@ -143,13 +143,11 @@ body, html {
 
 .alignReCaptcha{
 	text-align: center;
-	max-height: 44px;
 }
 
 .positionReCaptcha{
-	/*margin-left: auto;
-	margin-right: auto;*/
-	display: inline-block;
-	/*height: 44px;*/
-	max-height: 44px;
+	margin-left: auto;
+	margin-right: auto;
+	/*display: inline-block;
+	max-height: 44px;*/
 }
