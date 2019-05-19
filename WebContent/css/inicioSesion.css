@@ -149,4 +149,6 @@ body, html {
 	/*margin-left: auto;
 	margin-right: auto;*/
 	display: inline-block;
+	height: 44px;
+	//max-height: 44px;
 }
