@@ -114,10 +114,6 @@ body, html {
     background-color: rgb(12, 97, 33);
 }
 
-.alignReCaptcha{
-	text-align: center;
-}
-
 .positionReCaptcha{
 	transform:scale(0.77);
 	-webkit-transform:scale(0.77);
