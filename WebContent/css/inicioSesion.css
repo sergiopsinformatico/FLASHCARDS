@@ -146,8 +146,6 @@ body, html {
 }
 
 .positionReCaptcha{
-	/*margin-left: auto;
-	margin-right: auto;*/
 	transform:scale(0.77);
 	-webkit-transform:scale(0.77);
 	transform-origin:0 0;

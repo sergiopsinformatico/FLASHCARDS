@@ -99,7 +99,7 @@
 			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
 			                <br>
 			                <div align="center" class="alignReCaptcha">
-			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			                	<div class="g-recaptcha positionReCaptcha" align="center" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			                </div>
 			                <br>
 			                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
