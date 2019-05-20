@@ -93,9 +93,7 @@
 			        <div class="card card-container">
 			            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 			            <p id="profile-name" class="profile-name-card"></p>
-			            <br>
-			            <p class="text-align=center;">Iniciar Sesión</p>
-			            <br>
+			            <p align="center" class="titleLogin">Iniciar Sesión</p>
 			            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>

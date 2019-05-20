@@ -121,3 +121,8 @@ body, html {
 	-webkit-transform-origin:0 0;
 	text-align: center;
 }
+
+.titleLogin{
+	text-align: center;
+	font-style: italic;
+}
