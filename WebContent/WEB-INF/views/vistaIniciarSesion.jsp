@@ -91,8 +91,7 @@
 			<div class="col-md-4">
 				<div class="container">
 			        <div class="card card-container">
-			            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-			            <p id="profile-name" class="profile-name-card"></p>
+			            <p id="profile-name" class="profile-name-card">Iniciar Sesión</p>
 			            <p align="center" class="titleLogin">Iniciar Sesión</p>
 			            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
