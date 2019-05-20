@@ -112,7 +112,8 @@ body, html {
 	text-align: center;
 }
 
-.titleLogin{
-	text-align: center;
-	font-style: italic;
+.card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
