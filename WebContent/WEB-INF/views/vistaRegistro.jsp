@@ -19,42 +19,13 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/registro.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
     
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    
-    <style>
-    	.btn-registro[disabled] {
-    		  background-color: #BAC1B5;
-			  border: none;
-			  color: white;
-			  width: 100%;
-			  height: 50px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-		}
-    
-	    .btn-registro {
-		  	background-color: #00ff00;
-		  	border: none;
-		  	color: white;
-		  	width: 100%;
-		  	height: 50px;
-		  	text-align: center;
-		  	text-decoration: none;
-		  	display: inline-block;
-		  	font-size: 16px;
-		}
-		
-		body {
-		  background: #F1F3FA;
-		}
-    </style>
     
   </head>
 
@@ -99,7 +70,7 @@
 	      </div>
 	    </nav>
 	    <section>
-	    	<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
+	    	<!-- <div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
 	    			<br>
@@ -145,7 +116,50 @@
 				    <br>
 	    		</div>
 	    		<div class="col-md-4"></div>
-			</div>
+			</div>-->
+			
+			
+			<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
+                        <h3>¡Bienvenido a la Aplicación Flashcards!</h3>
+                        <form action="/iniciarSesion.html">
+                        	<input type="submit" value="Iniciar Sesión"/><br/>
+                        </form>
+                    </div>
+                    <div class="col-md-9 register-right">
+	                    <h3 class="register-heading">Regístrate</h3>
+	                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
+		                    <div class="row register-form">
+		                    	<div class="col-md-3"></div>
+		                        <div class="col-md-6">
+		                            <div class="form-group">
+		                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="text" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <small id="msgError">{{messageError}}</small>
+		                            </div>
+		                        </div>
+		                        <div class="col-md-3"></div>
+		                    </div>
+		                    <!-- <button type="submit" class="btn-registro" id="button1" name="button1" disabled>Registrar</button> -->
+		                    <input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
+		            	</form>
+                    </div>
+                </div>
+            </div>
+			
+			
 			<script>
 				'use strict'
 			    var app = angular.module('AppRegistro', []);
