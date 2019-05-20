@@ -91,8 +91,10 @@
 			<div class="col-md-4">
 				<div class="container">
 			        <div class="card card-container">
-			            <p id="profile-name" class="profile-name-card">Iniciar Sesión</p>
-			            <p align="center" class="titleLogin">Iniciar Sesión</p>
+			            <!-- 
+			            	<p id="profile-name" class="profile-name-card">Iniciar Sesión</p>
+			            	<p align="center" class="titleLogin">Iniciar Sesión</p>
+			            -->
 			            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
