@@ -126,3 +126,7 @@ body {
 .backgroundBlue{
 	background-color: #6495ED;
 }
+
+.header .navbar {
+  background-color: transparent !important;
+}
