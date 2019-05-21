@@ -119,7 +119,7 @@
 			
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-12">
-						<div class="container">
+						<div class="row container">
 							<div class="col-md-1"></div>
 							<div class="col-md-4 backgroundBlue">
 								<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
