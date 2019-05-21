@@ -10,7 +10,7 @@ script:
   - sonar-scanner
 
 jdk:
-  - oraclejdk8
+  - oraclejdk9
 
 deploy:
   provider: heroku
