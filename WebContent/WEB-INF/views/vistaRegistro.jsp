@@ -127,9 +127,10 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-5">
-								<h3 class="register-heading">Regístrate</h3>
+								<h3>Regístrate</h3>
+								<br>
 			                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
-				                    <div class="row register-form">
+				                    <div class="row">
 				                        <div class="col-md-12">
 				                            <div class="form-group">
 				                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
