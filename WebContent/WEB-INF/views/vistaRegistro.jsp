@@ -118,7 +118,7 @@
 			</div>-->
 			
 			
-			<div class="row container" ng-app="AppRegistro" ng-controller="RegistroCtrl">
+			<div class="container" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 				<div class="col-md-1"></div>
 				<div class="col-md-4 backgroundBlue">
 					<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
