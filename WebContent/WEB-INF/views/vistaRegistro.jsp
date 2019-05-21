@@ -69,7 +69,7 @@
 	        </div>
 	      </div>
 	    </nav>
-	    <section>
+	    <!-- <section>-->
 	    	<!-- <div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 	    		<div class="col-md-4"></div>
 	    		<div class="col-md-4">
@@ -413,7 +413,7 @@
 					}
 		        });
 		    </script>
-	    </section>
+	    <!-- </section>-->
 	    
 	    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	    <div class="scroll-to-top d-lg-none position-fixed ">
