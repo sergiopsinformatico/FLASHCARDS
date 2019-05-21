@@ -119,55 +119,42 @@
 			
 			
 			<div class="container" ng-app="AppRegistro" ng-controller="RegistroCtrl">
-				<div class="col-md-1"></div>
-				<div class="col-md-4 backgroundBlue">
-					<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
-					<h3>¡Bienvenido a la Aplicación Flashcards!</h3>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-4 backgroundBlue">
+						<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
+						<h3>¡Bienvenido a la Aplicación Flashcards!</h3>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-5">
+						<h3 class="register-heading">Regístrate</h3>
+	                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
+		                    <div class="row register-form">
+		                        <div class="col-md-12">
+		                            <div class="form-group">
+		                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="text" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <small id="msgError">{{messageError}}</small>
+		                            </div>
+		                            <div class="form-group">
+		                            	<input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
+		                            </div>
+		                        </div>
+		                    </div>
+		            	</form>
+					</div>
+					<div class="col-md-1"></div>
 				</div>
-				<div class="col-md-1"></div>
-				<div class="col-md-5">
-					<h3 class="register-heading">Regístrate</h3>
-                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
-	                    <div class="row register-form">
-	                        <div class="col-md-12">
-	                            <div class="form-group">
-	                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="text" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgError">{{messageError}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                            	<input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
-	                            </div>
-	                        </div>
-	                    </div>
-	            	</form>
-				</div>
-				<div class="col-md-1"></div>
-				
-				
-				
-				
-				
-                    <div class="col-md-3 register-left">
-                    	<br><br>
-                        
-                        <!-- <form action="/iniciarSesion.html">
-                        	<input type="submit" value="Iniciar Sesión"/><br/>
-                        </form> -->
-                    </div>
-                    <div class="col-md-9 register-right">
-	                    
-                    </div>
             </div>
 			
 			
