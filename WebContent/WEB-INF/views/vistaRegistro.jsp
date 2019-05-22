@@ -119,15 +119,15 @@
 	    		</div>
 			</div>-->
 			<section>
-				<br>
+				<br><br><br><br>
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-1"></div>
-					<div class="col-md-5 backgroundRegister vertical-center">
+					<div class="col-md-5 backgroundRegisterLeft middle">
 						<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
 						<h6 align="center" class="titleRegister">¡Bienvenido a la Aplicación Flashcards!</h6>
 					</div>
-					<div class="col-md-5">
-						<h3>Regístrate</h3>
+					<div class="col-md-5 backgroundRegisterRight">
+						<h3 align="center">Regístrate</h3>
 						<br>
 	                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
 		                    <div class="row">

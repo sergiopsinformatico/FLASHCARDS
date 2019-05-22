@@ -123,8 +123,12 @@ body {
 }
 
 
-.backgroundRegister{
+.backgroundRegisterLeft{
 	background-color: #4BF94F;
+}
+
+.backgroundRegisterRight{
+	background-color: #FFB96F;
 }
 
 .titleRegister{
@@ -132,8 +136,8 @@ body {
 	font-style: italic;
 }
 
-.vertical-center {
-  margin: auto;
-  width: 60%;
-  padding: 10px;
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
