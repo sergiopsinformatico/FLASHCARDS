@@ -122,9 +122,9 @@
 				<br>
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-1"></div>
-					<div class="col-md-5 backgroundBlue">
+					<div class="col-md-5 backgroundRegister vertical-center">
 						<!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
-						<h3>¡Bienvenido a la Aplicación Flashcards!</h3>
+						<h6 align="center" class="titleRegister">¡Bienvenido a la Aplicación Flashcards!</h6>
 					</div>
 					<div class="col-md-5">
 						<h3>Regístrate</h3>

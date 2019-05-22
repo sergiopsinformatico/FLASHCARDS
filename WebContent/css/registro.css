@@ -123,6 +123,17 @@ body {
 }
 
 
-.backgroundBlue{
-	background-color: #6495ED;
+.backgroundRegister{
+	background-color: #4BF94F;
+}
+
+.titleRegister{
+	font-weight: lighter;
+	font-style: italic;
+}
+
+.vertical-center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
 }
