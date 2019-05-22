@@ -119,9 +119,7 @@
 	    		</div>
 			</div>-->
 			<section>
-				<br><br><br>
-			</section>
-			<section>
+				<br>
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-12">
 						<div class="row container">
