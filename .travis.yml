@@ -11,7 +11,7 @@ script:
 
 jdk:
   - oraclejdk8
-  
+
 dist: trusty
 
 deploy:
