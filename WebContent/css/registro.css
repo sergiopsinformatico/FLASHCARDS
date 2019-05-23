@@ -23,7 +23,8 @@
 }
 
 body {
-  background: #F1F3FA;
+  /*background: #F1F3FA;*/
+  background: #00FFFD;
 }
 
 .register{
@@ -123,12 +124,8 @@ body {
 }
 
 
-.backgroundRegisterLeft{
-	background-color: #4BF94F;
-}
-
-.backgroundRegisterRight{
-	background-color: #FFB96F;
+.background{
+	background-color: #00FFFD;
 }
 
 .titleRegister{
@@ -140,4 +137,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.containerImg {
+    width: 400px;
+    height: 400px;
+}
+
+.containerImg img {
+    width: 100%;
+    height: auto;
 }
