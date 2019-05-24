@@ -51,9 +51,10 @@
         </div>
       </div>
     </nav>
-    <section>
+    <section class="background">
+		<br><br><br><br>
     	<div class="row">
-    		<div class="col-md-4"></div>
+    		<!-- <div class="col-md-4"></div>-->
     		<!-- <div class="col-md-4">
     			<br>
     			<h1 align="center">Iniciar Sesión</h1>
@@ -88,7 +89,7 @@
 			        </script>
 			    </form>
 			</div>-->
-			<div class="col-md-4">
+			<!-- <div class="col-md-4">
 				<div class="container">
 			        <div class="card card-container">
 			            <h5 class="card-title text-center">Iniciar Sesion</h5>
@@ -111,7 +112,58 @@
 			        </div>
 			    </div>
 			</div>
-    		<div class="col-md-4"></div>
+    		<div class="col-md-4"></div>-->
+    		<div class="col-md-1"></div>
+    		<div class="col-md-5 middle">
+				<div class="containerImg">
+					<img src="resources/img/logoFlashcards.JPG" alt=""/>
+				</div>
+			</div>
+    		<div class="col-md-5">
+    		
+   				<section class="containerCards">
+				  <div class="card" onclick="flip()">
+				    <div class="front">1</div>
+				    <div class="back">2</div>
+				  </div>
+				</section>
+				
+				<script>
+					function flip() {
+					    $('.card').toggleClass('flipped');
+					}
+				</script>
+    		
+    			<!-- <card>
+    				<h3 align="center">Regístrate</h3>
+					<br>
+                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <div class="form-group">
+	                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+	                            </div>
+	                            <div class="form-group">
+	                                <input type="text" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+	                            </div>
+	                            <div class="form-group">
+	                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+	                            </div>
+	                            <div class="form-group">
+	                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+	                            </div>
+	                            <div class="form-group">
+	                                <small id="msgError">{{messageError}}</small>
+	                            </div>
+	                            <div class="form-group">
+	                            	<input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
+	                            </div>
+	                        </div>
+	                    </div>
+	            	</form>
+    			</card>-->
+    		</div>
+    		<div class="col-md-1"></div>
 		</div>
     </section>
 

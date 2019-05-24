@@ -123,7 +123,6 @@
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-1"></div>
 					<div class="col-md-5 middle">
-						<!-- <h6 align="center" class="titleRegister">¡Bienvenido a la Aplicación Flashcards!</h6> -->
 						<div class="containerImg">
 							<img src="resources/img/logoFlashcards.JPG" alt=""/>
 						</div>
