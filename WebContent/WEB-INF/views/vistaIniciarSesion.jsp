@@ -43,7 +43,7 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
 	            </li>
 	            <!-- <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
@@ -53,181 +53,69 @@
 	      </div>
 	    </nav>
 	</header>
-    <section class="background">
-		<br><br><br><br>
-    	<div class="row">
-    		<!-- <div class="col-md-4"></div>-->
-    		<!-- <div class="col-md-4">
-    			<br>
-    			<h1 align="center">Iniciar Sesión</h1>
-    			<br> 
-    			<form action="loguear.html" method="post" id="Login" name="Login">
-			        <div class="form-group">
-			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required>
-			        </div>
-			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-			        </div>
-			        <br>
-			        <div class="row" align="center">
-			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			        </div>
-			        <br>
-			        <div class="row">
-			        	<div class="col-md-3"></div>
-			        	<div class="col-md-6">
-			        		<button type="submit" id="buttonIS" name="buttonIS" class="btn-login">Iniciar Sesion</button>
-			        	</div>
-			        	<script>
-			        		document.getElementById("buttonIS").disabled = true;
-			        	</script>
-			        	<div class="col-md-3"></div>
-			        </div>
-			        <script>
-			        	function enableBtn(){
-			        		document.getElementById("buttonIS").style.background = "#61E900";
-			        		document.getElementById("buttonIS").disabled = false;
-			        	}
-			        </script>
-			    </form>
-			</div>-->
-			<!-- <div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-			            <h5 class="card-title text-center">Iniciar Sesion</h5>
-			            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
+	
+	<section class="background">
+		<br><br>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-4 fondoLogin container">
+						<br>
+						<h6 align="center" class="title">Iniciar Sesión</h6>
+						<br>
+		   				<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
 			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-			                <br>
-			                <div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			                <br>
-			                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
+			                <br><br>
+			                <div class="middle">
+			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			                </div>
+			                <br><br>
+			                <button class="btn btn-lg btn-block btn-signin color-block" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
 			                <script>
 			                	document.getElementById("buttonIS").disabled = true;
 					        	function enableBtn(){
-					        		document.getElementById("buttonIS").style.background = "#61E900";
+					        		document.getElementById("buttonIS").style.background = "#45BF1D";
 					        		document.getElementById("buttonIS").disabled = false;
 					        	}
 					        </script>
+					        <br><br>
 			            </form>
-			        </div>
-			    </div>
-			</div>
-    		<div class="col-md-4"></div>-->
-    		<div class="col-md-1"></div>
-    		<div class="col-md-5 middle">
-				<div class="containerImg">
-					<img src="resources/img/logoFlashcards.JPG" alt=""/>
+		   			</div>
+		   			<div class="col-md-4 middle">
+						<div class="containerImg">
+							<img src="resources/img/logoFlashcards.JPG" alt=""/>
+						</div>
+					</div>
+		   			<div class="col-md-4 fondoRecovery container">
+		   				<br>
+		   				<h6 align="center" class="title">Ups!... ¿Olvidaste la clave?</h6>
+		   				<br>
+		   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
+		   					<span id="reauth-email" class="reauth-email"></span>
+			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+					        <br><br><br>
+			                <div class="middle">
+			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
+			                </div>
+			                <br><br>
+					        <button class="btn btn-lg btn-block btn-signin color-block" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+					        <script>
+					        	document.getElementById("buttonRec").disabled = true;
+					        	function enableBtnRec(){
+					        		document.getElementById("buttonRec").style.background = "#FFD142";
+					        		document.getElementById("buttonRec").disabled = false;
+					        	}
+					        </script>
+					    </form>
+		   			</div>
 				</div>
 			</div>
-    		<div class="col-md-5">
-    			<div class="flip-card-container">
-    				<div class="flip-card">
-    					<div class="flip-card-front">
-    						<h5 class="card-title text-center fondoLogin">Iniciar Sesion</h5>
-				            <!-- <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
-				                <span id="reauth-email" class="reauth-email"></span>
-				                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
-				                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-				                <br>
-				                <div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-				                <br>
-				                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
-				                <script>
-				                	document.getElementById("buttonIS").disabled = true;
-						        	function enableBtn(){
-						        		document.getElementById("buttonIS").style.background = "#61E900";
-						        		document.getElementById("buttonIS").disabled = false;
-						        	}
-						        </script>
-				            </form>-->
-				            <p onclick="gira()">Recupera</p>
-				      	</div>
-				      	<div class="flip-card-back fondoRecovery">
-			    			<h5 class="card-title text-center">Ups!... Olvidaste la Clave</h5>
-			    			<br>
-			    			<p>Inserta tu nombre de usuario o email con el que te registraste y te enviaremos más información a tu correo</p>
-			    			<!-- <form action="recuperaClave.html" method="post" id="Login" name="Login">
-						        <div class="form-group">
-						            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Introducir username o email" required>
-						        </div>
-						       <br>
-						        <div class="row" align="center">
-						        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
-						        </div>
-						        <br>
-						        <div class="row">
-						        	<div class="col-md-3"></div>
-						        	<div class="col-md-6">
-						        		<button type="submit" id="buttonRec" name="buttonRec" class="btn-recCuenta">Recuperar Clave</button>
-						        	</div>
-						        	<script>
-						        		document.getElementById("buttonRec").disabled = true;
-						        	</script>
-						        	<div class="col-md-3"></div>
-						        </div>
-						        <script>
-						        	function enableBtnRec(){
-						        		document.getElementById("buttonRec").style.background = "#61E900";
-						        		document.getElementById("buttonRec").disabled = false;
-						        	}
-						        </script>
-						    </form>-->
-						    <p onclick="gira()">Login</p>
-				      	</div>
-				    </div>
-				 </div>
-				 
-				  <script>
-				  function gira(){
-					  /*const flipCardContainer = document.querySelector(".flip-card-container");
-					  flipCardContainer.addEventListener("click", function(){
-						  flipCardContainer.classList.toggle("flip");
-					  });*/
-					  document.querySelector(".flip-card-container").classList.toggle("flip");
-				  }
-				  	
-				  </script>
-				
-				<!-- <script>
-					function flip() {
-					    $('.card').toggleClass('flipped');
-					}
-				</script>-->
-    		
-    			<!-- <card>
-    				<h3 align="center">Regístrate</h3>
-					<br>
-                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
-	                    <div class="row">
-	                        <div class="col-md-12">
-	                            <div class="form-group">
-	                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="text" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgError">{{messageError}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                            	<input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
-	                            </div>
-	                        </div>
-	                    </div>
-	            	</form>
-    			</card>-->
-    		</div>
-    		<div class="col-md-1"></div>
+			<div class="col-md-1"></div>
 		</div>
-    </section>
+	</section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
