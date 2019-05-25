@@ -125,7 +125,7 @@
     			<div class="flip-card-container">
     				<div class="flip-card">
     					<div class="flip-card-front">
-    						<h5 class="card-title text-center">Iniciar Sesion</h5>
+    						<h5 class="card-title text-center fondoLogin">Iniciar Sesion</h5>
 				            <!-- <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 				                <span id="reauth-email" class="reauth-email"></span>
 				                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
@@ -144,7 +144,7 @@
 				            </form>-->
 				            <p onclick="gira()">Recupera</p>
 				      	</div>
-				      	<div class="flip-card-back">
+				      	<div class="flip-card-back fondoRecovery">
 			    			<h5 class="card-title text-center">Ups!... Olvidaste la Clave</h5>
 			    			<br>
 			    			<p>Inserta tu nombre de usuario o email con el que te registraste y te enviaremos más información a tu correo</p>
@@ -178,7 +178,7 @@
 				      	</div>
 				    </div>
 				 </div>
-				  
+				 
 				  <script>
 				  function gira(){
 					  /*const flipCardContainer = document.querySelector(".flip-card-container");
