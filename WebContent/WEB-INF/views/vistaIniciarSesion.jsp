@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/inicioSesion.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/inicioSesion.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -27,15 +27,8 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="resources/js/jquery-2.1.4.min.js"></script>
+    <script src="resources/js/jquery.flip.js"></script>
     
   </head>
 
@@ -138,20 +131,18 @@
 				  </div>
 				</section>-->
 				
-				<div class="containerCard">
-					<div class="card card-flip h-100">
-		                <div class="card-front bg-danger card text-center">
-		                    <div class="card-body">
-		                        <p class="card-text">Login</p>
-		                    </div>
-		                </div>
-		                <div class="card-back bg-info card text-center">
-		                    <div class="card-body">
-		                        <p class="card-text">Recupera</p>
-		                    </div>
-		                </div>
-		            </div>
+				<div id="card"> 
+				  <div class="front"> 
+				    Front content
+				  </div> 
+				  <div class="back">
+				    Back content
+				  </div> 
 				</div>
+				
+				<script>
+					$("#card").flip();
+				</script>
 				
 				<!-- <script>
 					function flip() {
