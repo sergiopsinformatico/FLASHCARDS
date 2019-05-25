@@ -44,7 +44,7 @@ body, html {
   transform-style: preserve-3d;
 }
 
-.flip-card-container:hover .flip-card {
+.flip-card-container.flip .flip-card {
   transform: rotateY(180deg); /* <=>  rotateY(.5turn) */
 }
 
