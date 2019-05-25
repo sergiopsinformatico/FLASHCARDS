@@ -142,11 +142,11 @@
 				  <div class="card text-center">
 				    <div class="card__face card__face--front align-items-center justify-content-center">
 				    	<br>
-				    	<p class="card-text">{{ newAnverso }}</p>
+				    	<p class="card-text">Iniciar Sesión</p>
 					</div>
 				    <div class="card__face card__face--back align-items-center justify-content-center">
 				    	<br>
-				    	<p class="card-text">{{ newReverso }}</p>
+				    	<p class="card-text">Recuperar Clave</p>
 					</div>
 				  </div>
 				</div>
