@@ -27,33 +27,32 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <!-- <script src="resources/js/jquery-2.1.4.min.js"></script>
-    <script src="resources/js/jquery.flip.js"></script>-->
-    
   </head>
 
   <body id="page-top">		
   
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header class="header">
+	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
+	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          Menu
+	          <i class="fas fa-bars"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto">
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
+	            </li>
+	            <!-- <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
+	            </li>-->
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+	</header>
     <section class="background">
 		<br><br><br><br>
     	<div class="row">
@@ -123,24 +122,60 @@
 				</div>
 			</div>
     		<div class="col-md-5">
-    		
-   				<!-- <section class="containerCards">
-				  <div class="card" onclick="flip()">
-				    <div class="front">1</div>
-				    <div class="back">2</div>
-				  </div>
-				</section>-->
-				
-				<div class="flip-card-container">
-				    <div class="flip-card">
-				      <div class="flip-card-front">
-				        <h6 align="center">Iniciar Sesión</h6>
-				      </div>
-				      <div class="flip-card-back">
-				        <h6 align="center">Ups!... Olvidaste la Clave</h6>
-				      </div>
+    			<div class="flip-card-container">
+    				<div class="flip-card">
+    					<div class="flip-card-front">
+    						<h5 class="card-title text-center">Iniciar Sesion</h5>
+				            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
+				                <span id="reauth-email" class="reauth-email"></span>
+				                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+				                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
+				                <br>
+				                <div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+				                <br>
+				                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
+				                <script>
+				                	document.getElementById("buttonIS").disabled = true;
+						        	function enableBtn(){
+						        		document.getElementById("buttonIS").style.background = "#61E900";
+						        		document.getElementById("buttonIS").disabled = false;
+						        	}
+						        </script>
+				            </form>
+				      	</div>
+				      	<div class="flip-card-back">
+			    			<h5 class="card-title text-center">Ups!... Olvidaste la Clave</h5>
+			    			<br>
+			    			<p>Inserta tu nombre de usuario o email con el que te registraste y te enviaremos más información a tu correo</p>
+			    			<form action="recuperaClave.html" method="post" id="Login" name="Login">
+						        <div class="form-group">
+						            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Introducir username o email" required>
+						        </div>
+						       <br>
+						        <div class="row" align="center">
+						        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
+						        </div>
+						        <br>
+						        <div class="row">
+						        	<div class="col-md-3"></div>
+						        	<div class="col-md-6">
+						        		<button type="submit" id="buttonRec" name="buttonRec" class="btn-recCuenta">Recuperar Clave</button>
+						        	</div>
+						        	<script>
+						        		document.getElementById("buttonRec").disabled = true;
+						        	</script>
+						        	<div class="col-md-3"></div>
+						        </div>
+						        <script>
+						        	function enableBtnRec(){
+						        		document.getElementById("buttonRec").style.background = "#61E900";
+						        		document.getElementById("buttonRec").disabled = false;
+						        	}
+						        </script>
+						    </form>
+				      	</div>
 				    </div>
-				  </div>
+				 </div>
 				  
 				  <script>
 				  	const flipCardContainer = document.querySelector(".flip-card-container");
