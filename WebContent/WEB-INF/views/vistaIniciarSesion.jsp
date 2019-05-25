@@ -27,8 +27,8 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <script src="resources/js/jquery-2.1.4.min.js"></script>
-    <script src="resources/js/jquery.flip.js"></script>
+    <!-- <script src="resources/js/jquery-2.1.4.min.js"></script>
+    <script src="resources/js/jquery.flip.js"></script>-->
     
   </head>
 
@@ -131,18 +131,19 @@
 				  </div>
 				</section>-->
 				
-				<div id="card"> 
-				  <div class="front"> 
-				    Front content
-				  </div> 
-				  <div class="back">
-				    Back content
-				  </div> 
-				</div>
-				
-				<script>
-					$("#card").flip();
-				</script>
+				<div class="flip-card-container">
+				    <div class="flip-card">
+				      <div class="flip-card-front">
+				        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg" alt="Albert Einstein">
+				      </div>
+				      <div class="flip-card-back">
+				        <p>
+				          "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+				          <span>- Albert Einstein -</span>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
 				
 				<!-- <script>
 					function flip() {
