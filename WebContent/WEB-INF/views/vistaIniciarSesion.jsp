@@ -27,6 +27,16 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
   </head>
 
   <body id="page-top">		
@@ -121,12 +131,25 @@
 			</div>
     		<div class="col-md-5">
     		
-   				<section class="containerCards">
+   				<!-- <section class="containerCards">
 				  <div class="card" onclick="flip()">
 				    <div class="front">1</div>
 				    <div class="back">2</div>
 				  </div>
-				</section>
+				</section>-->
+				
+				<div class="scene scene--card">
+				  <div class="card text-center">
+				    <div class="card__face card__face--front align-items-center justify-content-center">
+				    	<br>
+				    	<p class="card-text">{{ newAnverso }}</p>
+					</div>
+				    <div class="card__face card__face--back align-items-center justify-content-center">
+				    	<br>
+				    	<p class="card-text">{{ newReverso }}</p>
+					</div>
+				  </div>
+				</div>
 				
 				<script>
 					function flip() {
