@@ -138,24 +138,26 @@
 				  </div>
 				</section>-->
 				
-				<div class="scene scene--card">
-				  <div class="card text-center">
-				    <div class="card__face card__face--front align-items-center justify-content-center">
-				    	<br>
-				    	<p class="card-text">Iniciar Sesión</p>
-					</div>
-				    <div class="card__face card__face--back align-items-center justify-content-center">
-				    	<br>
-				    	<p class="card-text">Recuperar Clave</p>
-					</div>
-				  </div>
+				<div class="containerCard">
+					<div class="card card-flip h-100">
+		                <div class="card-front bg-danger card text-center">
+		                    <div class="card-body">
+		                        <p class="card-text">Login</p>
+		                    </div>
+		                </div>
+		                <div class="card-back bg-info card text-center">
+		                    <div class="card-body">
+		                        <p class="card-text">Recupera</p>
+		                    </div>
+		                </div>
+		            </div>
 				</div>
 				
-				<script>
+				<!-- <script>
 					function flip() {
 					    $('.card').toggleClass('flipped');
 					}
-				</script>
+				</script>-->
     		
     			<!-- <card>
     				<h3 align="center">Regístrate</h3>
