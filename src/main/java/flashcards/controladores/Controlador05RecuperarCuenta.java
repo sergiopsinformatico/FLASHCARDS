@@ -35,26 +35,10 @@ public class Controlador05RecuperarCuenta {
 	//Constantes
 	static final String USUARIO = "usuario";
 	
-	@RequestMapping(value = "/recuperarCuenta", method = RequestMethod.GET)
-	public ModelAndView recuperarCuenta(HttpServletRequest request, HttpServletResponse response) {
-		
-		//Comprobar activaciones caducadas
-		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
-		
-		//Eliminar cuentas pasados 14 dias
-		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
-		
-		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
-			return new ModelAndView("vistaRecuperarCuenta");
-		}else {
-			return new ModelAndView("redirect:/");
-		}
-	}
-	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.POST)
 	public ModelAndView recuperaClave(HttpServletRequest request, HttpServletResponse response) {
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-		vista = new ModelAndView("redirect:/recuperarCuenta.html");
+		vista = new ModelAndView("vistaIniciarRecuperarSesion");
 		if(user==null || user.getUsername()==null || user.getUsername()=="") {
 			vista.addObject("mensaje", "No existe dicha cuenta.");
 			return vista;
@@ -68,6 +52,6 @@ public class Controlador05RecuperarCuenta {
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.GET)
 	public ModelAndView recuperaClaveGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/recuperarCuenta.html");
+		return new ModelAndView("redirect:/inicioRecSesion.html.html");
 	}
 }

@@ -32,7 +32,7 @@ public class Controlador04ModificarPerfil {
 		if(request.getSession().getAttribute(USUARIO)!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()!="") {
 			vista = new ModelAndView("vistaModificarPerfil");
 		}else {
-			vista = new ModelAndView("redirect:/");
+			vista = new ModelAndView("redirect:/inicio.html");
 		}
 		return vista;
 	}

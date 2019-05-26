@@ -28,7 +28,7 @@ public class Controlador03Principal {
 	
 	//Constantes
 	static final String USUARIO = "usuario";
-	static final String REDIRECT = "redirect:/";
+	static final String REDIRECT = "redirect:/inicio.html";
 	
 	//Pagina Principal
 	

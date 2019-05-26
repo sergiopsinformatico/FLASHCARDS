@@ -72,7 +72,7 @@ public class Controlador01RegistroUsuarios {
 		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
 			return new ModelAndView("vistaRegistro");
 		}else {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/inicio.html");
 		}
 	}
 	
@@ -180,7 +180,7 @@ public class Controlador01RegistroUsuarios {
 	
 	@RequestMapping(value = "/activar", method = RequestMethod.GET)
 	public ModelAndView activarGet(HttpServletRequest request, HttpServletResponse response){
-		vista = new ModelAndView("redirect:/");
+		vista = new ModelAndView("redirect:/inicio.html");
 		return vista;
 	}
 	

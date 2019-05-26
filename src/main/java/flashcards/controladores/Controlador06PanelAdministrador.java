@@ -35,7 +35,7 @@ public class Controlador06PanelAdministrador {
 		if(administrador.getRol().equals("Administrador")) {
 			vista = new ModelAndView("vistaAdministrador");
 		}else {
-			vista = new ModelAndView("redirect:/");
+			vista = new ModelAndView("redirect:/inicio.html");
 		}
 		return vista;
 	}

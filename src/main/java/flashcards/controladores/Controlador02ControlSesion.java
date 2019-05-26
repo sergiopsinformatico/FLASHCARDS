@@ -41,12 +41,12 @@ public class Controlador02ControlSesion {
 	
 	//Constantes
 	static final String USUARIO = "usuario";
-	static final String VIEWLOGIN="vistaIniciarSesion";
+	static final String VIEWLOGIN="vistaIniciarRecuperarSesion";
 	static final String MENSAJE="mensaje";
 	
 	//Devuelve la vista para Iniciar Sesion
-	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarSesionGet(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/inicioRecSesion", method = RequestMethod.GET)
+	public ModelAndView iniciarRecSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		//Comprobar activaciones caducadas
 		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
@@ -76,7 +76,7 @@ public class Controlador02ControlSesion {
 			}
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());
-				vista = new ModelAndView("redirect:/");
+				vista = new ModelAndView("redirect:/inicio.html");
 				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
 					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
 					vista.addObject(MENSAJE, "Su cuenta ha sido reactivada");
@@ -97,10 +97,10 @@ public class Controlador02ControlSesion {
 	
 	@RequestMapping(value = "/loguear", method = RequestMethod.GET)
 	public ModelAndView loguearGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/iniciarSesion.html");
+		return new ModelAndView("redirect:/inicioRecSesion.html");
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
 			vista = new ModelAndView("index");
@@ -112,7 +112,7 @@ public class Controlador02ControlSesion {
 	
 	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/");
+		vista = new ModelAndView("redirect:/inicio.html");
 		request.getSession().setAttribute(USUARIO, null);
 		vista.addObject(USUARIO,null);
 		return vista;
