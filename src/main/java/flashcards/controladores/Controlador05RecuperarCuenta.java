@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.auxiliares.GeneratorStrings;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
+import main.java.flashcards.dto.RecuperarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
@@ -30,6 +33,8 @@ public class Controlador05RecuperarCuenta {
 	List<EliminarCuentaDTO> listaEl;
 	int indice;
 	String compara;
+	String keySecure;
+	GeneratorStrings gS;
 	Email email;
 	
 	//Constantes
@@ -44,7 +49,11 @@ public class Controlador05RecuperarCuenta {
 			return vista;
 		}else {
 			email = new Email();
-			email.recuperarClave(user);
+			gS = new GeneratorStrings();
+			fecha = new Fecha();
+			keySecure = gS.randomString(10);
+			Broker.getInstanciaRecuperarCuenta().insertaRC(new RecuperarCuentaDTO(user.getUsername(), keySecure, fecha.fechaRecuperarCuenta()));
+			email.recuperarClave(user,keySecure);
 			vista.addObject("mensaje", "Se ha enviado un email a " + user.getEmail() +" con la clave");
 			return vista;
 		}
@@ -52,6 +61,18 @@ public class Controlador05RecuperarCuenta {
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.GET)
 	public ModelAndView recuperaClaveGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/inicioRecSesion.html.html");
+		return new ModelAndView("redirect:/inicioRecSesion.html");
+	}
+	
+	@RequestMapping(value = "/restableceClave", method = RequestMethod.GET)
+	public ModelAndView restableceClave(@RequestParam("username") String username, @RequestParam("keySecurity") String keySecurity) {
+		if(Broker.getInstanciaRecuperarCuenta().leerRC(username, keySecurity)) {
+			vista = new ModelAndView("vistaRestablecimientoClave");
+			vista.addObject("username", username);
+		}else {
+			vista = new ModelAndView("vistaIniciarRecuperarSesion");
+			vista.addObject("mensaje", "Enlace no válido. Por favor, vuelva a solicitar la recuperación de la clave");
+		}
+		return vista;
 	}
 }

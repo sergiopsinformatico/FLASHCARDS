@@ -43,6 +43,10 @@ public class Fecha {
 		return generateDate(14);
 	}
 	
+	public String fechaRecuperarCuenta() {
+		return generateDate(14);
+	}
+	
 	private String generateDate(int dias) {
 		dia = "";
 		hoy = Calendar.getInstance();

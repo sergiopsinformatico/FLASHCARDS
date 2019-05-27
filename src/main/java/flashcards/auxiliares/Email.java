@@ -72,17 +72,15 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean recuperarClave(UsuarioDTO user) {
+	public boolean recuperarClave(UsuarioDTO user, String key) {
 		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		//Asunto
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		//Mensaje
 		setMensaje(SALUDO+user.getUsername()+"!!"+
-		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards:"+
-		USUARIO+user.getEmail()+" o "+user.getUsername()+
-		CLAVE+user.getClave()+
-		CIERRE);
+		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards."+
+		"\nSiga el siguiente enlace: https://sistemaflashcards.herokuapp.com/restableceClave.html?username="+user.getUsername()+"&keySecurity="+key);
 		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
