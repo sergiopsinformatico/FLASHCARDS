@@ -47,7 +47,7 @@
 	    </nav>
 	</header>
 	
-	<section class="background">
+	<section class="background" ng-app="AppRestablece" ng-controller="RestableceCtrl">
 		<br><br>
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -60,30 +60,33 @@
 					</div>
 		   			<div class="col-md-6 fondoRecovery container">
 		   				<br>
-		   				<h6 align="center" class="title">Restablecimiento de la Clave</h6>
+		   				<h6 align="center" class="negrita cursiva">Restablecimiento de la Clave</h6>
 		   				<br>
-		   				<small>¡Bienvenido de nuevo ${username}!</small>
+		   				<small class="negrita">¡Bienvenido de nuevo ${username}!</small>
 		   				<br>
 		   				<small>Por favor, introduce tu nueva clave</small>
 		   				<br><br>
-		   				<form action="restableceClave.html" method="post" id="NuevaClave" name="NuevaClave">
+		   				<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
 		   					<span id="reauth-email" class="reauth-email"></span>
-			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" placeholder="Nueva Clave" required autofocus>
+			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="validateClave(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
 			                <br>
-			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" placeholder="Repite la Nueva Clave" required autofocus>
+			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="validateClave(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
 			                <br><br><br>
 			                <div class="middle">
 			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
 			                </div>
-			                <br><br>
+			                <br>
 					        <button class="btn btn-lg btn-block btn-signin color-block" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+					        
 					        <script>
 					        	document.getElementById("buttonRec").disabled = true;
+					        	
 					        	function enableBtnRec(){
 					        		document.getElementById("buttonRec").style.background = "#FFD142";
 					        		document.getElementById("buttonRec").disabled = false;
 					        	}
 					        </script>
+					        
 					        <br><br>
 					    </form>
 		   			</div>
@@ -92,6 +95,10 @@
 			<div class="col-md-1"></div>
 		</div>
 	</section>
+	
+	<script>
+		
+	</script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">

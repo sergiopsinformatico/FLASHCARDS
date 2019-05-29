@@ -1,8 +1,14 @@
 package main.java.flashcards.auxiliares;
 
 import java.util.Properties;
+/*import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;*/
+
 import javax.mail.Message;
-import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -102,16 +108,18 @@ public class Email {
 		return enviarMensaje();
 	}
 	
-	public boolean enviarMensaje() {
+	private boolean enviarMensaje() {
 		enviado = false;
 		try{
 			Properties properties = System.getProperties();
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			//properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.port", "587");
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 			
-			Session session = Session.getDefaultInstance(properties, null);
+			/*Session session = Session.getDefaultInstance(properties, null);
 			
 			MimeMessage message = new MimeMessage(session);
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(getRecibe()));
@@ -121,10 +129,28 @@ public class Email {
 			Transport transporte = session.getTransport("smtp");
 			transporte.connect("smtp.gmail.com", getEnvia(), getClave());
 			transporte.sendMessage(message, message.getAllRecipients());
-			transporte.close();
+			transporte.close();*/
+			
+			Session session = Session.getInstance(properties,
+	            new javax.mail.Authenticator() {
+	                protected PasswordAuthentication getPasswordAuthentication() {
+	                    return new PasswordAuthentication(getEnvia(), getClave());
+	                }
+	            });
+			
+			Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(getEnvia()));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(getRecibe())
+            );
+            message.setSubject(getAsunto());
+            message.setText(getMensaje());
+
+            Transport.send(message);
 			
 			enviado = true;
-		}catch (MessagingException me){
+		}catch (Exception me){
 			enviado = false;
 			me.printStackTrace();
 		}

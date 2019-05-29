@@ -29,6 +29,8 @@ public class Controlador05RecuperarCuenta {
 	Fecha fecha;
 	ModelAndView vista;
 	UsuarioDTO user;
+	UsuarioDTO userAntiguo;
+	UsuarioDTO userNuevo;
 	List<ActivaCuentaDTO> listaAC;
 	List<EliminarCuentaDTO> listaEl;
 	int indice;
@@ -72,6 +74,20 @@ public class Controlador05RecuperarCuenta {
 		}else {
 			vista = new ModelAndView("vistaIniciarRecuperarSesion");
 			vista.addObject("mensaje", "Enlace no válido. Por favor, vuelva a solicitar la recuperación de la clave");
+		}
+		return vista;
+	}
+	
+	@RequestMapping(value = "/cambioClave", method = RequestMethod.POST)
+	public ModelAndView cambioClave(@RequestParam("username") String username, @RequestParam("clave") String clave) {
+		vista = new ModelAndView("vistaIniciarRecuperarSesion");
+		userAntiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
+		userNuevo = userAntiguo;
+		userNuevo.setClave(clave);
+		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
+			vista.addObject("mensaje", "Se ha actualizado su clave correctamente");
+		}else {
+			vista.addObject("mensaje", "Error. No se pudo actualizar su clave");
 		}
 		return vista;
 	}

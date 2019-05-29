@@ -25,9 +25,11 @@ body, html {
 	background-color: #00FFFD;
 }
 
-.title{
-	/*font-weight: lighter;*/
+.cursiva{
 	font-style: italic;
+}
+
+.negrita{
 	font-weight: bold;
 }
 
@@ -107,11 +109,10 @@ body, html {
 	-webkit-transform:scale(0.77);
 	transform-origin:0 0;
 	-webkit-transform-origin:0 0;
-	/*text-align: center;*/
 }
 
 .color-block{
-	background-color: #C8C8C8;
+	background-color: #E6FFA0;
 }
 
 
