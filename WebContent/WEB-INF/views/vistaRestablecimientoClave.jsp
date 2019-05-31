@@ -131,14 +131,14 @@
 	    		
 	    		if(checkLongClave==true && checkCaracterClave==true){
 	        		$scope.msgClave = "La clave es válida.";
-	        		document.getElementById("showMsgClave").style.color = "#5BAD62";
+	        		document.getElementById("showMsgClave").style.color = "#005407";
 	    			checkClave = true;
 	    		}
 	    		
 	    		if(clave.localeCompare(rClave) == 0){
 	    			checkRepClave = true;
 		        	$scope.msgRepClave = "Los campos Clave y Repite Clave coinciden.";
-		        	document.getElementById("showMsgRepClave").style.color = "#5BAD62";
+		        	document.getElementById("showMsgRepClave").style.color = "#005407";
 	    		}else{
 	        		$scope.msgRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
 	        		document.getElementById("showMsgRepClave").style.color = "#CA1F1F";
