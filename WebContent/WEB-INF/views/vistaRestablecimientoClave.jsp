@@ -112,36 +112,36 @@
 	    				if(clave.charAt(indice)==' '){
 	    					checkCaracterClave=false;
 	    		        	$scope.msgClave = "Error. La clave no puede contener espacios.";
-	    		        	document.getElementById("showMsgClave").style.color = "red";
+	    		        	document.getElementById("showMsgClave").style.color = "#CA1F1F";
 	    					break;
 	    				}else if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
 	    				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
 	    				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
 	    					checkCaracterClave=false;
 			        		$scope.msgClave = "Error. El caracter "+clave.charAt(indice)+" no es valido.";
-			        		document.getElementById("showMsgClave").style.color = "red";
+			        		document.getElementById("showMsgClave").style.color = "#CA1F1F";
 	    					break;
 	    				}
 	    			}
 	    			
 	    		}else{
 	    			$scope.msgClave = "Error. La longitud de la clave debe de ser entre 5 y 20 caracteres.";
-	    			document.getElementById("showMsgClave").style.color = "red";
+	    			document.getElementById("showMsgClave").style.color = "#CA1F1F";
 	    		}
 	    		
 	    		if(checkLongClave==true && checkCaracterClave==true){
 	        		$scope.msgClave = "La clave es válida.";
-	        		document.getElementById("showMsgClave").style.color = "green";
+	        		document.getElementById("showMsgClave").style.color = "#5BAD62";
 	    			checkClave = true;
 	    		}
 	    		
 	    		if(clave.localeCompare(rClave) == 0){
 	    			checkRepClave = true;
 		        	$scope.msgRepClave = "Los campos Clave y Repite Clave coinciden.";
-		        	document.getElementById("showMsgRepClave").style.color = "green";
+		        	document.getElementById("showMsgRepClave").style.color = "#5BAD62";
 	    		}else{
 	        		$scope.msgRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
-	        		document.getElementById("showMsgRepClave").style.color = "red";
+	        		document.getElementById("showMsgRepClave").style.color = "#CA1F1F";
 	    		}
 	    		
 	    		if(checkClave == true && checkRepClave == true){
