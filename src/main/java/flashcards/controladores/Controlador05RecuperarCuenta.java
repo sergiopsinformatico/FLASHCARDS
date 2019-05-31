@@ -85,6 +85,7 @@ public class Controlador05RecuperarCuenta {
 		userNuevo = userAntiguo;
 		userNuevo.setClave(request.getParameter("inputNuevaClave"));
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
+			Broker.getInstanciaRecuperarCuenta().eliminarRC(request.getParameter("username"));
 			vista.addObject("mensaje", "Se ha actualizado su clave correctamente");
 		}else {
 			vista.addObject("mensaje", "Error. No se pudo actualizar su clave");
