@@ -69,7 +69,9 @@
 		    </nav>
 		</header>
 			<section class="background">
-				<br><br><br><br>
+				<div class="row">
+					<br><br>
+				</div>
 				<div class="row" ng-app="AppRegistro" ng-controller="RegistroCtrl">
 					<div class="col-md-1"></div>
 					<div class="col-md-5 middle">
@@ -78,7 +80,7 @@
 						</div>
 					</div>
 					<div class="col-md-5 fondoRegistro">
-						<h3 align="center">Regístrate</h3>
+						<h3 align="center titleRegister">Regístrate</h3>
 						<br>
 	                    <form ng-submit="envioDatos()" id="Registro" name="Registro">
 		                    <div class="row">
@@ -107,14 +109,13 @@
 		                            <div class="form-group">
 		                                <small id="msgRepClave">{{messageRepClave}}</small>
 		                            </div>
-		                            <br>
 		                            <div class="form-group">
 		                                <small id="msgError">{{messageError}}</small>
 		                            </div>
-		                            <br>
 		                            <div class="form-group">
-		                            	<input type="submit" class="btnRegister"  value="Registrar" id="button1" name="button1" disabled/>
+		                            	<input type="submit" class="btnRegister" ng-disabled="btnDisabled" value="Registrar" id="button1" name="button1"/>
 		                            </div>
+		                            <br>
 		                        </div>
 		                    </div>
 		            	</form>
@@ -125,6 +126,8 @@
 				'use strict'
 			    var app = angular.module('AppRegistro', []);
 		        app.controller('RegistroCtrl', function($scope, $http) {
+		        	
+		        	$scope.btnDisabled = true;
 		        	
 		        	$scope.messageUsername = "";
 		        	$scope.messageEmail = "";
@@ -184,15 +187,15 @@
 		        	function enableBtnRegistro(){
 		        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
 		        			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
-		        				document.getElementById("button1").disabled = true;
+		        				$scope.btnDisabled = true;
 		        				document.getElementById("msgError").style.color="#E33A3A"
 		        				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
 		        			}else{
 		        				$scope.messageError="";
-		        				document.getElementById("button1").disabled = false;
+		        				$scope.btnDisabled = false;
 		        			}
 		        		}else{
-		        			document.getElementById("button1").disabled = true;
+		        			$scope.btnDisabled = true;
 		        			document.getElementById("msgError").style.color="#E33A3A"
 		        			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
 		        		}
