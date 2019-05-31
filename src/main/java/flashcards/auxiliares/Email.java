@@ -2,7 +2,6 @@ package main.java.flashcards.auxiliares;
 
 import java.util.Properties;
 import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -92,23 +91,17 @@ public class Email {
 			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 			
-			Session session = Session.getInstance(properties,
-	            new javax.mail.Authenticator() {
-	                protected PasswordAuthentication getPasswordAuthentication() {
-	                    return new PasswordAuthentication(getEnvia(), getClave());
-	                }
-	            });
+			Session session = Session.getDefaultInstance(properties, null);
 			
-			Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(getEnvia()));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(getRecibe())
-            );
-            message.setSubject(getAsunto());
-            message.setText(getMensaje());
-
-            Transport.send(message);
+			MimeMessage message = new MimeMessage(session);
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(getRecibe()));
+			message.setSubject(getAsunto());
+			message.setContent(getMensaje(), "text/plain");
+			
+			Transport transporte = session.getTransport("smtp");
+			transporte.connect("smtp.gmail.com", getEnvia(), getClave());
+			transporte.sendMessage(message, message.getAllRecipients());
+			transporte.close();
 			
 			enviado = true;
 		}catch (Exception me){
