@@ -47,7 +47,7 @@ public class Controlador05RecuperarCuenta {
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
 		vista = new ModelAndView("vistaIniciarRecuperarSesion");
 		if(user==null || user.getUsername()==null || user.getUsername()=="") {
-			vista.addObject("mensaje", "No existe dicha cuenta.");
+			vista.addObject("mensaje", "No existe ninguna cuenta cuyo username o email sea "+request.getParameter("inputUsernameEmail"));
 			return vista;
 		}else {
 			email = new Email();
@@ -73,7 +73,7 @@ public class Controlador05RecuperarCuenta {
 			vista.addObject("username", username);
 		}else {
 			vista = new ModelAndView("vistaIniciarRecuperarSesion");
-			vista.addObject("mensaje", "Enlace no válido. Por favor, vuelva a solicitar la recuperación de la clave");
+			vista.addObject("mensaje", "El enlace ha expirado. Por favor, vuelva a solicitar la recuperacion de la clave");
 		}
 		return vista;
 	}
