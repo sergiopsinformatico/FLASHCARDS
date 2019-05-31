@@ -67,6 +67,7 @@
 		   				<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+			                <br>
 			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
 			                <br><br>
 			                <div class="middle">
