@@ -139,6 +139,10 @@ body {
   align-items: center;
 }
 
+.fondoRegistro{
+	background-color: #925124;
+}
+
 .containerImg {
     width: 400px;
     height: 400px;
