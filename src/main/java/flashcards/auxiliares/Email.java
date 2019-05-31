@@ -1,19 +1,12 @@
 package main.java.flashcards.auxiliares;
 
 import java.util.Properties;
-/*import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;*/
-
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import main.java.flashcards.dto.EliminarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -32,28 +25,21 @@ public class Email {
 	static final String ENVIA_CONST = "envia";
 	
 	public boolean activarCuenta(UsuarioDTO user, String url) {
-		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
-		//Asunto
 		setAsunto("[Flashcards] Activacion Cuenta: "+user.getUsername());
-		//Mensaje
 		setMensaje("Bienvenido a la Aplicacion Flashcards!!"+
 		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
 		"\n"+url+
 		"\nDispone de 24 horas para activar la cuenta. En caso de que no lo haga, debe de volverse a registrar."+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
 		CIERRE);
-		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
 	
 	public boolean confirmaCuentaCreada(UsuarioDTO user) {
-		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
-		//Asunto
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
-		//Mensaje
 		setMensaje("Su cuenta ha sido creada satisfactoriamente. Sus datos de registro son los siguientes:"+
 		USUARIO+user.getUsername()+
 		"\nEmail: "+user.getEmail()+
@@ -64,46 +50,34 @@ public class Email {
 	}
 	
 	public boolean eliminarCuenta(EliminarCuentaDTO elimina, String email) {
-		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
-		//Asunto
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
-		//Mensaje
 		setMensaje(SALUDO+elimina.getUsername()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
 		"\nSi accede antes al sistema con su cuenta, su cuenta no se va a eliminar."+
         CIERRE);
-		//Email de quien recibe el mensaje
 		setRecibe(email);
 		return enviarMensaje();
 	}
 	
 	public boolean recuperarClave(UsuarioDTO user, String key) {
-		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
-		//Asunto
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
-		//Mensaje
 		setMensaje(SALUDO+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards."+
 		"\nSiga el siguiente enlace: https://sistemaflashcards.herokuapp.com/restableceClave.html?username="+user.getUsername()+"&keySecurity="+key);
-		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
 	
 	public boolean reactivacionCuenta(UsuarioDTO user) {
-		//Envia
 		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
-		//Asunto
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
-		//Mensaje
 		setMensaje(SALUDO+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
 		USUARIO+user.getEmail()+" o "+user.getUsername()+
 		CLAVE+user.getClave()+
 		CIERRE);
-		//Email de quien recibe el mensaje
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
@@ -113,23 +87,10 @@ public class Email {
 		try{
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.host", "smtp.gmail.com");
-			//properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.port", "587");
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-			
-			/*Session session = Session.getDefaultInstance(properties, null);
-			
-			MimeMessage message = new MimeMessage(session);
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(getRecibe()));
-			message.setSubject(getAsunto());
-			message.setContent(getMensaje(), "text/plain");
-			
-			Transport transporte = session.getTransport("smtp");
-			transporte.connect("smtp.gmail.com", getEnvia(), getClave());
-			transporte.sendMessage(message, message.getAllRecipients());
-			transporte.close();*/
 			
 			Session session = Session.getInstance(properties,
 	            new javax.mail.Authenticator() {

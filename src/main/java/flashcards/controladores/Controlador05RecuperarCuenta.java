@@ -79,11 +79,11 @@ public class Controlador05RecuperarCuenta {
 	}
 	
 	@RequestMapping(value = "/cambioClave", method = RequestMethod.POST)
-	public ModelAndView cambioClave(@RequestParam("username") String username, @RequestParam("clave") String clave) {
+	public ModelAndView cambioClave(HttpServletRequest request, HttpServletResponse response) {
 		vista = new ModelAndView("vistaIniciarRecuperarSesion");
-		userAntiguo = Broker.getInstanciaUsuario().getUsuarioDTO(username);
+		userAntiguo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
 		userNuevo = userAntiguo;
-		userNuevo.setClave(clave);
+		userNuevo.setClave(request.getParameter("inputNuevaClave"));
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista.addObject("mensaje", "Se ha actualizado su clave correctamente");
 		}else {

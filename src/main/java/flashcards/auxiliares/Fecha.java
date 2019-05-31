@@ -16,9 +16,11 @@ public class Fecha {
 	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.auxiliares.Fecha");
 	
 	public String compararFechas(String fecha1, String fecha2) {
+		
 		/* Devuelve 0 si fecha1 == fecha2
 		 * Devuelve <0 si fecha1<fecha2 (fecha1 antes fecha2)
 		 * Devuelve >0 si fecha1>fecha2 (fecha1 despues fecha2) */
+		
 		try {
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 			date1 = sdf.parse(fecha1);

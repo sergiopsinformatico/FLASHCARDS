@@ -58,35 +58,24 @@
 							<img src="resources/img/logoFlashcards.JPG" alt=""/>
 						</div>
 					</div>
-		   			<div class="col-md-6 fondoRecovery container">
+		   			<div class="col-md-6 fondoForm container">
 		   				<br>
 		   				<h6 align="center" class="negrita cursiva">Restablecimiento de la Clave</h6>
 		   				<br>
-		   				<small class="negrita">¡Bienvenido de nuevo ${username}!</small>
+		   				<small class="negrita">¡Hola ${username}!</small>
 		   				<br>
 		   				<small>Por favor, introduce tu nueva clave</small>
 		   				<br><br>
 		   				<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
 		   					<span id="reauth-email" class="reauth-email"></span>
-			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="validateClave(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
+		   					<input type="hidden" id="username" name="username" value="${username}">
+			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
 			                <br>
-			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="validateClave(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
-			                <br><br><br>
-			                <div class="middle">
-			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
-			                </div>
-			                <br>
-					        <button class="btn btn-lg btn-block btn-signin color-block" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
-					        
-					        <script>
-					        	document.getElementById("buttonRec").disabled = true;
-					        	
-					        	function enableBtnRec(){
-					        		document.getElementById("buttonRec").style.background = "#FFD142";
-					        		document.getElementById("buttonRec").disabled = false;
-					        	}
-					        </script>
-					        
+			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
+			                <br><small class="negrita" id="showMsgClave">{{msgClave}}</small>
+			                <br><small class="negrita" id="showMsgRepClave">{{msgRepClave}}</small>
+			                <br><br>
+					        <button class="btn btn-lg btn-block btn-signin color-block" ng-disabled="buttonDisabled" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
 					        <br><br>
 					    </form>
 		   			</div>
@@ -97,7 +86,71 @@
 	</section>
 	
 	<script>
-		
+		'use strict'
+	    var app = angular.module('AppRestablece', []);
+	    app.controller('RestableceCtrl', function($scope, $http) {
+	    	
+	    	$scope.msgClave = "";
+	    	$scope.msgRepClave = "";
+	    	$scope.buttonDisabled = true;
+	    		    	
+	    	var checkClave = false;
+	    	var checkLongClave = false;
+	    	var checkCaracterClave = false;
+	    	var checkRepClave = false;	    	
+	    	var indice = 0;
+        	
+        	$scope.enableBtnClaves = function(clave, rClave){
+	    		checkClave = false;
+	    		checkLongClave = false;
+	    		checkCaracterClave = true;
+	    		checkRepClave = false;
+	    		
+	    		if(clave.length>=5 && clave.length<=20){
+	    			checkLongClave = true;
+	    			for(indice=0; indice<clave.length; indice++){
+	    				if(clave.charAt(indice)==' '){
+	    					checkCaracterClave=false;
+	    		        	$scope.msgClave = "Error. La clave no puede contener espacios.";
+	    		        	document.getElementById("showMsgClave").style.color = "red";
+	    					break;
+	    				}else if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
+	    				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
+	    				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
+	    					checkCaracterClave=false;
+			        		$scope.msgClave = "Error. El caracter "+clave.charAt(indice)+" no es valido.";
+			        		document.getElementById("showMsgClave").style.color = "red";
+	    					break;
+	    				}
+	    			}
+	    			
+	    		}else{
+	    			$scope.msgClave = "Error. La longitud de la clave debe de ser entre 5 y 20 caracteres.";
+	    			document.getElementById("showMsgClave").style.color = "red";
+	    		}
+	    		
+	    		if(checkLongClave==true && checkCaracterClave==true){
+	        		$scope.msgClave = "La clave es válida.";
+	        		document.getElementById("showMsgClave").style.color = "green";
+	    			checkClave = true;
+	    		}
+	    		
+	    		if(clave.localeCompare(rClave) == 0){
+	    			checkRepClave = true;
+		        	$scope.msgRepClave = "Los campos Clave y Repite Clave coinciden.";
+		        	document.getElementById("showMsgRepClave").style.color = "green";
+	    		}else{
+	        		$scope.msgRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
+	        		document.getElementById("showMsgRepClave").style.color = "red";
+	    		}
+	    		
+	    		if(checkClave == true && checkRepClave == true){
+	    			$scope.buttonDisabled = false;
+	    		}else{
+	    			$scope.buttonDisabled = true;
+	    		}
+	    	}
+	    });
 	</script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -121,9 +174,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
-    
-    <!--Re captcha google-->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     
     <!-- Alert de Bootbox -->
     <script src="resources/js/bootbox.min.js"></script>

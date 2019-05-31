@@ -96,12 +96,8 @@ body, html {
   margin-top: 1.25rem;
 }
 
-.fondoLogin{
-	background: #FFD142;
-}
-
-.fondoRecovery{
-	background: #FFA200;
+.fondoForm{
+	background-color: #F9EC2D;
 }
 
 .positionReCaptcha{
