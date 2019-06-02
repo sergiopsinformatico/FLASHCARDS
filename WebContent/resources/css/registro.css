@@ -23,8 +23,8 @@
 }
 
 body {
-  /*background: #F1F3FA;*/
-  background: #00FFFD;
+	/*background: #00FFFD;*/
+	background-color: #2BCA5F;
 }
 
 .register{
@@ -84,11 +84,12 @@ body {
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #A3AD1A;
+    background: #FFFBDD;
     color: #fff;
     font-weight: 600;
     width: 50%;
     cursor: pointer;
+    color: #DDDDDC;
 }
 .register .nav-tabs{
     margin-top: 3%;
@@ -125,12 +126,17 @@ body {
 
 
 .background{
-	background-color: #00FFFD;
+	background-color: #2BCA5F;
 }
 
 .titleRegister{
-	font-weight: lighter;
+	/*font-weight: lighter;*/
 	font-style: italic;
+	color: red;
+}
+
+.mensajesReg{
+	font-style: bold;
 }
 
 .middle {
@@ -140,7 +146,7 @@ body {
 }
 
 .fondoRegistro{
-	background-color: #1320DB;
+	background-color: #FFCC67;
 }
 
 .containerImg {

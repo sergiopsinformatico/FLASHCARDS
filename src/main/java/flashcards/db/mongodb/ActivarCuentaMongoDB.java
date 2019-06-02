@@ -69,6 +69,16 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 		}
 	}
 	
+	public boolean existeActivacionUsuario(String username) {
+		try{
+			criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(username));
+			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
+			return resultadosBusqueda.iterator().hasNext();
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta) {
 		try{
 			doc = new Document().append(USERNAME, activaCuenta.getUsername()).append(CODIGO, activaCuenta.getCodigoActivacion()).append("fecha",activaCuenta.getFecha());

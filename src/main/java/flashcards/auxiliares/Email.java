@@ -13,20 +13,18 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 
 public class Email {
-	private String envia;
 	private String recibe;
 	private String asunto;
 	private String mensaje;
+	
 	boolean enviado;
 	
 	static final String SALUDO = "Hola ";
 	static final String CIERRE = "\nAtentamente, Equipo de Flashcards.";
 	static final String USUARIO = "\nUsuario: ";
 	static final String CLAVE = "\nClave: ";
-	static final String ENVIA_CONST = "envia";
 	
 	public boolean activarCuenta(UsuarioDTO user, String url) {
-		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		setAsunto("[Flashcards] Activacion Cuenta: "+user.getUsername());
 		setMensaje("Bienvenido a la Aplicacion Flashcards!!"+
 		"\nPara poder finalizar el registro de su cuenta debe de pulsar sobre el siguiente enlace que aparece a continuacion."+
@@ -39,7 +37,6 @@ public class Email {
 	}
 	
 	public boolean confirmaCuentaCreada(UsuarioDTO user) {
-		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		setMensaje("Su cuenta ha sido creada satisfactoriamente. Sus datos de registro son los siguientes:"+
 		USUARIO+user.getUsername()+
@@ -51,7 +48,6 @@ public class Email {
 	}
 	
 	public boolean eliminarCuenta(EliminarCuentaDTO elimina, String email) {
-		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
 		setMensaje(SALUDO+elimina.getUsername()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
@@ -62,7 +58,6 @@ public class Email {
 	}
 	
 	public boolean recuperarClave(UsuarioDTO user, String key) {
-		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
 		setMensaje(SALUDO+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards."+
@@ -72,7 +67,6 @@ public class Email {
 	}
 	
 	public boolean reactivacionCuenta(UsuarioDTO user) {
-		setEnvia(PropertiesConfig.getProperties(ENVIA_CONST));
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
 		setMensaje(SALUDO+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
@@ -88,7 +82,7 @@ public class Email {
 		try{
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.host", "smtp.gmail.com");
-			properties.put("mail.smtp.port", "587");
+			properties.put("mail.smtp.port", "465");//465 o 587
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
@@ -112,14 +106,6 @@ public class Email {
 		}
 	    
 		return enviado;
-	}
-	
-	public String getEnvia() {
-		return this.envia;
-	}
-
-	public void setEnvia(String envia) {
-		this.envia = envia;
 	}
 
 	public String getRecibe() {
@@ -146,8 +132,14 @@ public class Email {
 		this.mensaje = mensaje;
 	}
 	
+	//Datos constantes para enviar un email
+	
 	private String getClave() {
-		return PropertiesConfig.getProperties("claveDB");
+		return PropertiesConfig.getProperties("emailClave");
+	}
+	
+	public String getEnvia() {
+		return PropertiesConfig.getProperties("emailDireccion");
 	}
 	
 }

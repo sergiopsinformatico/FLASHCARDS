@@ -1,17 +1,14 @@
 package main.java.flashcards.controladores;
 
-import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
+import main.java.flashcards.auxiliares.GeneratorStrings;
+import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
-import main.java.flashcards.dto.RelacionDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
@@ -77,11 +75,13 @@ public class Controlador01RegistroUsuarios {
 	}
 	
 	//Guardar a los nuevos usuarios
-	
-	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public boolean registrarUsuarioPost(@RequestBody @Valid UsuarioDTO user) {
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+	public ModelAndView registrarUsuarioPost(HttpServletRequest request, HttpServletResponse response) {
+		
+		user = new UsuarioDTO(request.getParameter("inputUsername"),
+							  request.getParameter("inputEmail"),
+							  request.getParameter("inputClave"));
+		
 		user.setNombreApellidos("");
 		user.setCiudad("");
 		user.setPais("");
@@ -89,19 +89,26 @@ public class Controlador01RegistroUsuarios {
 		user.setEmailFoto("");
 		user.setRol("Usuario");
 		user.setActivadaCuenta(false);
-		random = new SecureRandom();
-		codActivacion = new BigInteger(130, random).toString(32);
+		
 		fecha = new Fecha();
+		codActivacion = GeneratorStrings.randomString(15);
 		
 		if(Broker.getInstanciaUsuario().insertUsuario(user) &&
-		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta())) &&
-		   Broker.getInstanciaRelacion().createRelacionUsuario(new RelacionDTO(user.getUsername()))) {
+		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codActivacion, fecha.fechaActivarCuenta()))) {
 			correo = new Email();
-			correo.activarCuenta(user,"https://sistemaflashcards.herokuapp.com/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
-			return true;
+			correo.activarCuenta(user,PropertiesConfig.getProperties("baseURL")+"/activaCuenta.html?username="+user.getUsername()+"&codigo="+codActivacion);
+			
+			vista = new ModelAndView("vistaIniciarRecuperarSesion");
+			vista.addObject("mensaje", "Por favor, revise su email "+user.getEmail()+" para finalizar con su registro.");
+			
 		}else {
-			return false;
+			
+			vista = new ModelAndView("vistaRegistro");
+			vista.addObject("mensaje", "Hubo un fallo en el registro. Por favor, vuelva a intentar registrarse pasado unos minutos.");
+			
 		}
+		
+		return vista;
 	}
 	
 	@RequestMapping(value = "/getUsernames", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -136,6 +143,9 @@ public class Controlador01RegistroUsuarios {
 			vista.addObject("activa", user2);
 			correo = new Email();
 			correo.confirmaCuentaCreada(user2);
+		}else if(Broker.getInstanciaActivaCuenta().existeActivacionUsuario(username)) {
+			vista = new ModelAndView(INDEX);
+			vista.addObject(MENSAJE, "Hay una activación pendiente para "+username+", pero ese codigo no es el correcto.");
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {

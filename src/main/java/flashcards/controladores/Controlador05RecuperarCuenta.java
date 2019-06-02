@@ -36,7 +36,6 @@ public class Controlador05RecuperarCuenta {
 	int indice;
 	String compara;
 	String keySecure;
-	GeneratorStrings gS;
 	Email email;
 	
 	//Constantes
@@ -51,9 +50,8 @@ public class Controlador05RecuperarCuenta {
 			return vista;
 		}else {
 			email = new Email();
-			gS = new GeneratorStrings();
 			fecha = new Fecha();
-			keySecure = gS.randomString(10);
+			keySecure = GeneratorStrings.randomString(10);
 			Broker.getInstanciaRecuperarCuenta().insertaRC(new RecuperarCuentaDTO(user.getUsername(), keySecure, fecha.fechaRecuperarCuenta()));
 			email.recuperarClave(user,keySecure);
 			vista.addObject("mensaje", "Se ha enviado un email a " + user.getEmail() +" con la clave");
