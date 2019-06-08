@@ -19,8 +19,6 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.auxiliares.PropertiesConfig;
-import main.java.flashcards.brokers.Broker;
-import main.java.flashcards.db.dao.InterfaceDAORelacion;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -40,7 +38,6 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	List<UsuarioDTO> listaInicial;
 	LinkedList<UsuarioDTO> listaUsers;
 	LinkedList<UsuarioDTO> listaUsersRelacion;
-	InterfaceDAORelacion dBRelacion;
 	List<String> bloqueadores;
 	
 	//Constantes
@@ -325,11 +322,7 @@ public class UsuariosMongoDB implements InterfaceDAOUsuario{
 	}
 	
 	public List<UsuarioDTO> getUsuariosRelacion(String username){
-		listaInicial = getAllUsuarios(username);
-		
-		dBRelacion = Broker.getInstanciaRelacion();
-		bloqueadores = dBRelacion.readRelacionUsuario(username).getBloqueadoPor();
-		
+		listaInicial = getAllUsuarios(username);		
 		
 		listaUsersRelacion = new LinkedList<>();
 		

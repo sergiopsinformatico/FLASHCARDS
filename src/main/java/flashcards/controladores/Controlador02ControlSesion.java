@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import main.java.flashcards.auxiliares.Email;
 import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
-import main.java.flashcards.db.dao.InterfaceDAORelacion;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
@@ -27,7 +26,6 @@ public class Controlador02ControlSesion {
 	//Variables
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
-	InterfaceDAORelacion dBRelacion;
 	UsuarioDTO user;
 	ModelAndView vista;
 	List<ActivaCuentaDTO> listaAC;
@@ -69,11 +67,7 @@ public class Controlador02ControlSesion {
 		dBUsuario = Broker.getInstanciaUsuario();
 		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
 			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			dBRelacion = Broker.getInstanciaRelacion();
-			relacion = dBRelacion.readRelacionUsuario(user.getUsername());
-			if(relacion==null) {
-				dBRelacion.createRelacionUsuario(new RelacionDTO(user.getUsername()));
-			}
+			
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());
 				vista = new ModelAndView("redirect:/inicio.html");
