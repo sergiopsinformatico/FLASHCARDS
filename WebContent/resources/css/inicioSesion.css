@@ -34,10 +34,11 @@ body, html {
 }
 
 .title{
-	/*font-weight: lighter;*/
-	/*font-style: italic;
-	font-weight: bold;*/
-	text-shadow: 1px 1px green;
+	/*font-weight: lighter;
+	text-shadow: 1px 1px green;*/
+	color: green;
+	font-style: italic;
+	font-weight: bold;
 	text-transform: uppercase;
 }
 
