@@ -39,11 +39,11 @@ public class Controlador02ControlSesion {
 	
 	//Constantes
 	static final String USUARIO = "usuario";
-	static final String VIEWLOGIN="vistaIniciarRecuperarSesion";
+	static final String VIEWLOGIN="vistaIniciarSesion";
 	static final String MENSAJE="mensaje";
 	
 	//Devuelve la vista para Iniciar Sesion
-	@RequestMapping(value = "/inicioRecSesion", method = RequestMethod.GET)
+	@RequestMapping(value = "/inicioSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarRecSesionGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		//Comprobar activaciones caducadas
@@ -91,7 +91,7 @@ public class Controlador02ControlSesion {
 	
 	@RequestMapping(value = "/loguear", method = RequestMethod.GET)
 	public ModelAndView loguearGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/inicioRecSesion.html");
+		return new ModelAndView("redirect:/inicioSesion.html");
 	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)

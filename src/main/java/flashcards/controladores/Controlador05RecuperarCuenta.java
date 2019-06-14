@@ -44,7 +44,7 @@ public class Controlador05RecuperarCuenta {
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.POST)
 	public ModelAndView recuperaClave(HttpServletRequest request, HttpServletResponse response) {
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-		vista = new ModelAndView("vistaIniciarRecuperarSesion");
+		vista = new ModelAndView("vistaRecuperarCuenta");
 		if(user==null || user.getUsername()==null || user.getUsername()=="") {
 			vista.addObject("mensaje", "No existe ninguna cuenta cuyo username o email sea "+request.getParameter("inputUsernameEmail"));
 			return vista;
@@ -61,7 +61,7 @@ public class Controlador05RecuperarCuenta {
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.GET)
 	public ModelAndView recuperaClaveGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/inicioRecSesion.html");
+		return new ModelAndView("redirect:/recuperarCuenta.html");
 	}
 	
 	@RequestMapping(value = "/restableceClave", method = RequestMethod.GET)
@@ -70,7 +70,7 @@ public class Controlador05RecuperarCuenta {
 			vista = new ModelAndView("vistaRestablecimientoClave");
 			vista.addObject("username", username);
 		}else {
-			vista = new ModelAndView("vistaIniciarRecuperarSesion");
+			vista = new ModelAndView("vistaRecuperarCuenta");
 			vista.addObject("mensaje", "El enlace ha expirado. Por favor, vuelva a solicitar la recuperacion de la clave");
 		}
 		return vista;
@@ -78,7 +78,7 @@ public class Controlador05RecuperarCuenta {
 	
 	@RequestMapping(value = "/cambioClave", method = RequestMethod.POST)
 	public ModelAndView cambioClave(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaIniciarRecuperarSesion");
+		vista = new ModelAndView("vistaRecuperarCuenta");
 		userAntiguo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
 		userNuevo = userAntiguo;
 		userNuevo.setClave(request.getParameter("inputNuevaClave"));

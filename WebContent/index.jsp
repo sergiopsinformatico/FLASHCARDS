@@ -56,7 +56,10 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="inicioRecSesion.html">Iniciar Sesión</a>
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="inicioSesion.html">Iniciar Sesión</a>
+	            </li>
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="recuperarCuenta.html">Ups... ¿Olvidaste tu Cuenta?</a>
 	            </li>
 	            <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
