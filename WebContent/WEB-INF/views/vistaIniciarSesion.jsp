@@ -60,7 +60,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4 windowLogin">
 				<br>
-				<h6 align="center" class="title">Iniciar Sesión</h6>
+				<h4 align="center" class="title">Iniciar Sesión</h4>
 				<br>
    				<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
 	                <span id="reauth-email" class="reauth-email"></span>
