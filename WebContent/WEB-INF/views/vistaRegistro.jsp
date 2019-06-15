@@ -111,7 +111,7 @@
 	                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
 	                        </div>
 	                        <div class="form-group">
-	                        	<input type="submit" class="btnRegister" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
+	                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -143,8 +143,8 @@
 	        app.controller('RegistroCtrl', function($scope, $http) {
 	        	
 	        	$scope.btnDisabled = true;
-	        	document.getElementById("buttonRegistro").style.background="#FFFBDD";
-	        	document.getElementById("buttonRegistro").style.color="#DDDDDC";
+	        	document.getElementById("buttonRegistro").style.background="#457D8E";
+	        	/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        	
 	        	$scope.messageUsername = "";
 	        	$scope.messageEmail = "";
@@ -206,8 +206,8 @@
 	        			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
 	        				$scope.btnDisabled = true;
 	        				document.getElementById("msgError").style.color="#FF0000";
-	        				document.getElementById("buttonRegistro").style.background="#FFFBDD";
-	        				document.getElementById("buttonRegistro").style.color="#DDDDDC";
+	        				document.getElementById("buttonRegistro").style.background="##457D8E";
+	        				/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
 	        			}else{
 	        				$scope.messageError="";
@@ -218,8 +218,8 @@
 	        		}else{
 	        			$scope.btnDisabled = true;
 	        			document.getElementById("msgError").style.color="#FF0000"
-	        				document.getElementById("buttonRegistro").style.background="#FFFBDD";
-	        			document.getElementById("buttonRegistro").style.color="#DDDDDC";
+	        			document.getElementById("buttonRegistro").style.background="#457D8E";
+	        			/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
 	        		}
 	        	}
