@@ -59,9 +59,9 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 windowLogin">
-				<div align="center" class="row">
+				<div class="row">
 					<br>
-					<h4 align="center" class="title">Iniciar Sesión</h4>
+					<h4 class="title">Iniciar Sesión</h4>
 					<br>
 				</div>
 				<div align="center" class="row">
