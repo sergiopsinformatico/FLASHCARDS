@@ -59,7 +59,7 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 windowLogin">
-				<div class="row">
+				<div class="row textCenter">
 					<br>
 					<h4 class="title">Iniciar Sesión</h4>
 					<br>
