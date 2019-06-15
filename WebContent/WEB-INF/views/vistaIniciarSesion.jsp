@@ -62,10 +62,12 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 windowLogin">
-				<div class="row textCenter">
-					<br>
-					<h4 class="title">Iniciar Sesión</h4>
-					<br>
+				<div class="row">
+					<div class="textCenter">
+						<br>
+						<h4 class="title">Iniciar Sesión</h4>
+						<br>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-2"></div>
