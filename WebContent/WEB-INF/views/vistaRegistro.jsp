@@ -113,6 +113,8 @@
 	                        <div class="form-group">
 	                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
 	                        </div>
+	                        <br>
+	                        <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
 	                    </div>
 	                </div>
 	                <div class="row">
