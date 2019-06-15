@@ -19,6 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
