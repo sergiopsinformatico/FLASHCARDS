@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="resources/css/registro.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -74,10 +74,54 @@
 		    </nav>
 		</header>
 		<section class="background" ng-app="AppRegistro" ng-controller="RegistroCtrl">
-			<div class="row">
-				<br><br>
+			<br><br><br><br>
+			<div class="col-md-4"></div>
+			<div class="col-md-4 formAccess textCenter container">
+				<br>
+				<h4 class="title">Crear una Cuenta Nueva</h4>
+				<br>
+				<form action="guardarUsuario.html" method="post" id="Registro" name="Registro">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="form-group">
+	                            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+	                        </div>
+	                        <div class="form-group">
+	                            <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
+	                        </div>
+	                        <div class="form-group">
+	                            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+	                        </div>
+	                        <div class="form-group">
+	                            <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
+	                        </div>
+	                        <div class="form-group">
+	                            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+	                        </div>
+	                        <div class="form-group">
+	                            <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
+	                        </div>
+	                        <div class="form-group">
+	                            <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+	                        </div>
+	                        <div class="form-group">
+	                            <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
+	                        </div>
+	                        <div class="form-group">
+	                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
+	                        </div>
+	                        <div class="form-group">
+	                        	<input type="submit" class="btnRegister" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                	<br><br>
+	                </div>
+	        	</form>
 			</div>
-			<div class="row">
+			<div class="col-md-4"></div>
+			<!--<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5 middle">
 					<div class="containerImg">
@@ -88,48 +132,10 @@
 					<br>
 					<h3 align="center" class="titleRegister" >Regístrate</h3>
 					<br>
-                    <form action="guardarUsuario.html" method="post" id="Registro" name="Registro">
-	                    <div class="row">
-	                        <div class="col-md-12">
-	                            <div class="form-group">
-	                                <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                                <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                                <small id="msgError" class="mensajesReg">{{messageError}}</small>
-	                            </div>
-	                            <div class="form-group">
-	                            	<input type="submit" class="btnRegister" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="row">
-	                    	<br><br>
-	                    </div>
-	            	</form>
+                    
 				</div>
 				<div class="col-md-1"></div>
-			</div>
+			</div>-->
 		</section>
 		
 		<script>
