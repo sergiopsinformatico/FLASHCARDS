@@ -76,7 +76,8 @@
 	                <script>
 	                	document.getElementById("buttonIS").disabled = true;
 			        	function enableBtn(){
-			        		document.getElementById("buttonIS").style.background = "#45BF1D";
+			        		/*document.getElementById("buttonIS").style.background = "#45BF1D";*/
+			        		document.getElementById("buttonIS").style.background = "#457D8E";
 			        		document.getElementById("buttonIS").disabled = false;
 			        	}
 			        </script>
