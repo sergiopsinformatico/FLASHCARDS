@@ -59,10 +59,12 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 windowLogin">
-				<div class="row">
+				<div align="center" class="row">
+					<br>
 					<h4 align="center" class="title">Iniciar Sesión</h4>
+					<br>
 				</div>
-				<div class="row">
+				<div align="center" class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
