@@ -1,0 +1,44 @@
+body, html {
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formAccess{
+	background-color: #8D8D8D;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #515151;
+}
+
+.title{
+	color: white;
+	font-style: italic;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.logoFlashcards{
+	width: 100px;
+	height: auto;
+}
+
+.textCenter{
+	text-align: center;
+}
+
+.positionReCaptcha{
+	transform:scale(0.77);
+	-webkit-transform:scale(0.77);
+	transform-origin:0 0;
+	-webkit-transform-origin:0 0;
+}
+
+.btnBlock{
+	background-color: #94C0CD;
+}

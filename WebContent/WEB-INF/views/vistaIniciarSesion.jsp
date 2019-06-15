@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="resources/css/inicioSesion.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -37,7 +37,6 @@
 	      <div class="container">
 	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
 	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
-	        	FLASHCARDS
 	        </a>
 	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          Menu
@@ -48,20 +47,17 @@
 	            <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
 	            </li>
-	            <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="recuperarCuenta.html">Ups... ¿Olvidaste tu Cuenta?</a>
-	            </li>
 	          </ul>
 	        </div>
 	      </div>
 	    </nav>
 	</header>
 	
-	<section class="fondoIS">
-		<br><br>
+	<section>
+		<br><br><br><br>
 		<div class="row">
 			<div class="col-md-4"></div>
-			<div class="col-md-4 windowLogin textCenter">
+			<div class="col-md-4 formAccess textCenter container">
 				<br>
 				<h4 class="title">Iniciar Sesión</h4>
 				<br>
@@ -78,16 +74,16 @@
 			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
 			                </div>
 			                <br><br>
-			                <button class="btn btn-lg btn-block btn-signin color-block" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
+			                <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonIS" name="buttonIS" type="submit">Acceder</button>
+			                <br>
+			                <p><a style="color: orange;" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
 			                <script>
 			                	document.getElementById("buttonIS").disabled = true;
 					        	function enableBtn(){
-					        		/*document.getElementById("buttonIS").style.background = "#45BF1D";*/
 					        		document.getElementById("buttonIS").style.background = "#457D8E";
 					        		document.getElementById("buttonIS").disabled = false;
 					        	}
 					        </script>
-					        <br><br>
 					     </form>
 					</div>
 					<div class="col-md-2"></div>
