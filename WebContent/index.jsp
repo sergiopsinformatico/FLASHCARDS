@@ -72,7 +72,7 @@
 
     
     <section>
-    	<br><br><br><br>
+    	<br><br>
 	    <div class="copyright py-4 text-center text-white">
 	      <div class="container">
 	        <small>Desarrollado por Sergio Pérez Sánchez. 2019</small>
