@@ -42,3 +42,8 @@ body, html {
 .btnBlock{
 	background-color: #94C0CD;
 }
+
+.btnRecupera{
+	color: orange;
+	font-weight: bold;
+}

@@ -44,6 +44,9 @@
 	        </button>
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
+	          	<li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="inicioSesion.html">Iniciar Sesión</a>
+	            </li>
 	            <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
 	            </li>
@@ -76,7 +79,7 @@
 			                <br><br>
 			                <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonIS" name="buttonIS" type="submit">Acceder</button>
 			                <br>
-			                <p><a style="color: orange;" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
+			                <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
 			                <script>
 			                	document.getElementById("buttonIS").disabled = true;
 					        	function enableBtn(){
