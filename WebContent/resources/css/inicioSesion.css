@@ -36,12 +36,15 @@ body, html {
 }
 
 .title{
-	/*font-weight: lighter;
-	text-shadow: 1px 1px green;*/
 	color: white;
 	font-style: italic;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.logoFlashcards{
+	width: 10 px;
+	height: auto;
 }
 
 .textCenter{

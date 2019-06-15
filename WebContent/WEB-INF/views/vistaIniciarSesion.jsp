@@ -35,7 +35,10 @@
     <header class="header">
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
-	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">FLASHCARDS</a>
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        	FLASHCARDS
+	        </a>
 	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          Menu
 	          <i class="fas fa-bars"></i>
@@ -64,7 +67,7 @@
 					<h4 class="title">Iniciar Sesión</h4>
 					<br>
 				</div>
-				<div align="center" class="row">
+				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
