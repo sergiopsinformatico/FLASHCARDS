@@ -1,7 +1,5 @@
 package main.java.flashcards.controladores;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -11,18 +9,94 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.auxiliares.Email;
-import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
-import main.java.flashcards.dto.ActivaCuentaDTO;
 import main.java.flashcards.dto.EliminarCuentaDTO;
-import main.java.flashcards.dto.RelacionDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 @SessionAttributes("usuario")
 public class Controlador02ControlSesion {
-
+	
+	ModelAndView vista;
+	InterfaceDAOUsuario dBUsuario;
+	UsuarioDTO user;
+	EliminarCuentaDTO eliminado;
+	Email email;
+	
+	//Index o pagina principal logueado
+	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
+	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute("usuario")==null || 
+		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
+		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
+			vista = new ModelAndView("index");
+		}else {
+			vista =  new ModelAndView("vistaPrincipal");
+		}
+		return vista;
+	}
+	
+	//Iniciar Sesion
+	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
+	public ModelAndView iniciarSesion(HttpServletRequest request, HttpServletResponse response) {
+		
+		//Comprobar activaciones caducadas
+		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
+		
+		//Eliminar cuentas pasados 14 dias
+		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
+		
+		//Vista Iniciar Sesion
+		
+		if(request.getSession().getAttribute("usuario")==null || 
+		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
+		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
+			
+			return new ModelAndView("vistaIniciarSesion");
+			
+		}else {
+			return new ModelAndView("redirect:/");
+		}
+	}
+	
+	//Acceder
+	@RequestMapping(value = "/acceder", method = RequestMethod.POST)
+	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
+		dBUsuario = Broker.getInstanciaUsuario();
+		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
+			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
+			
+			if(user.isActivadaCuenta()) {
+				eliminado = new EliminarCuentaDTO(user.getUsername());
+				vista = new ModelAndView("redirect:/inicio.html");
+				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
+					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
+					vista.addObject("mensaje", "Su cuenta ha sido reactivada");
+					email = new Email();
+					email.reactivacionCuenta(user);
+				}
+				vista.addObject("usuario", user);
+			}else {
+				vista = new ModelAndView("vistaIniciarSesion");
+				vista.addObject("mensaje", "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
+			}
+		}else {
+			vista = new ModelAndView("vistaIniciarSesion");
+			vista.addObject("mensaje", "El usuario y/o la clave son incorrectos.");
+		}
+		return vista;
+	}
+	
+	@RequestMapping(value = "/acceder", method = RequestMethod.GET)
+	public ModelAndView loguearGet(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/iniciarSesion.html");
+	}
+	
+	
+	
+	
+	/*
 	//Variables
 	Broker broker;
 	InterfaceDAOUsuario dBUsuario;
@@ -43,56 +117,10 @@ public class Controlador02ControlSesion {
 	static final String MENSAJE="mensaje";
 	
 	//Devuelve la vista para Iniciar Sesion
-	@RequestMapping(value = "/inicioSesion", method = RequestMethod.GET)
-	public ModelAndView iniciarRecSesionGet(HttpServletRequest request, HttpServletResponse response) {
-		
-		//Comprobar activaciones caducadas
-		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
-		
-		//Eliminar cuentas pasados 14 dias
-		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
-		
-		//Vista Iniciar Sesion
-		
-		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
-			return new ModelAndView(VIEWLOGIN);
-		}else {
-			return new ModelAndView("redirect:/principal.html");
-		}
-	}
+	
 	
 	//Iniciar Sesion	
-	@RequestMapping(value = "/loguear", method = RequestMethod.POST)
-	public ModelAndView loguearPost(HttpServletRequest request, HttpServletResponse response) {
-		dBUsuario = Broker.getInstanciaUsuario();
-		if(dBUsuario.login(request.getParameter("inputUsernameEmail"), request.getParameter("inputClave"))) {
-			user = dBUsuario.getUsuarioDTO(request.getParameter("inputUsernameEmail"));
-			
-			if(user.isActivadaCuenta()) {
-				eliminado = new EliminarCuentaDTO(user.getUsername());
-				vista = new ModelAndView("redirect:/inicio.html");
-				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
-					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
-					vista.addObject(MENSAJE, "Su cuenta ha sido reactivada");
-					email = new Email();
-					email.reactivacionCuenta(user);
-				}
-				vista.addObject(USUARIO, user);
-			}else {
-				vista = new ModelAndView(VIEWLOGIN);
-				vista.addObject(MENSAJE, "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
-			}
-		}else {
-			vista = new ModelAndView(VIEWLOGIN);
-			vista.addObject(MENSAJE, "El "+USUARIO+" y/o la clave son incorrectos.");
-		}
-		return vista;
-	}
 	
-	@RequestMapping(value = "/loguear", method = RequestMethod.GET)
-	public ModelAndView loguearGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/inicioSesion.html");
-	}
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
@@ -110,6 +138,6 @@ public class Controlador02ControlSesion {
 		request.getSession().setAttribute(USUARIO, null);
 		vista.addObject(USUARIO,null);
 		return vista;
-	}
+	}*/
 
 }

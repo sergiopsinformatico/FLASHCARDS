@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="resources/css/recoveryKey.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -35,7 +35,9 @@
     <header class="header">
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
-	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">FLASHCARDS</a>
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        </a>
 	      </div>
 	    </nav>
 	</header>
@@ -43,6 +45,41 @@
 	<section class="background" ng-app="AppRestablece" ng-controller="RestableceCtrl">
 		<br><br>
 		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 formAccess textCenter container">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<br>
+	   				<h6 align="center" class="negrita cursiva">Restablecimiento de Clave</h6>
+	   				<br>
+	   				<small class="negrita">¡Hola ${username}!</small>
+	   				<br>
+	   				<small>Por favor, introduce tu nueva clave</small>
+	   				<br><br>
+	   				<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
+	   					<span id="reauth-email" class="reauth-email"></span>
+	   					<input type="hidden" id="username" name="username" value="${username}">
+		                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
+		                <br>
+		                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
+		                <br><small class="negrita" id="showMsgClave">{{msgClave}}</small>
+		                <br><small class="negrita" id="showMsgRepClave">{{msgRepClave}}</small>
+		                <br><br>
+				        <button class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="buttonDisabled" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+				        <br><br>
+				    </form>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<!-- <div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-10">
 				<div class="row">
@@ -75,7 +112,7 @@
 				</div>
 			</div>
 			<div class="col-md-1"></div>
-		</div>
+		</div>-->
 	</section>
 	
 	<script>
@@ -105,40 +142,41 @@
 	    				if(clave.charAt(indice)==' '){
 	    					checkCaracterClave=false;
 	    		        	$scope.msgClave = "Error. La clave no puede contener espacios.";
-	    		        	document.getElementById("showMsgClave").style.color = "#CA1F1F";
+	    		        	document.getElementById("showMsgClave").style.color = "#FFA720";
 	    					break;
 	    				}else if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
 	    				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
 	    				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
 	    					checkCaracterClave=false;
 			        		$scope.msgClave = "Error. El caracter "+clave.charAt(indice)+" no es valido.";
-			        		document.getElementById("showMsgClave").style.color = "#CA1F1F";
+			        		document.getElementById("showMsgClave").style.color = "#FFA720";
 	    					break;
 	    				}
 	    			}
 	    			
 	    		}else{
 	    			$scope.msgClave = "Error. La longitud de la clave debe de ser entre 5 y 20 caracteres.";
-	    			document.getElementById("showMsgClave").style.color = "#CA1F1F";
+	    			document.getElementById("showMsgClave").style.color = "#FFA720";
 	    		}
 	    		
 	    		if(checkLongClave==true && checkCaracterClave==true){
 	        		$scope.msgClave = "La clave es válida.";
-	        		document.getElementById("showMsgClave").style.color = "#005407";
+	        		document.getElementById("showMsgClave").style.color = "#1E00A0";
 	    			checkClave = true;
 	    		}
 	    		
 	    		if(clave.localeCompare(rClave) == 0){
 	    			checkRepClave = true;
 		        	$scope.msgRepClave = "Los campos Clave y Repite Clave coinciden.";
-		        	document.getElementById("showMsgRepClave").style.color = "#005407";
+		        	document.getElementById("showMsgRepClave").style.color = "#1E00A0";
 	    		}else{
 	        		$scope.msgRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
-	        		document.getElementById("showMsgRepClave").style.color = "#CA1F1F";
+	        		document.getElementById("showMsgRepClave").style.color = "#FFA720";
 	    		}
 	    		
 	    		if(checkClave == true && checkRepClave == true){
 	    			$scope.buttonDisabled = false;
+	    			document.getElementById("buttonRec").style.background = "#457D8E";
 	    		}else{
 	    			$scope.buttonDisabled = true;
 	    		}

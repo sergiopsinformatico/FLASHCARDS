@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Iniciar Sesión</title>
+    <title>Flashcards - Recuperar Cuenta</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="resources/css/inicioSesion.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -35,28 +35,69 @@
     <header class="header">
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
-	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">FLASHCARDS</a>
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        </a>
 	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	          Menu
 	          <i class="fas fa-bars"></i>
 	        </button>
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
+	          	<li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
+	            </li>
 	            <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
 	            </li>
-	            <!-- <li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
-	            </li>-->
 	          </ul>
 	        </div>
 	      </div>
 	    </nav>
 	</header>
 	
-	<section class="background">
-		<br><br>
+	<section>
+		<br><br><br><br>
 		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<br>
+	   				<h6 align="center" class="title">Recuperar Cuenta</h6>
+	   				<br>
+	   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
+	   					<span id="reauth-email" class="reauth-email"></span>
+		                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+				        <br><br><br>
+		                <div class="middle">
+		                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
+		                </div>
+		                <br><br>
+				        <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+				        <script>
+				        	document.getElementById("buttonRec").disabled = true;
+				        	function enableBtnRec(){
+				        		document.getElementById("buttonRec").style.background = "#457D8E";
+				        		document.getElementById("buttonRec").disabled = false;
+				        	}
+				        </script>
+				        <br><br>
+				    </form>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- <div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-10">
 				<div class="row">
@@ -91,32 +132,12 @@
 						</div>
 					</div>
 		   			<div class="col-md-4 fondoRecovery container">
-		   				<br>
-		   				<h6 align="center" class="title">Ups!... ¿Olvidaste la clave?</h6>
-		   				<br>
-		   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
-		   					<span id="reauth-email" class="reauth-email"></span>
-			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
-					        <br><br><br>
-			                <div class="middle">
-			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
-			                </div>
-			                <br><br>
-					        <button class="btn btn-lg btn-block btn-signin color-block" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
-					        <script>
-					        	document.getElementById("buttonRec").disabled = true;
-					        	function enableBtnRec(){
-					        		document.getElementById("buttonRec").style.background = "#FFD142";
-					        		document.getElementById("buttonRec").disabled = false;
-					        	}
-					        </script>
-					        <br><br>
-					    </form>
+		   				
 		   			</div>
 				</div>
 			</div>
 			<div class="col-md-1"></div>
-		</div>
+		</div>-->
 	</section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->

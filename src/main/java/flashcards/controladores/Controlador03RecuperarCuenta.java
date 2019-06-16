@@ -23,7 +23,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 @SessionAttributes("usuario")
-public class Controlador05RecuperarCuenta {
+public class Controlador03RecuperarCuenta {
 	
 	//Variables
 	Fecha fecha;

@@ -44,8 +44,7 @@
 		}
 	%>
 		
-
-    <!-- Navigation -->
+	<!-- Navigation -->
     <header class="header">
 	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
@@ -59,7 +58,7 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	          	<li class="nav-item mx-0 mx-lg-1">
-	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="inicioSesion.html">Iniciar Sesión</a>
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
 	            </li>
 	            <li class="nav-item mx-0 mx-lg-1">
 	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
@@ -69,10 +68,8 @@
 	      </div>
 	    </nav>
 	</header>
-
-    
+    <br><br>
     <section>
-    	<br><br>
 	    <div class="copyright py-4 text-center text-white">
 	      <div class="container">
 	        <small>Desarrollado por Sergio Pérez Sánchez. 2019</small>

@@ -63,7 +63,7 @@
 		        <div class="collapse navbar-collapse" id="navbarResponsive">
 		          <ul class="navbar-nav ml-auto">
 		          	<li class="nav-item mx-0 mx-lg-1">
-		              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="inicioSesion.html">Iniciar Sesión</a>
+		              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
 		            </li>
 		            <li class="nav-item mx-0 mx-lg-1">
 		              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
@@ -73,54 +73,57 @@
 		      </div>
 		    </nav>
 		</header>
-		<section class="background" ng-app="AppRegistro" ng-controller="RegistroCtrl">
+		<section ng-app="AppRegistro" ng-controller="RegistroCtrl">
 			<br><br><br><br>
 			<div class="col-md-4"></div>
 			<div class="col-md-4 formAccess textCenter container">
 				<br>
 				<h4 class="title">Crear una Cuenta Nueva</h4>
 				<br>
-				<form action="guardarUsuario.html" method="post" id="Registro" name="Registro">
-	                <div class="row">
-	                    <div class="col-md-12">
-	                        <div class="form-group">
-	                            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
-	                        </div>
-	                        <div class="form-group">
-	                            <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
-	                        </div>
-	                        <div class="form-group">
-	                            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
-	                        </div>
-	                        <div class="form-group">
-	                            <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
-	                        </div>
-	                        <div class="form-group">
-	                            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
-	                        </div>
-	                        <div class="form-group">
-	                            <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
-	                        </div>
-	                        <div class="form-group">
-	                            <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
-	                        </div>
-	                        <div class="form-group">
-	                            <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
-	                        </div>
-	                        <div class="form-group">
-	                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
-	                        </div>
-	                        <div class="form-group">
-	                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
-	                        </div>
-	                        <br>
-	                        <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
-	                    </div>
-	                </div>
-	                <div class="row">
-	                	<br><br>
-	                </div>
-	        	</form>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<form action="crearCuenta.do" method="post" id="Registro" name="Registro">
+			                <div class="row">
+			                    <div class="col-md-12">
+			                        <div class="form-group">
+			                            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+			                        </div>
+			                        <div class="form-group">
+			                            <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
+			                        </div>
+			                        <div class="form-group">
+			                            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+			                        </div>
+			                        <div class="form-group">
+			                            <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
+			                        </div>
+			                        <div class="form-group">
+			                            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+			                        </div>
+			                        <div class="form-group">
+			                            <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
+			                        </div>
+			                        <div class="form-group">
+			                            <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+			                        </div>
+			                        <div class="form-group">
+			                            <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
+			                        </div>
+			                        <div class="form-group">
+			                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
+			                        </div>
+			                        <div class="form-group">
+			                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
+			                        </div>
+			                        <br>
+			                        <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
+			                    </div>
+			                </div>
+			        	</form>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
 			</div>
 			<div class="col-md-4"></div>
 			<!--<div class="row">
@@ -145,7 +148,7 @@
 	        app.controller('RegistroCtrl', function($scope, $http) {
 	        	
 	        	$scope.btnDisabled = true;
-	        	document.getElementById("buttonRegistro").style.background="#457D8E";
+	        	/*document.getElementById("buttonRegistro").style.background="#457D8E";*/
 	        	/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        	
 	        	$scope.messageUsername = "";
@@ -207,7 +210,7 @@
 	        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
 	        			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
 	        				$scope.btnDisabled = true;
-	        				document.getElementById("msgError").style.color="#FF0000";
+	        				document.getElementById("msgError").style.color="#FFA720";
 	        				document.getElementById("buttonRegistro").style.background="##457D8E";
 	        				/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
@@ -219,7 +222,7 @@
 	        			}
 	        		}else{
 	        			$scope.btnDisabled = true;
-	        			document.getElementById("msgError").style.color="#FF0000"
+	        			document.getElementById("msgError").style.color="#FFA720"
 	        			document.getElementById("buttonRegistro").style.background="#457D8E";
 	        			/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
@@ -235,7 +238,7 @@
 	        		for(indice=0; indice<listaUsernames.length; indice++){
 	        			if(username == listaUsernames[indice]){
 	        				checkExistUsername = true;
-	        				document.getElementById("msgUsername").style.color="#E33A3A"
+	        				document.getElementById("msgUsername").style.color="#FFA720"
 	        				$scope.messageUsername = "Error. El username "+username+" existe.";
 	        				break;
 	        			}
@@ -247,26 +250,26 @@
 		        			for(indice=0; indice<username.length; indice++){
 		        				if(username.charAt(indice)==' '){
 		        					checkCaracterUsername=false;
-		        					document.getElementById("msgUsername").style.color="#E33A3A"
+		        					document.getElementById("msgUsername").style.color="#FFA720"
 		        					$scope.messageUsername = "El username no puede contener espacios.";
 		        					break;
 		        				}else if((!(username.charAt(indice)>='a' && username.charAt(indice)<='z')) &&
 		        				   (!(username.charAt(indice)>='A' && username.charAt(indice)<='Z')) &&
 		        				   (!(username.charAt(indice)>='0' && username.charAt(indice)<='9'))){
 		        					checkCaracterUsername=false;
-		        					document.getElementById("msgUsername").style.color="#E33A3A"
+		        					document.getElementById("msgUsername").style.color="#FFA720"
 		        					$scope.messageUsername = "El caracter "+ username.charAt(indice) +" no se permite para este campo.";
 		        					break;
 		        				}
 		        			}
 		        			
 		        			if(checkCaracterUsername==true){
-		        				document.getElementById("msgUsername").style.color="#5CC300"
+		        				document.getElementById("msgUsername").style.color="#1E00A0"
 		        				$scope.messageUsername = "El username "+username+" está disponible.";
 		        			}
 		        			
 		        		}else{
-		        			document.getElementById("msgUsername").style.color="#E33A3A"
+		        			document.getElementById("msgUsername").style.color="#FFA720"
 		        			$scope.messageUsername = "Error. La longitud del username debe de ser entre 5 y 15 caracteres.";
 		        		}
 	        			
@@ -289,7 +292,7 @@
 	        		for(indice=0; indice<listaEmails.length; indice++){
 	        			if(email == listaEmails[indice]){
 	        				existEmail = true;
-	        				document.getElementById("msgEmail").style.color="#E33A3A"
+	        				document.getElementById("msgEmail").style.color="#FFA720"
 	        				$scope.messageEmail = "El email "+ email +" existe.";
 	        				break;
 	        			}
@@ -299,7 +302,7 @@
 		        		for(indice=0; indice<email.length; indice++){
 		        			if(email.charAt(indice)==' '){
 		        				checkCaracterEmail = false;
-		        				document.getElementById("msgEmail").style.color="#E33A3A"
+		        				document.getElementById("msgEmail").style.color="#FFA720"
 		        				$scope.messageEmail = "La direccion de email no puede contener espacios.";
 		        				break;
 		        			}
@@ -307,7 +310,7 @@
 	        		}
 	        		
 	        		if(existEmail==false && checkCaracterEmail==true){
-	        			document.getElementById("msgEmail").style.color="#5CC300"
+	        			document.getElementById("msgEmail").style.color="#1E00A0"
 	        			$scope.messageEmail = "El email "+ email + " está disponible.";
 	        			checkEmail = true;
 	        		}
@@ -326,25 +329,25 @@
 	        			for(indice=0; indice<clave.length; indice++){
 	        				if(clave.charAt(indice)==' '){
 	        					checkCaracterClave=false;
-	        					document.getElementById("msgClave").style.color="#E33A3A"
+	        					document.getElementById("msgClave").style.color="#FFA720"
 		    		        	$scope.messageClave = "Error. La clave no puede contener espacios.";
 	        					break;
 	        				}else if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
 	        				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
 	        				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
 	        					checkCaracterClave=false;
-	        					document.getElementById("msgClave").style.color="#E33A3A"
+	        					document.getElementById("msgClave").style.color="#FFA720"
 	    		        		$scope.messageClave = "Error. El caracter "+clave.charAt(indice)+" no es valido.";
 	        					break;
 	        				}
 	        			}
 	        		}else{
-	        			document.getElementById("msgClave").style.color="#E33A3A"
+	        			document.getElementById("msgClave").style.color="#FFA720"
 	        			$scope.messageClave = "Error. La longitud de la clave debe de ser entre 5 y 20 caracteres.";
 	        		}
 	        		
 	        		if(checkLongClave==true && checkCaracterClave==true){
-	        			document.getElementById("msgClave").style.color="#5CC300"
+	        			document.getElementById("msgClave").style.color="#1E00A0"
 		        		$scope.messageClave = "La clave es válida.";
 	        			checkClave = true;
 	        		}
@@ -356,10 +359,10 @@
 	        		checkRepClave = false;
 	        		if(clave==repClave){
 	        			checkRepClave = true;
-	        			document.getElementById("msgRepClave").style.color="#5CC300"
+	        			document.getElementById("msgRepClave").style.color="#1E00A0"
 			        	$scope.messageRepClave = "Los campos Clave y Repite Clave coinciden.";
 	        		}else{
-	        			document.getElementById("msgRepClave").style.color="#E33A3A"
+	        			document.getElementById("msgRepClave").style.color="#FFA720"
 		        		$scope.messageRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
 	        		}
 	        		enableBtnRegistro();
