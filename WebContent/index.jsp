@@ -40,7 +40,7 @@
 	<% 
 		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 		if(user!=null && user.getUsername()!=null && (!(user.getUsername().equals("")))){
-			response.sendRedirect("principal.html");
+			response.sendRedirect("inicio.html");
 		}
 	%>
 		

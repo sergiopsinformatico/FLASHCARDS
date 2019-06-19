@@ -93,6 +93,14 @@ public class Controlador02ControlSesion {
 		return new ModelAndView("redirect:/iniciarSesion.html");
 	}
 	
+	//Cerrar Sesion
+	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
+	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {	
+		vista = new ModelAndView("redirect:/inicio.html");
+		request.getSession().setAttribute("usuario", null);
+		vista.addObject("usuario",null);
+		return vista;
+	}
 	
 	
 	
@@ -116,28 +124,6 @@ public class Controlador02ControlSesion {
 	static final String VIEWLOGIN="vistaIniciarSesion";
 	static final String MENSAJE="mensaje";
 	
-	//Devuelve la vista para Iniciar Sesion
-	
-	
-	//Iniciar Sesion	
-	
-	
-	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
-	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute(USUARIO)==null || ((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()==null||((UsuarioDTO)(request.getSession().getAttribute(USUARIO))).getUsername()=="") {
-			vista = new ModelAndView("index");
-		}else {
-			vista =  new ModelAndView("vistaPrincipal");
-		}
-		return vista;
-	}
-	
-	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
-	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/inicio.html");
-		request.getSession().setAttribute(USUARIO, null);
-		vista.addObject(USUARIO,null);
-		return vista;
-	}*/
+	//Devuelve la vista para Iniciar Sesion*/
 
 }

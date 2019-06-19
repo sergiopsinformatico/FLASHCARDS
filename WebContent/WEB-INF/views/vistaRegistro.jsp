@@ -126,21 +126,6 @@
 				</div>
 			</div>
 			<div class="col-md-4"></div>
-			<!--<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-5 middle">
-					<div class="containerImg">
-						<img src="resources/img/logoFlashcards.JPG" alt=""/>
-					</div>
-				</div>
-				<div class="col-md-5 fondoRegistro container">
-					<br>
-					<h3 align="center" class="titleRegister" >Regístrate</h3>
-					<br>
-                    
-				</div>
-				<div class="col-md-1"></div>
-			</div>-->
 		</section>
 		
 		<script>
@@ -148,8 +133,8 @@
 	        app.controller('RegistroCtrl', function($scope, $http) {
 	        	
 	        	$scope.btnDisabled = true;
-	        	/*document.getElementById("buttonRegistro").style.background="#457D8E";*/
-	        	/*document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
+	        	/*document.getElementById("buttonRegistro").style.background="#457D8E";
+	        	document.getElementById("buttonRegistro").style.color="#DDDDDC";*/
 	        	
 	        	$scope.messageUsername = "";
 	        	$scope.messageEmail = "";

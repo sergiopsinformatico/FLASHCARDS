@@ -40,7 +40,7 @@
 	<% 
 		UsuarioDTO user = ((UsuarioDTO)(session.getAttribute("usuario")));
 		if(user!=null && user.getUsername()!=null && (!(user.getUsername().equals("")))){
-			response.sendRedirect("principal.html");
+			response.sendRedirect("inicio.html");
 		}
 	%>
 		
@@ -70,7 +70,7 @@
 	</header>
     <br><br>
     <section>
-    	<div class="copyright py-4 text-center text-white">
+	    <div class="copyright py-4 text-center text-white">
 	      <div class="container">
 	        <small>Desarrollado por Sergio Pérez Sánchez. 2019</small>
 	      </div>
