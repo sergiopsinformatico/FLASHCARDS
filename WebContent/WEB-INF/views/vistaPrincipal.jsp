@@ -135,7 +135,7 @@
       <!-- Sidebar Toggler (Sidebar) 
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+      </div>-->
 
     </ul>
     <!-- End of Sidebar -->
@@ -164,7 +164,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form>-->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
