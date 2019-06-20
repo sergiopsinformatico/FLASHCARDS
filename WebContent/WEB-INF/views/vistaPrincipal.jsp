@@ -28,7 +28,10 @@
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+    	
+	   	<div class="row">
+	   		<br>
+	   	</div>
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.html">
       	<div class="sidebar-brand-icon middle">
