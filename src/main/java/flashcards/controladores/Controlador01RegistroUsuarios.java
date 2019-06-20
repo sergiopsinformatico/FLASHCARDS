@@ -42,11 +42,16 @@ public class Controlador01RegistroUsuarios {
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView registroGet(HttpServletRequest request, HttpServletResponse response) {
 		
-		//Comprobar activaciones caducadas
+		//Comprobaciones
+		
+		//1-Comprobar activaciones caducadas
 		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
 		
-		//Eliminar cuentas pasados 14 dias
+		//2-Eliminar cuentas pasados 14 dias
 		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
+		
+		//3-Eliminar solicitudes de restablecimiento de Claves
+		Broker.getInstanciaRecuperarCuenta().comprobarSolicitudesCaducadas();
 		
 		if(request.getSession().getAttribute("usuario")==null || 
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
@@ -56,7 +61,7 @@ public class Controlador01RegistroUsuarios {
 			
 		}else {
 			
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/inicio.html");
 			
 		}
 	}

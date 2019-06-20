@@ -15,6 +15,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
+import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.db.dao.InterfaceDAORecuperarCuenta;
 import main.java.flashcards.dto.RecuperarCuentaDTO;
@@ -30,11 +31,8 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	    Bson criteriosBusqueda;
 	    FindIterable<Document> resultadosBusqueda;
 	    MongoCursor<Document>iterador;
-	    
-	    
-	    //Constantes
-	    static final String USERNAME = "username";
-	    static final String FECHA = "fecha";
+	    Fecha fecha;
+	    String comparaFecha;
 	    
 	    //Logger
 	    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.RecuperarCuentaMongoDB");
@@ -89,6 +87,24 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 			coleccionRecuperarCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch (Exception ex) {
+			return false;
+		}
+	}
+	
+	public boolean comprobarSolicitudesCaducadas() {
+		try {
+			fecha = new Fecha();
+			iterador = coleccionRecuperarCuenta.find().iterator();
+			while(iterador.hasNext()) {
+				doc = iterador.next();
+				comparaFecha = fecha.compararFechas(fecha.fechaHoy(), doc.getString("fechaExpira"));
+				if( comparaFecha!= null && Integer.parseInt(comparaFecha) > 0) {
+					eliminarRC(doc.getString("username"));
+					iterador = coleccionRecuperarCuenta.find().iterator();
+				}
+			}
+			return true;
+		}catch(Exception ex) {
 			return false;
 		}
 	}

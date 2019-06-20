@@ -41,11 +41,16 @@ public class Controlador02ControlSesion {
 	@RequestMapping(value = "/iniciarSesion", method = RequestMethod.GET)
 	public ModelAndView iniciarSesion(HttpServletRequest request, HttpServletResponse response) {
 		
-		//Comprobar activaciones caducadas
+		//Comprobaciones
+		
+		//1-Comprobar activaciones caducadas
 		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
 		
-		//Eliminar cuentas pasados 14 dias
+		//2-Eliminar cuentas pasados 14 dias
 		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
+		
+		//3-Eliminar solicitudes de restablecimiento de Claves
+		Broker.getInstanciaRecuperarCuenta().comprobarSolicitudesCaducadas();
 		
 		//Vista Iniciar Sesion
 		

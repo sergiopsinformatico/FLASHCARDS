@@ -41,6 +41,23 @@ public class Controlador03RecuperarCuenta {
 	//Constantes
 	static final String USUARIO = "usuario";
 	
+	@RequestMapping(value = "/recuperaCuenta", method = RequestMethod.GET)
+	public ModelAndView recuperaCuenta(HttpServletRequest request, HttpServletResponse response) {
+		
+		//Comprobaciones
+		
+		//1-Comprobar activaciones caducadas
+		Broker.getInstanciaActivaCuenta().comprobarActivacionesCaducadas();
+		
+		//2-Eliminar cuentas pasados 14 dias
+		Broker.getInstanciaEliminarCuenta().comprobarCuentasAEliminar();
+		
+		//3-Eliminar solicitudes de restablecimiento de Claves
+		Broker.getInstanciaRecuperarCuenta().comprobarSolicitudesCaducadas();
+				
+		return new ModelAndView("vistaRecuperarCuenta");
+	}
+	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.POST)
 	public ModelAndView recuperaClave(HttpServletRequest request, HttpServletResponse response) {
 		user = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("inputUsernameEmail"));
@@ -61,7 +78,7 @@ public class Controlador03RecuperarCuenta {
 	
 	@RequestMapping(value = "/recuperaClave", method = RequestMethod.GET)
 	public ModelAndView recuperaClaveGet(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/recuperarCuenta.html");
+		return new ModelAndView("redirect:/recuperaCuenta.html");
 	}
 	
 	@RequestMapping(value = "/restableceClave", method = RequestMethod.GET)
