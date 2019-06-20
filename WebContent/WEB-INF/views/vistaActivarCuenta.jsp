@@ -73,11 +73,11 @@
 					        <br>
 					        <h6 class="mensajeInfo">Foto de Perfil (con GRAVATAR)</h6>
 					        <div class="form-group">
-					        	<p class="mensajeInfo"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</p>
+					        	<p class="mensajeGravatar"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</p>
 								<br>
 								<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
 								<br>
-								<p class="mensajeInfo">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</p>
+								<p class="mensajeGravatar">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</p>
 							</div>
 							<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
 					        <br>
