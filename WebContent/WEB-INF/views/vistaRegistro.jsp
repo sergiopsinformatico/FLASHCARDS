@@ -75,57 +75,59 @@
 		</header>
 		<section ng-app="AppRegistro" ng-controller="RegistroCtrl">
 			<br><br><br><br>
-			<div class="col-md-4"></div>
-			<div class="col-md-4 formAccess textCenter container">
-				<br>
-				<h4 class="title">Crear una Cuenta Nueva</h4>
-				<br>
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
-						<form action="crearCuenta.do" method="post" id="Registro" name="Registro">
-			                <div class="row">
-			                    <div class="col-md-12">
-			                        <div class="form-group">
-			                            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
-			                        </div>
-			                        <div class="form-group">
-			                            <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
-			                        </div>
-			                        <div class="form-group">
-			                            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
-			                        </div>
-			                        <div class="form-group">
-			                            <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
-			                        </div>
-			                        <div class="form-group">
-			                            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
-			                        </div>
-			                        <div class="form-group">
-			                            <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
-			                        </div>
-			                        <div class="form-group">
-			                            <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
-			                        </div>
-			                        <div class="form-group">
-			                            <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
-			                        </div>
-			                        <div class="form-group">
-			                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
-			                        </div>
-			                        <div class="form-group">
-			                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
-			                        </div>
-			                        <br>
-			                        <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
-			                    </div>
-			                </div>
-			        	</form>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 formAccess textCenter container">
+					<br>
+					<h4 class="title">Crear una Cuenta Nueva</h4>
+					<br>
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<form action="crearCuenta.do" method="post" id="Registro" name="Registro">
+				                <div class="row">
+				                    <div class="col-md-12">
+				                        <div class="form-group">
+				                            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required />
+				                        </div>
+				                        <div class="form-group">
+				                            <small id="msgUsername" class="mensajesReg">{{messageUsername}}</small>
+				                        </div>
+				                        <div class="form-group">
+				                            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required />
+				                        </div>
+				                        <div class="form-group">
+				                            <small id="msgEmail" class="mensajesReg">{{messageEmail}}</small>
+				                        </div>
+				                        <div class="form-group">
+				                            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required />
+				                        </div>
+				                        <div class="form-group">
+				                            <small id="msgClave" class="mensajesReg">{{messageClave}}</small>
+				                        </div>
+				                        <div class="form-group">
+				                            <input type="password" class="form-control"  id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required />
+				                        </div>
+				                        <div class="form-group">
+				                            <small id="msgRepClave" class="mensajesReg">{{messageRepClave}}</small>
+				                        </div>
+				                        <div class="form-group">
+				                            <small id="msgError" class="mensajesReg">{{messageError}}</small>
+				                        </div>
+				                        <div class="form-group">
+				                        	<input type="submit" class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="btnDisabled" value="Registrar" id="buttonRegistro" name="buttonRegistro"/>
+				                        </div>
+				                        <br>
+				                        <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
+				                    </div>
+				                </div>
+				        	</form>
+						</div>
+						<div class="col-md-2"></div>
 					</div>
-					<div class="col-md-2"></div>
 				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
 		</section>
 		
 		<script>

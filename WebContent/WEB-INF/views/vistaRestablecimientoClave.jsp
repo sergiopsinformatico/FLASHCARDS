@@ -43,33 +43,35 @@
 	</header>
 	
 	<section class="background" ng-app="AppRestablece" ng-controller="RestableceCtrl">
-		<br><br>
+		<br><br><br><br>
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 formAccess textCenter container">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<br>
-	   				<h6 align="center" class="negrita cursiva">Restablecimiento de Clave</h6>
-	   				<br>
-	   				<small class="negrita">¡Hola ${username}!</small>
-	   				<br>
-	   				<small>Por favor, introduce tu nueva clave</small>
-	   				<br><br>
-	   				<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
-	   					<span id="reauth-email" class="reauth-email"></span>
-	   					<input type="hidden" id="username" name="username" value="${username}">
-		                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
-		                <br>
-		                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
-		                <br><small class="negrita" id="showMsgClave">{{msgClave}}</small>
-		                <br><small class="negrita" id="showMsgRepClave">{{msgRepClave}}</small>
-		                <br><br>
-				        <button class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="buttonDisabled" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
-				        <br><br>
-				    </form>
+				<br>
+   				<h4 class="title">Restablecimiento de Clave</h4>
+   				<br>
+   				<small class="negrita mensajeInfo">¡Hola ${username}!</small>
+   				<br>
+   				<small class="negrita cursiva mensajeInfo">Por favor, introduce tu nueva clave</small>
+   				<br><br>
+   				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
+		   					<span id="reauth-email" class="reauth-email"></span>
+		   					<input type="hidden" id="username" name="username" value="${username}">
+			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
+			                <br>
+			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
+			                <br><small class="negrita mensajeNotifica" id="showMsgClave">{{msgClave}}</small>
+			                <br><small class="negrita mensajeNotifica" id="showMsgRepClave">{{msgRepClave}}</small>
+			                <br><br>
+					        <button class="btn btn-lg btn-block btn-signin btnBlock" ng-disabled="buttonDisabled" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+					        <br><br>
+					    </form>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2"></div>
 			</div>
 			<div class="col-md-4"></div>
 		</div>

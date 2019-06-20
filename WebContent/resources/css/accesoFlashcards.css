@@ -52,6 +52,14 @@ body, html {
 	color: #F5CA46;
 }
 
-.mensajeGravatar{
+.mensajeNotifica{
 	color: #C7FF97;
+}
+
+.cursiva{
+	font-style: italic;
+}
+
+.negrita{
+	font-weight: bold;
 }

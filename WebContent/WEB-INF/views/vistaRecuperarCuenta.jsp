@@ -61,31 +61,33 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 formAccess textCenter container">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<br>
-	   				<h6 align="center" class="title">Recuperar Cuenta</h6>
-	   				<br>
-	   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
-	   					<span id="reauth-email" class="reauth-email"></span>
-		                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
-				        <br><br><br>
-		                <div class="middle">
-		                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
-		                </div>
-		                <br><br>
-				        <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
-				        <script>
-				        	document.getElementById("buttonRec").disabled = true;
-				        	function enableBtnRec(){
-				        		document.getElementById("buttonRec").style.background = "#457D8E";
-				        		document.getElementById("buttonRec").disabled = false;
-				        	}
-				        </script>
-				        <br><br>
-				    </form>
+				<br>
+   				<h4 align="center" class="title">Recuperar Cuenta</h4>
+   				<br>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+		   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
+		   					<span id="reauth-email" class="reauth-email"></span>
+			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+					        <br><br><br>
+			                <div class="middle">
+			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
+			                </div>
+			                <br><br>
+					        <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+					        <script>
+					        	document.getElementById("buttonRec").disabled = true;
+					        	function enableBtnRec(){
+					        		document.getElementById("buttonRec").style.background = "#457D8E";
+					        		document.getElementById("buttonRec").disabled = false;
+					        	}
+					        </script>
+					        <br><br>
+					    </form>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-4"></div>
 			</div>
 			<div class="col-md-4"></div>
 		</div>
