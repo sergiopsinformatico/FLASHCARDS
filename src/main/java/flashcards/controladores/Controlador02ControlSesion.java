@@ -61,7 +61,7 @@ public class Controlador02ControlSesion {
 			return new ModelAndView("vistaIniciarSesion");
 			
 		}else {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/inicio.html");
 		}
 	}
 	

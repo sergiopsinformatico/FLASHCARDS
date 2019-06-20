@@ -81,6 +81,14 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 		
 	}
 	
+	public boolean existeSolicitudUsuario(String username) {
+		criteriosBusqueda = new BsonDocument().append("username", new BsonString(username));
+		
+		iterador = coleccionRecuperarCuenta.find(criteriosBusqueda).iterator();
+		
+		return iterador.hasNext();
+	}
+	
 	public boolean eliminarRC(String username) {
 		try {
 			criteriosBusqueda = new BsonDocument().append("username", new BsonString(username));

@@ -38,9 +38,6 @@ public class Controlador03RecuperarCuenta {
 	String keySecure;
 	Email email;
 	
-	//Constantes
-	static final String USUARIO = "usuario";
-	
 	@RequestMapping(value = "/recuperaCuenta", method = RequestMethod.GET)
 	public ModelAndView recuperaCuenta(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -86,6 +83,9 @@ public class Controlador03RecuperarCuenta {
 		if(Broker.getInstanciaRecuperarCuenta().leerRC(username, keySecurity)) {
 			vista = new ModelAndView("vistaRestablecimientoClave");
 			vista.addObject("username", username);
+		}else if(Broker.getInstanciaRecuperarCuenta().existeSolicitudUsuario(username)) {
+			vista = new ModelAndView("vistaRecuperarCuenta");
+			vista.addObject("mensaje", "Solicitó un restablecimiento de la clave, pero el código no es válido");
 		}else {
 			vista = new ModelAndView("vistaRecuperarCuenta");
 			vista.addObject("mensaje", "El enlace ha expirado. Por favor, vuelva a solicitar la recuperacion de la clave");
@@ -106,5 +106,10 @@ public class Controlador03RecuperarCuenta {
 			vista.addObject("mensaje", "Error. No se pudo actualizar su clave");
 		}
 		return vista;
+	}
+	
+	@RequestMapping(value = "/cambioClave", method = RequestMethod.GET)
+	public ModelAndView cambioClaveGet(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/inicio.html");
 	}
 }

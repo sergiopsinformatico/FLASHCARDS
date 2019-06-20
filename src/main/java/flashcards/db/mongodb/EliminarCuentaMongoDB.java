@@ -36,10 +36,9 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
     FindIterable<Document> resultadosBusqueda;
     MongoCursor<Document>iterador;
     LinkedList<EliminarCuentaDTO> lista;
-    
-    //Constantes
-    static final String USERNAME = "username";
-    static final String FECHA = "fecha";
+    Fecha date;
+    String compara;
+    UsuarioDTO user;
     
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.EliminarCuentaMongoDB");
@@ -62,7 +61,8 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	
 	public boolean insertaEliminado(EliminarCuentaDTO cuenta) {
 		try {
-			doc = new Document().append(USERNAME, cuenta.getUsername()).append(FECHA, cuenta.getFecha());
+			doc = new Document().append("username", cuenta.getUsername())
+								.append("fecha", cuenta.getFecha());
 			coleccionEliminados.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -72,9 +72,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	public boolean leerEliminado(EliminarCuentaDTO cuenta) {
 		try {
 			if(cuenta.getFecha()=="") {
-				criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(cuenta.getUsername()));
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
 			}else {
-				criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(cuenta.getUsername())).append(FECHA, new BsonString(cuenta.getFecha()));
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()))
+													  .append("fecha", new BsonString(cuenta.getFecha()));
 			}
 			resultadosBusqueda = coleccionEliminados.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
@@ -85,9 +86,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	public boolean eliminarEliminado(EliminarCuentaDTO cuenta) {
 		try {
 			if(cuenta.getFecha()=="") {
-				criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(cuenta.getUsername()));
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
 			}else {
-				criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(cuenta.getUsername())).append(FECHA, new BsonString(cuenta.getFecha()));
+				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()))
+													  .append("fecha", new BsonString(cuenta.getFecha()));
 			}
 			coleccionEliminados.deleteOne(criteriosBusqueda);
 			return true;
@@ -101,22 +103,22 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			lista.add(new EliminarCuentaDTO(doc.getString(USERNAME), doc.getString(FECHA)));
+			lista.add(new EliminarCuentaDTO(doc.getString("username"), doc.getString("fecha")));
 		}
 		return lista;
 	}
 	
 	public void comprobarCuentasAEliminar() {
-		List<EliminarCuentaDTO>listaEl = leerTodos();
-		Fecha date = new Fecha();
-		String compara;
-		UsuarioDTO user;
-		for(int indice=0; indice<listaEl.size(); indice++) {
-			compara = date.compararFechas(listaEl.get(indice).getFecha(), date.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<=0) {
-				Broker.getInstanciaEliminarCuenta().eliminarEliminado(listaEl.get(indice));
-				user = Broker.getInstanciaUsuario().getUsuarioDTO(listaEl.get(indice).getUsername());
+		iterador = coleccionEliminados.find().iterator();
+		date = new Fecha();
+		while(iterador.hasNext()) {
+			doc = iterador.next();
+			compara = date.compararFechas(doc.getString("fecha"), date.fechaHoy());
+			if(compara!=null && Integer.parseInt(compara)<0) {
+				eliminarEliminado(new EliminarCuentaDTO(doc.getString("username")));
+				user = Broker.getInstanciaUsuario().getUsuarioDTO(doc.getString("username"));
 				Broker.getInstanciaUsuario().deleteUsuario(user);
+				iterador = coleccionEliminados.find().iterator();
 			}
 		}
 	}

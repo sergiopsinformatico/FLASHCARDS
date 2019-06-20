@@ -124,7 +124,7 @@ public class Controlador01RegistroUsuarios {
 	//Crear usuario - GET
 	@RequestMapping(value = "/crearCuenta", method = RequestMethod.GET)
 	public ModelAndView registrarUsuarioGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/");
+		vista = new ModelAndView("redirect:/registro.html");
 		return vista;
 	}
 	
@@ -142,15 +142,15 @@ public class Controlador01RegistroUsuarios {
 			correo = new Email();
 			correo.confirmaCuentaCreada(user2);
 		}else if(Broker.getInstanciaActivaCuenta().existeActivacionUsuario(username)) {
-			vista = new ModelAndView("redirect:/");
+			vista = new ModelAndView("redirect:/inicio.html");
 			vista.addObject("mensaje", "Hay una activación pendiente para "+username+", pero ese codigo no es el correcto.");
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {
-				vista = new ModelAndView("redirect:/");
+				vista = new ModelAndView("redirect:/inicio.html");
 				vista.addObject("mensaje", "Su cuenta ya fue activada");
 			}else {
-				vista = new ModelAndView("redirect:/");
+				vista = new ModelAndView("redirect:/registro.html");
 				vista.addObject("mensaje", "Ha expirado la activacion de su cuenta. Es necesario que se vuelva a registrar.");
 			}
 		}
@@ -181,14 +181,14 @@ public class Controlador01RegistroUsuarios {
 			user2.setPais(request.getParameter("inputPais"));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		vista = new ModelAndView("redirect:/");
+		vista = new ModelAndView("redirect:/inicio.html");
 		vista.addObject("mensaje", "Registro completado con exito.");
 		return vista;
 	}
 	
 	@RequestMapping(value = "/infoExtra", method = RequestMethod.GET)
 	public ModelAndView activarGet(HttpServletRequest request, HttpServletResponse response){
-		vista = new ModelAndView("redirect:/");
+		vista = new ModelAndView("redirect:/inicio.html");
 		return vista;
 	}
 	

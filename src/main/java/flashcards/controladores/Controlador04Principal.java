@@ -25,27 +25,7 @@ public class Controlador04Principal {
 	Fecha fecha;
 	Email email;
 	UsuarioDTO user;
-	
-	//Pagina Principal
-	
-	/*@RequestMapping(value = "/principal", method = RequestMethod.GET)
-	public ModelAndView principal(HttpServletRequest request, HttpServletResponse response) {
 		
-		if(request.getSession().getAttribute("usuario")!=null && 
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && 
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
-			
-			vista = new ModelAndView("vistaPrincipal");
-			user = (UsuarioDTO)(request.getSession().getAttribute("usuario"));
-			vista.addObject("isAdmin",user.getRol().equals("Administrador"));
-			
-		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
-		}
-		
-		return vista;
-	}*/
-	
 	//Ver Perfil
 	
 	@RequestMapping(value = "/verPerfil", method = RequestMethod.GET)
@@ -81,9 +61,4 @@ public class Controlador04Principal {
 		}
 		return vista;
 	}
-	
-	
-	
-	
-	
 }
