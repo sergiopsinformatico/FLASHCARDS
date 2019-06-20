@@ -1,4 +1,10 @@
 .logoFlashcards{
-	width: 70px;
+	width: 100px;
 	height: auto;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

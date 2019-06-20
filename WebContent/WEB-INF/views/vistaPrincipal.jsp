@@ -31,10 +31,9 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.html">
-      	<div class="sidebar-brand-icon">
+      	<div class="sidebar-brand-icon middle">
         	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
         </div>
-        <div class="sidebar-brand-text mx-3">FLASHCARDS</div>
       </a>
 
       <!-- Divider
