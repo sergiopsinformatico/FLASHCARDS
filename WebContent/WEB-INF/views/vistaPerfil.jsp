@@ -358,9 +358,11 @@
         				<br>
         			</div>
         			<div class="row cuadroInfoUser">
-        				<br>
-        				<h6 class="title middle" align="center">Información Personal</h6>
-        				<br>
+        				<div align="center" class="row">
+        					<br>
+	        				<h6 class="title">Información Personal</h6>
+	        				<br>
+        				</div>
         				<div class="row">
         					<div class="col-md-1"></div>
 	        				<div align="left" class="col-md-5">
