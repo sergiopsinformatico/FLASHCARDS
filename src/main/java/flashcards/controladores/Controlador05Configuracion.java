@@ -18,7 +18,7 @@ import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
 @SessionAttributes("usuario")
-public class Controlador06Configuracion {
+public class Controlador05Configuracion {
 	
 	ModelAndView vista;
 	UsuarioDTO userAntiguo, userNuevo;

@@ -129,7 +129,7 @@ public class Controlador01RegistroUsuarios {
 	}
 	
 	//Activar Cuenta - GET
-	@RequestMapping(value = "/activarCuenta", method = RequestMethod.GET)
+	@RequestMapping(value = "/activaCuenta", method = RequestMethod.GET)
 	public ModelAndView activaCuenta(@RequestParam("username") String username, @RequestParam("codigo") String codigo){
 		if(Broker.getInstanciaActivaCuenta().activacionCuenta(new ActivaCuentaDTO(username, codigo))) {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
@@ -190,42 +190,5 @@ public class Controlador01RegistroUsuarios {
 	public ModelAndView activarGet(HttpServletRequest request, HttpServletResponse response){
 		vista = new ModelAndView("redirect:/inicio.html");
 		return vista;
-	}
-	
-	
-	/*Variables
-	Email correo;
-	List<String> listaUsernames;
-	List<String> listaEmails;
-	SecureRandom random;
-	String codActivacion;
-	Fecha fecha;
-	ModelAndView vista;
-	UsuarioDTO user;
-	UsuarioDTO user2;
-	List<ActivaCuentaDTO> listaAC;
-	List<EliminarCuentaDTO> listaEl;
-	int indice;
-	String compara;
-	
-	Constantes
-	static final String USUARIO = "usuario";
-	static final String INDEX = "index";
-	static final String MENSAJE = "mensaje";
-	static final String INPEMAILAVATAR = "inputEmailAvatar";
-	static final String INPNYA = "inputNyA";
-	static final String INPCIUDAD = "inputCiudad";
-	static final String INPPAIS = "inputPais";
-	
-	Devuelve la vista para registrar a los usuarios
-	
-	
-	
-	Guardar a los nuevos usuarios
-	
-	
-	
-	
-	*/
-	
+	}	
 }

@@ -111,29 +111,4 @@ public class Controlador02ControlSesion {
 		vista.addObject("usuario",null);
 		return vista;
 	}
-	
-	
-	
-	/*
-	//Variables
-	Broker broker;
-	InterfaceDAOUsuario dBUsuario;
-	UsuarioDTO user;
-	ModelAndView vista;
-	List<ActivaCuentaDTO> listaAC;
-	List<EliminarCuentaDTO> listaEl;
-	int indice;
-	Fecha fecha;
-	String compara;
-	EliminarCuentaDTO eliminado;
-	Email email;
-	RelacionDTO relacion;
-	
-	//Constantes
-	static final String USUARIO = "usuario";
-	static final String VIEWLOGIN="vistaIniciarSesion";
-	static final String MENSAJE="mensaje";
-	
-	//Devuelve la vista para Iniciar Sesion*/
-
 }
