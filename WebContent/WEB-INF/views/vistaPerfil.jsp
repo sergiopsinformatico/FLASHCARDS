@@ -359,14 +359,11 @@
         			</div>
         			<div class="row cuadroInfoUser container">
         				<div class="col-md-12">
-	        				<div align="center" class="row">
-	        					<br>
-		        				<h6 align="center" class="title">Información Personal</h6>
-		        				<br>
-	        				</div>
+        					<br>
+	        				<h6 align="center" class="title">Información Personal</h6>
+	        				<br>
 	        				<div class="row">
-	        					<div class="col-md-1"></div>
-		        				<div align="left" class="col-md-5">
+	        					<div align="left" class="col-md-6">
 		        					<div class="row" id="username">
 		        						<strong>Username:</strong> ${usuario.getUsername()}
 		        					</div>
@@ -374,7 +371,7 @@
 		        						<strong>Email:</strong> ${usuario.getEmail()}
 		        					</div>
 		           				</div>
-		        				<div align="right" class="col-md-5">
+		        				<div align="right" class="col-md-6">
 		        					<div class="row" id="nombreApellidos" style="display: none;">
 		        						<strong>Nombre y Apellidos:</strong> ${usuario.getNombreApellidos()}
 		        					</div>
@@ -385,7 +382,6 @@
 		        						<strong>País:</strong> ${usuario.getPais()}
 		        					</div>
 		        				</div>
-		        				<div class="col-md-1"></div>
 		        				<script>
 		        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
 		        						document.getElementById("nombreApellidos").style.display = "block";
