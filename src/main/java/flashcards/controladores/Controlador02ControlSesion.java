@@ -33,6 +33,9 @@ public class Controlador02ControlSesion {
 			vista = new ModelAndView("index");
 		}else {
 			vista =  new ModelAndView("vistaPrincipal");
+			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
+				vista.addObject("mensaje", request.getParameter("mensaje"));
+			}
 		}
 		return vista;
 	}
@@ -58,11 +61,13 @@ public class Controlador02ControlSesion {
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			
-			return new ModelAndView("vistaIniciarSesion");
+			vista =  new ModelAndView("vistaIniciarSesion");
 			
 		}else {
-			return new ModelAndView("redirect:/inicio.html");
+			vista = new ModelAndView("redirect:/inicio.html");
 		}
+		
+		return vista;
 	}
 	
 	//Acceder

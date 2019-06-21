@@ -26,26 +26,5 @@ public class Controlador04Principal {
 	Email email;
 	UsuarioDTO user;
 	
-	//Eliminar Cuenta
 	
-	@RequestMapping(value = "/eliminarCuenta", method = RequestMethod.GET)
-	public ModelAndView eliminarCuenta(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
-			
-			fecha = new Fecha();
-			elimina = new EliminarCuentaDTO(((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername(), fecha.fechaEliminarCuenta());
-			
-			Broker.getInstanciaEliminarCuenta().insertaEliminado(elimina);
-			
-			email = new Email();
-			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getEmail());
-			
-			vista = new ModelAndView("redirect:/inicio.html");
-			vista.addObject("usuario", null);
-			
-		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
-		}
-		return vista;
-	}
 }

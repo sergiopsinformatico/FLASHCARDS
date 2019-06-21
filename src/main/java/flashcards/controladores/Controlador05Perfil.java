@@ -36,35 +36,4 @@ public class Controlador05Perfil {
 		return vista;
 	}
 	
-	@RequestMapping(value = "/modificarPerfil", method = RequestMethod.GET)
-	public ModelAndView modificarPerfil(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
-			vista = new ModelAndView("vistaModificarPerfil");
-		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
-		}
-		return vista;
-	}
-	
-	@RequestMapping(value = "/modificaUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ModelAndView modificaUsuario(@RequestBody @Valid UsuarioDTO userNuevo, HttpServletRequest request, HttpServletResponse response) {
-		userAntiguo = (UsuarioDTO)request.getSession().getAttribute("usuario");
-		userNuevo.setRol(userAntiguo.getRol());
-		userNuevo.setActivadaCuenta(userAntiguo.isActivadaCuenta());
-		if(userNuevo.getEmailFoto()=="") {
-			userNuevo.setFoto("https://www.gravatar.com/avatar/inventado.jpg");
-		}else {
-			userNuevo.setFoto("https://www.gravatar.com/avatar/"+DigestUtils.md5Hex(userNuevo.getEmailFoto())+".jpg");
-		}
-		
-		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
-			vista = new ModelAndView("redirect:/verPerfil.html");
-			vista.addObject("usuario", userNuevo);
-		}else {
-			vista = new ModelAndView("redirect:/verPerfil.html");
-			vista.addObject("mensaje", "Hubo un fallo y no se pudo modificar el perfil");
-		}
-		return vista;
-	}
-	
 }
