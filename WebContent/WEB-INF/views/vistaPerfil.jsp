@@ -363,15 +363,13 @@
 	        				<h6 align="center" class="title">Información Personal</h6>
 	        				<br>
 	        				<div class="row">
-	        					<div align="left" class="col-md-6">
+	        					<div align="center" class="col-md-6">
 		        					<div class="row" id="username">
 		        						<strong>Username:</strong> ${usuario.getUsername()}
 		        					</div>
 		        					<div class="row" id="email">
 		        						<strong>Email:</strong> ${usuario.getEmail()}
 		        					</div>
-		           				</div>
-		        				<div align="right" class="col-md-6">
 		        					<div class="row" id="nombreApellidos" style="display: none;">
 		        						<strong>Nombre y Apellidos:</strong> ${usuario.getNombreApellidos()}
 		        					</div>
@@ -381,6 +379,7 @@
 		        					<div class="row" id="pais" style="display: none;">
 		        						<strong>País:</strong> ${usuario.getPais()}
 		        					</div>
+		        					<br>
 		        				</div>
 		        				<script>
 		        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
