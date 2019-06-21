@@ -358,45 +358,47 @@
         				<br>
         			</div>
         			<div class="row cuadroInfoUser">
-        				<div align="center" class="row">
-        					<br>
-	        				<h6 class="title">Información Personal</h6>
-	        				<br>
-        				</div>
-        				<div class="row">
-        					<div class="col-md-1"></div>
-	        				<div align="left" class="col-md-5">
-	        					<div class="row" id="username">
-	        						<strong>Username:</strong> ${usuario.getUsername()}
-	        					</div>
-	        					<div class="row" id="email">
-	        						<strong>Email:</strong> ${usuario.getEmail()}
-	        					</div>
-	           				</div>
-	        				<div align="right" class="col-md-5">
-	        					<div class="row" id="nombreApellidos" style="display: none;">
-	        						<strong>Nombre y Apellidos:</strong> ${usuario.getNombreApellidos()}
-	        					</div>
-	        					<div class="row" id="ciudad" style="display: none;">
-	        						<strong>Ciudad:</strong> ${usuario.getCiudad()}
-	        					</div>
-	        					<div class="row" id="pais" style="display: none;">
-	        						<strong>País:</strong> ${usuario.getPais()}
-	        					</div>
+        				<div class="col-md-12">
+	        				<div align="center" class="row">
+	        					<br>
+		        				<h6 class="title">Información Personal</h6>
+		        				<br>
 	        				</div>
-	        				<div class="col-md-1"></div>
-	        				<script>
-	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
-	        						document.getElementById("nombreApellidos").style.display = "block";
-	        					}
-	        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
-	        						document.getElementById("ciudad").style.display = "block";
-	        					}
-	        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
-	        						document.getElementById("pais").style.display = "block";
-	        					}
-	        				</script>
-	        			</div>
+	        				<div class="row">
+	        					<div class="col-md-1"></div>
+		        				<div align="left" class="col-md-5">
+		        					<div class="row" id="username">
+		        						<strong>Username:</strong> ${usuario.getUsername()}
+		        					</div>
+		        					<div class="row" id="email">
+		        						<strong>Email:</strong> ${usuario.getEmail()}
+		        					</div>
+		           				</div>
+		        				<div align="right" class="col-md-5">
+		        					<div class="row" id="nombreApellidos" style="display: none;">
+		        						<strong>Nombre y Apellidos:</strong> ${usuario.getNombreApellidos()}
+		        					</div>
+		        					<div class="row" id="ciudad" style="display: none;">
+		        						<strong>Ciudad:</strong> ${usuario.getCiudad()}
+		        					</div>
+		        					<div class="row" id="pais" style="display: none;">
+		        						<strong>País:</strong> ${usuario.getPais()}
+		        					</div>
+		        				</div>
+		        				<div class="col-md-1"></div>
+		        				<script>
+		        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
+		        						document.getElementById("nombreApellidos").style.display = "block";
+		        					}
+		        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
+		        						document.getElementById("ciudad").style.display = "block";
+		        					}
+		        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
+		        						document.getElementById("pais").style.display = "block";
+		        					}
+		        				</script>
+		        			</div>
+		        		</div>
         			</div>
         		</div>
         		<div class="col-md-3"></div>
