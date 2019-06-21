@@ -357,11 +357,11 @@
         			<div class="row">
         				<br>
         			</div>
-        			<div class="row cuadroInfoUser">
+        			<div class="row cuadroInfoUser container">
         				<div class="col-md-12">
 	        				<div align="center" class="row">
 	        					<br>
-		        				<h6 class="title">Información Personal</h6>
+		        				<h6 align="center" class="title">Información Personal</h6>
 		        				<br>
 	        				</div>
 	        				<div class="row">
