@@ -355,6 +355,9 @@
         				<img src="${usuario.getFoto()}" alt="Mi Foto" class="fotoPerfil">
         			</div>
         			<div class="row cuadroInfoUser container">
+        				<br>
+        				<h6 class="title" align="center">Información Personal</h6>
+        				<br>
         				<div class="col-md-1"></div>
         				<div align="left" class="col-md-5">
         					<div class="row" id="username">
