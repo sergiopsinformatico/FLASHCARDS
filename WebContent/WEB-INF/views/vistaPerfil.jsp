@@ -357,7 +357,7 @@
         			<div class="row">
         				<br>
         			</div>
-        			<div class="row cuadroInfoUser container">
+        			<div class="row cuadroInfoUser">
         				<br>
         				<h6 class="title" align="center">Información Personal</h6>
         				<br>
