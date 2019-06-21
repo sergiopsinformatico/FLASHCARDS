@@ -384,13 +384,13 @@
 	        				</div>
 	        				<div class="col-md-1"></div>
 	        				<script>
-	        					if(${usuario.getNombreApellidos()}!=null && ${usuario.getNombreApellidos()}!=""){
+	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
 	        						document.getElementById("nombreApellidos").style.display = "block";
 	        					}
-	        					if(${usuario.getCiudad()}!=null && ${usuario.getCiudad()}!=""){
+	        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
 	        						document.getElementById("ciudad").style.display = "block";
 	        					}
-	        					if(${usuario.getPais()}!=null && ${usuario.getPais()}!=""){
+	        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
 	        						document.getElementById("pais").style.display = "block";
 	        					}
 	        				</script>
