@@ -359,7 +359,7 @@
         			</div>
         			<div class="row cuadroInfoUser">
         				<br>
-        				<h6 class="title" align="center">Información Personal</h6>
+        				<h6 class="title middle" align="center">Información Personal</h6>
         				<br>
         				<div class="row">
         					<div class="col-md-1"></div>
