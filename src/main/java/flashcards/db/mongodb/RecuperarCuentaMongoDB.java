@@ -105,8 +105,8 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 			iterador = coleccionRecuperarCuenta.find().iterator();
 			while(iterador.hasNext()) {
 				doc = iterador.next();
-				comparaFecha = fecha.compararFechas(fecha.fechaHoy(), doc.getString("fechaExpira"));
-				if( comparaFecha!= null && Integer.parseInt(comparaFecha) > 0) {
+				comparaFecha = fecha.compararFechas(doc.getString("fechaExpira"), fecha.fechaHoy());
+				if( comparaFecha!= null && Integer.parseInt(comparaFecha) < 0) {
 					eliminarRC(doc.getString("username"));
 					iterador = coleccionRecuperarCuenta.find().iterator();
 				}

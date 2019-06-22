@@ -19,6 +19,9 @@
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
   <link href="resources/css/perfil.css" rel="stylesheet">
+  
+  <!-- Angular JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
 
@@ -352,7 +355,7 @@
         		<div class="col-md-3"></div>
         		<div class="col-md-6">
         			<div class="row middle">
-        				<img src="${usuario.getFoto()}" alt="Mi Foto" class="fotoPerfil">
+        				<img src="${perfil.getFoto()}" alt="Foto" class="fotoPerfil">
         			</div>
         			<div class="row">
         				<br>
@@ -363,19 +366,19 @@
 	        				<h6 align="center" class="titleInfo">Información Personal</h6>
 	        				<br>
 	        				<p id="username" align="center">
-	        					<strong>Username:</strong> ${usuario.getUsername()}
+	        					<strong>Username:</strong> ${perfil.getUsername()}
 	        				</p>
 	        				<p id="email" align="center">
-	        					<strong>Email:</strong> ${usuario.getEmail()}
+	        					<strong>Email:</strong> ${perfil.getEmail()}
 	        				</p>
 	        				<p id="nombreApellidos" style="display: none;" align="center">
-	        					<strong>Nombre y Apellidos:</strong> ${usuario.getNombreApellidos()}
+	        					<strong>Nombre y Apellidos:</strong> ${perfil.getNombreApellidos()}
 	        				</p>
 	        				<p id="ciudad" style="display: none;" align="center">
-	        					<strong>Ciudad:</strong> ${usuario.getCiudad()}
+	        					<strong>Ciudad:</strong> ${perfil.getCiudad()}
 	        				</p>
 	        				<p id="pais" style="display: none;" align="center">
-	        					<strong>País:</strong> ${usuario.getPais()}
+	        					<strong>País:</strong> ${perfil.getPais()}
 	        				</p>
 	        				<br>
 	        				<script>

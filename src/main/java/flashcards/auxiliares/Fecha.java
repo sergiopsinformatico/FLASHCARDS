@@ -38,7 +38,7 @@ public class Fecha {
 	}
 	
 	public String fechaActivarCuenta() {
-		return generateDate(1);
+		return generateDate(7);
 	}
 	
 	public String fechaEliminarCuenta() {
@@ -46,7 +46,7 @@ public class Fecha {
 	}
 	
 	public String fechaRecuperarCuenta() {
-		return generateDate(14);
+		return generateDate(1);
 	}
 	
 	private String generateDate(int dias) {

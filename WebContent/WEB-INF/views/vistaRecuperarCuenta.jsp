@@ -91,55 +91,6 @@
 			</div>
 			<div class="col-md-4"></div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		<!-- <div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-4 fondoLogin container">
-						<br>
-						<h6 align="center" class="title">Iniciar Sesión</h6>
-						<br>
-		   				<form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
-			                <span id="reauth-email" class="reauth-email"></span>
-			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
-			                <br>
-			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-			                <br><br>
-			                <div class="middle">
-			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			                </div>
-			                <br><br>
-			                <button class="btn btn-lg btn-block btn-signin color-block" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
-			                <script>
-			                	document.getElementById("buttonIS").disabled = true;
-					        	function enableBtn(){
-					        		document.getElementById("buttonIS").style.background = "#45BF1D";
-					        		document.getElementById("buttonIS").disabled = false;
-					        	}
-					        </script>
-					        <br><br>
-			            </form>
-		   			</div>
-		   			<div class="col-md-4 middle">
-						<div class="containerImg">
-							<img src="resources/img/logoFlashcards.JPG" alt=""/>
-						</div>
-					</div>
-		   			<div class="col-md-4 fondoRecovery container">
-		   				
-		   			</div>
-				</div>
-			</div>
-			<div class="col-md-1"></div>
-		</div>-->
 	</section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->

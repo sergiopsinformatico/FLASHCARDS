@@ -19,10 +19,10 @@ public class Email {
 	
 	boolean enviado;
 	
-	static final String SALUDO = "Hola ";
-	static final String CIERRE = "\nAtentamente, Equipo de Flashcards.";
-	static final String USUARIO = "\nUsuario: ";
-	static final String CLAVE = "\nClave: ";
+	static final String CONST_SALUDO = "Hola ";
+	static final String CONST_CIERRE = "\nAtentamente, Equipo de Flashcards.";
+	static final String CONST_USUARIO = "\nUsuario: ";
+	static final String CONST_CLAVE = "\nClave: ";
 	
 	public boolean activarCuenta(UsuarioDTO user, String url) {
 		setAsunto("[Flashcards] Activacion Cuenta: "+user.getUsername());
@@ -31,7 +31,7 @@ public class Email {
 		"\n"+url+
 		"\nDispone de 24 horas para activar la cuenta. En caso de que no lo haga, debe de volverse a registrar."+
 		"\nHaciendo clic, acepta que almacenemos en nuestros ficheros los datos que nos haya proporcionado."+
-		CIERRE);
+		CONST_CIERRE);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
@@ -39,40 +39,40 @@ public class Email {
 	public boolean confirmaCuentaCreada(UsuarioDTO user) {
 		setAsunto("[Flashcards] Nueva Cuenta Creada "+user.getUsername());
 		setMensaje("Su cuenta ha sido creada satisfactoriamente. Sus datos de registro son los siguientes:"+
-		USUARIO+user.getUsername()+
+		CONST_USUARIO+user.getUsername()+
 		"\nEmail: "+user.getEmail()+
-		CLAVE+user.getClave()+
-		CIERRE);
+		CONST_CLAVE+user.getClave()+
+		CONST_CIERRE);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
 	
 	public boolean eliminarCuenta(EliminarCuentaDTO elimina, String email) {
 		setAsunto("[Flashcards] Cuenta Eliminada ("+elimina.getUsername()+") - 14 dias");
-		setMensaje(SALUDO+elimina.getUsername()+","+
+		setMensaje(CONST_SALUDO+elimina.getUsername()+","+
         "\nSu cuenta va a proceder a eliminarse por completo el "+elimina.getFecha()+"."+
 		"\nSi accede antes al sistema con su cuenta, su cuenta no se va a eliminar."+
-        CIERRE);
+        CONST_CIERRE);
 		setRecibe(email);
 		return enviarMensaje();
 	}
 	
 	public boolean recuperarClave(UsuarioDTO user, String key) {
 		setAsunto("[Flashcards] Recuperacion de la clave de "+user.getEmail());
-		setMensaje(SALUDO+user.getUsername()+"!!"+
+		setMensaje(CONST_SALUDO+user.getUsername()+"!!"+
 		"\nHa solicitado recuperacion de sus datos de su cuenta en Flashcards."+
-		"\nSiga el siguiente enlace: https://sistemaflashcards.herokuapp.com/restableceClave.html?username="+user.getUsername()+"&keySecurity="+key);
+		"\nSiga el siguiente enlace: "+PropertiesConfig.getProperties("baseUrl")+"/restableceClave.html?username="+user.getUsername()+"&keySecurity="+key);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}
 	
 	public boolean reactivacionCuenta(UsuarioDTO user) {
 		setAsunto("[Flashcards] Reactivacion de la cuenta de "+user.getUsername());
-		setMensaje(SALUDO+user.getNombreApellidos()+"!!"+
+		setMensaje(CONST_SALUDO+user.getNombreApellidos()+"!!"+
 		"\nSu cuenta en Flashcards, se ha reactivado y no sera borrada:"+
-		USUARIO+user.getEmail()+" o "+user.getUsername()+
-		CLAVE+user.getClave()+
-		CIERRE);
+		CONST_USUARIO+user.getEmail()+" o "+user.getUsername()+
+		CONST_CLAVE+user.getClave()+
+		CONST_CIERRE);
 		setRecibe(user.getEmail());
 		return enviarMensaje();
 	}

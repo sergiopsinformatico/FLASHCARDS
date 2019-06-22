@@ -94,62 +94,6 @@
 	    		</div>
     		</div>
     		<div class="col-md-4"></div>
-    	
-    	
-    		<!-- <div class="col-md-1"></div>
-    		<div class="col-md-5 middle">
-    			<div class="containerImg">
-					<img src="resources/img/logoFlashcards.JPG" alt=""/>
-				</div>
-    		</div>
-    		<div class="col-md-5 fondoActivaCuenta">
-    			<div class="row">
-		    		<br><br>
-		    	</div>
-    			<div class="row">
-    				<div class="col-md-1"></div>
-    				<div class="col-md-10">
-		    			<h3 align="center" class="mensajeInfo">Activar Cuenta: ${activa.getUsername()}</h3>
-		    			<br> 
-		    			<div class="row" style="text-align: center;">
-		    				<p class="mensajeInfo">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
-		    				<p class="mensajeInfo">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
-		    			</div>
-		    			<div class="row">
-		    				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
-		    					<div class="form-group">
-						            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos">
-						        </div>
-						        <div class="form-group">
-						            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad">
-						        </div>
-						        <div class="form-group">
-						            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
-						        </div>
-						        <br>
-						        <h6 class="mensajeInfo">Foto de Perfil (con GRAVATAR)</h6>
-						        <div class="form-group">
-						        	<p class="mensajeInfo"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</p>
-									<br>
-									<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
-									<br>
-									<p class="mensajeInfo">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</p>
-								</div>
-								<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
-						        <br>
-						        <div class="row middle">
-						        	<button type="submit" class="btn btn-success">Siguiente</button>
-						        </div>
-						        <div class="row">
-						        	<br><br>
-						        </div>
-						    </form>
-		    			</div>
-    				</div>
-    				<div class="col-md-1"></div>
-    			</div>
-			</div>
-    		<div class="col-md-1"></div>-->
 		</div>
     </section>
 

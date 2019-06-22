@@ -75,46 +75,6 @@
 			</div>
 			<div class="col-md-4"></div>
 		</div>
-		
-		
-		
-		
-		
-		
-		<!-- <div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<div class="row">
-		   			<div class="col-md-6 middle">
-						<div class="containerImg">
-							<img src="resources/img/logoFlashcards.JPG" alt=""/>
-						</div>
-					</div>
-		   			<div class="col-md-6 fondoForm container">
-		   				<br>
-		   				<h6 align="center" class="negrita cursiva">Restablecimiento de la Clave</h6>
-		   				<br>
-		   				<small class="negrita">¡Hola ${username}!</small>
-		   				<br>
-		   				<small>Por favor, introduce tu nueva clave</small>
-		   				<br><br>
-		   				<form action="cambioClave.html" method="post" id="NuevaClave" name="NuevaClave">
-		   					<span id="reauth-email" class="reauth-email"></span>
-		   					<input type="hidden" id="username" name="username" value="${username}">
-			                <input type="text" class="form-control" id="inputNuevaClave" name="inputNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="clave" placeholder="Nueva Clave" required autofocus>
-			                <br>
-			                <input type="text" class="form-control" id="inputRepiteNuevaClave" name="inputRepiteNuevaClave" ng-change="enableBtnClaves(clave, rClave)" ng-model="rClave" placeholder="Repite la Nueva Clave" required autofocus>
-			                <br><small class="negrita" id="showMsgClave">{{msgClave}}</small>
-			                <br><small class="negrita" id="showMsgRepClave">{{msgRepClave}}</small>
-			                <br><br>
-					        <button class="btn btn-lg btn-block btn-signin color-block" ng-disabled="buttonDisabled" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
-					        <br><br>
-					    </form>
-		   			</div>
-				</div>
-			</div>
-			<div class="col-md-1"></div>
-		</div>-->
 	</section>
 	
 	<script>
