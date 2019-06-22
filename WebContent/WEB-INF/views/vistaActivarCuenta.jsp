@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Activación Cuenta ${activa.getUsername()}</title>
+    <title>Flashcards - Activación Cuenta de ${activa.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
     		<div class="col-md-4"></div>
     		<div class="col-md-4 formAccess textCenter container">
     			<br>
-    			<h4 class="title">Activar Cuenta: ${activa.getUsername()}</h4>
+    			<h4 class="title">Activar Cuenta</h4>
 	    		<br>
 	    		<div class="row">
 	    			<div class="col-md-2"></div>
