@@ -16,7 +16,7 @@ public class Test02UsuarioIniciaSesion {
 	@Given("^Una persona quiere loguearse$")
 	public void una_persona_quiere_loguearse() throws Throwable {
 		dBUsuario = Broker.getInstanciaUsuario();
-		user = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
+		user = new UsuarioDTO("usuario123", "usuario123@email.com", "usuario123");
 		user.setRol("Usuario");
 	    assert(true);
 	}

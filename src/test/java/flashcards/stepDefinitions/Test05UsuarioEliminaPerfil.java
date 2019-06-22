@@ -17,7 +17,7 @@ public class Test05UsuarioEliminaPerfil {
 	@Given("^Una persona quiere eliminar su perfil$")
 	public void una_persona_quiere_eliminar_su_perfil() throws Throwable {
 		dBUsuario = Broker.getInstanciaUsuario();
-		user = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
+		user = new UsuarioDTO("usuario123", "usuario123@email.com", "usuario123");
 		user.setRol("Usuario");
 		user.setNombreApellidos("Pepito");
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));

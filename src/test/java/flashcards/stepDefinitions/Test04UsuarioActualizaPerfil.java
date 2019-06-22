@@ -16,14 +16,14 @@ public class Test04UsuarioActualizaPerfil {
 	@Given("^Una persona quiere actualizar su perfil$")
 	public void una_persona_quiere_actualizar_su_perfil() throws Throwable {
 		dBUsuario = Broker.getInstanciaUsuario();
-		user = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
+		user = new UsuarioDTO("usuario123", "usuario123@email.com", "usuario123");
 		user.setRol("Usuario");
 		assert(dBUsuario.login(user.getEmail(), user.getClave()));
 	}
 	
 	@When("^Cambia los datos$")
 	public void cambia_los_datos() throws Throwable {
-		user2 = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
+		user2 = new UsuarioDTO("usuario123", "usuario123@email.com", "usuario123");
 		user2.setRol("Usuario");
 		user2.setNombreApellidos("Pepito");
 		assert(true);

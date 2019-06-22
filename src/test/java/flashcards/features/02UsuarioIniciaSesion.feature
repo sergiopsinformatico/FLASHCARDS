@@ -1,6 +1,6 @@
 #Author: Sergio Perez Sanchez
 
-Feature: Como usuario quiero acceder al sistema para usar la aplicación
+Feature: Como usuario quiero acceder al sistema para usar la aplicacion
 
 Scenario: Login correcto. Login mediante email
 Given Una persona quiere loguearse

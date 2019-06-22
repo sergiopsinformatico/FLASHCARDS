@@ -72,6 +72,7 @@ public class Controlador01RegistroUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listUsernames(){
 		listaUsernames = Broker.getInstanciaUsuario().getListUsername();
+		listaUsernames.add("usuario123");
 		return listaUsernames;
 	}	
 	
@@ -81,6 +82,7 @@ public class Controlador01RegistroUsuarios {
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> listEmails(){
 		listaEmails = Broker.getInstanciaUsuario().getListEmail();
+		listaEmails.add("usuario123@email.com");
 		return listaEmails;
 	}
 	
