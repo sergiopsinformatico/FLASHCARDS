@@ -155,7 +155,7 @@ public class Controlador01RegistroUsuarios {
 		}else {
 			user = Broker.getInstanciaUsuario().getUsuarioDTO(username);
 			if(user!=null && user.isActivadaCuenta()) {
-				vista = new ModelAndView("redirect:/inicio.html");
+				vista = new ModelAndView("redirect:/iniciarSesion.html");
 				vista.addObject("mensaje", "Su cuenta ya fue activada");
 			}else {
 				vista = new ModelAndView("redirect:/registro.html");
