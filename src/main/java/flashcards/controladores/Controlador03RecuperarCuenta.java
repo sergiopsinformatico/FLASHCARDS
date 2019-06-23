@@ -95,7 +95,7 @@ public class Controlador03RecuperarCuenta {
 	
 	@RequestMapping(value = "/cambioClave", method = RequestMethod.POST)
 	public ModelAndView cambioClave(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaRecuperarCuenta");
+		vista = new ModelAndView("redirect:/inicio.html");
 		userAntiguo = Broker.getInstanciaUsuario().getUsuarioDTO(request.getParameter("username"));
 		userNuevo = userAntiguo;
 		userNuevo.setClave(request.getParameter("inputNuevaClave"));
