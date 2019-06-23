@@ -31,6 +31,9 @@ public class Controlador02ControlSesion {
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			vista = new ModelAndView("index");
+			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
+				vista.addObject("mensaje", request.getParameter("mensaje"));
+			}
 		}else {
 			vista =  new ModelAndView("vistaPrincipal");
 			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
