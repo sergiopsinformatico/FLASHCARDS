@@ -57,13 +57,19 @@ public class Controlador01RegistroUsuarios {
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
 		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
 			
-			return new ModelAndView("vistaRegistro");
+			vista = new ModelAndView("vistaRegistro");
+			
+			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
+				vista.addObject("mensaje", request.getParameter("mensaje"));
+			}
 			
 		}else {
 			
-			return new ModelAndView("redirect:/inicio.html");
+			vista = new ModelAndView("redirect:/inicio.html");
 			
 		}
+		
+		return vista;
 	}
 	
 	//Metodo auxiliar get usernames en vista registro
