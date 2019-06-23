@@ -59,6 +59,7 @@ public class Controlador05Configuracion {
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");
+			vista.addObject("mensaje", "Perfil Actualizado");
 			vista.addObject("usuario", userNuevo);
 		}else {
 			vista = new ModelAndView("redirect:/verPerfil.html");

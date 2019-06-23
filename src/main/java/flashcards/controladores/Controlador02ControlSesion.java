@@ -66,8 +66,13 @@ public class Controlador02ControlSesion {
 			
 			vista =  new ModelAndView("vistaIniciarSesion");
 			
+			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
+				vista.addObject("mensaje", request.getParameter("mensaje"));
+			}
+			
 		}else {
 			vista = new ModelAndView("redirect:/inicio.html");
+			
 		}
 		
 		return vista;

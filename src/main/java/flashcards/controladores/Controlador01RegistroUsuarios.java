@@ -183,14 +183,14 @@ public class Controlador01RegistroUsuarios {
 			user2.setPais(request.getParameter("inputPais"));
 		}
 		Broker.getInstanciaUsuario().updateUsuario(user, user2);
-		vista = new ModelAndView("redirect:/inicio.html");
+		vista = new ModelAndView("redirect:/iniciarSesion.html");
 		vista.addObject("mensaje", "Registro completado con exito.");
 		return vista;
 	}
 	
 	@RequestMapping(value = "/infoExtra", method = RequestMethod.GET)
 	public ModelAndView activarGet(HttpServletRequest request, HttpServletResponse response){
-		vista = new ModelAndView("redirect:/inicio.html");
+		vista = new ModelAndView("redirect:/iniciarSesion.html");
 		return vista;
 	}	
 }
