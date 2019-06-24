@@ -58,7 +58,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 		criteriosBusqueda = new BsonDocument().append("username", new BsonString(recupera.getUsername()));
 		
 		doc = new Document().append("username", recupera.getUsername()).
-				             append("key", recupera.getKey()).
+				             append("keySecurity", recupera.getKey()).
 				             append("fechaExpira", recupera.getFechaExpira());
 		
 		try {
@@ -73,7 +73,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	public boolean leerRC(String username, String key) {
 		
 		criteriosBusqueda = new BsonDocument().append("username", new BsonString(username)).
-				                               append("key", new BsonString(key));
+				                               append("keySecurity", new BsonString(key));
 		
 		iterador = coleccionRecuperarCuenta.find(criteriosBusqueda).iterator();
 		
