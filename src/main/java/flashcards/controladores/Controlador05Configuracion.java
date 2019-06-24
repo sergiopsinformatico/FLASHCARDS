@@ -88,6 +88,7 @@ public class Controlador05Configuracion {
 			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getEmail());
 			
 			vista = new ModelAndView("redirect:/inicio.html");
+			vista.addObject("mensaje","Su cuenta se eliminará de forma definitiva en 14 días.");
 			vista.addObject("usuario", null);
 			request.getSession().setAttribute("usuario", null);
 			
