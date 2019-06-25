@@ -16,6 +16,7 @@ public class GeneratorStrings {
 
 			StringBuilder sb = new StringBuilder(size); 
 			
+			
 			Random numeroRandom = SecureRandom.getInstanceStrong();
 			
 			for (int i = 0; i < size; i++) { 
