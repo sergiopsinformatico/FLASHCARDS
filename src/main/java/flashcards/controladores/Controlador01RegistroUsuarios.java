@@ -183,7 +183,7 @@ public class Controlador01RegistroUsuarios {
 
 		//Eleccion foto perfil
 		if(request.getParameter(CONST_INPUT_EMAIL_AVATAR)!=null && request.getParameter(CONST_INPUT_EMAIL_AVATAR)!="") {
-			user2.setEmailFoto(request.getParameter("inputEmailAvatar"));
+			user2.setEmailFoto(request.getParameter(CONST_INPUT_EMAIL_AVATAR));
 			user2.setFoto("https://www.gravatar.com/avatar/"+DigestUtils.md5Hex(request.getParameter(CONST_INPUT_EMAIL_AVATAR))+".jpg");
 		}else {
 			user2.setEmailFoto(request.getParameter(""));
