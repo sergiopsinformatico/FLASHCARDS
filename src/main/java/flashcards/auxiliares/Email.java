@@ -1,6 +1,7 @@
 package main.java.flashcards.auxiliares;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.mail.Message;
 import javax.mail.Session;
@@ -8,6 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import ch.qos.logback.classic.Level;
 import main.java.flashcards.dto.EliminarCuentaDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
@@ -23,6 +25,10 @@ public class Email {
 	static final String CONST_CIERRE = "\nAtentamente, Equipo de Flashcards.";
 	static final String CONST_USUARIO = "\nUsuario: ";
 	static final String CONST_CLAVE = "\nClave: ";
+	static final String CONST_SMTP = "smtp.gmail.com";
+	
+	//Logger
+    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.auxiliares.Email");
 	
 	public boolean activarCuenta(UsuarioDTO user, String url) {
 		setAsunto("[Flashcards] Activacion Cuenta: "+user.getUsername());
@@ -81,11 +87,11 @@ public class Email {
 		enviado = false;
 		try{
 			Properties properties = System.getProperties();
-			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.host", CONST_SMTP);
 			properties.put("mail.smtp.port", "465");//465 o 587
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.starttls.enable", "true");
-			properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+			properties.put("mail.smtp.ssl.trust", CONST_SMTP);
 			
 			Session session = Session.getDefaultInstance(properties, null);
 			
@@ -95,14 +101,14 @@ public class Email {
 			message.setContent(getMensaje(), "text/plain");
 			
 			Transport transporte = session.getTransport("smtp");
-			transporte.connect("smtp.gmail.com", getEnvia(), getClave());
+			transporte.connect(CONST_SMTP, getEnvia(), getClave());
 			transporte.sendMessage(message, message.getAllRecipients());
 			transporte.close();
 			
 			enviado = true;
 		}catch (Exception me){
 			enviado = false;
-			me.printStackTrace();
+			LOGGER.log(java.util.logging.Level.INFO, "Fallo en el envio del mensaje");
 		}
 	    
 		return enviado;

@@ -40,6 +40,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
     String compara;
     UsuarioDTO user;
     
+    //Constantes
+  	static final String CONST_USERNAME = "username";
+  	static final String CONST_FECHA = "fecha";
+    
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.EliminarCuentaMongoDB");
 	
@@ -61,8 +65,8 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	
 	public boolean insertaEliminado(EliminarCuentaDTO cuenta) {
 		try {
-			doc = new Document().append("username", cuenta.getUsername())
-								.append("fecha", cuenta.getFecha());
+			doc = new Document().append(CONST_USERNAME, cuenta.getUsername())
+								.append(CONST_FECHA, cuenta.getFecha());
 			coleccionEliminados.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -72,10 +76,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	public boolean leerEliminado(EliminarCuentaDTO cuenta) {
 		try {
 			if(cuenta.getFecha()=="") {
-				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
+				criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(cuenta.getUsername()));
 			}else {
-				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()))
-													  .append("fecha", new BsonString(cuenta.getFecha()));
+				criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(cuenta.getUsername()))
+													  .append(CONST_FECHA, new BsonString(cuenta.getFecha()));
 			}
 			resultadosBusqueda = coleccionEliminados.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
@@ -86,10 +90,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 	public boolean eliminarEliminado(EliminarCuentaDTO cuenta) {
 		try {
 			if(cuenta.getFecha()=="") {
-				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()));
+				criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(cuenta.getUsername()));
 			}else {
-				criteriosBusqueda = new BsonDocument().append("username", new BsonString(cuenta.getUsername()))
-													  .append("fecha", new BsonString(cuenta.getFecha()));
+				criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(cuenta.getUsername()))
+													  .append(CONST_FECHA, new BsonString(cuenta.getFecha()));
 			}
 			coleccionEliminados.deleteOne(criteriosBusqueda);
 			return true;
@@ -103,7 +107,7 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			lista.add(new EliminarCuentaDTO(doc.getString("username"), doc.getString("fecha")));
+			lista.add(new EliminarCuentaDTO(doc.getString(CONST_USERNAME), doc.getString(CONST_FECHA)));
 		}
 		return lista;
 	}
@@ -113,10 +117,10 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 		date = new Fecha();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			compara = date.compararFechas(doc.getString("fecha"), date.fechaHoy());
+			compara = date.compararFechas(doc.getString(CONST_FECHA), date.fechaHoy());
 			if(compara!=null && Integer.parseInt(compara)<0) {
-				eliminarEliminado(new EliminarCuentaDTO(doc.getString("username")));
-				user = Broker.getInstanciaUsuario().getUsuarioDTO(doc.getString("username"));
+				eliminarEliminado(new EliminarCuentaDTO(doc.getString(CONST_USERNAME)));
+				user = Broker.getInstanciaUsuario().getUsuarioDTO(doc.getString(CONST_USERNAME));
 				Broker.getInstanciaUsuario().deleteUsuario(user);
 				iterador = coleccionEliminados.find().iterator();
 			}

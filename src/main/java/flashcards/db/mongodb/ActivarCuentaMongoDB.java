@@ -35,6 +35,11 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
     LinkedList<ActivaCuentaDTO> lista;
     MongoCursor<Document> iterador;
     
+    //Constantes
+  	static final String CONST_USERNAME = "username";
+  	static final String CONST_CODIGO = "codigo";
+  	static final String CONST_FECHA = "fecha";
+    
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivarCuentaMongoDB");
 	
@@ -56,8 +61,8 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean activacionCuenta(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername()))
-												  .append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(activaCuenta.getUsername()))
+												  .append(CONST_CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
 			
 			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
@@ -68,7 +73,7 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean existeActivacionUsuario(String username) {
 		try{
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(username));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(username));
 			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
 		}catch(Exception ex) {
@@ -78,9 +83,9 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			doc = new Document().append("username", activaCuenta.getUsername())
-								.append("codigo", activaCuenta.getCodigoActivacion())
-								.append("fecha",activaCuenta.getFecha());
+			doc = new Document().append(CONST_USERNAME, activaCuenta.getUsername())
+								.append(CONST_CODIGO, activaCuenta.getCodigoActivacion())
+								.append(CONST_FECHA,activaCuenta.getFecha());
 			coleccionActivaCuenta.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -90,8 +95,8 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean eliminaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(activaCuenta.getUsername()))
-												  .append("codigo", new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(activaCuenta.getUsername()))
+												  .append(CONST_CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
 			coleccionActivaCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
@@ -105,7 +110,7 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			lista.add(new ActivaCuentaDTO(doc.getString("username"), doc.getString("codigo"), doc.getString("fecha")));
+			lista.add(new ActivaCuentaDTO(doc.getString(CONST_USERNAME), doc.getString(CONST_CODIGO), doc.getString(CONST_FECHA)));
 		}
 		return lista;
 	}
@@ -116,9 +121,9 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	    Fecha fecha = new Fecha();
 	    while(iterador.hasNext()) {
 	    	doc = iterador.next();
-	    	compara = fecha.compararFechas(doc.getString("fecha"), fecha.fechaHoy());
+	    	compara = fecha.compararFechas(doc.getString(CONST_FECHA), fecha.fechaHoy());
 	    	if(compara!=null && Integer.parseInt(compara)<0) {
-				eliminaAC(new ActivaCuentaDTO(doc.getString("username"), doc.getString("codigo")));
+				eliminaAC(new ActivaCuentaDTO(doc.getString(CONST_USERNAME), doc.getString(CONST_CODIGO)));
 		    	iterador = coleccionActivaCuenta.find().iterator();
 			}
 	    }	

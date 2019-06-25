@@ -21,24 +21,34 @@ import main.java.flashcards.dto.UsuarioDTO;
 public class Controlador05Configuracion {
 	
 	ModelAndView vista;
-	UsuarioDTO userAntiguo, userNuevo;
+	UsuarioDTO userAntiguo;
+	UsuarioDTO userNuevo;
 	Fecha fecha;
 	Email email;
 	EliminarCuentaDTO elimina;
 	
+	//Constantes
+	static final String CONST_USUARIO = "usuario";
+	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
+	static final String CONST_MENSAJE = "mensaje";
+	
 	@RequestMapping(value = "/configuracion", method = RequestMethod.GET)
 	public ModelAndView modificarPerfil(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="") {
+			
 			vista = new ModelAndView("vistaConfiguracion");
+		
 		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
 		}
 		return vista;
 	}
 	
 	@RequestMapping(value = "/modificaUsuario", method = RequestMethod.POST)
 	public ModelAndView modificaUsuario(HttpServletRequest request, HttpServletResponse response) {
-		userAntiguo = (UsuarioDTO)request.getSession().getAttribute("usuario");
+		userAntiguo = (UsuarioDTO)request.getSession().getAttribute(CONST_USUARIO);
 		
 		userNuevo = new UsuarioDTO(request.getParameter("inputUsername"), 
 								   request.getParameter("inputEmail"), 
@@ -59,11 +69,11 @@ public class Controlador05Configuracion {
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
 			vista = new ModelAndView("redirect:/verPerfil.html");
-			vista.addObject("mensaje", "Perfil Actualizado");
-			vista.addObject("usuario", userNuevo);
+			vista.addObject(CONST_MENSAJE, "Perfil Actualizado");
+			vista.addObject(CONST_USUARIO, userNuevo);
 		}else {
 			vista = new ModelAndView("redirect:/verPerfil.html");
-			vista.addObject("mensaje", "Hubo un fallo y no se pudo modificar el perfil");
+			vista.addObject(CONST_MENSAJE, "Hubo un fallo y no se pudo modificar el perfil");
 		}
 		return vista;
 	}
@@ -77,23 +87,25 @@ public class Controlador05Configuracion {
 	//Eliminar Cuenta
 	@RequestMapping(value = "/eliminarCuenta", method = RequestMethod.GET)
 	public ModelAndView eliminarCuenta(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+		  ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+		  ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="") {
 			
 			fecha = new Fecha();
-			elimina = new EliminarCuentaDTO(((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername(), fecha.fechaEliminarCuenta());
+			elimina = new EliminarCuentaDTO(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), fecha.fechaEliminarCuenta());
 			
 			Broker.getInstanciaEliminarCuenta().insertaEliminado(elimina);
 			
 			email = new Email();
-			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getEmail());
+			email.eliminarCuenta(elimina, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getEmail());
 			
-			vista = new ModelAndView("redirect:/inicio.html");
-			vista.addObject("mensaje","Su cuenta se eliminara de forma definitiva en 14 dias.");
-			vista.addObject("usuario", null);
-			request.getSession().setAttribute("usuario", null);
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
+			vista.addObject(CONST_MENSAJE,"Su cuenta se eliminara de forma definitiva en 14 dias.");
+			vista.addObject(CONST_USUARIO, null);
+			request.getSession().setAttribute(CONST_USUARIO, null);
 			
 		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
 		}
 		return vista;
 	}	

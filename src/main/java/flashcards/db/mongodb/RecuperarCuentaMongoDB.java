@@ -34,6 +34,9 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	    Fecha fecha;
 	    String comparaFecha;
 	    
+	    //Constantes
+	  	static final String CONST_USERNAME = "username";
+	  	
 	    //Logger
 	    private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.RecuperarCuentaMongoDB");
 		
@@ -55,9 +58,9 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	
 	public boolean insertaRC(RecuperarCuentaDTO recupera) {
 		
-		criteriosBusqueda = new BsonDocument().append("username", new BsonString(recupera.getUsername()));
+		criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(recupera.getUsername()));
 		
-		doc = new Document().append("username", recupera.getUsername()).
+		doc = new Document().append(CONST_USERNAME, recupera.getUsername()).
 				             append("keySecurity", recupera.getKey()).
 				             append("fechaExpira", recupera.getFechaExpira());
 		
@@ -72,7 +75,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	
 	public boolean leerRC(String username, String key) {
 		
-		criteriosBusqueda = new BsonDocument().append("username", new BsonString(username)).
+		criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(username)).
 				                               append("keySecurity", new BsonString(key));
 		
 		iterador = coleccionRecuperarCuenta.find(criteriosBusqueda).iterator();
@@ -82,7 +85,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	}
 	
 	public boolean existeSolicitudUsuario(String username) {
-		criteriosBusqueda = new BsonDocument().append("username", new BsonString(username));
+		criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(username));
 		
 		iterador = coleccionRecuperarCuenta.find(criteriosBusqueda).iterator();
 		
@@ -91,7 +94,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 	
 	public boolean eliminarRC(String username) {
 		try {
-			criteriosBusqueda = new BsonDocument().append("username", new BsonString(username));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(username));
 			coleccionRecuperarCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch (Exception ex) {
@@ -107,7 +110,7 @@ public class RecuperarCuentaMongoDB implements InterfaceDAORecuperarCuenta {
 				doc = iterador.next();
 				comparaFecha = fecha.compararFechas(doc.getString("fechaExpira"), fecha.fechaHoy());
 				if( comparaFecha!= null && Integer.parseInt(comparaFecha) < 0) {
-					eliminarRC(doc.getString("username"));
+					eliminarRC(doc.getString(CONST_USERNAME));
 					iterador = coleccionRecuperarCuenta.find().iterator();
 				}
 			}

@@ -24,20 +24,26 @@ public class Controlador02ControlSesion {
 	EliminarCuentaDTO eliminado;
 	Email email;
 	
+	//Constantes
+	static final String CONST_USUARIO = "usuario";
+	static final String CONST_MENSAJE = "mensaje";
+	static final String CONST_VIEW_IS = "vistaIniciarSesion";
+	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
+	
 	//Index o pagina principal logueado
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView inicio(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")==null || 
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
+		if(request.getSession().getAttribute(CONST_USUARIO)==null || 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()==null||
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()=="") {
 			vista = new ModelAndView("index");
-			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
-				vista.addObject("mensaje", request.getParameter("mensaje"));
+			if(request.getParameter(CONST_MENSAJE)!= null && (!request.getParameter(CONST_MENSAJE).equals(""))) {
+				vista.addObject(CONST_MENSAJE, request.getParameter(CONST_MENSAJE));
 			}
 		}else {
 			vista =  new ModelAndView("vistaPrincipal");
-			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
-				vista.addObject("mensaje", request.getParameter("mensaje"));
+			if(request.getParameter(CONST_MENSAJE)!= null && (!request.getParameter(CONST_MENSAJE).equals(""))) {
+				vista.addObject(CONST_MENSAJE, request.getParameter(CONST_MENSAJE));
 			}
 		}
 		return vista;
@@ -60,18 +66,18 @@ public class Controlador02ControlSesion {
 		
 		//Vista Iniciar Sesion
 		
-		if(request.getSession().getAttribute("usuario")==null || 
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()==null||
-		   ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()=="") {
+		if(request.getSession().getAttribute(CONST_USUARIO)==null || 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()==null||
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()=="") {
 			
-			vista =  new ModelAndView("vistaIniciarSesion");
+			vista =  new ModelAndView(CONST_VIEW_IS);
 			
-			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
-				vista.addObject("mensaje", request.getParameter("mensaje"));
+			if(request.getParameter(CONST_MENSAJE)!= null && (!request.getParameter(CONST_MENSAJE).equals(""))) {
+				vista.addObject(CONST_MENSAJE, request.getParameter(CONST_MENSAJE));
 			}
 			
 		}else {
-			vista = new ModelAndView("redirect:/inicio.html");
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
 			
 		}
 		
@@ -87,21 +93,21 @@ public class Controlador02ControlSesion {
 			
 			if(user.isActivadaCuenta()) {
 				eliminado = new EliminarCuentaDTO(user.getUsername());
-				vista = new ModelAndView("redirect:/inicio.html");
+				vista = new ModelAndView(CONST_REDIRECT_INICIO);
 				if(Broker.getInstanciaEliminarCuenta().leerEliminado(eliminado)) {
 					Broker.getInstanciaEliminarCuenta().eliminarEliminado(eliminado);
-					vista.addObject("mensaje", "Su cuenta ha sido reactivada");
+					vista.addObject(CONST_MENSAJE, "Su cuenta ha sido reactivada");
 					email = new Email();
 					email.reactivacionCuenta(user);
 				}
-				vista.addObject("usuario", user);
+				vista.addObject(CONST_USUARIO, user);
 			}else {
-				vista = new ModelAndView("vistaIniciarSesion");
-				vista.addObject("mensaje", "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
+				vista = new ModelAndView(CONST_VIEW_IS);
+				vista.addObject(CONST_MENSAJE, "Su cuenta aun no ha sido activada. Por favor, revise su email para activar la cuenta.");
 			}
 		}else {
-			vista = new ModelAndView("vistaIniciarSesion");
-			vista.addObject("mensaje", "El usuario y/o la clave son incorrectos.");
+			vista = new ModelAndView(CONST_VIEW_IS);
+			vista.addObject(CONST_MENSAJE, "El usuario y/o la clave son incorrectos.");
 		}
 		return vista;
 	}
@@ -114,9 +120,9 @@ public class Controlador02ControlSesion {
 	//Cerrar Sesion
 	@RequestMapping(value = "/cerrarSesion", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletRequest request, HttpServletResponse response) {	
-		vista = new ModelAndView("redirect:/inicio.html");
-		request.getSession().setAttribute("usuario", null);
-		vista.addObject("usuario",null);
+		vista = new ModelAndView(CONST_REDIRECT_INICIO);
+		request.getSession().setAttribute(CONST_USUARIO, null);
+		vista.addObject(CONST_USUARIO,null);
 		return vista;
 	}
 }

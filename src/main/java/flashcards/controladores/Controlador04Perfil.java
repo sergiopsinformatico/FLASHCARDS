@@ -19,15 +19,23 @@ public class Controlador04Perfil {
 	ModelAndView vista;
 	UsuarioDTO userAntiguo;
 	
+	//Constantes
+	static final String CONST_USUARIO = "usuario";
+	static final String CONST_MENSAJE = "mensaje";
+	
 	//Ver Perfil
 	@RequestMapping(value = "/verPerfil", method = RequestMethod.GET)
 	public ModelAndView verPerfil(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getSession().getAttribute("usuario")!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!=null && ((UsuarioDTO)(request.getSession().getAttribute("usuario"))).getUsername()!="") {
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+			((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+			((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="") {
+			
 			vista = new ModelAndView("vistaPerfil");
-			vista.addObject("perfil", ((UsuarioDTO)(request.getSession().getAttribute("usuario"))));
-			if(request.getParameter("mensaje")!= null && (!request.getParameter("mensaje").equals(""))) {
-				vista.addObject("mensaje", request.getParameter("mensaje"));
+			vista.addObject("perfil", ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))));
+			if(request.getParameter(CONST_MENSAJE)!= null && (!request.getParameter(CONST_MENSAJE).equals(""))) {
+				vista.addObject(CONST_MENSAJE, request.getParameter(CONST_MENSAJE));
 			}
+			
 		}else {
 			vista = new ModelAndView("redirect:/inicio.html");
 		}
