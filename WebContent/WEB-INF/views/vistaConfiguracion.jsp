@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Mi Perfil</title>
+  <title>Flashcards - Configuración</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
-  <link href="resources/css/perfil.css" rel="stylesheet">
+  <link href="resources/css/configuracion.css" rel="stylesheet">
   
   <!-- Angular JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -345,352 +345,346 @@
         </script>
         
         <!-- End of Topbar -->
-
+        
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid" ng-app="AppConfiguracion" ng-controller="ConfiguracionCtrl">
         	<div class="row">
-        		<br><br>
+        		<br>
         	</div>
         	<div class="row">
-        		<div class="col-md-3"></div>
-        		<div class="col-md-6">
-        			<div class="row middle">
-        				<img src="${perfil.getFoto()}" alt="Foto" class="fotoPerfil">
-        			</div>
-        			<div class="row">
-        				<br>
-        			</div>
-        			<div class="row cuadroInfoUser container">
-        				<div class="col-md-12">
-        					<br>
-	        				<h6 align="center" class="titleInfo">Información Personal</h6>
-	        				<br>
-	        				<p id="username" align="center">
-	        					<strong>Username:</strong> ${perfil.getUsername()}
-	        				</p>
-	        				<p id="email" align="center">
-	        					<strong>Email:</strong> ${perfil.getEmail()}
-	        				</p>
-	        				<p id="nombreApellidos" style="display: none;" align="center">
-	        					<strong>Nombre y Apellidos:</strong> ${perfil.getNombreApellidos()}
-	        				</p>
-	        				<p id="ciudad" style="display: none;" align="center">
-	        					<strong>Ciudad:</strong> ${perfil.getCiudad()}
-	        				</p>
-	        				<p id="pais" style="display: none;" align="center">
-	        					<strong>País:</strong> ${perfil.getPais()}
-	        				</p>
-	        				<br>
-	        				<script>
-	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
-	        						document.getElementById("nombreApellidos").style.display = "block";
-	        					}
-	        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
-	        						document.getElementById("ciudad").style.display = "block";
-	        					}
-	        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
-	        						document.getElementById("pais").style.display = "block";
-	        					}
-	        				</script>
-		        		</div>
-        			</div>
-        		</div>
-        		<div class="col-md-3"></div>
+        		<div class="col-md-1"></div>
+	        	<div class="col-md-5">
+	        		<div class="row cuadro">
+	        			<br>
+		    			<h4 class="title" align="center">Modificar Mi Perfil</h4>
+		    			<br> 
+		    			<div class="row">
+		    				<div class="col-md-1"></div>
+		    				<div class="col-md-10">
+								<form action="modificaUsuario.do" method="post" id="Registro" name="Registro">            
+					           		<br>
+					           		<div class="form-group">
+							            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
+							        </div>
+							        <small id="msgUsername">{{messageUsername}}</small>	
+							        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres.</h6>			        
+							        <br>
+							        <div class="form-group">
+							            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
+							        </div>
+							        <small id="msgEmail">{{messageEmail}}</small>
+							        <h6 style="font-size:10px; color:#808080">Dirección de email peteneciente al usuario.</h6>			        
+							        <br>
+							        <div class="form-group">
+							            <input type="password" class="form-control" id="inputClave" ng-model="clave" ng-change="validateClave($event, clave, repClave)" name="inputClave" placeholder="Clave" required>
+							        </div>
+							        <small id="msgClave">{{messageClave}}</small>
+							        <h6 style="font-size:10px; color:#808080">Solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 20 caracteres.</h6>
+							        <br>
+							        <div class="form-group">
+							            <input type="password" class="form-control" id="inputRepiteClave" ng-model="repClave" ng-change="validateRepClave($event, clave, repClave)" name="inputRepiteClave" placeholder="Repetir Clave" required>
+							        </div>
+							        <small id="msgRepClave">{{messageRepClave}}</small>
+							        <h6 style="font-size:10px; color:#808080">Deben coincidir los campos Clave y Repetir Clave.</h6>
+							        <br>
+							        <div class="form-group">
+							            <input type="text" class="form-control" id="inputNyA" name="inputNyA" ng-model="nombreApellidos" placeholder="Nombre y Apellidos">
+							        </div>
+							        <div class="form-group">
+							            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" ng-model="ciudad" placeholder="Ciudad">
+							        </div>
+							        <div class="form-group">
+							            <input type="text" class="form-control" id="inputPais" name="inputPais" ng-model="pais" placeholder="Pais">
+							        </div>
+							        <div class="form-group">
+							        	<p class="infoFotoPerfil"><strong>Foto de Perfil (con GRAVATAR)</strong></p>
+							        	<label style="text-align:justify;"><strong>GRAVATAR </strong>es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que te has registrado.</label>
+										<br>
+										<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" ng-model="fotoPerfil" value="" placeholder="">
+										<br>
+										<label style="text-align:justify;">Si no deseas incluir una foto de perfil, se te asignará una foto de perfil por defecto.</label>
+									</div>
+							        <small id="msgError">{{messageError}}</small>
+							        <div class="row">
+							        	<div class="col-md-3"></div>
+							        	<div class="col-md-6">
+							        		<br>
+							        		<input type="submit" class="btn btn-success" id="btnGuardaCambios" name="btnGuardaCambios" value="Guardar Cambios" />
+							        		<br>
+							        	</div>
+							        	<div class="col-md-3"></div>
+							        </div>	
+								</form>
+							</div>
+							<div class="col-md-1"></div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<div class="col-md-1"></div>
+	        	<div class="col-md-4">
+	        		<div align="center" class="row cuadro">
+	        			<br>
+		    			<h4 class="title" align="center">Eliminar Cuenta</h4>
+		    			<br>
+		    			<div class="middle">
+		    				<input type="submit" class="btn btn-danger" value="Eliminar Cuenta" onclick="eliminarCuenta()" />
+		    				<script>
+			    				function eliminarCuenta(){
+			    			    	bootbox.confirm({ 
+			    		    		  size: "small",
+			    		    		  message: "¿Quiere eliminar su cuenta?", 
+			    		    		  callback: function(result){ 
+			    		    			if(result){
+			    		    				window.location.href = "eliminarCuenta.do";
+			    		    			}  
+			    		    		  }
+			    		    		})
+			    			    }
+		    				</script>
+	       				</div>
+	       				<br>
+	       				<small>
+	       					<strong>Nota:</strong> una vez de a eliminar cuenta, dispone de 14 días para volver a reactivarla, volviendo a iniciar sesión.
+	       					En caso contrario, se eliminará la cuenta definitivamente pasado ese periodo.
+	       					Se le enviará un email con toda la información.
+	       				</small>
+	       				<br>
+	        		</div>
+	        	</div>
+	        	<div class="col-md-1"></div>
         	</div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-          <!-- Page Heading 
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
-
-          <!-- Content Row 
-          <div class="row">
-
-            <!-- Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row 
-
-          <div class="row">
-
-            <!-- Area Chart 
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body 
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pie Chart 
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body 
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row 
-          <div class="row">
-
-            <!-- Content Column 
-            <div class="col-lg-6 mb-4">
-
-              <!-- Project Card Example 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Color System 
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-6 mb-4">
-
-              <!-- Illustrations 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div>
-
-              <!-- Approach 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>-->
-
         </div>
         <!-- /.container-fluid -->
+        
+        <script>
+			'use strict'
+		    var app = angular.module('AppConfiguracion', []);
+		    app.controller('ConfiguracionCtrl', function($scope, $http) {
+		    	$scope.messageUsername = "";
+	        	$scope.messageEmail = "";
+	        	$scope.messageClave = "";
+	        	$scope.messageRepClave = "";
+	        	$scope.messageError = "";
+	        	
+	        	var listaUsernames = [];
+	        	var listaEmails = [];
+	        	var indice = 0;
+	        	
+	        	var checkUsername = true;
+	        	var checkExistUsername = false;
+	        	var checkLongUsername = false;
+	    		var checkCaracterUsername = true;
+	        	
+	        	var checkEmail = true;
+	        	var existEmail = false;
+	        	var checkCaracterEmail = false;
+	        	
+	        	var checkClave = true;
+	        	var checkLongClave = false;
+	        	var checkCaracterClave = false;
+	        	
+	        	var checkRepClave = true;
+	        	
+	        	$http({
+	    	        method: 'GET',
+	    	        url: '/getUsernames.do',
+	                headers : {
+	                	'Accept': 'application/json'
+	                }
+	    	    }).then(function mySuccess(response) {
+	    	    	for(indice=0; indice<response.data.length; indice++){
+	    	    		listaUsernames.push(response.data[indice]);
+	    	    	}
+	    	    }, function myError(response) {
+	    	    	listaUsernames = [];
+	    	    });
+	        	
+						        	
+	        	$http({
+	    	        method: 'GET',
+	    	        url: '/getEmails.do',
+	                headers : {
+	                	'Accept': 'application/json'
+	                }
+	    	    }).then(function mySuccess(response) {
+	    	    	for(indice=0; indice<response.data.length; indice++){
+	    	    		listaEmails.push(response.data[indice]);
+	    	    	}
+	    	    }, function myError(response) {
+	    	    	listaEmails = [];
+	    	    });        	
+	        	
+	        	function enableBtnModificar(){
+	        		if(checkUsername==true && checkEmail==true && checkClave==true && checkRepClave==true){
+	        			if($scope.username=="" || $scope.clave=="" || $scope.repClave=="" || $scope.email==""){
+	        				document.getElementById("btnGuardaCambios").disabled = true;
+	        				document.getElementById("msgError").style.color="#E33A3A"
+	        				$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
+	        			}else{
+	        				$scope.messageError="";
+	        				document.getElementById("btnGuardaCambios").disabled = false;
+	        			}
+	        		}else{
+	        			document.getElementById("btnGuardaCambios").disabled = true;
+	        			document.getElementById("msgError").style.color="#E33A3A"
+	        			$scope.messageError="Existen campos vacíos o erróneos. Por favor, revísalos para continuar con el registro.";
+	        		}
+	        	}
+	        	
+	        	$scope.validateUsername = function(event, username){
+	        		checkUsername = false;
+	        		checkExistUsername = false;
+	        		checkLongUsername = false;
+	        		checkCaracterUsername = true;
+	        		
+	        		for(indice=0; indice<listaUsernames.length; indice++){
+	        			if((listaUsernames[indice] != "${usuario.getUsername()}") && (username == listaUsernames[indice])){
+	        				checkExistUsername = true;
+	        				document.getElementById("msgUsername").style.color="#E33A3A"
+	        				$scope.messageUsername = "Error. El username "+username+" existe.";
+	        				break;
+	        			}
+	        		}
+	        		
+	        		if(checkExistUsername==false){		        			
+	        			if(username.length>=5 && username.length<=15){
+		        			checkLongUsername = true;
+		        			for(indice=0; indice<username.length; indice++){
+		        				if(username.charAt(indice)==' '){
+		        					checkCaracterUsername=false;
+		        					document.getElementById("msgUsername").style.color="#E33A3A"
+		        					$scope.messageUsername = "El username no puede contener espacios.";
+		        					break;
+		        				}else if((!(username.charAt(indice)>='a' && username.charAt(indice)<='z')) &&
+		        				   (!(username.charAt(indice)>='A' && username.charAt(indice)<='Z')) &&
+		        				   (!(username.charAt(indice)>='0' && username.charAt(indice)<='9'))){
+		        					checkCaracterUsername=false;
+		        					document.getElementById("msgUsername").style.color="#E33A3A"
+		        					$scope.messageUsername = "El caracter "+ username.charAt(indice) +" no se permite para este campo.";
+		        					break;
+		        				}
+		        			}
+		        			
+		        			if(checkCaracterUsername==true){
+		        				document.getElementById("msgUsername").style.color="#5CC300"
+		        				$scope.messageUsername = "El username "+username+" es válido.";
+		        			}
+		        			
+		        		}else{
+		        			document.getElementById("msgUsername").style.color="#E33A3A"
+		        			$scope.messageUsername = "Error. La longitud del username debe de ser entre 5 y 15 caracteres.";
+		        		}
+	        			
+	        			
+	        		}
+	        		
+	        		if(checkExistUsername==false && checkLongUsername==true && checkCaracterUsername==true){
+	        			checkUsername = true;
+	        		}
+	        		
+	        		enableBtnModificar();
+	        	}
+	        	
+	        	$scope.validateEmail = function(event, email){
+	        		checkEmail = false;
+	        		existEmail = false;
+		        	checkCaracterEmail = true;
+		        	email = email.toLowerCase();
+	        		
+	        		for(indice=0; indice<listaEmails.length; indice++){
+	        			if((listaEmails[indice]!="${usuario.getEmail()}") && (email == listaEmails[indice])){
+	        				existEmail = true;
+	        				document.getElementById("msgEmail").style.color="#E33A3A"
+	        				$scope.messageEmail = "El email "+ email +" existe.";
+	        				break;
+	        			}
+	        		}
+	        		
+	        		if(existEmail==false){
+		        		for(indice=0; indice<email.length; indice++){
+		        			if(email.charAt(indice)==' '){
+		        				checkCaracterEmail = false;
+		        				document.getElementById("msgEmail").style.color="#E33A3A"
+		        				$scope.messageEmail = "La direccion de email no puede contener espacios.";
+		        				break;
+		        			}
+		        		}
+	        		}
+	        		
+	        		if(existEmail==false && checkCaracterEmail==true){
+	        			document.getElementById("msgEmail").style.color="#5CC300"
+	        			$scope.messageEmail = "El email "+ email + " está disponible.";
+	        			checkEmail = true;
+	        		}
+	        		
+	        		enableBtnModificar();
+		        }
+	        	
+	        	$scope.validateClave = function(event, clave, repClave){
+	        		
+	        		checkClave = false;
+	        		checkLongClave = false;
+	        		checkCaracterClave = true;
+	        		
+	        		if(clave.length>=5 && clave.length<=20){
+	        			checkLongClave = true;
+	        			for(indice=0; indice<clave.length; indice++){
+	        				if(clave.charAt(indice)==' '){
+	        					checkCaracterClave=false;
+	        					document.getElementById("msgClave").style.color="#E33A3A"
+		    		        	$scope.messageClave = "Error. La clave no puede contener espacios.";
+	        					break;
+	        				}else if((!(clave.charAt(indice)>='a' && clave.charAt(indice)<='z')) &&
+	        				   (!(clave.charAt(indice)>='A' && clave.charAt(indice)<='Z')) &&
+	        				   (!(clave.charAt(indice)>='0' && clave.charAt(indice)<='9'))){
+	        					checkCaracterClave=false;
+	        					document.getElementById("msgClave").style.color="#E33A3A"
+	    		        		$scope.messageClave = "Error. El caracter "+clave.charAt(indice)+" no es valido.";
+	        					break;
+	        				}
+	        			}
+	        		}else{
+	        			document.getElementById("msgClave").style.color="#E33A3A"
+	        			$scope.messageClave = "Error. La longitud de la clave debe de ser entre 5 y 20 caracteres.";
+	        		}
+	        		
+	        		if(checkLongClave==true && checkCaracterClave==true){
+	        			document.getElementById("msgClave").style.color="#5CC300"
+		        		$scope.messageClave = "La clave es válida.";
+	        			checkClave = true;
+	        		}
+	        		
+	        		$scope.validateRepClave(event, clave, repClave);
+	        	}
+	        	
+	        	$scope.validateRepClave = function(event, clave, repClave){
+	        		checkRepClave = false;
+	        		if(clave==repClave){
+	        			checkRepClave = true;
+	        			document.getElementById("msgRepClave").style.color="#5CC300"
+			        	$scope.messageRepClave = "Los campos Clave y Repite Clave coinciden.";
+	        		}else{
+	        			document.getElementById("msgRepClave").style.color="#E33A3A"
+		        		$scope.messageRepClave = "Error. No coinciden los campos Clave y Repite Clave.";
+	        		}
+	        		enableBtnModificar();
+	        	}
+	        	
+	        	$scope.username = "${usuario.getUsername()}";
+				$scope.clave = "${usuario.getClave()}";
+				$scope.repClave = "${usuario.getClave()}";
+				$scope.email = "${usuario.getEmail()}";
+				$scope.nombreApellidos = "${usuario.getNombreApellidos()}";
+				$scope.ciudad = "${usuario.getCiudad()}";
+				$scope.pais= "${usuario.getPais()}";
+				$scope.fotoPerfil = "${usuario.getEmailFoto()}";
+	        	
+	        	enableBtnModificar();
+	        	
+	        });
+		</script>
+        
+        
 
       </div>
       <!-- End of Main Content -->
@@ -772,6 +766,3 @@
 </body>
 
 </html>
-
-
-

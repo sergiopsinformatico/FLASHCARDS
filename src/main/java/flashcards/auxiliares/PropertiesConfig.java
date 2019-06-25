@@ -15,7 +15,7 @@ public class PropertiesConfig {
 		String property;
 		try {
 			Properties prop = new Properties();
-		    InputStream inputStream = PropertiesConfig.class.getClassLoader().getResourceAsStream("conexionDB.properties");
+		    InputStream inputStream = PropertiesConfig.class.getClassLoader().getResourceAsStream("conexionesFlashcards.properties");
 		    prop.load(inputStream);
 		    property =  prop.getProperty(name);
 		    inputStream.close();

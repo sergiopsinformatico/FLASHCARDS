@@ -19,6 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -26,123 +27,78 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <link href="resources/vendor/bootstrap/css/glyphicon.css" rel="stylesheet" type="text/css">
-    
-    <style>
-    	body {
-		  background: #F1F3FA;
-		}
-		
-		.btn-recCuenta{
-		  background-color: #BAC1B5;
-		  border: none;
-		  color: white;
-		  width: 100%;
-		  height: 50px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
-		}
-		
-		.positionReCaptcha{
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-    </style>
-    
   </head>
 
-  <body id="page-top">
+  <body id="page-top">		
   
- 	<!-- Bootstrap core JavaScript -->
-    <script src="resources/vendor/jquery/jquery.min.js"></script>
-    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    <!--Re captcha google-->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="resources/js/jqBootstrapValidation.js"></script>
-    <script src="resources/js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="resources/js/freelancer.min.js"></script>
-    
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/iniciarSesion.html">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    <section>
-    	<div class="row">
-    		<div class="col-md-4"></div>
-    		<div class="col-md-4">
-    			<br>
-    			<h1 align="center">Recuperar la Clave</h1>
-    			<br>
-    			<form action="recuperaClave.html" method="post" id="Login" name="Login">
-			        <div class="form-group">
-			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Introducir username o email" required>
-			        </div>
-			       <br>
-			        <div class="row" align="center">
-			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
-			        </div>
-			        <br>
-			        <div class="row">
-			        	<div class="col-md-3"></div>
-			        	<div class="col-md-6">
-			        		<button type="submit" id="buttonRec" name="buttonRec" class="btn-recCuenta">Recuperar Clave</button>
-			        	</div>
-			        	<script>
-			        		document.getElementById("buttonRec").disabled = true;
-			        	</script>
-			        	<div class="col-md-3"></div>
-			        </div>
-			        <script>
-			        	function enableBtnRec(){
-			        		document.getElementById("buttonRec").style.background = "#61E900";
-			        		document.getElementById("buttonRec").disabled = false;
-			        	}
-			        </script>
-			    </form>
-			</div>
-    		<div class="col-md-4"></div>
-		</div>
-    </section>
+    <header class="header">
+	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        </a>
+	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          Menu
+	          <i class="fas fa-bars"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto">
+	          	<li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
+	            </li>
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+	</header>
 	
-	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+	<section>
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 formAccess textCenter container">
+				<br>
+   				<h4 align="center" class="title">Recuperar Cuenta</h4>
+   				<br>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+		   				<form action="recuperaClave.html" method="post" id="Login" name="Login">
+		   					<span id="reauth-email" class="reauth-email"></span>
+			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+					        <br><br><br>
+			                <div class="middle">
+			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtnRec"></div>
+			                </div>
+			                <br><br>
+					        <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonRec" name="buttonRec" type="submit">Recuperar Clave</button>
+					        <script>
+					        	document.getElementById("buttonRec").disabled = true;
+					        	function enableBtnRec(){
+					        		document.getElementById("buttonRec").style.background = "#457D8E";
+					        		document.getElementById("buttonRec").disabled = false;
+					        	}
+					        </script>
+					        <br><br>
+					    </form>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</section>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">
       <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
         <i class="fa fa-chevron-up"></i>
       </a>
     </div>
-
-
-
-
     
     <!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
@@ -158,6 +114,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="resources/js/freelancer.min.js"></script>
+    
+    <!--Re captcha google-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     
     <!-- Alert de Bootbox -->
     <script src="resources/js/bootbox.min.js"></script>

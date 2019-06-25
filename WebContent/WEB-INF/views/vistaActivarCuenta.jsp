@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flashcards - Activación Cuenta ${activa.getUsername()}</title>
+    <title>Flashcards - Activación Cuenta de ${activa.getUsername()}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -26,103 +27,72 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
-    <style>
-	    .profile-userpic-avatar img {
-		  float: none;
-		  margin: 0 auto;
-		  width: 50%;
-		  height: 50%;
-		  -webkit-border-radius: 50% !important;
-		  -moz-border-radius: 50% !important;
-		  border-radius: 50% !important;
-		  border-style: solid;
-  		  border-width: 1px;
-		}
-		.profile-userpic-forbidden img {
-		  float: none;
-		  margin: 0 auto;
-		  width: 20%;
-		  height: 20%;
-		  -webkit-border-radius: 50% !important;
-		  -moz-border-radius: 50% !important;
-		  border-radius: 50% !important;
-		  border-style: solid;
-  		  border-width: 1px;
-		}
-		.recuadroActivaCuenta {
-		     border: ridge #108CA6 1px;
-		     font-size: 20px;
-		     background-color: #16E40D;
-		     color : #0B6507;
-		}
-		.infoFinRegistro {
-		     font-size: 15px;
-		     color : #1962EE;
-		}
-		table.center {
-	      margin-left:auto; 
-	      margin-right:auto;
-	      text-align:center;
-	    }
-	    body {
-		  background: #F1F3FA;
-		}
-    </style>
+    
     
   </head>
 
   <body id="page-top">		
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
-      </div>
-    </nav>
-    <section>
+   <!-- Navigation -->
+    <header class="header">
+	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        </a>
+	      </div>
+	    </nav>
+	</header>
+	    
+    <section class="background">
+   		<br><br><br><br>
     	<div class="row">
     		<div class="col-md-4"></div>
-    		<div class="col-md-4">
+    		<div class="col-md-4 formAccess textCenter container">
     			<br>
-    			<h1 align="center">Activar Cuenta: ${activa.getUsername()}</h1>
-    			<br> 
-    			<div class="row" style="text-align: center;">
-    				<p class="recuadroActivaCuenta">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
-    			</div>
-    			<div class="row">
-    				<form action="activar.html" method="post" id="ActivaCuenta" name="ActivaCuenta">
-    					<br>
-    					<p class="infoFinRegistro">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
-				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos">
-				        </div>
-				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad">
-				        </div>
-				        <div class="form-group">
-				            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
-				        </div>
-				        <br>
-				        <p class="infoFinRegistro">Foto de Perfil (con GRAVATAR)</p>
-				        <div class="form-group">
-				        	<label style="text-align:justify;"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</label>
-							<br>
-							<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
-							<br>
-							<label style="text-align:justify;">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</label>
-						</div>
-						<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
-				        <br>
-				        <div class="row">
-				        	<div class="col-md-3"></div>
-				        	<div class="col-md-6">
-				        		<button type="submit" class="btn btn-success">Siguiente</button>
-				        	</div>
-				        	<div class="col-md-3"></div>
-				        </div>
-				    </form>
-    			</div>
-			</div>
+    			<h4 class="title">Activar Cuenta</h4>
+	    		<br>
+	    		<div class="row">
+	    			<div class="col-md-2"></div>
+	    			<div class="col-md-8">
+		    			<div class="row" style="text-align: center;">
+		    				<p class="mensajeInfo">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
+		    				<p class="mensajeInfo">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
+		    			</div>
+		    			<div class="row">
+		    				<form action="infoExtra.do" method="post" id="ActivaCuenta" name="ActivaCuenta">
+		    					<div class="form-group">
+						            <input type="text" class="form-control" id="inputNyA" name="inputNyA" placeholder="Nombre y Apellidos">
+						        </div>
+						        <div class="form-group">
+						            <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad">
+						        </div>
+						        <div class="form-group">
+						            <input type="text" class="form-control" id="inputPais" name="inputPais" placeholder="Pais">
+						        </div>
+						        <br>
+						        <h6 class="mensajeInfo">Foto de Perfil (con GRAVATAR)</h6>
+						        <div class="form-group">
+						        	<p class="mensajeNotifica"><b>GRAVATAR</b> es un servicio que ofrece un avatar único globalmente a través de tu email. Si no estás registrado, accede <a href="https://es.gravatar.com/" target="_blank">aquí</a> para registrarte y elige que foto de perfil. Indica en el siguiente campo, el email con el que estás registrado en Gravatar.</p>
+									<br>
+									<input type="text" class="form-control" id="inputEmailAvatar" name="inputEmailAvatar" placeholder="">
+									<br>
+									<p class="mensajeNotifica">Si no incluyes ninguna dirección de email, se te asignará una foto de perfil por defecto.</p>
+								</div>
+								<input type="hidden" id="username" name="username" value="${activa.getUsername()}">
+						        <br>
+						        <div class="row middle">
+						        	<button type="submit" class="btn btn-success">Siguiente</button>
+						        </div>
+						        <div class="row">
+						        	<br><br>
+						        </div>
+						    </form>
+		    			</div>
+	    			</div>
+	    			<div class="col-md-2"></div>
+	    		</div>
+    		</div>
     		<div class="col-md-4"></div>
 		</div>
     </section>

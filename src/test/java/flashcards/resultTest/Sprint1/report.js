@@ -39,21 +39,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 1841150593,
+  "duration": 1608285413,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.introduce_los_datos_correctamente()"
 });
 formatter.result({
-  "duration": 984155601,
+  "duration": 863062476,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.se_registra_correctamente()"
 });
 formatter.result({
-  "duration": 169813414,
+  "duration": 184889936,
   "status": "passed"
 });
 formatter.scenario({
@@ -83,21 +83,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 4907235,
+  "duration": 4366415,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.introduce_un_username_existente()"
 });
 formatter.result({
-  "duration": 642755915,
+  "duration": 697904902,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 40668752,
+  "duration": 40344244,
   "status": "passed"
 });
 formatter.scenario({
@@ -127,21 +127,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 3194381,
+  "duration": 2970158,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.el_username_contiene_un_caracter_invalido()"
 });
 formatter.result({
-  "duration": 28817,
+  "duration": 36318,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 637513136,
+  "duration": 684352472,
   "status": "passed"
 });
 formatter.scenario({
@@ -171,21 +171,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 2571848,
+  "duration": 3260699,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.la_longitud_del_username_es_incorrecta()"
 });
 formatter.result({
-  "duration": 29607,
+  "duration": 39870,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 642054036,
+  "duration": 660156980,
   "status": "passed"
 });
 formatter.scenario({
@@ -215,21 +215,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 3207013,
+  "duration": 3509792,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.la_clave_contiene_un_caracter_invalido()"
 });
 formatter.result({
-  "duration": 40660,
+  "duration": 48555,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 651796662,
+  "duration": 690558065,
   "status": "passed"
 });
 formatter.scenario({
@@ -259,21 +259,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 3054242,
+  "duration": 3260699,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.la_longitud_de_la_clave_es_incorrecta()"
 });
 formatter.result({
-  "duration": 28028,
+  "duration": 42634,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 663249379,
+  "duration": 718768640,
   "status": "passed"
 });
 formatter.scenario({
@@ -303,21 +303,21 @@ formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.una_persona_quiere_registrarse()"
 });
 formatter.result({
-  "duration": 2818571,
+  "duration": 3192800,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.introduce_un_email_existente()"
 });
 formatter.result({
-  "duration": 670040005,
+  "duration": 680935055,
   "status": "passed"
 });
 formatter.match({
   "location": "Test01UsuarioCreaCuentaUsuario.no_se_registra()"
 });
 formatter.result({
-  "duration": 38940896,
+  "duration": 40397537,
   "status": "passed"
 });
 formatter.uri("02UsuarioIniciaSesion.feature");
@@ -329,16 +329,16 @@ formatter.feature({
     }
   ],
   "line": 3,
-  "name": "Como usuario quiero acceder al sistema para usar la aplicación",
+  "name": "Como usuario quiero acceder al sistema para usar la aplicacion",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion",
   "keyword": "Feature"
 });
 formatter.scenario({
   "line": 5,
   "name": "Login correcto. Login mediante email",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación;login-correcto.-login-mediante-email",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion;login-correcto.-login-mediante-email",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -361,28 +361,28 @@ formatter.match({
   "location": "Test02UsuarioIniciaSesion.una_persona_quiere_loguearse()"
 });
 formatter.result({
-  "duration": 2522898,
+  "duration": 2644483,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.se_loguea_con_el_email()"
 });
 formatter.result({
-  "duration": 682810424,
+  "duration": 727425678,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.se_loguea_correctamente()"
 });
 formatter.result({
-  "duration": 36713,
+  "duration": 27238,
   "status": "passed"
 });
 formatter.scenario({
   "line": 10,
   "name": "Login correcto. Login mediante username",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación;login-correcto.-login-mediante-username",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion;login-correcto.-login-mediante-username",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -405,28 +405,28 @@ formatter.match({
   "location": "Test02UsuarioIniciaSesion.una_persona_quiere_loguearse()"
 });
 formatter.result({
-  "duration": 3559532,
+  "duration": 3037266,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.se_loguea_con_el_username()"
 });
 formatter.result({
-  "duration": 636892971,
+  "duration": 665982025,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.se_loguea_correctamente()"
 });
 formatter.result({
-  "duration": 22896,
+  "duration": 17369,
   "status": "passed"
 });
 formatter.scenario({
   "line": 15,
   "name": "Login incorrecto. Error en el email",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación;login-incorrecto.-error-en-el-email",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion;login-incorrecto.-error-en-el-email",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -449,28 +449,28 @@ formatter.match({
   "location": "Test02UsuarioIniciaSesion.una_persona_quiere_loguearse()"
 });
 formatter.result({
-  "duration": 3020688,
+  "duration": 2664220,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.el_email_es_erroneo()"
 });
 formatter.result({
-  "duration": 696441020,
+  "duration": 710299112,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.no_se_puede_loguear()"
 });
 formatter.result({
-  "duration": 37107,
+  "duration": 25265,
   "status": "passed"
 });
 formatter.scenario({
   "line": 20,
   "name": "Login incorrecto. Error en el username",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación;login-incorrecto.-error-en-el-username",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion;login-incorrecto.-error-en-el-username",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -493,28 +493,28 @@ formatter.match({
   "location": "Test02UsuarioIniciaSesion.una_persona_quiere_loguearse()"
 });
 formatter.result({
-  "duration": 3274517,
+  "duration": 2907786,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.el_username_es_erroneo()"
 });
 formatter.result({
-  "duration": 734850967,
+  "duration": 708345456,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.no_se_puede_loguear()"
 });
 formatter.result({
-  "duration": 16580,
+  "duration": 28422,
   "status": "passed"
 });
 formatter.scenario({
   "line": 25,
   "name": "Login incorrecto. Error en la clave",
   "description": "",
-  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicación;login-incorrecto.-error-en-la-clave",
+  "id": "como-usuario-quiero-acceder-al-sistema-para-usar-la-aplicacion;login-incorrecto.-error-en-la-clave",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -537,24 +537,24 @@ formatter.match({
   "location": "Test02UsuarioIniciaSesion.una_persona_quiere_loguearse()"
 });
 formatter.result({
-  "duration": 3612429,
+  "duration": 2470789,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.la_clave_es_erronea()"
 });
 formatter.result({
-  "duration": 734013291,
+  "duration": 731506683,
   "status": "passed"
 });
 formatter.match({
   "location": "Test02UsuarioIniciaSesion.no_se_puede_loguear()"
 });
 formatter.result({
-  "duration": 23291,
+  "duration": 21317,
   "status": "passed"
 });
-formatter.uri("03UsuarioVePerfil.feature");
+formatter.uri("03UsuarioVerPerfil.feature");
 formatter.feature({
   "comments": [
     {
@@ -595,21 +595,21 @@ formatter.match({
   "location": "Test03UsuarioVePerfil.una_persona_quiere_ver_su_perfil()"
 });
 formatter.result({
-  "duration": 2981607,
+  "duration": 3959025,
   "status": "passed"
 });
 formatter.match({
   "location": "Test03UsuarioVePerfil.se_loguea_con_el_username()"
 });
 formatter.result({
-  "duration": 663248589,
+  "duration": 715816247,
   "status": "passed"
 });
 formatter.match({
   "location": "Test03UsuarioVePerfil.ve_el_perfil_con_el_username()"
 });
 formatter.result({
-  "duration": 116448458,
+  "duration": 127890071,
   "status": "passed"
 });
 formatter.scenario({
@@ -639,21 +639,21 @@ formatter.match({
   "location": "Test03UsuarioVePerfil.una_persona_quiere_ver_su_perfil()"
 });
 formatter.result({
-  "duration": 3990213,
+  "duration": 3049109,
   "status": "passed"
 });
 formatter.match({
   "location": "Test03UsuarioVePerfil.se_loguea_con_el_email()"
 });
 formatter.result({
-  "duration": 672687646,
+  "duration": 722302906,
   "status": "passed"
 });
 formatter.match({
   "location": "Test03UsuarioVePerfil.ve_el_perfil_con_el_email()"
 });
 formatter.result({
-  "duration": 117361138,
+  "duration": 121675794,
   "status": "passed"
 });
 formatter.uri("04UsuarioActualizaPerfil.feature");
@@ -697,21 +697,21 @@ formatter.match({
   "location": "Test04UsuarioActualizaPerfil.una_persona_quiere_actualizar_su_perfil()"
 });
 formatter.result({
-  "duration": 723704976,
+  "duration": 731163639,
   "status": "passed"
 });
 formatter.match({
   "location": "Test04UsuarioActualizaPerfil.cambia_los_datos()"
 });
 formatter.result({
-  "duration": 47371,
+  "duration": 36317,
   "status": "passed"
 });
 formatter.match({
   "location": "Test04UsuarioActualizaPerfil.se_actualiza_el_perfil_correctamente()"
 });
 formatter.result({
-  "duration": 198303489,
+  "duration": 205824335,
   "status": "passed"
 });
 formatter.uri("05UsuarioEliminaPerfil.feature");
@@ -723,16 +723,16 @@ formatter.feature({
     }
   ],
   "line": 3,
-  "name": "Como usuario quiero eliminar mi perfil para no acceder más",
+  "name": "Como usuario quiero eliminar mi perfil para no acceder mas",
   "description": "",
-  "id": "como-usuario-quiero-eliminar-mi-perfil-para-no-acceder-más",
+  "id": "como-usuario-quiero-eliminar-mi-perfil-para-no-acceder-mas",
   "keyword": "Feature"
 });
 formatter.scenario({
   "line": 5,
   "name": "Eliminar Perfil",
   "description": "",
-  "id": "como-usuario-quiero-eliminar-mi-perfil-para-no-acceder-más;eliminar-perfil",
+  "id": "como-usuario-quiero-eliminar-mi-perfil-para-no-acceder-mas;eliminar-perfil",
   "type": "scenario",
   "keyword": "Scenario"
 });
@@ -755,21 +755,21 @@ formatter.match({
   "location": "Test05UsuarioEliminaPerfil.una_persona_quiere_eliminar_su_perfil()"
 });
 formatter.result({
-  "duration": 704236305,
+  "duration": 734555003,
   "status": "passed"
 });
 formatter.match({
   "location": "Test05UsuarioEliminaPerfil.da_a_eliminar()"
 });
 formatter.result({
-  "duration": 38983530,
+  "duration": 41771689,
   "status": "passed"
 });
 formatter.match({
   "location": "Test05UsuarioEliminaPerfil.elimina_su_perfil()"
 });
 formatter.result({
-  "duration": 76280654,
+  "duration": 81701043,
   "status": "passed"
 });
 });

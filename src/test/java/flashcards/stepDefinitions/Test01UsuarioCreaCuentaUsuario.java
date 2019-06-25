@@ -16,7 +16,7 @@ public class Test01UsuarioCreaCuentaUsuario {
 	@Given("^Una persona quiere registrarse$")
 	public void una_persona_quiere_registrarse() throws Throwable {
 		dBUsuario = Broker.getInstanciaUsuario();
-		user = new UsuarioDTO("Sergio123", "correoInventado@email.com", "sergio1");
+		user = new UsuarioDTO("usuario123", "usuario123@email.com", "usuario123");
 		user.setRol("Usuario");
 	    assert(true);
 	}
@@ -47,7 +47,7 @@ public class Test01UsuarioCreaCuentaUsuario {
 
 	@When("^El username contiene un caracter invalido$")
 	public void el_username_contiene_un_caracter_invalido() throws Throwable {
-		user.setUsername("sergio 123");
+		user.setUsername("usuario 123");
 	    assert(!dBUsuario.usernameIsCorrect(user.getUsername()));
 	}
 
@@ -59,13 +59,13 @@ public class Test01UsuarioCreaCuentaUsuario {
 
 	@When("^La clave contiene un caracter invalido$")
 	public void la_clave_contiene_un_caracter_invalido() throws Throwable {
-		user.setClave("Sergio 123");
+		user.setClave("usuario 123");
 		assert(!dBUsuario.claveIsCorrect(user.getClave()));
 	}
 
 	@When("^La longitud de la clave es incorrecta$")
 	public void la_longitud_de_la_clave_es_incorrecta() throws Throwable {
-		user.setClave("Sergio2145123456300047899625");
+		user.setClave("usuario2145123456300047899625");
 		assert(!dBUsuario.claveIsCorrect(user.getClave()));
 	}
 

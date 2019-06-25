@@ -19,7 +19,6 @@ import com.mongodb.client.MongoDatabase;
 
 import main.java.flashcards.auxiliares.Fecha;
 import main.java.flashcards.auxiliares.PropertiesConfig;
-import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOActivaCuenta;
 import main.java.flashcards.dto.ActivaCuentaDTO;
 
@@ -37,8 +36,9 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
     MongoCursor<Document> iterador;
     
     //Constantes
-    static final String CODIGO = "codigo";
-    static final String USERNAME = "username";
+  	static final String CONST_USERNAME = "username";
+  	static final String CONST_CODIGO = "codigo";
+  	static final String CONST_FECHA = "fecha";
     
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ActivarCuentaMongoDB");
@@ -61,7 +61,19 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean activacionCuenta(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(activaCuenta.getUsername())).append(CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(activaCuenta.getUsername()))
+												  .append(CONST_CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
+			
+			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
+			return resultadosBusqueda.iterator().hasNext();
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
+	public boolean existeActivacionUsuario(String username) {
+		try{
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(username));
 			resultadosBusqueda = coleccionActivaCuenta.find(criteriosBusqueda);
 			return resultadosBusqueda.iterator().hasNext();
 		}catch(Exception ex) {
@@ -71,7 +83,9 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			doc = new Document().append(USERNAME, activaCuenta.getUsername()).append(CODIGO, activaCuenta.getCodigoActivacion()).append("fecha",activaCuenta.getFecha());
+			doc = new Document().append(CONST_USERNAME, activaCuenta.getUsername())
+								.append(CONST_CODIGO, activaCuenta.getCodigoActivacion())
+								.append(CONST_FECHA,activaCuenta.getFecha());
 			coleccionActivaCuenta.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -81,7 +95,8 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 	
 	public boolean eliminaAC(ActivaCuentaDTO activaCuenta) {
 		try{
-			criteriosBusqueda = new BsonDocument().append(USERNAME, new BsonString(activaCuenta.getUsername())).append(CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
+			criteriosBusqueda = new BsonDocument().append(CONST_USERNAME, new BsonString(activaCuenta.getUsername()))
+												  .append(CONST_CODIGO, new BsonString(activaCuenta.getCodigoActivacion()));
 			coleccionActivaCuenta.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
@@ -95,20 +110,22 @@ public class ActivarCuentaMongoDB implements InterfaceDAOActivaCuenta{
 		iterador = resultadosBusqueda.iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			lista.add(new ActivaCuentaDTO(doc.getString(USERNAME), doc.getString(CODIGO), doc.getString("fecha")));
+			lista.add(new ActivaCuentaDTO(doc.getString(CONST_USERNAME), doc.getString(CONST_CODIGO), doc.getString(CONST_FECHA)));
 		}
 		return lista;
 	}
 	
 	public void comprobarActivacionesCaducadas() {
-		List<ActivaCuentaDTO> listaAC = leerTodas();
+		iterador = coleccionActivaCuenta.find().iterator();
 		String compara;
 	    Fecha fecha = new Fecha();
-		for(int indice=0; indice<listaAC.size(); indice++) {
-			compara = fecha.compararFechas(listaAC.get(indice).getFecha(), fecha.fechaHoy());
-			if(compara!=null && Integer.parseInt(compara)<=0) {
-				Broker.getInstanciaActivaCuenta().eliminaAC(listaAC.get(indice));
+	    while(iterador.hasNext()) {
+	    	doc = iterador.next();
+	    	compara = fecha.compararFechas(doc.getString(CONST_FECHA), fecha.fechaHoy());
+	    	if(compara!=null && Integer.parseInt(compara)<0) {
+				eliminaAC(new ActivaCuentaDTO(doc.getString(CONST_USERNAME), doc.getString(CONST_CODIGO)));
+		    	iterador = coleccionActivaCuenta.find().iterator();
 			}
-		}
+	    }	
 	}
 }

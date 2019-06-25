@@ -19,7 +19,7 @@
 
     <!-- Plugin CSS -->
     <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/inicioSesion.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/accesoFlashcards.css"/>
 
     <!-- Custom styles for this template -->
     <link href="resources/css/freelancer.min.css" rel="stylesheet">
@@ -32,92 +32,69 @@
   <body id="page-top">		
   
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">FLASHCARDS</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registro.html">Registrarse</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/recuperarCuenta.html">¿Has olvidado la clave?</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <section>
-    	<div class="row">
-    		<div class="col-md-4"></div>
-    		<!-- <div class="col-md-4">
-    			<br>
-    			<h1 align="center">Iniciar Sesión</h1>
-    			<br> 
-    			<form action="loguear.html" method="post" id="Login" name="Login">
-			        <div class="form-group">
-			            <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required>
-			        </div>
-			        <div class="form-group">
-			            <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
-			        </div>
-			        <br>
-			        <div class="row" align="center">
-			        	<div class="g-recaptcha positionReCaptcha" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			        </div>
-			        <br>
-			        <div class="row">
-			        	<div class="col-md-3"></div>
-			        	<div class="col-md-6">
-			        		<button type="submit" id="buttonIS" name="buttonIS" class="btn-login">Iniciar Sesion</button>
-			        	</div>
-			        	<script>
-			        		document.getElementById("buttonIS").disabled = true;
-			        	</script>
-			        	<div class="col-md-3"></div>
-			        </div>
-			        <script>
-			        	function enableBtn(){
-			        		document.getElementById("buttonIS").style.background = "#61E900";
-			        		document.getElementById("buttonIS").disabled = false;
-			        	}
-			        </script>
-			    </form>
-			</div>-->
-			<div class="col-md-4">
-				<div class="container">
-			        <div class="card card-container">
-			            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-			            <p id="profile-name" class="profile-name-card"></p>
-			            <br>
-			            <p class="text-align=center;">Iniciar Sesión</p>
-			            <br>
-			            <form action="loguear.html" method="post" id="Login" name="Login" class="form-signin">
+    <header class="header">
+	    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand js-scroll-trigger" href="inicio.html">
+	        	<img class="logoFlashcards" src="resources/img/logoFlashcards.JPG" alt=""/>
+	        </a>
+	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          Menu
+	          <i class="fas fa-bars"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto">
+	          	<li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="iniciarSesion.html">Iniciar Sesión</a>
+	            </li>
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="registro.html">¡Regístrate!</a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+	</header>
+	
+	<section>
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 formAccess textCenter container">
+				<br>
+				<h4 class="title">Iniciar Sesión</h4>
+				<br>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<form action="acceder.do" method="post" id="Login" name="Login" class="form-signin">
 			                <span id="reauth-email" class="reauth-email"></span>
 			                <input type="text" class="form-control" id="inputUsernameEmail" name="inputUsernameEmail" placeholder="Username o Email" required autofocus>
+			                <br>
 			                <input type="password" class="form-control" id="inputClave" name="inputClave" placeholder="Clave" required>
+			                <br><br>
+			                <div class="middle">
+			                	<div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
+			                </div>
+			                <br><br>
+			                <button class="btn btn-lg btn-block btn-signin btnBlock" id="buttonIS" name="buttonIS" type="submit">Acceder</button>
 			                <br>
-			                <div class="g-recaptcha positionReCaptcha" data-theme="light" data-sitekey="6LfaZ4EUAAAAAFcqOxY0fsiDeh17WHqRhLdEQPZw" data-callback="enableBtn"></div>
-			                <br>
-			                <button class="btn btn-lg btn-primary btn-block btn-signin" id="buttonIS" name="buttonIS" type="submit">Iniciar Sesión</button>
+			                <p><a class="btnRecupera" href="recuperaCuenta.html">Ups.... ¿Olvidasta tu clave?</a></p>
 			                <script>
 			                	document.getElementById("buttonIS").disabled = true;
 					        	function enableBtn(){
-					        		document.getElementById("buttonIS").style.background = "#61E900";
+					        		document.getElementById("buttonIS").style.background = "#457D8E";
 					        		document.getElementById("buttonIS").disabled = false;
 					        	}
 					        </script>
-			            </form>
-			        </div>
-			    </div>
+					     </form>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
 			</div>
-    		<div class="col-md-4"></div>
+			<div class="col-md-4"></div>
 		</div>
-    </section>
+	</section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-to-top d-lg-none position-fixed ">

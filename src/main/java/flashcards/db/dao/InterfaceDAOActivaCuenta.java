@@ -6,6 +6,7 @@ import main.java.flashcards.dto.ActivaCuentaDTO;
 
 public interface InterfaceDAOActivaCuenta {
 	public boolean activacionCuenta(ActivaCuentaDTO activaCuenta);
+	public boolean existeActivacionUsuario(String username);
 	public boolean insertaAC(ActivaCuentaDTO activaCuenta);
 	public boolean eliminaAC(ActivaCuentaDTO activaCuenta);
 	public List<ActivaCuentaDTO> leerTodas();
