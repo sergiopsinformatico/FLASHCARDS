@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Página Principal</title>
+  <title>Flashcards - Clubes</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,7 @@
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <!-- Font-Awesome -->
   <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
@@ -55,7 +56,7 @@
       <!-- Divider-->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="inicio.html">
           <i class="fa fa-home" aria-hidden="true"></i>
           <span>Pagina Principal</span></a>
@@ -83,7 +84,7 @@
           <span>Gente</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="verClubes.html">
           <i class="fa fa-users" aria-hidden="true"></i>
           <span>Clubes</span>
@@ -160,62 +161,118 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        
+        <script>
+        var app = angular.module('AppClubes', []);
+        app.controller('ClubesCtrl', function($scope, $http) {
+        	$scope.listaClubes = [];
+        	$scope.checkGet = false;
+        	var indice = 0;
+        	var user;
         	
-        	<div class="row" id="divPanelAdministrador" style="display: none;">
-        		<div class="col-md-12">
+        	$scope.enableFormClub = function(){
+        		document.getElementById('divAddClub').style.display='block';
+        	}
+        	
+        	$scope.rellenarTabla = function(){
+        		
+	       		$http.get("getClubes.do")
+	       			.then(function(response) {
+	       				$scope.listaClubes = response.data;
+	       				$scope.checkGet = true;
+	       		  	}, function myError(response) {
+		       		  	$scope.listaClubes = [];
+	       				$scope.checkGet = true;
+		       	    }
+	       		);
+        		
+        	};
+        	
+        	$scope.rellenarTabla();        	
+        	
+        });
+        </script>
+        
+        <div class="container-fluid" ng-app="AppClubes" ng-controller="ClubesCtrl">
+        	
+        	<div class="row">
+        		<div class="col-md-1"></div>
+        		<div class="col-md-6">
 		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10 middle">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal">
-			        				<i class="fa fa-universal-access fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Panel Administrador
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
+			            <div ng-if="!checkGet">
+			            	<h6 align="center">Cargando clubes...</h6>
+			            </div>
+			            <div ng-if="checkGet && listaClubes.length == 0">
+			            	<h6 align="center">No hay clubes creados</h6>
+			            </div>
+			            <div ng-if="checkGet && listaClubes.length > 0">
+			            	<div class="input-group">
+				            	<input type="text" ng-model="filterClubes.nombre" class="form-control" placeholder="Filtrar por nombre del club" />
+				            </div>
+				        </div>
+				        
+			            <div ng-if="checkGet && listaClubes.length > 0">
+			            	<div class="input-group">
+				            	<input type="text" ng-model="filterClubes.nombre" class="form-control" placeholder="Filtrar por nombre del club" />
+				            </div>
+				            <br>
+				            <table width="100%" border="1">  
+							   <tr>  
+							      <th align="center" style="text-align:center;">Clubes</th>     
+							   </tr>  
+							   <tr ng-repeat = "eClub in listaClubes | filter:filterClubes:strict">  
+							      <td align="center">
+							      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.id }}">{{ eClub.nombre }}</a>
+							      	<br><strong>Creador: </strong> {{ eClub.creador }}
+							      	<br><strong>Administrador: </strong> {{ eClub.administrador }}
+							      	<br><strong>Creado el </strong> {{ eClub.fechaCreación }}
+							      	<br><br>
+							      	<div id="divPerteneceClub{{eClub.id}}" style="display:none;">
+							      		<form action="dejarClub.html?idClub={{eClub.id}}" method="get" style="width:300px;">
+								      		<button align="center" class="btn btn-danger" style="width:300px;">
+								      			Dejar el Club
+								      		</button>
+								      	</form>
+							      	</div>
+							      	<div id="divNoPerteneceClub{{eClub.id}}" style="display:none;">
+							      		<form action="unirmeClub.html?idClub={{eClub.id}}" method="get" style="width:300px;">
+								      		<button align="center" class="btn btn-success" style="width:300px;">
+								      			Unirme al Club
+								      		</button>
+								      	</form>
+							      	</div>
+							      </td>    
+							   </tr>
+							</table> 
+						</div>
 		        	</div>
 		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
+		        <div class="col-md-4">
 		        	<div class="row">
-		        		<br>
-		        	</div>
+        				<form ng-submit="enableFormClub()" style="width:100%;height:50px;">
+        					<button type="submit" class="btn btn-info" style="width:100%;height:50px;">
+        						<i class="fa fa-plus" aria-hidden="true"></i>
+        						¿No encuentra un club en concreto? Créalo
+        					</button>
+        				</form>
+        			</div>
+        			<div class="row" id="divAddClub" style="display:none;">
+        				<form action="crearClub.html" method="post" style="width:100%;height:150px;">
+        					<input type="text" ng-model="nombre" placeholder="Nombre del Club"/>
+        					<br>
+        					<input type="text" ng-model="tema" placeholder="Tema del Club"/>
+        					<br>
+        					<button type="submit" class="btn btn-success middle">
+        						Crear Club
+        					</button>
+        				</form>
+        			</div>
 		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5">
-		        			<form action="verGente.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-success btnPaginaPrincipal">
-			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Gente
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5">
-		        			<form action="verClubes.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal">
-			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Clubes
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
+		        <div class="col-md-1"></div>
 		    </div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divPanelAdministrador").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";

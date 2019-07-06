@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Página Principal</title>
+  <title>Flashcards - Gente</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -191,7 +191,7 @@
 		        	<div class="row">
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-5">
-		        			<form action="verGente.html" class="btnPaginaPrincipal" method="get">
+		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
 			        			<button type="submit" class="btn btn-success btnPaginaPrincipal">
 			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
 			       					<br><br>
@@ -200,7 +200,7 @@
 			       			</form>
 		        		</div>
 		        		<div class="col-md-5">
-		        			<form action="verClubes.html" class="btnPaginaPrincipal" method="get">
+		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
 			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal">
 			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
 			       					<br><br>

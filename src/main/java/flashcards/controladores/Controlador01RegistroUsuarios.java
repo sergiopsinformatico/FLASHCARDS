@@ -90,6 +90,7 @@ public class Controlador01RegistroUsuarios {
 	public List<String> listUsernames(){
 		listaUsernames = Broker.getInstanciaUsuario().getListUsername();
 		listaUsernames.add("usuario123");
+		listaUsernames.add("usuario456");
 		return listaUsernames;
 	}	
 	
@@ -100,6 +101,7 @@ public class Controlador01RegistroUsuarios {
 	public List<String> listEmails(){
 		listaEmails = Broker.getInstanciaUsuario().getListEmail();
 		listaEmails.add("usuario123@email.com");
+		listaEmails.add("usuario456@email.com");
 		return listaEmails;
 	}
 	
