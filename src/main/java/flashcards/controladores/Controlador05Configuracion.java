@@ -68,11 +68,11 @@ public class Controlador05Configuracion {
 		}
 		
 		if(Broker.getInstanciaUsuario().updateUsuario(userAntiguo, userNuevo)) {
-			vista = new ModelAndView("redirect:/verPerfil.html");
+			vista = new ModelAndView("redirect:/verPerfil.html?usuarioPerfil="+userNuevo.getUsername());
 			vista.addObject(CONST_MENSAJE, "Perfil Actualizado");
 			vista.addObject(CONST_USUARIO, userNuevo);
 		}else {
-			vista = new ModelAndView("redirect:/verPerfil.html");
+			vista = new ModelAndView("redirect:/verPerfil.html?usuarioPerfil="+userNuevo.getUsername());
 			vista.addObject(CONST_MENSAJE, "Hubo un fallo y no se pudo modificar el perfil");
 		}
 		return vista;

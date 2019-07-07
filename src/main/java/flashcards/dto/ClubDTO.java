@@ -11,6 +11,9 @@ public class ClubDTO {
 	List<String> miembros;
 	String fechaCreacion;
 	
+	boolean pertenezcoClub;
+	boolean soyAdministradorClub;
+	
 	public ClubDTO (String idClub, String nombreClub, String temaClub, 
 			String administrador, List<String> miembros, String fechaCreacion) {
 		
@@ -59,4 +62,17 @@ public class ClubDTO {
 	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
+	public boolean isPertenezcoClub() {
+		return pertenezcoClub;
+	}
+	public void setPertenezcoClub(boolean pertenezcoClub) {
+		this.pertenezcoClub = pertenezcoClub;
+	}
+	public boolean isSoyAdministradorClub() {
+		return soyAdministradorClub;
+	}
+	public void setSoyAdministradorClub(boolean soyAdministradorClub) {
+		this.soyAdministradorClub = soyAdministradorClub;
+	}
+	
 }

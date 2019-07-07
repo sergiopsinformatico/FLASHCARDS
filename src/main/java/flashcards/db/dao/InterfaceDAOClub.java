@@ -13,8 +13,8 @@ public interface InterfaceDAOClub {
 	public boolean insertaUsuario(String idClub, String username);
 	public boolean eliminaUsuario(String idClub, String username);
 	public boolean actualizaClub(ClubDTO club);
-	public List<String> getTodosClubes();
-	public List<String> getMisClubes(String username);
-	public List<String> getClubesPertenezco(String username);
+	public List<ClubDTO> getTodosClubes(String username);
+	public List<ClubDTO> getMisClubes(String username);
+	public List<ClubDTO> getClubesPertenezco(String username);
 	
 }

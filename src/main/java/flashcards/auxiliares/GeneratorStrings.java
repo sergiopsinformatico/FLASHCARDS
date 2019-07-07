@@ -1,8 +1,5 @@
 package main.java.flashcards.auxiliares;
 
-import java.security.SecureRandom;
-import java.util.Random;
-
 public class GeneratorStrings {
 		
 	private GeneratorStrings() {}
@@ -16,20 +13,15 @@ public class GeneratorStrings {
 
 			StringBuilder sb = new StringBuilder(size); 
 			
-			
-			Random numeroRandom = SecureRandom.getInstanceStrong();
-			
-			for (int i = 0; i < size; i++) { 
-				int index = caracteresValidos.length() * numeroRandom.nextInt(); 
-				sb.append(caracteresValidos.charAt(index)); 
-			} 
-			
-			return sb.toString();
+			for (int indice = 0; indice < size; indice++) {   
+	            int index = (int)(caracteresValidos.length() * Math.random()); 	  
+	            sb.append(caracteresValidos.charAt(index)); 
+	        } 
+	  
+	        return sb.toString(); 
 		}catch(Exception ex) {
 			return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		}
-		
-		
-		
+
 	}
 }

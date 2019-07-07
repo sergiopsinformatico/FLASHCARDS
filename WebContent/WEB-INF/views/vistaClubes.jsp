@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlipSinClick.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -162,110 +163,186 @@
 
         <!-- Begin Page Content -->
         
-        <script>
-        var app = angular.module('AppClubes', []);
-        app.controller('ClubesCtrl', function($scope, $http) {
-        	$scope.listaClubes = [];
-        	$scope.checkGet = false;
-        	var indice = 0;
-        	var user;
-        	
-        	$scope.enableFormClub = function(){
-        		document.getElementById('divAddClub').style.display='block';
-        	}
-        	
-        	$scope.rellenarTabla = function(){
-        		
-	       		$http.get("getClubes.do")
-	       			.then(function(response) {
-	       				$scope.listaClubes = response.data;
-	       				$scope.checkGet = true;
-	       		  	}, function myError(response) {
-		       		  	$scope.listaClubes = [];
-	       				$scope.checkGet = true;
-		       	    }
-	       		);
-        		
-        	};
-        	
-        	$scope.rellenarTabla();        	
-        	
-        });
+        <script>        	
+	        var app = angular.module('AppClubes', []);
+	        app.controller('ClubesCtrl', function($scope, $http) {
+	        	$scope.listaClubesActual = [];
+	        	
+	        	$scope.listaTodosClubes = [];
+	        	$scope.listaClubesCreados = [];
+	        	$scope.listaClubesPertenezco = [];
+	        	
+	        	$scope.checkGet = false;
+	        	var indice = 0;
+	        	var user;
+	        	var posicionTarjeta = 0;
+	        	
+	        	$scope.enableFormClub = function(){
+	        		document.getElementById('divAddClub').style.display='block';
+	        	}
+	        	
+	        	$scope.getTodosClubes = function (){
+	        		$http.get("getTodosClubes.do")
+		       			.then(function(response) {
+		       				$scope.listaTodosClubes = response.data;
+		       				$scope.getClubesCreados();
+		       		  	}, function myError(response) {
+			       		  	$scope.listaTodosClubes = [];
+			       		 	$scope.getClubesCreados();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getClubesCreados = function (){
+	        		$http.get("getClubesCreados.do")
+		       			.then(function(response) {
+		       				$scope.listaClubesCreados = response.data;
+		       				$scope.getClubesPertenezco();
+		       		  	}, function myError(response) {
+			       		  	$scope.listaClubesCreados = [];
+			       		 	$scope.getClubesPertenezco();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getClubesPertenezco = function (){
+	        		$http.get("getClubesPertenezco.do")
+		       			.then(function(response) {
+		       				$scope.listaClubesPertenezco = response.data;
+		       				$scope.listaClubesActual = $scope.listaTodosClubes;
+		       				$scope.refreshCarrousel();
+		       				$scope.checkGet = true;
+		       			}, function myError(response) {
+			       		  	$scope.listaClubesPertenezco = [];
+			       		 	$scope.listaClubesActual = $scope.listaTodosClubes;
+			       		 	$scope.refreshCarrousel();
+			       		 	$scope.checkGet = true;
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.refreshCarrousel = function(){
+					$('#carouselClubes').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+				};
+				
+				$scope.cambioButton = function(value){
+					if(value == "all"){
+						$scope.listaClubesActual = $scope.listaTodosClubes;
+						$scope.refreshCarrousel();
+					}else if(value == "creadas"){
+						$scope.listaClubesActual = $scope.listaClubesCreados;
+						$scope.refreshCarrousel();
+					}else if(value == "estoy"){
+						$scope.listaClubesActual = $scope.listaClubesPertenezco;
+						$scope.refreshCarrousel();
+					}
+				}
+	        	
+	        	$scope.getTodosClubes();
+	        	
+	        });
         </script>
         
         <div class="container-fluid" ng-app="AppClubes" ng-controller="ClubesCtrl">
-        	
         	<div class="row">
-        		<div class="col-md-1"></div>
-        		<div class="col-md-6">
-		        	<div class="row">
-			            <div ng-if="!checkGet">
+        		<div class="col-md-1" style="width:100%"></div>
+        		<div class="col-md-7" style="width:100%">
+		        	<div class="row" style="width:100%">
+			            <div ng-if="!checkGet" style="width:100%">
 			            	<h6 align="center">Cargando clubes...</h6>
 			            </div>
-			            <div ng-if="checkGet && listaClubes.length == 0">
+			            <div ng-if="checkGet && listaClubesActual.length == 0" style="width:100%">
 			            	<h6 align="center">No hay clubes creados</h6>
 			            </div>
-			            <div ng-if="checkGet && listaClubes.length > 0">
-			            	<div class="input-group">
-				            	<input type="text" ng-model="filterClubes.nombre" class="form-control" placeholder="Filtrar por nombre del club" />
-				            </div>
-				        </div>
 				        
-			            <div ng-if="checkGet && listaClubes.length > 0">
+			            <div ng-if="checkGet && listaClubesActual.length > 0" align="center" style="width:100%">
 			            	<div class="input-group">
-				            	<input type="text" ng-model="filterClubes.nombre" class="form-control" placeholder="Filtrar por nombre del club" />
+				            	<input type="text" ng-model="filterClubes" ng-change="refreshCarrousel()" class="form-control" placeholder="Filtrar por nombre del club" />
 				            </div>
 				            <br>
-				            <table width="100%" border="1">  
-							   <tr>  
-							      <th align="center" style="text-align:center;">Clubes</th>     
-							   </tr>  
-							   <tr ng-repeat = "eClub in listaClubes | filter:filterClubes:strict">  
-							      <td align="center">
-							      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.id }}">{{ eClub.nombre }}</a>
-							      	<br><strong>Creador: </strong> {{ eClub.creador }}
-							      	<br><strong>Administrador: </strong> {{ eClub.administrador }}
-							      	<br><strong>Creado el </strong> {{ eClub.fechaCreación }}
-							      	<br><br>
-							      	<div id="divPerteneceClub{{eClub.id}}" style="display:none;">
-							      		<form action="dejarClub.html?idClub={{eClub.id}}" method="get" style="width:300px;">
-								      		<button align="center" class="btn btn-danger" style="width:300px;">
-								      			Dejar el Club
-								      		</button>
-								      	</form>
-							      	</div>
-							      	<div id="divNoPerteneceClub{{eClub.id}}" style="display:none;">
-							      		<form action="unirmeClub.html?idClub={{eClub.id}}" method="get" style="width:300px;">
-								      		<button align="center" class="btn btn-success" style="width:300px;">
-								      			Unirme al Club
-								      		</button>
-								      	</form>
-							      	</div>
-							      </td>    
-							   </tr>
-							</table> 
-						</div>
+				            <div class="row">
+				            	<div class="col-md-5" align="left">
+				            		<input type="radio" id="allRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="all">
+				            		<label for="allRadio">Todos los Clubes</label>
+				            		<br>
+				            		<input type="radio" id="creadasRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="creadas">
+				            		<label for="creadasRadio">Clubes que he creado</label>
+				            		<br>
+				            		<input type="radio" id="estoyRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="estoy">
+				            		<label for="estoyRadio">Clubes a los que pertenezco</label>
+				            		<br>
+				            	</div>
+				            	<div class="col-md-7">
+				            		<div id="carouselClubes" class="carousel slide" style="width:400px;height:500px;">
+								        <div class="container" style="width:400px;height:500px;">
+								            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:500px;">
+												<div class="carousel-item" ng-repeat="eClub in listaClubesActual | filter:filterClubes">
+										            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
+														<div class="flip-card">
+													    	<div class="flip-card-front" style="background:#E9BE00;">
+													        	<br><br><br><br>
+										                    	<i class="fa fa-star fa-5x" aria-hidden="true"></i>
+										                    	<br><br>
+										                        <p><strong>{{eClub.nombreClub}}</strong></p>
+										                        <br><br><br>
+										                        <p><strong>Tema:</strong> {{eClub.temaClub}}</p>
+															</div>
+													 		<div class="flip-card-back">
+													        	Entrar
+													      	</div>
+													    </div>
+													</div>						
+								                </div>
+								            </div>
+									        <a class="carousel-control-prev" href="#carouselClubes" role="button" data-slide="prev">
+										      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+										      <span class="sr-only">Anterior</span>
+										    </a>
+										    <a class="carousel-control-next" href="#carouselClubes" role="button" data-slide="next">
+										      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+										      <span class="sr-only">Siguiente</span>
+										    </a>
+									    </div>
+									</div>
+				            	</div>
+				            	<script>
+			            			document.getElementById('allRadio').checked = true;
+			            		</script>
+				            </div>
+				        </div>
 		        	</div>
 		        </div>
-		        <div class="col-md-4">
-		        	<div class="row">
+		        <div class="col-md-3" style="width:100%">
+		        	<div class="row" style="width:100%">
         				<form ng-submit="enableFormClub()" style="width:100%;height:50px;">
         					<button type="submit" class="btn btn-info" style="width:100%;height:50px;">
         						<i class="fa fa-plus" aria-hidden="true"></i>
-        						¿No encuentra un club en concreto? Créalo
+        						Nuevo Club
         					</button>
         				</form>
         			</div>
-        			<div class="row" id="divAddClub" style="display:none;">
-        				<form action="crearClub.html" method="post" style="width:100%;height:150px;">
-        					<input type="text" ng-model="nombre" placeholder="Nombre del Club"/>
-        					<br>
-        					<input type="text" ng-model="tema" placeholder="Tema del Club"/>
-        					<br>
-        					<button type="submit" class="btn btn-success middle">
-        						Crear Club
-        					</button>
-        				</form>
+        			<div class="row">
+        				<br><br><br>
+        			</div>
+        			<div class="row" id="divAddClub" style="display:none; background-color: #9ED5B0;">
+        				<div class="col-md-12" align="center">
+        					<form action="crearClub.html" method="post" align="center">
+        						<br>
+	        					<input type="text" style="width:100%;" id="nombre" name="nombre" placeholder="Nombre del Club"/>
+	        					<br><br>
+	        					<input type="text" style="width:100%;" id="tema" name="tema" placeholder="Tema del Club"/>
+	        					<br><br><br>
+	        					<button type="submit" class="btn btn-success middle">
+	        						Crear Club
+	        					</button>
+	        					<br><br>
+	        				</form>
+        				</div>
         			</div>
 		        </div>
 		        <div class="col-md-1"></div>
