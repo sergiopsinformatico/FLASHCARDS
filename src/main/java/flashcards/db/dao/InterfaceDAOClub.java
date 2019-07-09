@@ -8,7 +8,7 @@ public interface InterfaceDAOClub {
 	
 	public boolean insertaClub(ClubDTO club);
 	public boolean existeIdClub(String idClub);
-	public ClubDTO leerClub(String idClub);
+	public ClubDTO leerClub(String idClub, String username);
 	public boolean eliminaClub(String idClub);
 	public boolean insertaUsuario(String idClub, String username);
 	public boolean eliminaUsuario(String idClub, String username);

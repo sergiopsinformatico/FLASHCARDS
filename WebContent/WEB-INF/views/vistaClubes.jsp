@@ -18,7 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
-  <link href="resources/css/cardFlipSinClick.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -177,6 +177,8 @@
 	        	var user;
 	        	var posicionTarjeta = 0;
 	        	
+	        	$scope.value = 'all';
+	        	
 	        	$scope.enableFormClub = function(){
 	        		document.getElementById('divAddClub').style.display='block';
 	        	}
@@ -245,6 +247,45 @@
 	        	
 	        	$scope.getTodosClubes();
 	        	
+	        	$scope.unirmeClub = function(idClub, nameClub){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere unirse al club "+nameClub+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "unirmeClub.html?idClub="+idClub+"&username=${usuario.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+	        	
+	        	$scope.dejarClub = function(idClub, nameClub){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere dejar el club "+nameClub+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "dejarClub.html?idClub="+idClub+"&username=${usuario.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	
+	        	}
+	        	
+	        	$scope.borrarClub = function(idClub, nameClub){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere eliminar el club "+nameClub+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "borrarClub.html?idClub="+idClub;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
 	        });
         </script>
         
@@ -284,19 +325,44 @@
 												<div class="carousel-item" ng-repeat="eClub in listaClubesActual | filter:filterClubes">
 										            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
 														<div class="flip-card">
-													    	<div class="flip-card-front" style="background:#E9BE00;">
+													    	<div class="flip-card-front" style="background:#C5BC00;">
 													        	<br><br><br><br>
 										                    	<i class="fa fa-star fa-5x" aria-hidden="true"></i>
 										                    	<br><br>
 										                        <p><strong>{{eClub.nombreClub}}</strong></p>
-										                        <br><br><br>
 										                        <p><strong>Tema:</strong> {{eClub.temaClub}}</p>
+										                        <br><br><br>
+										                        <p ng-if="eClub.pertenezcoClub == false">
+										                        	No perteneces a este club
+										                        </p>
+										                        <p ng-if="eClub.pertenezcoClub == true">
+										                        	Perteneces a este club
+										                        </p>
+										                        <p ng-if="eClub.soyAdministradorClub == true">
+										                        	Creaste este club
+										                        </p>
 															</div>
-													 		<div class="flip-card-back">
-													        	Entrar
-													      	</div>
+													 		<div class="flip-card-back" style="background:#FF8439;">
+													 			<br><br><br><br><br><br>
+													 			<a ng-href="verClub.html?idClub={{eClub.idClub}}" style="color:yellow;">
+													 				Entrar
+													 			</a>
+													 			<br><br>
+												        		<button class="btn btn-success" ng-click="unirmeClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == false">
+													        		<i class="fa fa-sign-in" aria-hidden="true"></i>
+										                        	Unirte al Club
+										                        </button>
+												        		<button class="btn btn-danger" ng-click="dejarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == true && eClub.soyAdministradorClub == false">
+													        		<i class="fa fa-sign-out" aria-hidden="true"></i>
+										                        	Dejar Club
+										                        </button>
+												        		<button class="btn btn-danger" ng-click="borrarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.soyAdministradorClub == true">
+										                        	<i class="fa fa-times" aria-hidden="true"></i>
+										                        	Eliminar Club
+										                        </button>
+														    </div>
 													    </div>
-													</div>						
+													</div>					
 								                </div>
 								            </div>
 									        <a class="carousel-control-prev" href="#carouselClubes" role="button" data-slide="prev">
@@ -310,9 +376,6 @@
 									    </div>
 									</div>
 				            	</div>
-				            	<script>
-			            			document.getElementById('allRadio').checked = true;
-			            		</script>
 				            </div>
 				        </div>
 		        	</div>
@@ -360,16 +423,6 @@
 
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Flashcards 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

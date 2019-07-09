@@ -7,7 +7,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOClub;
 import main.java.flashcards.dto.ClubDTO;
 
-public class Test11AdministradorEliminaClub {
+public class Test10AdministradorEliminaClub {
 	
 	InterfaceDAOClub dBClub;
 	ClubDTO club;
@@ -15,7 +15,7 @@ public class Test11AdministradorEliminaClub {
 	@Given("^Un administrador quiere eliminar el club$")
 	public void un_administrador_de_un_club_quiere_eliminar_el_club() throws Throwable {
 	    dBClub = Broker.getInstanciaClub();
-	    club = dBClub.leerClub("idEjemploClub");
+	    club = dBClub.leerClub("idEjemploClub", "usuario456");
 	    if(club!=null) {
 	    	assert(club.getAdministrador().equals("usuario123"));
 	    }else {

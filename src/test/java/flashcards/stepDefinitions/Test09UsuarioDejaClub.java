@@ -9,7 +9,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOClub;
 import main.java.flashcards.dto.ClubDTO;
 
-public class Test10UsuarioDejaClub {
+public class Test09UsuarioDejaClub {
 	
 	InterfaceDAOClub dBClub;
 	ClubDTO club;
@@ -21,7 +21,7 @@ public class Test10UsuarioDejaClub {
 	@Given("^Un usuario que pertenece a un club$")
 	public void un_usuario_que_pertenece_a_un_club() throws Throwable {
 	    dBClub = Broker.getInstanciaClub();
-	    club = dBClub.leerClub("idEjemploClub");
+	    club = dBClub.leerClub("idEjemploClub", "usuario456");
 	    if(club!=null) {
 	    	encontrado = false;
 	    	miembros = club.getMiembros();
@@ -47,7 +47,7 @@ public class Test10UsuarioDejaClub {
 
 	@Then("^No pertenece al club$")
 	public void no_pertenece_al_club() throws Throwable {
-		club = dBClub.leerClub("idEjemploClub");
+		club = dBClub.leerClub("idEjemploClub", "usuario456");
 	    if(club!=null) {
 	    	encontrado = false;
 	    	miembros = club.getMiembros();

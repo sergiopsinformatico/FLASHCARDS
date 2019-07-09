@@ -7,7 +7,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
-public class Test07AdministradorEliminaUsuario {
+public class Test06AdministradorEliminaUsuario {
 	
 	InterfaceDAOUsuario dBUsuario;
 	UsuarioDTO admin;

@@ -12,7 +12,7 @@ import main.java.flashcards.db.dao.InterfaceDAOClub;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.ClubDTO;
 
-public class Test08UsuarioCreaClub {
+public class Test07UsuarioCreaClub {
 	
 	ClubDTO club;
 	Fecha fecha;

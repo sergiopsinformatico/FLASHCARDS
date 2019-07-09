@@ -10,7 +10,7 @@ import main.java.flashcards.db.dao.InterfaceDAORelacionesUsuarios;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.UsuarioDTO;
 
-public class Test17UsuarioBloqueaUsuario {
+public class Test16UsuarioBloqueaUsuario {
 	
 	InterfaceDAOUsuario dBUsuario;
 	UsuarioDTO user1;

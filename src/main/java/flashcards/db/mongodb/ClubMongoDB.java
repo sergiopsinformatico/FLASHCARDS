@@ -80,13 +80,27 @@ public class ClubMongoDB implements InterfaceDAOClub {
 		return iterador.hasNext();
 	}
 
-	public ClubDTO leerClub(String idClub) {
+	public ClubDTO leerClub(String idClub, String username) {
 		criteriosBusqueda = new BsonDocument().append("idClub", new BsonString(idClub));
 		iterador = coleccionClubes.find(criteriosBusqueda).iterator();
 		if(iterador.hasNext()) {
 			doc = iterador.next();
 			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
 					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			
+			if(username.equals(club.getAdministrador())) {
+				club.setSoyAdministradorClub(true);
+			}else {
+				club.setSoyAdministradorClub(false);
+			}
+			
+			miembros = club.getMiembros();
+			if(checkPertenezcoClub(miembros, username)) {
+				club.setPertenezcoClub(true);
+			}else {
+				club.setPertenezcoClub(false);
+			}
+			
 			return club;
 		}else {
 			return null;
@@ -104,7 +118,7 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 
 	public boolean insertaUsuario(String idClub, String username) {
-		club = leerClub(idClub);
+		club = leerClub(idClub, username);
 		if(club!=null) {
 			miembros = club.getMiembros();
 			encontrado = false;
@@ -127,7 +141,7 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 
 	public boolean eliminaUsuario(String idClub, String username) {
-		club = leerClub(idClub);
+		club = leerClub(idClub, username);
 		if(club!=null) {
 			miembros = club.getMiembros();
 			encontrado = false;
