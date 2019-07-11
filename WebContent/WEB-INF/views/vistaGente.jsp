@@ -18,9 +18,11 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <!-- Font-Awesome -->
   <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
@@ -55,7 +57,7 @@
       <!-- Divider-->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="inicio.html">
           <i class="fa fa-home" aria-hidden="true"></i>
           <span>Pagina Principal</span></a>
@@ -77,7 +79,7 @@
       <div class="sidebar-heading">
         Usuarios
       </div>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="verGente.html">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Gente</span>
@@ -160,62 +162,355 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-        	
-        	<div class="row" id="divPanelAdministrador" style="display: none;">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10 middle">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal">
-			        				<i class="fa fa-universal-access fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Panel Administrador
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
+        
+        <script>        	
+	        var app = angular.module('AppGente', []);
+	        app.controller('GenteCtrl', function($scope, $http) {
+	        	$scope.listaUsuariosActual = [];
+	        	
+	        	$scope.listaTodosUsuarios = [];
+	        	$scope.listaAmigos = [];
+	        	$scope.listaPdaEnv = [];
+	        	$scope.listaPdaRec = [];
+	        	$scope.listaBloq = [];
+	        	
+	        	$scope.checkGet = false;
+	        	var indice = 0;
+	        	var user;
+	        	
+	        	$scope.value = 'all';
+	        	
+	        	$scope.getTodosUsuarios = function (){
+	        		$http.get("getTodosUsuarios.do")
+		       			.then(function(response) {
+		       				$scope.listaTodosUsuarios = response.data;
+		       				$scope.getAmigos();
+		       		  	}, function myError(response) {
+		       		  		$scope.listaTodosUsuarios = [];
+			       		 	$scope.getAmigos();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getAmigos = function (){
+	        		$http.get("getAmigos.do")
+		       			.then(function(response) {
+		       				$scope.listaAmigos = response.data;
+		       				$scope.getPdARec();
+		       		  	}, function myError(response) {
+		       		  		$scope.listaAmigos = [];
+		       		  		$scope.getPdARec();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getPdARec = function (){
+	        		$http.get("getPdaRec.do")
+		       			.then(function(response) {
+		       				$scope.listaPdaRec = response.data;
+		       				$scope.getPdAEnv();
+		       		  	}, function myError(response) {
+		       		  		$scope.listaPdaRec = [];
+		       		  		$scope.getPdAEnv();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getPdAEnv = function (){
+	        		$http.get("getPdaEnv.do")
+		       			.then(function(response) {
+		       				$scope.listaPdaEnv = response.data;
+		       				$scope.getBloqueados();
+		       		  	}, function myError(response) {
+		       		  		$scope.listaPdaEnv = [];
+		       		  		$scope.getBloqueados();
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.getBloqueados = function (){
+	        		$http.get("getBloqueados.do")
+		       			.then(function(response) {
+		       				$scope.listaBloq = response.data;
+		       				$scope.listaUsuariosActual = $scope.listaTodosUsuarios;
+		       				$scope.value = 'all';
+		       				$scope.refreshCarrousel();
+		       				$scope.checkGet = true;
+		       			}, function myError(response) {
+		       				$scope.listaBloq = [];
+		       				$scope.listaUsuariosActual = $scope.listaTodosUsuarios;
+		       				$scope.value = 'all';
+			       		 	$scope.refreshCarrousel();
+			       		 	$scope.checkGet = true;
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.refreshCarrousel = function(){
+					$('#carouselUsuarios').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+				};
+				
+				$scope.cambioButton = function(value){
+					if(value == "all"){
+						$scope.listaUsuariosActual = $scope.listaTodosUsuarios;
+						$scope.refreshCarrousel();
+					}else if(value == "amigos"){
+						$scope.listaUsuariosActual = $scope.listaAmigos;
+						$scope.refreshCarrousel();
+					}else if(value == "pdaEnv"){
+						$scope.listaUsuariosActual = $scope.listaPdaEnv;
+						$scope.refreshCarrousel();
+					}else if(value == "pdaRec"){
+						$scope.listaUsuariosActual = $scope.listaPdaRec;
+						$scope.refreshCarrousel();
+					}else if(value == "bloq"){
+						$scope.listaUsuariosActual = $scope.listaBloq;
+						$scope.refreshCarrousel();
+					}
+				}
+				
+				$scope.eliminarAmigo = function(amigo){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere eliminar a tu amigo "+amigo+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "eliminarAmigo.html?username="+amigo;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+	        	
+	        	
+	        	$scope.aceptarAmistad = function(pdA){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Aceptas la petición de amistad de "+pdA+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "aceptarAmistad.html?username="+pdA;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+	        	
+				$scope.rechazarAmistad = function(pdA){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Rechazas la peticion de "+pdA+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "rechazarAmistad.html?username="+pdA;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.enviarPeticion = function(usuario){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere enviar una petición de amistad a "+usuario+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "enviarPeticion.html?username="+usuario;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.bloquearUsuario = function(usuario){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere bloquear a "+usuario+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "bloquearUsuario.html?username="+usuario;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.desbloquearUsuario = function(usuario){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere desbloquear a "+usuario+"?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "desbloquearUsuario.html?username="+usuario;
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.getTodosUsuarios();
+	        	
+	        });
+        </script>
+        
+        <div class="container-fluid" ng-app="AppGente" ng-controller="GenteCtrl">
+        	<div class="row">
+        		<div class="col-md-1" style="width:100%"></div>
+        		<div class="col-md-10" style="width:100%">
+		        	<div class="row" style="width:100%">
+			            <div ng-if="!checkGet" style="width:100%">
+			            	<h6 align="center">Cargando usuarios...</h6>
+			            </div>
+			            
+			            <div ng-if="checkGet" style="width:100%">
+			            
+			            	<div class="row">
+			            	
+			            		<div class="col-md-5" align="left">
+				            		<input type="radio" id="allRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="all">
+				            		<label for="allRadio">Todos los Usuarios</label>
+				            		<br>
+				            		<input type="radio" id="amigosRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="amigos">
+				            		<label for="amigosRadio">Amigos</label>
+				            		<br>
+				            		<input type="radio" id="pdaEnvRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="pdaEnv">
+				            		<label for="pdaEnvRadio">Peticiones de Amistad Enviadas</label>
+				            		<br>
+				            		<input type="radio" id="pdaRecRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="pdaRec">
+				            		<label for="pdaRecRadio">Peticiones de Amistad Recibidas</label>
+				            		<br>
+				            		<input type="radio" id="bloqRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="bloq">
+				            		<label for="bloqRadio">Usuarios Bloqueados</label>
+				            		<br>
+				            	</div>
+				            	
+				            	<div class="col-md-7">
+				            		<div ng-if="listaUsuariosActual.length == 0" style="width:100%" align="center">
+						            	<h6 ng-if="value == 'all'" align="center">Tu eres el unico usuario del sistema</h6>
+						            	<h6 ng-if="value == 'amigos'" align="center">Aun no tienes amigos. ¡Conoce a nuevas personas!</h6>
+						            	<h6 ng-if="value == 'pdaEnv'" align="center">Las peticiones de amistad enviadas fueron respondidas</h6>
+						            	<h6 ng-if="value == 'pdaRec'" align="center">No tienes pendientes peticiones de amistad por responder</h6>
+						            	<h6 ng-if="value == 'bloq'" align="center">No tienes a ningún usuario bloqueado</h6>
+						            </div>
+						            <div ng-if="listaUsuariosActual.length > 0" style="width:100%" align="center">
+						            	<div class="input-group">
+							            	<input type="text" ng-model="filterUsuarios" ng-change="refreshCarrousel()" class="form-control" placeholder="Filtrar por nombre de usuario" />
+							            </div>
+							            <br>
+					            		<div id="carouselUsuarios" class="carousel slide" style="width:400px;height:500px;">
+									        <div class="container" style="width:400px;height:500px;">
+									            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:500px;">
+													<div class="carousel-item" ng-repeat="eUsuario in listaUsuariosActual | filter:filterUsuarios">
+											            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
+															<div class="flip-card">
+														    	<div class="flip-card-front" style="background:#64FFAC;">
+														        	<br><br><br><br>
+											                    	<img src="{{eUsuario.foto}}" style="width:100px;height:auto;">
+														      		<br>
+														      		<br>
+														      		<p style="color:black;"><strong>{{eUsuario.username}}</strong></p>
+											                    	<br><br>
+											                        <br><br><br>
+											                        <p ng-if="eUsuario.tipoRelacion == 'amigo'" style="color:black;">
+											                        	Sois amigos
+											                        </p>
+											                        <p ng-if="eUsuario.tipoRelacion == 'solEnviada'" style="color:black;">
+											                        	Solicitud de amistad enviada
+											                        </p>
+											                        <p ng-if="eUsuario.tipoRelacion == 'solRecibida'" style="color:black;">
+											                        	Pendiente de contestar la solicitud
+											                        </p>
+											                        <p ng-if="eUsuario.tipoRelacion == 'bloqueado'" style="color:black;">
+											                        	Usuario Bloqueado
+											                        </p>
+																</div>
+														 		<div class="flip-card-back" style="background:#B1FFE8s;">
+														 			<br><br><br>
+														 			<p><strong><a ng-href="verPerfil.html?usuarioPerfil={{eUsuario.username}}" style="color:#244B36;">Ver Perfil</a></strong></p>
+											                    	<br><br>
+														 			<div ng-if="eUsuario.tipoRelacion == 'ninguna'">
+											                        	<button class="btn btn-info" ng-click="enviarPeticion(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Enviar Solicitud de Amistad
+											                        	</button>
+											                        	<br><br><br><br>
+											                        	<button class="btn btn-secondary" ng-click="bloquearUsuario(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Bloquear Usuario
+											                        	</button>
+											                        </div>
+											                        <div ng-if="eUsuario.tipoRelacion == 'amigo'">
+											                        	<button class="btn btn-danger" ng-click="eliminar(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Eliminar Amistad
+											                        	</button>
+											                        	<br><br><br><br>
+											                        	<button class="btn btn-secondary" ng-click="bloquearUsuario(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Bloquear Usuario
+											                        	</button>
+											                        </div>
+											                        <div ng-if="eUsuario.tipoRelacion == 'solEnviada'">
+											                        	<button class="btn btn-secondary" ng-click="bloquearUsuario(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Bloquear Usuario
+											                        	</button>
+											                        </div>
+											                        <div ng-if="eUsuario.tipoRelacion == 'solRecibida'">
+											                        	<button class="btn btn-success" ng-click="aceptarAmistad(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Aceptar Peticion de Amistad
+											                        	</button>
+											                        	<br><br><br><br>
+											                        	<button class="btn btn-danger" ng-click="rechazarAmistad(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Rechazar Peticion de Amistad
+											                        	</button>
+											                        	<br><br><br><br>
+											                        	<button class="btn btn-secondary" ng-click="bloquearUsuario(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Bloquear Usuario
+											                        	</button>
+											                        </div>
+											                        <div ng-if="eUsuario.tipoRelacion == 'bloqueado'">
+											                        	<button class="btn btn-warning" ng-click="desbloquearUsuario(eUsuario.username)">
+											                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+											                        		Desloquear Usuario
+											                        	</button>
+											                        </div>
+															    </div>
+														    </div>
+														</div>					
+									                </div>
+									            </div>
+										        <a class="carousel-control-prev" href="#carouselUsuarios" role="button" data-slide="prev">
+											      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+											      <span class="sr-only">Anterior</span>
+											    </a>
+											    <a class="carousel-control-next" href="#carouselUsuarios" role="button" data-slide="next">
+											      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+											      <span class="sr-only">Siguiente</span>
+											    </a>
+										    </div>
+										</div>
+									</div>
+				            	</div>
+			            	
+			            	</div>
+			            
+			            </div>
+			        </div>
 		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-success btnPaginaPrincipal">
-			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Gente
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal">
-			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Clubes
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
+		        <div class="col-md-1"></div>
 		    </div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divPanelAdministrador").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
@@ -227,16 +522,6 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Flashcards 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
 
@@ -245,7 +530,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <i class="fa fa-angle-up"></i>
   </a>
 
   <!-- Custom scripts for all pages-->

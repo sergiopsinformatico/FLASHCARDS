@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Mi Perfil</title>
+  <title>Flashcards - Perfil de ${perfil.getUsername()}</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item active dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
@@ -161,24 +161,122 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        
+        <script>
+	        var app = angular.module('AppPerfil', []);
+	        app.controller('PerfilCtrl', function($scope, $http) {
+	        	
+	        	$scope.tipoRelacion = '';
+	        	
+	        	$scope.eliminarAmigo = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere eliminar a tu amigo ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "eliminarAmigo.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+	        	
+	        	
+	        	$scope.aceptarAmistad = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Aceptas la petición de amistad de ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "aceptarAmistad.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+	        	
+				$scope.rechazarAmistad = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Rechazas la peticion de ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "rechazarAmistad.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.enviarPeticion = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere enviar una petición de amistad a ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "enviarPeticion.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.bloquearUsuario = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere bloquear a ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "bloquearUsuario.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.desbloquearUsuario = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Quiere desbloquear a ${perfil.getUsername()}?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "desbloquearUsuario.html?username=${perfil.getUsername()}";
+	  	    			}  
+	  	    		  }
+	  	    		})
+	        	}
+				
+				$scope.compruebaOtroUsuario = function(){
+					if(("${usuario.getUsername()}").localeCompare("${perfil.getUsername()}") != 0){
+						$scope.tipoRelacion = "${perfil.getTipoRelacion()}";
+						return true;
+					}else{
+						return false;
+					}
+				}
+				
+	        	
+	        });
+        </script>
+        
+        <div class="container-fluid" ng-app="AppPerfil" ng-controller="PerfilCtrl">
+        	
         	<div class="row">
         		<br><br>
         	</div>
         	<div class="row">
         		<div class="col-md-3"></div>
         		<div class="col-md-6">
-        			<div class="row middle">
-        				<img src="${perfil.getFoto()}" alt="Foto" class="fotoPerfil">
-        			</div>
-        			<div class="row">
-        				<br>
-        			</div>
         			<div class="row cuadroInfoUser container">
         				<div class="col-md-12">
         					<br>
 	        				<h6 align="center" class="titleInfo">Información Personal</h6>
-	        				<br>
+	        				<br><br>
+	        				<div class="row middle">
+		        				<img src="${perfil.getFoto()}" alt="Foto" class="fotoPerfil">
+		        			</div>
+		        			<br><br>
 	        				<p id="username" align="center">
 	        					<strong>Username:</strong> ${perfil.getUsername()}
 	        				</p>
@@ -194,6 +292,64 @@
 	        				<p id="pais" style="display: none;" align="center">
 	        					<strong>País:</strong> ${perfil.getPais()}
 	        				</p>
+	        				<br>
+	        				<div align="center" ng-if="compruebaOtroUsuario()">
+	        					<div ng-if="tipoRelacion == 'ninguna'">
+	        						<p style="color:black;"><strong>No sois amigos</strong></p>
+		                        	<button class="btn btn-info" ng-click="enviarPeticion()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Enviar Solicitud de Amistad
+		                        	</button>
+		                        	<br><br>
+		                        	<button class="btn btn-secondary" ng-click="bloquearUsuario()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Bloquear Usuario
+		                        	</button>
+		                        </div>
+		                        <div ng-if="tipoRelacion == 'amigo'">
+		                        	<p style="color:black;"><strong>Amigo</strong></p>
+		                        	<button class="btn btn-danger" ng-click="eliminar()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Eliminar Amistad
+		                        	</button>
+		                        	<br><br>
+		                        	<button class="btn btn-secondary" ng-click="bloquearUsuario()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Bloquear Usuario
+		                        	</button>
+		                        </div>
+		                        <div ng-if="tipoRelacion == 'solEnviada'">
+		                        	<p style="color:black;"><strong>Solicitud de Amistad Enviada</strong></p>
+		                        	<button class="btn btn-secondary" ng-click="bloquearUsuario()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Bloquear Usuario
+		                        	</button>
+		                        </div>
+		                        <div ng-if="tipoRelacion == 'solRecibida'">
+		                        	<p style="color:black;"><strong>Solicitud de Amistad Recibida</strong></p>
+		                        	<button class="btn btn-success" ng-click="aceptarAmistad()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Aceptar Peticion de Amistad
+		                        	</button>
+		                        	<br><br>
+		                        	<button class="btn btn-danger" ng-click="rechazarAmistad()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Rechazar Peticion de Amistad
+		                        	</button>
+		                        	<br><br>
+		                        	<button class="btn btn-secondary" ng-click="bloquearUsuario()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Bloquear Usuario
+		                        	</button>
+		                        </div>
+		                        <div ng-if="tipoRelacion == 'bloqueado'">
+		                        	<p style="color:black;"><strong>Usuario Bloqueado</strong></p>
+		                        	<button class="btn btn-warning" ng-click="desbloquearUsuario()">
+		                        		<i class="fa fa-user-o" aria-hidden="true"></i>
+		                        		Desloquear Usuario
+		                        	</button>
+		                        </div>
+	        				</div>
 	        				<br>
 	        				<script>
 	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
@@ -211,21 +367,19 @@
         		</div>
         		<div class="col-md-3"></div>
         	</div>
+        	
+        	<script>
+        		if("${usuario.getRol()}" === 'Administrador'){
+        			document.getElementById("adminSidebarDivider").style.display="block";
+        			document.getElementById("adminSidebarTitle").style.display="block";
+        			document.getElementById("adminSidebar").style.display="block";
+        		}
+        	</script>        	
         </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Flashcards 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -235,7 +389,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <i class="fa fa-angle-up"></i>
   </a>
 
   <!-- Custom scripts for all pages-->

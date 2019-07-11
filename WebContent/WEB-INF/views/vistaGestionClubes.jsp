@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Gestion Usuarios - Administrador ${usuario.getUsername()}</title>
+  <title>Flashcards - Gestion Clubes - Administrador ${usuario.getUsername()}</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -163,73 +163,31 @@
         <!-- Begin Page Content -->
         
         <script>
-        var app = angular.module('AppAdministrador', []);
-        app.controller('AdministradorCtrl', function($scope, $http) {
-        	$scope.listaUsuarios = [];
+        var app = angular.module('AppClubesAdministrador', []);
+        app.controller('ClubesAdministradorCtrl', function($scope, $http) {
+        	$scope.listaClubes = [];
         	$scope.checkGet = false;
         	var indice = 0;
         	var user;
         	
         	$scope.rellenarTabla = function(){
         		
-	       		$http.get("getUsuariosAdmin.do?username=${usuario.getUsername()}")
+	       		$http.get("getClubesAdmin.do")
 	       			.then(function(response) {
-	       				$scope.listaUsuarios = response.data;
+	       				$scope.listaClubes = response.data;
 	       				$scope.checkGet = true;
 	       		  	}, function myError(response) {
-		       		  	$scope.listaUsuarios = [];
+		       		  	$scope.listaClubes = [];
 	       				$scope.checkGet = true;
 		       	    }
 	       		);
         		
         	};
         	
-        	$scope.cambioRol = function(usuario){
-        	    bootbox.prompt({
-        	        title: "Nuevo rol para "+usuario,
-        	        inputType: 'select',
-        	        inputOptions: [{
-        	            text: 'Elige un nuevo rol...',
-        	            value: '',
-        	        }, {
-        	          text: 'Usuario',
-        	          value: 'Usuario',
-        	        }, {
-        	          text: 'Moderador',
-        	          value: 'Moderador',
-        	        }, {
-        	          text: 'Administrador',
-        	          value: 'Administrador',
-        	        }],
-        	        callback: function(result) {
-        	        	if(result != null){
-	        	        	if(result == ''){
-	        	        		bootbox.alert("No ha seleccionado un rol");
-	        	        	}else{
-	        	        		$http.get("administradorCambiaRol.do?username="+usuario+"&rol="+result)
-		        	        		.then(function(response) {
-		        	       				if(response.data==true){
-		        	       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
-					       						if(usuario == ($scope.listaUsuarios[indice]).username){
-					       							user = $scope.listaUsuarios[indice];
-					       							user.rol = result;
-					       							$scope.listaUsuarios.splice(indice, 1);
-					       							$scope.listaUsuarios.splice(indice, 0, user);
-					       							indice = $scope.listaUsuarios.length;
-					       						}
-					       					}
-		        	       				}
-		        	       		  	});
-	        	        	}
-        	        	}
-        	        }
-        	     });
-           	};
-        	
-			$scope.eliminaUsuario = function(usuario){
+			$scope.eliminaClub = function(club){
 				
 				bootbox.confirm({
-				    message: "¿Quiere eliminar a "+usuario+"?",
+				    message: "¿Quiere eliminar el club "+club.nombreClub+"?",
 				    buttons: {
 				        cancel: {
 				            label: '<i class="fa fa-times"></i> No'
@@ -241,7 +199,7 @@
 				    callback: function (result) {
 				    	if(result == true){
 					    	console.log('Eliminar a: ' + result);
-					    	$http.get("administradorEliminaUsuario.do?username="+usuario).then(function(response) {
+					    	$http.get("administradorEliminaClub.do?idClub="+club.idClub).then(function(response) {
 			       				if(response.data==true){
 			       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
 			       						if(usuario == ($scope.listaUsuarios[indice]).username){
@@ -261,46 +219,36 @@
         });
         </script>
         
-        <div class="container-fluid" ng-app="AppAdministrador" ng-controller="AdministradorCtrl">
+        <div class="container-fluid" ng-app="AppClubesAdministrador" ng-controller="ClubesAdministradorCtrl">
         	<div class="row">
         		<div class="col-md-12">
 		        	<div class="row">
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-10">
 				            <div ng-if="!checkGet">
-				            	<h6 align="center">Cargando usuarios...</h6>
+				            	<h6 align="center">Cargando clubes...</h6>
 				            </div>
-				            <div ng-if="checkGet && listaUsuarios.length == 0">
-				            	<h6 align="center">No hay usuarios en el sistema</h6>
+				            <div ng-if="checkGet && listaClubes.length == 0">
+				            	<h6 align="center">No hay clubes en el sistema</h6>
 				            </div>
-				            <div ng-if="checkGet && listaUsuarios.length > 0">
+				            <div ng-if="checkGet && listaClubes.length > 0">
 				            	<div class="input-group">
-					            	<input type="text" ng-model="filterUser.username" class="form-control" placeholder="Filtrar por username" />
-					            </div>
-					            <br>
-					            <div class="input-group">
-					            	<input type="text" ng-model="filterUser.email" class="form-control" placeholder="Filtrar por email" />
+					            	<input type="text" ng-model="filterClubes" class="form-control" placeholder="Filtrar por nombre de clubes" />
 					            </div>
 					            <br>
 					            <table width="100%" border="1">  
 								   <tr>  
-								      <th align="center" style="text-align:center;">Usuarios</th>  
-								      <th align="center" style="width:150px; text-align:center;">Cambiar Rol</th>
-								      <th align="center" style="width:150px; text-align:center;">Eliminar Usuario</th>   
+								      <th align="center" style="text-align:center;">Club</th>  
+								      <th align="center" style="width:150px; text-align:center;">Eliminar Club</th>   
 								   </tr>  
-								   <tr ng-repeat = "eUsuario in listaUsuarios | filter:filterUser:strict">  
+								   <tr ng-repeat = "eClub in listaClubes | filter:filterUser:strict">  
 								      <td align="center">
-								      	<strong>Username: </strong><a href="verPerfil.html?usuarioPerfil={{ eUsuario.username }}">{{ eUsuario.username }}</a>
-								      	<br><strong>Email: </strong> {{ eUsuario.email }}
-								      	<br><strong>Rol: </strong> {{ eUsuario.rol }}
+								      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.idClub }}">{{ eClub.nombreClub }}</a>
+								      	<br><strong>Id del Club: </strong> {{ eClub.idClub }}
+								      	<br><strong>Creador: </strong> {{ eUsuario.administrador }}
 								      </td>  
 								      <td style="width:150px;">
-								      	<form ng-submit="cambioRol(eUsuario.username)">
-										     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-										</form>
-								      </td>
-								      <td style="width:150px;">
-									      <form ng-submit="eliminaUsuario(eUsuario.username)">
+									      <form ng-submit="eliminaClub(eClub)">
 										     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
 										  </form>
 								      </td>    

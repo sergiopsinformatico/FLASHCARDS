@@ -1,5 +1,6 @@
 package main.java.flashcards.db.mongodb;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import com.mongodb.client.MongoDatabase;
 import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.db.dao.InterfaceDAORelacionesUsuarios;
 import main.java.flashcards.dto.RelacionesUsuariosDTO;
+import main.java.flashcards.dto.UsuarioDTO;
 
 public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios {
 	
@@ -33,6 +35,13 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
     RelacionesUsuariosDTO user;
     List<String> listaUser;
     int indice;
+    boolean encontrado;
+	List<String> amigos;
+	List<String> bloqueadores;
+	List<String> bloqueados;
+	List<String> pdaEnv;
+	List<String> pdaRec;
+	String tipoRelacion;
     
     //Logger
   	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.RelacionesUsuariosMongoDB");
@@ -300,6 +309,63 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		}else {
 			return null;
 		}
+	}
+	
+	public String tipoRelacion(String usuarioPregunta, String otroUsuario) {
+		amigos = getAmigos(usuarioPregunta);
+		bloqueadores = getBloqueadores(usuarioPregunta);
+		bloqueados = getBloqueados(usuarioPregunta);
+		pdaEnv = getPeticionesAmistadEnviadas(usuarioPregunta);
+		pdaRec = getPeticionesRecibidas(usuarioPregunta);
+		
+		encontrado = false;
+		
+		for(indice=0; (!encontrado) && indice<bloqueadores.size(); indice++) {
+			if(bloqueadores.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "";
+				indice=bloqueadores.size();
+			}
+		}
+			
+		for(indice=0; (!encontrado) && indice<amigos.size(); indice++) {
+			if(amigos.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "amigo";
+				indice=amigos.size();
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<bloqueados.size(); indice++) {
+			if(bloqueados.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "bloqueado";
+				indice=bloqueados.size();
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<pdaEnv.size(); indice++) {
+			if(pdaEnv.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "solEnviada";
+				indice=pdaEnv.size();
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<pdaRec.size(); indice++) {
+			if(pdaRec.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "solRecibida";
+				indice=pdaRec.size();
+			}
+		}
+		
+		if(!encontrado) {
+			tipoRelacion = "ninguna";
+		}
+		
+		return tipoRelacion;
+
 	}
 
 }

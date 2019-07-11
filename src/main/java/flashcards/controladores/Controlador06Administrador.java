@@ -138,4 +138,19 @@ public class Controlador06Administrador {
 		
 	}
 	
+	@RequestMapping(value = "/gestionClubesAdmin", method = RequestMethod.GET)
+	public ModelAndView gestionClubesAdmin(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="" &&
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) {
+			
+			vista = new ModelAndView("vistaGestionClubes");
+		
+		}else {
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
+		}
+		return vista;
+	}
+	
 }

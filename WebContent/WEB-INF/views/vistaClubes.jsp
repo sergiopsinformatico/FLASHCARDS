@@ -297,17 +297,12 @@
 			            <div ng-if="!checkGet" style="width:100%">
 			            	<h6 align="center">Cargando clubes...</h6>
 			            </div>
-			            <div ng-if="checkGet && listaClubesActual.length == 0" style="width:100%">
-			            	<h6 align="center">No hay clubes creados</h6>
-			            </div>
-				        
-			            <div ng-if="checkGet && listaClubesActual.length > 0" align="center" style="width:100%">
-			            	<div class="input-group">
-				            	<input type="text" ng-model="filterClubes" ng-change="refreshCarrousel()" class="form-control" placeholder="Filtrar por nombre del club" />
-				            </div>
-				            <br>
-				            <div class="row">
-				            	<div class="col-md-5" align="left">
+			            
+			            <div ng-if="checkGet" style="width:100%">
+			            
+			            	<div class="row">
+			            	
+			            		<div class="col-md-5" align="left">
 				            		<input type="radio" id="allRadio" name="selectClubes" ng-model="value" ng-change="cambioButton(value)" value="all">
 				            		<label for="allRadio">Todos los Clubes</label>
 				            		<br>
@@ -318,67 +313,81 @@
 				            		<label for="estoyRadio">Clubes a los que pertenezco</label>
 				            		<br>
 				            	</div>
+				            	
 				            	<div class="col-md-7">
-				            		<div id="carouselClubes" class="carousel slide" style="width:400px;height:500px;">
-								        <div class="container" style="width:400px;height:500px;">
-								            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:500px;">
-												<div class="carousel-item" ng-repeat="eClub in listaClubesActual | filter:filterClubes">
-										            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
-														<div class="flip-card">
-													    	<div class="flip-card-front" style="background:#C5BC00;">
-													        	<br><br><br><br>
-										                    	<i class="fa fa-star fa-5x" aria-hidden="true"></i>
-										                    	<br><br>
-										                        <p><strong>{{eClub.nombreClub}}</strong></p>
-										                        <p><strong>Tema:</strong> {{eClub.temaClub}}</p>
-										                        <br><br><br>
-										                        <p ng-if="eClub.pertenezcoClub == false">
-										                        	No perteneces a este club
-										                        </p>
-										                        <p ng-if="eClub.pertenezcoClub == true">
-										                        	Perteneces a este club
-										                        </p>
-										                        <p ng-if="eClub.soyAdministradorClub == true">
-										                        	Creaste este club
-										                        </p>
-															</div>
-													 		<div class="flip-card-back" style="background:#FF8439;">
-													 			<br><br><br><br><br><br>
-													 			<a ng-href="verClub.html?idClub={{eClub.idClub}}" style="color:yellow;">
-													 				Entrar
-													 			</a>
-													 			<br><br>
-												        		<button class="btn btn-success" ng-click="unirmeClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == false">
-													        		<i class="fa fa-sign-in" aria-hidden="true"></i>
-										                        	Unirte al Club
-										                        </button>
-												        		<button class="btn btn-danger" ng-click="dejarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == true && eClub.soyAdministradorClub == false">
-													        		<i class="fa fa-sign-out" aria-hidden="true"></i>
-										                        	Dejar Club
-										                        </button>
-												        		<button class="btn btn-danger" ng-click="borrarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.soyAdministradorClub == true">
-										                        	<i class="fa fa-times" aria-hidden="true"></i>
-										                        	Eliminar Club
-										                        </button>
+				            		<div ng-if="listaClubesActual.length == 0" style="width:100%" align="center">
+						            	<h6 ng-if="value == 'all'" align="center">No existen clubs. ¡Anímate y se el primero!</h6>
+						            	<h6 ng-if="value == 'creadas'" align="center">Aun no has creado clubes. ¡Crea uno ahora!</h6>
+						            	<h6 ng-if="value == 'estoy'" align="center">Aun no perteneces a un club. ¡Unete a alguno!</h6>
+						            </div>
+						            <div ng-if="listaClubesActual.length > 0" style="width:100%" align="center">
+						            	<div class="input-group">
+							            	<input type="text" ng-model="filterClubes" ng-change="refreshCarrousel()" class="form-control" placeholder="Filtrar por nombre del club" />
+							            </div>
+							            <br>
+					            		<div id="carouselClubes" class="carousel slide" style="width:400px;height:500px;">
+									        <div class="container" style="width:400px;height:500px;">
+									            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:500px;">
+													<div class="carousel-item" ng-repeat="eClub in listaClubesActual | filter:filterClubes">
+											            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
+															<div class="flip-card">
+														    	<div class="flip-card-front" style="background:#C5BC00;">
+														        	<br><br><br><br>
+											                    	<i class="fa fa-star fa-5x" aria-hidden="true"></i>
+											                    	<br><br>
+											                        <p><strong>{{eClub.nombreClub}}</strong></p>
+											                        <p><strong>Tema:</strong> {{eClub.temaClub}}</p>
+											                        <br><br><br>
+											                        <p ng-if="eClub.pertenezcoClub == false">
+											                        	No perteneces a este club
+											                        </p>
+											                        <p ng-if="eClub.pertenezcoClub == true">
+											                        	Perteneces a este club
+											                        </p>
+											                        <p ng-if="eClub.soyAdministradorClub == true">
+											                        	Creaste este club
+											                        </p>
+																</div>
+														 		<div class="flip-card-back" style="background:#FF8439;">
+														 			<br><br><br><br><br><br>
+														 			<a ng-href="verClub.html?idClub={{eClub.idClub}}" style="color:yellow;">
+														 				Entrar
+														 			</a>
+														 			<br><br>
+													        		<button class="btn btn-success" ng-click="unirmeClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == false">
+														        		<i class="fa fa-sign-in" aria-hidden="true"></i>
+											                        	Unirte al Club
+											                        </button>
+													        		<button class="btn btn-danger" ng-click="dejarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.pertenezcoClub == true && eClub.soyAdministradorClub == false">
+														        		<i class="fa fa-sign-out" aria-hidden="true"></i>
+											                        	Dejar Club
+											                        </button>
+													        		<button class="btn btn-danger" ng-click="borrarClub(eClub.idClub, eClub.nombreClub)" ng-if="eClub.soyAdministradorClub == true">
+											                        	<i class="fa fa-times" aria-hidden="true"></i>
+											                        	Eliminar Club
+											                        </button>
+															    </div>
 														    </div>
-													    </div>
-													</div>					
-								                </div>
-								            </div>
-									        <a class="carousel-control-prev" href="#carouselClubes" role="button" data-slide="prev">
-										      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-										      <span class="sr-only">Anterior</span>
-										    </a>
-										    <a class="carousel-control-next" href="#carouselClubes" role="button" data-slide="next">
-										      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-										      <span class="sr-only">Siguiente</span>
-										    </a>
-									    </div>
+														</div>					
+									                </div>
+									            </div>
+										        <a class="carousel-control-prev" href="#carouselClubes" role="button" data-slide="prev">
+											      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+											      <span class="sr-only">Anterior</span>
+											    </a>
+											    <a class="carousel-control-next" href="#carouselClubes" role="button" data-slide="next">
+											      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+											      <span class="sr-only">Siguiente</span>
+											    </a>
+										    </div>
+										</div>
 									</div>
 				            	</div>
-				            </div>
-				        </div>
-		        	</div>
+			            	
+			            	</div>
+			            
+			            </div>
+			        </div>
 		        </div>
 		        <div class="col-md-3" style="width:100%">
 		        	<div class="row" style="width:100%">
@@ -432,7 +441,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <i class="fa fa-angle-up"></i>
   </a>
 
   <!-- Custom scripts for all pages-->

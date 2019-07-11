@@ -20,4 +20,5 @@ public interface InterfaceDAORelacionesUsuarios {
 	public boolean desbloquearUsuario(String bloqueador, String desbloqueado);
 	public List<String> getBloqueados(String username);
 	public List<String> getBloqueadores(String username);
+	public String tipoRelacion(String usuarioPregunta, String otroUsuario);
 }
