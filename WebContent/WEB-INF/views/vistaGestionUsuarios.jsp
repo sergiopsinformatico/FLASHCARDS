@@ -68,7 +68,7 @@
         Administrador
       </div>
       <li class="nav-item active" id="adminSidebar" style="display: none;">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="panelAdministrador.html">
           <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Administrador</span></a>
       </li>
@@ -80,13 +80,13 @@
         Usuarios
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verGente.html">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Gente</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verClubes.html">
           <i class="fa fa-users" aria-hidden="true"></i>
           <span>Clubes</span>
         </a>
@@ -102,11 +102,6 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -206,7 +201,8 @@
 	        	        	if(result == ''){
 	        	        		bootbox.alert("No ha seleccionado un rol");
 	        	        	}else{
-	        	        		$http.get("administradorCambiaRol.do?username="+usuario+"&rol="+result)
+	        	        		window.location.href = "administradorCambiaRol.do?username="+usuario+"&rol="+result;
+	        	        		/*$http.get("administradorCambiaRol.do?username="+usuario+"&rol="+result)
 		        	        		.then(function(response) {
 		        	       				if(response.data==true){
 		        	       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
@@ -219,7 +215,7 @@
 					       						}
 					       					}
 		        	       				}
-		        	       		  	});
+		        	       		  	});*/
 	        	        	}
         	        	}
         	        }
@@ -241,7 +237,8 @@
 				    callback: function (result) {
 				    	if(result == true){
 					    	console.log('Eliminar a: ' + result);
-					    	$http.get("administradorEliminaUsuario.do?username="+usuario).then(function(response) {
+					    	window.location.href = "administradorEliminaUsuario.do?username="+usuario;
+					    	/*$http.get("administradorEliminaUsuario.do?username="+usuario).then(function(response) {
 			       				if(response.data==true){
 			       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
 			       						if(usuario == ($scope.listaUsuarios[indice]).username){
@@ -250,7 +247,7 @@
 			       						}
 			       					}
 			       				}
-			       		  	});
+			       		  	})*/;
 				    	}
 				    }
 				});

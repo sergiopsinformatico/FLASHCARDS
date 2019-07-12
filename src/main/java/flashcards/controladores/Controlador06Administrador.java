@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import main.java.flashcards.brokers.Broker;
+import main.java.flashcards.db.dao.InterfaceDAOClub;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
+import main.java.flashcards.dto.ClubDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
@@ -28,7 +30,9 @@ public class Controlador06Administrador {
 	
 	ModelAndView vista;
 	List<UsuarioDTO> listaUsuarios;
+	List<ClubDTO> listaClubes;
 	InterfaceDAOUsuario dBUsuario;
+	InterfaceDAOClub dBClubes;
 	UsuarioDTO userAntiguo;
 	UsuarioDTO userNuevo;
 	
@@ -87,54 +91,54 @@ public class Controlador06Administrador {
 		
 	}
 	
-	@RequestMapping(value = "/administradorCambiaRol", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public boolean administradorCambiaRol(@RequestParam("username") String username, @RequestParam("rol") String rol,
+	@RequestMapping(value = "/administradorCambiaRol", method = RequestMethod.GET)
+	public ModelAndView administradorCambiaRol(@RequestParam("username") String username, @RequestParam("rol") String rol,
 			HttpServletRequest request){
+		
+		vista = new ModelAndView(CONST_REDIRECT_INICIO);
 		
 		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="" &&
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) {
+			
+			vista = new ModelAndView("vistaGestionUsuarios");
 			
 			dBUsuario = Broker.getInstanciaUsuario();
 			userAntiguo = dBUsuario.getUsuarioDTO(username);
 			if(userAntiguo!=null) {
 				userNuevo = userAntiguo;
 				userNuevo.setRol(rol);
-				return dBUsuario.updateUsuario(userAntiguo, userNuevo);
-			}else {
-				return false;
+				dBUsuario.updateUsuario(userAntiguo, userNuevo);
 			}
 			
-		}else {
-			return false;
 		}
+		return vista;
 		
 	}
 	
-	@RequestMapping(value = "/administradorEliminaUsuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public boolean administradorEliminaUsuario(@RequestParam("username") String username, HttpServletRequest request){
+	@RequestMapping(value = "/administradorEliminaUsuario", method = RequestMethod.GET)
+	public ModelAndView administradorEliminaUsuario(@RequestParam("username") String username, HttpServletRequest request){
+		
+		vista = new ModelAndView(CONST_REDIRECT_INICIO);
 		
 		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="" &&
 				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) {
 			
+			vista = new ModelAndView("vistaGestionUsuarios");
+			
 			dBUsuario = Broker.getInstanciaUsuario();
 			userAntiguo = dBUsuario.getUsuarioDTO(username);
 			if(userAntiguo!=null) {
-				return dBUsuario.deleteUsuario(userAntiguo);
-			}else {
-				return false;
+				dBUsuario.deleteUsuario(userAntiguo);
+				Broker.getInstanciaRelaciones().eliminaRelaciones(userAntiguo.getUsername());
 			}
 			
-		}else {
-			return false;
 		}
+		
+		return vista;
 		
 	}
 	
@@ -151,6 +155,47 @@ public class Controlador06Administrador {
 			vista = new ModelAndView(CONST_REDIRECT_INICIO);
 		}
 		return vista;
+	}
+	
+	@RequestMapping(value = "/getClubesAdmin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public List<ClubDTO> getClubesAdmin(HttpServletRequest request){
+		
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="" &&
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) {
+			
+			dBClubes = Broker.getInstanciaClub();
+			listaClubes = dBClubes.todosClubesCreados();
+			
+		}else {
+			listaClubes = new LinkedList<>();
+		}
+		
+		return listaClubes;
+		
+	}
+	
+	@RequestMapping(value = "/administradorEliminaClub", method = RequestMethod.GET)
+	public ModelAndView administradorEliminaClub(@RequestParam("idClub") String idClub, HttpServletRequest request){
+		
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="" &&
+				   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) {
+			
+			dBClubes = Broker.getInstanciaClub();
+			dBClubes.eliminaClub(idClub);
+			vista = new ModelAndView("vistaGestionClubes");
+			
+		}else {
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
+		}
+		
+		return vista;
+		
 	}
 	
 }

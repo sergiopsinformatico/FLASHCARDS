@@ -250,5 +250,18 @@ public class ClubMongoDB implements InterfaceDAOClub {
 		}
 		return encontrado;
 	}
+	
+	public List<ClubDTO> todosClubesCreados(){
+		clubes = new LinkedList<ClubDTO>();
+		iterador = coleccionClubes.find().iterator();
+		while(iterador.hasNext()) {
+			doc = iterador.next();
+			miembros = (List<String>)doc.get("miembros");
+			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
+					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			clubes.add(club);
+		}
+		return clubes;
+	}
 
 }

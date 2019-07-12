@@ -68,7 +68,7 @@
         Administrador
       </div>
       <li class="nav-item active" id="adminSidebar" style="display: none;">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="panelAdministrador.html">
           <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Administrador</span></a>
       </li>
@@ -80,13 +80,13 @@
         Usuarios
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verGente.html">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Gente</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verClubes.html">
           <i class="fa fa-users" aria-hidden="true"></i>
           <span>Clubes</span>
         </a>
@@ -103,11 +103,6 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -165,8 +160,7 @@
         
         <div class="container-fluid">
         	<div class="row">
-        		<div class="col-md-1"></div>
-        		<div class="col-md-10">
+        		<div class="col-md-6">
 		        	<form action="gestionUsuariosAdmin.html" method="get" class="btnPaginaPrincipal">
 			        	<button class="btn btn-warning btnPaginaPrincipal">
 			        		<i class="fa fa-users fa-5x" aria-hidden="true"></i>
@@ -174,7 +168,8 @@
 			        		Gestión de Usuarios
 			        	</button>
 		        	</form>
-		        	<br><br>
+		        </div>
+		        <div class="col-md-6">
 		        	<form action="gestionClubesAdmin.html" method="get" class="btnPaginaPrincipal">
 			        	<button class="btn btn-success btnPaginaPrincipal">
 			        		<i class="fa fa-star fa-5x" aria-hidden="true"></i>
@@ -183,7 +178,7 @@
 			        	</button>
 		        	</form>
 		        </div>
-		        <div class="col-md-1"></div>
+
 		    </div>
         	
         	<script>

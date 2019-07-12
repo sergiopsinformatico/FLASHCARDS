@@ -103,11 +103,6 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -178,12 +173,16 @@
 		    				<div class="col-md-10">
 								<form action="modificaUsuario.do" method="post" id="Registro" name="Registro">            
 					           		<br>
-					           		<div class="form-group">
+					           		<!-- <div class="form-group">
 							            <input type="text" class="form-control" id="inputUsername" ng-model="username" ng-change="validateUsername($event, username)" name="inputUsername" placeholder="Username" required>
 							        </div>
 							        <small id="msgUsername">{{messageUsername}}</small>	
 							        <h6 style="font-size:10px; color:#808080">El campo Username solo puede contener números y letras, y tiene que tener una longitud de entre 5 y 15 caracteres.</h6>			        
-							        <br>
+							        <br>-->
+							        
+							        <h6 style="color:#808080">Username: ${usuario.getUsername()}</h6>
+							        <input type="hidden" class="form-control" id="inputUsername" ng-model="username" name="inputUsername" value="${usuario.getUsername()}">
+							  		<br>
 							        <div class="form-group">
 							            <input type="email" class="form-control" id="inputEmail" ng-model="email" ng-change="validateEmail($event, email)" name="inputEmail" placeholder="Email" required>
 							        </div>
@@ -348,7 +347,7 @@
 	        		}
 	        	}
 	        	
-	        	$scope.validateUsername = function(event, username){
+	        	/*$scope.validateUsername = function(event, username){
 	        		checkUsername = false;
 	        		checkExistUsername = false;
 	        		checkLongUsername = false;
@@ -400,7 +399,7 @@
 	        		}
 	        		
 	        		enableBtnModificar();
-	        	}
+	        	}*/
 	        	
 	        	$scope.validateEmail = function(event, email){
 	        		checkEmail = false;

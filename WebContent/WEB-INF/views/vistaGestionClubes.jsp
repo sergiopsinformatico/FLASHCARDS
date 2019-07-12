@@ -68,7 +68,7 @@
         Administrador
       </div>
       <li class="nav-item active" id="adminSidebar" style="display: none;">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="panelAdministrador.html">
           <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Administrador</span></a>
       </li>
@@ -80,13 +80,13 @@
         Usuarios
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verGente.html">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Gente</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inicio.html">
+        <a class="nav-link" href="verClubes.html">
           <i class="fa fa-users" aria-hidden="true"></i>
           <span>Clubes</span>
         </a>
@@ -102,11 +102,6 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -199,16 +194,7 @@
 				    callback: function (result) {
 				    	if(result == true){
 					    	console.log('Eliminar a: ' + result);
-					    	$http.get("administradorEliminaClub.do?idClub="+club.idClub).then(function(response) {
-			       				if(response.data==true){
-			       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
-			       						if(usuario == ($scope.listaUsuarios[indice]).username){
-			       							$scope.listaUsuarios.splice(indice, 1);
-			       							indice = $scope.listaUsuarios.length;
-			       						}
-			       					}
-			       				}
-			       		  	});
+					    	window.location.href = "administradorEliminaClub.do?idClub="+club.idClub;
 				    	}
 				    }
 				});
@@ -241,11 +227,11 @@
 								      <th align="center" style="text-align:center;">Club</th>  
 								      <th align="center" style="width:150px; text-align:center;">Eliminar Club</th>   
 								   </tr>  
-								   <tr ng-repeat = "eClub in listaClubes | filter:filterUser:strict">  
+								   <tr ng-repeat = "eClub in listaClubes | filter:filterClubes:strict">  
 								      <td align="center">
 								      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.idClub }}">{{ eClub.nombreClub }}</a>
 								      	<br><strong>Id del Club: </strong> {{ eClub.idClub }}
-								      	<br><strong>Creador: </strong> {{ eUsuario.administrador }}
+								      	<br><strong>Creador: </strong> {{ eClub.administrador }}
 								      </td>  
 								      <td style="width:150px;">
 									      <form ng-submit="eliminaClub(eClub)">

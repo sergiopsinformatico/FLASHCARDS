@@ -104,11 +104,6 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -405,9 +400,9 @@
         				<div class="col-md-12" align="center">
         					<form action="crearClub.html" method="post" align="center">
         						<br>
-	        					<input type="text" style="width:100%;" id="nombre" name="nombre" placeholder="Nombre del Club"/>
+	        					<input type="text" style="width:100%;" id="nombre" name="nombre" placeholder="Nombre del Club" required>
 	        					<br><br>
-	        					<input type="text" style="width:100%;" id="tema" name="tema" placeholder="Tema del Club"/>
+	        					<input type="text" style="width:100%;" id="tema" name="tema" placeholder="Tema del Club" required>
 	        					<br><br><br>
 	        					<button type="submit" class="btn btn-success middle">
 	        						Crear Club

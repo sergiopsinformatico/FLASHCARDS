@@ -16,5 +16,6 @@ public interface InterfaceDAOClub {
 	public List<ClubDTO> getTodosClubes(String username);
 	public List<ClubDTO> getMisClubes(String username);
 	public List<ClubDTO> getClubesPertenezco(String username);
+	public List<ClubDTO> todosClubesCreados();
 	
 }
