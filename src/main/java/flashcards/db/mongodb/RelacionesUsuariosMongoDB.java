@@ -19,7 +19,6 @@ import com.mongodb.client.MongoDatabase;
 import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.db.dao.InterfaceDAORelacionesUsuarios;
 import main.java.flashcards.dto.RelacionesUsuariosDTO;
-import main.java.flashcards.dto.UsuarioDTO;
 
 public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios {
 	
@@ -45,6 +44,14 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
     
     //Logger
   	private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.RelacionesUsuariosMongoDB");
+  	
+  	//Constantes
+  	static final String CONST_USUARIO = "usuario";
+  	static final String CONST_PDA_ENV = "pdaEnviadas";
+  	static final String CONST_PDA_REC = "pdaRecibidas";
+  	static final String CONST_AMIGOS = "amigos";
+  	static final String CONST_BLOQUEADOS = "bloqueados";
+  	static final String CONST_BLOQUEADORES = "bloqueadores";
 	
 	public RelacionesUsuariosMongoDB() {
 		connection();
@@ -63,12 +70,12 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 	
 	public boolean creaRelaciones(RelacionesUsuariosDTO relaciones) {
 		try {
-				doc = new Document().append("usuario", relaciones.getUsername())
-									.append("pdaEnviadas", relaciones.getPeticionesAmistadEnviadas())
-									.append("pdaRecibidas", relaciones.getPeticionesAmistadRecibidas())
-									.append("amigos", relaciones.getAmigos())
-									.append("bloqueados", relaciones.getBloqueados())
-									.append("bloqueadores", relaciones.getBloqueadores());
+				doc = new Document().append(CONST_USUARIO, relaciones.getUsername())
+									.append(CONST_PDA_ENV, relaciones.getPeticionesAmistadEnviadas())
+									.append(CONST_PDA_REC, relaciones.getPeticionesAmistadRecibidas())
+									.append(CONST_AMIGOS, relaciones.getAmigos())
+									.append(CONST_BLOQUEADOS, relaciones.getBloqueados())
+									.append(CONST_BLOQUEADORES, relaciones.getBloqueadores());
 				coleccionRelaciones.insertOne(doc);
 				return true;
 		}catch(Exception ex) {
@@ -77,16 +84,16 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 	}
 	
 	public RelacionesUsuariosDTO leerRelaciones(String username) {
-		criteriosBusqueda = new BsonDocument().append("usuario", new BsonString(username));
+		criteriosBusqueda = new BsonDocument().append(CONST_USUARIO, new BsonString(username));
 		iterador = coleccionRelaciones.find(criteriosBusqueda).iterator();
 		if(iterador.hasNext()) {
 			doc = iterador.next();
-			relacionesUser = new RelacionesUsuariosDTO(doc.getString("usuario"),
-													   (List<String>)doc.get("pdaEnviadas"),
-													   (List<String>)doc.get("pdaRecibidas"),
-													   (List<String>)doc.get("amigos"),
-													   (List<String>)doc.get("bloqueados"),
-													   (List<String>)doc.get("bloqueadores"));
+			relacionesUser = new RelacionesUsuariosDTO(doc.getString(CONST_USUARIO),
+													   (List<String>)doc.get(CONST_PDA_ENV),
+													   (List<String>)doc.get(CONST_PDA_REC),
+													   (List<String>)doc.get(CONST_AMIGOS),
+													   (List<String>)doc.get(CONST_BLOQUEADOS),
+													   (List<String>)doc.get(CONST_BLOQUEADORES));
 			return relacionesUser;
 		}else {
 			return null;
@@ -100,18 +107,18 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 	
 	public boolean eliminaRelaciones (String username) {
 		try {
-			criteriosBusqueda = new BsonDocument().append("usuario", new BsonString(username));
+			criteriosBusqueda = new BsonDocument().append(CONST_USUARIO, new BsonString(username));
 			coleccionRelaciones.deleteOne(criteriosBusqueda);
 			
 			iterador = coleccionRelaciones.find().iterator();
 			while(iterador.hasNext()) {
 				doc = iterador.next();
-				relacionesUser = new RelacionesUsuariosDTO(doc.getString("usuario"),
-														   (List<String>)doc.get("pdaEnviadas"),
-														   (List<String>)doc.get("pdaRecibidas"),
-														   (List<String>)doc.get("amigos"),
-														   (List<String>)doc.get("bloqueados"),
-														   (List<String>)doc.get("bloqueadores"));
+				relacionesUser = new RelacionesUsuariosDTO(doc.getString(CONST_USUARIO),
+														   (List<String>)doc.get(CONST_PDA_ENV),
+														   (List<String>)doc.get(CONST_PDA_REC),
+														   (List<String>)doc.get(CONST_AMIGOS),
+														   (List<String>)doc.get(CONST_BLOQUEADOS),
+														   (List<String>)doc.get(CONST_BLOQUEADORES));
 				
 				
 				
@@ -205,7 +212,7 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		if(user!=null) {
 			return user.getPeticionesAmistadEnviadas();
 		}else {
-			return null;
+			return new LinkedList<>();
 		}
 	}
 
@@ -214,7 +221,7 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		if(user!=null) {
 			return user.getPeticionesAmistadRecibidas();
 		}else {
-			return null;
+			return new LinkedList<>();
 		}
 	}
 
@@ -269,7 +276,7 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		if(user!=null) {
 			return user.getAmigos();
 		}else {
-			return null;
+			return new LinkedList<>();
 		}
 	}
 	
@@ -370,7 +377,7 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		if(user!=null) {
 			return user.getBloqueados();
 		}else {
-			return null;
+			return new LinkedList<>();
 		}
 	}
 
@@ -379,7 +386,7 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		if(user!=null) {
 			return user.getBloqueadores();
 		}else {
-			return null;
+			return new LinkedList<>();
 		}
 	}
 	

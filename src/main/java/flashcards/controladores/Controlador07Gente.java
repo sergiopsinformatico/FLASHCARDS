@@ -56,6 +56,7 @@ public class Controlador07Gente {
 	static final String CONST_USUARIO = "usuario";
 	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
 	static final String CONST_REDIRECT_PERFIL = "redirect:/verPerfil.html?usuarioPerfil=";
+	static final String CONST_MENSAJE = "mensaje";
 	
 	@RequestMapping(value = "/verGente", method = RequestMethod.GET)
 	public ModelAndView gente(HttpServletRequest request, HttpServletResponse response) {
@@ -78,9 +79,9 @@ public class Controlador07Gente {
 		dBUsuario = Broker.getInstanciaUsuario();
 		listaTodos = dBUsuario.getAllUsuarios(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		dBRelaciones = Broker.getInstanciaRelaciones();
-		lista = new LinkedList<UsuarioDTO>();
+		lista = new LinkedList<>();
 		
-		for(int indice=0; indice<listaTodos.size(); indice++) {
+		for(indice=0; indice<listaTodos.size(); indice++) {
 			tipoRelacion = dBRelaciones.tipoRelacion(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), listaTodos.get(indice).getUsername());
 			if(!(tipoRelacion.equals(""))) {
 				eUsuario = listaTodos.get(indice);
@@ -101,7 +102,7 @@ public class Controlador07Gente {
 		
 		amigos = dBRelaciones.getAmigos(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		
-		lista = new LinkedList<UsuarioDTO>();
+		lista = new LinkedList<>();
 		
 		for(indice=0; indice<amigos.size(); indice++) {
 			eUsuario = dBUsuario.getUsuarioDTO(amigos.get(indice));
@@ -121,7 +122,7 @@ public class Controlador07Gente {
 		
 		pdaRec = dBRelaciones.getPeticionesRecibidas(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		
-		lista = new LinkedList<UsuarioDTO>();
+		lista = new LinkedList<>();
 		
 		for(indice=0; indice<pdaRec.size(); indice++) {
 			eUsuario = dBUsuario.getUsuarioDTO(pdaRec.get(indice));
@@ -141,7 +142,7 @@ public class Controlador07Gente {
 		
 		pdaEnv = dBRelaciones.getPeticionesAmistadEnviadas(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		
-		lista = new LinkedList<UsuarioDTO>();
+		lista = new LinkedList<>();
 		
 		for(indice=0; indice<pdaEnv.size(); indice++) {
 			eUsuario = dBUsuario.getUsuarioDTO(pdaEnv.get(indice));
@@ -161,7 +162,7 @@ public class Controlador07Gente {
 		
 		bloqueados = dBRelaciones.getBloqueados(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		
-		lista = new LinkedList<UsuarioDTO>();
+		lista = new LinkedList<>();
 		
 		for(indice=0; indice<bloqueados.size(); indice++) {
 			eUsuario = dBUsuario.getUsuarioDTO(bloqueados.get(indice));
@@ -180,7 +181,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.eliminarAmigo(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", username+" ya no es su amigo");
+		vista.addObject(CONST_MENSAJE, username+" ya no es su amigo");
 			
 		return vista;
 	}
@@ -193,7 +194,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.aceptarInvitacion(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", username+" y tu sois amigos");
+		vista.addObject(CONST_MENSAJE, username+" y tu sois amigos");
 			
 		return vista;
 	}
@@ -206,7 +207,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.rechazarInvitacion(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", "Rechazada la solicitud de amistad de "+username);
+		vista.addObject(CONST_MENSAJE, "Rechazada la solicitud de amistad de "+username);
 		
 		return vista;
 	}
@@ -219,7 +220,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.enviarPeticionAmistad(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", "Ha enviado una solicitud de amistad a "+username);
+		vista.addObject(CONST_MENSAJE, "Ha enviado una solicitud de amistad a "+username);
 		
 		return vista;
 	}
@@ -232,7 +233,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.bloquearUsuario(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", "Ha bloqueado a " + username);
+		vista.addObject(CONST_MENSAJE, "Ha bloqueado a " + username);
 		
 		return vista;
 	}
@@ -245,7 +246,7 @@ public class Controlador07Gente {
 		dBRelaciones = Broker.getInstanciaRelaciones();
 		dBRelaciones.desbloquearUsuario(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), username);
 		
-		vista.addObject("mensaje", "Ha desbloqueado a " + username);
+		vista.addObject(CONST_MENSAJE, "Ha desbloqueado a " + username);
 		
 		return vista;
 	}

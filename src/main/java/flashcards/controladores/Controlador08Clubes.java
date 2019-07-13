@@ -43,6 +43,7 @@ public class Controlador08Clubes {
 	//Constantes
 	static final String CONST_USUARIO = "usuario";
 	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
+	static final String CONST_REDIRECT_VER_CLUBES = "redirect:/verClubes.html";
 	
 	@RequestMapping(value = "/verClubes", method = RequestMethod.GET)
 	public ModelAndView getClubes(HttpServletRequest request, HttpServletResponse response) {
@@ -98,7 +99,7 @@ public class Controlador08Clubes {
 				
 			}while(dBClub.existeIdClub(idClub));
 			
-			miembros = new LinkedList<String>();
+			miembros = new LinkedList<>();
 			miembros.add(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 			
 			club = new ClubDTO(idClub, request.getParameter("nombre"), request.getParameter("tema"),
@@ -121,7 +122,7 @@ public class Controlador08Clubes {
 	
 	@RequestMapping(value = "/crearClub", method = RequestMethod.GET)
 	public ModelAndView crearClubesGet(HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/verClubes.html");
+		vista = new ModelAndView(CONST_REDIRECT_VER_CLUBES);
 		return vista;
 	}
 	
@@ -142,7 +143,7 @@ public class Controlador08Clubes {
 		dBUsuario = Broker.getInstanciaUsuario();
 		club = dBClub.leerClub(idClub, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		miembros = club.getMiembros();
-		usuariosMiembros = new LinkedList<UsuarioDTO>();
+		usuariosMiembros = new LinkedList<>();
 		for(indice=0; indice<miembros.size(); indice++) {
 			usuariosMiembros.add(dBUsuario.getUsuarioDTO(miembros.get(indice)));
 		}
@@ -151,7 +152,7 @@ public class Controlador08Clubes {
 	
 	@RequestMapping(value = "/unirmeClub", method = RequestMethod.GET)
 	public ModelAndView unirmeClub(@RequestParam("idClub") String idClub, @RequestParam("username") String username, HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/verClubes.html");
+		vista = new ModelAndView(CONST_REDIRECT_VER_CLUBES);
 		dBClub = Broker.getInstanciaClub();
 		club = dBClub.leerClub(idClub, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		miembros = club.getMiembros();
@@ -163,7 +164,7 @@ public class Controlador08Clubes {
 	
 	@RequestMapping(value = "/dejarClub", method = RequestMethod.GET)
 	public ModelAndView dejarClub(@RequestParam("idClub") String idClub, @RequestParam("username") String username, HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/verClubes.html");
+		vista = new ModelAndView(CONST_REDIRECT_VER_CLUBES);
 		dBClub = Broker.getInstanciaClub();
 		club = dBClub.leerClub(idClub, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		miembros = club.getMiembros();
@@ -182,7 +183,7 @@ public class Controlador08Clubes {
 	
 	@RequestMapping(value = "/borrarClub", method = RequestMethod.GET)
 	public ModelAndView borrarClub(@RequestParam("idClub") String idClub, HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("redirect:/verClubes.html");
+		vista = new ModelAndView(CONST_REDIRECT_VER_CLUBES);
 		dBClub = Broker.getInstanciaClub();
 		dBClub.eliminaClub(idClub);
 		return vista;

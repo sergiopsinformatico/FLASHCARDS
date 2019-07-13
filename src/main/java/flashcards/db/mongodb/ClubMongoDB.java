@@ -38,6 +38,13 @@ public class ClubMongoDB implements InterfaceDAOClub {
     
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.ClubMongoDB");
+    
+    //Constantes
+  	static final String CONST_ID_CLUB = "idClub";
+  	static final String CONST_NOMBRE = "nombre";
+  	static final String CONST_ADMIN = "administrador";
+  	static final String CONST_FECHA = "fecha";
+  	static final String CONST_MIEMBROS = "miembros";
 	
 	public ClubMongoDB() {
 		connection();
@@ -58,12 +65,12 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	public boolean insertaClub(ClubDTO club) {
 		try {
 			if(!existeIdClub(club.getIdClub())) {
-				doc = new Document().append("idClub", club.getIdClub())
-									.append("nombre", club.getNombreClub())
+				doc = new Document().append(CONST_ID_CLUB, club.getIdClub())
+									.append(CONST_NOMBRE, club.getNombreClub())
 									.append("tema", club.getTemaClub())
-									.append("administrador", club.getAdministrador())
-									.append("fecha", club.getFechaCreacion())
-									.append("miembros", club.getMiembros());
+									.append(CONST_ADMIN, club.getAdministrador())
+									.append(CONST_FECHA, club.getFechaCreacion())
+									.append(CONST_MIEMBROS, club.getMiembros());
 				coleccionClubes.insertOne(doc);
 				return true;
 			}else {
@@ -75,31 +82,24 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 	
 	public boolean existeIdClub(String idClub) {
-		criteriosBusqueda = new BsonDocument().append("idClub", new BsonString(idClub));
+		criteriosBusqueda = new BsonDocument().append(CONST_ID_CLUB, new BsonString(idClub));
 		iterador = coleccionClubes.find(criteriosBusqueda).iterator();
 		return iterador.hasNext();
 	}
 
 	public ClubDTO leerClub(String idClub, String username) {
-		criteriosBusqueda = new BsonDocument().append("idClub", new BsonString(idClub));
+		criteriosBusqueda = new BsonDocument().append(CONST_ID_CLUB, new BsonString(idClub));
 		iterador = coleccionClubes.find(criteriosBusqueda).iterator();
 		if(iterador.hasNext()) {
 			doc = iterador.next();
-			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
-					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			club = new ClubDTO(doc.getString(CONST_ID_CLUB), doc.getString(CONST_NOMBRE), doc.getString("tema"), 
+					doc.getString(CONST_ADMIN), (List<String>)doc.get(CONST_MIEMBROS), doc.getString(CONST_FECHA));
 			
-			if(username.equals(club.getAdministrador())) {
-				club.setSoyAdministradorClub(true);
-			}else {
-				club.setSoyAdministradorClub(false);
-			}
+			club.setSoyAdministradorClub(username.equals(club.getAdministrador()));
 			
 			miembros = club.getMiembros();
-			if(checkPertenezcoClub(miembros, username)) {
-				club.setPertenezcoClub(true);
-			}else {
-				club.setPertenezcoClub(false);
-			}
+			
+			club.setPertenezcoClub(checkPertenezcoClub(miembros, username));
 			
 			return club;
 		}else {
@@ -109,7 +109,7 @@ public class ClubMongoDB implements InterfaceDAOClub {
 
 	public boolean eliminaClub(String idClub) {
 		try {
-			criteriosBusqueda = new BsonDocument().append("idClub", new BsonString(idClub));
+			criteriosBusqueda = new BsonDocument().append(CONST_ID_CLUB, new BsonString(idClub));
 			coleccionClubes.deleteOne(criteriosBusqueda);
 			return true;
 		}catch(Exception ex) {
@@ -168,24 +168,16 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 	
 	public List<ClubDTO> getTodosClubes(String username){
-		clubes = new LinkedList<ClubDTO>();
+		clubes = new LinkedList<>();
 		iterador = coleccionClubes.find().iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
-					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			club = new ClubDTO(doc.getString(CONST_ID_CLUB), doc.getString(CONST_NOMBRE), doc.getString("tema"), 
+					doc.getString(CONST_ADMIN), (List<String>)doc.get(CONST_MIEMBROS), doc.getString(CONST_FECHA));
 			
-			if(username.equals(club.getAdministrador())) {
-				club.setSoyAdministradorClub(true);
-			}else {
-				club.setSoyAdministradorClub(false);
-			}
+			club.setSoyAdministradorClub(username.equals(club.getAdministrador()));
 			
-			if(checkPertenezcoClub(club.getMiembros(), username)) {
-				club.setPertenezcoClub(true);
-			}else {
-				club.setPertenezcoClub(false);
-			}
+			club.setPertenezcoClub(checkPertenezcoClub(club.getMiembros(), username));
 					
 			clubes.add(club);
 		}
@@ -193,22 +185,18 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 	
 	public List<ClubDTO> getMisClubes(String username){
-		clubes = new LinkedList<ClubDTO>();
-		criteriosBusqueda = new BsonDocument().append("administrador", new BsonString(username));
+		clubes = new LinkedList<>();
+		criteriosBusqueda = new BsonDocument().append(CONST_ADMIN, new BsonString(username));
 		iterador = coleccionClubes.find(criteriosBusqueda).iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
 			
-			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
-					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			club = new ClubDTO(doc.getString(CONST_ID_CLUB), doc.getString(CONST_NOMBRE), doc.getString("tema"), 
+					doc.getString(CONST_ADMIN), (List<String>)doc.get(CONST_MIEMBROS), doc.getString(CONST_FECHA));
 			
 			club.setSoyAdministradorClub(true);
 			
-			if(checkPertenezcoClub(club.getMiembros(), username)) {
-				club.setPertenezcoClub(true);
-			}else {
-				club.setPertenezcoClub(false);
-			}
+			club.setPertenezcoClub(checkPertenezcoClub(club.getMiembros(), username));
 			
 			clubes.add(club);
 		}
@@ -216,21 +204,17 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 	
 	public List<ClubDTO> getClubesPertenezco(String username){
-		clubes = new LinkedList<ClubDTO>();
+		clubes = new LinkedList<>();
 		iterador = coleccionClubes.find().iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			miembros = (List<String>)doc.get("miembros");
+			miembros = (List<String>)doc.get(CONST_MIEMBROS);
 			if(checkPertenezcoClub(miembros, username)) {
 				
-				club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
-						doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+				club = new ClubDTO(doc.getString(CONST_ID_CLUB), doc.getString(CONST_NOMBRE), doc.getString("tema"), 
+						doc.getString(CONST_ADMIN), (List<String>)doc.get(CONST_MIEMBROS), doc.getString(CONST_FECHA));
 				
-				if(username.equals(club.getAdministrador())) {
-					club.setSoyAdministradorClub(true);
-				}else {
-					club.setSoyAdministradorClub(false);
-				}
+				club.setSoyAdministradorClub(username.equals(club.getAdministrador()));
 				
 				club.setPertenezcoClub(true);
 				
@@ -252,13 +236,13 @@ public class ClubMongoDB implements InterfaceDAOClub {
 	}
 	
 	public List<ClubDTO> todosClubesCreados(){
-		clubes = new LinkedList<ClubDTO>();
+		clubes = new LinkedList<>();
 		iterador = coleccionClubes.find().iterator();
 		while(iterador.hasNext()) {
 			doc = iterador.next();
-			miembros = (List<String>)doc.get("miembros");
-			club = new ClubDTO(doc.getString("idClub"), doc.getString("nombre"), doc.getString("tema"), 
-					doc.getString("administrador"), (List<String>)doc.get("miembros"), doc.getString("fecha"));
+			miembros = (List<String>)doc.get(CONST_MIEMBROS);
+			club = new ClubDTO(doc.getString(CONST_ID_CLUB), doc.getString(CONST_NOMBRE), doc.getString("tema"), 
+					doc.getString(CONST_ADMIN), (List<String>)doc.get(CONST_MIEMBROS), doc.getString(CONST_FECHA));
 			clubes.add(club);
 		}
 		return clubes;
