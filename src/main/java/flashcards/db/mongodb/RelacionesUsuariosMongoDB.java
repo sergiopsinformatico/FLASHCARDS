@@ -396,58 +396,43 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		bloqueados = getBloqueados(usuarioPregunta);
 		pdaEnv = getPeticionesAmistadEnviadas(usuarioPregunta);
 		pdaRec = getPeticionesRecibidas(usuarioPregunta);
-		
-		encontrado = false;
-		
-		for(indice=0; (!encontrado) && indice<bloqueadores.size(); indice++) {
+				
+		for(indice=0; indice<bloqueadores.size(); indice++) {
 			if(bloqueadores.get(indice).equals(otroUsuario)) {
-				encontrado = true;
 				tipoRelacion = "";
-				indice=bloqueadores.size();
 				return tipoRelacion;
 			}
 		}
 			
-		for(indice=0; (!encontrado) && indice<amigos.size(); indice++) {
+		for(indice=0; indice<amigos.size(); indice++) {
 			if(amigos.get(indice).equals(otroUsuario)) {
-				encontrado = true;
 				tipoRelacion = "amigo";
-				indice=amigos.size();
 				return tipoRelacion;
 			}
 		}
 		
-		for(indice=0; (!encontrado) && indice<bloqueados.size(); indice++) {
+		for(indice=0; indice<bloqueados.size(); indice++) {
 			if(bloqueados.get(indice).equals(otroUsuario)) {
-				encontrado = true;
 				tipoRelacion = "bloqueado";
-				indice=bloqueados.size();
 				return tipoRelacion;
 			}
 		}
 		
-		for(indice=0; (!encontrado) && indice<pdaEnv.size(); indice++) {
+		for(indice=0; indice<pdaEnv.size(); indice++) {
 			if(pdaEnv.get(indice).equals(otroUsuario)) {
-				encontrado = true;
 				tipoRelacion = "solEnviada";
-				indice=pdaEnv.size();
 				return tipoRelacion;
 			}
 		}
 		
-		for(indice=0; (!encontrado) && indice<pdaRec.size(); indice++) {
+		for(indice=0; indice<pdaRec.size(); indice++) {
 			if(pdaRec.get(indice).equals(otroUsuario)) {
-				encontrado = true;
 				tipoRelacion = "solRecibida";
-				indice=pdaRec.size();
 				return tipoRelacion;
 			}
 		}
 		
-		if(!encontrado) {
-			tipoRelacion = "ninguna";
-		}
-		
+		tipoRelacion = "ninguna";
 		return tipoRelacion;
 
 	}
