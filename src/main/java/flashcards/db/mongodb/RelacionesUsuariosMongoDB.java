@@ -122,69 +122,24 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 				
 				
 				
-				amigos = relacionesUser.getAmigos();
-				
-				/*for(indice=0; indice<amigos.size(); indice++) {
-					if(amigos.get(indice).equals(username)) {
-						amigos.remove(indice);
-						indice = amigos.size();
-					}
-				}*/
-				
+				amigos = relacionesUser.getAmigos();			
 				amigos.remove(username);
-				
 				relacionesUser.setAmigos(amigos);
 				
 				bloqueados = relacionesUser.getBloqueados();
-				
-				/*for(indice=0; indice<bloqueados.size(); indice++) {
-					if(bloqueados.get(indice).equals(username)) {
-						bloqueados.remove(indice);
-						indice = bloqueados.size();
-					}
-				}*/
-				
 				bloqueados.remove("username");
-				
 				relacionesUser.setBloqueados(bloqueados);
 				
 				bloqueadores = relacionesUser.getBloqueadores();
-				
-				/*for(indice=0; indice<bloqueadores.size(); indice++) {
-					if(bloqueadores.get(indice).equals(username)) {
-						bloqueadores.remove(indice);
-						indice = bloqueadores.size();
-					}
-				}*/
-				
 				bloqueadores.remove(username);
-				
 				relacionesUser.setBloqueadores(bloqueadores);
 				
 				pdaEnv = relacionesUser.getPeticionesAmistadEnviadas();
-				
-				/*for(indice=0; indice<pdaEnv.size(); indice++) {
-					if(pdaEnv.get(indice).equals(username)) {
-						pdaEnv.remove(indice);
-						indice = pdaEnv.size();
-					}
-				}*/
-				
 				pdaEnv.remove(username);
-				
 				relacionesUser.setPeticionesAmistadEnviadas(pdaEnv);
 				
 				pdaRec = relacionesUser.getPeticionesAmistadRecibidas();
-				
-				/*for(indice=0; indice<pdaRec.size(); indice++) {
-					if(pdaRec.get(indice).equals(username)) {
-						pdaRec.remove(indice);
-						indice = pdaRec.size();
-					}
-				}*/
-				
 				pdaRec.remove(username);
-				
 				relacionesUser.setPeticionesAmistadRecibidas(pdaRec);
 				
 				actualizaRelaciones(relacionesUser);
