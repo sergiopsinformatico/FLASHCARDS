@@ -6,6 +6,7 @@
   <packaging>war</packaging>
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<sonar.sources>pom.xml,src/main/java,src/main/resources,src/test/java/flashcards/features</sonar.sources>
   </properties>
   <build>
     <plugins>
@@ -171,6 +172,11 @@
   		<groupId>org.codehaus.jackson</groupId>
   		<artifactId>jackson-mapper-asl</artifactId>
   		<version>1.9.13</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.racodond.sonarqube.plugin.gherkin</groupId>
+  		<artifactId>sonar-gherkin-plugin</artifactId>
+  		<version>1.7</version>
   	</dependency>
   </dependencies>
 </project>

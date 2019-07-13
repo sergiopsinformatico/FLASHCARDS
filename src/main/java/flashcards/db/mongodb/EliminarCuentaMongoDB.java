@@ -122,6 +122,7 @@ public class EliminarCuentaMongoDB implements InterfaceDAOEliminarCuenta{
 				eliminarEliminado(new EliminarCuentaDTO(doc.getString(CONST_USERNAME)));
 				user = Broker.getInstanciaUsuario().getUsuarioDTO(doc.getString(CONST_USERNAME));
 				Broker.getInstanciaUsuario().deleteUsuario(user);
+				Broker.getInstanciaRelaciones().eliminaRelaciones(user.getUsername());
 				iterador = coleccionEliminados.find().iterator();
 			}
 		}

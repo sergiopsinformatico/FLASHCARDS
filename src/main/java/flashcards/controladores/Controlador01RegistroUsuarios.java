@@ -1,5 +1,6 @@
 package main.java.flashcards.controladores;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import main.java.flashcards.auxiliares.GeneratorStrings;
 import main.java.flashcards.auxiliares.PropertiesConfig;
 import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.dto.ActivaCuentaDTO;
+import main.java.flashcards.dto.RelacionesUsuariosDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 
@@ -36,6 +38,7 @@ public class Controlador01RegistroUsuarios {
 	ModelAndView vista;
 	UsuarioDTO user;
 	UsuarioDTO user2;
+	RelacionesUsuariosDTO relacion;
 	Fecha fecha;
 	String codigoActivacion;
 	Email correo;
@@ -90,6 +93,7 @@ public class Controlador01RegistroUsuarios {
 	public List<String> listUsernames(){
 		listaUsernames = Broker.getInstanciaUsuario().getListUsername();
 		listaUsernames.add("usuario123");
+		listaUsernames.add("usuario456");
 		return listaUsernames;
 	}	
 	
@@ -100,6 +104,7 @@ public class Controlador01RegistroUsuarios {
 	public List<String> listEmails(){
 		listaEmails = Broker.getInstanciaUsuario().getListEmail();
 		listaEmails.add("usuario123@email.com");
+		listaEmails.add("usuario456@email.com");
 		return listaEmails;
 	}
 	
@@ -119,11 +124,15 @@ public class Controlador01RegistroUsuarios {
 		user.setRol("Usuario");
 		user.setActivadaCuenta(false);
 		
+		relacion = new RelacionesUsuariosDTO(user.getUsername(), new LinkedList<String>(),  new LinkedList<String>(),
+				new LinkedList<String>(),  new LinkedList<String>(),  new LinkedList<String>());
+		
 		fecha = new Fecha();
 		codigoActivacion = GeneratorStrings.randomString(15);
 		
 		if(Broker.getInstanciaUsuario().insertUsuario(user) &&
-		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codigoActivacion, fecha.fechaActivarCuenta()))) {
+		   Broker.getInstanciaActivaCuenta().insertaAC(new ActivaCuentaDTO(user.getUsername(), codigoActivacion, fecha.fechaActivarCuenta())) &&
+		   Broker.getInstanciaRelaciones().creaRelaciones(relacion)) {
 			correo = new Email();
 			correo.activarCuenta(user,PropertiesConfig.getProperties("baseURL")+"/activaCuenta.html?username="+user.getUsername()+"&codigo="+codigoActivacion);
 			
