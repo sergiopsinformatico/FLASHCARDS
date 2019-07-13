@@ -399,67 +399,54 @@ public class RelacionesUsuariosMongoDB implements InterfaceDAORelacionesUsuarios
 		
 		encontrado = false;
 		
-		for(indice=0; indice<bloqueadores.size(); indice++) {
+		for(indice=0; (!encontrado) && indice<bloqueadores.size(); indice++) {
 			if(bloqueadores.get(indice).equals(otroUsuario)) {
 				encontrado = true;
 				tipoRelacion = "";
 				indice=bloqueadores.size();
+				return tipoRelacion;
+			}
+		}
+			
+		for(indice=0; (!encontrado) && indice<amigos.size(); indice++) {
+			if(amigos.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "amigo";
+				indice=amigos.size();
+				return tipoRelacion;
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<bloqueados.size(); indice++) {
+			if(bloqueados.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "bloqueado";
+				indice=bloqueados.size();
+				return tipoRelacion;
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<pdaEnv.size(); indice++) {
+			if(pdaEnv.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "solEnviada";
+				indice=pdaEnv.size();
+				return tipoRelacion;
+			}
+		}
+		
+		for(indice=0; (!encontrado) && indice<pdaRec.size(); indice++) {
+			if(pdaRec.get(indice).equals(otroUsuario)) {
+				encontrado = true;
+				tipoRelacion = "solRecibida";
+				indice=pdaRec.size();
+				return tipoRelacion;
 			}
 		}
 		
 		if(!encontrado) {
-			
-			for(indice=0; indice<amigos.size(); indice++) {
-				if(amigos.get(indice).equals(otroUsuario)) {
-					encontrado = true;
-					tipoRelacion = "amigo";
-					indice=amigos.size();
-				}
-			}
-			
-			if(!encontrado) {
-				
-				for(indice=0; indice<bloqueados.size(); indice++) {
-					if(bloqueados.get(indice).equals(otroUsuario)) {
-						encontrado = true;
-						tipoRelacion = "bloqueado";
-						indice=bloqueados.size();
-					}
-				}
-				
-				if(!encontrado) {
-					
-					for(indice=0; indice<pdaEnv.size(); indice++) {
-						if(pdaEnv.get(indice).equals(otroUsuario)) {
-							encontrado = true;
-							tipoRelacion = "solEnviada";
-							indice=pdaEnv.size();
-						}
-					}
-					
-					if(!encontrado) {
-						
-						for(indice=0; indice<pdaRec.size(); indice++) {
-							if(pdaRec.get(indice).equals(otroUsuario)) {
-								encontrado = true;
-								tipoRelacion = "solRecibida";
-								indice=pdaRec.size();
-							}
-						}
-						
-						if(!encontrado) {
-							tipoRelacion = "ninguna";
-						}
-						
-					}
-					
-				}
-				
-			}
-			
+			tipoRelacion = "ninguna";
 		}
-			
-		
 		
 		return tipoRelacion;
 
