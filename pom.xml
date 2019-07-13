@@ -6,6 +6,7 @@
   <packaging>war</packaging>
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<sonar.sources>pom.xml,src/main/java,src/main/resources,src/test/java/flashcards/features</sonar.sources>
   </properties>
   <build>
     <plugins>
