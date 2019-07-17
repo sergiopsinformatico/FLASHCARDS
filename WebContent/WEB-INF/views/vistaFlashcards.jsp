@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Página Principal</title>
+  <title>Flashcards - Flashcards</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -55,7 +55,7 @@
       <!-- Divider-->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="inicio.html">
           <i class="fa fa-home" aria-hidden="true"></i>
           <span>Pagina Principal</span></a>
@@ -75,9 +75,9 @@
       <div class="sidebar-heading">
         Flashcards
       </div>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
-          <i class="fa fa-id-card" aria-hidden="true"></i>
+          <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
       </li>
       
@@ -167,16 +167,16 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
         	
-        	<div class="row" id="divPanelAdministrador" style="display: none;">
+        	<div class="row" id="divEvaluarFlashcards" style="display: none;">
         		<div class="col-md-12">
 		        	<div class="row">
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-10 middle">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
+		        			<form action="evaluarColecciones.html" class="btnPaginaPrincipal" method="get">
 			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-universal-access fa-5x" aria-hidden="true"></i>
+			        				<i class="fa fa-check-square-o fa-5x" aria-hidden="true"></i>
 			        				<br><br>
-			       					Panel Administrador
+			       					Evaluar Coleccion
 			       				</button>
 			       			</form>
 		        		</div>
@@ -191,49 +191,25 @@
 		        	</div>
 		        </div>
 		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10 middle">
-		        			<form action="flashcards.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-warning btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-id-card-o fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Flashcards
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
+		   <div class="row">
         		<div class="col-md-12">
 		        	<div class="row">
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-5">
-		        			<form action="verGente.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-success btnPaginaPrincipal" style="color:white">
-			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
+		        			<form action="verColecciones.html" class="btnPaginaPrincipal" method="get">
+			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#00FF40;color:white">
+			       					<i class="fa fa-eye fa-5x" aria-hidden="true" style="color:black"></i>
 			       					<br><br>
-			       					Gente
+			       					Ver Colecciones
 			       				</button>
 			       			</form>
 		        		</div>
 		        		<div class="col-md-5">
-		        			<form action="verClubes.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal" style="color:white">
-			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
+		        			<form action="crearColeccion.html" class="btnPaginaPrincipal" method="get">
+			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#FF0000;color:white">
+			       					<i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
 			       					<br><br>
-			       					Clubes
+			       					Crear una Coleccion
 			       				</button>
 			       			</form>
 		        		</div>
@@ -251,10 +227,14 @@
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divPanelAdministrador").style.display="block";
+        			document.getElementById("divEvaluarFlashcards").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
+        		}
+        		
+        		if("${usuario.getRol()}" === 'Moderador'){
+        			document.getElementById("divEvaluarFlashcards").style.display="block";
         		}
         	</script>        	
         </div>

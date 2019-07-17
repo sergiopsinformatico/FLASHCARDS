@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Página Principal</title>
+  <title>Flashcards - Flashcards</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +56,7 @@
       <!-- Divider-->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="inicio.html">
           <i class="fa fa-home" aria-hidden="true"></i>
           <span>Pagina Principal</span></a>
@@ -75,9 +76,9 @@
       <div class="sidebar-heading">
         Flashcards
       </div>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
-          <i class="fa fa-id-card" aria-hidden="true"></i>
+          <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
       </li>
       
@@ -165,93 +166,100 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <script>        	
+	        var app = angular.module('AppEvaluaFlashcards', []);
+	        app.controller('EvaluaFlashcardsCtrl', function($scope, $http) {
+	        	
+	        	$scope.listaColecciones = [];
+	        	$scope.listaCargada = false;
+	        	
+	        	$http.get("coleccionesSinEvaluar.do")
+	       			.then(function(response) {
+	       				$scope.listaColecciones = response.data;
+	       				$scope.refreshCarrousel();
+	       				$scope.listaCargada = true;
+	       		  	}, function myError(response) {
+	       		  		$scope.listaColecciones = [];
+	       		  		$scope.refreshCarrousel();
+	       		  		$scope.listaCargada = true;
+		       	    }
+	       		);
+	        	
+	        	$scope.refreshCarrousel = function(){
+					$('#carouselFlashcardsEvaluar').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+				};
+				
+	        });
+        </script>
+        
+        
+        <div class="container-fluid" ng-app="AppEvaluaFlashcards" ng-controller="EvaluaFlashcardsCtrl">
         	
-        	<div class="row" id="divPanelAdministrador" style="display: none;">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10 middle">
-		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-universal-access fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Panel Administrador
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10 middle">
-		        			<form action="flashcards.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-warning btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-id-card-o fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Flashcards
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5">
-		        			<form action="verGente.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-success btnPaginaPrincipal" style="color:white">
-			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Gente
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5">
-		        			<form action="verClubes.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal" style="color:white">
-			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Clubes
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
+        	<div class="row">
+        		<div class="col-md-1"></div>
+        		<div class="col-md-10">
+        			<h4 align="center" style="color:black;font-weight:bold;">Colecciones Sin Evaluar</h4>
+        			<br><br>
+        			<div class="row" ng-if="listaCargada == false">
+        				<div class="col-md-12">
+        					<h6 align="center" style="color:black;">Cargando colecciones....</h6>
+        				</div>
+        			</div>
+        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length > 0)">
+        				<div class="col-md-12" align="center">
+        					<div id="carouselFlashcardsEvaluar" class="carousel slide" style="width:400px;height:550px;">
+						        <div class="container" style="width:400px;height:550px;">
+						            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:550px;">
+										<div class="carousel-item" ng-repeat="eColeccion in listaColecciones">
+								            <div class="flip-card-container" style="width:400px;height:550px;text-align:center;">
+												<div class="flip-card">
+											    	<div class="flip-card-front" style="background:#6EC34D;">
+											        	<br><br><br><br>
+								                    	{{eColeccion.nombreColeccion}}
+								                    	<br><br>
+								                    	Autor: {{eColeccion.autorColeccion}}
+													</div>
+											 		<div class="flip-card-back" style="background:#86D4FF;">
+											 			<br><br><br><br>
+											 			<a ng-href="evaluarColeccion.html?id={{eColeccion.idColeccion}}" style="color:yellow;">
+											 				Evaluar Coleccion
+											 			</a>
+												    </div>
+											    </div>
+											</div>					
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#carouselFlashcardsEvaluar" role="button" data-slide="prev">
+								      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+								      <span class="sr-only">Anterior</span>
+								    </a>
+								    <a class="carousel-control-next" href="#carouselFlashcardsEvaluar" role="button" data-slide="next">
+								      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+								      <span class="sr-only">Siguiente</span>
+								    </a>
+							    </div>
+							</div>
+        				</div>
+        			</div>
+        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length == 0)">
+        				<div class="col-md-12">
+        					<h6 align="center" style="color:black;">No hay colecciones para evaluar</h6>
+        				</div>
+        			</div>
+        		</div>
+        		<div class="col-md-1"></div>
+        	</div>
+        	<div class="row">
+        		<br><br><br>
+        	</div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divPanelAdministrador").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
