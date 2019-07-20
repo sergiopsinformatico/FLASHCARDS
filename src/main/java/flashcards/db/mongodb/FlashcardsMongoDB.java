@@ -150,7 +150,7 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     	}
     }
     
-    public List<FlashcardsDTO> consultaSinEvaluar(){
+    public List<FlashcardsDTO> consultaSinEvaluar(String moderador){
     	try {
     		listaFlashcards = new LinkedList<>();
     		
@@ -160,7 +160,10 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
         	while(iterador.hasNext()) {
         		doc = iterador.next();
         		flashcard = documentToFlashcards(doc);
-        		listaFlashcards.add(flashcard);
+        		if(!(flashcard.getAutorColeccion().equals(moderador))) {
+        			listaFlashcards.add(flashcard);
+        		}
+        		
         	}
 
     	}catch(Exception ex) {
@@ -318,6 +321,52 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     											  .append("evaluada", new BsonBoolean(false));
     		
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
+        	
+        	while(iterador.hasNext()) {
+        		doc = iterador.next();
+        		flashcard = documentToFlashcards(doc);
+        		listaFlashcards.add(flashcard);
+        	}
+        	
+        }catch(Exception ex) {
+    		listaFlashcards = new LinkedList<>();
+    	}
+    	
+    	return listaFlashcards;
+		
+	}
+	
+	public List<FlashcardsDTO> coleccionesClub(String id){
+		
+		try {
+    		listaFlashcards = new LinkedList<>();
+    		
+    		criteriosBusqueda = new BsonDocument().append("evaluada", new BsonBoolean(true))
+    											  .append("tipoCompartir", new BsonString("club"))
+    											  .append("compartirCon", new BsonString(id));
+    		
+        	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
+        	
+        	while(iterador.hasNext()) {
+        		doc = iterador.next();
+        		flashcard = documentToFlashcards(doc);
+        		listaFlashcards.add(flashcard);
+        	}
+        	
+        }catch(Exception ex) {
+    		listaFlashcards = new LinkedList<>();
+    	}
+    	
+    	return listaFlashcards;
+		
+	}
+	
+	public List<FlashcardsDTO> listarTodasColeccionesModerador(){
+		
+		try {
+    		listaFlashcards = new LinkedList<>();
+    		
+    		iterador = coleccionFlashcards.find().iterator();
         	
         	while(iterador.hasNext()) {
         		doc = iterador.next();

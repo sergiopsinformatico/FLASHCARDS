@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Flashcards</title>
+  <title>Flashcards - Evaluar Flashcard: ${flashcard.getNombreColeccion()}</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
 </head>
 
 <body id="page-top">
-
+	
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -165,85 +166,159 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        
+        <script>        	
+	        var app = angular.module('AppVerColeccion', []);
+	        app.controller('VerColeccionCtrl', function($scope, $http) {
+				
+	        	$scope.colTarjetas = [];
+	        	
+	        	$http.get("getTarjetasColeccion.do?id="+"${flashcard.getIdColeccion()}")
+       			.then(function(response) {
+       				$scope.colTarjetas = response.data;
+       				
+       				$('#carouselColeccionFlashcard').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+       				
+       		  	});
+	        		        	
+	        	$scope.checkTipoCompartir = function(value){
+	        		
+	        		return "${flashcard.getTipoCompartir()}" === value;
+	        		
+	        	}
+	        	
+	        	$scope.evaluacionPositiva = function(){
+	        		
+	        		bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Confirma que la Evaluacion para "+"${flashcard.getNombreColeccion()}"+" es positiva?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "evaluacionPositiva.do?id=${flashcard.getIdColeccion()}";
+	  	    			}  
+	  	    		  }
+	  	    		});
+	  	    		
+	        	}
+	        	
+				$scope.evaluacionNegativa = function(){
+					
+					bootbox.confirm({ 
+	  	    		  size: "small",
+	  	    		  message: "¿Confirma que la Evaluacion para "+"${flashcard.getNombreColeccion()}"+" es negativa?", 
+	  	    		  callback: function(result){ 
+	  	    			if(result){
+	  	    				window.location.href = "evaluacionNegativa.do?id=${flashcard.getIdColeccion()}";
+	  	    			}  
+	  	    		  }
+	  	    		});
+					
+	        	}
+				
+	        });
+        </script>
+        
+        <div class="container-fluid" ng-app="AppVerColeccion" ng-controller="VerColeccionCtrl">
         	
-        	<div class="row" id="divFlashcardsModeraAdmin" style="display: none;">
+        	<div class="row">
         		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5 middle">
-		        			<form action="evaluarColecciones.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-check-square-o fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Evaluar Coleccion
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5 middle">
-		        			<form action="gestionarFlashcards.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btnPaginaPrincipal" style="background:#83DDD7;color:white">
-			        				<i class="fa fa-pencil-square fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Gestión de Flashcards
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		   <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5">
-		        			<form action="verColecciones.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#00FF40;color:white">
-			       					<i class="fa fa-eye fa-5x" aria-hidden="true" style="color:black"></i>
-			       					<br><br>
-			       					Ver Colecciones
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5">
-		        			<form action="crearColeccion.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#FF0000;color:white">
-			       					<i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Crear una Coleccion
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
+        			<div class="row">
+        				<div class="col-md-1"></div>
+        				<div class="col-md-10">
+        					<div class="row">
+        						<div class="col-md-4 container" style="border-style:solid;border-width:5px;border-color:#EE0E0E;background:#53FFDC;">
+        							<br><br><br>
+        							<strong>Nombre de la Colección: </strong>${flashcard.getNombreColeccion()}
+        							<br><br>
+        							<strong>Autor: </strong>${flashcard.getAutorColeccion()}
+        							<br>
+        							<strong>Tema: </strong>${flashcard.getTemaColeccion()}
+        							<br>
+        							<strong>Fecha de Creación: </strong>${flashcard.getFechaCreacion()}
+        							<br><br>
+        							<div ng-if="checkTipoCompartir('publico')==true">
+			                    		<strong>Para todos los usuarios</strong>
+			                    	</div>
+			                    	<div ng-if="checkTipoCompartir('privado')==true">
+			                    		<strong>Solo para ti</strong>
+			                    	</div>
+			                    	<div ng-if="checkTipoCompartir('usuario')==true">
+			                    		<strong>Para el Usuario</strong>
+			                    		<br>${flashcard.getCompartirCon()}
+			                    	</div>
+			                    	<div ng-if="checkTipoCompartir('club')==true">
+			                    		<strong>Para los Miembros del Club</strong>
+			                    		<br>${flashcard.getCompartirCon()}
+			                    	</div>
+        							<br><br><br>
+        						</div>
+        						<div class="col-md-8" align="center">
+        							<div id="carouselColeccionFlashcard" class="carousel slide" style="width:400px;height:500px;">
+								        <div class="container" style="width:400px;height:550px;">
+								            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:500px;">
+												<div class="carousel-item" ng-repeat="eTarjeta in colTarjetas">
+										            <div class="flip-card-container" style="width:400px;height:500px;text-align:center;">
+														<div class="flip-card">
+													    	<div class="flip-card-front" style="background:#FFB550;">
+													        	<br><br><br><br><br>
+										                    	{{eTarjeta.anverso}}
+															</div>
+													 		<div class="flip-card-back" style="background:#86D4FF;">
+													 			<br><br><br><br><br>
+										                    	{{eTarjeta.reverso}}
+														    </div>
+													    </div>
+													</div>					
+								                </div>
+								            </div>
+									        <a class="carousel-control-prev" href="#carouselColeccionFlashcard" role="button" data-slide="prev">
+										      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+										      <span class="sr-only">Anterior</span>
+										    </a>
+										    <a class="carousel-control-next" href="#carouselColeccionFlashcard" role="button" data-slide="next">
+										      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+										      <span class="sr-only">Siguiente</span>
+										    </a>
+									    </div>
+									</div>
+        						
+        						</div>
+        					</div>
+        				</div>
+        				<div class="col-md-1"></div>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<br><br><br>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-3"></div>
+        		<div class="col-md-3">
+        			<button class="btn btn-success" ng-click="evaluacionPositiva()">
+        				<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        				Evaluación Positiva
+        			</button>
+        		</div>
+        		<div class="col-md-3">
+        			<button class="btn" style="background:#FF0000;color:white;" ng-click="evaluacionNegativa()">
+        				<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        				Evaluación Negativa
+        			</button>
+        		</div>
+        		<div class="col-md-3"></div>
+        	</div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divFlashcardsModeraAdmin").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
-        		}
-        		
-        		if("${usuario.getRol()}" === 'Moderador'){
-        			document.getElementById("divFlashcardsModeraAdmin").style.display="block";
         		}
         	</script>        	
         </div>

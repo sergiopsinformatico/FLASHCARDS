@@ -23,6 +23,7 @@ import main.java.flashcards.brokers.Broker;
 import main.java.flashcards.db.dao.InterfaceDAOClub;
 import main.java.flashcards.db.dao.InterfaceDAOUsuario;
 import main.java.flashcards.dto.ClubDTO;
+import main.java.flashcards.dto.FlashcardsDTO;
 import main.java.flashcards.dto.UsuarioDTO;
 
 @Controller
@@ -209,6 +210,13 @@ public class Controlador08Clubes {
 		club = dBClub.leerClub(idClub, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
 		vista.addObject("club", club);
 		return vista;
+	}
+	
+	@RequestMapping(value = "/getColeccionesClub", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public List<FlashcardsDTO> getColeccionesClub(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) {
+		return Broker.getInstanciaFlashcards().coleccionesClub(id);
 	}
 	
 }

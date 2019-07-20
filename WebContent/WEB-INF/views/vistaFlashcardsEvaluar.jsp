@@ -225,7 +225,9 @@
 								                    	Autor: {{eColeccion.autorColeccion}}
 													</div>
 											 		<div class="flip-card-back" style="background:#86D4FF;">
-											 			<br><br><br><br>
+											 			<br><br><br>
+											 			<i class="fa fa-check-square-o fa-5x" aria-hidden="true"></i>
+											 			<br><br>
 											 			<a ng-href="evaluarColeccion.html?id={{eColeccion.idColeccion}}" style="color:yellow;">
 											 				Evaluar Coleccion
 											 			</a>

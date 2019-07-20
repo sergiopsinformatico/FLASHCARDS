@@ -21,4 +21,4 @@ deploy:
   app: sistemaflashcards
   on:
     repo: sergiopsinformatico/FLASHCARDS
-    branch: master
+    branch: ramaSprint3

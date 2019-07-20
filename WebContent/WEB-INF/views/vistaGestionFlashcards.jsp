@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Flashcards</title>
+  <title>Flashcards - Gestion Flashcards</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,6 +80,21 @@
         <a class="nav-link" href="flashcards.html">
           <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="verColeccionesFlashcards.html">
+          <i class="fa fa-universal-access" aria-hidden="true"></i>
+          <span>Ver Colecciones</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="crearColeccionFlashcards.html">
+          <i class="fa fa-universal-access" aria-hidden="true"></i>
+          <span>Crear Colección</span></a>
       </li>
       
       <hr class="sidebar-divider">
@@ -165,85 +181,108 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-        	
-        	<div class="row" id="divFlashcardsModeraAdmin" style="display: none;">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5 middle">
-		        			<form action="evaluarColecciones.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal" style="color:white">
-			        				<i class="fa fa-check-square-o fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Evaluar Coleccion
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5 middle">
-		        			<form action="gestionarFlashcards.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btnPaginaPrincipal" style="background:#83DDD7;color:white">
-			        				<i class="fa fa-pencil-square fa-5x" aria-hidden="true"></i>
-			        				<br><br>
-			       					Gestión de Flashcards
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
-		   <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-5">
-		        			<form action="verColecciones.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#00FF40;color:white">
-			       					<i class="fa fa-eye fa-5x" aria-hidden="true" style="color:black"></i>
-			       					<br><br>
-			       					Ver Colecciones
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-5">
-		        			<form action="crearColeccion.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#FF0000;color:white">
-			       					<i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
-			       					<br><br>
-			       					Crear una Coleccion
-			       				</button>
-			       			</form>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
-		    <div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<br>
-		        	</div>
-		        </div>
-		    </div>
+        <script>        	
+	        var app = angular.module('AppGestionFlashcards', []);
+	        app.controller('GestionFlashcardsCtrl', function($scope, $http) {
+	        	
+	        	$scope.listaColecciones = [];
+	        	$scope.listaCargada = false;
+	        	
+	        	$scope.getColecciones = function(){
+	        		$http.get("getColeccionesModerador.do")
+		       			.then(function(response) {
+		       				$scope.listaColecciones = response.data;
+		       				$scope.listaCargada = true;
+		       		  	}, function myError(response) {
+		       		  		$scope.listaColecciones = [];
+			       		 	$scope.listaCargada = true;
+			       	    }
+		       		);
+	        	}
+	        	
+	        	$scope.eliminaColeccion = function (flashcard){
+	        		
+	        		bootbox.confirm({
+					    message: "¿Quiere eliminar la coleccion "+ flashcard.nombreColeccion +"?",
+					    buttons: {
+					        cancel: {
+					            label: '<i class="fa fa-times"></i> No'
+					        },
+					        confirm: {
+					            label: '<i class="fa fa-check"></i> Si'
+					        }
+					    },
+					    callback: function (result) {
+					    	if(result == true){
+						    	window.location.href = "eliminaColeccionModerador.do?id="+flashcard.idColeccion;
+					    	}
+					    }
+					});
+	        		
+	        	}
+	        	
+	        	$scope.getColecciones();
+				
+	        });
+        </script>
+        <div class="container-fluid" ng-app="AppGestionFlashcards" ng-controller="GestionFlashcardsCtrl">
+			<div class="row">
+				<br><br>
+			</div>
+        	<div class="row">
+        		<div class="col-md-1"></div>
+        		<div class="col-md-10">
+        			<div class="row">
+        				<div class="col-md-1"></div>
+        				<div class="col-md-10">
+        					<div class="row" ng-if="listaCargada == false">
+		        				<div class="col-md-12">
+		        					<h6 align="center" style="color:black;">Cargando colecciones....</h6>
+		        				</div>
+		        			</div>
+		        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length > 0)">
+		        				<div class="col-md-12" align="center">
+		        					<div class="input-group">
+						            	<input type="text" ng-model="filterColecciones" class="form-control" placeholder="Filtrar colecciones" />
+						            </div>
+						            <br>
+						            <table width="100%" border="1">  
+									   <tr>  
+									      <th align="center" style="text-align:center;">Colección de Flashcards</th>  
+									      <th align="center" style="width:150px; text-align:center;">Eliminar Coleccion</th>   
+									   </tr>  
+									   <tr ng-repeat = "eColeccion in listaColecciones | filter:filterColecciones">  
+									      <td align="center">
+									      	<strong>Nombre de la Coleccion: </strong><a href="verColeccion.html?id={{eColeccion.idColeccion}}">{{ eColeccion.nombreColeccion }}</a>
+									      	<br><strong>Id de la Coleccion: </strong> {{eColeccion.idColeccion}}
+									      	<br><strong>Creador: </strong> {{ eColeccion.autorColeccion }}
+									      </td>  
+									      <td style="width:150px;">
+										      <form ng-submit="eliminaColeccion(eColeccion)">
+											     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+											  </form>
+									      </td>    
+									   </tr>
+									</table>
+		        				</div>
+		        			</div>
+		        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length == 0)">
+		        				<div class="col-md-12">
+		        					<h6 align="center" style="color:black;">No hay colecciones para mostrar</h6>
+		        				</div>
+		        			</div>
+        				</div>
+        				<div class="col-md-1"></div>
+        			</div>
+        		</div>
+        		<div class="col-md-1"></div>
+        	</div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
-        			document.getElementById("divFlashcardsModeraAdmin").style.display="block";
         			document.getElementById("adminSidebarDivider").style.display="block";
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
-        		}
-        		
-        		if("${usuario.getRol()}" === 'Moderador'){
-        			document.getElementById("divFlashcardsModeraAdmin").style.display="block";
         		}
         	</script>        	
         </div>

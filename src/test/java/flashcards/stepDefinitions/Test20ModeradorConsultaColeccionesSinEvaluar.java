@@ -36,7 +36,7 @@ public class Test20ModeradorConsultaColeccionesSinEvaluar {
 		
 	    Broker.getInstanciaFlashcards().crearFlashcards(flashcard);
 	    
-	    listaFlashcards = Broker.getInstanciaFlashcards().consultaSinEvaluar();
+	    listaFlashcards = Broker.getInstanciaFlashcards().consultaSinEvaluar("moderador");
 	    
 	    assert(true);
 	}
