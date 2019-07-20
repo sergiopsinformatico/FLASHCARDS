@@ -163,6 +163,22 @@ public class Controlador09Flashcards {
 	}
 	
 	
+	@RequestMapping(value = "/guardarColeccionFlashcards", method = RequestMethod.GET)
+	public ModelAndView guardarColeccionFlashcardsGet(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getSession().getAttribute(CONST_USUARIO)!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!=null && 
+		   ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername()!="") {
+			
+			vista = new ModelAndView("vistaFlashcardsCrear");
+			tarjetas = new LinkedList<>();
+		
+		}else {
+			vista = new ModelAndView(CONST_REDIRECT_INICIO);
+		}
+		return vista;
+	}
+	
+	
 	
 	@RequestMapping(value = "/verColecciones", method = RequestMethod.GET)
 	public ModelAndView verColecciones(HttpServletRequest request, HttpServletResponse response) {

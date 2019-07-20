@@ -212,20 +212,6 @@
 	        	        		bootbox.alert("No ha seleccionado un rol");
 	        	        	}else{
 	        	        		window.location.href = "administradorCambiaRol.do?username="+usuario+"&rol="+result;
-	        	        		/*$http.get("administradorCambiaRol.do?username="+usuario+"&rol="+result)
-		        	        		.then(function(response) {
-		        	       				if(response.data==true){
-		        	       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
-					       						if(usuario == ($scope.listaUsuarios[indice]).username){
-					       							user = $scope.listaUsuarios[indice];
-					       							user.rol = result;
-					       							$scope.listaUsuarios.splice(indice, 1);
-					       							$scope.listaUsuarios.splice(indice, 0, user);
-					       							indice = $scope.listaUsuarios.length;
-					       						}
-					       					}
-		        	       				}
-		        	       		  	});*/
 	        	        	}
         	        	}
         	        }
@@ -248,16 +234,6 @@
 				    	if(result == true){
 					    	console.log('Eliminar a: ' + result);
 					    	window.location.href = "administradorEliminaUsuario.do?username="+usuario;
-					    	/*$http.get("administradorEliminaUsuario.do?username="+usuario).then(function(response) {
-			       				if(response.data==true){
-			       					for(indice=0; indice<$scope.listaUsuarios.length; indice++){
-			       						if(usuario == ($scope.listaUsuarios[indice]).username){
-			       							$scope.listaUsuarios.splice(indice, 1);
-			       							indice = $scope.listaUsuarios.length;
-			       						}
-			       					}
-			       				}
-			       		  	})*/;
 				    	}
 				    }
 				});
@@ -293,24 +269,31 @@
 								   <tr>  
 								      <th align="center" style="text-align:center;">Usuarios</th>  
 								      <th align="center" style="width:150px; text-align:center;">Cambiar Rol</th>
-								      <th align="center" style="width:150px; text-align:center;">Eliminar Usuario</th>   
+								      <th align="center" style="width:168px; text-align:center;">Eliminar Usuario</th>   
 								   </tr>  
-								   <tr ng-repeat = "eUsuario in listaUsuarios | filter:filterUser:strict">  
-								      <td align="center">
-								      	<strong>Username: </strong><a href="verPerfil.html?usuarioPerfil={{ eUsuario.username }}">{{ eUsuario.username }}</a>
-								      	<br><strong>Email: </strong> {{ eUsuario.email }}
-								      	<br><strong>Rol: </strong> {{ eUsuario.rol }}
-								      </td>  
-								      <td style="width:150px;">
-								      	<form ng-submit="cambioRol(eUsuario.username)">
-										     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-										</form>
-								      </td>
-								      <td style="width:150px;">
-									      <form ng-submit="eliminaUsuario(eUsuario.username)">
-										     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
-										  </form>
-								      </td>    
+								   <tr>
+								   		<td colspan=3>
+								   		<div style="overflow-y:scroll;height:500px;">
+								   			<table width=100% border="1">
+								   				<tr ng-repeat = "eUsuario in listaUsuarios | filter:filterUser:strict">  
+											      <td align="center">
+											      	<strong>Username: </strong><a href="verPerfil.html?usuarioPerfil={{ eUsuario.username }}">{{ eUsuario.username }}</a>
+											      	<br><strong>Email: </strong> {{ eUsuario.email }}
+											      	<br><strong>Rol: </strong> {{ eUsuario.rol }}
+											      </td>  
+											      <td style="width:150px;">
+											      	<form ng-submit="cambioRol(eUsuario.username)">
+													     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+													</form>
+											      </td>
+											      <td style="width:150px;">
+												      <form ng-submit="eliminaUsuario(eUsuario.username)">
+													     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+													  </form>
+											      </td>    
+											   </tr>
+								   			</table>
+								   		</div>
 								   </tr>
 								</table> 
 							</div>

@@ -274,13 +274,10 @@
 	        					<p ng-if="(cargadosClubes == false) || (cargadosAmigos == false)">
 	        						Cargando...
 	        					</p>
-	        					
-	        					
 	        					<div ng-if="(cargadosClubes == true) && (cargadosAmigos == true)">
 		        					<label for="tipoCompartir" align="right" style="color:black;font-weight: bold;">Modo de Compartir la Coleccion</label>
 		        					<br>
-		        					<select id="tipoCompartir" name="tipoCompartir" ng-model="valueCompartir" 
-		        									ng-change="changeSelect(valueCompartir)" align="right" style="width:50%">
+		        					<select id="tipoCompartir" name="tipoCompartir" ng-model="valueCompartir" ng-change="changeSelect(valueCompartir)" align="right" style="width:75%">
 									  <option value="publico">Publico</option>
 									  <option value="privado">Privado</option>
 									  <option value="club">Club</option>
@@ -288,38 +285,64 @@
 									</select>
 									<br>
 									<br>
-									<div id="showTableClubes" style="display: none;">
+									<div id="showTableClubes" style="display: none;height:100px;">
 										<br>
-							            <table width="75%" height="2px" border="1">  
-										   <tr>  
-										      <th align="center" style="text-align:center;">Clubes</th>    
-										   </tr>
-										   <tr ng-repeat = "eClub in listaActual">  
-										      <td>
-										      	<input type="radio" id="compartirCon" name="compartirCon" ng-model="valueCompartirCon" ng-change="changeSelectCC(valueCompartirCon)"
-										      	value="{{eClub.idClub}}">{{eClub.nombreClub}}
-										      </td>    
-										   </tr>
-										</table>
+										<div class="input-group" style="width:75%;">
+							            	<input type="text" ng-model="filterClubes" class="form-control" placeholder="Filtrar por Clubes" />
+							            </div>
+							            <br>
+										<div style="height:100px;">
+								            <table width="75%" border="1">  
+											   <tr>  
+											      <th align="center" style="text-align:center;">Clubes</th>    
+											   </tr>
+											   <tr>
+											   		<td colspan=1>
+											   		<div style="overflow-y:scroll;height:100px;">
+											   			<table width=100% border="1">
+											   				<tr ng-repeat = "eClub in listaActual | filter:filterClubes">  
+														      <td>
+														      	<input type="radio" id="compartirCon" name="compartirCon" ng-model="valueCompartirCon" ng-change="changeSelectCC(valueCompartirCon)"
+														      	value="{{eClub.idClub}}">{{eClub.nombreClub}}
+														      </td>    
+														   </tr>
+											   			</table>
+											   		</div>
+											   </tr>
+										   	</table>
+										</div>
 									</div>
 									
 									<p id="notClubes" style="display: none;">
 		        						Ups! Aún no pertenece a ningún club
 		        					</p>
-									
-									<div id="showTableAmigos" style="display: none;">
+		        					
+		        					<div id="showTableAmigos" style="display: none;height:100px;">
 										<br>
-							            <table width="75%" height="2px" border="1">  
-										   <tr>  
-										      <th align="center" style="text-align:center;">Amigos</th>    
-										   </tr>
-										   <tr ng-repeat = "eUsuario in listaActual">  
-										      <td>
-										      	<input type="radio" id="compartirCon" name="compartirCon" ng-model="valueCompartirCon" ng-change="changeSelectCC(valueCompartirCon)"
-										      	value="{{eUsuario}}">{{eUsuario}}
-										      </td>    
-										   </tr>
-										</table>
+										<div class="input-group" style="width:75%;">
+							            	<input type="text" ng-model="filterAmigos" class="form-control" placeholder="Filtrar por Amigos" />
+							            </div>
+							            <br>
+										<div style="height:100px;">
+								            <table width="75%" border="1">  
+											   <tr>  
+											      <th align="center" style="text-align:center;">Amigos</th>   
+											   </tr>
+											   <tr>
+											   		<td colspan=1>
+											   		<div style="overflow-y:scroll;height:100px;">
+											   			<table width=100% border="1">
+											   				<tr ng-repeat = "eUsuario in listaActual | filter:filterAmigos">  
+														      <td>
+														      	<input type="radio" id="compartirCon" name="compartirCon" ng-model="valueCompartirCon" ng-change="changeSelectCC(valueCompartirCon)"
+														      	value="{{eUsuario}}">{{eUsuario}}
+														      </td>    
+														   </tr>
+											   			</table>
+											   		</div>
+											   </tr>
+											 </table>
+										</div>
 									</div>
 									
 									<p id="notAmigos" style="display: none;">
@@ -331,6 +354,9 @@
 	        			</div>
 	        		</div>
 	        		<div class="col-md-1"></div>
+	        	</div>
+	        	<div class="row">
+	        		<br><br><br><br><br><br>
 	        	</div>
 	        	<div class="row">
 	        		<div class="col-md-1"></div>

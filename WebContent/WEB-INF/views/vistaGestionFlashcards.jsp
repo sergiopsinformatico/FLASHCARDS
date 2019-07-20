@@ -234,19 +234,26 @@
 						            <table width="100%" border="1">  
 									   <tr>  
 									      <th align="center" style="text-align:center;">Colección de Flashcards</th>  
-									      <th align="center" style="width:150px; text-align:center;">Eliminar Coleccion</th>   
+									      <th align="center" style="width:168px; text-align:center;">Eliminar Coleccion</th>   
 									   </tr>  
-									   <tr ng-repeat = "eColeccion in listaColecciones | filter:filterColecciones">  
-									      <td align="center">
-									      	<strong>Nombre de la Coleccion: </strong><a href="verColeccion.html?id={{eColeccion.idColeccion}}">{{ eColeccion.nombreColeccion }}</a>
-									      	<br><strong>Id de la Coleccion: </strong> {{eColeccion.idColeccion}}
-									      	<br><strong>Creador: </strong> {{ eColeccion.autorColeccion }}
-									      </td>  
-									      <td style="width:150px;">
-										      <form ng-submit="eliminaColeccion(eColeccion)">
-											     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
-											  </form>
-									      </td>    
+									   <tr>
+									   		<td colspan=2>
+									   		<div style="overflow-y:scroll;height:500px;">
+									   			<table width=100% border="1">
+									   				<tr ng-repeat = "eColeccion in listaColecciones | filter:filterColecciones">  
+												      <td align="center">
+												      	<strong>Nombre de la Coleccion: </strong><a href="verColeccion.html?id={{eColeccion.idColeccion}}">{{ eColeccion.nombreColeccion }}</a>
+												      	<br><strong>Id de la Coleccion: </strong> {{eColeccion.idColeccion}}
+												      	<br><strong>Creador: </strong> {{ eColeccion.autorColeccion }}
+												      </td>  
+												      <td style="width:150px;">
+													      <form ng-submit="eliminaColeccion(eColeccion)">
+														     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+														  </form>
+												      </td>    
+												   </tr>
+									   			</table>
+									   		</div>
 									   </tr>
 									</table>
 		        				</div>

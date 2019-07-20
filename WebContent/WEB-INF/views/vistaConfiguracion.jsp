@@ -313,7 +313,7 @@
 	        	
 	        	$http({
 	    	        method: 'GET',
-	    	        url: '/getUsernames.do',
+	    	        url: 'getUsernames.do',
 	                headers : {
 	                	'Accept': 'application/json'
 	                }
@@ -328,7 +328,7 @@
 						        	
 	        	$http({
 	    	        method: 'GET',
-	    	        url: '/getEmails.do',
+	    	        url: 'getEmails.do',
 	                headers : {
 	                	'Accept': 'application/json'
 	                }
