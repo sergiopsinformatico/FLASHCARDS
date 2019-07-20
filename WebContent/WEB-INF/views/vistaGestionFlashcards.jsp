@@ -78,23 +78,8 @@
       </div>
       <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
-          <i class="fa fa-universal-access" aria-hidden="true"></i>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
-      </li>
-      
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Flashcards
-      </div>
-      <li class="nav-item">
-        <a class="nav-link" href="verColeccionesFlashcards.html">
-          <i class="fa fa-universal-access" aria-hidden="true"></i>
-          <span>Ver Colecciones</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="crearColeccionFlashcards.html">
-          <i class="fa fa-universal-access" aria-hidden="true"></i>
-          <span>Crear Colección</span></a>
       </li>
       
       <hr class="sidebar-divider">

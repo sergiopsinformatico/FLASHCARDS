@@ -73,12 +73,22 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
         Usuarios
       </div>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="verGente.html">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Gente</span>
@@ -261,8 +271,8 @@
         		<br><br>
         	</div>
         	<div class="row">
-        		<div class="col-md-3"></div>
-        		<div class="col-md-6">
+        		<div class="col-md-2"></div>
+        		<div class="col-md-4">
         			<div class="row cuadroInfoUser container">
         				<div class="col-md-12">
         					<br>
@@ -287,8 +297,33 @@
 	        				<p id="pais" style="display: none;" align="center">
 	        					<strong>País:</strong> ${perfil.getPais()}
 	        				</p>
+	        				<br><br>
+	        				<script>
+	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
+	        						document.getElementById("nombreApellidos").style.display = "block";
+	        					}
+	        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
+	        						document.getElementById("ciudad").style.display = "block";
+	        					}
+	        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
+	        						document.getElementById("pais").style.display = "block";
+	        					}
+	        				</script>
+		        		</div>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="row cuadroInfoUser container" style="height:100%">
+        				<div class="col-md-12">
+        					<br>
 	        				<br>
-	        				<div align="center" ng-if="compruebaOtroUsuario()">
+	        				<div align="center" ng-if="compruebaOtroUsuario() == false">
+		        				<br><br><br><br>
+		        				<h6 align="center">¡Bienvenido a tu perfil ${usuario.getUsername()}!</h6>
+		        				<br><br><br><br>
+	        				</div>
+	        				<div align="center" ng-if="compruebaOtroUsuario() == true">
+	        					<br><br><br><br><br>
 	        					<div ng-if="tipoRelacion == 'ninguna'">
 	        						<p style="color:black;"><strong>No sois amigos</strong></p>
 		                        	<button class="btn btn-info" ng-click="enviarPeticion()">
@@ -346,21 +381,10 @@
 		                        </div>
 	        				</div>
 	        				<br>
-	        				<script>
-	        					if("${usuario.getNombreApellidos()}"!=null && "${usuario.getNombreApellidos()}"!=""){
-	        						document.getElementById("nombreApellidos").style.display = "block";
-	        					}
-	        					if("${usuario.getCiudad()}"!=null && "${usuario.getCiudad()}"!=""){
-	        						document.getElementById("ciudad").style.display = "block";
-	        					}
-	        					if("${usuario.getPais()}"!=null && "${usuario.getPais()}"!=""){
-	        						document.getElementById("pais").style.display = "block";
-	        					}
-	        				</script>
 		        		</div>
         			</div>
         		</div>
-        		<div class="col-md-3"></div>
+        		<div class="col-md-2"></div>
         	</div>
         	<div class="row">
         		<br><br><br>

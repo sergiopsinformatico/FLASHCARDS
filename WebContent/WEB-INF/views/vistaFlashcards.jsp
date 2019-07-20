@@ -77,7 +77,7 @@
       </div>
       <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
-          <i class="fa fa-universal-access" aria-hidden="true"></i>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
       </li>
       
@@ -182,7 +182,7 @@
 		        		</div>
 		        		<div class="col-md-5 middle">
 		        			<form action="gestionarFlashcards.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btnPaginaPrincipal" style="background:#83DDD7;color:white">
+			        			<button type="submit" class="btnPaginaPrincipal btn btn-success" style="color:white">
 			        				<i class="fa fa-pencil-square fa-5x" aria-hidden="true"></i>
 			        				<br><br>
 			       					Gestión de Flashcards
@@ -206,7 +206,7 @@
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-5">
 		        			<form action="verColecciones.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#00FF40;color:white">
+			        			<button type="submit" class="btn btnPaginaPrincipal btn-warning" style="color:white">
 			       					<i class="fa fa-eye fa-5x" aria-hidden="true" style="color:black"></i>
 			       					<br><br>
 			       					Ver Colecciones
@@ -215,8 +215,8 @@
 		        		</div>
 		        		<div class="col-md-5">
 		        			<form action="crearColeccion.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btnPaginaPrincipal" style="background:#FF0000;color:white">
-			       					<i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
+			        			<button type="submit" class="btn btnPaginaPrincipal btn-danger" style="color:white">
+			       					<i class="fa fa-plus fa-5x" aria-hidden="true"></i>
 			       					<br><br>
 			       					Crear una Coleccion
 			       				</button>

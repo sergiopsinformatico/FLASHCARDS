@@ -78,7 +78,7 @@
       </div>
       <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
-          <i class="fa fa-universal-access" aria-hidden="true"></i>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
       </li>
       
@@ -172,6 +172,7 @@
 	        app.controller('VerColeccionCtrl', function($scope, $http) {
 				
 	        	$scope.colTarjetas = [];
+	        	$scope.estadoFlashcard = '';
 	        	
 	        	$http.get("getTarjetasColeccion.do?id="+"${flashcard.getIdColeccion()}")
        			.then(function(response) {
@@ -187,9 +188,20 @@
        		  	});
 	        		        	
 	        	$scope.checkTipoCompartir = function(value){
-	        		
 	        		return "${flashcard.getTipoCompartir()}" === value;
-	        		
+	        	}
+	        	
+	        	$scope.verEstado = function(){
+	        		if(("${usuario.getRol()}" === "Moderador") || ("${usuario.getRol()}" === "Administrador")){
+	        			if(${flashcard.isEvaluada()} == true){
+	        				$scope.estadoFlashcard = 'Evaluada';
+	        			}else{
+	        				$scope.estadoFlashcard = 'Pendiente de ser evaluada';
+	        			}
+	        			return true;
+	        		}else{
+	        			return false;
+	        		}
 	        	}
 				
 	        });
@@ -226,6 +238,10 @@
 			                    	<div ng-if="checkTipoCompartir('club')==true">
 			                    		<strong>Para los Miembros del Club</strong>
 			                    		<br>${flashcard.getCompartirCon()}
+			                    	</div>
+			                    	<div ng-if="verEstado()">
+			                    		<br>
+			                    		<strong>Estado de la Coleccion: </strong>{{estadoFlashcard}}
 			                    	</div>
         							<br><br><br>
         						</div>
