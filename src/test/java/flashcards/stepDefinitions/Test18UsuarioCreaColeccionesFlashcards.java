@@ -29,8 +29,12 @@ public class Test18UsuarioCreaColeccionesFlashcards{
 		tarjetas = new LinkedList<>();
 		tarjetas.add(tarjeta);
 		
-		flashcard = new FlashcardsDTO("flash12345", "flashEjemplo", "tema5", "2019/10/01", "usuario123", 
-				tarjetas, "publico", "", false, "");
+		flashcard = new FlashcardsDTO("flash12345", "flashEjemplo", "tema5", "usuario123", tarjetas, "publico", "");
+		
+		flashcard.setFechaCreacion("2019/10/01");
+		flashcard.setEvaluada(false);
+		flashcard.setEvaluador("");
+		
 	    assert(Broker.getInstanciaFlashcards().crearFlashcards(flashcard));
 	}
 

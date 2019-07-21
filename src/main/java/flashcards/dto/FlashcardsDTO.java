@@ -15,20 +15,17 @@ public class FlashcardsDTO {
 	
 	boolean evaluada;
 	String evaluador;
-		
-	public FlashcardsDTO(String id, String nombre, String tema, String fecha, String autor, 
-			List<TarjetaDTO> tarjetas, String tipoCompartir, String compartirCon, boolean evaluada, String evaluador) {
+			
+	public FlashcardsDTO(String id, String nombre, String tema, String autor, 
+			List<TarjetaDTO> tarjetas, String tipoCompartir, String compartirCon) {
 		
 		setIdColeccion(id);
 		setNombreColeccion(nombre);
 		setTemaColeccion(tema);
-		setFechaCreacion(fecha);
 		setAutorColeccion(autor);
 		setTarjetas(tarjetas);
 		setTipoCompartir(tipoCompartir);
 		setCompartirCon(compartirCon);
-		setEvaluada(evaluada);
-		setEvaluador(evaluador);
 		
 	}
 

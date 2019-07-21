@@ -55,6 +55,12 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     
     //Logger
     private static final Logger LOGGER = Logger.getLogger("main.java.flashcards.db.mongodb.FlashcardsMongoDB");
+    
+    //Constantes
+  	static final String CONST_AUTOR = "autor";
+  	static final String CONST_TIPO_COMPARTIR = "tipoCompartir";
+  	static final String CONST_COMPARTIR_CON = "compartirCon";
+  	static final String CONST_EVALUADA = "evaluada";
 	
 	public FlashcardsMongoDB() {
 		connection();
@@ -99,12 +105,12 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     	docTransformado = new Document().append("id", flashcards.getIdColeccion())
     						.append("nombre", flashcards.getNombreColeccion())
     						.append("tema", flashcards.getTemaColeccion())
-    						.append("autor", flashcards.getAutorColeccion())
-    						.append("tipoCompartir", flashcards.getTipoCompartir())
-    						.append("compartirCon", flashcards.getCompartirCon())
+    						.append(CONST_AUTOR, flashcards.getAutorColeccion())
+    						.append(CONST_TIPO_COMPARTIR, flashcards.getTipoCompartir())
+    						.append(CONST_COMPARTIR_CON, flashcards.getCompartirCon())
     						.append("tarjetas", listaTarjetasDoc)
     						.append("fecha", flashcards.getFechaCreacion())
-    						.append("evaluada", flashcards.isEvaluada())
+    						.append(CONST_EVALUADA, flashcards.isEvaluada())
     						.append("evaluador", flashcards.getEvaluador());
     	
     	return docTransformado;
@@ -134,9 +140,18 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
 					listaTarjetasDoc.get(indice).getString("reverso")));
 		}
 		
-		flashcardTransformada = new FlashcardsDTO(docFlashcards.getString("id"), docFlashcards.getString("nombre"), docFlashcards.getString("tema"), docFlashcards.getString("fecha"), docFlashcards.getString("autor"), 
-				listaTarjetas, docFlashcards.getString("tipoCompartir"), docFlashcards.getString("compartirCon"), docFlashcards.getBoolean("evaluada"), docFlashcards.getString("evaluador"));
-
+		flashcardTransformada = new FlashcardsDTO(docFlashcards.getString("id"), 
+												  docFlashcards.getString("nombre"), 
+												  docFlashcards.getString("tema"), 
+												  docFlashcards.getString(CONST_AUTOR), 
+												  listaTarjetas,
+												  docFlashcards.getString(CONST_TIPO_COMPARTIR),
+												  docFlashcards.getString(CONST_COMPARTIR_CON));
+		
+		flashcardTransformada.setFechaCreacion(docFlashcards.getString("fecha"));
+		flashcardTransformada.setEvaluada(docFlashcards.getBoolean(CONST_EVALUADA));
+		flashcardTransformada.setEvaluador(docFlashcards.getString("evaluador"));
+		
 		return flashcardTransformada;
     }
     
@@ -154,7 +169,7 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     	try {
     		listaFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("evaluada", new BsonBoolean(false));
+    		criteriosBusqueda = new BsonDocument().append(CONST_EVALUADA, new BsonBoolean(false));
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
         	while(iterador.hasNext()) {
@@ -189,7 +204,7 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
 		try {
     		listaFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("evaluada", new BsonBoolean(true));
+    		criteriosBusqueda = new BsonDocument().append(CONST_EVALUADA, new BsonBoolean(true));
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
         	while(iterador.hasNext()) {
@@ -211,7 +226,7 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
     		listaFlashcards = new LinkedList<>();
     		idsFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("autor", new BsonString(username));
+    		criteriosBusqueda = new BsonDocument().append(CONST_AUTOR, new BsonString(username));
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
         	while(iterador.hasNext()) {
@@ -221,8 +236,8 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
         		idsFlashcards.add(flashcard.getIdColeccion());
         	}
         	
-        	criteriosBusqueda = new BsonDocument().append("tipoCompartir", new BsonString("publico"))
-        										  .append("evaluada", new BsonBoolean(true));
+        	criteriosBusqueda = new BsonDocument().append(CONST_TIPO_COMPARTIR, new BsonString("publico"))
+        										  .append(CONST_EVALUADA, new BsonBoolean(true));
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
         	while(iterador.hasNext()) {
@@ -234,9 +249,9 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
         		}
         	}
         	
-        	criteriosBusqueda = new BsonDocument().append("tipoCompartir", new BsonString("usuario"))
-        										  .append("compartirCon", new BsonString(username))
-        										  .append("evaluada", new BsonBoolean(true));
+        	criteriosBusqueda = new BsonDocument().append(CONST_TIPO_COMPARTIR, new BsonString("usuario"))
+        										  .append(CONST_COMPARTIR_CON, new BsonString(username))
+        										  .append(CONST_EVALUADA, new BsonBoolean(true));
         	
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
@@ -253,9 +268,9 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
         	clubes = dBClubes.getMisClubes(username);
         	for(indice=0; indice<clubes.size(); indice++) {
         		
-        		criteriosBusqueda = new BsonDocument().append("tipoCompartir", new BsonString("club"))
-        											  .append("compartirCon", new BsonString(clubes.get(indice).getIdClub()))
-        											  .append("evaluada", new BsonBoolean(true));
+        		criteriosBusqueda = new BsonDocument().append(CONST_TIPO_COMPARTIR, new BsonString("club"))
+        											  .append(CONST_COMPARTIR_CON, new BsonString(clubes.get(indice).getIdClub()))
+        											  .append(CONST_EVALUADA, new BsonBoolean(true));
 
 				iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
 				
@@ -293,8 +308,8 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
 		try {
     		listaFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("autor", new BsonString(username))
-    											  .append("evaluada", new BsonBoolean(true));
+    		criteriosBusqueda = new BsonDocument().append(CONST_AUTOR, new BsonString(username))
+    											  .append(CONST_EVALUADA, new BsonBoolean(true));
     		
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
@@ -317,8 +332,8 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
 		try {
     		listaFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("autor", new BsonString(username))
-    											  .append("evaluada", new BsonBoolean(false));
+    		criteriosBusqueda = new BsonDocument().append(CONST_AUTOR, new BsonString(username))
+    											  .append(CONST_EVALUADA, new BsonBoolean(false));
     		
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	
@@ -341,9 +356,9 @@ public class FlashcardsMongoDB implements InterfaceDAOFlashcards {
 		try {
     		listaFlashcards = new LinkedList<>();
     		
-    		criteriosBusqueda = new BsonDocument().append("evaluada", new BsonBoolean(true))
-    											  .append("tipoCompartir", new BsonString("club"))
-    											  .append("compartirCon", new BsonString(id));
+    		criteriosBusqueda = new BsonDocument().append(CONST_EVALUADA, new BsonBoolean(true))
+    											  .append(CONST_TIPO_COMPARTIR, new BsonString("club"))
+    											  .append(CONST_COMPARTIR_CON, new BsonString(id));
     		
         	iterador = coleccionFlashcards.find(criteriosBusqueda).iterator();
         	

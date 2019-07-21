@@ -36,6 +36,8 @@ public class Controlador10Moderador {
 	//Constantes
 	static final String CONST_USUARIO = "usuario";
 	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
+	static final String CONST_FLASHCARD_EVALUA = "vistaFlashcardsEvaluar";
+	static final String CONST_MENSAJES = "usuario";
 	
 	//Moderador Evalua Coleccion
 	
@@ -47,7 +49,7 @@ public class Controlador10Moderador {
 		   ((((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Administrador")) ||
 			(((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getRol().equals("Moderador")))) {
 			
-			vista = new ModelAndView("vistaFlashcardsEvaluar");
+			vista = new ModelAndView(CONST_FLASHCARD_EVALUA);
 		
 		}else {
 			vista = new ModelAndView(CONST_REDIRECT_INICIO);
@@ -90,17 +92,17 @@ public class Controlador10Moderador {
 	
 	@RequestMapping(value = "/evaluacionPositiva", method = RequestMethod.GET)
 	public ModelAndView evaluacionPositiva(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaFlashcardsEvaluar");
+		vista = new ModelAndView(CONST_FLASHCARD_EVALUA);
 		Broker.getInstanciaFlashcards().valoraPositivamente(id, ((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername());
-		vista.addObject("mensaje", "La coleccion se ha evaluado positivamente");
+		vista.addObject(CONST_MENSAJES, "La coleccion se ha evaluado positivamente");
 		return vista;
 	}
 	
 	@RequestMapping(value = "/evaluacionNegativa", method = RequestMethod.GET)
 	public ModelAndView evaluacionNegativa(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) {
-		vista = new ModelAndView("vistaFlashcardsEvaluar");
+		vista = new ModelAndView(CONST_FLASHCARD_EVALUA);
 		Broker.getInstanciaFlashcards().valoraNegativamente(id);
-		vista.addObject("mensaje", "La coleccion se ha evaluado negativamente y por tanto ha sido eliminada");
+		vista.addObject(CONST_MENSAJES, "La coleccion se ha evaluado negativamente y por tanto ha sido eliminada");
 		return vista;
 	}
 	
@@ -158,13 +160,13 @@ public class Controlador10Moderador {
 			nombreColeccion = Broker.getInstanciaFlashcards().leerFlashcard(id).getNombreColeccion();
 			
 			if(Broker.getInstanciaFlashcards().eliminarFlashcard(id)) {
-				vista.addObject("mensaje", "Se ha eliminado la coleccion "+nombreColeccion);
+				vista.addObject(CONST_MENSAJES, "Se ha eliminado la coleccion "+nombreColeccion);
 			}else {
-				vista.addObject("mensaje", "No se pudo eliminar la coleccion "+nombreColeccion);
+				vista.addObject(CONST_MENSAJES, "No se pudo eliminar la coleccion "+nombreColeccion);
 			}
 			
 		}catch(Exception ex) {
-			vista.addObject("mensaje", "Hubo un problema con la conexion");
+			vista.addObject(CONST_MENSAJES, "Hubo un problema con la conexion");
 		}
 		
 		return vista;

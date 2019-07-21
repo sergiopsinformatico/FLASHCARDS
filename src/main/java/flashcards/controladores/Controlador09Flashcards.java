@@ -51,6 +51,7 @@ public class Controlador09Flashcards {
 	//Constantes
 	static final String CONST_USUARIO = "usuario";
 	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
+	static final String CONST_TIPO_COMPARTIR = "tipoCompartir";
 	
 	@RequestMapping(value = "/flashcards", method = RequestMethod.GET)
 	public ModelAndView flashcards(HttpServletRequest request, HttpServletResponse response) {
@@ -143,13 +144,17 @@ public class Controlador09Flashcards {
 		
 		hoy = new Fecha();
 		
-		if(request.getParameter("tipoCompartir").equals("publico") || request.getParameter("tipoCompartir").equals("privado")) {
-			flashcard = new FlashcardsDTO(idFlashcards, request.getParameter("nombreColeccion"), request.getParameter("temaColeccion"), hoy.fechaHoy(),
-					((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), tarjetas, request.getParameter("tipoCompartir"), "", false, "");
+		if(request.getParameter(CONST_TIPO_COMPARTIR).equals("publico") || request.getParameter(CONST_TIPO_COMPARTIR).equals("privado")) {
+			flashcard = new FlashcardsDTO(idFlashcards, request.getParameter("nombreColeccion"), request.getParameter("temaColeccion"), 
+					((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), tarjetas, request.getParameter(CONST_TIPO_COMPARTIR), "");
 		}else {
-			flashcard = new FlashcardsDTO(idFlashcards, request.getParameter("nombreColeccion"), request.getParameter("temaColeccion"), hoy.fechaHoy(),
-					((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), tarjetas, request.getParameter("tipoCompartir"), request.getParameter("compartirCon"), false, "");
+			flashcard = new FlashcardsDTO(idFlashcards, request.getParameter("nombreColeccion"), request.getParameter("temaColeccion"),
+					((UsuarioDTO)(request.getSession().getAttribute(CONST_USUARIO))).getUsername(), tarjetas, request.getParameter(CONST_TIPO_COMPARTIR), request.getParameter("compartirCon"));
 		}
+		
+		flashcard.setFechaCreacion(hoy.fechaHoy());
+		flashcard.setEvaluada(false);
+		flashcard.setEvaluador("");
 		
 		vista = new ModelAndView("vistaFlashcards");
 		

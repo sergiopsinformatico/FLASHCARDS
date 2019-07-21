@@ -31,8 +31,11 @@ public class Test20ModeradorConsultaColeccionesSinEvaluar {
 		tarjetas = new LinkedList<>();
 		tarjetas.add(tarjeta);
 		
-		flashcard = new FlashcardsDTO("flash12345", "flashEjemplo", "tema5", "2019/10/01", "usuario123", 
-				tarjetas, "publico", "", false, "");
+		flashcard = new FlashcardsDTO("flash12345", "flashEjemplo", "tema5", "usuario123", tarjetas, "publico", "");
+		
+		flashcard.setFechaCreacion("2019/10/01");
+		flashcard.setEvaluada(false);
+		flashcard.setEvaluador("");
 		
 	    Broker.getInstanciaFlashcards().crearFlashcards(flashcard);
 	    
