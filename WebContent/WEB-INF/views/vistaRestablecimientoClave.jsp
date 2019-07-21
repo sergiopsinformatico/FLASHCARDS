@@ -50,7 +50,7 @@
 				<br>
    				<h4 class="title">Restablecimiento de Clave</h4>
    				<br>
-   				<small class="negrita mensajeInfo">¡Hola ${username}!</small>
+   				<small class="negrita mensajeInfo">Hola ${username}</small>
    				<br>
    				<small class="negrita cursiva mensajeInfo">Por favor, introduce tu nueva clave</small>
    				<br><br>

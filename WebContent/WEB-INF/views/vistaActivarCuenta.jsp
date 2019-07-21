@@ -56,7 +56,7 @@
 	    			<div class="col-md-2"></div>
 	    			<div class="col-md-8">
 		    			<div class="row" style="text-align: center;">
-		    				<p class="mensajeInfo">¡Enhorabuena ${activa.getUsername()}! Su cuenta ha sido activada correctamente.</p>
+		    				<p class="mensajeInfo">Enhorabuena ${activa.getUsername()}, Su cuenta ha sido activada correctamente.</p>
 		    				<p class="mensajeInfo">De manera opcional, puede rellenar los siguientes campos. Cuando finalice pulse en siguiente:</p>
 		    			</div>
 		    			<div class="row">

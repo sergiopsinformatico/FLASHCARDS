@@ -122,7 +122,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -397,7 +397,7 @@
 				            	<div class="col-md-7">
 				            		<div ng-if="listaUsuariosActual.length == 0" style="width:100%" align="center">
 						            	<h6 ng-if="value == 'all'" align="center">Tu eres el unico usuario del sistema</h6>
-						            	<h6 ng-if="value == 'amigos'" align="center">Aun no tienes amigos. ¡Conoce a nuevas personas!</h6>
+						            	<h6 ng-if="value == 'amigos'" align="center">Aun no tienes amigos. Conoce a nuevas personas</h6>
 						            	<h6 ng-if="value == 'pdaEnv'" align="center">Las peticiones de amistad enviadas fueron respondidas</h6>
 						            	<h6 ng-if="value == 'pdaRec'" align="center">No tienes pendientes peticiones de amistad por responder</h6>
 						            	<h6 ng-if="value == 'bloq'" align="center">No tienes a ningún usuario bloqueado</h6>
