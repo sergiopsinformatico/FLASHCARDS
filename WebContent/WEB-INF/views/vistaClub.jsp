@@ -74,6 +74,16 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -112,7 +122,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -161,6 +171,9 @@
 	        	
 	        	$scope.listaMiembros = [];
 	        	$scope.checkGet = false;
+	        	
+	        	$scope.puedoVerColeccion = false;
+	        	$scope.colecciones = [];
 	        	
 	        	$scope.getClubesPertenezco = function (){
 	        		$http.get("getUsuariosClub.do?idClub=${club.getIdClub()}")
@@ -242,6 +255,35 @@
 	        		
 	        	}
 	        	
+	        	$scope.verColecciones = function(){
+	        		$scope.puedoVerColecciones = false;
+	        		$scope.colecciones = [];
+	        		
+	        			$http.get("getColeccionesClub.do?id=" + "${club.getIdClub()}")
+			       			.then(function(response) {
+			       				
+			       				$scope.colecciones = response.data;
+			       				
+			       				$scope.refreshCarrouselColecciones();
+			       				
+								$scope.puedoVerColeccion = true;
+			       			}, function myError(response) {
+			       				$scope.colecciones = [];
+			       				$scope.puedoVerColeccion = true;
+				       	    }
+			       		);
+	        	}
+	        	
+	        	$scope.refreshCarrouselColecciones = function(){
+	        		$('#carouselFlashcardClub').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+	        	}
+	        	
+	        	$scope.verColecciones();
 	        });
         </script>
 
@@ -333,13 +375,65 @@
 				        </p>
 				    </div>
 				</div>
-       		</div>
-        		<div class="col-md-5">
-        			
+				<div class="col-md-5" align="center">
+					<br>
+					<h6 align="center">Lista de Colecciones</h6>
+					<br>
+        			<div ng-if="${club.isPertenezcoClub()} == true">
+        				<div ng-if="puedoVerColeccion == false">
+        					<h6 align="center">Cargando colecciones</h6>
+        				</div>
+        				<div ng-if="puedoVerColeccion == true && colecciones.length == 0" align="center">
+        					<h6 align="center">No se ha compartido ninguna coleccion todavia</h6>
+        				</div>
+        				<div ng-if="puedoVerColeccion == true && colecciones.length > 0" align="center">
+        					<div class="input-group">
+				            	<input type="text" ng-model="filterColecciones" ng-change="refreshCarrouselColecciones()" class="form-control" placeholder="Filtrar colecciones" />
+				            </div>
+				            <br>
+		        			<div id="carouselFlashcardClub" align="center" class="carousel slide" style="width:300px;height:350px;">
+						        <div class="container" style="width:300px;height:350px;">
+						            <div class="carousel-inner row w-100 mx-auto" style="width:300px;height:350px;">
+										<div class="carousel-item" ng-repeat="eColeccion in colecciones | filter:filterColecciones">
+								            <div class="flip-card-container" style="width:300px;height:350px;text-align:center;">
+												<div class="flip-card">
+											    	<div class="flip-card-front" style="background:#FFB550;" align="center">
+											        	<br><br><br>
+											        	{{eColeccion.nombreColeccion}}						                    	
+													</div>
+											 		<div class="flip-card-back" style="background:#86D4FF;">
+											 			<br><br>
+								                    	<i class="fa fa-eye" aria-hidden="true" style="color:black"></i>
+			     									 	<br>
+											 			<a ng-href="verColeccion.html?id={{eColeccion.idColeccion}}" style="color:black;">
+											 				Ver Coleccion
+											 			</a>
+												    </div>
+											    </div>
+											</div>					
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#carouselFlashcardClub" role="button" data-slide="prev">
+								      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+								      <span class="sr-only">Anterior</span>
+								    </a>
+								    <a class="carousel-control-next" href="#carouselFlashcardClub" role="button" data-slide="next">
+								      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+								      <span class="sr-only">Siguiente</span>
+								    </a>
+							    </div>
+							</div>
+							<br><br><br>
+						</div>
+					</div>
+					<div ng-if="${club.isPertenezcoClub()} == false">
+				        <p>
+				        	No puede ver los miembros del club, ya que no forma parte del mismo
+				        </p>
+				    </div>
         		</div>
         		<div class="col-md-1"></div>
-        	</div>
-        	        	
+       		</div>        	        	
         	<script>
 		   		if("${usuario.getRol()}" === 'Administrador'){
 		   			document.getElementById("adminSidebarDivider").style.display="block";

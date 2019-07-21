@@ -73,6 +73,16 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -111,7 +121,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item active dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -303,7 +313,7 @@
 	        	
 	        	$http({
 	    	        method: 'GET',
-	    	        url: '/getUsernames.do',
+	    	        url: 'getUsernames.do',
 	                headers : {
 	                	'Accept': 'application/json'
 	                }
@@ -318,7 +328,7 @@
 						        	
 	        	$http({
 	    	        method: 'GET',
-	    	        url: '/getEmails.do',
+	    	        url: 'getEmails.do',
 	                headers : {
 	                	'Accept': 'application/json'
 	                }

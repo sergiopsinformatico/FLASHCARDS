@@ -74,6 +74,16 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -112,7 +122,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -311,9 +321,9 @@
 				            	
 				            	<div class="col-md-7">
 				            		<div ng-if="listaClubesActual.length == 0" style="width:100%" align="center">
-						            	<h6 ng-if="value == 'all'" align="center">No existen clubs. ¡Anímate y se el primero!</h6>
-						            	<h6 ng-if="value == 'creadas'" align="center">Aun no has creado clubes. ¡Crea uno ahora!</h6>
-						            	<h6 ng-if="value == 'estoy'" align="center">Aun no perteneces a un club. ¡Unete a alguno!</h6>
+						            	<h6 ng-if="value == 'all'" align="center">No existen clubs. Animate y se el primero</h6>
+						            	<h6 ng-if="value == 'creadas'" align="center">Aun no has creado clubes. Crea uno ahora</h6>
+						            	<h6 ng-if="value == 'estoy'" align="center">Aun no perteneces a un club. Unete a alguno</h6>
 						            </div>
 						            <div ng-if="listaClubesActual.length > 0" style="width:100%" align="center">
 						            	<div class="input-group">

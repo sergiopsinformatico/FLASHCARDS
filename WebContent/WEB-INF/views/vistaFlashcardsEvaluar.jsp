@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Flashcards - Gestion Usuarios - Administrador ${usuario.getUsername()}</title>
+  <title>Flashcards - Flashcards</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="resources/css/comunes.css" rel="stylesheet">
+  <link href="resources/css/cardFlip.css" rel="stylesheet">
   
   <!-- Bootstrap core CSS -->
   <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
 </head>
 
 <body id="page-top">
-  
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -49,25 +50,23 @@
       </a>
       
       <div class="row">
-	   		<br><br>
-	   	</div>
+	  	<br><br>
+	  </div>
 
       <!-- Divider-->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard--> 
       <li class="nav-item">
         <a class="nav-link" href="inicio.html">
           <i class="fa fa-home" aria-hidden="true"></i>
           <span>Pagina Principal</span></a>
       </li>      
       
-      <!-- Nav Item - Dashboard--> 
       <hr class="sidebar-divider" id="adminSidebarDivider" style="display: none;">
       <div class="sidebar-heading" id="adminSidebarTitle" style="display: none;">
         Administrador
       </div>
-      <li class="nav-item active" id="adminSidebar" style="display: none;">
+      <li class="nav-item" id="adminSidebar" style="display: none;">
         <a class="nav-link" href="panelAdministrador.html">
           <i class="fa fa-universal-access" aria-hidden="true"></i>
           <span>Panel Administrador</span></a>
@@ -77,7 +76,7 @@
       <div class="sidebar-heading">
         Flashcards
       </div>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="flashcards.html">
           <i class="fa fa-id-card-o" aria-hidden="true"></i>
           <span>Panel Flashcards</span></a>
@@ -101,6 +100,7 @@
           <span>Clubes</span>
         </a>
       </li>
+
     </ul>
     <!-- End of Sidebar -->
 
@@ -166,142 +166,99 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        
-        <script>
-        var app = angular.module('AppAdministrador', []);
-        app.controller('AdministradorCtrl', function($scope, $http) {
-        	$scope.listaUsuarios = [];
-        	$scope.checkGet = false;
-        	var indice = 0;
-        	var user;
-        	
-        	$scope.rellenarTabla = function(){
-        		
-	       		$http.get("getUsuariosAdmin.do?username=${usuario.getUsername()}")
+        <script>        	
+	        var app = angular.module('AppEvaluaFlashcards', []);
+	        app.controller('EvaluaFlashcardsCtrl', function($scope, $http) {
+	        	
+	        	$scope.listaColecciones = [];
+	        	$scope.listaCargada = false;
+	        	
+	        	$http.get("coleccionesSinEvaluar.do")
 	       			.then(function(response) {
-	       				$scope.listaUsuarios = response.data;
-	       				$scope.checkGet = true;
+	       				$scope.listaColecciones = response.data;
+	       				$scope.refreshCarrousel();
+	       				$scope.listaCargada = true;
 	       		  	}, function myError(response) {
-		       		  	$scope.listaUsuarios = [];
-	       				$scope.checkGet = true;
+	       		  		$scope.listaColecciones = [];
+	       		  		$scope.refreshCarrousel();
+	       		  		$scope.listaCargada = true;
 		       	    }
 	       		);
-        		
-        	};
-        	
-        	$scope.cambioRol = function(usuario){
-        	    bootbox.prompt({
-        	        title: "Nuevo rol para "+usuario,
-        	        inputType: 'select',
-        	        inputOptions: [{
-        	            text: 'Elige un nuevo rol...',
-        	            value: '',
-        	        }, {
-        	          text: 'Usuario',
-        	          value: 'Usuario',
-        	        }, {
-        	          text: 'Moderador',
-        	          value: 'Moderador',
-        	        }, {
-        	          text: 'Administrador',
-        	          value: 'Administrador',
-        	        }],
-        	        callback: function(result) {
-        	        	if(result != null){
-	        	        	if(result == ''){
-	        	        		bootbox.alert("No ha seleccionado un rol");
-	        	        	}else{
-	        	        		window.location.href = "administradorCambiaRol.do?username="+usuario+"&rol="+result;
-	        	        	}
-        	        	}
-        	        }
-        	     });
-           	};
-        	
-			$scope.eliminaUsuario = function(usuario){
+	        	
+	        	$scope.refreshCarrousel = function(){
+					$('#carouselFlashcardsEvaluar').carousel({});
+					$(document).ready(function(){
+						  $('.carousel').each(function(){
+						    $(this).find('.carousel-item').eq(0).addClass('active');
+						  });
+						});
+				};
 				
-				bootbox.confirm({
-				    message: "¿Quiere eliminar a "+usuario+"?",
-				    buttons: {
-				        cancel: {
-				            label: '<i class="fa fa-times"></i> No'
-				        },
-				        confirm: {
-				            label: '<i class="fa fa-check"></i> Si'
-				        }
-				    },
-				    callback: function (result) {
-				    	if(result == true){
-					    	console.log('Eliminar a: ' + result);
-					    	window.location.href = "administradorEliminaUsuario.do?username="+usuario;
-				    	}
-				    }
-				});
-        	};
-        	
-        	$scope.rellenarTabla();        	
-        	
-        });
+	        });
         </script>
         
-        <div class="container-fluid" ng-app="AppAdministrador" ng-controller="AdministradorCtrl">
+        
+        <div class="container-fluid" ng-app="AppEvaluaFlashcards" ng-controller="EvaluaFlashcardsCtrl">
+        	
         	<div class="row">
-        		<div class="col-md-12">
-		        	<div class="row">
-		        		<div class="col-md-1"></div>
-		        		<div class="col-md-10">
-				            <div ng-if="!checkGet">
-				            	<h6 align="center">Cargando usuarios...</h6>
-				            </div>
-				            <div ng-if="checkGet && listaUsuarios.length == 0">
-				            	<h6 align="center">No hay usuarios en el sistema</h6>
-				            </div>
-				            <div ng-if="checkGet && listaUsuarios.length > 0">
-				            	<div class="input-group">
-					            	<input type="text" ng-model="filterUser.username" class="form-control" placeholder="Filtrar por username" />
-					            </div>
-					            <br>
-					            <div class="input-group">
-					            	<input type="text" ng-model="filterUser.email" class="form-control" placeholder="Filtrar por email" />
-					            </div>
-					            <br>
-					            <table width="100%" border="1">  
-								   <tr>  
-								      <th align="center" style="text-align:center;">Usuarios</th>  
-								      <th align="center" style="width:150px; text-align:center;">Cambiar Rol</th>
-								      <th align="center" style="width:168px; text-align:center;">Eliminar Usuario</th>   
-								   </tr>  
-								   <tr>
-								   		<td colspan=3>
-								   		<div style="overflow-y:scroll;height:500px;">
-								   			<table width=100% border="1">
-								   				<tr ng-repeat = "eUsuario in listaUsuarios | filter:filterUser:strict">  
-											      <td align="center">
-											      	<strong>Username: </strong><a href="verPerfil.html?usuarioPerfil={{ eUsuario.username }}">{{ eUsuario.username }}</a>
-											      	<br><strong>Email: </strong> {{ eUsuario.email }}
-											      	<br><strong>Rol: </strong> {{ eUsuario.rol }}
-											      </td>  
-											      <td style="width:150px;">
-											      	<form ng-submit="cambioRol(eUsuario.username)">
-													     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-													</form>
-											      </td>
-											      <td style="width:150px;">
-												      <form ng-submit="eliminaUsuario(eUsuario.username)">
-													     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
-													  </form>
-											      </td>    
-											   </tr>
-								   			</table>
-								   		</div>
-								   </tr>
-								</table> 
+        		<div class="col-md-1"></div>
+        		<div class="col-md-10">
+        			<h4 align="center" style="color:black;font-weight:bold;">Colecciones Sin Evaluar</h4>
+        			<br><br>
+        			<div class="row" ng-if="listaCargada == false">
+        				<div class="col-md-12">
+        					<h6 align="center" style="color:black;">Cargando colecciones....</h6>
+        				</div>
+        			</div>
+        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length > 0)">
+        				<div class="col-md-12" align="center">
+        					<div id="carouselFlashcardsEvaluar" class="carousel slide" style="width:400px;height:550px;">
+						        <div class="container" style="width:400px;height:550px;">
+						            <div class="carousel-inner row w-100 mx-auto" style="width:400px;height:550px;">
+										<div class="carousel-item" ng-repeat="eColeccion in listaColecciones">
+								            <div class="flip-card-container" style="width:400px;height:550px;text-align:center;">
+												<div class="flip-card">
+											    	<div class="flip-card-front" style="background:#6EC34D;">
+											        	<br><br><br><br>
+								                    	{{eColeccion.nombreColeccion}}
+								                    	<br><br>
+								                    	Autor: {{eColeccion.autorColeccion}}
+													</div>
+											 		<div class="flip-card-back" style="background:#86D4FF;">
+											 			<br><br><br>
+											 			<i class="fa fa-check-square-o fa-5x" aria-hidden="true"></i>
+											 			<br><br>
+											 			<a ng-href="evaluarColeccion.html?id={{eColeccion.idColeccion}}" style="color:yellow;">
+											 				Evaluar Coleccion
+											 			</a>
+												    </div>
+											    </div>
+											</div>					
+						                </div>
+						            </div>
+							        <a class="carousel-control-prev" href="#carouselFlashcardsEvaluar" role="button" data-slide="prev">
+								      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+								      <span class="sr-only">Anterior</span>
+								    </a>
+								    <a class="carousel-control-next" href="#carouselFlashcardsEvaluar" role="button" data-slide="next">
+								      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+								      <span class="sr-only">Siguiente</span>
+								    </a>
+							    </div>
 							</div>
-		        		</div>
-		        		<div class="col-md-1"></div>
-		        	</div>
-		        </div>
-		    </div>
+        				</div>
+        			</div>
+        			<div class="row" ng-if="(listaCargada == true) && (listaColecciones.length == 0)">
+        				<div class="col-md-12">
+        					<h6 align="center" style="color:black;">No hay colecciones para evaluar</h6>
+        				</div>
+        			</div>
+        		</div>
+        		<div class="col-md-1"></div>
+        	</div>
+        	<div class="row">
+        		<br><br><br>
+        	</div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){
@@ -309,15 +266,14 @@
         			document.getElementById("adminSidebarTitle").style.display="block";
         			document.getElementById("adminSidebar").style.display="block";
         		}
-        	</script>
-
-        </div>        
+        	</script>        	
+        </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
-    </div>
+     </div>
     <!-- End of Content Wrapper -->
 
   </div>
@@ -365,6 +321,3 @@
 </body>
 
 </html>
-
-
-

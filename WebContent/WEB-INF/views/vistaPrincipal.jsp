@@ -72,6 +72,16 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -110,7 +120,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -163,7 +173,7 @@
 		        		<div class="col-md-1"></div>
 		        		<div class="col-md-10 middle">
 		        			<form action="panelAdministrador.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal">
+			        			<button type="submit" class="btn btn-primary btnPaginaPrincipal" style="color:white">
 			        				<i class="fa fa-universal-access fa-5x" aria-hidden="true"></i>
 			        				<br><br>
 			       					Panel Administrador
@@ -185,9 +195,33 @@
         		<div class="col-md-12">
 		        	<div class="row">
 		        		<div class="col-md-1"></div>
+		        		<div class="col-md-10 middle">
+		        			<form action="flashcards.html" class="btnPaginaPrincipal" method="get">
+			        			<button type="submit" class="btn btn-warning btnPaginaPrincipal" style="color:white">
+			        				<i class="fa fa-id-card-o fa-5x" aria-hidden="true"></i>
+			        				<br><br>
+			       					Flashcards
+			       				</button>
+			       			</form>
+		        		</div>
+		        		<div class="col-md-1"></div>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="row">
+        		<div class="col-md-12">
+		        	<div class="row">
+		        		<br>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="row">
+        		<div class="col-md-12">
+		        	<div class="row">
+		        		<div class="col-md-1"></div>
 		        		<div class="col-md-5">
 		        			<form action="verGente.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-success btnPaginaPrincipal">
+			        			<button type="submit" class="btn btn-success btnPaginaPrincipal" style="color:white">
 			       					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
 			       					<br><br>
 			       					Gente
@@ -196,7 +230,7 @@
 		        		</div>
 		        		<div class="col-md-5">
 		        			<form action="verClubes.html" class="btnPaginaPrincipal" method="get">
-			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal">
+			        			<button type="submit" class="btn btn-danger btnPaginaPrincipal" style="color:white">
 			       					<i class="fa fa-star fa-5x" aria-hidden="true"></i>
 			       					<br><br>
 			       					Clubes
@@ -204,6 +238,13 @@
 			       			</form>
 		        		</div>
 		        		<div class="col-md-1"></div>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="row">
+        		<div class="col-md-12">
+		        	<div class="row">
+		        		<br>
 		        	</div>
 		        </div>
 		    </div>

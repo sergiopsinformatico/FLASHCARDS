@@ -74,6 +74,16 @@
       </li>
       
       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Flashcards
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="flashcards.html">
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <span>Panel Flashcards</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
       
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -111,7 +121,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">¡Bienvenido ${usuario.getUsername()}!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido ${usuario.getUsername()}</span>
                 <img class="img-profile rounded-circle" src="${usuario.getFoto()}">
               </a>
               <!-- Dropdown - User Information -->
@@ -225,19 +235,26 @@
 					            <table width="100%" border="1">  
 								   <tr>  
 								      <th align="center" style="text-align:center;">Club</th>  
-								      <th align="center" style="width:150px; text-align:center;">Eliminar Club</th>   
+								      <th align="center" style="width:168px; text-align:center;">Eliminar Club</th>   
 								   </tr>  
-								   <tr ng-repeat = "eClub in listaClubes | filter:filterClubes:strict">  
-								      <td align="center">
-								      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.idClub }}">{{ eClub.nombreClub }}</a>
-								      	<br><strong>Id del Club: </strong> {{ eClub.idClub }}
-								      	<br><strong>Creador: </strong> {{ eClub.administrador }}
-								      </td>  
-								      <td style="width:150px;">
-									      <form ng-submit="eliminaClub(eClub)">
-										     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
-										  </form>
-								      </td>    
+								   <tr>
+								   		<td colspan=2>
+								   		<div style="overflow-y:scroll;height:500px;">
+								   			<table width=100% border="1">
+								   				<tr ng-repeat = "eClub in listaClubes | filter:filterClubes:strict">  
+											      <td align="center">
+											      	<strong>Nombre del Club: </strong><a href="verClub.html?idClub={{ eClub.idClub }}">{{ eClub.nombreClub }}</a>
+											      	<br><strong>Id del Club: </strong> {{ eClub.idClub }}
+											      	<br><strong>Creador: </strong> {{ eClub.administrador }}
+											      </td>  
+											      <td style="width:150px;">
+												      <form ng-submit="eliminaClub(eClub)">
+													     <button type="submit" style="display:block;margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+													  </form>
+											      </td>    
+											   </tr>
+								   			</table>
+								   		</div>
 								   </tr>
 								</table> 
 							</div>
