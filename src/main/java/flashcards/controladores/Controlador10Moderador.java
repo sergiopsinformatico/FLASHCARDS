@@ -37,7 +37,7 @@ public class Controlador10Moderador {
 	static final String CONST_USUARIO = "usuario";
 	static final String CONST_REDIRECT_INICIO = "redirect:/inicio.html";
 	static final String CONST_FLASHCARD_EVALUA = "vistaFlashcardsEvaluar";
-	static final String CONST_MENSAJES = "usuario";
+	static final String CONST_MENSAJES = "mensajes";
 	
 	//Moderador Evalua Coleccion
 	
