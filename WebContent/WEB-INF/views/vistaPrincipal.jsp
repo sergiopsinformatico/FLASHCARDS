@@ -249,7 +249,8 @@
 		        </div>
 		    </div>
 		    <div class="row">
-        		<div class="col-md-12">
+		    	<div class="col-md-1"></div>
+        		<div class="col-md-10">
 		        	<form action="verGente.html" class="btnPaginaPrincipal" method="get">
 	        			<button type="submit" class="btn btn-secondary btnPaginaPrincipal" style="color:white">
 	       					<i class="fa fa-envelope fa-5x" aria-hidden="true"></i>
@@ -258,6 +259,7 @@
 	       				</button>
 	       			</form>
 		        </div>
+		        <div class="col-md-1"></div>
 		    </div>
 		    <div class="row">
         		<div class="col-md-12">
