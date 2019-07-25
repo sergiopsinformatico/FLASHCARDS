@@ -248,6 +248,24 @@
 		        	</div>
 		        </div>
 		    </div>
+		    <div class="row">
+        		<div class="col-md-12">
+		        	<form action="verGente.html" class="btnPaginaPrincipal" method="get">
+	        			<button type="submit" class="btn btn-secondary btnPaginaPrincipal" style="color:white">
+	       					<i class="fa fa-envelope fa-5x" aria-hidden="true"></i>
+	       					<br><br>
+	       					Mensaje
+	       				</button>
+	       			</form>
+		        </div>
+		    </div>
+		    <div class="row">
+        		<div class="col-md-12">
+		        	<div class="row">
+		        		<br>
+		        	</div>
+		        </div>
+		    </div>
         	
         	<script>
         		if("${usuario.getRol()}" === 'Administrador'){

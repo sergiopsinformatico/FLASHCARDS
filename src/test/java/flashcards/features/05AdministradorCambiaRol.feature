@@ -1,6 +1,6 @@
 #Author: Sergio Perez Sanchez
 
-Feature: Administrador cambia el rol a un usuario
+Feature: Como Administrador quiero cambiar el rol a un usuario
 
 Scenario: Administrador cambia el rol a un usuario
 Given Un administrador quiere cambiar el rol de un usuario
